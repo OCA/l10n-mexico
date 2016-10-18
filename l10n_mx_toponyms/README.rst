@@ -8,15 +8,14 @@ Mexican Toponyms
 
 This module extends the functionality of Odoo to add Mexican toponyms according with the catalogues publised by SAT on the CFDI 3.3 specification
 
-Currently this catalogues are supported:
+Currently these catalogues are supported:
 
 * Paises
 * Estados
 * Colonias
 * Localidades (Ciudades)
-* Municipios 
+* Municipios
 * CP
-
 
 Installation
 ============
@@ -24,39 +23,45 @@ Installation
 Install this module as any other module on your Odoo instance.
 
 
-Configuration
-=============
+.. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
+   :alt: Try me on Runbot
+   :target: https://runbot.odoo-community.org/runbot/193/9.0
 
-No special configuration required.
-
-
-Known issues / Roadmap
-======================
-
-None
 
 Bug Tracker
 ===========
 
-Bugs are tracked on `Gitlab Issues
-<http://gitlab.openpyme.mx/l10n_mx/l10n_mx_toponyms/issues>`_. In case of trouble, please
+Bugs are tracked on `GitHub Issues
+<https://github.com/OCA/l10n-mexico/issues>`_. In case of trouble, please
 check there if your issue has already been reported. If you spotted it first,
 help us smashing it by providing a detailed and welcomed feedback.
 
 Credits
 =======
 
-* OpenPyme México: `<https://www.openpyme.mx/es>`_.
+Images
+------
+
+* Odoo Community Association: `Icon <https://github.com/OCA/maintainer-tools/blob/master/template/module/static/description/icon.svg>`_.
 
 Contributors
 ------------
 
 * Federico Cruz <federico.cruz@openpyme.mx>
+* Manuel Reyes <manuel.reyes@openpyme.mx>
 * Agustín Cruz <agustin.cruz@openpyme.mx>
 
 Maintainer
 ----------
 
-This module is maintained by OpenPyme.
+.. image:: https://odoo-community.org/logo.png
+   :alt: Odoo Community Association
+   :target: https://odoo-community.org
 
-To contribute to this module, please visit https://gitlab.openpyme.mx.
+This module is maintained by the OCA.
+
+OCA, or the Odoo Community Association, is a nonprofit organization whose
+mission is to support the collaborative development of Odoo features and
+promote its widespread use.
+
+To contribute to this module, please visit https://odoo-community.org.
