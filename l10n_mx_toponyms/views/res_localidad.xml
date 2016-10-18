@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_res_location_tree" model="ir.ui.view">
+            <field name="name">view.res_.ocation.tree</field>
+            <field name="model">res.location</field>
+            <field name="arch" type="xml">
+                <tree string="Location">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="state_id"/>
+                    <field name="country_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_res_location_form" model="ir.ui.view">
+            <field name="name">view.res.location.form</field>
+            <field name="model">res.location</field>
+            <field name="arch" type="xml">
+                <form string="Location" version="7.0">
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="state_id" options='{"no_open": True}'/>
+                        <field name="country_id" options='{"no_open": True}'/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="view_res_location_search" model="ir.ui.view">
+            <field name="name">view.res.location.search</field>
+            <field name="model">res.location</field>
+            <field name="arch" type="xml">
+                <search string="Location">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="state_id"/>
+                    <field name="country_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_res_location" model="ir.actions.act_window">
+            <field name="name">Location</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.location</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="view_res_location_tree"/>
+        </record>
+
+        <menuitem
+            action="action_res_location"
+            id="menu_res_location"
+            parent="base.menu_localisation"
+            sequence="1"/>
+    </data>
+</openerp>

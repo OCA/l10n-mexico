@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!--
+          county
+        -->
+
+        <record id="view_country_state_county_tree" model="ir.ui.view">
+            <field name="name">res.country.state.county.tree</field>
+            <field name="model">res.partner.county</field>
+            <field name="arch" type="xml">
+                <tree string="county">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="state_id"/>
+                    <field name="country_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_country_state_county_form" model="ir.ui.view">
+            <field name="name">res.country.state.county.form</field>
+            <field name="model">res.partner.county</field>
+            <field name="arch" type="xml">
+                <form string="county">
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="state_id" options='{"no_open": True}'/>
+                        <field name="country_id" options='{"no_open": True}'/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="view_country_state_county_search" model="ir.ui.view">
+            <field name="name">view.country.state.county.search</field>
+            <field name="model">res.partner.county</field>
+            <field name="arch" type="xml">
+                <search string="county">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="state_id"/>
+                    <field name="country_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_country_state_county" model="ir.actions.act_window">
+            <field name="name">Cities</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner.county</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="view_country_state_county_tree"/>
+        </record>
+
+        <menuitem
+            action="action_country_state_county"
+            id="menu_country_state_county_partner"
+            parent="base.menu_localisation"
+            sequence="1"
+            groups="base.group_no_one"/>
+    
+    </data>
+</openerp>

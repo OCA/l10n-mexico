@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record  model="ir.ui.view" id="res_partner_form_city_01">
+            <field name="name">res.partner.form_city_01</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='city']" position="attributes">
+                    <attribute name="attrs">{'invisible': True}</attribute> 
+                </xpath>
+                <xpath expr="//field[@name='city']" position="after">
+                    <field name="num_ext" placeholder="No. Ext" style="width: 50%%"
+                        attrs="{'readonly': [('use_parent_address','=',True)]}"/>
+                    <field name="num_int" placeholder="No. Int" style="width: 50%%"
+                        attrs="{'readonly': [('use_parent_address','=',True)]}"/>      
+                    <field name="zip_id" placeholder="Zip"
+                        options='{"no_open": True}'
+                        attrs="{'readonly': [('use_parent_address','=',True)]}" />
+                    <field name="neighborhood_id" placeholder="Neighborhood"
+                        options='{"no_open": True}'
+                        attrs="{'readonly': [('use_parent_address','=',True)]}" />
+                    <field name="location_id" placeholder="Location"
+                        options='{"no_open": True}'
+                        attrs="{'readonly': [('use_parent_address','=',True)]}" />
+                    <field name="county_id" placeholder="County" options='{"no_open": True}'
+                        attrs="{'readonly': [('use_parent_address','=',True)]}" />             
+                </xpath>
+                <xpath expr="//field[@name='zip']" position="attributes">
+                    <attribute name="attrs">{'invisible': True}</attribute> 
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

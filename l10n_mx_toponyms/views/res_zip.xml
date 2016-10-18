@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_res_zip_tree" model="ir.ui.view">
+            <field name="name">view.res.zip.tree</field>
+            <field name="model">res.zip</field>
+            <field name="arch" type="xml">
+                <tree string="Zip">
+                    <field name="name"/>
+                    <field name="location_id"/>
+                    <field name="county_id"/>                 
+                    <field name="state_id"/>
+                    <field name="country_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_res_zip_form" model="ir.ui.view">
+            <field name="name">view.res.zip.form</field>
+            <field name="model">res.zip</field>
+            <field name="arch" type="xml">
+                <form string="Zip" version="7.0">
+                    <group>
+                        <field name="name"/>
+                        <field name="location_id"/>
+                        <field name="county_id"/>                 
+                        <field name="state_id"/>
+                        <field name="country_id"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="view_res_zip_search" model="ir.ui.view">
+            <field name="name">view.res.zip.search</field>
+            <field name="model">res.zip</field>
+            <field name="arch" type="xml">
+                <search string="Zip">
+                    <field name="name"/>
+                    <field name="location_id"/>
+                    <field name="county_id"/>                 
+                    <field name="state_id"/>
+                    <field name="country_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_res_zip" model="ir.actions.act_window">
+            <field name="name">Zip Codes</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.zip</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="view_res_zip_tree"/>
+        </record>
+
+          <menuitem
+            action="action_res_zip"
+            id="menu_res_zip"
+            parent="base.menu_localisation"
+            sequence="1"
+            groups="base.group_no_one"/>
+    </data>
+</openerp>
