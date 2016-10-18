@@ -6,570 +6,192 @@
             <field name="name">Aguascalientes</field>
             <field name="code">AGU</field>
         </record>
-        
+
         <record id="res_country_state_mx_bc" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Baja California Norte</field>
             <field name="code">BCN</field>
         </record>
-        
+
         <record id="res_country_state_mx_bcs" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Baja California Sur</field>
             <field name="code">BCS</field>
         </record>
-        
+
         <record id="res_country_state_mx_camp" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Campeche</field>
             <field name="code">CAM</field>
         </record>
-        
+
         <record id="res_country_state_mx_chis" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Chiapas</field>
             <field name="code">CHP</field>
         </record>
-        
+
         <record id="res_country_state_mx_chih" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Chihuahua</field>
             <field name="code">CHH</field>
         </record>
-        
+
         <record id="res_country_state_mx_coah" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Coahuila</field>
             <field name="code">COA</field>
         </record>
-        
+
         <record id="res_country_state_mx_col" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Colima</field>
             <field name="code">COL</field>
         </record>
-        
+
         <record id="res_country_state_mx_df" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Distrito Federal</field>
             <field name="code">DIF</field>
         </record>
-        
+
         <record id="res_country_state_mx_dgo" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Durango</field>
             <field name="code">DUR</field>
         </record>
-        
+
         <record id="res_country_state_mx_gto" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Guanajuato</field>
             <field name="code">GUA</field>
         </record>
-        
+
         <record id="res_country_state_mx_gro" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Guerrero</field>
             <field name="code">GRO</field>
         </record>
-        
+
         <record id="res_country_state_mx_hgo" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Hidalgo</field>
             <field name="code">HID</field>
         </record>
-        
+
         <record id="res_country_state_mx_jal" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Jalisco</field>
             <field name="code">JAL</field>
         </record>
-        
+
         <record id="res_country_state_mx_mex" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Estado de México</field>
             <field name="code">MEX</field>
         </record>
-        
+
         <record id="res_country_state_mx_mich" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Michoacán</field>
             <field name="code">MIC</field>
         </record>
-        
+
         <record id="res_country_state_mx_mor" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Morelos</field>
             <field name="code">MOR</field>
         </record>
-        
+
         <record id="res_country_state_mx_nay" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Nayarit</field>
             <field name="code">NAY</field>
         </record>
-        
+
         <record id="res_country_state_mx_nl" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Nuevo León</field>
             <field name="code">NLE</field>
         </record>
-        
+
         <record id="res_country_state_mx_oax" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Oaxaca</field>
             <field name="code">OAX</field>
         </record>
-        
+
         <record id="res_country_state_mx_pue" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Puebla</field>
             <field name="code">PUE</field>
         </record>
-        
+
         <record id="res_country_state_mx_qro" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Querétaro</field>
             <field name="code">QUE</field>
         </record>
-        
+
         <record id="res_country_state_mx_qr" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Quintana Roo</field>
             <field name="code">ROO</field>
         </record>
-        
+
         <record id="res_country_state_mx_slp" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">San Luis Potosí</field>
             <field name="code">SLP</field>
         </record>
-        
+
         <record id="res_country_state_mx_sin" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Sinaloa</field>
             <field name="code">SIN</field>
         </record>
-        
+
         <record id="res_country_state_mx_son" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Sonora</field>
             <field name="code">SON</field>
         </record>
-        
+
         <record id="res_country_state_mx_tab" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Tabasco</field>
             <field name="code">TAB</field>
         </record>
-        
+
         <record id="res_country_state_mx_tamps" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Tamaulipas</field>
             <field name="code">TAM</field>
         </record>
-        
+
         <record id="res_country_state_mx_talx" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Tlaxcala</field>
             <field name="code">TLA</field>
         </record>
-        
+
         <record id="res_country_state_mx_ver" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Veracruz</field>
             <field name="code">VER</field>
         </record>
-        
+
         <record id="res_country_state_mx_yuc" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Yucatán</field>
             <field name="code">YUC</field>
         </record>
-        
+
         <record id="res_country_state_mx_zac" model="res.country.state">
             <field name="country_id" ref="base.mx"/>
             <field name="name">Zacatecas</field>
             <field name="code">ZAC</field>
         </record>
-        
-        <record model="res.country.state" id="AL">
-            <field name="code">AL</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Alabama</field>
-       </record>
 
-       <record model="res.country.state" id="AK">
-            <field name="code">AK</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Alaska</field>
-       </record>
-
-       <record model="res.country.state" id="AZ">
-            <field name="code">AZ</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Arizona</field>
-       </record>
-
-       <record model="res.country.state" id="AR">
-            <field name="code">AR</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Arkansas</field>
-       </record>
-
-       <record model="res.country.state" id="CA">
-            <field name="code">CA</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">California</field>
-       </record>
-
-       <record model="res.country.state" id="NC">
-            <field name="code">NC</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Carolina del Norte</field>
-       </record>
-
-       <record model="res.country.state" id="SC">
-            <field name="code">SC</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Carolina del Sur</field>
-       </record>
-
-       <record model="res.country.state" id="CO">
-            <field name="code">CO</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Colorado</field>
-       </record>
-
-       <record model="res.country.state" id="CT">
-            <field name="code">CT</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Connecticut</field>
-       </record>
-
-       <record model="res.country.state" id="ND">
-            <field name="code">ND</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Dakota del Norte</field>
-       </record>
-
-       <record model="res.country.state" id="SD">
-            <field name="code">SD</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Dakota del Sur</field>
-       </record>
-
-       <record model="res.country.state" id="DE">
-            <field name="code">DE</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Delaware</field>
-       </record>
-
-       <record model="res.country.state" id="FL">
-            <field name="code">FL</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Florida</field>
-       </record>
-
-       <record model="res.country.state" id="GA">
-            <field name="code">GA</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Georgia</field>
-       </record>
-
-       <record model="res.country.state" id="HI">
-            <field name="code">HI</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Hawai</field>
-       </record>
-
-       <record model="res.country.state" id="ID">
-            <field name="code">ID</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Idaho</field>
-       </record>
-
-       <record model="res.country.state" id="IL">
-            <field name="code">IL</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Illinois</field>
-       </record>
-
-       <record model="res.country.state" id="IN">
-            <field name="code">IN</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Indiana</field>
-       </record>
-
-       <record model="res.country.state" id="IA">
-            <field name="code">IA</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Iowa</field>
-       </record>
-
-       <record model="res.country.state" id="KS">
-            <field name="code">KS</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Kansas</field>
-       </record>
-
-       <record model="res.country.state" id="KY">
-            <field name="code">KY</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Kentucky</field>
-       </record>
-
-       <record model="res.country.state" id="LA">
-            <field name="code">LA</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Luisiana</field>
-       </record>
-
-       <record model="res.country.state" id="ME">
-            <field name="code">ME</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Maine</field>
-       </record>
-
-       <record model="res.country.state" id="MD">
-            <field name="code">MD</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Maryland</field>
-       </record>
-
-       <record model="res.country.state" id="MA">
-            <field name="code">MA</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Massachusetts</field>
-       </record>
-
-       <record model="res.country.state" id="MI">
-            <field name="code">MI</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Michigan</field>
-       </record>
-
-       <record model="res.country.state" id="MN">
-            <field name="code">MN</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Minnesota</field>
-       </record>
-
-       <record model="res.country.state" id="MS">
-            <field name="code">MS</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Misisipi</field>
-       </record>
-
-       <record model="res.country.state" id="MO">
-            <field name="code">MO</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Misuri</field>
-       </record>
-
-       <record model="res.country.state" id="MT">
-            <field name="code">MT</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Montana</field>
-       </record>
-
-       <record model="res.country.state" id="NE">
-            <field name="code">NE</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Nebraska</field>
-       </record>
-
-       <record model="res.country.state" id="NV">
-            <field name="code">NV</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Nevada</field>
-       </record>
-
-       <record model="res.country.state" id="NJ">
-            <field name="code">NJ</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Nueva Jersey</field>
-       </record>
-
-       <record model="res.country.state" id="NY">
-            <field name="code">NY</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Nueva York</field>
-       </record>
-
-       <record model="res.country.state" id="NH">
-            <field name="code">NH</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Nuevo Hampshire</field>
-       </record>
-
-       <record model="res.country.state" id="NM">
-            <field name="code">NM</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Nuevo Mexico</field>
-       </record>
-
-       <record model="res.country.state" id="OH">
-            <field name="code">OH</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Ohio</field>
-       </record>
-
-       <record model="res.country.state" id="OK">
-            <field name="code">OK</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Oklahoma</field>
-       </record>
-
-       <record model="res.country.state" id="OR">
-            <field name="code">OR</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Oregon</field>
-       </record>
-
-       <record model="res.country.state" id="PA">
-            <field name="code">PA</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Pensilvania</field>
-       </record>
-
-       <record model="res.country.state" id="RI">
-            <field name="code">RI</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Rhode Island</field>
-       </record>
-
-       <record model="res.country.state" id="TN">
-            <field name="code">TN</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Tennessee</field>
-       </record>
-
-       <record model="res.country.state" id="TX">
-            <field name="code">TX</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Texas</field>
-       </record>
-
-       <record model="res.country.state" id="UT">
-            <field name="code">UT</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Utah</field>
-       </record>
-
-       <record model="res.country.state" id="VT">
-            <field name="code">VT</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Vermont</field>
-       </record>
-
-       <record model="res.country.state" id="VA">
-            <field name="code">VA</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Virginia</field>
-       </record>
-
-       <record model="res.country.state" id="WV">
-            <field name="code">WV</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Virginia Occidental</field>
-       </record>
-
-       <record model="res.country.state" id="WA">
-            <field name="code">WA</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Washington</field>
-       </record>
-
-       <record model="res.country.state" id="WI">
-            <field name="code">WI</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Wisconsin</field>
-       </record>
-
-       <record model="res.country.state" id="WY">
-            <field name="code">WY</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="name">Wyoming</field>
-       </record>
-
-       <record model="res.country.state" id="ON">
-            <field name="code">ON</field>
-            <field name="country_id" ref="base.ca"/>
-            <field name="name">Ontario </field>
-       </record>
-
-       <record model="res.country.state" id="QC">
-            <field name="code">QC</field>
-            <field name="country_id" ref="base.ca"/>
-            <field name="name"> Quebec </field>
-       </record>
-
-       <record model="res.country.state" id="NS">
-            <field name="code">NS</field>
-            <field name="country_id" ref="base.ca"/>
-            <field name="name"> Nueva Escocia</field>
-       </record>
-
-       <record model="res.country.state" id="NB">
-            <field name="code">NB</field>
-            <field name="country_id" ref="base.ca"/>
-            <field name="name">Nuevo Brunswick </field>
-       </record>
-
-       <record model="res.country.state" id="MB">
-            <field name="code">MB</field>
-            <field name="country_id" ref="base.ca"/>
-            <field name="name"> Manitoba</field>
-       </record>
-
-       <record model="res.country.state" id="BC">
-            <field name="code">BC</field>
-            <field name="country_id" ref="base.ca"/>
-            <field name="name"> Columbia Britanica</field>
-       </record>
-
-       <record model="res.country.state" id="PE">
-            <field name="code">PE</field>
-            <field name="country_id" ref="base.ca"/>
-            <field name="name"> Isla del Principe Eduardo</field>
-       </record>
-
-       <record model="res.country.state" id="SK">
-            <field name="code">SK</field>
-            <field name="country_id" ref="base.ca"/>
-            <field name="name"> Saskatchewan</field>
-       </record>
-
-       <record model="res.country.state" id="AB">
-            <field name="code">AB</field>
-            <field name="country_id" ref="base.ca"/>
-            <field name="name"> Alberta</field>
-       </record>
-
-       <record model="res.country.state" id="NL">
-            <field name="code">NL</field>
-            <field name="country_id" ref="base.ca"/>
-            <field name="name"> Terranova y Labrador</field>
-       </record>
-
-       <record model="res.country.state" id="NT">
-            <field name="code">NT</field>
-            <field name="country_id" ref="base.ca"/>
-            <field name="name"> Territorios del Noroeste</field>
-       </record>
-
-       <record model="res.country.state" id="YT">
-            <field name="code">YT</field>
-            <field name="country_id" ref="base.ca"/>
-            <field name="name"> Yukon</field>
-       </record>
-
-       <record model="res.country.state" id="UN">
-            <field name="code">UN</field>
-            <field name="country_id" ref="base.ca"/>
-            <field name="name"> Nunavut</field>
-       </record> 
-        
     </data>
 </openerp>

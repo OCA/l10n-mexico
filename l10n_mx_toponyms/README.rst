@@ -17,6 +17,7 @@ Currently these catalogues are supported:
 * Municipios
 * CP
 
+
 Installation
 ============
 
@@ -26,6 +27,14 @@ Install this module as any other module on your Odoo instance.
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
    :target: https://runbot.odoo-community.org/runbot/193/9.0
+
+Known issues / Roadmap
+======================
+
+USA states are included on Odoo base module.
+
+For Canadian states you can use the module `l10n_ca_toponyms
+<https://github.com/OCA/l10n-canada/tree/10.0/l10n_ca_toponyms>`_
 
 
 Bug Tracker
