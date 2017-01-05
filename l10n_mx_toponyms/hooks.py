@@ -31,7 +31,7 @@ def _load_county_data(cr):
     to accomplish this task due to it is really slow,
     I know surely this is not the best way to do it but who cares :)
     """
-    # Read csv from a speficic path
+    # Read csv from a specific path
     county_csv = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
         'examples', 'l10n_mx_county.csv',
@@ -113,7 +113,7 @@ def _load_zip_data(cr):
     to accomplish this task due to it is really slow,
     I know surely this is not the best way to do it but who cares ;)
     """
-    # Read csv from a speficic path
+    # Read csv from a specific path
     zip_csv = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
         'examples', 'l10n_mx_zip.csv',
@@ -205,7 +205,7 @@ def _load_neighborhood_data(cr):
     to accomplish this task due to it is really slow,
     and we have over 150,000 registers to load.
     """
-    # Read csv from a speficic path
+    # Read csv from a specific path
     neighborhood_csv = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
         'examples', 'l10n_mx_neighborhood.csv',
