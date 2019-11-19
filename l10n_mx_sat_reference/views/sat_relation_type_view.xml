@@ -1,0 +1,61 @@
+<odoo>
+    <record id="view_sat_relation_type_form" model="ir.ui.view">
+        <field name="name">sat.relation.type.form</field>
+        <field name="model">sat.relation.type</field>
+        <field name="arch" type="xml">
+            <form string="Relation Types" >
+                <group name="main_group">
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                    </group>
+                    <group>
+                        <field name="date_start"/>
+                        <field name="date_end"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_sat_relation_type_tree" model="ir.ui.view">
+        <field name="name">sat.relation.type.tree</field>
+        <field name="model">sat.relation.type</field>
+        <field name="arch" type="xml">
+            <tree string="Relation Types">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_sat_relation_type_search" model="ir.ui.view">
+        <field name="name">sat.relation.type.search</field>
+        <field name="model">sat.relation.type</field>
+        <field name="arch" type="xml">
+            <search string="Search Relation Types">
+                <field name="name" string="Relation Types"/>
+                <field name="code" string="Code"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_sat_relation_type" model="ir.actions.act_window">
+        <field name="name">Relation Types</field>
+        <field name="res_model">sat.relation.type</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to start a new Relation Types.
+          </p>
+        </field>
+    </record>
+
+   <menuitem action="action_sat_relation_type"
+        id="menu_action_sat_relation_type"
+        name="Relation Types"
+        sequence="5"
+        parent="l10n_mx_sat_reference.menu_sat"/>
+</odoo>
