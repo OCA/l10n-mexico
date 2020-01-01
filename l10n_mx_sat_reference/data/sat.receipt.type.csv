@@ -1,0 +1,6 @@
+"id","name","code","date_start","date_end"
+"receipt_type_id1","Ingreso","I","2017-07-29",
+"receipt_type_id2","Egreso","E","2017-07-29",
+"receipt_type_id3","Traslado","T","2017-01-01",
+"receipt_type_id4","Nómina","N","2017-07-29",
+"receipt_type_id5","Pago","P","2017-07-29",
