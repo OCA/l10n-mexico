@@ -1,0 +1,48 @@
+<odoo>
+    <record id="view_sat_account_form" model="ir.ui.view">
+        <field name="name">sat.account.form</field>
+        <field name="model">sat.account</field>
+        <field name="arch" type="xml">
+            <form string="Grouping Accounts" >
+                <group name="main_group">
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                    </group>
+                    <group>
+                        <field name="parent_id"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_sat_account_tree" model="ir.ui.view">
+        <field name="name">sat.account.tree</field>
+        <field name="model">sat.account</field>
+        <field name="arch" type="xml">
+            <tree string="Grouping Accounts">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="parent_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_sat_account" model="ir.actions.act_window">
+        <field name="name">Grouping Accounts</field>
+        <field name="res_model">sat.account</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to start a new Grouping Accounts.
+          </p>
+        </field>
+    </record>
+
+   <menuitem action="action_sat_account"
+        id="menu_action_sat_account"
+        name="Grouping Accounts"
+        sequence="7"
+        parent="l10n_mx_sat_reference.menu_sat"/>
+</odoo>
