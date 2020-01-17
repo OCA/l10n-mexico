@@ -1,5 +1,5 @@
 ====================
-Maxico SAT Reference
+Mexico SAT Reference
 ====================
 
 .. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -13,19 +13,21 @@ Maxico SAT Reference
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Foperating--unit-lightgray.png?logo=github
+.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fl10n--mexico-lightgray.png?logo=github
     :target: https://github.com/OCA/l10n-mexico/tree/13.0/l10n_mx_sat_reference
     :alt: OCA/l10n-mexico
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/l10n-mexico/l10n-mexico-13-0-l10n_mx_sat_reference
+    :target: https://translation.odoo-community.org/projects/l10n-mexico-13-0/l10n-mexico-13-0-l10n_mx_sat_reference
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runbot-Try%20me-875A7B.png
-    :target: https://runbot.odoo-community.org/runbot/213/13.0
+    :target: https://runbot.odoo-community.org/runbot/193/13.0
     :alt: Try me on Runbot
 
 |badge1| |badge2| |badge3| |badge4| |badge5| 
 
-This module adds operating unit information to projects and tasks.
+This module provides the list of references to documents that
+the Mexican tax authority, Servicio de Administración Tributaria
+(SAT) requires to be signed/transferred.
 
 **Table of contents**
 
@@ -34,8 +36,6 @@ This module adds operating unit information to projects and tasks.
 
 Usage
 =====
-
-Configuration
 
 * Go to Settings > SAT
 * Create a Receipt Types
@@ -71,7 +71,7 @@ Other credits
 ~~~~~~~~~~~~~
 
 * Open Source Integrators
-* Serpent Consulting Services Pvt. Ltd.
+* Serpent Consulting Services Pvt. Ltd. <support@serpentcs.com>
 
 Maintainers
 ~~~~~~~~~~~
