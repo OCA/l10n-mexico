@@ -1,5 +1,3 @@
-Configuration
-
 * Go to Settings
 * Activate the developer mode
 * Go to Settings > Users

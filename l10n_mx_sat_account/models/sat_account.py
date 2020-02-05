@@ -6,6 +6,7 @@ from odoo import fields, models
 
 class SatAccount(models.Model):
     _name = "sat.account"
+    _description = "SAT Account"
 
     name = fields.Char(string="name")
     code = fields.Char(string="Code")
