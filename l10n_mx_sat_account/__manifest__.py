@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).lgpl.html).
 {
     "name": "Mexico SAT Account",
-    "summary": "Provides the list of SAT grouping account to set on your CoA",
+    "summary": "Provides the list of SAT accounts to set on your CoA",
     "version": "13.0.1.0.0",
     "author": "Open Source Integrators, "
               "Serpent Consulting Services Pvt. Ltd., "
