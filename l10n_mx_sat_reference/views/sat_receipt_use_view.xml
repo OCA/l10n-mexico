@@ -58,9 +58,12 @@
         </field>
     </record>
 
-   <menuitem action="action_sat_receipt_use"
+    <menuitem
+        action="action_sat_receipt_use"
         id="menu_action_sat_receipt_use"
         name="Receipt Uses"
         sequence="3"
-        parent="l10n_mx_sat_reference.menu_sat"/>
+        parent="l10n_mx_sat_reference.menu_sat"
+    />
+
 </odoo>

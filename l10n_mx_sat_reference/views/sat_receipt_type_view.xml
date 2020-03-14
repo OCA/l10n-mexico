@@ -3,15 +3,15 @@
         <field name="name">sat.receipt.type.form</field>
         <field name="model">sat.receipt.type</field>
         <field name="arch" type="xml">
-            <form string="Receipt Types" >
+            <form string="Receipt Types">
                 <group name="main_group">
                     <group>
-                        <field name="name"/>
-                        <field name="code"/>
+                        <field name="name" />
+                        <field name="code" />
                     </group>
                     <group>
-                        <field name="date_start"/>
-                        <field name="date_end"/>
+                        <field name="date_start" />
+                        <field name="date_end" />
                     </group>
                 </group>
             </form>
@@ -61,4 +61,5 @@
         name="Receipt Types"
         sequence="1"
         parent="l10n_mx_sat_reference.menu_sat"/>
+
 </odoo>
