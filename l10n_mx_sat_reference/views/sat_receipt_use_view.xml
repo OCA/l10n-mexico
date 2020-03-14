@@ -3,36 +3,35 @@
         <field name="name">sat.receipt.use.form</field>
         <field name="model">sat.receipt.use</field>
         <field name="arch" type="xml">
-            <form string="Receipt Uses" >
+            <form string="Receipt Uses">
                 <group name="main_group">
                     <group>
-                        <field name="name"/>
-                        <field name="code"/>
+                        <field name="name" />
+                        <field name="code" />
                     </group>
                     <group>
-                        <field name="natural"/>
-                        <field name="moral"/>
+                        <field name="natural" />
+                        <field name="moral" />
                     </group>
                     <group>
-                        <field name="date_start"/>
-                        <field name="date_end"/>
+                        <field name="date_start" />
+                        <field name="date_end" />
                     </group>
                 </group>
             </form>
         </field>
     </record>
-
     <record id="view_sat_receipt_use_tree" model="ir.ui.view">
         <field name="name">sat.receipt.use.tree</field>
         <field name="model">sat.receipt.use</field>
         <field name="arch" type="xml">
             <tree string="Receipt Uses">
-                <field name="code"/>
-                <field name="name"/>
-                <field name="natural"/>
-                <field name="moral"/>
-                <field name="date_start"/>
-                <field name="date_end"/>
+                <field name="code" />
+                <field name="name" />
+                <field name="natural" />
+                <field name="moral" />
+                <field name="date_start" />
+                <field name="date_end" />
             </tree>
         </field>
     </record>
@@ -41,26 +40,26 @@
         <field name="model">sat.receipt.use</field>
         <field name="arch" type="xml">
             <search string="Search Receipt Uses">
-                <field name="name" string="Receipt Uses"/>
-                <field name="code" string="Code"/>
+                <field name="name" string="Receipt Uses" />
+                <field name="code" string="Code" />
             </search>
         </field>
     </record>
-
     <record id="action_sat_receipt_use" model="ir.actions.act_window">
         <field name="name">Receipt Uses</field>
         <field name="res_model">sat.receipt.use</field>
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
-          <p class="oe_view_nocontent_create">
+            <p class="oe_view_nocontent_create">
             Click to start a new Receipt Uses.
           </p>
         </field>
     </record>
-
-   <menuitem action="action_sat_receipt_use"
+    <menuitem
+        action="action_sat_receipt_use"
         id="menu_action_sat_receipt_use"
         name="Receipt Uses"
         sequence="3"
-        parent="l10n_mx_sat_reference.menu_sat"/>
+        parent="l10n_mx_sat_reference.menu_sat"
+    />
 </odoo>
