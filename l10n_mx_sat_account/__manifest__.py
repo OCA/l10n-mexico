@@ -10,9 +10,7 @@
               "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/l10n-mexico",
     "category": "Localization",
-    "depends": [
-        "l10n_mx",
-    ],
+    "depends": ["l10n_mx"],
     "license": "AGPL-3",
     "data": [
         "data/account.account.tag.xml",

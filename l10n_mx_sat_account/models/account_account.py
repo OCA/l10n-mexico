@@ -1,7 +1,7 @@
 # Copyright (C) 2019 Open Source Integrators
 # Copyright (C) 2019 Serpent Consulting Services
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-from odoo import api, models, _
+from odoo import _, api, models
 from odoo.exceptions import UserError
 
 
@@ -14,9 +14,11 @@ class AccountAccountExtend(models.Model):
             count = 0
             for tag in rec.tag_ids:
                 if tag.parent_id == self.env.ref(
-                        "l10n_mx_sat_account.account_account_tag_sat"):
+                    "l10n_mx_sat_account.account_account_tag_sat"
+                ):
                     count += 1
                     if count >= 2:
-                        raise UserError(_(
-                            "You cannot set more than one SAT tag on the same "
-                            "account."))
+                        raise UserError(
+                            _(
+                                "You cannot set more than one SAT tag on the "
+                                "same account."))
