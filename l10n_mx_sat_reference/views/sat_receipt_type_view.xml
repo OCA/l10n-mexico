@@ -55,5 +55,6 @@
         id="menu_action_sat_receipt_type"
         name="Receipt Types"
         sequence="1"
-        parent="l10n_mx_sat_reference.menu_sat" />
+        parent="l10n_mx_sat_reference.menu_sat"
+    />
 </odoo>
