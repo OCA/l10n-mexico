@@ -21,4 +21,6 @@ class AccountAccountExtend(models.Model):
                         raise UserError(
                             _(
                                 "You cannot set more than one SAT tag on the "
-                                "same account."))
+                                "same account."
+                            )
+                        )

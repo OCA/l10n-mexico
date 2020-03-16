@@ -17,16 +17,15 @@
             </form>
         </field>
     </record>
-
     <record id="view_sat_receipt_type_tree" model="ir.ui.view">
         <field name="name">sat.receipt.type.tree</field>
         <field name="model">sat.receipt.type</field>
         <field name="arch" type="xml">
             <tree string="Receipt Types">
-                <field name="code"/>
-                <field name="name"/>
-                <field name="date_start"/>
-                <field name="date_end"/>
+                <field name="code" />
+                <field name="name" />
+                <field name="date_start" />
+                <field name="date_end" />
             </tree>
         </field>
     </record>
@@ -35,31 +34,26 @@
         <field name="model">sat.receipt.type</field>
         <field name="arch" type="xml">
             <search string="Search Receipt Types">
-                <field name="name" string="Receipt Types"/>
-                <field name="code" string="Code"/>
+                <field name="name" string="Receipt Types" />
+                <field name="code" string="Code" />
             </search>
         </field>
     </record>
-
     <record id="action_sat_receipt_type" model="ir.actions.act_window">
         <field name="name">Receipt Types</field>
         <field name="res_model">sat.receipt.type</field>
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
-          <p class="oe_view_nocontent_create">
-            Click to start a new Receipt Types.
-          </p>
+            <p class="oe_view_nocontent_create">
+                Click to start a new Receipt Types.
+            </p>
         </field>
     </record>
-
-    <menuitem id="menu_sat"
-        name="SAT"
-        parent="base.menu_administration"/>
-
-   <menuitem action="action_sat_receipt_type"
+    <menuitem id="menu_sat" name="SAT" parent="base.menu_administration" />
+    <menuitem
+        action="action_sat_receipt_type"
         id="menu_action_sat_receipt_type"
         name="Receipt Types"
         sequence="1"
-        parent="l10n_mx_sat_reference.menu_sat"/>
-
+        parent="l10n_mx_sat_reference.menu_sat" />
 </odoo>
