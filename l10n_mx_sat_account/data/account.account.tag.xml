@@ -1,0 +1,6 @@
+<odoo>
+    <record id="account_account_tag_sat" model="account.account.tag">
+        <field name="name">SAT</field>
+        <field name='applicability'>accounts</field>
+    </record>
+</odoo>
