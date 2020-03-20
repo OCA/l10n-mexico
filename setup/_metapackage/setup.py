@@ -8,6 +8,7 @@ setuptools.setup(
     description="Meta package for oca-l10n-mexico Odoo addons",
     version=version,
     install_requires=[
+        'odoo13-addon-l10n_mx_sat_account',
         'odoo13-addon-l10n_mx_sat_reference',
     ],
     classifiers=[
