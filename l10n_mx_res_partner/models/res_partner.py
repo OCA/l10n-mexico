@@ -2,6 +2,7 @@
 # Copyright (C) 2020 Open Source Integrators
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 import re
+
 from odoo import _, api, models
 from odoo.exceptions import ValidationError
 
