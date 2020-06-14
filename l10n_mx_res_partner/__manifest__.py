@@ -8,8 +8,8 @@
     "license": "AGPL-3",
     "website": "https://github.com/OCA/l10n-mexico",
     "author": "Wissen MX, "
-              "Open Source Integrators, "
-              "Odoo Community Association (OCA)",
+    "Open Source Integrators, "
+    "Odoo Community Association (OCA)",
     "category": "Localization",
     "depends": ["contacts"],
     "development_status": "Beta",
