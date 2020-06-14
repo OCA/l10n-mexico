@@ -1,4 +1,5 @@
 # Copyright (C) 2019 Wissen MX
+# Copyright (C) 2020 Open Source Integrators
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Partner customizations for Mexico",
@@ -7,6 +8,7 @@
     "license": "AGPL-3",
     "website": "https://github.com/OCA/l10n-mexico",
     "author": "Wissen MX, "
+              "Open Source Integrators, "
               "Odoo Community Association (OCA)",
     "category": "Localization",
     "depends": ["contacts"],
