@@ -1,0 +1,29 @@
+<odoo>
+
+    <record id="view_pms_property_form_inherit_l10n_mx_pms" model="ir.ui.view">
+        <field name="name">pms.property.form.inherit.l10n.mx.pms</field>
+        <field name="model">pms.property</field>
+        <field name="priority">99</field>
+        <field name="inherit_id" ref="pms_base.view_pms_property_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='street']" position="replace">
+                <div>
+                    <field name="street" class="oe_read_only" />
+                </div>
+                <field
+                    name="street_name"
+                    placeholder="Street Name..."
+                    class="oe_edit_only"
+                />
+                <div class="oe_edit_only o_row">
+                    <label for="street_number" />
+                    <span> </span>
+                    <field name="street_number" />
+                    <label for="street_number2" />
+                    <field name="street_number2" />
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

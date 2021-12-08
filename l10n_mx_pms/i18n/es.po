@@ -1,0 +1,21 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_mx_pms
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e-20211202\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-23 19:12+0000\n"
+"PO-Revision-Date: 2021-12-23 19:12+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_mx_pms
+#: model_terms:ir.ui.view,arch_db:l10n_mx_pms.view_pms_property_form_inherit_l10n_mx_pms
+msgid "Street Name..."
+msgstr "Calle..."
