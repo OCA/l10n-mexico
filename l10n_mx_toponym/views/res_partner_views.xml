@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="mx_partner_address_form" model="ir.ui.view">
+        <field name="name">l10n_mx_toponym.res.partner.address.form</field>
+        <field name="model">res.partner</field>
+        <field name="priority" eval="900" />
+        <field name="arch" type="xml">
+            <form>
+                <div class="o_address_format">
+                    <field name="parent_id" invisible="1" />
+                    <field name="type" invisible="1" />
+                    <field name="street" invisible="1" />
+                    <field
+                        name="street_name"
+                        placeholder="Street Name..."
+                        attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"
+                    />
+                    <div class="o_row">
+                        <label for="street_number" class="oe_edit_only" />
+                        <span> </span>
+                        <field
+                            name="street_number"
+                            attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"
+                        />
+                        <label for="street_number2" class="oe_edit_only" />
+                        <field
+                            name="street_number2"
+                            attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"
+                        />
+                    </div>
+                    <field
+                        name="street2"
+                        attrs="{'invisible': [('street2', '=', False)] }"
+                    />
+                    <field
+                        name="zip_id"
+                        options="{'create_name_field': 'city', 'no_open': True, 'no_create': True}"
+                        placeholder="Location completion"
+                        class="oe_edit_only"
+                        attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"
+                    />
+                    <field
+                        name="l10n_mx_edi_locality_id"
+                        options="{'no_open': True, 'no_create': True}"
+                        placeholder="Locality"
+                        class="oe_edit_only"
+                        attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"
+                    />
+                    <div>
+                        <div class="o_row">
+                            <field name="l10n_mx_edi_colony" placeholder="Colony..." />
+                            <field
+                                name="l10n_mx_edi_colony_code"
+                                placeholder="Colony Code..."
+                                attrs="{'invisible': [('type', '!=', 'invoice')]}"
+                            />
+                        </div>
+                    </div>
+                    <field name="city" placeholder="City" class="o_address_city" />
+                    <field
+                        name="state_id"
+                        class="o_address_state"
+                        placeholder="State"
+                        options='{"no_open": True}'
+                    />
+                    <field name="zip" placeholder="ZIP" class="o_address_zip" />
+                    <field
+                        name="country_id"
+                        placeholder="Country"
+                        class="o_address_country"
+                        options='{"no_open": True, "no_create": True}'
+                    />
+                </div>
+            </form>
+        </field>
+    </record>
+</odoo>
