@@ -100,9 +100,7 @@ def post_init_hook(cr, registry):
     # ==== Load res.city.zip ====
 
     city_vals_list = []
-    if not env["res.city.zip"].search_count(
-        [("city_id.country_id", "=", mx_country.id)]
-    ):
+    if not env["res.city.zip"].search_count([("country_id", "=", mx_country.id)]):
         csv_path = join(dirname(realpath(__file__)), "static/data", "res.city.zip.csv")
         with open(csv_path, "r") as csv_file:
             for row in csv.DictReader(

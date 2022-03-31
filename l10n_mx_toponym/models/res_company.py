@@ -22,7 +22,10 @@ class ResCompany(models.Model):
         related="partner_id.l10n_mx_edi_locality_id",
         readonly=False,
     )
-    country_code = fields.Char(related="country_id.code", store=True,)
+    country_code = fields.Char(
+        related="country_id.code",
+        store=True,
+    )
 
     def _compute_l10n_mx_edi_colony(self):
         for company in self.with_context(skip_check_zip=True):
