@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.view.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="cif_file" />
+                <span
+                    attrs="{'invisible': [('cif_file', '=', False)]}"
+                    colspan="2"
+                >The CIF file uses OCR technology to automate the input.<br
+                    />You need to validate if the information corresponds to CIF.<br
+                    />It may happen that a field is not filled, in that case you need to define it manually.</span>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
