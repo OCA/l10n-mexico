@@ -1,0 +1,145 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* l10n_mx_partner
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-06-10 16:56+0000\n"
+"PO-Revision-Date: 2022-06-10 16:56+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_mx_partner
+#: selection:res.partner,l10n_mx_edi_fiscal_regime:0
+msgid "Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: selection:res.partner,l10n_mx_edi_fiscal_regime:0
+msgid "Arrendamiento"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: selection:res.partner,l10n_mx_edi_fiscal_regime:0
+msgid "Consolidación"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: model:ir.model,name:l10n_mx_partner.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: selection:res.partner,l10n_mx_edi_fiscal_regime:0
+msgid "Coordinados"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: selection:res.partner,l10n_mx_edi_fiscal_regime:0
+msgid "Demás ingresos"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: model:ir.model.fields,field_description:l10n_mx_partner.field_res_partner__l10n_mx_edi_fiscal_regime
+#: model:ir.model.fields,field_description:l10n_mx_partner.field_res_users__l10n_mx_edi_fiscal_regime
+msgid "Fiscal Regime"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: selection:res.partner,l10n_mx_edi_fiscal_regime:0
+msgid "General de Ley Personas Morales"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: selection:res.partner,l10n_mx_edi_fiscal_regime:0
+msgid "Incorporación Fiscal"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: selection:res.partner,l10n_mx_edi_fiscal_regime:0
+msgid "Ingresos por Dividendos (socios y accionistas)"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: selection:res.partner,l10n_mx_edi_fiscal_regime:0
+msgid "Ingresos por intereses"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: model:ir.model.fields,help:l10n_mx_partner.field_res_partner__l10n_mx_edi_fiscal_regime
+#: model:ir.model.fields,help:l10n_mx_partner.field_res_users__l10n_mx_edi_fiscal_regime
+msgid "It is used to fill Mexican XML CFDI required field Comprobante.Receptor.RegimenFiscalReceptor."
+msgstr ""
+
+#. module: l10n_mx_partner
+#: selection:res.partner,l10n_mx_edi_fiscal_regime:0
+msgid "Opcional para Grupos de Sociedades"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: selection:res.partner,l10n_mx_edi_fiscal_regime:0
+msgid "Personas Físicas con Actividades Empresariales y Profesionales"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: selection:res.partner,l10n_mx_edi_fiscal_regime:0
+msgid "Personas Morales con Fines no Lucrativos"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: selection:res.partner,l10n_mx_edi_fiscal_regime:0
+msgid "Residentes en el Extranjero sin Establecimiento Permanente en México"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: selection:res.partner,l10n_mx_edi_fiscal_regime:0
+msgid "Régimen Simplificado de Confianza - RESICO"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: selection:res.partner,l10n_mx_edi_fiscal_regime:0
+msgid "Régimen de Enajenación o Adquisición de Bienes"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: selection:res.partner,l10n_mx_edi_fiscal_regime:0
+msgid "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: selection:res.partner,l10n_mx_edi_fiscal_regime:0
+msgid "Régimen de los ingresos por obtención de premios"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: selection:res.partner,l10n_mx_edi_fiscal_regime:0
+msgid "Sin obligaciones fiscales"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: selection:res.partner,l10n_mx_edi_fiscal_regime:0
+msgid "Sociedades Cooperativas de Producción que optan por diferir sus ingresos"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: selection:res.partner,l10n_mx_edi_fiscal_regime:0
+msgid "Sueldos y Salarios e Ingresos Asimilados a Salarios"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: code:addons/l10n_mx_partner/models/res_partner.py:72
+#, python-format
+msgid "VAT is not valid"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: code:addons/l10n_mx_partner/models/res_partner.py:71
+#, python-format
+msgid "Warning"
+msgstr ""
