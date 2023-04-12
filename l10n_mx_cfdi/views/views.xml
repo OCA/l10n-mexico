@@ -1,0 +1,66 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+        <record model="ir.ui.view" id="l10n_mx_cfdi.document_tree_view">
+            <field name="name">CFDI Documents</field>
+            <field name="model">l10n_mx_cfdi.document_4_0</field>
+            <field name="arch" type="xml">
+                <tree string="CFDI Documents">
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="issuer_id"/>
+                    <field name="receiver_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- explicit form view definition -->
+        <record model="ir.ui.view" id="l10n_mx_cfdi.document_form_view">
+            <field name="name">CFDI Document</field>
+            <field name="model">l10n_mx_cfdi.document_4_0</field>
+            <field name="arch" type="xml">
+                <form string="CFDI Document">
+                    <header>
+                        <button name="action_post" string="Post" type="object" class="btn btn-primary"
+                                attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                        <button name="action_cancel" string="Cancel" type="object" class="btn btn-primary"
+                                attrs="{'invisible': [('state', '!=', 'post')]}"/>
+                        <button name="action_draft" string="Draft" type="object" class="btn btn-primary"
+                                attrs="{'invisible': [('state', '!=', 'cancel')]}"/>
+
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+
+                                <field name="issuer_id"/>
+                                <field name="receiver_id"/>
+                                <field name="date"/>
+                                <field name="expedition_zip_code"/>
+                            </group>
+                            <group>
+                                <field name="cfdi_type"/>
+                                <field name="series"/>
+                                <field name="folio"/>
+                                <field name="uuid"/>
+                            </group>
+                        </group>
+                        <div class="oe_chatter">
+                            <field name="message_follower_ids" widget="mail_followers"/>
+                            <field name="message_ids" widget="mail_thread"/>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+        <record model="ir.actions.act_window" id="l10n_mx_cfdi.document_action">
+            <field name="name">CFDI Documents</field>
+            <field name="res_model">l10n_mx_cfdi.document_4_0</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

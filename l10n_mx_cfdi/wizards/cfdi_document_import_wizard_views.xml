@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="cfdi_document_import_wizard_form" model="ir.ui.view">
+            <field name="name">Import CFDI from XML</field>
+            <field name="model">l10n_mx_cfdi.cfdi_document_import_wizard</field>
+            <field name="arch" type="xml">
+                <form string="Importar CFDI">
+                    <sheet>
+                        <p>
+                            Importar CFDI desde un archivo XML.
+                        </p>
+                        <group>
+                            <field name="xml_file"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="action_import_cfdi" string="Importar" type="object" class="oe_highlight"/>
+                        <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
