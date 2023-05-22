@@ -5,7 +5,8 @@ from . import cfdi_frequency
 from . import cfdi_locality_code
 from . import cfdi_measurement_unit
 from . import cfdi_municipality_code
-from . import cfdi_payment_method
+from . import cfdi_payment_policy
+from . import cfdi_payment_way
 from . import cfdi_product_and_service_code
 from . import cfdi_relationship_type
 from . import cfdi_reporting_period

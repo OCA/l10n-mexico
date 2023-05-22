@@ -3,8 +3,9 @@ from odoo import api, fields, models
 
 class CFDIProductAndServiceCode(models.Model):
     _name = "l10n_mx_cfdi.cfdi_product_and_service_code"
-    _description = "CFDI Product and Service Code (c_ClaveProdServ)"
+    _description = "CFDI Product and Service Code"
     _inherit = "l10n_mx_cfdi.catalog_mixin"
+    _l10n_mx_catalog_name = "c_ClaveProdServ"
 
     include_transferred_iva = fields.Selection(
         [

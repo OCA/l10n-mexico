@@ -3,8 +3,9 @@ from odoo import api, fields, models
 
 class CFDILocalityCode(models.Model):
     _name = "l10n_mx_cfdi.cfdi_locality_code"
-    _description = "CFDI Locality Code (c_Localidad)"
+    _description = "CFDI Locality Code"
     _inherit = "l10n_mx_cfdi.catalog_mixin"
+    _l10n_mx_catalog_name = "c_Localidad"
 
     state_id = fields.Many2one(
         "res.country.state",

@@ -22,6 +22,7 @@
         "security/ir.model.access.csv",
         "views/views.xml",
         "wizards/cfdi_document_import_wizard_views.xml",
+        "wizards/sat_catalogs_import_wizard_views.xml",
     ],
     "external_dependencies": {
         "python": ["simple-cfdi"],
