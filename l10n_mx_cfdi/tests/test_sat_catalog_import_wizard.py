@@ -58,8 +58,6 @@ class TestSatCatalogImportWizard(TransactionCase):
                 "C_Municipio": "l10n_mx_cfdi.cfdi_municipality_code",
                 "C_Localidad": "l10n_mx_cfdi.cfdi_locality_code",
                 "c_ClaveProdServ": "l10n_mx_cfdi.cfdi_product_and_service_code",
-                "c_Pais": "res.country",
-                "c_Estado": "res.country.state",
             },
         )
 
@@ -82,6 +80,27 @@ class TestSatCatalogImportWizard(TransactionCase):
         expected_descriptions = ['Aguascalientes', 'Ensenada', 'Ciudad Constitución', 'San Francisco de Campeche']
         localidades = self.env['l10n_mx_cfdi.cfdi_locality_code'].search([]).mapped('description')
         self.assertListEqual(expected_descriptions, localidades)
+
+    def test_import_c_Municipio_sheet(self):
+        """
+        Test importing the c_Municipio sheet
+        """
+
+        line = self.wizard.line_ids.create(
+            {
+                "wizard_id": self.wizard.id,
+                "sheet_title": "C_Municipio",
+                "target_model": "l10n_mx_cfdi.cfdi_municipality_code",
+            }
+        )
+
+        sheet = self._find_line_sheet(line)
+        line._import_sheet(sheet)
+
+        expected_descriptions = ['Aguascalientes', 'Ensenada', 'Comondú', 'Calkiní']
+        municipios = set(self.env['l10n_mx_cfdi.cfdi_municipality_code'].search([]).mapped('description'))
+        for m in expected_descriptions:
+            self.assertIn(m, municipios)
 
     def _find_line_sheet(self, line):
         sheet = next(

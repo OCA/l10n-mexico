@@ -182,6 +182,14 @@ class SatCatalogsImportWizardLine(models.TransientModel):
 
             return record
 
+        if model._name == 'l10n_mx_cfdi.cfdi_municipality_code':
+            record = model.search([
+                ("code", "=", record_dict["code"]),
+                ("state_id", "=", record_dict["state_id"]),
+            ])
+
+            return record
+
         record = model.search([("code", "=", record_dict["code"])])
         return record
 
@@ -202,7 +210,8 @@ class SatCatalogsImportWizardLine(models.TransientModel):
             # payment ways are 2 digits
             record_dict['code'] = '%02d' % record_dict['code']
 
-        if self.target_model == 'l10n_mx_cfdi.cfdi_locality_code':
+        if self.target_model == 'l10n_mx_cfdi.cfdi_locality_code' or \
+            self.target_model == 'l10n_mx_cfdi.cfdi_municipality_code':
             # resolve state id from code
             state_code = record_dict['state_id']
             state = self.env['res.country.state'].search([
