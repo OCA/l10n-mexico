@@ -125,8 +125,6 @@ class SatCatalogsImportWizardLine(models.TransientModel):
             ("l10n_mx_cfdi.cfdi_product_and_service_code", _("Product or Service")),
             ("l10n_mx_cfdi.cfdi_payment_policy", _("Payment Policy")),
             ("l10n_mx_cfdi.cfdi_payment_way", _("Payment Way")),
-            ("res.country.state", _("State")),
-            ("res.country", _("Country")),
         ],
         string="Target Model",
         required=True,
@@ -158,11 +156,11 @@ class SatCatalogsImportWizardLine(models.TransientModel):
                         # headers row and other pre-header rows will be ignored
                 continue
 
-            record_dict = self._map_row_to_record_dict(field_mappings, row_data)
-
             # ignore rows without code
-            if not record_dict['code']:
+            if not row_data[0].value:
                 continue
+
+            record_dict = self._map_row_to_record_dict(field_mappings, row_data)
 
             # create or update the record
             record = self._find_existent_record(model, record_dict)
@@ -178,6 +176,22 @@ class SatCatalogsImportWizardLine(models.TransientModel):
         Special resolution is applied for models inherited from other
         modules, such as res.country.
         """
+        if model._name == 'res.country':
+            # try by name first
+            name = record_dict['name']
+
+            # remove name from dict to modifying it
+            record_dict.pop('name')
+
+            record = model.search([("name", "=", name)])
+            if record:
+                return record
+
+            # try by code
+            odoo_code = record_dict['l10n_mx_cfdi_code'][:2]
+            record = model.search([("code", "=", odoo_code)])
+
+            return record
 
         record = model.search([("code", "=", record_dict["code"])])
         return record

@@ -18,8 +18,16 @@
     "depends": ["base", "mail"],
     # always loaded
     "data": [
+        # data
+        "data/res.country.xml",
+
+        # security
         "security/access_groups.xml",
         "security/ir.model.access.csv",
+
+        # views
+        "views/view_country_form.xml",
+
         "views/views.xml",
         "wizards/cfdi_document_import_wizard_views.xml",
         "wizards/sat_catalogs_import_wizard_views.xml",

@@ -8,13 +8,8 @@ class ResCountry(models.Model):
     _l10n_mx_catalog_name = "c_Pais"
 
     l10n_mx_cfdi_code = fields.Char(
-        "CFDI Code",
-        help="Code used in CFDI documents",
-    )
-
-    l10n_mx_cfdi_zip_code_format = fields.Char(
-        "CFDI Zip Code Format",
-        help="Format of the zip code used in CFDI documents",
+        "CFDI Country Code",
+        help="Alpha-3 code",
     )
 
 
