@@ -50,7 +50,7 @@ class SatCatalogsImportWizard(models.TransientModel):
         for line in self.line_ids:
             for sheet in book.sheets():
                 if sheet.name == line.sheet_title:
-                    line._import_sheet(line.target_model)
+                    line._import_sheet(sheet)
 
     def action_reset_mappings(self):
         self.ensure_one()
