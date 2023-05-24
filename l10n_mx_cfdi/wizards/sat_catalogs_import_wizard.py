@@ -172,24 +172,13 @@ class SatCatalogsImportWizardLine(models.TransientModel):
     def _find_existent_record(self, model, record_dict):
         """
         Find a record in the database that matches the given record_dict
-
-        Special resolution is applied for models inherited from other
-        modules, such as res.country.
         """
-        if model._name == 'res.country':
-            # try by name first
-            name = record_dict['name']
 
-            # remove name from dict to modifying it
-            record_dict.pop('name')
-
-            record = model.search([("name", "=", name)])
-            if record:
-                return record
-
-            # try by code
-            odoo_code = record_dict['l10n_mx_cfdi_code'][:2]
-            record = model.search([("code", "=", odoo_code)])
+        if model._name == 'l10n_mx_cfdi.cfdi_locality_code':
+            record = model.search([
+                ("code", "=", record_dict["code"]),
+                ("state_id", "=", record_dict["state_id"]),
+            ])
 
             return record
 
@@ -212,5 +201,15 @@ class SatCatalogsImportWizardLine(models.TransientModel):
         if self.target_model == 'l10n_mx_cfdi.cfdi_payment_way':
             # payment ways are 2 digits
             record_dict['code'] = '%02d' % record_dict['code']
+
+        if self.target_model == 'l10n_mx_cfdi.cfdi_locality_code':
+            # resolve state id from code
+            state_code = record_dict['state_id']
+            state = self.env['res.country.state'].search([
+                ('country_id.code', '=', 'MX'),
+                ('code', '=', state_code)
+            ])
+            if state:
+                record_dict['state_id'] = state.id
 
         return record_dict
