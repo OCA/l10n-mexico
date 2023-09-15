@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+   <record id="import_csf" model="ir.ui.view">
+       <field name="name">iimport.csf</field>
+       <field name="model">import.csf</field>
+       <field name="arch" type="xml">
+           <form>
+               <group>
+                   <group>
+                       <field name="file_name" invisible="1" />
+                       <field name="file" filename="file_name" widget="binary" />
+                   </group>
+               </group>
+               <footer>
+                   <button
+                        name="upload_csf"
+                        string="Upload"
+                        data-hotkey="u"
+                        type="object"
+                        class="btn-primary"
+                    />
+                   <button
+                        name="cancel"
+                        special="cancel"
+                        data-hotkey="z"
+                        type="object"
+                        string="Cancel"
+                        class="btn-secondary"
+                    />
+               </footer>
+           </form>
+       </field>
+   </record>
+</odoo>
