@@ -32,7 +32,6 @@ class ImportCSF(models.TransientModel):
     def upload_csf(self):
         state_obj = self.env["res.country.state"]
         partner_obj = self.env["res.partner"]
-        country_obj = self.env["res.country"]
         if self.file_name.split(".")[-1] != "pdf":
             raise UserError(_("Upload file is not in PDF format"))
         temp_path = tempfile.gettempdir()
@@ -71,13 +70,10 @@ class ImportCSF(models.TransientModel):
 
             index += 1
 
-        state_id = state_obj.search([("name", "ilike", state)])
-        country_id = country_obj.search([("name", "=", "Mexico")])
-        if not state_id:
-            state_id = state_obj.search(
-                [("code", "ilike", state[0:3]), ("country_id", "=", country_id.id)],
-                limit=1,
-            )
+        country_id = self.env.ref("base.mx")
+        state_id = state_obj.search(
+            [("country_id", "=", country_id.id), ("name", "ilike", state)]
+        )
 
         vals.update(
             {
