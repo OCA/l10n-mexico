@@ -7,9 +7,9 @@
 
 <!-- /!\ do not modify above this line -->
 
-# l10n-mexico
+# Odoo modules for Mexico
 
-TODO: add repo description.
+This repository contains modules specific to Mexico.
 
 <!-- /!\ do not modify below this line -->
 
