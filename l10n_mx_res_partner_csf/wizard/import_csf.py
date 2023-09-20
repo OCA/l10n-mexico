@@ -1,7 +1,13 @@
 import base64
 import tempfile
+import logging
 
-from pdfminer.high_level import extract_text
+_logger = logging.getLogger(__name__)
+
+try:
+    from pdfminer.high_level import extract_text
+except ImportError as err:
+    _logger.debug(err)
 
 from odoo import _, fields, models
 from odoo.exceptions import UserError
