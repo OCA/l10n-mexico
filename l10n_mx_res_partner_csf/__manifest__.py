@@ -15,6 +15,6 @@
         "views/res_partner_view.xml",
     ],
     "external_dependencies": {
-        "python": ["pdfminer", "pdfminer.six==20220319"],
+        "python": ["pdfminer.six==20220319"],
     },
 }
