@@ -30,7 +30,6 @@ class ImportCSF(models.TransientModel):
         )
 
     def upload_csf(self):
-        state_obj = self.env["res.country.state"]
         partner_obj = self.env["res.partner"]
         if self.file_name.split(".")[-1] != "pdf":
             raise UserError(_("Upload file is not in PDF format"))
@@ -39,22 +38,24 @@ class ImportCSF(models.TransientModel):
         fp = open(temp_path + "/csf.pdf", "wb+")
         fp.write(file_data)
         fp.close()
-
-        vals = {}
         text = extract_text(temp_path + "/csf.pdf")
-        index = 0
+        vals = self.prepare_res_partner_values(text)
+        partner_obj.browse(self._context.get("active_id")).write(vals)
+        self.attach_csf()
+
+    def prepare_res_partner_values(self, text):
+        state_obj = self.env["res.country.state"]
         split_data = text.split("\n")
         vat = name = zip = city = street = street2 = state = ""
-        for line in split_data:
-            temp_index = index + 2
+        for index, line in enumerate(split_data):
             if "CÉDULA DE IDENTIFICACIÓN FISCAL" in line:
-                vat += split_data[temp_index].strip()
+                vat += split_data[index + 2].strip()
             elif "Registro Federal de Contribuyentes" in line:
-                name += split_data[temp_index].strip()
-                temp_index += 1
-                if "" in line:
-                    name += " " + split_data[temp_index].strip()
-                temp_index -= 1
+                name += split_data[index + 2].strip()
+                if split_data[index + 3] == "":
+                    name += " " + split_data[index + 4].strip()
+                elif split_data[index + 3].isupper():
+                    name += " " + split_data[index + 3].strip()
             elif "Código Postal" in line:
                 zip += line.split(":")[-1].strip()
             elif "Tipo de Vialidad" in line:
@@ -72,25 +73,18 @@ class ImportCSF(models.TransientModel):
             elif "Nombre de la Entidad Federativa" in line:
                 state = line.split("Nombre de la Entidad Federativa:")[-1].strip()
 
-            index += 1
-
         country_id = self.env.ref("base.mx")
         state_id = state_obj.search(
             [("country_id", "=", country_id.id), ("name", "ilike", state)]
         )
 
-        vals.update(
-            {
-                "vat": vat,
-                "name": name,
-                "zip": zip,
-                "city": city,
-                "street": street,
-                "street2": street2,
-                "state_id": state_id.id,
-                "country_id": country_id.id,
-            }
-        )
-        if vals:
-            partner_obj.browse(self._context.get("active_id")).write(vals)
-            self.attach_csf()
+        return {
+            "vat": vat,
+            "name": name,
+            "zip": zip,
+            "city": city,
+            "street": street,
+            "street2": street2,
+            "state_id": state_id.id,
+            "country_id": country_id.id,
+        }
