@@ -44,15 +44,19 @@ class ImportCSF(models.TransientModel):
         text = extract_text(temp_path + "/csf.pdf")
         index = 0
         split_data = text.split("\n")
-        street = street2 = state = ""
+        vat = name = zip = city = street = street2 = state = ""
         for line in split_data:
             temp_index = index + 2
-            if "RFC" in line:
-                vals.update({"vat": split_data[temp_index].strip()})
-            elif "Denominación/Razón Social" in line:
-                vals.update({"name": split_data[temp_index].strip()})
+            if "CÉDULA DE IDENTIFICACIÓN FISCAL" in line:
+                vat += split_data[temp_index].strip()
+            elif "Registro Federal de Contribuyentes" in line:
+                name += split_data[temp_index].strip()
+                temp_index += 1
+                if "" in line:
+                    name += " " + split_data[temp_index].strip()
+                temp_index -= 1
             elif "Código Postal" in line:
-                vals.update({"zip": line.split(":")[-1].strip()})
+                zip += line.split(":")[-1].strip()
             elif "Tipo de Vialidad" in line:
                 street += line.split("Tipo de Vialidad:")[-1].strip() + " "
             elif "Nombre de Vialidad" in line:
@@ -64,7 +68,7 @@ class ImportCSF(models.TransientModel):
             elif "Nombre de la Colonia" in line:
                 street2 += line.split("Nombre de la Colonia:")[-1].strip()
             elif "Nombre del Municipio o Demarcación Territorial" in line:
-                vals.update({"city": line.split(":")[-1].strip()})
+                city += line.split(":")[-1].strip()
             elif "Nombre de la Entidad Federativa" in line:
                 state = line.split("Nombre de la Entidad Federativa:")[-1].strip()
 
@@ -77,6 +81,10 @@ class ImportCSF(models.TransientModel):
 
         vals.update(
             {
+                "vat": vat,
+                "name": name,
+                "zip": zip,
+                "city": city,
                 "street": street,
                 "street2": street2,
                 "state_id": state_id.id,
