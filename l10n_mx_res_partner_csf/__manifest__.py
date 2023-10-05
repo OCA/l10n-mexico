@@ -3,7 +3,7 @@
 {
     "name": "Contact CSF for Mexico",
     "summary": "Validate the VAT",
-    "version": "16.0.1.0.0",
+    "version": "16.0.1.0.1",
     "license": "AGPL-3",
     "website": "https://github.com/OCA/l10n-mexico",
     "author": "Open Source Integrators, " "Odoo Community Association (OCA)",

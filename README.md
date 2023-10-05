@@ -21,7 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[l10n_mx_res_partner_csf](l10n_mx_res_partner_csf/) | 16.0.1.0.0 |  | Validate the VAT
+[l10n_mx_res_partner_csf](l10n_mx_res_partner_csf/) | 16.0.1.0.1 |  | Validate the VAT
 
 [//]: # (end addons)
 
