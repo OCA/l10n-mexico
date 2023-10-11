@@ -19,14 +19,14 @@ class TestContact(TransactionCase):
             }
         )
 
-    def test_import_cfs(self):
+    def test_import_csf(self):
         action = self.partner.action_upload_csf()
         generated_file = os.path.join("l10n_mx_res_partner_csf", "tests", "demo.pdf")
         generated_file = tools.misc.file_open(generated_file, "rb")
         data = base64.encodebytes(generated_file.read())
         record_csf = (
             self.env[action.get("res_model")]
-            .with_context(active_id=self.partner)
+            .with_context(active_id=self.partner.id)
             .create({"file": data, "file_name": "demo.txt"})
         )
         with self.assertRaises(UserError):

@@ -76,7 +76,7 @@ class ImportCSF(models.TransientModel):
 
         country_id = self.env.ref("base.mx")
         state_id = state_obj.search(
-            [("country_id", "=", country_id.id), ("name", "ilike", state)]
+            [("country_id", "=", country_id.id), ("name", "ilike", state)], limit=1
         )
 
         return {
@@ -86,6 +86,6 @@ class ImportCSF(models.TransientModel):
             "city": city,
             "street": street,
             "street2": street2,
-            "state_id": state_id.id,
+            "state_id": state_id.id or False,
             "country_id": country_id.id,
         }
