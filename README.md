@@ -21,7 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[l10n_mx_res_partner_csf](l10n_mx_res_partner_csf/) | 16.0.1.0.1 |  | Scan and extract information from CSF
+[l10n_mx_res_partner_csf](l10n_mx_res_partner_csf/) | 16.0.1.0.2 |  | Scan and extract information from CSF
 
 [//]: # (end addons)
 
