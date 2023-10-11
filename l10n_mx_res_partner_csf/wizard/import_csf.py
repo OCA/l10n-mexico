@@ -31,14 +31,15 @@ class ImportCSF(models.TransientModel):
 
     def upload_csf(self):
         partner_obj = self.env["res.partner"]
-        if self.file_name.split(".")[-1] != "pdf":
-            raise UserError(_("Upload file is not in PDF format"))
         temp_path = tempfile.gettempdir()
         file_data = base64.decodebytes(self.file)
         fp = open(temp_path + "/csf.pdf", "wb+")
         fp.write(file_data)
         fp.close()
-        text = extract_text(temp_path + "/csf.pdf")
+        try:
+            text = extract_text(temp_path + "/csf.pdf")
+        except Exception as e:
+            raise UserError(_("Uploaded file is not in PDF format (%s).") % e) from e
         vals = self.prepare_res_partner_values(text)
         partner_obj.browse(self._context.get("active_id")).write(vals)
         self.attach_csf()
@@ -75,7 +76,7 @@ class ImportCSF(models.TransientModel):
 
         country_id = self.env.ref("base.mx")
         state_id = state_obj.search(
-            [("country_id", "=", country_id.id), ("name", "ilike", state)]
+            [("country_id", "=", country_id.id), ("name", "ilike", state)], limit=1
         )
 
         return {
@@ -85,6 +86,6 @@ class ImportCSF(models.TransientModel):
             "city": city,
             "street": street,
             "street2": street2,
-            "state_id": state_id.id,
+            "state_id": state_id.id or False,
             "country_id": country_id.id,
         }

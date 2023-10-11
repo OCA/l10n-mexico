@@ -19,18 +19,10 @@ class TestContact(TransactionCase):
             }
         )
 
-    def test_import_cfs(self):
-        action = self.partner.action_upload_csf()
+    def test_import_csf_pdf_file(self):
         generated_file = os.path.join("l10n_mx_res_partner_csf", "tests", "demo.pdf")
         generated_file = tools.misc.file_open(generated_file, "rb")
         data = base64.encodebytes(generated_file.read())
-        record_csf = (
-            self.env[action.get("res_model")]
-            .with_context(active_id=self.partner)
-            .create({"file": data, "file_name": "demo.txt"})
-        )
-        with self.assertRaises(UserError):
-            record_csf.upload_csf()
 
         record1 = self.import_obj.with_context(active_id=self.partner.id).create(
             {"file": data, "file_name": "demo.pdf"}
@@ -45,3 +37,13 @@ class TestContact(TransactionCase):
         self.assertEqual(" JURICA", self.partner.street2)
         self.assertEqual("QUERETARO", self.partner.city)
         self.assertEqual(self.country_id.id, self.partner.country_id.id)
+
+    def test_import_csf_txt_file(self):
+        action = self.partner.action_upload_csf()
+        record_csf = (
+            self.env[action.get("res_model")]
+            .with_context(active_id=self.partner.id)
+            .create({"file": "fake_data", "file_name": "demo.txt"})
+        )
+        with self.assertRaises(UserError):
+            record_csf.upload_csf()
