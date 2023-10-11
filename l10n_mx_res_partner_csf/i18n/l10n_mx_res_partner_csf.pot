@@ -89,7 +89,7 @@ msgstr ""
 #. odoo-python
 #: code:addons/l10n_mx_res_partner_csf/wizard/import_csf.py:0
 #, python-format
-msgid "Upload file is not in PDF format"
+msgid "Uploaded file is not in PDF format (%s)."
 msgstr ""
 
 #. module: l10n_mx_res_partner_csf
