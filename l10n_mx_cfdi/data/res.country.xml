@@ -1,0 +1,752 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="base.af" model="res.country">
+            <field name="l10n_mx_cfdi_code">AFG</field>
+        </record>
+        <record id="base.ax" model="res.country">
+            <field name="l10n_mx_cfdi_code">ALA</field>
+        </record>
+        <record id="base.al" model="res.country">
+            <field name="l10n_mx_cfdi_code">ALB</field>
+        </record>
+        <record id="base.dz" model="res.country">
+            <field name="l10n_mx_cfdi_code">DZA</field>
+        </record>
+        <record id="base.as" model="res.country">
+            <field name="l10n_mx_cfdi_code">ASM</field>
+        </record>
+        <record id="base.ad" model="res.country">
+            <field name="l10n_mx_cfdi_code">AND</field>
+        </record>
+        <record id="base.ao" model="res.country">
+            <field name="l10n_mx_cfdi_code">AGO</field>
+        </record>
+        <record id="base.ai" model="res.country">
+            <field name="l10n_mx_cfdi_code">AIA</field>
+        </record>
+        <record id="base.aq" model="res.country">
+            <field name="l10n_mx_cfdi_code">ATA</field>
+        </record>
+        <record id="base.ag" model="res.country">
+            <field name="l10n_mx_cfdi_code">ATG</field>
+        </record>
+        <record id="base.ar" model="res.country">
+            <field name="l10n_mx_cfdi_code">ARG</field>
+        </record>
+        <record id="base.am" model="res.country">
+            <field name="l10n_mx_cfdi_code">ARM</field>
+        </record>
+        <record id="base.aw" model="res.country">
+            <field name="l10n_mx_cfdi_code">ABW</field>
+        </record>
+        <record id="base.au" model="res.country">
+            <field name="l10n_mx_cfdi_code">AUS</field>
+        </record>
+        <record id="base.at" model="res.country">
+            <field name="l10n_mx_cfdi_code">AUT</field>
+        </record>
+        <record id="base.az" model="res.country">
+            <field name="l10n_mx_cfdi_code">AZE</field>
+        </record>
+        <record id="base.bs" model="res.country">
+            <field name="l10n_mx_cfdi_code">BHS</field>
+        </record>
+        <record id="base.bh" model="res.country">
+            <field name="l10n_mx_cfdi_code">BHR</field>
+        </record>
+        <record id="base.bd" model="res.country">
+            <field name="l10n_mx_cfdi_code">BGD</field>
+        </record>
+        <record id="base.bb" model="res.country">
+            <field name="l10n_mx_cfdi_code">BRB</field>
+        </record>
+        <record id="base.by" model="res.country">
+            <field name="l10n_mx_cfdi_code">BLR</field>
+        </record>
+        <record id="base.be" model="res.country">
+            <field name="l10n_mx_cfdi_code">BEL</field>
+        </record>
+        <record id="base.bz" model="res.country">
+            <field name="l10n_mx_cfdi_code">BLZ</field>
+        </record>
+        <record id="base.bj" model="res.country">
+            <field name="l10n_mx_cfdi_code">BEN</field>
+        </record>
+        <record id="base.bm" model="res.country">
+            <field name="l10n_mx_cfdi_code">BMU</field>
+        </record>
+        <record id="base.bt" model="res.country">
+            <field name="l10n_mx_cfdi_code">BTN</field>
+        </record>
+        <record id="base.bo" model="res.country">
+            <field name="l10n_mx_cfdi_code">BOL</field>
+        </record>
+        <record id="base.bq" model="res.country">
+            <field name="l10n_mx_cfdi_code">BES</field>
+        </record>
+        <record id="base.ba" model="res.country">
+            <field name="l10n_mx_cfdi_code">BIH</field>
+        </record>
+        <record id="base.bw" model="res.country">
+            <field name="l10n_mx_cfdi_code">BWA</field>
+        </record>
+        <record id="base.bv" model="res.country">
+            <field name="l10n_mx_cfdi_code">BVT</field>
+        </record>
+        <record id="base.br" model="res.country">
+            <field name="l10n_mx_cfdi_code">BRA</field>
+        </record>
+        <record id="base.io" model="res.country">
+            <field name="l10n_mx_cfdi_code">IOT</field>
+        </record>
+        <record id="base.bn" model="res.country">
+            <field name="l10n_mx_cfdi_code">BRN</field>
+        </record>
+        <record id="base.bg" model="res.country">
+            <field name="l10n_mx_cfdi_code">BGR</field>
+        </record>
+        <record id="base.bf" model="res.country">
+            <field name="l10n_mx_cfdi_code">BFA</field>
+        </record>
+        <record id="base.bi" model="res.country">
+            <field name="l10n_mx_cfdi_code">BDI</field>
+        </record>
+        <record id="base.kh" model="res.country">
+            <field name="l10n_mx_cfdi_code">KHM</field>
+        </record>
+        <record id="base.cm" model="res.country">
+            <field name="l10n_mx_cfdi_code">CMR</field>
+        </record>
+        <record id="base.ca" model="res.country">
+            <field name="l10n_mx_cfdi_code">CAN</field>
+        </record>
+        <record id="base.cv" model="res.country">
+            <field name="l10n_mx_cfdi_code">CPV</field>
+        </record>
+        <record id="base.ky" model="res.country">
+            <field name="l10n_mx_cfdi_code">CYM</field>
+        </record>
+        <record id="base.cf" model="res.country">
+            <field name="l10n_mx_cfdi_code">CAF</field>
+        </record>
+        <record id="base.td" model="res.country">
+            <field name="l10n_mx_cfdi_code">TCD</field>
+        </record>
+        <record id="base.cl" model="res.country">
+            <field name="l10n_mx_cfdi_code">CHL</field>
+        </record>
+        <record id="base.cn" model="res.country">
+            <field name="l10n_mx_cfdi_code">CHN</field>
+        </record>
+        <record id="base.cx" model="res.country">
+            <field name="l10n_mx_cfdi_code">CXR</field>
+        </record>
+        <record id="base.cc" model="res.country">
+            <field name="l10n_mx_cfdi_code">CCK</field>
+        </record>
+        <record id="base.co" model="res.country">
+            <field name="l10n_mx_cfdi_code">COL</field>
+        </record>
+        <record id="base.km" model="res.country">
+            <field name="l10n_mx_cfdi_code">COM</field>
+        </record>
+        <record id="base.cg" model="res.country">
+            <field name="l10n_mx_cfdi_code">COG</field>
+        </record>
+        <record id="base.cd" model="res.country">
+            <field name="l10n_mx_cfdi_code">COD</field>
+        </record>
+        <record id="base.ck" model="res.country">
+            <field name="l10n_mx_cfdi_code">COK</field>
+        </record>
+        <record id="base.cr" model="res.country">
+            <field name="l10n_mx_cfdi_code">CRI</field>
+        </record>
+        <record id="base.ci" model="res.country">
+            <field name="l10n_mx_cfdi_code">CIV</field>
+        </record>
+        <record id="base.hr" model="res.country">
+            <field name="l10n_mx_cfdi_code">HRV</field>
+        </record>
+        <record id="base.cu" model="res.country">
+            <field name="l10n_mx_cfdi_code">CUB</field>
+        </record>
+        <record id="base.cw" model="res.country">
+            <field name="l10n_mx_cfdi_code">CUW</field>
+        </record>
+        <record id="base.cy" model="res.country">
+            <field name="l10n_mx_cfdi_code">CYP</field>
+        </record>
+        <record id="base.cz" model="res.country">
+            <field name="l10n_mx_cfdi_code">CZE</field>
+        </record>
+        <record id="base.dk" model="res.country">
+            <field name="l10n_mx_cfdi_code">DNK</field>
+        </record>
+        <record id="base.dj" model="res.country">
+            <field name="l10n_mx_cfdi_code">DJI</field>
+        </record>
+        <record id="base.dm" model="res.country">
+            <field name="l10n_mx_cfdi_code">DMA</field>
+        </record>
+        <record id="base.do" model="res.country">
+            <field name="l10n_mx_cfdi_code">DOM</field>
+        </record>
+        <record id="base.ec" model="res.country">
+            <field name="l10n_mx_cfdi_code">ECU</field>
+        </record>
+        <record id="base.eg" model="res.country">
+            <field name="l10n_mx_cfdi_code">EGY</field>
+        </record>
+        <record id="base.sv" model="res.country">
+            <field name="l10n_mx_cfdi_code">SLV</field>
+        </record>
+        <record id="base.gq" model="res.country">
+            <field name="l10n_mx_cfdi_code">GNQ</field>
+        </record>
+        <record id="base.er" model="res.country">
+            <field name="l10n_mx_cfdi_code">ERI</field>
+        </record>
+        <record id="base.ee" model="res.country">
+            <field name="l10n_mx_cfdi_code">EST</field>
+        </record>
+        <record id="base.et" model="res.country">
+            <field name="l10n_mx_cfdi_code">ETH</field>
+        </record>
+        <record id="base.fk" model="res.country">
+            <field name="l10n_mx_cfdi_code">FLK</field>
+        </record>
+        <record id="base.fo" model="res.country">
+            <field name="l10n_mx_cfdi_code">FRO</field>
+        </record>
+        <record id="base.fj" model="res.country">
+            <field name="l10n_mx_cfdi_code">FJI</field>
+        </record>
+        <record id="base.fi" model="res.country">
+            <field name="l10n_mx_cfdi_code">FIN</field>
+        </record>
+        <record id="base.fr" model="res.country">
+            <field name="l10n_mx_cfdi_code">FRA</field>
+        </record>
+        <record id="base.gf" model="res.country">
+            <field name="l10n_mx_cfdi_code">GUF</field>
+        </record>
+        <record id="base.pf" model="res.country">
+            <field name="l10n_mx_cfdi_code">PYF</field>
+        </record>
+        <record id="base.tf" model="res.country">
+            <field name="l10n_mx_cfdi_code">ATF</field>
+        </record>
+        <record id="base.ga" model="res.country">
+            <field name="l10n_mx_cfdi_code">GAB</field>
+        </record>
+        <record id="base.gm" model="res.country">
+            <field name="l10n_mx_cfdi_code">GMB</field>
+        </record>
+        <record id="base.ge" model="res.country">
+            <field name="l10n_mx_cfdi_code">GEO</field>
+        </record>
+        <record id="base.de" model="res.country">
+            <field name="l10n_mx_cfdi_code">DEU</field>
+        </record>
+        <record id="base.gh" model="res.country">
+            <field name="l10n_mx_cfdi_code">GHA</field>
+        </record>
+        <record id="base.gi" model="res.country">
+            <field name="l10n_mx_cfdi_code">GIB</field>
+        </record>
+        <record id="base.gr" model="res.country">
+            <field name="l10n_mx_cfdi_code">GRC</field>
+        </record>
+        <record id="base.gl" model="res.country">
+            <field name="l10n_mx_cfdi_code">GRL</field>
+        </record>
+        <record id="base.gd" model="res.country">
+            <field name="l10n_mx_cfdi_code">GRD</field>
+        </record>
+        <record id="base.gp" model="res.country">
+            <field name="l10n_mx_cfdi_code">GLP</field>
+        </record>
+        <record id="base.gu" model="res.country">
+            <field name="l10n_mx_cfdi_code">GUM</field>
+        </record>
+        <record id="base.gt" model="res.country">
+            <field name="l10n_mx_cfdi_code">GTM</field>
+        </record>
+        <record id="base.gg" model="res.country">
+            <field name="l10n_mx_cfdi_code">GGY</field>
+        </record>
+        <record id="base.gn" model="res.country">
+            <field name="l10n_mx_cfdi_code">GIN</field>
+        </record>
+        <record id="base.gw" model="res.country">
+            <field name="l10n_mx_cfdi_code">GNB</field>
+        </record>
+        <record id="base.gy" model="res.country">
+            <field name="l10n_mx_cfdi_code">GUY</field>
+        </record>
+        <record id="base.ht" model="res.country">
+            <field name="l10n_mx_cfdi_code">HTI</field>
+        </record>
+        <record id="base.hm" model="res.country">
+            <field name="l10n_mx_cfdi_code">HMD</field>
+        </record>
+        <record id="base.hn" model="res.country">
+            <field name="l10n_mx_cfdi_code">HND</field>
+        </record>
+        <record id="base.hk" model="res.country">
+            <field name="l10n_mx_cfdi_code">HKG</field>
+        </record>
+        <record id="base.hu" model="res.country">
+            <field name="l10n_mx_cfdi_code">HUN</field>
+        </record>
+        <record id="base.is" model="res.country">
+            <field name="l10n_mx_cfdi_code">ISL</field>
+        </record>
+        <record id="base.in" model="res.country">
+            <field name="l10n_mx_cfdi_code">IND</field>
+        </record>
+        <record id="base.id" model="res.country">
+            <field name="l10n_mx_cfdi_code">IDN</field>
+        </record>
+        <record id="base.ir" model="res.country">
+            <field name="l10n_mx_cfdi_code">IRN</field>
+        </record>
+        <record id="base.iq" model="res.country">
+            <field name="l10n_mx_cfdi_code">IRQ</field>
+        </record>
+        <record id="base.ie" model="res.country">
+            <field name="l10n_mx_cfdi_code">IRL</field>
+        </record>
+        <record id="base.im" model="res.country">
+            <field name="l10n_mx_cfdi_code">IMN</field>
+        </record>
+        <record id="base.il" model="res.country">
+            <field name="l10n_mx_cfdi_code">ISR</field>
+        </record>
+        <record id="base.it" model="res.country">
+            <field name="l10n_mx_cfdi_code">ITA</field>
+        </record>
+        <record id="base.jm" model="res.country">
+            <field name="l10n_mx_cfdi_code">JAM</field>
+        </record>
+        <record id="base.jp" model="res.country">
+            <field name="l10n_mx_cfdi_code">JPN</field>
+        </record>
+        <record id="base.je" model="res.country">
+            <field name="l10n_mx_cfdi_code">JEY</field>
+        </record>
+        <record id="base.jo" model="res.country">
+            <field name="l10n_mx_cfdi_code">JOR</field>
+        </record>
+        <record id="base.kz" model="res.country">
+            <field name="l10n_mx_cfdi_code">KAZ</field>
+        </record>
+        <record id="base.ke" model="res.country">
+            <field name="l10n_mx_cfdi_code">KEN</field>
+        </record>
+        <record id="base.ki" model="res.country">
+            <field name="l10n_mx_cfdi_code">KIR</field>
+        </record>
+        <record id="base.kw" model="res.country">
+            <field name="l10n_mx_cfdi_code">KWT</field>
+        </record>
+        <record id="base.kg" model="res.country">
+            <field name="l10n_mx_cfdi_code">KGZ</field>
+        </record>
+        <record id="base.la" model="res.country">
+            <field name="l10n_mx_cfdi_code">LAO</field>
+        </record>
+        <record id="base.lv" model="res.country">
+            <field name="l10n_mx_cfdi_code">LVA</field>
+        </record>
+        <record id="base.lb" model="res.country">
+            <field name="l10n_mx_cfdi_code">LBN</field>
+        </record>
+        <record id="base.ls" model="res.country">
+            <field name="l10n_mx_cfdi_code">LSO</field>
+        </record>
+        <record id="base.lr" model="res.country">
+            <field name="l10n_mx_cfdi_code">LBR</field>
+        </record>
+        <record id="base.ly" model="res.country">
+            <field name="l10n_mx_cfdi_code">LBY</field>
+        </record>
+        <record id="base.li" model="res.country">
+            <field name="l10n_mx_cfdi_code">LIE</field>
+        </record>
+        <record id="base.lt" model="res.country">
+            <field name="l10n_mx_cfdi_code">LTU</field>
+        </record>
+        <record id="base.lu" model="res.country">
+            <field name="l10n_mx_cfdi_code">LUX</field>
+        </record>
+        <record id="base.mo" model="res.country">
+            <field name="l10n_mx_cfdi_code">MAC</field>
+        </record>
+        <record id="base.mk" model="res.country">
+            <field name="l10n_mx_cfdi_code">MKD</field>
+        </record>
+        <record id="base.mg" model="res.country">
+            <field name="l10n_mx_cfdi_code">MDG</field>
+        </record>
+        <record id="base.mw" model="res.country">
+            <field name="l10n_mx_cfdi_code">MWI</field>
+        </record>
+        <record id="base.my" model="res.country">
+            <field name="l10n_mx_cfdi_code">MYS</field>
+        </record>
+        <record id="base.mv" model="res.country">
+            <field name="l10n_mx_cfdi_code">MDV</field>
+        </record>
+        <record id="base.ml" model="res.country">
+            <field name="l10n_mx_cfdi_code">MLI</field>
+        </record>
+        <record id="base.mt" model="res.country">
+            <field name="l10n_mx_cfdi_code">MLT</field>
+        </record>
+        <record id="base.mh" model="res.country">
+            <field name="l10n_mx_cfdi_code">MHL</field>
+        </record>
+        <record id="base.mq" model="res.country">
+            <field name="l10n_mx_cfdi_code">MTQ</field>
+        </record>
+        <record id="base.mr" model="res.country">
+            <field name="l10n_mx_cfdi_code">MRT</field>
+        </record>
+        <record id="base.mu" model="res.country">
+            <field name="l10n_mx_cfdi_code">MUS</field>
+        </record>
+        <record id="base.yt" model="res.country">
+            <field name="l10n_mx_cfdi_code">MYT</field>
+        </record>
+        <record id="base.mx" model="res.country">
+            <field name="l10n_mx_cfdi_code">MEX</field>
+        </record>
+        <record id="base.fm" model="res.country">
+            <field name="l10n_mx_cfdi_code">FSM</field>
+        </record>
+        <record id="base.md" model="res.country">
+            <field name="l10n_mx_cfdi_code">MDA</field>
+        </record>
+        <record id="base.mc" model="res.country">
+            <field name="l10n_mx_cfdi_code">MCO</field>
+        </record>
+        <record id="base.mn" model="res.country">
+            <field name="l10n_mx_cfdi_code">MNG</field>
+        </record>
+        <record id="base.me" model="res.country">
+            <field name="l10n_mx_cfdi_code">MNE</field>
+        </record>
+        <record id="base.ms" model="res.country">
+            <field name="l10n_mx_cfdi_code">MSR</field>
+        </record>
+        <record id="base.ma" model="res.country">
+            <field name="l10n_mx_cfdi_code">MAR</field>
+        </record>
+        <record id="base.mz" model="res.country">
+            <field name="l10n_mx_cfdi_code">MOZ</field>
+        </record>
+        <record id="base.mm" model="res.country">
+            <field name="l10n_mx_cfdi_code">MMR</field>
+        </record>
+        <record id="base.na" model="res.country">
+            <field name="l10n_mx_cfdi_code">NAM</field>
+        </record>
+        <record id="base.nr" model="res.country">
+            <field name="l10n_mx_cfdi_code">NRU</field>
+        </record>
+        <record id="base.np" model="res.country">
+            <field name="l10n_mx_cfdi_code">NPL</field>
+        </record>
+        <record id="base.nl" model="res.country">
+            <field name="l10n_mx_cfdi_code">NLD</field>
+        </record>
+        <record id="base.nc" model="res.country">
+            <field name="l10n_mx_cfdi_code">NCL</field>
+        </record>
+        <record id="base.nz" model="res.country">
+            <field name="l10n_mx_cfdi_code">NZL</field>
+        </record>
+        <record id="base.ni" model="res.country">
+            <field name="l10n_mx_cfdi_code">NIC</field>
+        </record>
+        <record id="base.ne" model="res.country">
+            <field name="l10n_mx_cfdi_code">NER</field>
+        </record>
+        <record id="base.ng" model="res.country">
+            <field name="l10n_mx_cfdi_code">NGA</field>
+        </record>
+        <record id="base.nu" model="res.country">
+            <field name="l10n_mx_cfdi_code">NIU</field>
+        </record>
+        <record id="base.nf" model="res.country">
+            <field name="l10n_mx_cfdi_code">NFK</field>
+        </record>
+        <record id="base.kp" model="res.country">
+            <field name="l10n_mx_cfdi_code">PRK</field>
+        </record>
+        <record id="base.mp" model="res.country">
+            <field name="l10n_mx_cfdi_code">MNP</field>
+        </record>
+        <record id="base.no" model="res.country">
+            <field name="l10n_mx_cfdi_code">NOR</field>
+        </record>
+        <record id="base.om" model="res.country">
+            <field name="l10n_mx_cfdi_code">OMN</field>
+        </record>
+        <record id="base.pk" model="res.country">
+            <field name="l10n_mx_cfdi_code">PAK</field>
+        </record>
+        <record id="base.pw" model="res.country">
+            <field name="l10n_mx_cfdi_code">PLW</field>
+        </record>
+        <record id="base.ps" model="res.country">
+            <field name="l10n_mx_cfdi_code">PSE</field>
+        </record>
+        <record id="base.pa" model="res.country">
+            <field name="l10n_mx_cfdi_code">PAN</field>
+        </record>
+        <record id="base.pg" model="res.country">
+            <field name="l10n_mx_cfdi_code">PNG</field>
+        </record>
+        <record id="base.py" model="res.country">
+            <field name="l10n_mx_cfdi_code">PRY</field>
+        </record>
+        <record id="base.pe" model="res.country">
+            <field name="l10n_mx_cfdi_code">PER</field>
+        </record>
+        <record id="base.ph" model="res.country">
+            <field name="l10n_mx_cfdi_code">PHL</field>
+        </record>
+        <record id="base.pn" model="res.country">
+            <field name="l10n_mx_cfdi_code">PCN</field>
+        </record>
+        <record id="base.pl" model="res.country">
+            <field name="l10n_mx_cfdi_code">POL</field>
+        </record>
+        <record id="base.pt" model="res.country">
+            <field name="l10n_mx_cfdi_code">PRT</field>
+        </record>
+        <record id="base.pr" model="res.country">
+            <field name="l10n_mx_cfdi_code">PRI</field>
+        </record>
+        <record id="base.qa" model="res.country">
+            <field name="l10n_mx_cfdi_code">QAT</field>
+        </record>
+        <record id="base.re" model="res.country">
+            <field name="l10n_mx_cfdi_code">REU</field>
+        </record>
+        <record id="base.ro" model="res.country">
+            <field name="l10n_mx_cfdi_code">ROU</field>
+        </record>
+        <record id="base.ru" model="res.country">
+            <field name="l10n_mx_cfdi_code">RUS</field>
+        </record>
+        <record id="base.rw" model="res.country">
+            <field name="l10n_mx_cfdi_code">RWA</field>
+        </record>
+        <record id="base.bl" model="res.country">
+            <field name="l10n_mx_cfdi_code">BLM</field>
+        </record>
+        <record id="base.sh" model="res.country">
+            <field name="l10n_mx_cfdi_code">SHN</field>
+        </record>
+        <record id="base.kn" model="res.country">
+            <field name="l10n_mx_cfdi_code">KNA</field>
+        </record>
+        <record id="base.lc" model="res.country">
+            <field name="l10n_mx_cfdi_code">LCA</field>
+        </record>
+        <record id="base.mf" model="res.country">
+            <field name="l10n_mx_cfdi_code">MAF</field>
+        </record>
+        <record id="base.pm" model="res.country">
+            <field name="l10n_mx_cfdi_code">SPM</field>
+        </record>
+        <record id="base.vc" model="res.country">
+            <field name="l10n_mx_cfdi_code">VCT</field>
+        </record>
+        <record id="base.ws" model="res.country">
+            <field name="l10n_mx_cfdi_code">WSM</field>
+        </record>
+        <record id="base.sm" model="res.country">
+            <field name="l10n_mx_cfdi_code">SMR</field>
+        </record>
+        <record id="base.st" model="res.country">
+            <field name="l10n_mx_cfdi_code">STP</field>
+        </record>
+        <record id="base.sa" model="res.country">
+            <field name="l10n_mx_cfdi_code">SAU</field>
+        </record>
+        <record id="base.sn" model="res.country">
+            <field name="l10n_mx_cfdi_code">SEN</field>
+        </record>
+        <record id="base.rs" model="res.country">
+            <field name="l10n_mx_cfdi_code">SRB</field>
+        </record>
+        <record id="base.sc" model="res.country">
+            <field name="l10n_mx_cfdi_code">SYC</field>
+        </record>
+        <record id="base.sl" model="res.country">
+            <field name="l10n_mx_cfdi_code">SLE</field>
+        </record>
+        <record id="base.sg" model="res.country">
+            <field name="l10n_mx_cfdi_code">SGP</field>
+        </record>
+        <record id="base.sx" model="res.country">
+            <field name="l10n_mx_cfdi_code">SXM</field>
+        </record>
+        <record id="base.sk" model="res.country">
+            <field name="l10n_mx_cfdi_code">SVK</field>
+        </record>
+        <record id="base.si" model="res.country">
+            <field name="l10n_mx_cfdi_code">SVN</field>
+        </record>
+        <record id="base.sb" model="res.country">
+            <field name="l10n_mx_cfdi_code">SLB</field>
+        </record>
+        <record id="base.so" model="res.country">
+            <field name="l10n_mx_cfdi_code">SOM</field>
+        </record>
+        <record id="base.za" model="res.country">
+            <field name="l10n_mx_cfdi_code">ZAF</field>
+        </record>
+        <record id="base.gs" model="res.country">
+            <field name="l10n_mx_cfdi_code">SGS</field>
+        </record>
+        <record id="base.kr" model="res.country">
+            <field name="l10n_mx_cfdi_code">KOR</field>
+        </record>
+        <record id="base.ss" model="res.country">
+            <field name="l10n_mx_cfdi_code">SSD</field>
+        </record>
+        <record id="base.es" model="res.country">
+            <field name="l10n_mx_cfdi_code">ESP</field>
+        </record>
+        <record id="base.lk" model="res.country">
+            <field name="l10n_mx_cfdi_code">LKA</field>
+        </record>
+        <record id="base.sd" model="res.country">
+            <field name="l10n_mx_cfdi_code">SDN</field>
+        </record>
+        <record id="base.sr" model="res.country">
+            <field name="l10n_mx_cfdi_code">SUR</field>
+        </record>
+        <record id="base.sj" model="res.country">
+            <field name="l10n_mx_cfdi_code">SJM</field>
+        </record>
+        <record id="base.sz" model="res.country">
+            <field name="l10n_mx_cfdi_code">SWZ</field>
+        </record>
+        <record id="base.se" model="res.country">
+            <field name="l10n_mx_cfdi_code">SWE</field>
+        </record>
+        <record id="base.ch" model="res.country">
+            <field name="l10n_mx_cfdi_code">CHE</field>
+        </record>
+        <record id="base.sy" model="res.country">
+            <field name="l10n_mx_cfdi_code">SYR</field>
+        </record>
+        <record id="base.tw" model="res.country">
+            <field name="l10n_mx_cfdi_code">TWN</field>
+        </record>
+        <record id="base.tj" model="res.country">
+            <field name="l10n_mx_cfdi_code">TJK</field>
+        </record>
+        <record id="base.tz" model="res.country">
+            <field name="l10n_mx_cfdi_code">TZA</field>
+        </record>
+        <record id="base.th" model="res.country">
+            <field name="l10n_mx_cfdi_code">THA</field>
+        </record>
+        <record id="base.tl" model="res.country">
+            <field name="l10n_mx_cfdi_code">TLS</field>
+        </record>
+        <record id="base.tg" model="res.country">
+            <field name="l10n_mx_cfdi_code">TGO</field>
+        </record>
+        <record id="base.tk" model="res.country">
+            <field name="l10n_mx_cfdi_code">TKL</field>
+        </record>
+        <record id="base.to" model="res.country">
+            <field name="l10n_mx_cfdi_code">TON</field>
+        </record>
+        <record id="base.tt" model="res.country">
+            <field name="l10n_mx_cfdi_code">TTO</field>
+        </record>
+        <record id="base.tn" model="res.country">
+            <field name="l10n_mx_cfdi_code">TUN</field>
+        </record>
+        <record id="base.tr" model="res.country">
+            <field name="l10n_mx_cfdi_code">TUR</field>
+        </record>
+        <record id="base.tm" model="res.country">
+            <field name="l10n_mx_cfdi_code">TKM</field>
+        </record>
+        <record id="base.tc" model="res.country">
+            <field name="l10n_mx_cfdi_code">TCA</field>
+        </record>
+        <record id="base.tv" model="res.country">
+            <field name="l10n_mx_cfdi_code">TUV</field>
+        </record>
+        <record id="base.ug" model="res.country">
+            <field name="l10n_mx_cfdi_code">UGA</field>
+        </record>
+        <record id="base.ua" model="res.country">
+            <field name="l10n_mx_cfdi_code">UKR</field>
+        </record>
+        <record id="base.ae" model="res.country">
+            <field name="l10n_mx_cfdi_code">ARE</field>
+        </record>
+        <record id="base.uk" model="res.country">
+            <field name="l10n_mx_cfdi_code">GBR</field>
+        </record>
+        <record id="base.us" model="res.country">
+            <field name="l10n_mx_cfdi_code">USA</field>
+        </record>
+        <record id="base.um" model="res.country">
+            <field name="l10n_mx_cfdi_code">UMI</field>
+        </record>
+        <record id="base.uy" model="res.country">
+            <field name="l10n_mx_cfdi_code">URY</field>
+        </record>
+        <record id="base.uz" model="res.country">
+            <field name="l10n_mx_cfdi_code">UZB</field>
+        </record>
+        <record id="base.vu" model="res.country">
+            <field name="l10n_mx_cfdi_code">VUT</field>
+        </record>
+        <record id="base.va" model="res.country">
+            <field name="l10n_mx_cfdi_code">VAT</field>
+        </record>
+        <record id="base.ve" model="res.country">
+            <field name="l10n_mx_cfdi_code">VEN</field>
+        </record>
+        <record id="base.vn" model="res.country">
+            <field name="l10n_mx_cfdi_code">VNM</field>
+        </record>
+        <record id="base.vg" model="res.country">
+            <field name="l10n_mx_cfdi_code">VGB</field>
+        </record>
+        <record id="base.vi" model="res.country">
+            <field name="l10n_mx_cfdi_code">VIR</field>
+        </record>
+        <record id="base.wf" model="res.country">
+            <field name="l10n_mx_cfdi_code">WLF</field>
+        </record>
+        <record id="base.eh" model="res.country">
+            <field name="l10n_mx_cfdi_code">ESH</field>
+        </record>
+        <record id="base.ye" model="res.country">
+            <field name="l10n_mx_cfdi_code">YEM</field>
+        </record>
+        <record id="base.zm" model="res.country">
+            <field name="l10n_mx_cfdi_code">ZMB</field>
+        </record>
+        <record id="base.zw" model="res.country">
+            <field name="l10n_mx_cfdi_code">ZWE</field>
+        </record>
+    </data>
+</odoo>

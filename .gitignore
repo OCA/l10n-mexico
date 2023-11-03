@@ -72,3 +72,7 @@ docs/_build/
 
 # OCA rules
 !static/lib/
+
+
+# CFDI schemas
+l10n_mx_cfdi_spec/data/schemas

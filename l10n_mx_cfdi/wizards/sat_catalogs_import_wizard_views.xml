@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="sat_catalogs_import_wizard_form" model="ir.ui.view">
+            <field name="name">Importar catálogos del SAT</field>
+            <field name="model">l10n_mx_cfdi.sat_catalogs_import_wizard</field>
+            <field name="arch" type="xml">
+                <form string="Importar catálogos del SAT">
+                    <sheet>
+                        <p>
+                            Importar catálogos del SAT desde un archivo XLSX.
+                        </p>
+                        <group>
+                            <field name="catalog_type"/>
+                            <field name="catalog_file"/>
+                            <field name="line_ids" no_create="1" no_open="1" string="Mappings">
+                                <tree editable="bottom">
+                                    <field name="sheet_title"/>
+                                    <field name="target_model"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <div class="text-right mr-4">
+                            <button name="action_reset_mappings" string="Reset Mappings" type="object"/>
+                        </div>
+                    </sheet>
+                    <footer>
+                        <button name="action_import" string="Importar" type="object" class="oe_highlight"/>
+                        <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
