@@ -1,0 +1,4 @@
+- [Open Source Integrators](https://www.opensourceintegrators.com):
+  - Maxime Chambreuil \<<mchambreuil@opensourceintegrators.com>\>
+  - Murtaza Mithaiwala \<<mmithaiwala@opensourceintegrators.com>\>
+  - Samuel Macias \<<smacias@opensourceintegrators.com>\>

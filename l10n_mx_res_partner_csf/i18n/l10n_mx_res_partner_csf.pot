@@ -1,0 +1,98 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_mx_res_partner_csf
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_mx_res_partner_csf
+#: model_terms:ir.ui.view,arch_db:l10n_mx_res_partner_csf.import_csf
+msgid "Cancel"
+msgstr ""
+
+#. module: l10n_mx_res_partner_csf
+#: model:ir.model,name:l10n_mx_res_partner_csf.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: l10n_mx_res_partner_csf
+#: model:ir.model.fields,field_description:l10n_mx_res_partner_csf.field_import_csf__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: l10n_mx_res_partner_csf
+#: model:ir.model.fields,field_description:l10n_mx_res_partner_csf.field_import_csf__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: l10n_mx_res_partner_csf
+#: model:ir.model.fields,field_description:l10n_mx_res_partner_csf.field_import_csf__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: l10n_mx_res_partner_csf
+#: model:ir.model.fields,field_description:l10n_mx_res_partner_csf.field_import_csf__file
+msgid "File"
+msgstr ""
+
+#. module: l10n_mx_res_partner_csf
+#: model:ir.model.fields,field_description:l10n_mx_res_partner_csf.field_import_csf__file_name
+msgid "File Name"
+msgstr ""
+
+#. module: l10n_mx_res_partner_csf
+#: model:ir.model.fields,field_description:l10n_mx_res_partner_csf.field_import_csf__id
+msgid "ID"
+msgstr ""
+
+#. module: l10n_mx_res_partner_csf
+#. odoo-python
+#: code:addons/l10n_mx_res_partner_csf/models/res_partner.py:0
+#, python-format
+msgid "Import CSF File"
+msgstr ""
+
+#. module: l10n_mx_res_partner_csf
+#: model:ir.model.fields,field_description:l10n_mx_res_partner_csf.field_import_csf____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: l10n_mx_res_partner_csf
+#: model:ir.model.fields,field_description:l10n_mx_res_partner_csf.field_import_csf__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: l10n_mx_res_partner_csf
+#: model:ir.model.fields,field_description:l10n_mx_res_partner_csf.field_import_csf__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: l10n_mx_res_partner_csf
+#: model_terms:ir.ui.view,arch_db:l10n_mx_res_partner_csf.view_partner_form_inherit_cfs
+msgid "Subir CSF"
+msgstr ""
+
+#. module: l10n_mx_res_partner_csf
+#: model_terms:ir.ui.view,arch_db:l10n_mx_res_partner_csf.import_csf
+msgid "Upload"
+msgstr ""
+
+#. module: l10n_mx_res_partner_csf
+#. odoo-python
+#: code:addons/l10n_mx_res_partner_csf/wizard/import_csf.py:0
+#, python-format
+msgid "Uploaded file is not in PDF format (%s)."
+msgstr ""
+
+#. module: l10n_mx_res_partner_csf
+#: model:ir.model,name:l10n_mx_res_partner_csf.model_import_csf
+msgid "import.csf"
+msgstr ""
