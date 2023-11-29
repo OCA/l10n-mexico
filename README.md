@@ -17,7 +17,11 @@ This repository contains modules specific to Mexico.
 
 [//]: # (addons)
 
-This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
+Available addons
+----------------
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[l10n_mx_res_partner_csf](l10n_mx_res_partner_csf/) | 17.0.1.0.0 |  | Scan and extract information from CSF
 
 [//]: # (end addons)
 
