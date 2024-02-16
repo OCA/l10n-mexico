@@ -15,6 +15,7 @@ except ImportError as err:
 
 class ImportCSF(models.TransientModel):
     _name = "import.csf"
+    _description = "CSF Import Wizard"
 
     file = fields.Binary(required=True, attachment=True)
     file_name = fields.Char()
