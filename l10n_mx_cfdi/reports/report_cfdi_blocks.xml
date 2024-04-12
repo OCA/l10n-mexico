@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="cfdi_issuer_data">
+            <h6>Emisor</h6>
+            <spam t-field="cfdi.issuer_id.fiscal_name"/>
+            <br/>
+
+            <spam t-field="cfdi.issuer_id.vat"/>
+            <br/>
+
+            <br/>
+            <b class="mr-1">Lugar de Expedición:</b>
+            <span t-out="cfdi.issuer_id.zip"/>
+            <br/>
+
+            <b class="mr-1">Régimen Fiscal:</b>
+            <span t-out="cfdi.issuer_id.tax_regime.code + ' - ' + cfdi.issuer_id.tax_regime.name"/>
+            <br/>
+        </template>
+
+        <template id="default_issuer_data">
+            <h6>Emisor</h6>
+            <address t-field="company.partner_id"
+                     t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+            <div t-if="company.partner_id.vat" class="mt16">
+                <t t-if="o.company_id.account_fiscal_country_id.vat_label"
+                   t-esc="o.company_id.account_fiscal_country_id.vat_label" id="inv_tax_id_label"/>
+                <t t-else="">Tax ID</t>:
+                <span t-field="company.partner_id.vat"/>
+            </div>
+        </template>
+
+        <template id="cfdi_receiver_data">
+            <t t-set="receiver" t-value="cfdi.receiver_id"/>
+
+            <h6>Receptor</h6>
+            <spam t-field="receiver.name"/>
+            <br/>
+
+            <spam t-field="receiver.vat"/>
+            <br/>
+
+            <br/>
+            <b class="mr-1">Código Postal:</b>
+            <spam t-field="receiver.zip"/>
+            <br/>
+
+            <b class="mr-1">Régimen Fiscal:</b>
+            <spam t-out="'%s - %s' % (receiver.tax_regime.code, receiver.tax_regime.name)"/>
+            <br/>
+
+            <t t-if="'cfdi_use_id' in o">
+                <b class="mr-1">Uso de CFDI:</b>
+                <spam t-out="'%s - %s'  % (o.cfdi_use_id.code, o.cfdi_use_id.name)"/>
+                <br/>
+            </t>
+        </template>
+
+        <template id="default_receiver_data">
+            <h6>Receptor</h6>
+            <address t-if="o and 'partner_id' in o" t-field="o.partner_id"
+                     t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+            <div t-if="o and 'partner_id' in o and o.partner_id.vat" class="mt16">
+                <t t-if="o.company_id.account_fiscal_country_id.vat_label"
+                   t-esc="o.company_id.account_fiscal_country_id.vat_label" id="inv_tax_id_label"/>
+                <t t-else="">Tax ID</t>:
+                <span t-id="'partner_id' in o" t-field="o.partner_id.vat"/>
+            </div>
+        </template>
+
+        <template id="cfdi_id_data">
+            <div class="col col-5 p-0 m-0">
+                <div>
+                    <b>No. de Certificado Digital:</b>
+                </div>
+                <spam t-field="cfdi.cert_number"/>
+            </div>
+
+            <div class="col col-5 p-0 m-0">
+                <div>
+                    <b>Folio Fiscal:</b>
+                </div>
+                <spam t-field="cfdi.uuid"/>
+            </div>
+            <div class="col col-2 p-0 m-0">
+                <div>
+                    <b>Fecha / Hora de Emisión:</b>
+                </div>
+                <spam t-field="cfdi.issuing_datetime"
+                      t-options="{'widget': 'datetime'}"/>
+            </div>
+        </template>
+
+        <template id="cfdi_payment_data">
+            <div class="row mt-2 mb-4 mx-1">
+                <div class="col col-5 p-0 m-0">
+                    <div>
+                        <b>Forma de Pago</b>
+                    </div>
+                    <spam>
+                        <spam t-field="o.payment_form_id.code"/>
+                        <spam>-</spam>
+                        <spam t-field="o.payment_form_id.name"/>
+                    </spam>
+                </div>
+                <div class="col col-4 p-0 m-0" t-if="cfdi.type != 'P'">
+                    <div>
+                        <b class="pl-2">Método de Pago</b>
+                    </div>
+                    <spam class="pl-2">
+                        <spam t-field="o.payment_method_id.code"/>
+                        <spam>-</spam>
+                        <spam class="" t-field="o.payment_method_id.name"/>
+                    </spam>
+                </div>
+                <div class="col col-3 p-0 m-0">
+                    <div>
+                        <b class="pl-2">Moneda</b>
+                    </div>
+                    <p class="pl-2">
+                        <span t-field="o.currency_id.name"/>
+                        <spam>-</spam>
+                        <spam t-if="o.currency_id.name == 'MXN'">Peso Mexicano</spam>
+                        <span t-else="" t-field="o.currency_id.full_name"/>
+                    </p>
+                </div>
+            </div>
+        </template>
+
+        <template id="cfdi_signature_data">
+            <div class="row m-0 p-0 mt-1 ">
+                <div class="col col-3 p-0 m-0">
+                    <div>
+                        <b>Tipo de Comprobante:</b>
+                    </div>
+                    <span t-field="o.cfdi_document_id.type"/>
+                </div>
+
+                <div class="col col-5 p-0 m-0">
+                    <div>
+                        <b>No. de Certificado Digital:</b>
+                    </div>
+                    <span t-field="cfdi.cert_number"/>
+                </div>
+                <div class="col col-5 p-0 m-0">
+                    <div>
+                        <b>Folio Fiscal:</b>
+                    </div>
+                    <span t-field="cfdi.uuid"/>
+                </div>
+            </div>
+            <div class="row m-0 p-0 mt-1">
+                <div class="col col-3 p-0 m-0">
+                    <div>
+                        <b>Fecha/Hora Certificación</b>
+                    </div>
+                    <span t-field="o.cfdi_document_id.signing_date"
+                          t-options="{'widget': 'datetime'}"/>
+                </div>
+                <div class="col col-5 p-0 m-0">
+                    <div>
+                        <b>Número de Serie Certificado del SAT</b>
+                    </div>
+                    <span t-field="o.cfdi_document_id.sat_cert_number"/>
+                </div>
+                <div class="col col-4 p-0 m-0">
+                    <div>
+                        <b>RFC del PAC</b>
+                    </div>
+                    <span t-field="o.cfdi_document_id.rfc_prov_certif"/>
+                </div>
+            </div>
+            <div class="row m-0 p-0 mt-1" style="font-size: 10px;" name="cfdi_signature_data">
+                <div class="col col-2 m-0 p-0" name="cfdi_qr">
+                    <b>Versión: 4.0</b>
+                    <img t-att-src="'data:image/png;base64,%s'% o.cfdi_document_id.verification_qr_code.decode('utf-8')"
+                         alt="Enlace de Verificación" class="img-fluid mx-auto"
+                         style="min-height: 3cm; min-width: 3cm;"/>
+                </div>
+                <div class="col-10 m-0 p-0 pl-2">
+
+                    <b class="m-0 p-0 font-weight-bold" style="font-size: 10px; line-height: 2;">
+                        Sello Digital del CFDI
+                    </b>
+                    <div style="overflow-wrap: anywhere; word-break: break-all;"
+                         t-field="o.cfdi_document_id.cfdi_signature"/>
+
+                    <b class="m-0 p-0 font-weight-bold" style="font-size: 10px; line-height: 2;">
+                        Sello Digital del SAT
+                    </b>
+                    <div style="overflow-wrap: anywhere; word-break: break-all;"
+                         t-field="o.cfdi_document_id.sat_signature"/>
+                    <b class="m-0 p-0 font-weight-bold" style="font-size: 10px; line-height: 2;">
+                        Cadena Original del complemento de Certificación Digital del SAT
+                    </b>
+                    <div style="overflow-wrap: anywhere; word-break: break-all; font-size: 10px; line-height: 2;"
+                         t-field="o.cfdi_document_id.original_string"/>
+                </div>
+            </div>
+        </template>
+
+        <template id="cfdi_related_documents">
+            <div class="row mt-1 mx-1">
+                <div class="col-2 m-0 p-0">
+                    <b>Folio Relacionado</b>
+                </div>
+                <div class="col-5 m-0 p-0">
+                    <b>UUID</b>
+                </div>
+                <div class="col-5 m-0 p-0">
+                    <b>Tipo de Relación</b>
+                </div>
+            </div>
+
+            <t t-foreach="cfdi.related_document_ids" t-as="document_relation">
+                <div class="row mt-1 mx-1">
+                    <div class="col-2 m-0 p-0">
+                        <span t-out="document_relation.target_id.name"/>
+                    </div>
+                    <div class="col-5 m-0 p-0">
+                        <span t-out="document_relation.target_id.uuid"/>
+                    </div>
+                    <div class="col-5 m-0 p-0">
+                        <span t-out="document_relation.relation_type_id.name"/>
+                    </div>
+                </div>
+            </t>
+            <div class="mb-4"/>
+
+        </template>
+    </data>
+</odoo>

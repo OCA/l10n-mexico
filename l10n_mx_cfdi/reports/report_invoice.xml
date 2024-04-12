@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!-- Override document structure -->
+        <template id="report_invoice_document" inherit_id="account.report_invoice_document" primary="True">
+            <t t-set="o" position="after">
+                <t t-set="cfdi" t-value="o.cfdi_document_id" t-if="o.cfdi_document_id"/>
+
+                <!-- No imprimir datos del pago si el CFDI es tipo Egreso -->
+                <t t-set="print_with_payments" t-value="False" t-if="cfdi and cfdi.type == 'E'"/>
+            </t>
+
+            <!-- remove default partner address in CFDI documents -->
+            <t t-set="address" position="replace">
+                <t t-set="address" t-if="not cfdi">
+                    <address t-field="o.partner_id"
+                             t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
+                    <div t-if="o.partner_id.vat" class="mt16">
+                        <t t-if="o.company_id.account_fiscal_country_id.vat_label"
+                           t-esc="o.company_id.account_fiscal_country_id.vat_label" id="inv_tax_id_label"/>
+                        <t t-else="">RFC</t>:
+                        <span t-field="o.partner_id.vat"/>
+                    </div>
+                </t>
+            </t>
+
+            <!-- remove default Title Line in CFDI documents -->
+            <xpath expr="//h2" position="replace">
+                <h2 t-if="not cfdi">
+                    <span t-if="o.move_type == 'out_invoice' and o.state == 'posted'">Factura</span>
+                    <span t-if="o.move_type == 'out_invoice' and o.state == 'draft'">Borrador de Factura</span>
+                    <span t-if="o.move_type == 'out_invoice' and o.state == 'cancel'">Factura Cancelada</span>
+                    <span t-if="o.move_type == 'out_refund'">Nota de Crédito</span>
+                    <span t-if="o.move_type == 'in_refund'">Nota de Crédito de Proveedor</span>
+                    <span t-if="o.move_type == 'in_invoice'">Factura de Proveedor</span>
+                    <span t-if="o.name != '/'" t-field="o.name"/>
+                </h2>
+            </xpath>
+
+            <xpath expr="//div[hasclass('page')]" position="attributes">
+                <attribute name="t-attf-style">font-size: 12px;</attribute>
+            </xpath>
+
+            <!-- Add related documents -->
+            <xpath expr="//div[@id='informations']" position="after">
+                <t t-call="l10n_mx_cfdi.cfdi_related_documents" t-if="cfdi and cfdi.related_document_ids"/>
+            </xpath>
+
+            <!-- extend lines table -->
+            <th name="th_description" position="after">
+                <t t-if="cfdi">
+                    <th class="text-center">Clave Prod. Serv.</th>
+                    <th class="text-center">Clave Unidad</th>
+                </t>
+            </th>
+
+            <xpath expr="//td[@name='account_invoice_line_name']" position="after">
+                <t t-if="cfdi">
+                    <td class="text-center">
+                        <span t-field="line.product_id.l10n_mx_cfdi_product_code_id.code"/>
+                    </td>
+                    <td class="text-center">
+                        <span t-field="line.product_id.l10n_mx_cfdi_product_measurement_unit_id.code"/>
+                    </td>
+                </t>
+            </xpath>
+
+            <span class="text-nowrap" t-field="line.price_unit" position="replace">
+                <span class="text-nowrap" t-field="line.cfdi_price_unit" string="Precio Unitario"/>
+            </span>
+
+
+            <!-- play cfdi payment data -->
+            <xpath expr="//p[@name='payment_communication']" position="before">
+                <t t-call="l10n_mx_cfdi.cfdi_payment_data" t-if="cfdi"/>
+            </xpath>
+
+            <div id="qrcode" position="after">
+                <t t-call="l10n_mx_cfdi.cfdi_signature_data" t-if="cfdi"/>
+            </div>
+        </template>
+
+        <!-- FIXME: Temp fix to allow fetching invoice_document in Studio Reports with localisation -->
+        <template id="report_invoice" inherit_id="account.report_invoice">
+            <xpath expr='//t[@t-call="account.report_invoice_document"]' position="after">
+                <t t-if="o._get_name_invoice_report() == 'l10n_mx_cfdi.report_invoice_document'"
+                   t-call="l10n_mx_cfdi.report_invoice_document" t-lang="lang"/>
+            </xpath>
+        </template>
+
+        <template id="report_invoice_with_payments" inherit_id="account.report_invoice_with_payments">
+            <xpath expr='//t[@t-call="account.report_invoice_document"]' position="after">
+                <t t-if="o._get_name_invoice_report() == 'l10n_mx_cfdi.report_invoice_document'"
+                   t-call="l10n_mx_cfdi.report_invoice_document" t-lang="lang"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

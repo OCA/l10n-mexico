@@ -1,0 +1,46 @@
+<odoo>
+    <record id="action_l10n_mx_cfdi_service_form" model="ir.ui.view">
+        <field name="name">Configuración del Servicio CFDI</field>
+        <field name="model">l10n_mx_cfdi.cfdi_service</field>
+        <field name="arch" type="xml">
+            <form string="CFDI Service">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="stamps_available"/>
+                            <field name="stamps_used"/>
+                            <field name="company_ids" groups="base.group_multi_company" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="user"/>
+                        <field name="password" password="1"/>
+                        <field name="sandbox_mode"/>
+                    </group>
+                    <group>
+                        <field name="topup_ids">
+                            <tree editable="top" delete="false" edit="false">
+                                <field name="topup_date"/>
+                                <field name="stamp_number"/>
+                                <field name="stamp_price"/>
+                                <field name="total"/>
+                                <field name="partner_id"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- CFDI Settings action -->
+    <record id="action_l10n_mx_cfdi_settings" model="ir.actions.act_window">
+        <field name="name">Configuración de Servicio</field>
+        <field name="res_model">l10n_mx_cfdi.cfdi_service</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="cfdi_settings_menu" name="Configuración de Servicio" parent="l10n_mx_cfdi.cfdi_menu"
+              groups="base.group_user" action="action_l10n_mx_cfdi_settings"/>
+</odoo>

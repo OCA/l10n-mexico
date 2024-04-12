@@ -1,0 +1,53 @@
+<odoo>
+    <record id="cfdi_invoice_generic_create_form" model="ir.ui.view">
+        <field name="name">Crear CFDI al Público en General</field>
+        <field name="model">l10n_mx_cfdi.generic_invoice_create</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="issuer_id" options="{'no_open': True}"/>
+                        <field name="payment_method_id" invisible="1"/>
+                        <field name="fiscal_regime_id"/>
+                        <field name="cfdi_use_id"/>
+                        <field name="payment_form_id"/>
+                    </group>
+                    <group>
+                        <field name="date"/>
+                        <field name="periodicity_id" options="{'no_open': True}"/>
+                        <field name="meses_id" options="{'no_open': True}"/>
+                        <field name="year" widget="char"/>
+                    </group>
+                    <field name="move_ids" domain="[('move_type', '=', 'out_invoice')]">
+                        <tree string="Recibos" js_class="account_tree">
+                            <field name="name"/>
+                            <field name="invoice_partner_display_name"/>
+                            <field name="amount_untaxed_signed" string="Impuestos no incluidos" sum="Total"
+                                   optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="amount_total_signed" string="Total" sum="Total" decoration-bf="1"
+                                   optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                        </tree>
+                    </field>
+                </group>
+                <footer>
+                    <button type="object"
+                            name="create_cfdi"
+                            string="Aceptar"
+                            class="btn-primary"/>
+                    <button special="cancel"
+                            string="Cancelar"
+                            class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="cfdi_invoice_generic_create_form_action" model="ir.actions.act_window">
+        <field name="name">Crear CFDI al Público en General</field>
+        <field name="res_model">l10n_mx_cfdi.generic_invoice_create</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_account_move"/>
+        <field name="binding_view_types">list</field>
+    </record>
+</odoo>

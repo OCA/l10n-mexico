@@ -1,0 +1,42 @@
+<odoo>
+    <record id="view_account_payment_form_inherit" model="ir.ui.view">
+        <field name="name">Account Payment: Payment Form</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <field name="date" position="before">
+                <field name="payment_form_id"/>
+            </field>
+            <field name="journal_id" position="before">
+                <field name="l10n_mx_cfdi_enabled" invisible="1"/>
+                <field name="l10n_mx_cfdi_auto" invisible="1"/>
+                <label for="cfdi_document_id" string="CFDI"
+                       attrs="{'invisible': [('l10n_mx_cfdi_enabled', '=', False)]}"
+                />
+                <div attrs="{'invisible': [('l10n_mx_cfdi_enabled', '=', False)]}">
+                    <div attrs="{'invisible': [('cfdi_document_state', '=', False)]}">
+                        <field name="cfdi_document_id" no_label="1" class="mr-3"/>
+                        <field name="cfdi_document_state"
+                               widget="badge"
+                               decoration-success="cfdi_document_state == 'published'"
+                               decoration-danger="cfdi_document_state == 'canceled'"
+                        />
+                    </div>
+
+                    <button name="action_generate_cfdi"
+                            type="object"
+                            string="Generar CFDI"
+                            class="btn btn-info btn-sm"
+                            groups="account.group_account_invoice"
+                            attrs="{
+                            'invisible': ['|', '|',
+                                ('state', '!=', 'posted'),
+                                ('l10n_mx_cfdi_auto', '=', True),
+                                ('cfdi_document_id', '!=', False)]
+                            }"/>
+                </div>
+            </field>
+        </field>
+
+    </record>
+</odoo>
