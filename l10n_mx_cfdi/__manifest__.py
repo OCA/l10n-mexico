@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     "name": "CFDI Mexico - Facturación",
     "summary": """
@@ -7,7 +6,7 @@
         Allow generating CFDI (Comprobante Fiscal Digital por Internet) for Mexico.
     """,
     "author": "Alexis López Zubieta <alexis.lopez@augetec.com> (Auge TEC)",
-    "website": "https://www.augecrm.com",
+    "website": "https://github.com/OCA/l10n-mexico",
     "license": "LGPL-3",
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml

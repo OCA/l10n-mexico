@@ -179,7 +179,7 @@ class AccountPayment(models.Model):
             return payment_taxes
 
         # compute taxes base (amount_paid = rate * base) so ( base = amount_paid / rate )
-        total_rate = sum([float(tax["Rate"] + 1) for tax in total_taxes])
+        total_rate = sum(float(tax["Rate"] + 1) for tax in total_taxes)
         base = amount_paid / total_rate
         for tax in total_taxes:
             payment_taxes.append(

@@ -2,7 +2,7 @@ import base64
 import io
 import zipfile
 
-from odoo import models, fields, api
+from odoo import api, fields, models
 
 
 class DownloadCFDIFilesWizard(models.TransientModel):

@@ -7,31 +7,28 @@
                 <group>
                     <field name="certificate_ids" readonly="True">
                         <tree>
-                            <field name="name" string="Folio"/>
-                            <field name="type"/>
-                            <field name="uuid"/>
-                            <field name="state" widget="badge"/>
+                            <field name="name" string="Folio" />
+                            <field name="type" />
+                            <field name="uuid" />
+                            <field name="state" widget="badge" />
                         </tree>
                     </field>
-                    <field name="cancel_reason_id"/>
-                    <field name="requires_replacement" invisible="1"/>
-                    <field name="replacement_certificate_id"
-                           attrs="{
+                    <field name="cancel_reason_id" />
+                    <field name="requires_replacement" invisible="1" />
+                    <field
+                        name="replacement_certificate_id"
+                        attrs="{
                             'invisible':[('requires_replacement', '=', False)],
                             'required':[('requires_replacement', '=', True)],
-                           }"/>
+                           }"
+                    />
                 </group>
                 <footer>
-                    <label for="simulate_operation"
-                           string="Simular operación"/>
-                    <field name="simulate_operation"/>
+                    <label for="simulate_operation" string="Simular operación" />
+                    <field name="simulate_operation" />
 
-                    <button type="object"
-                            name="cancel_certificate"
-                            string="Aceptar"/>
-                    <button special="cancel"
-                            string="Cancelar"
-                            class="btn-secondary"/>
+                    <button type="object" name="cancel_certificate" string="Aceptar" />
+                    <button special="cancel" string="Cancelar" class="btn-secondary" />
 
                 </footer>
             </form>

@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from odoo import models
 
 
@@ -7,7 +5,7 @@ class MailTemplate(models.Model):
     _inherit = "mail.template"
 
     def generate_email(self, res_ids, fields):
-        """ Override to add the CFDI attachment to the email. """
+        """Override to add the CFDI attachment to the email."""
 
         res = super().generate_email(res_ids, fields)
 

@@ -1,4 +1,4 @@
-from odoo import models, api, fields
+from odoo import api, fields, models
 
 
 class CFDISeries(models.Model):

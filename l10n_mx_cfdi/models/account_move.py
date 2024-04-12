@@ -1,12 +1,11 @@
 import base64
 from datetime import datetime, timedelta
 
-import pytz
 from lxml import etree
 
-from odoo import models, fields, api, _
-from odoo.exceptions import ValidationError, UserError
-from odoo.tools import json_float_round, float_round, float_is_zero
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError, ValidationError
+from odoo.tools import float_is_zero, float_round, json_float_round
 
 
 class AccountMove(models.Model):
@@ -339,7 +338,7 @@ class AccountMove(models.Model):
 
     @api.model
     def _gather_invoice_cfdi_item_taxes_data(self, line, discount):
-        """ Gather the taxes data for a CFDI item. """
+        """Gather the taxes data for a CFDI item."""
 
         price_unit_wo_discount = line.price_unit - discount
 

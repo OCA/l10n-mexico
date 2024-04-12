@@ -1,11 +1,11 @@
-from odoo import models, fields
+from odoo import models
 
 
 class AccountPartialReconcile(models.Model):
     _inherit = "account.partial.reconcile"
 
     def create(self, vals_list):
-        """ Create Payments and Credit Note CFDI if required """
+        """Create Payments and Credit Note CFDI if required"""
 
         res = super().create(vals_list)
 
@@ -45,7 +45,7 @@ class AccountPartialReconcile(models.Model):
         return res
 
     def unlink(self):
-        """ Cancel related Payments CFDI if any """
+        """Cancel related Payments CFDI if any"""
 
         move_line_ids = self.debit_move_id | self.credit_move_id
         res = super().unlink()

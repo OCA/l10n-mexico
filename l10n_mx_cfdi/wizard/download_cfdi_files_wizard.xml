@@ -9,23 +9,35 @@
                     <h4>CFDIs Encontrados</h4>
                     <field name="cfdi_document_ids" readonly="True">
                         <tree>
-                            <field name="name" string="Factura"/>
-                            <field name="pdf_file" widget="file" filename="pdf_filename"/>
-                            <field name="pdf_filename" invisible='1'/>
-                            <field name="xml_file" widget="file" filename="xml_filename"/>
-                            <field name="xml_filename" invisible='1'/>
+                            <field name="name" string="Factura" />
+                            <field
+                                name="pdf_file"
+                                widget="file"
+                                filename="pdf_filename"
+                            />
+                            <field name="pdf_filename" invisible='1' />
+                            <field
+                                name="xml_file"
+                                widget="file"
+                                filename="xml_filename"
+                            />
+                            <field name="xml_filename" invisible='1' />
                         </tree>
-                        <field name="zip_file"/>
+                        <field name="zip_file" />
                     </field>
 
                     <footer>
-                        <button type="object"
-                                name="action_download_zip"
-                                string="Descargar"
-                                class="btn-primary"/>
-                        <button special="cancel"
-                                string="Cancelar"
-                                class="btn-secondary"/>
+                        <button
+                            type="object"
+                            name="action_download_zip"
+                            string="Descargar"
+                            class="btn-primary"
+                        />
+                        <button
+                            special="cancel"
+                            string="Cancelar"
+                            class="btn-secondary"
+                        />
                     </footer>
                 </form>
             </field>
@@ -36,7 +48,7 @@
             <field name="res_model">l10n_mx_cfdi.download_cfdi_files_wizard</field>
             <field name="view_mode">form</field>
             <field name="target">new</field>
-            <field name="binding_model_id" ref="model_account_move"/>
+            <field name="binding_model_id" ref="model_account_move" />
             <field name="binding_view_types">list</field>
         </record>
     </data>

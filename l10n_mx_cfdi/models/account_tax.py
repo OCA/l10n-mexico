@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models
 from odoo.exceptions import UserError
 
 

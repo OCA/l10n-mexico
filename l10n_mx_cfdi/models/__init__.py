@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # model extensions
 from . import partner
 from . import product

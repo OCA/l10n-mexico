@@ -1,3 +1,8 @@
 <odoo>
-    <menuitem id="cfdi_menu" name="CFDI" parent="account.menu_finance_configuration" groups="base.group_user"/>
+    <menuitem
+        id="cfdi_menu"
+        name="CFDI"
+        parent="account.menu_finance_configuration"
+        groups="base.group_user"
+    />
 </odoo>
