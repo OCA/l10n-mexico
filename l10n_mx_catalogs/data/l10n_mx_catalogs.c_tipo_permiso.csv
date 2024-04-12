@@ -1,0 +1,27 @@
+id,code,description,clave_transporte
+c_tipo_perm_TPAF01,TPAF01,Autotransporte Federal de carga general.,1
+c_tipo_perm_TPAF02,TPAF02,Transporte privado de carga.,1
+c_tipo_perm_TPAF03,TPAF03,Autotransporte Federal de Carga Especializada de materiales y residuos peligrosos.,1
+c_tipo_perm_TPAF04,TPAF04,Transporte de automóviles sin rodar en vehículo tipo góndola.,1
+c_tipo_perm_TPAF05,TPAF05,Transporte de carga de gran peso y/o volumen de hasta 90 toneladas.,1
+c_tipo_perm_TPAF06,TPAF06,Transporte de carga especializada de gran peso y/o volumen de más 90 toneladas.,1
+c_tipo_perm_TPAF07,TPAF07,Transporte Privado de materiales y residuos peligrosos.,1
+c_tipo_perm_TPAF08,TPAF08,Autotransporte internacional de carga de largo recorrido.,1
+c_tipo_perm_TPAF09,TPAF09,Autotransporte internacional de carga especializada de materiales y residuos peligrosos de largo recorrido.,1
+c_tipo_perm_TPAF10,TPAF10,Autotransporte Federal de Carga General cuyo ámbito de aplicación comprende la franja fronteriza con Estados Unidos.,1
+c_tipo_perm_TPAF11,TPAF11,Autotransporte Federal de Carga Especializada cuyo ámbito de aplicación comprende la franja fronteriza con Estados Unidos.,1
+c_tipo_perm_TPAF12,TPAF12,Servicio auxiliar de arrastre en las vías generales de comunicación.,1
+c_tipo_perm_TPAF13,TPAF13,"Servicio auxiliar de servicios de arrastre, arrastre y salvamento, y depósito de vehículos en las vías generales de comunicación.",1
+c_tipo_perm_TPAF14,TPAF14,Servicio de paquetería y mensajería en las vías generales de comunicación.,1
+c_tipo_perm_TPAF15,TPAF15,Transporte especial para el tránsito de grúas industriales con peso máximo de 90 toneladas.,1
+c_tipo_perm_TPAF16,TPAF16,Servicio federal para empresas arrendadoras servicio público federal.,1
+c_tipo_perm_TPAF17,TPAF17,Empresas trasladistas de vehículos nuevos.,1
+c_tipo_perm_TPAF18,TPAF18,Empresas fabricantes o distribuidoras de vehículos nuevos.,1
+c_tipo_perm_TPAF19,TPAF19,Autorización expresa para circular en los caminos y puentes de jurisdicción federal con configuraciones de tractocamión doblemente articulado.,1
+c_tipo_perm_TPAF20,TPAF20,Autotransporte Federal de Carga Especializada de fondos y valores.,1
+c_tipo_perm_TPTM01,TPTM01,Permiso temporal para navegación de cabotaje,2
+c_tipo_perm_TPTA01,TPTA01,Concesión y/o autorización para el servicio regular nacional y/o internacional para empresas mexicanas,3
+c_tipo_perm_TPTA02,TPTA02,Permiso para el servicio aéreo regular de empresas extranjeras,3
+c_tipo_perm_TPTA03,TPTA03,Permiso para el servicio nacional e internacional no regular de fletamento,3
+c_tipo_perm_TPTA04,TPTA04,Permiso para el servicio nacional e internacional no regular de taxi aéreo,3
+c_tipo_perm_TPXX00,TPXX00,Permiso no contemplado en el catálogo.,"01,02,03"
