@@ -6,6 +6,6 @@ class TipoPermiso(models.Model):
     _description = "Catálogo Tipo de Permiso"
     _rec_name = "description"
 
-    code = fields.Char(string="Código", required=True)
-    description = fields.Char(string="Descripción", required=True)
-    clave_transporte = fields.Char(string="Clave Transporte", required=True)
+    code = fields.Char(required=True)
+    description = fields.Char(required=True)
+    clave_transporte = fields.Char(required=True)

@@ -154,12 +154,12 @@ class CatalogImporter:
 
                 row[field] = value
 
-        id = self.catalog_name
+        name = self.catalog_name
         for key in self.key_fields:
             field_name = self.row_mapping[key]
-            id += "_%s" % row[field_name]
+            name += "_%s" % row[field_name]
 
-        row["id"] = id
+        row["id"] = name
         return row
 
     def write_to_csv(self, rows_input):
