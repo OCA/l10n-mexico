@@ -1,0 +1,23 @@
+id,code,name
+c_forma_pago_01,01,Efectivo
+c_forma_pago_02,02,Cheque nominativo
+c_forma_pago_03,03,Transferencia electrónica de fondos
+c_forma_pago_04,04,Tarjeta de crédito
+c_forma_pago_05,05,Monedero electrónico
+c_forma_pago_06,06,Dinero electrónico
+c_forma_pago_08,08,Vales de despensa
+c_forma_pago_12,12,Dación en pago
+c_forma_pago_13,13,Pago por subrogación
+c_forma_pago_14,14,Pago por consignación
+c_forma_pago_15,15,Condonación
+c_forma_pago_17,17,Compensación
+c_forma_pago_23,23,Novación
+c_forma_pago_24,24,Confusión
+c_forma_pago_25,25,Remisión de deuda
+c_forma_pago_26,26,Prescripción o caducidad
+c_forma_pago_27,27,A satisfacción del acreedor
+c_forma_pago_28,28,Tarjeta de débito
+c_forma_pago_29,29,Tarjeta de servicios
+c_forma_pago_30,30,Aplicación de anticipos
+c_forma_pago_31,31,Intermediario pagos
+c_forma_pago_99,99,Por definir
