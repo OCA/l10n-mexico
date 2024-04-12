@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     "name": "Catálogos SAT para localización mexicana",
     "summary": """
@@ -8,7 +7,7 @@
         Catálogos del SAT
     """,
     "author": "Alexis López Zubieta <alexis.lopez@augetec.com> (Auge TEC)",
-    "website": "http://www.augetec.com",
+    "website": "https://github.com/OCA/l10n-mexico",
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list

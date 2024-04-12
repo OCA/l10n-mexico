@@ -1076,7 +1076,7 @@ c_clave_unidad_H75,H75,Decapascal,,daPa
 c_clave_unidad_H76,H76,Gramo por milímetro,,g/mm
 c_clave_unidad_H77,H77,Anchura del módulo,Unidad de medida utilizada para describir la anchura de los conjuntos electrónicos como una norma de instalación o una dimensión de montaje.,MW
 c_clave_unidad_H78,H78,Centímetro convencional de agua,,Cm H $ ₂ $ O
-c_clave_unidad_H79,H79,Escala francesa ,"Unidad de longitud usada para la medición de los diámetros de pequeños tubos como instrumentos urológicos y catéteres.                                                       
+c_clave_unidad_H79,H79,Escala francesa ,"Unidad de longitud usada para la medición de los diámetros de pequeños tubos como instrumentos urológicos y catéteres.
 Sinónimos: Francés, Charrière, Charrière gauge.",Fg
 c_clave_unidad_H80,H80,Unidad de bastidor,"Unidad de medida utilizada para describir la altura en unidades de bastidor del equipo destinado a ser montado en un bastidor de 19 pulgadas o un bastidor de 23 pulgadas. Unidad de bastidor tiene 1,45 pulgadas (44,45 mm) de alto.",U or RU
 c_clave_unidad_H81,H81,Milímetro por minuto,,mm/min
@@ -1534,11 +1534,11 @@ c_clave_unidad_M45,M45,Grado por segundo cuadrado,360 partes de un círculo comp
 c_clave_unidad_M46,M46,Revolución por minuto,,r/min
 c_clave_unidad_M47,M47,Circular Mil,Unidad que representa el área del círculo de un mil de diámetro.,cmil
 c_clave_unidad_M48,M48,Milla cuadrada (basado en u.s survey foot),Unidad de área que es principalmente usada en la agricultura y en la forestación.,mi² (US survey)
-c_clave_unidad_M49,M49,Cadena ," Es una unidad de longitud utilizada para medir terrenos. Equivale a 20,1168 metros, y en inglés se llama surveyor chain.",ch (US survey) 
+c_clave_unidad_M49,M49,Cadena ," Es una unidad de longitud utilizada para medir terrenos. Equivale a 20,1168 metros, y en inglés se llama surveyor chain.",ch (US survey)
 c_clave_unidad_M5,M5,Microcurie,,µCi
 c_clave_unidad_M50,M50,Estadio,Unidad comunmente usada en Gran Bretaña en distancias rurales: 1 furlong = 40 rods = 10 cadenas (UK) =1/8 de milla = 1/10 furlong = 220 yardas =660 pies.,fur
-c_clave_unidad_M51,M51,Pie (Topografía UEA),Unidad comunmente usada en los estados unidos para la inspección de artillería.,ft (US survey) 
-c_clave_unidad_M52,M52,Milla,Unidad comunmente usada en los Estados Unidos para la inspección de artillería.,mi (US survey) 
+c_clave_unidad_M51,M51,Pie (Topografía UEA),Unidad comunmente usada en los estados unidos para la inspección de artillería.,ft (US survey)
+c_clave_unidad_M52,M52,Milla,Unidad comunmente usada en los Estados Unidos para la inspección de artillería.,mi (US survey)
 c_clave_unidad_M53,M53,Metro por pascal,"Metro, unidad del Sistema Internacional dividido por Pascal, Unidad del Sistema Internacional",m/Pa
 c_clave_unidad_M55,M55,Metro por radián,Unidad del factor de conversión para la implementación de rotación a movimiento lineal.,m/rad
 c_clave_unidad_M56,M56,Shake ,Unidad para un periódo muy corto.,shake
@@ -1672,7 +1672,7 @@ c_clave_unidad_N48,N48,Watt por centímetro cuadrado,"Unidad derivada del sistem
 c_clave_unidad_N49,N49,Watt por pulgada cuadrada,"Unidad derivada del sistema internacional, watt, dividido por la potencia de la unidad pulgada al exponente 2, de acuerdo al sistema de unidades Anglo-Americano y el sistema imperial de unidades.",W/in²
 c_clave_unidad_N50,N50,Unidad térmica británica (tabla internacional) por pie cuadrado hora.,Unidad del flujo superficial de calor según el sistema Imperial de unidades.,BtuIT/(ft²·h)
 c_clave_unidad_N51,N51,Unidad térmica británica (termoquímica) por pie cuadrado hora.,Unidad del flujo superficial de calor según el sistema Imperial de unidades.,Btuth/(ft²·h)
-c_clave_unidad_N52,N52,Unidad térmica británica (termoquímico) por pie cuadrado minuto.,Unidad del flujo superficial de calor según el sistema Imperial de unidades.,Btuth/(ft²·min) 
+c_clave_unidad_N52,N52,Unidad térmica británica (termoquímico) por pie cuadrado minuto.,Unidad del flujo superficial de calor según el sistema Imperial de unidades.,Btuth/(ft²·min)
 c_clave_unidad_N53,N53,Unidad térmica británica (tabla internacional) por pie cuadrado segundo.,Unidad del flujo superficial de calor según el sistema Imperial de unidades.,BtuIT/(ft²·s)
 c_clave_unidad_N54,N54,Unidad térmica británica (termoquímica) por pie cuadrado segundo.,Unidad del flujo superficial de calor según el sistema Imperial de unidades.,Btuth/(ft²·s)
 c_clave_unidad_N55,N55,Unidad térmica británica (tabla internacional) por pulgada cuadrada segundo.,Unidad del flujo superficial de calor según el sistema Imperial de unidades.,BtuIT/(in²·s)
@@ -1686,9 +1686,9 @@ c_clave_unidad_N62,N62,Unidad térmica británica (tabla internacional) por grad
 c_clave_unidad_N63,N63,Unidad térmica británica (termoquímico) por grado rankine,Unidad de la capacidad calorífica según el sistema Imperial de unidades.,Btuth/ºR
 c_clave_unidad_N64,N64,Unidad térmica británica (termoquímico) por libra grado rankine,Unidad de la capacidad calorífica (unidad térmica británica según la tabla internacional según el grado de Rankine) de acuerdo con el sistema Imperial de unidades dividido por la unidad avoirdupois libra según el sistema de avoirdupois de unidades.,(Btuth/°R)/lb
 c_clave_unidad_N65,N65,Kilocaloría (tabla internacional) por gramo kelvin,"Unidad de la capacidad calorífica relacionada con la masa como cociente 1000 veces de la caloría (tabla internacional) dividido por el producto de 0,001 veces de las unidades de base kilogramo y kelvin.",(kcalIT/K)/g
-c_clave_unidad_N66,N66,Unidad térmica británica (39 °f),Unidad de energía térmica según el sistema Imperial de unidades en una temperatura de referencia de 39 ° F.,Btu (39 ºF) 
+c_clave_unidad_N66,N66,Unidad térmica británica (39 °f),Unidad de energía térmica según el sistema Imperial de unidades en una temperatura de referencia de 39 ° F.,Btu (39 ºF)
 c_clave_unidad_N67,N67,Unidad térmica británica (59 °f),Unidad de energía térmica según el sistema Imperial de unidades en una temperatura de referencia de 59 ° F.,Btu (59 ºF)
-c_clave_unidad_N68,N68,Unidad térmica británica (60 °f),Unidad de energía térmica según el sistema Imperial de unidades en una temperatura de referencia de 60 ° F.,Btu (60 ºF) 
+c_clave_unidad_N68,N68,Unidad térmica británica (60 °f),Unidad de energía térmica según el sistema Imperial de unidades en una temperatura de referencia de 60 ° F.,Btu (60 ºF)
 c_clave_unidad_N69,N69,Caloría (20 °c),"Unidad para la cantidad de calor, que se requiere para que 1g de agua libre de aire a una presión constante de 101.325 kPa, se caliente a la presión de la atmósfera estándar a nivel del mar, de 19,5 ° C a 20,5 ° C.",cal₂₀
 c_clave_unidad_N70,N70,Quad,Unidad de energía de acuerdo al sistema imperial de unidades,quad
 c_clave_unidad_N71,N71,Termia (energía comercial),"Unidad de energía calorífica en uso comercial, dentro de Estados Unidos definida como: 1 thm (EC) = 100 000 BtuIT.",thm (EC)
@@ -1697,7 +1697,7 @@ c_clave_unidad_N73,N73,Unidad térmica británica (termoquímica) por libra,Unid
 c_clave_unidad_N74,N74,Unidad térmica británica (tabla internacional) por hora pie cuadrado grado fahrenheit.,Unidad del coeficiente de transición térmica según el sistema Imperial de unidades.,BtuIT/(h·ft²·ºF)
 c_clave_unidad_N75,N75,Unidad térmica británica (termoquímico) por hora pie cuadrado grado farenheit.,Unidad del coeficiente de transición térmica según el sistema imperial de unidades.,Btuth/(h·ft²·ºF)
 c_clave_unidad_N76,N76,Unidad térmica británica (tabla internacional) por segundo pie cuadrado grado fahrenheit.,Unidad del coeficiente de transición térmica según el sistema imperial de unidades.,BtuIT/(s·ft²·ºF)
-c_clave_unidad_N77,N77,Unidad térmica británica (termoquímico) por segundo pie cuadrado grado fahrenheit.,Unidad del coeficiente de transición térmica según el sistema imperial de unidades.,Btuth/(s·ft²·ºF) 
+c_clave_unidad_N77,N77,Unidad térmica británica (termoquímico) por segundo pie cuadrado grado fahrenheit.,Unidad del coeficiente de transición térmica según el sistema imperial de unidades.,Btuth/(s·ft²·ºF)
 c_clave_unidad_N78,N78,Kilowatt por metro cuadrado kelvin,"1000 veces la unidad derivada watt, dividida por el producto de la potencia de unidad base, metro, por el exponente 2 y la unidad base, kelvin, del sistema internacional de unidades.",kW/(m²·K)
 c_clave_unidad_N79,N79,Kelvin por pascal,"Unidad base del sistema internacional kelvin, dividido entre pascal, unidad base del sistema internacional",K/Pa
 c_clave_unidad_N80,N80,Watt por metro grado celsius,"Unidad derivada del sistema internacional, watt, dividido por el producto de la unidad base, metro, y la unidad de temperatura grados Celsius.",W/(m·°C)
@@ -1777,7 +1777,7 @@ c_clave_unidad_P2,P2,Libra por pie,,lb/ft
 c_clave_unidad_P20,P20,Kilojoule por hora,"Cociente entre 1000 veces de la unida derivada, joule, dividido por la unidad hora.",kJ/h
 c_clave_unidad_P21,P21,Kilojoule por día,"Cociente entre 1000 veces de la unida derivada, joule, dividido por la unidad día",kJ/d
 c_clave_unidad_P22,P22,NanoOhm,0.000 000 001 veces de la unidad derivada Ohm.,nΩ
-c_clave_unidad_P23,P23,Ohm circular-mil por pie,Unidad de resistividad.,Ω·cmil/ft 
+c_clave_unidad_P23,P23,Ohm circular-mil por pie,Unidad de resistividad.,Ω·cmil/ft
 c_clave_unidad_P24,P24,Kilohenry,"1000 veces la unidad derivada, henry del sistema internacional.",kH
 c_clave_unidad_P25,P25,Lumen por pie cuadrado,"Unidad derivada, lumen dividido por la potencia de la unidad pie, al exponente 2, de acuerdo con el sistema anglo-americano y el sistema imperial.",lm/ft²
 c_clave_unidad_P26,P26,Foto,"es una unidad de iluminancia  o flujo luminoso a través de un área. No es una unidad del sistema internacional, sino que se asocia con el antiguo segundo sistema centímetro gramo de unidades .",ph
@@ -1807,13 +1807,13 @@ c_clave_unidad_P46,P46,Libra Mol por minuto,"No forma parte del sistema internac
 Unidad de flujo del flujo molar que se refiere a que una libra mol de una composición química el mismo número de libras corresponde como el peso molcular de una molécula de esta composición en la masa atómica de unidades.",lbmol/h
 c_clave_unidad_P47,P47,KiloMol por kilogramo,1000 veces la división de la unidad base mol por la base de la unidad kilogramo.,kmol/kg
 c_clave_unidad_P48,P48,Libra de Mol por libra,Unidad del flujo molar material dividido por la libra avoirdupois para la masa de acuerdo con el sistema de unidades avoirdupois no SI-conforme.,lbmol/lb
-c_clave_unidad_P49,P49,Newton metro cuadrado por amperio,"Producto de la division de la unidad Newton y la unidad base metro 
+c_clave_unidad_P49,P49,Newton metro cuadrado por amperio,"Producto de la division de la unidad Newton y la unidad base metro
 Producto de la unidad derivada newton y la potencia del medidor de la unidad base con el exponente 2 dividido por el amperio de la unidad base.",N·m²/A
 c_clave_unidad_P5,P5,Paquete de cinco,Unidad de conteo que define el número de paquetes-cinco (paquete-cinco: set de cinco artículos empaquetados siempre),
 c_clave_unidad_P50,P50,Metro weber,Producto de la división entre  la unidad Weber y la unidad Metro.,Wb·m
 c_clave_unidad_P51,P51,Mol por kilogramo pascal ,Unidad base mol dividido por el producto de la unidad base SI kilogramo y la unidad derivada pascal SI. ,(mol/kg)/Pa
 c_clave_unidad_P52,P52,Mol por metro cúbico pascal,unidad base mol dividido por el producto de la potencia de la unidad base SI metros con exponente 3 y la unidad derivada pascal SI.,(mol/m³)/Pa
-c_clave_unidad_P53,P53,Unit por segundo,Sistema CGS (Centímetro-Gram-Segundo sistema) para el flujo magnético de un polo magnético (según la interacción de polos idénticos de 1 din a una distancia de un cm).,unit pole 
+c_clave_unidad_P53,P53,Unit por segundo,Sistema CGS (Centímetro-Gram-Segundo sistema) para el flujo magnético de un polo magnético (según la interacción de polos idénticos de 1 din a una distancia de un cm).,unit pole
 c_clave_unidad_P54,P54,MiliGray por segundo,0.0001 veces de la unidad derivada Gray dividido por la unidad de base segundos.,mGy/s
 c_clave_unidad_P55,P55,MicroGray por segundo,0.000 001 veces de la unidad derivada Gray dividido por la unidad de base segundos.,µGy/s
 c_clave_unidad_P56,P56,NanoGray por segundo,0.000 000 001 veces de la unidad derivada Gray dividido por la unidad de base segundos.,nGy/s
@@ -1855,8 +1855,8 @@ c_clave_unidad_P88,P88,Rhe,Unidad no conforme a SI de fluidez de viscosidad din�
 c_clave_unidad_P89,P89,Libra por metro cúbico de pulgada,Unidad para el momento de rotación relacionado con la longitud según el sistema de unidades Anglo-Americanas e Imperial.,lbf·ft/in
 c_clave_unidad_P9,P9,Nueve paquetes,,
 c_clave_unidad_P90,P90,Libra-fuerza por pulgada cuadrada,Unidad para el momento de rotación relacionado con la longitud según el sistema de unidades Anglo-Americanas e Imperial.,lbf·in/in
-c_clave_unidad_P91,P91,Permanente (0°c),"Unidad tradicional para la capacidad de un material para permitir la transición del vapor, definida a una temperatura de 0°C como transmitancia del vapor en la cual la masa de un grano de vapor penetra en un área de un pie cuadrado a una presión de mercurio de una pulgada por hora.",perm (0 ºC) 
-c_clave_unidad_P92,P92,Permanente (23°c),"Unidad tradicional para la capacidad de un material para permitir la transición del vapor, definida a una temperatura de 23°C como transmitancia del vapor en la cual la masa de un grano de vapor penetra en un área de un pie cuadrado a una presión de mercurio de una pulgada por hora.",perm (23 ºC) 
+c_clave_unidad_P91,P91,Permanente (0°c),"Unidad tradicional para la capacidad de un material para permitir la transición del vapor, definida a una temperatura de 0°C como transmitancia del vapor en la cual la masa de un grano de vapor penetra en un área de un pie cuadrado a una presión de mercurio de una pulgada por hora.",perm (0 ºC)
+c_clave_unidad_P92,P92,Permanente (23°c),"Unidad tradicional para la capacidad de un material para permitir la transición del vapor, definida a una temperatura de 23°C como transmitancia del vapor en la cual la masa de un grano de vapor penetra en un área de un pie cuadrado a una presión de mercurio de una pulgada por hora.",perm (23 ºC)
 c_clave_unidad_P93,P93,Byte por segundo,"Son utilizados para expresar la velocidad de transmisión de datos o bit rate. Con frecuencia se usa en forma ambigua como bps, que para el SI significaría ""bits por segundos""",byte/s
 c_clave_unidad_P94,P94,Kilobyte por segundo,1000-veces la unidad de byte dividida por la unidad de base SI en segundo lugar.,kbyte/s
 c_clave_unidad_P95,P95,Megabite por segundo,1 000 000 veces de la unidad de byte dividida por la unidad base SI segunda,Mbyte/s
