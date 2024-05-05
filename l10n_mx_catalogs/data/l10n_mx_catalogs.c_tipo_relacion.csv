@@ -1,0 +1,8 @@
+id,code,description
+c_tipo_relacion_1,01,Nota de crédito de los documentos relacionados
+c_tipo_relacion_2,02,Nota de débito de los documentos relacionados
+c_tipo_relacion_3,03,Devolución de mercancía sobre facturas o traslados previos
+c_tipo_relacion_4,04,Sustitución de los CFDI previos
+c_tipo_relacion_5,05,Traslados de mercancías facturados previamente
+c_tipo_relacion_6,06,Factura generada por los traslados previos
+c_tipo_relacion_7,07,CFDI por aplicación de anticipo
