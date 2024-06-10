@@ -1,5 +1,5 @@
 {
-    "name": "CFDI Mexico - Facturación",
+    "name": "Mexico - Electronic Invoicing",
     "icon": "/l10n_mx/static/description/icon.png",
     "summary": "Allow generating CFDI (Comprobante Fiscal Digital por Internet) for Mexico.",
     "author": "Alexis López Zubieta <alexis.lopez@augetec.com> (Auge TEC), "
@@ -15,9 +15,7 @@
     "data": [
         "security/ir.model.access.csv",
         "security/l10n_mx_cfdi_security.xml",
-        # references l10n_mx_cfdi.regimen_fiscal therefore must be loaded after it
         "data/cfdi_publico_en_general.xml",
-        # references l10n_mx_cfdi.regimen_fiscal therefore must be loaded after it
         "data/paper_format.xml",
         "views/account_move.xml",
         "views/res_partner.xml",
