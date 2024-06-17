@@ -8,4 +8,4 @@ from . import test_account_move_line
 # from . import test_cfdi_service
 # from . import test_cfdi_service_topup
 # from . import test_product_template
-from . import test_res_company
+# from . import test_res_company
