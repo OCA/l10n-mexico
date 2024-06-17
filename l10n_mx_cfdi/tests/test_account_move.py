@@ -3,8 +3,8 @@
 
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 
+
 class TestAccountMove(AccountTestInvoicingCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-

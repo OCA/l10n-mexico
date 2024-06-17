@@ -1,16 +1,20 @@
-from odoo.tests.common import TransactionCase
-from odoo.exceptions import UserError
 from base64 import b64encode
+
+from odoo.exceptions import UserError
+from odoo.tests.common import TransactionCase
+
 
 class TestCFDIService(TransactionCase):
     def setUp(self):
         super(TestCFDIService, self).setUp()
-        self.cfdi_service = self.env["l10n_mx_cfdi.cfdi_service"].create({
-            "name": "Test Service",
-            "user": "test_user",
-            "password": "test_password",
-            "sandbox_mode": True,
-        })
+        self.cfdi_service = self.env["l10n_mx_cfdi.cfdi_service"].create(
+            {
+                "name": "Test Service",
+                "user": "test_user",
+                "password": "test_password",
+                "sandbox_mode": True,
+            }
+        )
 
     def test_register_csd(self):
         # Test registering CSD
@@ -44,7 +48,9 @@ class TestCFDIService(TransactionCase):
 
     def test_check_cfdi_status(self):
         # Test checking CFDI status
-        status = self.cfdi_service.check_cfdi_status("uudi", "issuer_rfc", "receiver_rfc", "amount_total")
+        status = self.cfdi_service.check_cfdi_status(
+            "uudi", "issuer_rfc", "receiver_rfc", "amount_total"
+        )
         self.assertEqual(status, "unknown")
 
     def test_get_cfdi_pdf(self):

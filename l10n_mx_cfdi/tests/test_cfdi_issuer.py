@@ -1,25 +1,31 @@
-from odoo.tests.common import TransactionCase
-from odoo.exceptions import UserError
 from base64 import b64encode
+
+from odoo.exceptions import UserError
+from odoo.tests.common import TransactionCase
+
 
 class TestCFDIIssuer(TransactionCase):
     def setUp(self):
         super(TestCFDIIssuer, self).setUp()
 
-        self.service = self.env["l10n_mx_cfdi.cfdi_service"].create({
-            "name": "Test service",
-            "user": "Test user",
-            "password": "12345",
-        })
+        self.service = self.env["l10n_mx_cfdi.cfdi_service"].create(
+            {
+                "name": "Test service",
+                "user": "Test user",
+                "password": "12345",
+            }
+        )
 
-        self.issuer = self.env["l10n_mx_cfdi.issuer"].create({
-            "name": "Test Issuer",
-            "vat": "RFC123456",
-            "certificate_file": b64encode(b"certificate"),
-            "key_file": b64encode(b"key"),
-            "key_password": "password",
-            "service_id": self.service.id,
-        })
+        self.issuer = self.env["l10n_mx_cfdi.issuer"].create(
+            {
+                "name": "Test Issuer",
+                "vat": "RFC123456",
+                "certificate_file": b64encode(b"certificate"),
+                "key_file": b64encode(b"key"),
+                "key_password": "password",
+                "service_id": self.service.id,
+            }
+        )
 
     def test_default_get_method(self):
         # Test default_get method
