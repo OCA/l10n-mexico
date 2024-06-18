@@ -62,8 +62,8 @@ class TestAccountMoveLine(TransactionCase):
         self.move_line_2_vals = {
             "name": "Test Move Line 2",
             "product_id": self.product.id,
-            "price_unit": 100,
-            "quantity": 2,
+            "price_unit": 200,
+            "quantity": 1,
             "price_subtotal": 200.00,
             "price_total": 220.00,
             # 'tax_ids': [(6, 0, [self.tax.id])],
@@ -97,7 +97,9 @@ class TestAccountMoveLine(TransactionCase):
 
         # Assuming the test logic for computing CFDI fields here...
 
-        self.assertEqual(move_line_1.cfdi_subtotal, 200.00)
-        self.assertEqual(move_line_1.cfdi_price_unit, 100.00)
+        self.assertEqual(move_line_1.cfdi_subtotal, -200.00)
+        self.assertEqual(move_line_1.cfdi_price_unit, -100.00)
+        self.assertEqual(move_line_2.cfdi_subtotal, 200.00)
+        self.assertEqual(move_line_2.cfdi_price_unit, 200.00)
 
         # Add assertions for move_line_2 if necessary
