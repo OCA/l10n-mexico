@@ -160,7 +160,7 @@ class AccountMove(models.Model):
         Override the action_post method to create the CFDI
         """
 
-        res = super(AccountMove, self).action_post()
+        res = super().action_post()
 
         if self.l10n_mx_cfdi_auto:
             # Create the CFDIs if required
@@ -421,7 +421,7 @@ class AccountMove(models.Model):
                         .read()[0]
                     )
 
-        return super(AccountMove, self).button_draft()
+        return super().button_draft()
 
     def create_refund_cfdi(self):
         """
@@ -431,7 +431,7 @@ class AccountMove(models.Model):
             items_data = self.gather_invoice_cfdi_items_data()
 
             receivables = refund.line_ids.filtered(
-                lambda l: l.account_id.user_type_id.type == "receivable"
+                lambda L: L.account_id.user_type_id.type == "receivable"
             )
             partial_reconcile = self.env["account.partial.reconcile"].search(
                 [("debit_move_id", "in", receivables.ids)]
@@ -543,7 +543,7 @@ class AccountMove(models.Model):
             }
         )
 
-        return super(AccountMove, self).copy(default)
+        return super().copy(default)
 
     def _get_name_invoice_report(self):
         self.ensure_one()

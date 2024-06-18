@@ -20,7 +20,7 @@ class AccountPaymentRegister(models.TransientModel):
                 }
             )
 
-        return super(AccountPaymentRegister, self)._init_payments(to_process, edit_mode)
+        return super()._init_payments(to_process, edit_mode)
 
     def _create_payments(self):
         # Prevent partial payments on invoices with cfdi and payment method different of 'PPD'
@@ -36,4 +36,4 @@ class AccountPaymentRegister(models.TransientModel):
                         "invoice with a CFDI and PUE as the payment method."
                     )
                 )
-        return super(AccountPaymentRegister, self)._create_payments()
+        return super()._create_payments()

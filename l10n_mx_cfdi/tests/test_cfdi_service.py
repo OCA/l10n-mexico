@@ -1,12 +1,10 @@
-from base64 import b64encode
-
 from odoo.exceptions import UserError
 from odoo.tests.common import TransactionCase
 
 
 class TestCFDIService(TransactionCase):
     def setUp(self):
-        super(TestCFDIService, self).setUp()
+        super().setUp()
         self.cfdi_service = self.env["l10n_mx_cfdi.cfdi_service"].create(
             {
                 "name": "Test Service",

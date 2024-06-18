@@ -1,4 +1,3 @@
-from odoo.exceptions import UserError
 from odoo.tests import TransactionCase
 
 
@@ -28,7 +27,7 @@ class TestAccountMoveLine(TransactionCase):
                 "amount": 10,
                 "amount_type": "percent",
                 "type_tax_use": "sale",
-                "country_id": self.env.ref("base.mx").id
+                "country_id": self.env.ref("base.mx").id,
                 # Add other required fields here
             }
         )

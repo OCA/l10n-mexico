@@ -13,4 +13,4 @@ class CFDISeries(models.Model):
     def create(self, vals):
         if not vals.get("implementation"):
             vals["implementation"] = "no_gap"
-        return super(CFDISeries, self).create(vals)
+        return super().create(vals)

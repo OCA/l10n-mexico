@@ -56,7 +56,7 @@ class CFDIIssuer(models.Model):
     @api.model
     def default_get(self, fields_list):
         # set country to Mexico
-        res = super(CFDIIssuer, self).default_get(fields_list)
+        res = super().default_get(fields_list)
         res["country_id"] = self.env.ref("base.mx").id
 
         return res

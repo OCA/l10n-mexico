@@ -6,7 +6,7 @@ from odoo.tests.common import TransactionCase
 
 class TestCFDIIssuer(TransactionCase):
     def setUp(self):
-        super(TestCFDIIssuer, self).setUp()
+        super().setUp()
 
         self.service = self.env["l10n_mx_cfdi.cfdi_service"].create(
             {

@@ -428,9 +428,11 @@ class Document(models.Model):
 
         if "Issuer" not in cfdi_data:
             cfdi_data["Issuer"] = {
-                "Name": self.issuer_id.fiscal_name
-                if hasattr(self.issuer_id, "fiscal_name")
-                else self.issuer_id.name,
+                "Name": (
+                    self.issuer_id.fiscal_name
+                    if hasattr(self.issuer_id, "fiscal_name")
+                    else self.issuer_id.name
+                ),
                 "Rfc": self.issuer_id.vat,
                 "FiscalRegime": self.issuer_id.tax_regime.code,
             }
