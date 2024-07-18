@@ -1,0 +1,8 @@
+<odoo>
+
+    <record id="base.paperformat_euro" model="report.paperformat">
+        <field name="margin_top">60</field>
+        <field name="header_spacing">55</field>
+    </record>
+
+</odoo>

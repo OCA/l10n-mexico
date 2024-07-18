@@ -1,0 +1,163 @@
+<odoo>
+
+    <record id="view_l10n_mx_cfdi_document_search" model="ir.ui.view">
+        <field name="name">Documentos CFDI</field>
+        <field name="model">l10n_mx_cfdi.document</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="state" />
+                <field name="type" />
+                <field name="receiver_id" />
+
+                <filter
+                    name="filter_published"
+                    string="Publicados"
+                    domain="[('state','=','published')]"
+                />
+                <filter
+                    name="filter_canceled"
+                    string="Cancelados"
+                    domain="[('state','=','canceled')]"
+                />
+                <separator />
+                <filter
+                    name="filter_invoices"
+                    string="Ingreso"
+                    domain="[('type','=','I')]"
+                />
+                <filter
+                    name="filter_payments"
+                    string="Comprobante de Pago"
+                    domain="[('type','=','P')]"
+                />
+                <filter
+                    name="filter_credit_note"
+                    string="Nota de Crédito"
+                    domain="[('type','=','E')]"
+                />
+                <separator />
+                <group expand="0" string="Group By">
+                    <filter
+                        string="Receptor"
+                        name="receiver_id"
+                        context="{'group_by': 'receiver_id'}"
+                    />
+                    <filter string="Tipo" name="type" context="{'group_by': 'type'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_l10n_mx_cfdi_document_tree" model="ir.ui.view">
+        <field name="name">Documentos CFDI</field>
+        <field name="model">l10n_mx_cfdi.document</field>
+        <field name="arch" type="xml">
+            <tree create="false" delete="false">
+                <field name="name" string="Folio" />
+                <field name="type" />
+                <field name="create_date" string="Fecha" />
+                <field name="receiver_id" />
+                <field name="uuid" />
+                <field name="state" widget="badge" />
+                <field name="pdf_file" widget="file" filename="pdf_filename" />
+                <field name="pdf_filename" invisible='1' />
+                <field name="xml_file" widget="file" filename="xml_filename" />
+                <field name="xml_filename" invisible='1' />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_l10n_mx_cfdi_document_form" model="ir.ui.view">
+        <field name="name">Documentos CFDI</field>
+        <field name="model">l10n_mx_cfdi.document</field>
+        <field name="arch" type="xml">
+            <form create="false" edit="false" delete="false">
+
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" string="Folio" />
+                            <field name="type" />
+                            <label for="state" />
+                            <div>
+                                <field name="state" widget="badge" />
+                            </div>
+
+                            <field name="issuer_id" />
+                            <field name="receiver_id" />
+                        </group>
+                        <group>
+                            <field name="create_date" />
+                            <field name="uuid" />
+                            <field name="files_in_cache" invisible="1" />
+                            <field
+                                name="pdf_file"
+                                widget="file"
+                                filename="pdf_filename"
+                            />
+                            <field name="pdf_filename" invisible='1' />
+                            <field
+                                name="xml_file"
+                                widget="file"
+                                filename="xml_filename"
+                            />
+                            <field name="xml_filename" invisible='1' />
+
+                            <label
+                                for="cancellation_request_proof_file"
+                                class="col-form-label"
+                            >
+                                Acuse de Solicitud de Cancelación
+                            </label>
+                            <div>
+                                <field
+                                    name="cancellation_request_proof_filename"
+                                    invisible='1'
+                                />
+                                <field
+                                    name="cancellation_request_proof_file"
+                                    widget="file"
+                                    filename="cancellation_request_proof_filename"
+                                    attrs="{'invisible': [('state', '!=', 'canceled')]}"
+                                />
+                                <button
+                                    name="action_get_cancellation_request_proof"
+                                    string="Descargar"
+                                    type="object"
+                                    class="btn btn-secondary"
+                                    groups="account.group_account_invoice"
+                                    attrs="{'invisible': ['|',('state', '!=', 'canceled'),('cancellation_request_proof_file', '!=', False)]}"
+                                />
+                            </div>
+                        </group>
+                        <h6 class="mt-4">Documentos Relacionados</h6>
+                        <field name="related_document_ids">
+                            <tree>
+                                <field name="relation_type_id" string="Relación" />
+                                <field name="target_id" string="Documento" />
+                            </tree>
+                        </field>
+                    </group>
+                    <div class="text-right">
+                        <field name="standalone" invisible="1" />
+                        <field name="l10n_mx_cfdi_auto" invisible="1" />
+                        <button
+                            name="action_cancel"
+                            string="Cancelar"
+                            type="object"
+                            class="btn btn-primary"
+                            groups="account.group_account_invoice"
+                            attrs="{'invisible': [
+                                '|',
+                                    ('state', '!=', 'published'),
+                                    ('l10n_mx_cfdi_auto', '=', True),
+                                ]}"
+                        />
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

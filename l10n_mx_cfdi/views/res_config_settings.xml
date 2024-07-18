@@ -1,0 +1,30 @@
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.l10n.mx</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="l10n_mx.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='electronic_invoices_mx']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//div[@id='electronic_invoices_mx']" position="before">
+                <div
+                    class="col-12 col-lg-6 o_setting_box"
+                    id="auto_cfdi_mx"
+                    attrs="{'invisible': [('country_code', '!=', 'MX')]}"
+                >
+                    <div class="o_setting_left_pane">
+                        <field name="l10n_mx_cfdi_auto" />
+
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="l10n_mx_cfdi_auto" />
+                        <div class="text-muted">
+                            Enable to automatically create CFDI invoices when validating an invoice.
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
