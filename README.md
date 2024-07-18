@@ -22,6 +22,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [l10n_mx_catalogs](l10n_mx_catalogs/) | 15.0.1.0.0 |  | Catálogos del Servicio de Administración Tributaria de México
+[l10n_mx_cfdi](l10n_mx_cfdi/) | 15.0.1.0.0 |  | Allow generating CFDI (Comprobante Fiscal Digital por Internet) for Mexico.
 
 [//]: # (end addons)
 
