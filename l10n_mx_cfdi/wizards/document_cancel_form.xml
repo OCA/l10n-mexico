@@ -17,10 +17,8 @@
                     <field name="requires_replacement" invisible="1" />
                     <field
                         name="replacement_certificate_id"
-                        attrs="{
-                            'invisible':[('requires_replacement', '=', False)],
-                            'required':[('requires_replacement', '=', True)],
-                           }"
+                        invisible="requires_replacement == False"
+                        required="requires_replacement == True"
                     />
                 </group>
                 <footer>

@@ -10,9 +10,9 @@
                     <tree>
                         <field name="name" string="Factura" />
                         <field name="pdf_file" widget="file" filename="pdf_filename" />
-                        <field name="pdf_filename" invisible='1' />
+                        <field name="pdf_filename" column_invisible='1' />
                         <field name="xml_file" widget="file" filename="xml_filename" />
-                        <field name="xml_filename" invisible='1' />
+                        <field name="xml_filename" column_invisible='1' />
                     </tree>
                     <field name="zip_file" />
                 </field>

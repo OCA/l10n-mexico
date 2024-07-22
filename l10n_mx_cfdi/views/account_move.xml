@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="account.view_out_invoice_tree" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='payment_state']" position="after">
-                <field name="cfdi_document_state" invisible="1" />
+                <field name="cfdi_document_state" column_invisible="1" />
                 <field
                     name="cfdi_document_id"
                     class="mr-3"
