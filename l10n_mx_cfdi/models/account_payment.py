@@ -22,7 +22,7 @@ class AccountPayment(models.Model):
 
     def create_payment_cfdi(self):
         """
-        Create CFDI of type payment ('P') matching the invoice payments if they are required.
+        Create payment-type ('P') CFDI matching invoice payments if needed.
         """
 
         self.ensure_one()
@@ -181,7 +181,7 @@ class AccountPayment(models.Model):
         if not total_taxes:
             return payment_taxes
 
-        # compute taxes base (amount_paid = rate * base) so ( base = amount_paid / rate )
+        # compute taxes base (amount_paid = rate * base) so (base = amount_paid / rate)
         total_rate = sum(float(tax["Rate"] + 1) for tax in total_taxes)
         base = amount_paid / total_rate
         for tax in total_taxes:

@@ -271,7 +271,7 @@ class Document(models.Model):
                 entry.files_in_cache = False
 
     def _resolve_report(self):
-        """Returns the report and the resource ids to be used to generate the PDF file."""
+        """Returns the report and resource IDs for generating the PDF file."""
         report = None
         resource_ids = []
 
@@ -289,7 +289,7 @@ class Document(models.Model):
     def _compute_name(self):
         for entry in self:
             if entry.serie:
-                entry.name = "%s-%s" % (entry.serie, entry.folio)
+                entry.name = f"{entry.serie}-{entry.folio}"
             else:
                 entry.name = "%s" % entry.folio
 
@@ -444,7 +444,7 @@ class Document(models.Model):
             if entry.state != "draft":
                 raise UserError(_("The certificate is not in draft."))
 
-            # check if there are no other published certificates with the same serie and folio
+            # Ensure no other published certificates share the same series and folio.
             similar_certificates_count = self.search(
                 [
                     ("serie", "=", entry.serie),
