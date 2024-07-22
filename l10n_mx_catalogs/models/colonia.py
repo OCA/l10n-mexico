@@ -16,7 +16,7 @@ class Colonia(models.Model):
                 False
                 if not colonia.name
                 else (
-                    "{}{}".format(
+                    "{} - {}".format(
                         colonia.code and "[%s] " % colonia.code or "", colonia.name
                     )
                 )

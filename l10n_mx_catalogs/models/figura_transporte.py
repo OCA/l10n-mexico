@@ -16,7 +16,7 @@ class FiguraTransporte(models.Model):
                 False
                 if not figura.description
                 else (
-                    "{}{}".format(
+                    "{} - {}".format(
                         figura.code and "[%s] " % figura.code or "", figura.description
                     )
                 )
