@@ -19,3 +19,12 @@ class Localidad(models.Model):
             res.state_id = self.env["res.country.state"].search(
                 [("code", "=", res.state_code)]
             )
+
+    @api.depends("name", "code")
+    def _compute_display_name(self):
+        for res in self:
+            res.display_name = (
+                False
+                if not res.name
+                else ("{}{}".format(res.code and "[%s] " % res.code or "", res.name))
+            )

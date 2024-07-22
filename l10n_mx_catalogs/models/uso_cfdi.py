@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class UsoCFDI(models.Model):
@@ -11,3 +11,12 @@ class UsoCFDI(models.Model):
     applies_to_legal_person = fields.Boolean(string="Aplica para persona moral")
 
     applies_to_fiscal_regimes = fields.Char(string="Aplica para régimen fiscal")
+
+    @api.depends("name", "code")
+    def _compute_display_name(self):
+        for res in self:
+            res.display_name = (
+                False
+                if not res.name
+                else ("{}{}".format(res.code and "[%s] " % res.code or "", res.name))
+            )

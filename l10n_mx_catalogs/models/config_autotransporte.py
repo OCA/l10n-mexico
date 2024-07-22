@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class ConfigAutotransporte(models.Model):
@@ -8,3 +8,16 @@ class ConfigAutotransporte(models.Model):
 
     code = fields.Char("Código", required=True)
     description = fields.Char(string="Descripción", required=True)
+
+    @api.depends("description", "code")
+    def _compute_display_name(self):
+        for clave in self:
+            clave.display_name = (
+                False
+                if not clave.description
+                else (
+                    "{}{}".format(
+                        clave.code and "[%s] " % clave.code or "", clave.description
+                    )
+                )
+            )

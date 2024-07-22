@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class FiguraTransporte(models.Model):
@@ -8,3 +8,16 @@ class FiguraTransporte(models.Model):
 
     code = fields.Char(string="Código", required=True)
     description = fields.Char(string="Descripción", required=True)
+
+    @api.depends("description", "code")
+    def _compute_display_name(self):
+        for figura in self:
+            figura.display_name = (
+                False
+                if not figura.description
+                else (
+                    "{}{}".format(
+                        figura.code and "[%s] " % figura.code or "", figura.description
+                    )
+                )
+            )

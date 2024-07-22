@@ -16,3 +16,16 @@ class Pais(models.Model):
 
         country = self.search([("description", "like", country_id.name)], limit=1)
         return country
+
+    @api.depends("description", "code")
+    def _compute_display_name(self):
+        for res in self:
+            res.display_name = (
+                False
+                if not res.description
+                else (
+                    "{}{}".format(
+                        res.code and "[%s] " % res.code or "", res.description
+                    )
+                )
+            )

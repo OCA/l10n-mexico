@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class FormaPago(models.Model):
@@ -7,3 +7,16 @@ class FormaPago(models.Model):
 
     code = fields.Char(string="Código", required=True)
     name = fields.Char(string="Nombre", required=True)
+
+    @api.depends("name", "code")
+    def _compute_display_name(self):
+        for record in self:
+            record.display_name = (
+                False
+                if not record.name
+                else (
+                    "{}{}".format(
+                        record.code and "[%s] " % record.code or "", record.name
+                    )
+                )
+            )

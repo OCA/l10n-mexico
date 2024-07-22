@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class ClaveUnidad(models.Model):
@@ -9,3 +9,14 @@ class ClaveUnidad(models.Model):
     name = fields.Char(string="Nombre", required=True)
     description = fields.Char(string="Descripción")
     symbol = fields.Char(string="Símbolo")
+
+    @api.depends("name", "code")
+    def _compute_display_name(self):
+        for clave in self:
+            clave.display_name = (
+                False
+                if not clave.name
+                else (
+                    "{}{}".format(clave.code and "[%s] " % clave.code or "", clave.name)
+                )
+            )
