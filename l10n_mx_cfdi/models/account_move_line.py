@@ -93,7 +93,7 @@ class AccountMoveLine(models.Model):
                     precision_digits=currency.decimal_places,
                 )
 
-                # sat expects retention taxes to be positive but odoo uses negative values
+                # SAT requires positive retention taxes, but Odoo uses negative values.
                 if is_retention:
                     tax_rate *= -1
                     tax_total *= -1

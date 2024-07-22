@@ -1,7 +1,7 @@
 {
     "name": "Mexico - Electronic Invoicing",
     "icon": "/l10n_mx/static/description/icon.png",
-    "summary": "Allow generating CFDI (Comprobante Fiscal Digital por Internet) for Mexico.",
+    "summary": "Allow generating CFDI (Comprobante Fiscal Digital por Internet)",
     "author": "Alexis López Zubieta <alexis.lopez@augetec.com> (Auge TEC), "
     "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/l10n-mexico",
