@@ -17,7 +17,7 @@ class TipoPermiso(models.Model):
                 False
                 if not res.description
                 else (
-                    "{}{}".format(
+                    "{} - {}".format(
                         res.code and "[%s] " % res.code or "", res.description
                     )
                 )

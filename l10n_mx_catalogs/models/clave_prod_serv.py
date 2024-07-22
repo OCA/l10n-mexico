@@ -19,6 +19,8 @@ class ClaveProdServ(models.Model):
                 False
                 if not clave.name
                 else (
-                    "{}{}".format(clave.code and "[%s] " % clave.code or "", clave.name)
+                    "{} - {}".format(
+                        clave.code and "[%s] " % clave.code or "", clave.name
+                    )
                 )
             )
