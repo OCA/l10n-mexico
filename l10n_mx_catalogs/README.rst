@@ -17,38 +17,40 @@ Catálogos SAT para localización mexicana
     :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
     :alt: License: LGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fl10n--mexico-lightgray.png?logo=github
-    :target: https://github.com/OCA/l10n-mexico/tree/15.0/l10n_mx_catalogs
+    :target: https://github.com/OCA/l10n-mexico/tree/17.0/l10n_mx_catalogs
     :alt: OCA/l10n-mexico
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/l10n-mexico-15-0/l10n-mexico-15-0-l10n_mx_catalogs
+    :target: https://translation.odoo-community.org/projects/l10n-mexico-17-0/l10n-mexico-17-0-l10n_mx_catalogs
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/l10n-mexico&target_branch=15.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/l10n-mexico&target_branch=17.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-================
 l10n_mx_catalogs
-================
+----------------
 
 This module provides the data from the Mexican tax authority (SAT).
 
 Features
---------
+~~~~~~~~
 
-- Necessary fields for electronic invoicing
-- Necessary fields for electronic payroll
-- Official data from Secretaría de Acción Tributaria (SAT)
+-  Necessary fields for electronic invoicing
+-  Necessary fields for electronic payroll
+-  Official data from Secretaría de Acción Tributaria (SAT)
 
 System Requirements
--------------------
-- Odoo 15.0
-- Pre-configuration of fiscal and company data in Odoo.
+~~~~~~~~~~~~~~~~~~~
+
+-  Odoo 15.0
+-  Pre-configuration of fiscal and company data in Odoo.
 
 Installation
-------------
-1. Log in to Odoo as an administrator and navigate to the applications section.
+~~~~~~~~~~~~
+
+1. Log in to Odoo as an administrator and navigate to the applications
+   section.
 2. Search for "l10n_mx_catalogs" and click install.
 
 **Table of contents**
@@ -59,8 +61,9 @@ Installation
 Usage
 =====
 
-This module does not provide any feature per se. It only allows to load data
-for electronic invoicing (l10n_mx_cfdi) and electronic payroll (l10n_mx_hr_payroll).
+This module does not provide any feature per se. It only allows to load
+data for electronic invoicing (l10n_mx_cfdi) and electronic payroll
+(l10n_mx_hr_payroll).
 
 Bug Tracker
 ===========
@@ -68,7 +71,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/l10n-mexico/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/l10n-mexico/issues/new?body=module:%20l10n_mx_catalogs%0Aversion:%2015.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/l10n-mexico/issues/new?body=module:%20l10n_mx_catalogs%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -76,18 +79,18 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Alexis López Zubieta <alexis.lopez@augetec.com> (Auge TEC)
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Alexis López Zubieta <alexis.lopez@augetec.com>
-* Maxime Chambreuil <mchambreuil@opensourceintegrators.com>
+-  Alexis López Zubieta <alexis.lopez@augetec.com>
+-  Maxime Chambreuil <mchambreuil@opensourceintegrators.com>
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is maintained by the OCA.
 
@@ -99,6 +102,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/l10n-mexico <https://github.com/OCA/l10n-mexico/tree/15.0/l10n_mx_catalogs>`_ project on GitHub.
+This module is part of the `OCA/l10n-mexico <https://github.com/OCA/l10n-mexico/tree/17.0/l10n_mx_catalogs>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
