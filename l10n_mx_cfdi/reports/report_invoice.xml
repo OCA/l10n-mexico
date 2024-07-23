@@ -7,16 +7,17 @@
         primary="True"
         priority="99"
     >
-        <t t-set="o" position="after">
-            <t t-set="cfdi" t-value="o.cfdi_document_id" t-if="o.cfdi_document_id" />
 
+        <xpath expr="//t/t[@t-set='o']" position="after">
+            <!-- Your modifications here -->
+            <t t-set="cfdi" t-value="o.cfdi_document_id" t-if="o.cfdi_document_id" />
             <!-- No imprimir datos del pago si el CFDI es tipo Egreso -->
             <t
                 t-set="print_with_payments"
                 t-value="False"
                 t-if="cfdi and cfdi.type == 'E'"
             />
-        </t>
+        </xpath>
 
         <!-- remove default partner address in CFDI documents -->
         <t t-set="address" position="replace">
@@ -110,7 +111,6 @@
         </div>
     </template>
 
-    <!-- FIXME: Temp fix to allow fetching invoice_document in Studio Reports with localisation -->
     <template id="report_invoice" inherit_id="account.report_invoice">
         <xpath expr='//t[@t-call="account.report_invoice_document"]' position="after">
             <t
@@ -125,12 +125,14 @@
         id="report_invoice_with_payments"
         inherit_id="account.report_invoice_with_payments"
     >
-        <xpath expr='//t[@t-call="account.report_invoice_document"]' position="after">
-            <t
-                t-if="o._get_name_invoice_report() == 'l10n_mx_cfdi.report_invoice_document'"
-                t-call="l10n_mx_cfdi.report_invoice_document"
-                t-lang="lang"
-            />
+        <xpath expr='//t[@t-call="account.report_invoice"]' position="attributes">
+            <attribute name="invisible">True</attribute>
+        </xpath>
+
+        <xpath expr='//t[@t-call="account.report_invoice"]' position="after">
+            <t t-call="l10n_mx_cfdi.report_invoice">
+                <t t-set="print_with_payments" t-value="True" />
+            </t>
         </xpath>
     </template>
 

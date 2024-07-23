@@ -4,10 +4,10 @@
         <field name="model">res.config.settings</field>
         <field name="inherit_id" ref="l10n_mx.res_config_settings_view_form" />
         <field name="arch" type="xml">
-            <xpath expr="//div[@id='electronic_invoices_mx']" position="attributes">
+            <xpath expr="//setting[@id='electronic_invoices_mx']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
-            <xpath expr="//div[@id='electronic_invoices_mx']" position="before">
+            <xpath expr="//setting[@id='electronic_invoices_mx']" position="before">
                 <block id="auto_cfdi_mx" invisible="country_code != 'MX'">
                     <setting
                         string="Enable Auto CFDI"
