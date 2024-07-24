@@ -11,7 +11,7 @@
     <menuitem
         id="menu_cfdi_documents_issued"
         name="CFDI Emitidos"
-        parent="account.menu_finance_receivables"
+        parent="l10n_mx_cfdi.cfdi_menu"
         groups="base.group_user"
         action="action_l10n_mx_cfdi_documents_issued"
     />

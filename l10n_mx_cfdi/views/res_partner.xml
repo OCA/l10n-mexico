@@ -4,15 +4,22 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
-            <field name="property_account_position_id" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </field>
-            <field name="property_account_position_id" position="after">
-                <field name="tax_regime" />
-                <field name="cfdi_use_id" />
-                <field name="payment_method_id" />
-                <field name="payment_form_id" />
-            </field>
+
+<!--            <field name="property_account_position_id" position="attributes">-->
+<!--                <attribute name="invisible">1</attribute>-->
+<!--            </field>-->
+<!--            <field name="property_account_position_id" position="after">-->
+            <xpath expr="//page" position="after">
+                <page name="CDFI">
+                    <group>
+                        <field name="tax_regime" />
+                        <field name="cfdi_use_id" />
+                        <field name="payment_method_id" />
+                        <field name="payment_form_id" />
+                    </group>
+                </page>
+<!--            </field>-->
+            </xpath>
         </field>
     </record>
 </odoo>
