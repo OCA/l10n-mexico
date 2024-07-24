@@ -1,6 +1,5 @@
 {
     "name": "Catálogos SAT para localización mexicana",
-    "icon": "/l10n_mx/static/description/icon.png",
     "summary": "Catálogos del Servicio de Administración Tributaria de México",
     "author": "Alexis López Zubieta <alexis.lopez@augetec.com> (Auge TEC), "
     "Odoo Community Association (OCA)",
