@@ -18,10 +18,10 @@
         "data/cfdi_publico_en_general.xml",
         "data/paper_format.xml",
 
+        "views/cfdi_menu.xml",
         "views/cfdi_document.xml",
         "views/cfdi_documents_issued.xml",
         "views/cfdi_issuer.xml",
-        "views/cfdi_menu.xml",
         "views/cfdi_series.xml",
         "views/cfdi_service.xml",
         "views/product_template.xml",
