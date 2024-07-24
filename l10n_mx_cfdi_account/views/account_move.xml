@@ -1,0 +1,139 @@
+<odoo>
+
+    <record id="view_move_form" model="ir.ui.view">
+        <field name="name">account.move.view.form.inherit.cfdi.account</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//button[@name='action_invoice_sent'][1]"
+                position="attributes"
+            >
+                <attribute name="string">Send</attribute>
+            </xpath>
+            <xpath
+                expr="//button[@name='action_invoice_sent'][2]"
+                position="attributes"
+            >
+                <attribute name="string">Send</attribute>
+            </xpath>
+            <field name="payment_reference" position="after">
+                <field name="l10n_mx_cfdi_enabled" invisible="1" />
+                <field name="l10n_mx_cfdi_auto" invisible="1" />
+                <label
+                    for="cfdi_document_id"
+                    string="CFDI"
+                    invisible="not l10n_mx_cfdi_enabled"
+                />
+                <div invisible="not l10n_mx_cfdi_enabled">
+                    <div invisible="not cfdi_document_state">
+                        <field name="cfdi_document_id" no_label="1" class="mr-3" />
+                        <field
+                            name="cfdi_document_state"
+                            widget="badge"
+                            decoration-success="cfdi_document_state == 'published'"
+                            decoration-danger="cfdi_document_state == 'canceled'"
+                        />
+                    </div>
+
+                    <field
+                        name="cfdi_required"
+                        readonly="state != 'draft'"
+                        invisible="move_type not in ('out_invoice', 'out_refund') or not l10n_mx_cfdi_auto"
+                    />
+                    <label
+                        for="cfdi_required"
+                        string="Requerido"
+                        readonly="state != 'draft'"
+                        invisible="move_type not in ('out_invoice', 'out_refund') or not l10n_mx_cfdi_auto"
+                    />
+                    <field name="cfdi_data_in_attachments" invisible="1" />
+                    <button
+                        name="action_load_from_attachment"
+                        type="object"
+                        string="Cargar desde adjuntos"
+                        class="btn btn-info btn-sm"
+                        groups="account.group_account_invoice"
+                        invisible="not cfdi_data_in_attachments or cfdi_document_id"
+                    />
+                    <button
+                        name="action_generate_cfdi"
+                        type="object"
+                        string="Generar CFDI"
+                        class="btn btn-info btn-sm"
+                        groups="account.group_account_invoice"
+                        invisible="state != 'posted' or l10n_mx_cfdi_auto or cfdi_document_id"
+                    />
+                </div>
+            </field>
+            <page id="invoice_tab" position="after">
+                <field name="l10n_mx_cfdi_enabled" invisible="1" />
+                <page id="cfdi_tab" string="CFDI" invisible="not l10n_mx_cfdi_enabled">
+                    <group>
+                        <field name="issuer_id" readonly="state != 'draft'" />
+                        <field name="receiver_id" readonly="state != 'draft'" />
+                        <field name="cfdi_use_id" readonly="state != 'draft'" />
+                        <field name="payment_method_id" readonly="state != 'draft'" />
+                        <field name="payment_form_id" readonly="state != 'draft'" />
+                    </group>
+                    <group>
+                        <field name="related_cert_ids" readonly="state != 'draft'">
+                            <tree create="false">
+                                <field name="name" string="Folio" />
+                                <field name="type" />
+                                <field name="uuid" />
+                                <field name="state" widget="badge" />
+                                <field
+                                    name="pdf_file"
+                                    widget="file"
+                                    filename="pdf_filename"
+                                />
+                                <field name="pdf_filename" column_invisible='1' />
+                                <field
+                                    name="xml_file"
+                                    widget="file"
+                                    filename="xml_filename"
+                                />
+                                <field name="xml_filename" column_invisible='1' />
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="account_view_out_invoice_tree_cfdi" model="ir.ui.view">
+        <field name="name">account.out.invoice.tree.cfdi</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_out_invoice_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payment_state']" position="after">
+                <field name="cfdi_document_state" column_invisible="1" />
+                <field
+                    name="cfdi_document_id"
+                    class="mr-3"
+                    widget="badge"
+                    decoration-success="cfdi_document_state == 'published'"
+                    decoration-danger="cfdi_document_state == 'canceled'"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="account_view_account_invoice_filter_cfdi" model="ir.ui.view">
+        <field name="name">account.invoice.filter.cfdi</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter" />
+        <field name="arch" type="xml">
+            <filter name="myinvoices" position="after">
+                <filter
+                    string="Sin CFDI"
+                    name="no_cfdi"
+                    domain="[('cfdi_document_id','=',False)]"
+                />
+            </filter>
+        </field>
+    </record>
+
+</odoo>
