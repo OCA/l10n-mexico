@@ -7,7 +7,7 @@
     "category": "Localization",
     "version": "17.0.1.0.0",
     "license": "LGPL-3",
-    "depends": ["l10n_mx"],
+    "depends": ["base"],
     "data": [
         "security/ir.model.access.csv",
         "data/l10n_mx_catalogs.c_clave_unidad.csv",
