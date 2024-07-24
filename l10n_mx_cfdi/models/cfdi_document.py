@@ -50,12 +50,6 @@ class Document(models.Model):
     pdf_file = fields.Binary(string="Archivo PDF", attachment=True, readonly=True)
     xml_file = fields.Binary(string="Archivo XML", attachment=True, readonly=True)
 
-    related_invoice_id = fields.Many2one(
-        "account.move", string="Factura relacionada", readonly=True
-    )
-    related_payment_id = fields.Many2one(
-        "account.payment", string="Pago relacionado", readonly=True
-    )
     is_global_note = fields.Boolean(string="Nota global", readonly=True, default=False)
 
     ###
@@ -235,29 +229,29 @@ class Document(models.Model):
     def _compute_download_files_if_needed(self):
         for entry in self:
             if entry.tracking_id:
-                if not entry.pdf_file:
-                    report, resource_ids = self._resolve_report()
-
-                    if report:
-                        # force the report to be rendered to work around a bug
-                        # in _render_qweb_pdf
-                        report = report.with_context(**{"force_report_rendering": True})
-                        doc_data, doc_format = report._render_qweb_pdf(resource_ids)
-                        # in some scenarios, the report is not generated,
-                        # so we need to check if the file is empty
-                        if doc_data:
-                            result = base64.b64encode(doc_data)
-                            entry.pdf_file = result
-
-                    if not entry.pdf_file:
-                        # fallback to the provider's PDF
-                        res = entry.issuer_id.service_id.sudo().get_cfdi_pdf(
-                            entry.tracking_id
-                        )
-                        entry.pdf_file = res["Content"]
-
-                    # set filename
-                    entry.pdf_filename = "%s.pdf" % entry.name
+                # if not entry.pdf_file:
+                #     report, resource_ids = self._resolve_report()
+                #
+                #     if report:
+                #         # force the report to be rendered to work around a bug
+                #         # in _render_qweb_pdf
+                #         report = report.with_context(**{"force_report_rendering": True})
+                #         doc_data, doc_format = report._render_qweb_pdf(resource_ids)
+                #         # in some scenarios, the report is not generated,
+                #         # so we need to check if the file is empty
+                #         if doc_data:
+                #             result = base64.b64encode(doc_data)
+                #             entry.pdf_file = result
+                #
+                #     if not entry.pdf_file:
+                #         # fallback to the provider's PDF
+                #         res = entry.issuer_id.service_id.sudo().get_cfdi_pdf(
+                #             entry.tracking_id
+                #         )
+                #         entry.pdf_file = res["Content"]
+                #
+                #     # set filename
+                #     entry.pdf_filename = "%s.pdf" % entry.name
 
                 if not entry.xml_file:
                     res = entry.issuer_id.service_id.sudo().get_cfdi_xml(
@@ -270,20 +264,20 @@ class Document(models.Model):
             else:
                 entry.files_in_cache = False
 
-    def _resolve_report(self):
-        """Returns the report and resource IDs for generating the PDF file."""
-        report = None
-        resource_ids = []
-
-        if self.type in ("I", "E") and self.related_invoice_id:
-            report = self.env.ref("account.account_invoices")
-            resource_ids = [self.related_invoice_id.id]
-
-        if self.type == "P" and self.related_payment_id:
-            report = self.env.ref("account.action_report_payment_receipt")
-            resource_ids = [self.related_payment_id.id]
-
-        return report, resource_ids
+    # def _resolve_report(self):
+    #     """Returns the report and resource IDs for generating the PDF file."""
+    #     report = None
+    #     resource_ids = []
+    #
+    #     if self.type in ("I", "E") and self.related_invoice_id:
+    #         report = self.env.ref("account.account_invoices")
+    #         resource_ids = [self.related_invoice_id.id]
+    #
+    #     if self.type == "P" and self.related_payment_id:
+    #         report = self.env.ref("account.action_report_payment_receipt")
+    #         resource_ids = [self.related_payment_id.id]
+    #
+    #     return report, resource_ids
 
     @api.depends("serie", "folio")
     def _compute_name(self):
@@ -310,17 +304,17 @@ class Document(models.Model):
         if isinstance(vals_list, dict):
             vals_list = [vals_list]
 
-        for vals in vals_list:
-            if "serie" not in vals or "folio" not in vals:
-                issuer = self._resolve_issuer_on_create(vals)
-                if (
-                    issuer.use_origin_document_sequence
-                    and vals.get("type", False) != "T"
-                    and vals.get("is_global_note", False) is False
-                ):
-                    self._set_serie_and_folio_from_document_sequence(vals)
-                else:
-                    self._set_serie_and_folio_from_cfdi_sequence(vals)
+        # for vals in vals_list:
+        #     if "serie" not in vals or "folio" not in vals:
+        #         issuer = self._resolve_issuer_on_create(vals)
+        #         if (
+        #             issuer.use_origin_document_sequence
+        #             and vals.get("type", False) != "T"
+        #             and vals.get("is_global_note", False) is False
+        #         ):
+        #             self._set_serie_and_folio_from_document_sequence(vals)
+        #         else:
+        #             self._set_serie_and_folio_from_cfdi_sequence(vals)
 
         # Create certificate
         return super().create(vals_list)
@@ -340,35 +334,35 @@ class Document(models.Model):
 
         sequence_id.next_by_id(sequence_id.id)
 
-    def _set_serie_and_folio_from_document_sequence(self, vals):
-        serie = ""
-        folio = ""
-        document_name = ""
-
-        if "related_invoice_id" in vals:
-            invoice = self.env["account.move"].browse(vals["related_invoice_id"])
-            document_name = invoice.name
-
-        if "related_payment_id" in vals:
-            payment = self.env["account.payment"].browse(vals["related_payment_id"])
-            document_name = payment.name
-
-        if not document_name:
-            raise UserError(_("Unable to determine the origin document name."))
-
-        # extract numeric postfix from invoice name using regex
-        match = re.search(r"\d+$", document_name)
-        if match:
-            folio = match.group()
-            serie = document_name[: -len(match.group())]
-        else:
-            raise UserError(_("Invoice name does not contain a numeric postfix."))
-
-        # remove non-alphanumeric characters from serie
-        serie = re.sub(r"\W+", "", serie)
-
-        vals["serie"] = serie
-        vals["folio"] = folio
+    # def _set_serie_and_folio_from_document_sequence(self, vals):
+    #     serie = ""
+    #     folio = ""
+    #     document_name = ""
+    #
+    #     if "related_invoice_id" in vals:
+    #         invoice = self.env["account.move"].browse(vals["related_invoice_id"])
+    #         document_name = invoice.name
+    #
+    #     if "related_payment_id" in vals:
+    #         payment = self.env["account.payment"].browse(vals["related_payment_id"])
+    #         document_name = payment.name
+    #
+    #     if not document_name:
+    #         raise UserError(_("Unable to determine the origin document name."))
+    #
+    #     # extract numeric postfix from invoice name using regex
+    #     match = re.search(r"\d+$", document_name)
+    #     if match:
+    #         folio = match.group()
+    #         serie = document_name[: -len(match.group())]
+    #     else:
+    #         raise UserError(_("Invoice name does not contain a numeric postfix."))
+    #
+    #     # remove non-alphanumeric characters from serie
+    #     serie = re.sub(r"\W+", "", serie)
+    #
+    #     vals["serie"] = serie
+    #     vals["folio"] = folio
 
     @api.model
     def get_sequence_for_cfdi_type(self, vals_list):
@@ -494,11 +488,11 @@ class Document(models.Model):
 
         service = self.issuer_id.service_id.sudo()
         amount_total = 0
-        if self.related_invoice_id:
-            amount_total = self.related_invoice_id.amount_total
-
-        if self.related_payment_id:
-            amount_total = self.related_payment_id.amount
+        # if self.related_invoice_id:
+        #     amount_total = self.related_invoice_id.amount_total
+        #
+        # if self.related_payment_id:
+        #     amount_total = self.related_payment_id.amount
 
         status = service.check_cfdi_status(
             self.uuid, self.issuer_id.vat, self.receiver_id.vat, amount_total
