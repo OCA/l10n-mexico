@@ -5,11 +5,6 @@ from . import (
     cfdi_issuer,
     cfdi_document,
     res_company,
-    res_config_settings,
     res_partner,
     product_template,
-    account_move,
-    account_move_line,
-    account_tax,
-    account_payment,
 )
