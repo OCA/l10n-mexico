@@ -21,6 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
+[l10n_mx_catalogs](l10n_mx_catalogs/) | 17.0.1.0.0 |  | Catálogos del Servicio de Administración Tributaria de México
 [l10n_mx_res_partner_csf](l10n_mx_res_partner_csf/) | 17.0.1.0.0 |  | Scan and extract information from CSF
 
 [//]: # (end addons)

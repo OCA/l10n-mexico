@@ -1,7 +1,8 @@
 [project]
 name = "odoo-addons-oca-l10n-mexico"
-version = "17.0.20231129.0"
+version = "17.0.20240813.0"
 dependencies = [
+    "odoo-addon-l10n_mx_catalogs>=17.0dev,<17.1dev",
     "odoo-addon-l10n_mx_res_partner_csf>=17.0dev,<17.1dev",
 ]
 classifiers=[
