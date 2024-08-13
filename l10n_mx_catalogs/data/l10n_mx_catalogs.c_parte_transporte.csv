@@ -1,0 +1,13 @@
+id,code,description
+c_parte_transporte_PT01,PT01,Camión unitario
+c_parte_transporte_PT02,PT02,Camión
+c_parte_transporte_PT03,PT03,Tractocamión
+c_parte_transporte_PT04,PT04,Remolque
+c_parte_transporte_PT05,PT05,Semirremolque
+c_parte_transporte_PT06,PT06,Vehículo ligero de carga
+c_parte_transporte_PT07,PT07,Grúa
+c_parte_transporte_PT08,PT08,Aeronave
+c_parte_transporte_PT09,PT09,Barco o buque
+c_parte_transporte_PT10,PT10,Carro o vagón
+c_parte_transporte_PT11,PT11,Contenedor
+c_parte_transporte_PT12,PT12,Locomotora

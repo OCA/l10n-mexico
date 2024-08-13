@@ -1,0 +1,6 @@
+id,code,name
+c_periodicidad_01,01,Diario
+c_periodicidad_02,02,Semanal
+c_periodicidad_03,03,Quincenal
+c_periodicidad_04,04,Mensual
+c_periodicidad_05,05,Bimestral
