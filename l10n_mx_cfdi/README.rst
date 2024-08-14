@@ -31,24 +31,21 @@ Mexico - Electronic Invoicing
 l10n_mx_cfdi
 ------------
 
-This module provides electronic invoicing for Mexico (CFDI 4.0) using
-Facturama as the only PAC (for now)
+This module provides the configuration used by electronic invoicing for
+Mexico (CFDI 4.0) using Facturama as the only PAC (for now)
 
 Features
 ~~~~~~~~
 
--  Generation of electronic invoices compliant with the CFDI 4.0
-   standard.
--  Integration with Facturama (for now) as the PAC for the issuance and
-   stamping of invoices.
--  Customization of fiscal documents according to user needs.
--  Centralized management of electronic invoices within Odoo.
--  Tracking and recording of issued and received fiscal documents.
+-  Integration with Facturama as the PAC for the issuance and stamping
+   of invoices.
+-  Management of different Series for the Issuers
+-  Administration of different CFDI Issuers for the same company
 
 System Requirements
 ~~~~~~~~~~~~~~~~~~~
 
--  Odoo 15.0
+-  Odoo 17.0
 -  Active account in Facturama
 -  Pre-configuration of fiscal and company data in Odoo.
 
@@ -70,13 +67,48 @@ Usage
 =====
 
 l10n_mx_cfdi
-------------
+============
 
-This module provides electronic invoicing for Mexico (CFDI 4.0) using
-Facturama as the only PAC (for now)
+This module provides the configuration used by electronic invoicing for
+Mexico (CFDI 4.0) using Facturama as the only PAC (for now)
 
 Usage
-~~~~~
+-----
+
+--------------
+
+Service Configuration
+~~~~~~~~~~~~~~~~~~~~~
+
+Right now, this module works only with Facturama as the PAC, so anyone
+who want to make use of it needs to have an account configured in
+`Facturama <https://facturama.mx/>`__
+
+1. Go to Invoicing > Configuration > CFDI > Service Configuration
+2. Click **"New"** to add your *Facturama* account
+
+   1. "*Name"* -> Name of the service. Name it "Facturama"
+   2. *"User"* -> Your facturama account Username
+   3. *"Password"* -> Your facturama account password
+   4. *"Sandbox mode"* -> If you don't want to send your invoices to SAT
+      and just test
+
+Issuers
+~~~~~~~
+
+This module lets the user choose between different profiles that will
+emmit the invoice
+
+1. Go to Invoicing > Configuration > CFDI > Issuers
+2. Click **"New"** to add an Issuer
+
+   1. *"Name"* -> Name of the issuer. This is just to locate it
+   2. *"Fiscal Name"* -> The real name of the issuer (natural or legal)
+   3. *"Service"* -> The service generated (facturama for now)
+
+3. Click **"Register"**
+4. If the issuer is registered correctly, the checkbox will appear
+   checked and the error message will disappear
 
 Bug Tracker
 ===========
