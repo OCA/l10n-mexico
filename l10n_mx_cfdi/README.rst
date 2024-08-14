@@ -66,17 +66,6 @@ Installation
 Usage
 =====
 
-l10n_mx_cfdi
-============
-
-This module provides the configuration used by electronic invoicing for
-Mexico (CFDI 4.0) using Facturama as the only PAC (for now)
-
-Usage
------
-
---------------
-
 Service Configuration
 ~~~~~~~~~~~~~~~~~~~~~
 
