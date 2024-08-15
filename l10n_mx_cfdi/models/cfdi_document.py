@@ -447,13 +447,12 @@ class Document(models.Model):
 
             # check if there are no other published certificates
             # with the same serie and folio
-            similar_certificates_count = self.search(
+            similar_certificates_count = self.search_count(
                 [
                     ("serie", "=", entry.serie),
                     ("folio", "=", entry.folio),
                     ("state", "=", "published"),
                 ],
-                count=True,
             )
 
             if similar_certificates_count > 0:
