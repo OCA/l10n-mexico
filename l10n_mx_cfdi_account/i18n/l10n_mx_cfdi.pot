@@ -1,0 +1,2436 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_mx_cfdi
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_signature_data
+msgid ""
+"<b class=\"m-0 p-0 font-weight-bold\" style=\"font-size: 10px; line-height: 2;\">\n"
+"                    Cadena Original del complemento de Certificación Digital del SAT\n"
+"                </b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_signature_data
+msgid ""
+"<b class=\"m-0 p-0 font-weight-bold\" style=\"font-size: 10px; line-height: 2;\">\n"
+"                    Sello Digital del CFDI\n"
+"                </b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_signature_data
+msgid ""
+"<b class=\"m-0 p-0 font-weight-bold\" style=\"font-size: 10px; line-height: 2;\">\n"
+"                    Sello Digital del SAT\n"
+"                </b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_receiver_data
+msgid "<b class=\"mr-1\">Uso de CFDI:</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_payment_data
+msgid "<b class=\"pl-2\">Moneda</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_payment_data
+msgid "<b class=\"pl-2\">Método de Pago</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_id_data
+msgid "<b>Fecha / Hora de Emisión:</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_signature_data
+msgid "<b>Fecha/Hora Certificación</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_id_data
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_signature_data
+msgid "<b>Folio Fiscal:</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_related_documents
+msgid "<b>Folio Relacionado</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.external_layout_bold
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.external_layout_boxed
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.external_layout_standard
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.external_layout_striped
+msgid "<b>Folio:</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_payment_data
+msgid "<b>Forma de Pago</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_id_data
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_signature_data
+msgid "<b>No. de Certificado Digital:</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_signature_data
+msgid "<b>Número de Serie Certificado del SAT</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_signature_data
+msgid "<b>RFC del PAC</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_signature_data
+msgid "<b>Tipo de Comprobante:</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_related_documents
+msgid "<b>Tipo de Relación</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_related_documents
+msgid "<b>UUID</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_signature_data
+msgid "<b>Versión: 4.0</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_issuer_data
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_receiver_data
+msgid ""
+"<br/>\n"
+"\n"
+"        <b class=\"mr-1\">Régimen Fiscal:</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_receiver_data
+msgid ""
+"<br/>\n"
+"\n"
+"        <br/>\n"
+"        <b class=\"mr-1\">Código Postal:</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_issuer_data
+msgid ""
+"<br/>\n"
+"\n"
+"        <br/>\n"
+"        <b class=\"mr-1\">Lugar de Expedición:</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_cfdi_issuer
+msgid ""
+"<i class=\"fa fa-check-circle mr-2\" role=\"img\" aria-label=\"Alert\" title=\"Alert\" attrs=\"{'invisible': [('registered', '=', False)]}\"/>\n"
+"                        <span>El emisor está registrado y listo para ser usado.</span>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_cfdi_issuer
+msgid ""
+"<i class=\"fa fa-exclamation-triangle mr-2\" role=\"img\" aria-label=\"Alert\" title=\"Alert\"/>\n"
+"                        <span>El emisor no está registrado con el proveedor de facturación.</span>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.report_payment_receipt_document_cfdi
+msgid "<strong>Fecha de Factura:</strong>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.report_payment_receipt_document_cfdi
+msgid "<strong>Fecha de Nota de Crédito:</strong>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.report_payment_receipt_document_cfdi
+msgid "<strong>Fecha de Recibo:</strong>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.report_payment_receipt_document_cfdi
+msgid "<strong>Fecha:</strong>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.report_payment_receipt_document_cfdi
+msgid "<strong>Forma de Pago:</strong>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.report_payment_receipt_document_cfdi
+msgid "<strong>Plazo de Pago:</strong>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
+#, python-format
+msgid "A certificate is already published with this serie and number."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_account_payable_id
+msgid "Account Payable"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_account_receivable_id
+msgid "Account Receivable"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.certificate_cancel_wizard_form
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_invoice_generic_create_form
+msgid "Aceptar"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__active
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_series__active
+msgid "Active"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__active_lang_count
+msgid "Active Lang Count"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_series__number_next_actual
+msgid "Actual Next Number"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_l10n_mx_cfdi_document_form
+msgid "Acuse de Solicitud de Cancelación"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__cancellation_request_proof_file
+msgid "Acuse de solicitud de cancelación"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__type
+msgid "Address Type"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__lang
+msgid ""
+"All the emails and documents sent to this contact will be translated in this"
+" language."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__pdf_file
+msgid "Archivo PDF"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__xml_file
+msgid "Archivo XML"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__avatar_1920
+msgid "Avatar"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__avatar_1024
+msgid "Avatar 1024"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__avatar_128
+msgid "Avatar 128"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__avatar_256
+msgid "Avatar 256"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__avatar_512
+msgid "Avatar 512"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_generic_invoice_create__year
+msgid "Año"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__bank_account_count
+msgid "Bank"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__bank_ids
+msgid "Banks"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__barcode
+msgid "Barcode"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__is_blacklisted
+msgid "Blacklist"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi.selection__l10n_mx_cfdi_document__state__draft
+msgid "Borrador"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.report_invoice_document
+msgid "Borrador de Factura"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_bounce
+msgid "Bounce"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_bank_statement_line__cfdi_document_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_move__cfdi_document_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_payment__cfdi_document_id
+#: model:ir.ui.menu,name:l10n_mx_cfdi.cfdi_menu
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.product_template_form_view_inherit
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_account_payment_form_inherit
+msgid "CFDI"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_bank_statement_line__l10n_mx_cfdi_auto
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_move__l10n_mx_cfdi_auto
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_payment__l10n_mx_cfdi_auto
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__l10n_mx_cfdi_auto
+msgid "CFDI Automatico"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_download_cfdi_files_wizard__cfdi_document_ids
+msgid "CFDI Documents"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.actions.act_window,name:l10n_mx_cfdi.action_l10n_mx_cfdi_documents_issued
+#: model:ir.ui.menu,name:l10n_mx_cfdi.menu_cfdi_documents_issued
+msgid "CFDI Emitidos"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_bank_statement_line__l10n_mx_cfdi_enabled
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_move__l10n_mx_cfdi_enabled
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_payment__l10n_mx_cfdi_enabled
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__l10n_mx_cfdi_enabled
+msgid "CFDI Habilitado"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model,name:l10n_mx_cfdi.model_l10n_mx_cfdi_series
+msgid "CFDI Series"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.action_l10n_mx_cfdi_service_form
+msgid "CFDI Service"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model,name:l10n_mx_cfdi.model_l10n_mx_cfdi_cfdi_service
+msgid "CFDI Service Settings"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model,name:l10n_mx_cfdi.model_l10n_mx_cfdi_cfdi_service_topup
+msgid "CFDI Service Top Up"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_bank_statement_line__cfdi_document_state
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_move__cfdi_document_state
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_payment__cfdi_document_state
+msgid "CFDI Status"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__cfdi_use_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_res_partner__cfdi_use_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_res_users__cfdi_use_id
+msgid "CFDI Usage"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_bank_statement_line__cfdi_data_in_attachments
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_move__cfdi_data_in_attachments
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_payment__cfdi_data_in_attachments
+msgid "CFDI data in attachments"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model,name:l10n_mx_cfdi.model_l10n_mx_cfdi_document
+msgid "CFDI document"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.download_cfdi_files_wizard_form
+msgid "CFDIs Encontrados"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__original_string
+msgid "Cadena original"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi.selection__l10n_mx_cfdi_document__state__pending_cancel
+msgid "Cancelación pendiente"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi.selection__l10n_mx_cfdi_document__state__canceled
+msgid "Cancelada"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_l10n_mx_cfdi_document_search
+msgid "Cancelados"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.certificate_cancel_wizard_form
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_invoice_generic_create_form
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.download_cfdi_files_wizard_form
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_l10n_mx_cfdi_document_form
+msgid "Cancelar"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.actions.act_window,name:l10n_mx_cfdi.document_cancel_action
+msgid "Cancelar CFDI"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_cfdi_issuer
+msgid "Cancelar registro"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/account_tax.py:0
+#, python-format
+msgid "Cannot extract the tax code from %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/account_move.py:0
+#, python-format
+msgid "Cannot find the partner who emitted the certificate. RFC: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/account_move.py:0
+#, python-format
+msgid "Cannot find the receptor of the certificate. RFC: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/account_move.py:0
+#, python-format
+msgid "Cannot generate the CFDI:\n"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/cfdi_issuer.py:0
+#, python-format
+msgid "Cannot register the certificate."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/cfdi_issuer.py:0
+#, python-format
+msgid "Cannot unregister the certificate."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service_topup__stamp_number
+msgid "Cantidad de Folios"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__cert_data_json
+msgid "Cert Data Json"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document_cancel__certificate_ids
+msgid "Certificados"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model,name:l10n_mx_cfdi.model_l10n_mx_cfdi_document_cancel
+msgid "Certificate Cancel"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__certificate_file
+msgid "Certificate File"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_move_line__cfdi_discount
+msgid "Cfdi Discount"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_move_line__cfdi_price_unit
+msgid "Cfdi Price Unit"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_move_line__cfdi_subtotal
+msgid "Cfdi Subtotal"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__channel_ids
+msgid "Channels"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__is_company
+msgid "Check if the contact is a company, otherwise it is a person"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__employee
+msgid "Check this box if this contact is an Employee."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__city
+msgid "City"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.report_invoice_document
+msgid "Clave Prod. Serv."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.report_invoice_document
+msgid "Clave Unidad"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__color
+msgid "Color Index"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__commercial_partner_id
+msgid "Commercial Entity"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model,name:l10n_mx_cfdi.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__ref_company_ids
+msgid "Companies that refers to partner"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__company_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__company_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_series__company_id
+msgid "Company"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__company_name
+msgid "Company Name"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__commercial_company_name
+msgid "Company Name Entity"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__company_type
+msgid "Company Type"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__company_ids
+msgid "Compañías"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__contact_address
+msgid "Complete Address"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.report_payment_receipt_document_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_l10n_mx_cfdi_document_search
+msgid "Comprobante de Pago"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model,name:l10n_mx_cfdi.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.actions.act_window,name:l10n_mx_cfdi.action_l10n_mx_cfdi_settings
+#: model:ir.ui.menu,name:l10n_mx_cfdi.cfdi_settings_menu
+msgid "Configuración de Servicio"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model,name:l10n_mx_cfdi.model_res_partner
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__child_ids
+msgid "Contact"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service_topup__partner_id
+msgid "Contacto"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_bounce
+msgid "Counter of the number of bounced emails for this contact"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__country_id
+msgid "Country"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__country_code
+msgid "Country Code"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.actions.act_window,name:l10n_mx_cfdi.cfdi_invoice_generic_create_form_action
+msgid "Crear CFDI al Público en General"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_res_company__l10n_mx_cfdi_auto
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_res_config_settings__l10n_mx_cfdi_auto
+msgid "Create CFDI on post"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model,name:l10n_mx_cfdi.model_l10n_mx_cfdi_download_cfdi_files_wizard
+msgid "Create ZIP file containing selected invoices CFDI"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model,name:l10n_mx_cfdi.model_l10n_mx_cfdi_generic_invoice_create
+msgid "Create a generic CFDI invoice"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service_topup__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document_cancel__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document_relation__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_download_cfdi_files_wizard__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_generic_invoice_create__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_series__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__create_date
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service_topup__create_date
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__create_date
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document_cancel__create_date
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document_relation__create_date
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_download_cfdi_files_wizard__create_date
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_generic_invoice_create__create_date
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__create_date
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_series__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__credit_limit
+msgid "Credit Limit"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_payment_term_id
+msgid "Customer Payment Terms"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__customer_rank
+msgid "Customer Rank"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.l10n_mx_cfdi_series_form_view
+msgid "Código"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__verification_qr_code
+msgid "Código QR de Verificación"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_product_product__l10n_mx_cfdi_product_code_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_product_template__l10n_mx_cfdi_product_code_id
+msgid "Código de Producto"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__tax_codes
+msgid "Código de impuesto"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__date
+msgid "Date"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__trust
+msgid "Degree of trust you have in this debtor"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.download_cfdi_files_wizard_form
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_l10n_mx_cfdi_document_form
+msgid "Descargar"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.actions.act_window,name:l10n_mx_cfdi.download_cfdi_files_wizard
+msgid "Descargar CFDIs"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi.selection__l10n_mx_cfdi_document__state__unknown
+msgid "Desconocido"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model,name:l10n_mx_cfdi.model_l10n_mx_cfdi_document_relation
+msgid "Describe a relation between two CFDIs"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/cfdi_issuer.py:0
+#, python-format
+msgid "Digital certificate not configured."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service_topup__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document_cancel__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document_relation__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_download_cfdi_files_wizard__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_generic_invoice_create__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_series__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_l10n_mx_cfdi_document_form
+msgid "Documento"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_bank_statement_line__related_cert_ids
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_move__related_cert_ids
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_payment__related_cert_ids
+msgid "Documentos"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_l10n_mx_cfdi_document_form
+msgid "Documentos Relacionados"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__related_document_ids
+msgid "Documentos relacionados"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi.selection__l10n_mx_cfdi_document__type__e
+msgid "Egreso"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__partner_share
+msgid ""
+"Either customer (not a user), either shared user. Indicated the current "
+"partner is a customer without access or with a limited access created for "
+"sharing data."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__email
+msgid "Email"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model,name:l10n_mx_cfdi.model_l10n_mx_cfdi_issuer
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_bank_statement_line__issuer_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_move__issuer_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_payment__issuer_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__issuer_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_generic_invoice_create__issuer_id
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_issuer_data
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.default_issuer_data
+msgid "Emisor"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.actions.act_window,name:l10n_mx_cfdi.action_l10n_mx_cfdi_issuer
+#: model:ir.ui.menu,name:l10n_mx_cfdi.menu_cfdi_issuer
+msgid "Emisores"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/cfdi_issuer.py:0
+#, python-format
+msgid "Emitter RFC not defined.."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__employee
+msgid "Employee"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_res_company__l10n_mx_cfdi_enabled
+msgid "Enable CFDI"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_account_bank_statement_line__l10n_mx_cfdi_enabled
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_account_move__l10n_mx_cfdi_enabled
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_account_payment__l10n_mx_cfdi_enabled
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_document__l10n_mx_cfdi_enabled
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_res_company__l10n_mx_cfdi_enabled
+msgid "Enable CFDI for this company."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.res_config_settings_view_form
+msgid ""
+"Enable to automatically create CFDI invoices when validating an invoice."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_account_bank_statement_line__l10n_mx_cfdi_auto
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_account_move__l10n_mx_cfdi_auto
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_account_payment__l10n_mx_cfdi_auto
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_document__l10n_mx_cfdi_auto
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_res_company__l10n_mx_cfdi_auto
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_res_config_settings__l10n_mx_cfdi_auto
+msgid "Enable to automatically sign CFDI when validating invoices."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_signature_data
+msgid "Enlace de Verificación"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/account_payment.py:0
+#, python-format
+msgid ""
+"Error al emitir CFDI tipo Comprobante de Pago. La factura %s no tiene CFDI"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
+#, python-format
+msgid "Error when cancelling the certificate: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
+#, python-format
+msgid "Error when creating the CFDI: %s\n"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
+#, python-format
+msgid "Error when publishing the certificate: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__state
+msgid "Estado"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.external_layout_bold
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.external_layout_boxed
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.external_layout_standard
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.external_layout_striped
+msgid "Este documento es una representación impresa de un CFDI"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.download_cfdi_files_wizard_form
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.report_invoice_document
+msgid "Factura"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.report_invoice_document
+msgid "Factura Cancelada"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.report_invoice_document
+msgid "Factura de Proveedor"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__related_invoice_id
+msgid "Factura relacionada"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_download_cfdi_files_wizard__invoice_ids
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_generic_invoice_create__move_ids
+msgid "Facturas"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document_cancel__related_invoices
+msgid "Facturas Relacionadas"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_generic_invoice_create__date
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_l10n_mx_cfdi_document_tree
+msgid "Fecha"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service_topup__topup_date
+msgid "Fecha de Adquisición"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__issuing_datetime
+msgid "Fecha de emisión"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__signing_date
+msgid "Fecha de timbrado"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__files_in_cache
+msgid "Files In Cache"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__cfdi_signature
+msgid "Firma del CFDI"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__sat_signature
+msgid "Firma del SAT"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__fiscal_name
+msgid "Fiscal Name"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_account_position_id
+msgid "Fiscal Position"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__tax_regime
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_res_partner__tax_regime
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_res_users__tax_regime
+msgid "Fiscal Regime"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__folio
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.certificate_cancel_wizard_form
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.l10n_mx_cfdi_series_form_view
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.l10n_mx_cfdi_series_list_view
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.report_payment_receipt_document_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_l10n_mx_cfdi_document_form
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_l10n_mx_cfdi_document_tree
+msgid "Folio"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_bank_statement_line__cfdi_document_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_move__cfdi_document_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_payment__cfdi_document_name
+msgid "Folio CFDI"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__stamps_available
+msgid "Folios Disponibles"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_payment_register__payment_form_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_generic_invoice_create__payment_form_id
+msgid "Forma de Pago"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_bank_statement_line__payment_form_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_move__payment_form_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_payment__payment_form_id
+msgid "Forma de pago"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__email_formatted
+msgid "Format email address \"Name <email@domain>\""
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__email_formatted
+msgid "Formatted Email"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_account_payment_form_inherit
+msgid "Generar CFDI"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__partner_latitude
+msgid "Geo Latitude"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__partner_longitude
+msgid "Geo Longitude"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_l10n_mx_cfdi_document_search
+msgid "Group By"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__has_unreconciled_entries
+msgid "Has Unreconciled Entries"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service_topup__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document_cancel__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document_relation__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_download_cfdi_files_wizard__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_generic_invoice_create__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_series__id
+msgid "ID"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__tracking_id
+msgid "ID del documento en el API"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__im_status
+msgid "IM Status"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_needaction
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__is_blacklisted
+msgid ""
+"If the email address is on the blacklist, the contact won't receive mass "
+"mailing anymore, from any list"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__image_1920
+msgid "Image"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__image_1024
+msgid "Image 1024"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__image_128
+msgid "Image 128"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__image_256
+msgid "Image 256"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__image_512
+msgid "Image 512"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_series__implementation
+msgid "Implementation"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.report_payment_receipt_document_cfdi
+msgid "Importe Pagado"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.report_payment_receipt_document_cfdi
+msgid "Impuestos"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_invoice_generic_create_form
+msgid "Impuestos no incluidos"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__standalone
+msgid "Independiente"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__industry_id
+msgid "Industry"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi.selection__l10n_mx_cfdi_document__type__i
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_l10n_mx_cfdi_document_search
+msgid "Ingreso"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__invoice_warn
+msgid "Invoice"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/wizards/create_cfdi_publico_en_general.py:0
+#, python-format
+msgid "Invoice %s already has a published CFDI."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/wizards/create_cfdi_publico_en_general.py:0
+#, python-format
+msgid "Invoice %s is not posted."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__type
+msgid ""
+"Invoice & Delivery addresses are used in sales orders. Private addresses are"
+" only visible by authorized users."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
+#, python-format
+msgid "Invoice name does not contain a numeric postfix."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__invoice_ids
+msgid "Invoices"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/cfdi_issuer.py:0
+#: code:addons/l10n_mx_cfdi/models/cfdi_issuer.py:0
+#, python-format
+msgid "Invoicing service not defined."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__is_company
+msgid "Is a Company"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
+#, python-format
+msgid "Issuer is required to generate a new document."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__function
+msgid "Job Position"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model,name:l10n_mx_cfdi.model_account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model,name:l10n_mx_cfdi.model_account_move_line
+msgid "Journal Item"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__journal_item_count
+msgid "Journal Items"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__key_file
+msgid "Key File"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__lang
+msgid "Language"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service____last_update
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service_topup____last_update
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document____last_update
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document_cancel____last_update
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document_relation____last_update
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_download_cfdi_files_wizard____last_update
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_generic_invoice_create____last_update
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer____last_update
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_series____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service_topup__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document_cancel__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document_relation__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_download_cfdi_files_wizard__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_generic_invoice_create__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_series__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__write_date
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service_topup__write_date
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__write_date
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document_cancel__write_date
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document_relation__write_date
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_download_cfdi_files_wizard__write_date
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_generic_invoice_create__write_date
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__write_date
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_series__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__last_time_entries_checked
+msgid ""
+"Last time the invoices & payments matching was performed for this partner. "
+"It is set either if there's not at least an unreconciled debit and an "
+"unreconciled credit or if you click the \"Done\" button."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__last_time_entries_checked
+msgid "Latest Invoices & Payments Matching Date"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_generic_invoice_create__meses_id
+msgid "Mes"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__invoice_warn_msg
+msgid "Message for Invoice"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_generic_invoice_create__payment_method_id
+msgid "Metodo de Pago"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__mobile
+msgid "Mobile"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service_topup__currency_id
+msgid "Moneda"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_bank_statement_line__payment_method_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_move__payment_method_id
+msgid "Método de pago"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_series__name
+msgid "Name"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_series__number_next
+msgid "Next Number"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_series__number_next
+msgid "Next number of this sequence"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_series__number_next_actual
+msgid ""
+"Next number that will be used. This number can be incremented frequently so "
+"the displayed value might already be obsolete"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/account_move.py:0
+#, python-format
+msgid "No XML attachment found for this invoice."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
+#, python-format
+msgid ""
+"No hay folios disponibles para emitir CFDIs.\n"
+"Comuníquese con el administrador del sistema."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__name
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.l10n_mx_cfdi_series_form_view
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.l10n_mx_cfdi_series_list_view
+msgid "Nombre"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__pdf_filename
+msgid "Nombre del archivo PDF"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__xml_filename
+msgid "Nombre del archivo XML"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__cancellation_request_proof_filename
+msgid "Nombre del archivo de acuse de solicitud de cancelación"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__email_normalized
+msgid "Normalized Email"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_l10n_mx_cfdi_document_search
+msgid "Nota de Crédito"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.report_invoice_document
+msgid "Nota de Crédito de Proveedor"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__is_global_note
+msgid "Nota global"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__comment
+msgid "Notes"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__cert_number
+msgid "Número de certificado"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__sat_cert_number
+msgid "Número de certificado del SAT"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
+#, python-format
+msgid "Ocurrió un error con el servicio de facturación.\n"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_series__padding
+msgid ""
+"Odoo will automatically adds some '0' on the left of the 'Next Number' to "
+"get the required padding size."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi.selection__l10n_mx_cfdi_document__type__p
+msgid "Pago"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__related_payment_id
+msgid "Pago relacionado"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.report_payment_receipt_document_cfdi
+msgid "Parcialidad"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__parent_name
+msgid "Parent name"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__partner_id
+msgid "Partner"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__contract_ids
+msgid "Partner Contracts"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__same_vat_partner_id
+msgid "Partner with same Tax ID"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__password
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__key_password
+msgid "Password"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__debit_limit
+msgid "Payable Limit"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__payment_form_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_res_partner__payment_form_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_res_users__payment_form_id
+msgid "Payment Form"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__payment_method_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_payment_method_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_res_partner__payment_method_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_res_users__payment_method_id
+msgid "Payment Method"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__payment_token_count
+msgid "Payment Token Count"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__payment_token_ids
+msgid "Payment Tokens"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model,name:l10n_mx_cfdi.model_account_payment
+msgid "Payments"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi.selection__l10n_mx_cfdi_document__state__pending
+msgid "Pendiente"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_generic_invoice_create__periodicity_id
+msgid "Periodicity"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_payment_data
+msgid "Peso Mexicano"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__phone
+msgid "Phone"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service_topup__total
+msgid "Precio Total"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.report_invoice_document
+msgid "Precio Unitario"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service_topup__stamp_price
+msgid "Precio por Folio"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_payment_method_id
+msgid ""
+"Preferred payment method when paying this vendor. This is used to filter "
+"vendor bills by preferred payment method to register payments in mass. Use "
+"cases: create bank files for batch wires, check runs."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_series__prefix
+msgid "Prefix"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_series__prefix
+msgid "Prefix value of the record for the sequence"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_product_pricelist
+msgid "Pricelist"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model,name:l10n_mx_cfdi.model_product_template
+msgid "Product Template"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi.selection__l10n_mx_cfdi_document__state__published
+msgid "Publicada"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_l10n_mx_cfdi_document_search
+msgid "Publicados"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.report_invoice_document
+msgid "RFC"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__rfc_prov_certif
+msgid "RFC del proveedor de certificación"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document_cancel__cancel_reason_id
+msgid "Razón"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__fiscal_name
+msgid "Razón Social del Emisor"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__topup_ids
+msgid "Recargas"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_bank_statement_line__receiver_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_move__receiver_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_payment__receiver_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__receiver_id
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_receiver_data
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.default_receiver_data
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_l10n_mx_cfdi_document_search
+msgid "Receptor"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document_cancel__replacement_certificate_id
+msgid "Reemplazo"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__ref
+msgid "Reference"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model,name:l10n_mx_cfdi.model_account_payment_register
+msgid "Register Payment"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__registered
+msgid "Registered"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_cfdi_issuer
+msgid "Registrar"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_l10n_mx_cfdi_document_form
+msgid "Relación"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__parent_id
+msgid "Related Company"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document_relation__relation_type_id
+msgid "Relation Type"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_bank_statement_line__cfdi_posted
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_bank_statement_line__cfdi_required
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_move__cfdi_posted
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_move__cfdi_required
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_payment__cfdi_posted
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_payment__cfdi_required
+msgid "Requiere CFDI"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document_cancel__requires_replacement
+msgid "Requires Replacement"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_generic_invoice_create__fiscal_regime_id
+msgid "Régimen Fiscal"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.report_payment_receipt_document_cfdi
+msgid "Saldo Anterior"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.report_payment_receipt_document_cfdi
+msgid "Saldo Insoluto"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__user_id
+msgid "Salesperson"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__sandbox_mode
+msgid "Sandbox Mode"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__usage_sequence_id
+msgid "Secuencia de uso de Folios"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__invoice_warn
+msgid ""
+"Selecting the \"Warning\" option will notify user with the message, "
+"Selecting \"Blocking Message\" will throw an exception with the message and "
+"block the flow. The Message has to be written in the next field."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__self
+msgid "Self"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_series__code
+msgid "Sequence Code"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_series__padding
+msgid "Sequence Size"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__serie
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.l10n_mx_cfdi_series_form_view
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.l10n_mx_cfdi_series_list_view
+msgid "Serie"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.actions.act_window,name:l10n_mx_cfdi.l10n_mx_cfdi_series_action
+msgid "Serie CFDI"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__refund_sequence_id
+msgid "Serie Egresos"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__invoice_sequence_id
+msgid "Serie Ingresos"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__payment_sequence_id
+msgid "Serie Pagos"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__transfer_sequence_id
+msgid "Serie Traslados"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.ui.menu,name:l10n_mx_cfdi.cfdi_series_menu
+msgid "Series"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__service_id
+msgid "Service"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service_topup__service_id
+msgid "Servicio"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__partner_share
+msgid "Share Partner"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_document__standalone
+msgid ""
+"Si está marcado, el certificado no esta relacionado a otros documentos del "
+"sistema"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__signup_expiration
+msgid "Signup Expiration"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__signup_token
+msgid "Signup Token"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__signup_type
+msgid "Signup Token Type"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__signup_valid
+msgid "Signup Token is Valid"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__signup_url
+msgid "Signup URL"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.certificate_cancel_wizard_form
+msgid "Simular operación"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document_cancel__simulate_operation
+msgid "Simulate Operation"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_document_cancel__simulate_operation
+msgid "Simulate the cancel operation without sending the request to the SAT"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.account_view_account_invoice_filter_cfdi
+msgid "Sin CFDI"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document_cancel__single_cancel
+msgid "Single Cancel"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document_relation__source_id
+msgid "Source"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__stamps_used
+msgid "Stamps Used"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__state_id
+msgid "State"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_series__number_increment
+msgid "Step"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__street
+msgid "Street"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__street2
+msgid "Street2"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_series__date_range_ids
+msgid "Subsequences"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_series__suffix
+msgid "Suffix"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_series__suffix
+msgid "Suffix value of the record for the sequence"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__supplier_rank
+msgid "Supplier Rank"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__category_id
+msgid "Tags"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document_relation__target_id
+msgid "Target"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model,name:l10n_mx_cfdi.model_account_tax
+msgid "Tax"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__vat
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.default_issuer_data
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.default_receiver_data
+msgid "Tax ID"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.external_layout_bold
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.external_layout_boxed
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.external_layout_standard
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.external_layout_striped
+msgid "Tel:"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/account_move.py:0
+#, python-format
+msgid "The CFDI has been published."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__country_code
+msgid ""
+"The ISO country code in two chars. \n"
+"You can use this field for quick search."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__vat
+msgid ""
+"The Tax Identification Number. Complete it if the contact is subjected to "
+"government taxes. Used in some legal statements."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
+#, python-format
+msgid "The certificate is not cancelled."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
+#, python-format
+msgid "The certificate is not in draft."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_account_position_id
+msgid ""
+"The fiscal position determines the taxes/accounts used for this contact."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__user_id
+msgid "The internal user in charge of this contact."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_series__number_increment
+msgid "The next number of the sequence will be incremented by this number"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__has_unreconciled_entries
+msgid ""
+"The partner has at least one unreconciled debit and credit since last time "
+"the invoices & payments matching was performed."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/account_payment.py:0
+#, python-format
+msgid "The payment already has a related CFDI."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/account_payment.py:0
+#: code:addons/l10n_mx_cfdi/models/account_payment.py:0
+#, python-format
+msgid "The payment is not fully reconciled."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/account_move.py:0
+#, python-format
+msgid "The tax code for tax %s is not defined."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_account_payable_id
+msgid ""
+"This account will be used instead of the default one as the payable account "
+"for the current partner"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_account_receivable_id
+msgid ""
+"This account will be used instead of the default one as the receivable "
+"account for the current partner"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__email_normalized
+msgid ""
+"This field is used to search on email address as the primary email field can"
+" contain more than strictly an email address."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_supplier_payment_term_id
+msgid ""
+"This payment term will be used instead of the default one for purchase "
+"orders and vendor bills"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_payment_term_id
+msgid ""
+"This payment term will be used instead of the default one for sales orders "
+"and customer invoices"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_product_pricelist
+msgid ""
+"This pricelist will be used, instead of the default one, for sales to the "
+"current partner"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__tz
+msgid "Timezone"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__tz_offset
+msgid "Timezone offset"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_l10n_mx_cfdi_document_search
+msgid "Tipo"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__title
+msgid "Title"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_invoice_generic_create_form
+msgid "Total"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__total_invoiced
+msgid "Total Invoiced"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__debit
+msgid "Total Payable"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__credit
+msgid "Total Receivable"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__credit
+msgid "Total amount this customer owes you."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__debit
+msgid "Total amount you have to pay to this vendor."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi.selection__l10n_mx_cfdi_document__type__t
+msgid "Traslado"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__type
+msgid "Type"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
+#, python-format
+msgid "Type of certificate unknown."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__verification_url
+msgid "URL de verificación"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__logo_url
+msgid "URL del logo"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__uuid
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.report_payment_receipt_document_cfdi
+msgid "UUID"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_document__uuid
+msgid "UUID asignado por el SAT"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
+#, python-format
+msgid "Unable to determine the origin document name."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_product_product__l10n_mx_cfdi_product_measurement_unit_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_product_template__l10n_mx_cfdi_product_measurement_unit_id
+msgid "Unidad de Medida"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__use_origin_document_sequence
+msgid "Usar Serie de Origen"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__use_origin_document_sequence
+msgid "Usar serie del documento de origen para los CFDI generados"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__barcode
+msgid "Use a barcode to identify this contact."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_series__use_date_range
+msgid "Use subsequences per date_range"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__user
+msgid "User"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__user_ids
+msgid "Users"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_bank_statement_line__cfdi_use_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_move__cfdi_use_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_account_payment__cfdi_use_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_generic_invoice_create__cfdi_use_id
+msgid "Uso de CFDI"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__currency_id
+msgid "Utility field to express amount currency"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_supplier_payment_term_id
+msgid "Vendor Payment Terms"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__version
+msgid "Version"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__website
+msgid "Website Link"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__tz
+msgid ""
+"When printing documents and exporting/importing data, time values are computed according to this timezone.\n"
+"If the timezone is not set, UTC (Coordinated Universal Time) is used.\n"
+"Anywhere else, time values are computed according to the time offset of your web client."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_series__implementation
+msgid ""
+"While assigning a sequence number to a record, the 'no gap' sequence "
+"implementation ensures that each previous sequence number has been assigned "
+"already. While this sequence implementation will not skip any sequence "
+"number upon assignment, there can still be gaps in the sequence if records "
+"are deleted. The 'no gap' implementation is slower than the standard one."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/account_payment.py:0
+#, python-format
+msgid "You can only create customer payments."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/models/account_move.py:0
+#, python-format
+msgid "You cannot generate a CFDI for a credit note with a pending amount."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: code:addons/l10n_mx_cfdi/wizards/account_payment_register.py:0
+#, python-format
+msgid ""
+"You cannot register a partial payment against an invoice with a CFDI and PUE"
+" as the payment method."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__zip
+msgid "Zip"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_download_cfdi_files_wizard__zip_file
+msgid "Zip File"
+msgstr ""
