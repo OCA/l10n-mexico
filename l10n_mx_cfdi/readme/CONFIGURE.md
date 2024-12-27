@@ -1,8 +1,4 @@
-### Service Configuration
-
-Right now, this module works only with Facturama as the PAC,
-so anyone who want to make use of it needs to have an account configured in
-[Facturama](https://facturama.mx/)
+## Service Configuration
 
 1. Go to Invoicing > Configuration > CFDI > Service Configuration
 2. Click **"New"** to add your _Facturama_ account
@@ -11,8 +7,7 @@ so anyone who want to make use of it needs to have an account configured in
    3. _"Password"_ -> Your facturama account password
    4. _"Sandbox mode"_ -> If you don't want to send your invoices to SAT and just test
 
-### Issuers
-This module lets the user choose between different profiles that will emmit the invoice
+## Issuers
 
 1. Go to Invoicing > Configuration > CFDI > Issuers
 2. Click **"New"** to add an Issuer
