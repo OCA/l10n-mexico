@@ -15,6 +15,7 @@ except ImportError as err:
 
 class ImportCSF(models.TransientModel):
     _name = "import.csf"
+    _description = "Import CSF wizard"
 
     file = fields.Binary(required=True, attachment=True)
     file_name = fields.Char()
@@ -47,7 +48,7 @@ class ImportCSF(models.TransientModel):
     def prepare_res_partner_values(self, text):
         state_obj = self.env["res.country.state"]
         split_data = text.split("\n")
-        vat = name = zip = city = street = street2 = state = ""
+        vat = name = zipcode = city = street = street2 = state = ""
         for index, line in enumerate(split_data):
             if "CÉDULA DE IDENTIFICACIÓN FISCAL" in line:
                 vat += split_data[index + 2].strip()
@@ -58,7 +59,7 @@ class ImportCSF(models.TransientModel):
                 elif split_data[index + 3].isupper():
                     name += " " + split_data[index + 3].strip()
             elif "Código Postal" in line:
-                zip += line.split(":")[-1].strip()
+                zipcode += line.split(":")[-1].strip()
             elif "Tipo de Vialidad" in line:
                 street += line.split("Tipo de Vialidad:")[-1].strip() + " "
             elif "Nombre de Vialidad" in line:
@@ -82,7 +83,7 @@ class ImportCSF(models.TransientModel):
         return {
             "vat": vat,
             "name": name,
-            "zip": zip,
+            "zip": zipcode,
             "city": city,
             "street": street,
             "street2": street2,
