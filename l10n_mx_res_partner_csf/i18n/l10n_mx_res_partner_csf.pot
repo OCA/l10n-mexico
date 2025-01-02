@@ -61,6 +61,11 @@ msgid "Import CSF File"
 msgstr ""
 
 #. module: l10n_mx_res_partner_csf
+#: model:ir.model,name:l10n_mx_res_partner_csf.model_import_csf
+msgid "Import CSF wizard"
+msgstr ""
+
+#. module: l10n_mx_res_partner_csf
 #: model:ir.model.fields,field_description:l10n_mx_res_partner_csf.field_import_csf__write_uid
 msgid "Last Updated by"
 msgstr ""
@@ -85,9 +90,4 @@ msgstr ""
 #: code:addons/l10n_mx_res_partner_csf/wizard/import_csf.py:0
 #, python-format
 msgid "Uploaded file is not in PDF format (%s)."
-msgstr ""
-
-#. module: l10n_mx_res_partner_csf
-#: model:ir.model,name:l10n_mx_res_partner_csf.model_import_csf
-msgid "import.csf"
 msgstr ""
