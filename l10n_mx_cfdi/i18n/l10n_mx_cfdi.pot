@@ -920,6 +920,11 @@ msgid "Has Unreconciled Entries"
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__hide_peppol_fields
+msgid "Hide Peppol Fields"
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__id
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service_topup__id
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__id
@@ -1040,6 +1045,11 @@ msgstr ""
 #: code:addons/l10n_mx_cfdi/models/cfdi_issuer.py:0
 #, python-format
 msgid "Invoicing service not defined."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__is_coa_installed
+msgid "Is Coa Installed"
 msgstr ""
 
 #. module: l10n_mx_cfdi
