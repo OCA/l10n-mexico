@@ -162,15 +162,15 @@ class AccountMove(models.Model):
 
         res = super().action_post()
 
-        if self.l10n_mx_cfdi_auto:
+        for move in self:
             # Create the CFDIs if required
-            for move in self:
-                if (
-                    move.move_type == "out_invoice"
-                    and move.cfdi_required
-                    and move.cfdi_document_id.state != "published"
-                ):
-                    move.create_invoice_cfdi()
+            if (
+                move.l10n_mx_cfdi_auto
+                and move.move_type == "out_invoice"
+                and move.cfdi_required
+                and move.cfdi_document_id.state != "published"
+            ):
+                move.create_invoice_cfdi()
 
         return res
 
