@@ -1,20 +1,20 @@
-## l10n_mx_catalogs
-
 This module provides the data from the Mexican tax authority (SAT).
 
-### Features
+## Features
 
 - Necessary fields for electronic invoicing
 - Necessary fields for electronic payroll
-- Official data from Secretaría de Acción Tributaria (SAT)
+- Official data from Servicio de Administración Tributaria (SAT
 
-### System Requirements
+## Updates
 
-- Odoo 15.0
-- Pre-configuration of fiscal and company data in Odoo.
+To update the catalogs, you need to:
 
-### Installation
+* Go to [this page of the SAT website](http://omawww.sat.gob.mx/tramitesyservicios/Paginas/anexo_20.htm)
+* Download the XLS file for "Catálogos CFDI Versión 4.0 (xls)"
+* Run the [script](https://github.com/OCA/l10n-mexico/blob/17.0/l10n_mx_catalogs/import_catalogs_xls.py)
 
-1.  Log in to Odoo as an administrator and navigate to the applications
-    section.
-2.  Search for "l10n_mx_catalogs" and click install.
+```shell
+pip install xlrd
+./import_catalogs_xls.py catCFDI_V_4_YYYYMMDD.xls
+```

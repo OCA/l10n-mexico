@@ -370,31 +370,29 @@ ul.auto-toc {
 !! source digest: sha256:81b8709767e93b3fcd8d0f5c63b8ab070740756069535ee4b3b9e445c1b5fc97
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/lgpl-3.0-standalone.html"><img alt="License: LGPL-3" src="https://img.shields.io/badge/licence-LGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/l10n-mexico/tree/17.0/l10n_mx_catalogs"><img alt="OCA/l10n-mexico" src="https://img.shields.io/badge/github-OCA%2Fl10n--mexico-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/l10n-mexico-17-0/l10n-mexico-17-0-l10n_mx_catalogs"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/l10n-mexico&amp;target_branch=17.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
-<div class="section" id="l10n-mx-catalogs">
-<h1>l10n_mx_catalogs</h1>
 <p>This module provides the data from the Mexican tax authority (SAT).</p>
 <div class="section" id="features">
-<h2>Features</h2>
+<h1>Features</h1>
 <ul class="simple">
 <li>Necessary fields for electronic invoicing</li>
 <li>Necessary fields for electronic payroll</li>
-<li>Official data from Secretaría de Acción Tributaria (SAT)</li>
+<li>Official data from Servicio de Administración Tributaria (SAT</li>
 </ul>
 </div>
-<div class="section" id="system-requirements">
-<h2>System Requirements</h2>
+<div class="section" id="updates">
+<h1>Updates</h1>
+<p>To update the catalogs, you need to:</p>
 <ul class="simple">
-<li>Odoo 15.0</li>
-<li>Pre-configuration of fiscal and company data in Odoo.</li>
+<li>Go to <a class="reference external" href="http://omawww.sat.gob.mx/tramitesyservicios/Paginas/anexo_20.htm">this page of the SAT
+website</a></li>
+<li>Download the XLS file for “Catálogos CFDI Versión 4.0 (xls)”</li>
+<li>Run the
+<a class="reference external" href="https://github.com/OCA/l10n-mexico/blob/17.0/l10n_mx_catalogs/import_catalogs_xls.py">script</a></li>
 </ul>
-</div>
-<div class="section" id="installation">
-<h2>Installation</h2>
-<ol class="arabic simple">
-<li>Log in to Odoo as an administrator and navigate to the applications
-section.</li>
-<li>Search for “l10n_mx_catalogs” and click install.</li>
-</ol>
+<pre class="code shell literal-block">
+pip<span class="w"> </span>install<span class="w"> </span>xlrd<span class="w">
+</span>./import_catalogs_xls.py<span class="w"> </span>catCFDI_V_4_YYYYMMDD.xls
+</pre>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
@@ -404,13 +402,13 @@ section.</li>
 </ul>
 </div>
 <div class="section" id="usage">
-<h3><a class="toc-backref" href="#toc-entry-1">Usage</a></h3>
+<h2><a class="toc-backref" href="#toc-entry-1">Usage</a></h2>
 <p>This module does not provide any feature per se. It only allows to load
 data for electronic invoicing (l10n_mx_cfdi) and electronic payroll
 (l10n_mx_hr_payroll).</p>
 </div>
 <div class="section" id="bug-tracker">
-<h3><a class="toc-backref" href="#toc-entry-2">Bug Tracker</a></h3>
+<h2><a class="toc-backref" href="#toc-entry-2">Bug Tracker</a></h2>
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/l10n-mexico/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
@@ -418,8 +416,7 @@ If you spotted it first, help us to smash it by providing a detailed and welcome
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
-<h3><a class="toc-backref" href="#toc-entry-3">Credits</a></h3>
-</div>
+<h2><a class="toc-backref" href="#toc-entry-3">Credits</a></h2>
 </div>
 </div>
 <div class="section" id="authors">
