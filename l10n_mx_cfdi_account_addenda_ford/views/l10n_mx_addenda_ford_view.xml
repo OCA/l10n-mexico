@@ -7,7 +7,7 @@
         >
             <fomadd:FOMASN version="1.0">
                 <fomadd:GSDB><span t-field="record.ref" /></fomadd:GSDB>
-                <fomadd:ASN><span t-field="record.ford_reference" /></fomadd:ASN>
+                <fomadd:ASN><span t-field="record.ford_ref" /></fomadd:ASN>
             </fomadd:FOMASN>
         </fomadd:addenda>
         </template>
