@@ -1,18 +1,23 @@
-## Service Configuration
+1. In the invoicing app, go to Customers > Customers
 
-1. Go to Invoicing > Configuration > CFDI > Service Configuration
-2. Click **"New"** to add your _Facturama_ account
-   1. "_Name"_ -> Name of the service. Name it "Facturama"
-   2. _"User"_ -> Your facturama account Username
-   3. _"Password"_ -> Your facturama account password
-   4. _"Sandbox mode"_ -> If you don't want to send your invoices to SAT and just test
+  - Create a new customer with its corresponding id number and fiscal name
+  - In the contact form, go to Sales & purchase tab
+  - In the Fiscal Information section add the following information:
+    - Fiscal regime
+    - Default CFDI usage
+    - Default payment method
+    - Default payment form
 
-## Issuers
+2. In the invoicing app, go to Customers > Products
 
-1. Go to Invoicing > Configuration > CFDI > Issuers
-2. Click **"New"** to add an Issuer
-   1. _"Name"_ -> Name of the issuer. This is just to locate it
-   2. _"Fiscal Name"_ -> The real name of the issuer (natural or legal)
-   3. _"Service"_ -> The service generated (facturama for now)
-3. Click **"Register"**
-4. If the issuer is registered correctly, the checkbox will appear checked and the error message will disappear
+   - Open an existing product or create a new one and enter the general information
+   - Go to the Accounting tab in the product form
+   - Add the product code and the unit of measure corresponding to authority regulations
+
+3. Go to Customers > Invoices and create a new record
+
+   - Fill in the previously created customer, the client’s previously added fiscal information is essential for the stamping process.
+   - Add any product that has its product fiscal code
+   - Open the CFDI tab and add the payment method, and payment form
+   - Select the Confirm button, the invoice will be stamped with the mexican authority
+   - Select the Send button to send the invoice to the customer
