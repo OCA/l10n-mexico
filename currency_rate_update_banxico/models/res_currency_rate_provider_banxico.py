@@ -4,6 +4,7 @@
 from datetime import datetime
 
 import requests
+import requests_mock
 
 from odoo import _, fields, models
 from odoo.exceptions import UserError
