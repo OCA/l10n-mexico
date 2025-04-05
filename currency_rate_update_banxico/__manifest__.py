@@ -14,7 +14,7 @@
     "depends": [
         "currency_rate_update",
     ],
-    "external_dependencies": {"python": ["requests"]},
+    "external_dependencies": {"python": ["requests_mock"]},
     "data": [
         "views/res_currency_rate_provider_views.xml",
     ],
