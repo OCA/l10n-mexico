@@ -3,7 +3,7 @@
 
 from datetime import timedelta
 
-import requests_mock
+import requests
 
 from odoo import fields
 from odoo.tests import common
