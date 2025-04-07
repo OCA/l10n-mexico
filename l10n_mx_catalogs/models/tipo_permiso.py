@@ -5,6 +5,7 @@ class TipoPermiso(models.Model):
     _name = "l10n_mx_catalogs.c_tipo_permiso"
     _description = "Catálogo Tipo de Permiso"
     _rec_name = "description"
+    _rec_names_search = ["code", "description"]
 
     code = fields.Char(required=True)
     description = fields.Char(required=True)
