@@ -658,12 +658,14 @@ class AccountMove(models.Model):
         # get issuer
         issuer = root.find("cfdi:Emisor", namespaces)
         issuer_id = self.env["l10n_mx_cfdi.issuer"].search(
-            [("vat", "=", issuer.attrib["Rfc"])]
+            [("vat", "=", issuer.attrib["Rfc"])],
+            limit=1,
         )
         if not issuer_id:
             # find partner
             partner_id = self.env["res.partner"].search(
-                [("vat", "=", issuer.attrib["Rfc"])]
+                [("vat", "=", issuer.attrib["Rfc"])],
+                limit=1,
             )
             if not partner_id:
                 raise UserError(
