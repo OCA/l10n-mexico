@@ -4,6 +4,7 @@ from odoo import api, fields, models
 class Pais(models.Model):
     _name = "l10n_mx_catalogs.c_pais"
     _description = "Catálogo de Países SAT"
+    _rec_names_search = ["code", "description"]
 
     code = fields.Char(string="Código", required=True)
     description = fields.Char(string="Descripción", required=True)

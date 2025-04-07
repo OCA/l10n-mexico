@@ -4,6 +4,7 @@ from odoo import api, fields, models
 class ClaveProdServ(models.Model):
     _name = "l10n_mx_catalogs.c_clave_prod_serv"
     _description = "Catálogo SAT Clave Producto/Servicio"
+    _rec_names_search = ["code", "name"]
 
     code = fields.Char(string="Código", required=True)
     name = fields.Char(string="Descripción", required=True)

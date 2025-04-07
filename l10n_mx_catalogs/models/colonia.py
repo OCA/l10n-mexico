@@ -4,6 +4,7 @@ from odoo import api, fields, models
 class Colonia(models.Model):
     _name = "l10n_mx_catalogs.c_colonia"
     _description = "Catálogo SAT Colonia"
+    _rec_names_search = ["code", "name"]
 
     name = fields.Char(required=True)
     code = fields.Char(size=5, required=True)

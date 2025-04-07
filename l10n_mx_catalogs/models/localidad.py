@@ -4,6 +4,7 @@ from odoo import api, fields, models
 class Localidad(models.Model):
     _name = "l10n_mx_catalogs.c_localidad"
     _description = "Catalogo SAT Localidad"
+    _rec_names_search = ["code", "name"]
 
     code = fields.Char(string="Codigo")
     name = fields.Char(string="Localidad")
