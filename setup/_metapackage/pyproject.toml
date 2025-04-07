@@ -1,0 +1,11 @@
+[project]
+name = "odoo-addons-oca-l10n-mexico"
+version = "18.0.20250407.0"
+dependencies = [
+    "odoo-addon-currency_rate_update_banxico==18.0.*",
+]
+classifiers=[
+    "Programming Language :: Python",
+    "Framework :: Odoo",
+    "Framework :: Odoo :: 18.0",
+]
