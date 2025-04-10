@@ -9,14 +9,14 @@
             ref="currency_rate_update.res_currency_rate_provider_form_view"
         />
         <field name="arch" type="xml">
-            <field name="service" position="after">
+            <xpath expr="//field[@name='service']" position="after">
                 <field
                     name="banxico_token"
-                    invisible="service != 'banxico'"
-                    required="service == 'banxico'"
+                    attrs="{'invisible':[('service','!=','banxico')]}"
                 />
                 <div
-                    invisible="service != 'banxico' or currency_name == 'MXN'"
+                    
+                    attrs="{'invisible':['|',('service','!=','banxico'),('currency_name','=','MXN')]}"
                     class="alert alert-warning"
                     colspan="2"
                     role="alert"
@@ -29,7 +29,7 @@
                     exchange rates based on MXN, other foreign currency
                     rates are recalculated and might differ from real rates.
                 </div>
-            </field>
+            </xpath>
         </field>
     </record>
 
