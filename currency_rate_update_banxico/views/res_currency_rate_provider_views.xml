@@ -15,7 +15,6 @@
                     attrs="{'invisible':[('service','!=','banxico')]}"
                 />
                 <div
-                    
                     attrs="{'invisible':['|',('service','!=','banxico'),('currency_name','=','MXN')]}"
                     class="alert alert-warning"
                     colspan="2"
