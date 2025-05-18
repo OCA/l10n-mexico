@@ -50589,6 +50589,7 @@ c_clave_prod_serv_78111500,78111500,Transporte de pasajeros aérea,Opcional,Opci
 c_clave_prod_serv_78111501,78111501,Servicios de helicópteros,Opcional,Opcional,1,
 c_clave_prod_serv_78111502,78111502,Viajes en aviones comerciales,Opcional,Opcional,1,
 c_clave_prod_serv_78111503,78111503,Viajes en aviones fletados,Opcional,Opcional,1,Viajes en aviones alquilados
+c_clave_prod_serv_78111505,78111505,Servicio de alquiler o arrendamiento de aeronaves de pasajeros,Opcional,Opcional,1,"Servicio de alquiler de aeronaves de carga, arrendamiento de aeronaves de carga, leasing de aeronaves de carga"
 c_clave_prod_serv_78111600,78111600,Transporte de pasajeros por ferrocarril,Opcional,Opcional,1,
 c_clave_prod_serv_78111601,78111601,Servicios de transporte en vehículos de tren ligero lrv,Opcional,Opcional,1,Servicios de transporte de tren ligero
 c_clave_prod_serv_78111602,78111602,Transporte en metro,Opcional,Opcional,1,
@@ -51384,7 +51385,7 @@ c_clave_prod_serv_83101800,83101800,Servicios eléctricos,Opcional,Opcional,1,
 c_clave_prod_serv_83101801,83101801,Suministro de electricidad monofásica,Opcional,Opcional,1,
 c_clave_prod_serv_83101802,83101802,Suministro de electricidad bifásica,Opcional,Opcional,1,
 c_clave_prod_serv_83101803,83101803,Suministro de electricidad  trifásica,Opcional,Opcional,1,
-c_clave_prod_serv_83101804,83101804,Servicios de transmisión de energía eléctrica,Opcional,Opcional,1,
+c_clave_prod_serv_83101804,83101804,Servicios de transmisión de energía eléctrica,Opcional,Opcional,1,"Servicio de carga de batería para vehículos eléctricos, servicio de carga rápida de vehículos eléctricos"
 c_clave_prod_serv_83101805,83101805,Distribución de energía eléctrica industrial,Opcional,Opcional,1,
 c_clave_prod_serv_83101806,83101806,Distribución de energía eléctrica rural,Opcional,Opcional,1,
 c_clave_prod_serv_83101807,83101807,Distribución de energía eléctrica municipal,Opcional,Opcional,1,
