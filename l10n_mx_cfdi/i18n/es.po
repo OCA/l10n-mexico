@@ -6,17 +6,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"PO-Revision-Date: 2025-03-08 19:06+0000\n"
+"Last-Translator: Demetrio Salvador Ortiz Arizaga "
+"<dortiz@opensourceintegrators.com>\n"
+"Language-Team: none\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10.2\n"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__supplier_invoice_count
 msgid "# Vendor Bills"
-msgstr ""
+msgstr "Facturas del proveedor"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__type
@@ -26,6 +30,13 @@ msgid ""
 "- Delivery Address: Preferred address for all deliveries. Selected by default when you deliver an order that belongs to this company.\n"
 "- Other: Other address for the company (e.g. subsidiary, ...)"
 msgstr ""
+"-Contacto: Úsalo para organizar los datos de contacto de los empleados de "
+"una empresa determinada (Ejemplo, CEO, CFO,.)\n"
+"-Dirección de Facturación: Dirección preferida para todas las facturas. Se "
+"selecciona por defecto al facturar un pedido que pertenece a esta empresa.\n"
+"Dirección de entrega: Dirección preferida para todas las entregas. Se "
+"selecciona por defecto al entregar un pedido que pertenece a esta empresa.\n"
+"Otros: Otra dirección de la empresa (Ejemplo, sucursal,.)"
 
 #. module: l10n_mx_cfdi
 #: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_signature_data
@@ -174,7 +185,7 @@ msgstr ""
 #: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
 #, python-format
 msgid "A certificate is already published with this serie and number."
-msgstr ""
+msgstr "Ya se ha publicado un certificado con esta serie y número."
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_account_payable_id
@@ -215,7 +226,7 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__activity_state
 msgid "Activity State"
-msgstr ""
+msgstr "Estado de Actividad"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__activity_type_icon
@@ -225,7 +236,7 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_series__number_next_actual
 msgid "Actual Next Number"
-msgstr ""
+msgstr "Próximo Número Actual"
 
 #. module: l10n_mx_cfdi
 #: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_l10n_mx_cfdi_document_form
@@ -240,7 +251,7 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__type
 msgid "Address Type"
-msgstr ""
+msgstr "Tipo de Dirección"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__lang
@@ -248,6 +259,8 @@ msgid ""
 "All the emails and documents sent to this contact will be translated in this"
 " language."
 msgstr ""
+"Todos los correos electrónicos y documentos enviados a este contacto serán "
+"traducidos a este idioma."
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__pdf_file
@@ -262,12 +275,12 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_attachment_count
 msgid "Attachment Count"
-msgstr ""
+msgstr "Número de Archivos Adjuntos"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__avatar_1920
 msgid "Avatar"
-msgstr ""
+msgstr "Avatar"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__avatar_1024
@@ -297,17 +310,17 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__bank_ids
 msgid "Banks"
-msgstr ""
+msgstr "Bancos"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__barcode
 msgid "Barcode"
-msgstr ""
+msgstr "Código de Barras"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__is_blacklisted
 msgid "Blacklist"
-msgstr ""
+msgstr "Lista Negra"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields.selection,name:l10n_mx_cfdi.selection__l10n_mx_cfdi_document__state__draft
@@ -317,7 +330,7 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_bounce
 msgid "Bounce"
-msgstr ""
+msgstr "Rebotar"
 
 #. module: l10n_mx_cfdi
 #: model:ir.ui.menu,name:l10n_mx_cfdi.cfdi_menu
@@ -450,7 +463,7 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__city
 msgid "City"
-msgstr ""
+msgstr "Ciudad"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__peppol_eas
@@ -596,22 +609,22 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__credit_limit
 msgid "Credit limit specific to this partner."
-msgstr ""
+msgstr "Límite de crédito específico para este socio."
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__currency_id
 msgid "Currency"
-msgstr ""
+msgstr "Moneda"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_payment_term_id
 msgid "Customer Payment Terms"
-msgstr ""
+msgstr "Términos de pago del cliente"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__customer_rank
 msgid "Customer Rank"
-msgstr ""
+msgstr "Rango de Cliente"
 
 #. module: l10n_mx_cfdi
 #: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.l10n_mx_cfdi_series_form_view
@@ -699,7 +712,7 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__duplicated_bank_account_partners_count
 msgid "Duplicated Bank Account Partners Count"
-msgstr ""
+msgstr "Cantidad de Socios con Cuentas Bancarias Duplicadas"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields.selection,name:l10n_mx_cfdi.selection__l10n_mx_cfdi_document__type__e
@@ -713,6 +726,9 @@ msgid ""
 "partner is a customer without access or with a limited access created for "
 "sharing data."
 msgstr ""
+"Ya sea cliente (no un usuario) o un usuario compartido. Indica que el socio "
+"actual es un cliente sin acceso o con acceso limitado creado para compartir "
+"datos."
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__email
@@ -962,12 +978,12 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_needaction
 msgid "If checked, new messages require your attention."
-msgstr ""
+msgstr "Si está marcado, los nuevos mensajes requieren tu atención."
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_has_error
 msgid "If checked, some messages have a delivery error."
-msgstr ""
+msgstr "Si está marcado, algunos mensajes tienen un error de entrega."
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__is_blacklisted
@@ -975,11 +991,13 @@ msgid ""
 "If the email address is on the blacklist, the contact won't receive mass "
 "mailing anymore, from any list"
 msgstr ""
+"Si la dirección de correo electrónico está en la lista negra, el contacto ya "
+"no recibirá correos masivos de ninguna lista"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__image_1920
 msgid "Image"
-msgstr ""
+msgstr "Imagen"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__image_1024
@@ -1065,39 +1083,39 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__is_public
 msgid "Is Public"
-msgstr ""
+msgstr "Es Público"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__is_company
 msgid "Is a Company"
-msgstr ""
+msgstr "Es una Empresa"
 
 #. module: l10n_mx_cfdi
 #. odoo-python
 #: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
 #, python-format
 msgid "Issuer is required to generate a new document."
-msgstr ""
+msgstr "Se requiere que el emisor genere un nuevo documento."
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__function
 msgid "Job Position"
-msgstr ""
+msgstr "Puesto de Trabajo"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__journal_item_count
 msgid "Journal Items"
-msgstr ""
+msgstr "Asientos de diario"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__key_file
 msgid "Key File"
-msgstr ""
+msgstr "Archivo Clave"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__lang
 msgid "Language"
-msgstr ""
+msgstr "Idioma"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__write_uid
@@ -1107,7 +1125,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__write_uid
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_series__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Última Actualización por"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__write_date
@@ -1117,7 +1135,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__write_date
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_series__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Última Actualización en"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__last_time_entries_checked
@@ -1370,7 +1388,7 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__payment_token_ids
 msgid "Payment Tokens"
-msgstr ""
+msgstr "Tokens de Pago"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields.selection,name:l10n_mx_cfdi.selection__l10n_mx_cfdi_document__state__pending
@@ -1395,7 +1413,7 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__phone
 msgid "Phone"
-msgstr ""
+msgstr "Teléfono"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service_topup__total
@@ -1816,11 +1834,13 @@ msgid ""
 "This pricelist will be used, instead of the default one, for sales to the "
 "current partner"
 msgstr ""
+"Esta lista de precios se utilizará, en lugar del predeterminado, para las "
+"ventas al socio actual"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__tz
 msgid "Timezone"
-msgstr ""
+msgstr "Zona Horaria"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__tz_offset
@@ -1909,7 +1929,7 @@ msgstr ""
 #: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
 #, python-format
 msgid "Unable to determine the origin document name."
-msgstr ""
+msgstr "No se puede determinar el nombre del documento de origen."
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_product_product__l10n_mx_cfdi_product_measurement_unit_id

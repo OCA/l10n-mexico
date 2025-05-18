@@ -1,7 +1,8 @@
 [project]
 name = "odoo-addons-oca-l10n-mexico"
-version = "17.0.20250106.0"
+version = "17.0.20250307.0"
 dependencies = [
+    "odoo-addon-currency_rate_update_banxico>=17.0dev,<17.1dev",
     "odoo-addon-l10n_mx_catalogs>=17.0dev,<17.1dev",
     "odoo-addon-l10n_mx_cfdi>=17.0dev,<17.1dev",
     "odoo-addon-l10n_mx_cfdi_account>=17.0dev,<17.1dev",
