@@ -1,0 +1,5 @@
+id,code,name
+c_motivo_cancelacion_01,01,Comprobantes emitidos con errores con relación
+c_motivo_cancelacion_02,02,Comprobantes emitidos con errores sin relación
+c_motivo_cancelacion_03,03,No se llevó a cabo la operación
+c_motivo_cancelacion_04,04,Operación nominativa relacionada en una factura global
