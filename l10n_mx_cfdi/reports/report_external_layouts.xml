@@ -194,10 +194,6 @@
         </xpath>
 
         <!-- Extend Footer -->
-        <!-- <div
-            t-attf-class="footer o_clean_footer o_company_#{company.id}_layout"
-            position="replace"
-        > -->
         <xpath expr="//div[contains(@t-attf-class, 'footer o_company_')]" position="replace">
             <div t-attf-class="footer o_company_#{company.id}_layout {{report_type != 'pdf' and 'mt-auto'}}">
                 <div class="row" style="font-size: 12px;">
@@ -316,7 +312,6 @@
             </div>
         </xpath>
         
-        <!-- <div class="o_footer_content border-top pt-2 text-center"> -->
         <xpath expr="//div[@class='o_footer_content border-top pt-2 text-center']" position="before">    
             <div class="col-12" style="font-size: 12px;">
                 Este documento es una representación impresa de un CFDI

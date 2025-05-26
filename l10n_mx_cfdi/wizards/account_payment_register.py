@@ -23,7 +23,8 @@ class AccountPaymentRegister(models.TransientModel):
         return super()._init_payments(to_process, edit_mode)
 
     def _create_payments(self):
-        # Prevent partial payments on invoices with cfdi and payment method different of 'PPD'
+        # Prevent partial payments on invoices with cfdi
+        # and payment method different of 'PPD'
         if self.payment_difference > 0:
             related_invoices = self.line_ids.move_id
             if any(

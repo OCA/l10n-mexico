@@ -94,7 +94,8 @@ class AccountMoveLine(models.Model):
                     precision_digits=currency.decimal_places,
                 )
 
-                # sat expects retention taxes to be positive but odoo uses negative values
+                # sat expects retention taxes to be positive but odoo 
+                # uses negative values
                 if is_retention:
                     tax_rate *= -1
                     tax_total *= -1
@@ -127,12 +128,14 @@ class AccountMoveLine(models.Model):
             res["IdentificationNumber"] = self.product_id.default_code
         unit_included_taxes = taxes_included / (self.quantity or 1)
         line_discount_price_unit -= unit_included_taxes
+
+        UnitCode = self.product_id.l10n_mx_cfdi_product_measurement_unit_id.code
         res.update(
             {
                 "Quantity": self.quantity,
                 "ProductCode": self.product_id.l10n_mx_cfdi_product_code_id.code,
                 "Description": self.name,
-                "UnitCode": self.product_id.l10n_mx_cfdi_product_measurement_unit_id.code,
+                "UnitCode": UnitCode,
             }
         )
 

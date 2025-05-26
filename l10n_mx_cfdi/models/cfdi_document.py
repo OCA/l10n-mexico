@@ -257,14 +257,14 @@ class Document(models.Model):
                         entry.pdf_file = res["Content"]
 
                     # set filename
-                    entry.pdf_filename = "%s.pdf" % entry.name
+                    entry.pdf_filename = f"{entry.name}.pdf"
 
                 if not entry.xml_file:
                     res = entry.issuer_id.service_id.sudo().get_cfdi_xml(
                         entry.tracking_id
                     )
                     entry.xml_file = res["Content"].encode("utf-8")
-                    entry.xml_filename = "%s.xml" % entry.name
+                    entry.xml_filename = f"{entry.name}.xml"
 
                 entry.files_in_cache = True
             else:
@@ -289,9 +289,9 @@ class Document(models.Model):
     def _compute_name(self):
         for entry in self:
             if entry.serie:
-                entry.name = "%s-%s" % (entry.serie, entry.folio)
+                entry.name = f"{entry.serie}-{entry.folio}"
             else:
-                entry.name = "%s" % entry.folio
+                entry.name = f"{entry.folio}"
 
     @api.depends("type")
     def _compute_standalone(self):
@@ -444,7 +444,8 @@ class Document(models.Model):
             if entry.state != "draft":
                 raise UserError(_("The certificate is not in draft."))
 
-            # check if there are no other published certificates with the same serie and folio
+            # check if there are no other published certificates
+            # with the same serie and folio
             similar_certificates_count = self.search(
                 [
                     ("serie", "=", entry.serie),
@@ -519,7 +520,7 @@ class Document(models.Model):
         file = service.get_cancellation_request_proof(self.tracking_id)
         self.cancellation_request_proof_file = file
         self.cancellation_request_proof_filename = (
-            "Solicitud de cancelación %s.pdf" % self.name
+            f"Solicitud de cancelación {self.name}.pdf"
         )
 
 

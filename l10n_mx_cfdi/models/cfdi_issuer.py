@@ -70,7 +70,8 @@ class CFDIIssuer(models.Model):
     def _create_default_cfdi_sequence(self, name):
         # format a unique sequence code for the company
         sequence_code = "l10n_mx_cfdi.sequence.{}.{}".format(
-            self._slugify(self.env.company.name), self._slugify(name)
+            self._slugify(self.env.company.name),
+            self._slugify(name)
         )
 
         existent_sequence = self.env["l10n_mx_cfdi.series"].search(
@@ -84,7 +85,7 @@ class CFDIIssuer(models.Model):
                 .sudo()
                 .create(
                     {
-                        "name": "Folios CFDI %s" % name,
+                        "name": f"Folios CFDI {name}",
                         "implementation": "no_gap",
                         "number_increment": 1,
                         "number_next_actual": 0,
