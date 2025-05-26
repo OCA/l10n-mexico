@@ -1,0 +1,17 @@
+<odoo>
+
+    <record id="l10n_mx_cfdi_res_partner_publico_en_general" model="res.partner">
+        <field name="name">PUBLICO EN GENERAL</field>
+        <field name="zip" eval="None" />
+        <field name="vat">XAXX010101000</field>
+        <field name="country_id" eval="ref('base.mx')" />
+        <field name="tax_regime" eval="ref('l10n_mx_catalogs.c_regimen_fiscal_616')" />
+        <field name="company_id" eval="None" />
+        <field name="cfdi_use_id" eval="ref('l10n_mx_catalogs.c_uso_cfdi_S01')" />
+        <field
+            name="payment_method_id"
+            eval="ref('l10n_mx_catalogs.c_metodo_pago_PUE')"
+        />
+    </record>
+
+</odoo>
