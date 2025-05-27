@@ -38,7 +38,7 @@
         </t>
 
         <!-- remove default Title Line in CFDI documents -->
-        <xpath expr="//h2" position="replace">
+        <xpath expr="//t[@t-set='layout_document_title']" position="replace">
             <h2 t-if="not cfdi">
                 <span
                     t-if="o.move_type == 'out_invoice' and o.state == 'posted'"
