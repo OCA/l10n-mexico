@@ -5,9 +5,11 @@ from io import BytesIO
 
 import qrcode
 from dateutil import parser
+import logging
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
+_logger = logging.getLogger(__name__)
 class Document(models.Model):
     _name = "l10n_mx_cfdi.document"
     _description = "CFDI document"
@@ -253,7 +255,8 @@ class Document(models.Model):
                 entry.files_in_cache = False
 
     def _resolve_report(self):
-        """Returns the report and the resource ids to be used to generate the PDF file."""
+        """Returns the report and the resource ids 
+            to be used to generate the PDF file."""
         report = None
         resource_ids = []
 

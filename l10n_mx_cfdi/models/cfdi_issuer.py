@@ -74,9 +74,8 @@ class CFDIIssuer(models.Model):
             self._slugify(name)
         )
 
-        existent_sequence = self.env["l10n_mx_cfdi.series"].search(
-            [("code", "=", sequence_code)]
-        )
+        existent_sequence = (self.env["l10n_mx_cfdi.series"]
+            .search([("code", "=", sequence_code)]))
         if existent_sequence:
             return existent_sequence
         else:

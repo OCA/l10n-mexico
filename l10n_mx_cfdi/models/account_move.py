@@ -297,7 +297,8 @@ class AccountMove(models.Model):
 
         cfdi_items_data = []
         for line in self.line_ids:
-            if line.display_type in ('line_section', 'line_note') or not line.product_id:
+            if (line.display_type in ('line_section', 'line_note') 
+                    or not line.product_id):
                 continue
 
             cfdi_item_data = line._gater_cfdi_item_data()
@@ -319,7 +320,8 @@ class AccountMove(models.Model):
         err_msg = ""
         # validate invoice items
         for line in self.line_ids:
-            if line.display_type in ('line_section', 'line_note') or not line.product_id:
+            if (line.display_type in ('line_section', 'line_note') 
+                    or not line.product_id):
                 continue
 
             if not line.product_id.l10n_mx_cfdi_product_code_id:

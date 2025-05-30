@@ -43,9 +43,11 @@ class CertificateCancel(models.TransientModel):
             )
             defaults_dict.update(
                 {
-                    "certificate_ids": related_invoice_objs.related_cert_ids.filtered_domain(
-                        [("state", "=", "published")]
-                    ),
+                    "certificate_ids": 
+                        related_invoice_objs.related_cert_ids
+                        .filtered_domain(
+                            [("state", "=", "published")]
+                        ),
                     "related_invoices": related_invoice_objs,
                     "cancel_reason_id": self.env.ref(
                         "l10n_mx_catalogs.c_motivo_cancelacion_02"

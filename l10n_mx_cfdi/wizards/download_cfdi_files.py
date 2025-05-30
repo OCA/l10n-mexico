@@ -74,6 +74,6 @@ class DownloadCFDIFilesWizard(models.TransientModel):
 
         return {
             "type": "ir.actions.act_url",
-            "url": "/web/content/%s?download=true" % self.zip_file.id,
+            "url": f"/web/content/{self.zip_file.id}?download=true",
             "target": "self",
         }
