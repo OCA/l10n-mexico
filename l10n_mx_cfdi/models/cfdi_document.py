@@ -5,10 +5,8 @@ from io import BytesIO
 
 import qrcode
 from dateutil import parser
-
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
-
 
 class Document(models.Model):
     _name = "l10n_mx_cfdi.document"
@@ -236,27 +234,11 @@ class Document(models.Model):
         for entry in self:
             if entry.tracking_id:
                 if not entry.pdf_file:
-                    report, resource_ids = self._resolve_report()
-
-                    if report:
-                        # force the report to be rendered to work around a bug
-                        # in _render_qweb_pdf
-                        report = report.with_context(**{"force_report_rendering": True})
-                        doc_data, doc_format = report._render_qweb_pdf(resource_ids)
-                        # in some scenarios, the report is not generated,
-                        # so we need to check if the file is empty
-                        if doc_data:
-                            result = base64.b64encode(doc_data)
-                            entry.pdf_file = result
-
-                    if not entry.pdf_file:
-                        # fallback to the provider's PDF
-                        res = entry.issuer_id.service_id.sudo().get_cfdi_pdf(
-                            entry.tracking_id
-                        )
-                        entry.pdf_file = res["Content"]
-
-                    # set filename
+                    # fallback to the provider's PDF
+                    res = entry.issuer_id.service_id.sudo().get_cfdi_pdf(
+                        entry.tracking_id
+                    )
+                    entry.pdf_file = res["Content"]
                     entry.pdf_filename = f"{entry.name}.pdf"
 
                 if not entry.xml_file:
@@ -446,13 +428,12 @@ class Document(models.Model):
 
             # check if there are no other published certificates
             # with the same serie and folio
-            similar_certificates_count = self.search(
+            similar_certificates_count = self.search_count(
                 [
                     ("serie", "=", entry.serie),
                     ("folio", "=", entry.folio),
                     ("state", "=", "published"),
-                ],
-                count=True,
+                ]
             )
 
             if similar_certificates_count > 0:
