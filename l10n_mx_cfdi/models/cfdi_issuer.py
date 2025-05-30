@@ -69,10 +69,9 @@ class CFDIIssuer(models.Model):
     @api.model
     def _create_default_cfdi_sequence(self, name):
         # format a unique sequence code for the company
-        sequence_code = "l10n_mx_cfdi.sequence.{}.{}".format(
-            self._slugify(self.env.company.name),
-            self._slugify(name)
-        )
+        sequence_code = f"l10n_mx_cfdi.sequence\
+            .{self._slugify(self.env.company.name)}\
+            .{self._slugify(name)}"  
 
         existent_sequence = (self.env["l10n_mx_cfdi.series"]
             .search([("code", "=", sequence_code)]))
