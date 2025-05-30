@@ -297,8 +297,10 @@ class AccountMove(models.Model):
 
         cfdi_items_data = []
         for line in self.line_ids:
-            if (line.display_type in ('line_section', 'line_note') 
-                    or not line.product_id):
+            if (
+                line.display_type in ("line_section", "line_note")
+                or not line.product_id
+            ):
                 continue
 
             cfdi_item_data = line._gater_cfdi_item_data()
@@ -320,21 +322,19 @@ class AccountMove(models.Model):
         err_msg = ""
         # validate invoice items
         for line in self.line_ids:
-            if (line.display_type in ('line_section', 'line_note') 
-                    or not line.product_id):
+            if (
+                line.display_type in ("line_section", "line_note")
+                or not line.product_id
+            ):
                 continue
 
             if not line.product_id.l10n_mx_cfdi_product_code_id:
-                err_msg += (
-                    f"- No se ha definido el código de producto \
+                err_msg += f"- No se ha definido el código de producto \
                     para el producto {line.product_id.name}\n"
-                )
 
             if not line.product_id.l10n_mx_cfdi_product_measurement_unit_id:
-                err_msg += (
-                    "- No se ha definido la unidad de medida \
+                err_msg += "- No se ha definido la unidad de medida \
                     para el producto {line.product_id.name}\n"
-                )
 
         return err_msg
 
@@ -669,7 +669,7 @@ class AccountMove(models.Model):
             )
             if not partner_id:
                 raise UserError(
-                    _("Cannot find the partner who emitted the certificate. " "RFC: %s")
+                    _("Cannot find the partner who emitted the certificate. RFC: %s")
                     % issuer.attrib["Rfc"]
                 )
 
