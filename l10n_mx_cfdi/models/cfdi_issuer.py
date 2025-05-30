@@ -71,10 +71,11 @@ class CFDIIssuer(models.Model):
         # format a unique sequence code for the company
         sequence_code = f"l10n_mx_cfdi.sequence\
             .{self._slugify(self.env.company.name)}\
-            .{self._slugify(name)}"  
+            .{self._slugify(name)}"
 
-        existent_sequence = (self.env["l10n_mx_cfdi.series"]
-            .search([("code", "=", sequence_code)]))
+        existent_sequence = self.env["l10n_mx_cfdi.series"].search(
+            [("code", "=", sequence_code)]
+        )
         if existent_sequence:
             return existent_sequence
         else:

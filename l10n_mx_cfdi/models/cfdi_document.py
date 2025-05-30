@@ -441,10 +441,7 @@ class Document(models.Model):
 
             if similar_certificates_count > 0:
                 raise UserError(
-                    _(
-                        "A certificate is already published with this serie "
-                        "and number."
-                    )
+                    _("A certificate is already published with this serie and number.")
                 )
 
             # use sudo to allow users to publish certificates
