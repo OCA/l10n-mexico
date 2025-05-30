@@ -1,6 +1,6 @@
 from odoo import api, fields, models
-from odoo.tools.float_utils import json_float_round
 from odoo.tools import float_is_zero, float_round
+from odoo.tools.float_utils import json_float_round
 
 
 class AccountMoveLine(models.Model):
@@ -94,7 +94,7 @@ class AccountMoveLine(models.Model):
                     precision_digits=currency.decimal_places,
                 )
 
-                # sat expects retention taxes to be positive but odoo 
+                # sat expects retention taxes to be positive but odoo
                 # uses negative values
                 if is_retention:
                     tax_rate *= -1

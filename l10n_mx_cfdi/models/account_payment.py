@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from odoo import _, models, fields
+from odoo import _, fields, models
 from odoo.exceptions import ValidationError
 from odoo.tools.float_utils import json_float_round
 
@@ -44,8 +44,8 @@ class AccountPayment(models.Model):
 
     def create_payment_cfdi(self):
         """
-            Create CFDI of type payment ('P') matching the invoice 
-            payments if they are required.
+        Create CFDI of type payment ('P') matching the invoice
+        payments if they are required.
         """
 
         self.ensure_one()
