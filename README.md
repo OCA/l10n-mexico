@@ -20,7 +20,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[l10n_mx_pms](l10n_mx_pms/) | 14.0.1.0.0 | [![max3903](https://github.com/max3903.png?size=30px)](https://github.com/max3903) | Property customizations for Mexico
+[l10n_mx_pms](l10n_mx_pms/) | 14.0.1.0.0 | <a href='https://github.com/max3903'><img src='https://github.com/max3903.png' width='32' height='32' style='border-radius:50%;' alt='max3903'/></a> | Property customizations for Mexico
 
 [//]: # (end addons)
 
