@@ -7,12 +7,6 @@ from odoo.exceptions import UserError
 class HrExpenseSheet(models.Model):
     _inherit = "hr.expense.sheet"
 
-    def _get_account_by_name(self, name):
-        account = self.env["account.account"].search([("name", "ilike", name)], limit=1)
-        if not account:
-            raise UserError(_("No se encontró la cuenta con nombre '%s'") % name)
-        return account
-
     def _create_supplier_invoices(self):
         invoices = self.env["account.move"]
         for sheet in self:
@@ -132,7 +126,6 @@ class HrExpenseSheet(models.Model):
         AccountMove = self.env["account.move"]
         invoices = self.env["account.move"]
 
-        # IDs de las dos cuentas
         company = self.company_id
         acc_debit = company.hr_expense_reimbursement_debit_account_id
         acc_credit = company.hr_expense_reimbursement_credit_account_id
@@ -140,12 +133,9 @@ class HrExpenseSheet(models.Model):
             raise UserError(
                 _(
                     "Debes configurar en Ajustes → Empresas "
-                    "las cuentas de débito y crédito "
-                    "para el reembolso de empleados."
+                    "las cuentas de débito y crédito para el reembolso de empleados."
                 )
             )
-        acc_debit_id = acc_debit.id
-        acc_credit_id = acc_credit.id
 
         for sheet in self:
             total_amount = sum(exp.total_amount for exp in sheet.expense_line_ids)
@@ -162,48 +152,38 @@ class HrExpenseSheet(models.Model):
 
             inv_date = fields.Date.context_today(sheet)
 
+            journal = sheet.journal_id
+            if not journal:
+                raise UserError(_("No se ha definido un diario en la hoja de gastos."))
+
             invoice_lines = [
                 (
                     0,
                     0,
                     {
                         "name": _("Reembolso de gastos"),
-                        "account_id": acc_debit_id,
+                        "account_id": acc_debit.id,
                         "quantity": 1.0,
                         "price_unit": total_amount,
                         "tax_ids": [],
                     },
-                ),
-                (
-                    0,
-                    0,
-                    {
-                        "name": _("Reembolso de gastos"),
-                        "account_id": acc_credit_id,
-                        "quantity": 1.0,
-                        "price_unit": -total_amount,
-                        "tax_ids": [],
-                    },
-                ),
+                )
             ]
 
-            inv_vals = {
+            move_vals = {
                 "move_type": "in_invoice",
                 "partner_id": partner.id,
                 "invoice_date": inv_date,
                 "invoice_date_due": inv_date,
-                "journal_id": sheet.journal_id.id,
                 "ref": _("Reembolso %s") % sheet.name,
-                "expense_sheet_id": sheet.id,
-                "is_employee_reimbursement": True,
+                "journal_id": journal.id,
                 "invoice_line_ids": invoice_lines,
             }
-            invoice = AccountMove.create(inv_vals)
-            invoices |= invoice
 
-        # Publicar todas
-        for invoice in invoices:
-            invoice.action_post()
+            move = AccountMove.create(move_vals)
+            move.action_post()
+            sheet.write({"account_move_ids": [(4, move.id)]})
+            invoices |= move
 
         return invoices
 
