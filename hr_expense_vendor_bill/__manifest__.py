@@ -1,6 +1,9 @@
 {
     "name": "HR Expense Vendor Bill",
-    "summary": "Genera automáticamente facturas de proveedor a partir de gastos de empleados",
+    "summary": "Genera automáticamente facturas \
+          de proveedor a partir de gastos de empleados",
+    "author": "OSI, AMOdoo, Odoo Community Association (OCA)",
+    "website": "https://github.com/OCA/l10n-mexico",
     "version": "18.0.1.0.0",
     "category": "Accounting",
     "depends": ["account", "hr_expense", "base"],
