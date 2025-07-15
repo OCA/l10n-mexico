@@ -188,7 +188,7 @@ class HrExpenseSheet(models.Model):
         return invoices
 
     def _reconcile_account_lines(self):
-        # Wzard de conciliación automática
+        # Wizard de conciliación automática
         ReconcileWizard = self.env["account.reconcile.wizard"]
 
         for sheet in self:
@@ -223,21 +223,22 @@ class HrExpenseSheet(models.Model):
         res = super().action_approve_expense_sheets()
 
         for sheet in self:
-            moves = sheet.account_move_ids.sudo()
-            for move in moves:
-                if move.state == "posted":
-                    move.sudo().button_cancel()
-                    move.sudo().button_draft()
-                elif move.state == "cancel":
-                    move.sudo().button_draft()
-            moves.unlink()
-            sheet.sudo().write({"account_move_ids": [(5, 0, 0)]})
+            if sheet.payment_mode == "own_account":
+                moves = sheet.account_move_ids.sudo()
+                for move in moves:
+                    if move.state == "posted":
+                        move.sudo().button_cancel()
+                        move.sudo().button_draft()
+                    elif move.state == "cancel":
+                        move.sudo().button_draft()
+                moves.unlink()
+                sheet.sudo().write({"account_move_ids": [(5, 0, 0)]})
 
-        # Ejecución del flujo completo de gastos
-        self._create_supplier_invoices()
-        self._generate_supplier_payments()
-        self._create_employee_reimbursement_invoice()
-        self._reconcile_account_lines()
+                # Ejecución del flujo completo de gastos
+                self._create_supplier_invoices()
+                self._generate_supplier_payments()
+                self._create_employee_reimbursement_invoice()
+                self._reconcile_account_lines()
 
         return res
 
