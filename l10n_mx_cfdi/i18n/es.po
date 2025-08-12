@@ -25,9 +25,12 @@ msgstr "Facturas del proveedor"
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__type
 msgid ""
-"- Contact: Use this to organize the contact details of employees of a given company (e.g. CEO, CFO, ...).\n"
-"- Invoice Address: Preferred address for all invoices. Selected by default when you invoice an order that belongs to this company.\n"
-"- Delivery Address: Preferred address for all deliveries. Selected by default when you deliver an order that belongs to this company.\n"
+"- Contact: Use this to organize the contact details of employees of a given "
+"company (e.g. CEO, CFO, ...).\n"
+"- Invoice Address: Preferred address for all invoices. Selected by default "
+"when you invoice an order that belongs to this company.\n"
+"- Delivery Address: Preferred address for all deliveries. Selected by "
+"default when you deliver an order that belongs to this company.\n"
 "- Other: Other address for the company (e.g. subsidiary, ...)"
 msgstr ""
 "-Contacto: Úsalo para organizar los datos de contacto de los empleados de "
@@ -41,15 +44,18 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_signature_data
 msgid ""
-"<b class=\"m-0 p-0 font-weight-bold\" style=\"font-size: 10px; line-height: 2;\">\n"
-"                    Cadena Original del complemento de Certificación Digital del SAT\n"
+"<b class=\"m-0 p-0 font-weight-bold\" style=\"font-size: 10px; line-height: "
+"2;\">\n"
+"                    Cadena Original del complemento de Certificación Digital "
+"del SAT\n"
 "                </b>"
 msgstr ""
 
 #. module: l10n_mx_cfdi
 #: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_signature_data
 msgid ""
-"<b class=\"m-0 p-0 font-weight-bold\" style=\"font-size: 10px; line-height: 2;\">\n"
+"<b class=\"m-0 p-0 font-weight-bold\" style=\"font-size: 10px; line-height: "
+"2;\">\n"
 "                    Sello Digital del CFDI\n"
 "                </b>"
 msgstr ""
@@ -57,7 +63,8 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_signature_data
 msgid ""
-"<b class=\"m-0 p-0 font-weight-bold\" style=\"font-size: 10px; line-height: 2;\">\n"
+"<b class=\"m-0 p-0 font-weight-bold\" style=\"font-size: 10px; line-height: "
+"2;\">\n"
 "                    Sello Digital del SAT\n"
 "                </b>"
 msgstr ""
@@ -169,15 +176,19 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_cfdi_issuer
 msgid ""
-"<i class=\"fa fa-check-circle mr-2\" role=\"img\" aria-label=\"Alert\" title=\"Alert\" invisible=\"registered == False\"/>\n"
-"                        <span>El emisor está registrado y listo para ser usado.</span>"
+"<i class=\"fa fa-check-circle mr-2\" role=\"img\" aria-label=\"Alert\" "
+"title=\"Alert\" invisible=\"registered == False\"/>\n"
+"                        <span>El emisor está registrado y listo para ser "
+"usado.</span>"
 msgstr ""
 
 #. module: l10n_mx_cfdi
 #: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_cfdi_issuer
 msgid ""
-"<i class=\"fa fa-exclamation-triangle mr-2\" role=\"img\" aria-label=\"Alert\" title=\"Alert\"/>\n"
-"                        <span>El emisor no está registrado con el proveedor de facturación.</span>"
+"<i class=\"fa fa-exclamation-triangle mr-2\" role=\"img\" aria-"
+"label=\"Alert\" title=\"Alert\"/>\n"
+"                        <span>El emisor no está registrado con el proveedor "
+"de facturación.</span>"
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -256,8 +267,8 @@ msgstr "Tipo de Dirección"
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__lang
 msgid ""
-"All the emails and documents sent to this contact will be translated in this"
-" language."
+"All the emails and documents sent to this contact will be translated in this "
+"language."
 msgstr ""
 "Todos los correos electrónicos y documentos enviados a este contacto serán "
 "traducidos a este idioma."
@@ -464,13 +475,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__city
 msgid "City"
 msgstr "Ciudad"
-
-#. module: l10n_mx_cfdi
-#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__peppol_eas
-msgid ""
-"Code used to identify the Endpoint for BIS Billing 3.0 and its derivatives.\n"
-"             List available at https://docs.peppol.eu/poacc/billing/3.0/codelist/eas/"
-msgstr ""
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__color
@@ -901,11 +905,6 @@ msgid "Font awesome icon e.g. fa-tasks"
 msgstr ""
 
 #. module: l10n_mx_cfdi
-#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__ubl_cii_format
-msgid "Format"
-msgstr ""
-
-#. module: l10n_mx_cfdi
 #: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__email_formatted
 msgid "Format email address \"Name <email@domain>\""
 msgstr ""
@@ -938,11 +937,6 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__has_unreconciled_entries
 msgid "Has Unreconciled Entries"
-msgstr ""
-
-#. module: l10n_mx_cfdi
-#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__hide_peppol_fields
-msgid "Hide Peppol Fields"
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -1064,7 +1058,6 @@ msgstr ""
 
 #. module: l10n_mx_cfdi
 #. odoo-python
-#: code:addons/l10n_mx_cfdi/models/cfdi_issuer.py:0
 #: code:addons/l10n_mx_cfdi/models/cfdi_issuer.py:0
 #, python-format
 msgid "Invoicing service not defined."
@@ -1393,16 +1386,6 @@ msgstr "Tokens de Pago"
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields.selection,name:l10n_mx_cfdi.selection__l10n_mx_cfdi_document__state__pending
 msgid "Pendiente"
-msgstr ""
-
-#. module: l10n_mx_cfdi
-#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__peppol_endpoint
-msgid "Peppol Endpoint"
-msgstr ""
-
-#. module: l10n_mx_cfdi
-#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__peppol_eas
-msgid "Peppol e-address (EAS)"
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -1810,8 +1793,8 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__email_normalized
 msgid ""
-"This field is used to search on email address as the primary email field can"
-" contain more than strictly an email address."
+"This field is used to search on email address as the primary email field can "
+"contain more than strictly an email address."
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -1938,13 +1921,6 @@ msgid "Unidad de Medida"
 msgstr ""
 
 #. module: l10n_mx_cfdi
-#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__peppol_endpoint
-msgid ""
-"Unique identifier used by the BIS Billing 3.0 and its derivatives, also "
-"known as 'Endpoint ID'."
-msgstr ""
-
-#. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__use_origin_document_sequence
 msgid "Usar Serie de Origen"
 msgstr ""
@@ -2002,9 +1978,11 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__tz
 msgid ""
-"When printing documents and exporting/importing data, time values are computed according to this timezone.\n"
+"When printing documents and exporting/importing data, time values are "
+"computed according to this timezone.\n"
 "If the timezone is not set, UTC (Coordinated Universal Time) is used.\n"
-"Anywhere else, time values are computed according to the time offset of your web client."
+"Anywhere else, time values are computed according to the time offset of your "
+"web client."
 msgstr ""
 
 #. module: l10n_mx_cfdi
