@@ -453,13 +453,6 @@ msgid "City"
 msgstr ""
 
 #. module: l10n_mx_cfdi
-#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__peppol_eas
-msgid ""
-"Code used to identify the Endpoint for BIS Billing 3.0 and its derivatives.\n"
-"             List available at https://docs.peppol.eu/poacc/billing/3.0/codelist/eas/"
-msgstr ""
-
-#. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__color
 msgid "Color Index"
 msgstr ""
@@ -885,11 +878,6 @@ msgid "Font awesome icon e.g. fa-tasks"
 msgstr ""
 
 #. module: l10n_mx_cfdi
-#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__ubl_cii_format
-msgid "Format"
-msgstr ""
-
-#. module: l10n_mx_cfdi
 #: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__email_formatted
 msgid "Format email address \"Name <email@domain>\""
 msgstr ""
@@ -922,11 +910,6 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__has_unreconciled_entries
 msgid "Has Unreconciled Entries"
-msgstr ""
-
-#. module: l10n_mx_cfdi
-#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__hide_peppol_fields
-msgid "Hide Peppol Fields"
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -1375,16 +1358,6 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields.selection,name:l10n_mx_cfdi.selection__l10n_mx_cfdi_document__state__pending
 msgid "Pendiente"
-msgstr ""
-
-#. module: l10n_mx_cfdi
-#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__peppol_endpoint
-msgid "Peppol Endpoint"
-msgstr ""
-
-#. module: l10n_mx_cfdi
-#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__peppol_eas
-msgid "Peppol e-address (EAS)"
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -1915,13 +1888,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_product_product__l10n_mx_cfdi_product_measurement_unit_id
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_product_template__l10n_mx_cfdi_product_measurement_unit_id
 msgid "Unidad de Medida"
-msgstr ""
-
-#. module: l10n_mx_cfdi
-#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__peppol_endpoint
-msgid ""
-"Unique identifier used by the BIS Billing 3.0 and its derivatives, also "
-"known as 'Endpoint ID'."
 msgstr ""
 
 #. module: l10n_mx_cfdi
