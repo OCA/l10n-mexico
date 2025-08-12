@@ -4,6 +4,7 @@ from odoo import api, fields, models
 class FormaPago(models.Model):
     _name = "l10n_mx_catalogs.c_forma_pago"
     _description = "Catalogo SAT de Formas de Pago"
+    _rec_names_search = ["code", "name"]
 
     code = fields.Char(string="Código", required=True)
     name = fields.Char(string="Nombre", required=True)

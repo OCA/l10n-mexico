@@ -4,6 +4,7 @@ from odoo import api, fields, models
 class RegimenFiscal(models.Model):
     _name = "l10n_mx_catalogs.c_regimen_fiscal"
     _description = "Catálogo Regimen Fiscal"
+    _rec_names_search = ["code", "name"]
 
     code = fields.Char(string="Código", required=True)
     name = fields.Char(string="Nombre", required=True)

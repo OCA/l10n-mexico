@@ -4,6 +4,7 @@ from odoo import api, fields, models
 class UsoCFDI(models.Model):
     _name = "l10n_mx_catalogs.c_uso_cfdi"
     _description = "Catalogo SAT de uso de CFDI"
+    _rec_names_search = ["code", "name"]
 
     code = fields.Char(string="Código", required=True)
     name = fields.Char(string="Nombre", required=True)
