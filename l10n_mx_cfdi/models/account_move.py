@@ -30,6 +30,13 @@ class AccountMove(models.Model):
     cfdi_document_state = fields.Selection(
         string="CFDI Status", readonly=True, related="cfdi_document_id.state"
     )
+    cfdi_document_relations = fields.Many2many(
+        'l10n_mx_cfdi.document', relation='account_move_cfdi_document_relations', 
+        column1='move_id', column2='cfdi_document_id', string='Related CFDIs'
+    )
+    cfdi_document_relation_type = fields.Many2one(
+        'l10n_mx_catalogs.c_tipo_relacion', string='Relation Type'
+    )
 
     related_cert_ids = fields.Many2many(
         "l10n_mx_cfdi.document", string="Documentos", readonly=True, copy=False
@@ -195,6 +202,16 @@ class AccountMove(models.Model):
             cfdi_data = self._gather_invoice_cfdi_data()
             cert.publish(cfdi_data)
 
+            if self.cfdi_document_relations:
+                cert.update({
+                    'related_document_ids': [
+                        (0, 0, {
+                            'source_id': cert.id,
+                            'target_id': related_cfdi.id,
+                            'relation_type_id': self.cfdi_document_relation_type.id,
+                        }) for related_cfdi in self.cfdi_document_relations]
+                })
+
             self.update(
                 {
                     "related_cert_ids": [(4, cert.id)],
@@ -258,9 +275,21 @@ class AccountMove(models.Model):
             "Items": self.gather_invoice_cfdi_items_data(),
         }
 
+        self._add_related_cfdis_data_if_needed(cfdi_data)
+
         self._add_global_information_to_cfdi_if_required(cfdi_data)
 
         return cfdi_data
+
+    def _add_related_cfdis_data_if_needed(self, cfdi_data):
+        if self.cfdi_document_relation_type:
+            if not self.cfdi_document_relations:
+                raise ValidationError(_('You must add at least one related CFDI when a relation type is set.'))
+
+            cfdi_data['Relations'] = {
+                "Type": self.cfdi_document_relation_type.code,
+                "Cfdis": [{"Uuid": related_cfdi.uuid} for related_cfdi in self.cfdi_document_relations]
+            }
 
     def _format_cfdi_date_str(self, document_date):
         """
