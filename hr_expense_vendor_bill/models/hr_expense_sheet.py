@@ -53,13 +53,6 @@ class HrExpenseSheet(models.Model):
                 invoice = self.env["account.move"].create(inv_vals)
                 invoices |= invoice
 
-        # Asignar fecha de vencimiento a la línea de cuenta por pagar antes de validar
-        # Note: Don't post invoices here anymore - let action_sheet_move_post handle it
-        # for invoice in invoices:
-        #     for line in invoice.line_ids:
-        #         if line.account_id.internal_group == "liability_payable":
-        #             line.date_maturity = invoice.invoice_date_due
-        #     invoice.action_post()
         return invoices
 
     def _generate_supplier_payments(self):
@@ -102,17 +95,15 @@ class HrExpenseSheet(models.Model):
                 }
             )
 
-        # Para cada factura in_invoice que está en estado draft o posted y no pagada, lanzar el wizard de pago
-        # This should work for both cases - when invoices are posted (for backward compatibility)
-        # and when they're in draft state (our new workflow)
+        # Para cada factura in_invoice que está en estado draft o posted y no pagada
         for sheet in self:
             # Filter for supplier invoices that are either draft or posted and unpaid
             invoices_to_pay = sheet.account_move_ids.filtered(
-                lambda m: m.move_type == "in_invoice"
-                and m.partner_id != sheet.employee_id.sudo().work_contact_id  # Exclude employee reimbursement
+                lambda m, s=sheet: m.move_type == "in_invoice"
+                and m.partner_id != s.sheet.employee_id.sudo().work_contact_id
                 and m.payment_state != "paid"
             )
-            
+
             for invoice in invoices_to_pay:
                 # Only proceed if invoice has a valid amount to pay
                 if invoice.amount_residual > 0:
@@ -210,7 +201,7 @@ class HrExpenseSheet(models.Model):
                 if not account:
                     raise UserError(
                         _(
-                            "Debes configurar en Contabilidad → Configuración → Empresas "
+                            "Configurar en Contabilidad → Configuración → Empresas"
                             "la cuenta para poder conciliar."
                         )
                     )
@@ -250,64 +241,60 @@ class HrExpenseSheet(models.Model):
 
                 # Ejecución del flujo completo de gastos
                 self._create_supplier_invoices()
-                #self._generate_supplier_payments() - Keep commented for now to test
-                # Create employee reimbursement invoice in draft state
                 self._create_employee_reimbursement_invoice()
-                #self._reconcile_account_lines() - Keep commented for now to test
-
         return res
-    
-    def action_sheet_move_post(self):
 
+    def action_sheet_move_post(self):
         # Separate own_account sheets that need custom posting
-        own_account_sheets = self.filtered(lambda sheet: sheet.payment_mode == 'own_account')
+        own_account_sheets = self.filtered(
+            lambda sheet: sheet.payment_mode == "own_account"
+        )
         standard_sheets = self - own_account_sheets
-        
+
         # Handle own_account sheets with custom logic
         for sheet in own_account_sheets:
             # Ensure moves exist (in case method is called without approval)
             if not sheet.account_move_ids:
                 raise UserError(
-                    _("No hay movimientos contables para contabilizar. "
-                    "Asegúrate de que la hoja de gastos esté aprobada.")
+                    _(
+                        "No hay movimientos contables para contabilizar. "
+                        "Asegúrate de que la hoja de gastos esté aprobada."
+                    )
                 )
-            
+
             # Separate employee reimbursement from supplier invoices
             supplier_invoices = sheet.account_move_ids.filtered(
-                lambda m: m.move_type == "in_invoice" 
+                lambda m, s=sheet: m.move_type == "in_invoice"
                 and m.state == "draft"
-                and m.partner_id != sheet.employee_id.sudo().work_contact_id
+                and m.partner_id != s.sheet.employee_id.sudo().work_contact_id
             )
-            
+
             employee_reimbursement = sheet.account_move_ids.filtered(
-                lambda m: m.move_type == "in_invoice"
+                lambda m, s=sheet: m.move_type == "in_invoice"
                 and m.state == "draft"
-                and m.partner_id == sheet.employee_id.sudo().work_contact_id
+                and m.partner_id == s.sheet.employee_id.sudo().work_contact_id
             )
-            
+
             # Step 1: Post supplier invoices
             supplier_invoices.action_post()
-            
+
             # Step 2: Generate payments for posted supplier invoices
-            # We need to make sure this method works with posted invoices
             sheet._generate_supplier_payments()
-            
+
             # Step 3: Post employee reimbursement invoice
             employee_reimbursement.action_post()
-            
+
             # Step 4: Reconcile everything
             sheet._reconcile_account_lines()
-            
+
             # Step 5: Change sheet state to done (or final state)
-            # This should be done after all processing is complete
-            sheet.write({'state': 'done'})
-        
+            sheet.write({"state": "done"})
+
         # Handle standard sheets using parent method
         if standard_sheets:
             super(HrExpenseSheet, standard_sheets).action_sheet_move_post()
-        
-        return True
 
+        return True
 
     def action_open_account_moves(self):
         self.ensure_one()
@@ -329,70 +316,63 @@ class HrExpenseSheet(models.Model):
             )
         return action
 
-    #Este metodo permite borrar los asientos contables al regresar la hoja de gastos a borrador
+    # El metodo borrar los asientos contables al regresar la hoja de gastos a borrador
     def action_reset_expense_sheets(self):
         """
         Override to properly handle accounting entries when resetting to draft.
         This ensures posted journal entries are cancelled and removed.
         """
         sheets_with_moves = self.filtered(lambda s: s.account_move_ids)
-        
+
         if sheets_with_moves:
             for sheet in sheets_with_moves:
                 moves = sheet.account_move_ids
-                
+
                 # First: Reset all moves to draft
                 for move in moves:
                     if not move:
                         continue
-                    
+
                     # Store move name for audit trail
-                    move_name = move.name or 'Draft'
+                    move_name = move.name or "Draft"
                     move_state = move.state
-                    
+
                     # Handle posted moves
-                    if move_state == 'posted':
+                    if move_state == "posted":
                         # In Odoo 18, use button_draft to unpost
                         try:
                             move.button_draft()
                         except Exception as e:
-                            raise UserError(_(
-                                "Cannot reset expense sheet '%s'. "
-                                "Failed to unpost journal entry '%s': %s"
-                            ) % (sheet.name, move_name, str(e)))
-                
+                            raise UserError(
+                                _(
+                                    "Cannot reset expense sheet '%(sheet)s'. "
+                                    "Failed to unpost journal entry '%(move)s': %(e)s"
+                                )
+                                % {"sheet": sheet.name, "move": move_name, "e": str(e)}
+                            ) from e
+
                 # Second: Delete all moves in one action after they're reset to draft
                 try:
-                    # Unlink related records first
-                    
                     moves.unlink()
                 except Exception as e:
-                    raise UserError(_(
-                        "Cannot delete journal entries: %s"
-                    ) % str(e))
-                
-                # Clear the reference after processing all moves for this sheet
-                sheet.write({'account_move_ids': False})
-                
-                # Add message to chatter for audit trail (for the sheet)
-                sheet.message_post(
-                    body=_("All accounting entries for this expense sheet have been reset and deleted."),
-                    subject=_("Accounting Entries Reset and Deleted")
-                )
-            
-        
-        # Call parent method to execute original reset logic
-        res = super(HrExpenseSheet, self).action_reset_expense_sheets()
-        
-        # Additional cleanup: Clear accounting date
-        self.write({'accounting_date': False})
+                    raise UserError(
+                        _("Cannot delete journal entries: %s") % str(e)
+                    ) from None
 
-        
+                # Clear the reference after processing all moves for this sheet
+                sheet.write({"account_move_ids": False})
+
+        # Call parent method to execute original reset logic
+        res = super().action_reset_expense_sheets()
+
+        # Additional cleanup: Clear accounting date
+        self.write({"accounting_date": False})
+
         # Post message about reset
         for sheet in self:
             sheet.message_post(
                 body=_("Expense sheet has been reset to draft."),
-                subject=_("Reset to Draft")
+                subject=_("Reset to Draft"),
             )
-        
+
         return res
