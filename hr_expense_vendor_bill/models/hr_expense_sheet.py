@@ -99,8 +99,8 @@ class HrExpenseSheet(models.Model):
         for sheet in self:
             # Filter for supplier invoices that are either draft or posted and unpaid
             invoices_to_pay = sheet.account_move_ids.filtered(
-                lambda m, s=sheet: m.move_type == "in_invoice"
-                and m.partner_id != s.sheet.employee_id.sudo().work_contact_id
+                lambda m: m.move_type == "in_invoice"
+                and m.partner_id != sheet.employee_id.sudo().work_contact_id
                 and m.payment_state != "paid"
             )
 
@@ -264,15 +264,15 @@ class HrExpenseSheet(models.Model):
 
             # Separate employee reimbursement from supplier invoices
             supplier_invoices = sheet.account_move_ids.filtered(
-                lambda m, s=sheet: m.move_type == "in_invoice"
+                lambda m: m.move_type == "in_invoice"
                 and m.state == "draft"
-                and m.partner_id != s.sheet.employee_id.sudo().work_contact_id
+                and m.partner_id != sheet.employee_id.sudo().work_contact_id
             )
 
             employee_reimbursement = sheet.account_move_ids.filtered(
-                lambda m, s=sheet: m.move_type == "in_invoice"
+                lambda m: m.move_type == "in_invoice"
                 and m.state == "draft"
-                and m.partner_id == s.sheet.employee_id.sudo().work_contact_id
+                and m.partner_id == sheet.employee_id.sudo().work_contact_id
             )
 
             # Step 1: Post supplier invoices
@@ -353,6 +353,7 @@ class HrExpenseSheet(models.Model):
 
                 # Second: Delete all moves in one action after they're reset to draft
                 try:
+                    moves.matched_payment_ids.unlink()
                     moves.unlink()
                 except Exception as e:
                     raise UserError(
