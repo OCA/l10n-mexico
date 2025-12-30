@@ -351,6 +351,13 @@ class HrExpenseSheet(models.Model):
                                 % {"sheet": sheet.name, "move": move_name, "e": str(e)}
                             ) from e
 
+                    for move in moves:
+                        for line in move.line_ids:
+                            if line.matched_debit_ids or line.matched_credit_ids:
+                                # Remove reconciliations from debit and credit sides
+                                line.matched_debit_ids.remove_move_reconcile()
+                                line.matched_credit_ids.remove_move_reconcile()
+
                 # Second: Delete all moves in one action after they're reset to draft
                 try:
                     moves.matched_payment_ids.unlink()
