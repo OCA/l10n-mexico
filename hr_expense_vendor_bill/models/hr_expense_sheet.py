@@ -341,7 +341,11 @@ class HrExpenseSheet(models.Model):
                     if move_state == "posted":
                         # In Odoo 18, use button_draft to unpost
                         try:
-                            move.button_draft()
+                            if sheet.payment_mode == "own_account":
+                                move.button_draft()
+                            else:
+                                move.payment_ids.action_draft()
+
                         except Exception as e:
                             raise UserError(
                                 _(
@@ -360,8 +364,12 @@ class HrExpenseSheet(models.Model):
 
                 # Second: Delete all moves in one action after they're reset to draft
                 try:
-                    moves.matched_payment_ids.unlink()
-                    moves.unlink()
+                    if sheet.payment_mode == "own_account":
+                        moves.payment_ids.unlink()
+                        moves.unlink()
+                    else:
+                        moves.payment_ids.unlink()
+
                 except Exception as e:
                     raise UserError(
                         _("Cannot delete journal entries: %s") % str(e)
