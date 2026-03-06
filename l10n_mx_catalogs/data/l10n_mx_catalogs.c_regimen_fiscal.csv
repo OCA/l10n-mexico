@@ -1,0 +1,20 @@
+id,code,name,applies_to_natural_person,applies_to_legal_person
+c_regimen_fiscal_601,601,General de Ley Personas Morales,0,1
+c_regimen_fiscal_603,603,Personas Morales con Fines no Lucrativos,0,1
+c_regimen_fiscal_605,605,Sueldos y Salarios e Ingresos Asimilados a Salarios,1,0
+c_regimen_fiscal_606,606,Arrendamiento,1,0
+c_regimen_fiscal_607,607,Régimen de Enajenación o Adquisición de Bienes,1,0
+c_regimen_fiscal_608,608,Demás ingresos,1,0
+c_regimen_fiscal_610,610,Residentes en el Extranjero sin Establecimiento Permanente en México,1,1
+c_regimen_fiscal_611,611,Ingresos por Dividendos (socios y accionistas),1,0
+c_regimen_fiscal_612,612,Personas Físicas con Actividades Empresariales y Profesionales,1,0
+c_regimen_fiscal_614,614,Ingresos por intereses,1,0
+c_regimen_fiscal_615,615,Régimen de los ingresos por obtención de premios,1,0
+c_regimen_fiscal_616,616,Sin obligaciones fiscales,1,0
+c_regimen_fiscal_620,620,Sociedades Cooperativas de Producción que optan por diferir sus ingresos,0,1
+c_regimen_fiscal_621,621,Incorporación Fiscal,1,0
+c_regimen_fiscal_622,622,"Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras",0,1
+c_regimen_fiscal_623,623,Opcional para Grupos de Sociedades,0,1
+c_regimen_fiscal_624,624,Coordinados,0,1
+c_regimen_fiscal_625,625,Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas,1,0
+c_regimen_fiscal_626,626,Régimen Simplificado de Confianza,1,1
