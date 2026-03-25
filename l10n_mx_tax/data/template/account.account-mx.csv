@@ -1,0 +1,4 @@
+"id","name","code","account_type","reconcile","tag_ids","name@es"
+"cuenta119_09_01","ISH pending payment","119.09.01","asset_current","True","l10n_mx.tag_debit_balance_account","ISH pendiente de pago"
+"cuenta603_29","State payroll tax","603.29.01","expense","False","l10n_mx.tag_debit_balance_account","Impuesto estatal sobre nóminas"
+"cuenta603_49_001","Per diems and travel expenses","603.49.001","expense","False","l10n_mx.tag_debit_balance_account","Viáticos y gastos de viaje"
