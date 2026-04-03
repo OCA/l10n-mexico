@@ -10,7 +10,7 @@
 <!--            </field>-->
 <!--            <field name="property_account_position_id" position="after">-->
             <xpath expr="//page" position="after">
-                <page name="CDFI">
+                <page name="CFDI">
                     <group>
                         <field name="tax_regime" />
                         <field name="cfdi_use_id" />
