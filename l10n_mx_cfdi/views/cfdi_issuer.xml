@@ -1,7 +1,7 @@
 <odoo>
     <!-- Issuer Form view -->
     <record id="view_cfdi_issuer" model="ir.ui.view">
-        <field name="name">Emisor de CFDIs</field>
+        <field name="name">CFDI Issuer</field>
         <field name="model">l10n_mx_cfdi.issuer</field>
         <field name="arch" type="xml">
             <form>
@@ -26,38 +26,24 @@
 
                     <group>
                         <group>
-                            <field name="name" required="True" />
-                            <field name="fiscal_name" />
-                            <field name="vat" />
-                            <field name="country_id" invisible="1" />
-                            <field name="zip" />
-                            <field name="tax_regime" />
+                            <field name="name" required="True"/>
+                            <field name="fiscal_name"/>
+                            <field name="vat"/>
+                            <field name="country_id" invisible="1"/>
+                            <field name="zip"/>
+                            <field name="tax_regime"/>
                         </group>
                         <group>
-                            <field name="service_id" />
-                            <field name="company_id" groups="base.group_system" />
-                            <field name="use_origin_document_sequence" />
-                            <field
-                                name="invoice_sequence_id"
-                                invisible="use_origin_document_sequence == True"
-                            />
-                            <field
-                                name="payment_sequence_id"
-                                invisible="use_origin_document_sequence == True"
-                            />
-                            <field
-                                name="refund_sequence_id"
-                                invisible="use_origin_document_sequence == True"
-                            />
-                            <field name="transfer_sequence_id" />
+                            <field name="service_id"/>
+                            <field name="company_id" groups="base.group_system"/>
                         </group>
                     </group>
                     <group>
-                        <field name="logo_url" />
-                        <field name="certificate_file" />
-                        <field name="key_file" />
-                        <field name="key_password" password="True" />
-                        <field name="registered" readonly="True" />
+                        <field name="logo_url"/>
+                        <field name="certificate_file"/>
+                        <field name="key_file"/>
+                        <field name="key_password" password="True"/>
+                        <field name="registered" readonly="True"/>
                     </group>
                     <!-- warning message with alert-danger class -->
                     <div
@@ -72,7 +58,8 @@
                             title="Alert"
                         />
                         <span
-                        >El emisor no está registrado con el proveedor de facturación.</span>
+                        >El emisor no está registrado con el proveedor de facturación.
+                        </span>
                     </div>
                     <!-- warning message with alert-success class -->
 
@@ -97,14 +84,14 @@
 
     <!-- CSD action -->
     <record id="action_l10n_mx_cfdi_issuer" model="ir.actions.act_window">
-        <field name="name">Emisores</field>
+        <field name="name">CFDI Issuers</field>
         <field name="res_model">l10n_mx_cfdi.issuer</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
 
     <menuitem
         id="menu_cfdi_issuer"
-        name="Emisores"
+        name="CFDI Issuers"
         parent="l10n_mx_cfdi.cfdi_menu"
         groups="base.group_user"
         action="action_l10n_mx_cfdi_issuer"
