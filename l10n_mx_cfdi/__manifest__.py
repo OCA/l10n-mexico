@@ -18,14 +18,10 @@
         "views/cfdi_issuer.xml",
         "views/res_partner.xml",
         "views/product_template.xml",
+        "views/cfdi_document.xml",
         # "security/l10n_mx_cfdi_security.xml",
         # "data/cfdi_publico_en_general.xml",
         # "data/paper_format.xml",
-        # "views/cfdi_document.xml",
-        # "views/cfdi_documents_issued.xml",
-
-        # "views/cfdi_series.xml",
-
         # "reports/report_cfdi_blocks.xml",
     ],
 }

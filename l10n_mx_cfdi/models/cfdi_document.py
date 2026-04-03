@@ -50,12 +50,6 @@ class Document(models.Model):
     pdf_file = fields.Binary(string="Archivo PDF", attachment=True, readonly=True)
     xml_file = fields.Binary(string="Archivo XML", attachment=True, readonly=True)
 
-    related_invoice_id = fields.Many2one(
-        "account.move", string="Factura relacionada", readonly=True
-    )
-    related_payment_id = fields.Many2one(
-        "account.payment", string="Pago relacionado", readonly=True
-    )
     is_global_note = fields.Boolean(string="Nota global", readonly=True, default=False)
 
     ###
@@ -89,7 +83,7 @@ class Document(models.Model):
         compute="_compute_standalone",
         store=True,
         help="Si está marcado, el certificado no esta relacionado "
-        "a otros documentos del sistema",
+             "a otros documentos del sistema",
     )
 
     cancellation_request_proof_file = fields.Binary(
@@ -270,22 +264,6 @@ class Document(models.Model):
             else:
                 entry.files_in_cache = False
 
-    def _resolve_report(self):
-        """Returns the report and the resource ids to
-        be used to generate the PDF file."""
-        report = None
-        resource_ids = []
-
-        if self.type in ("I", "E") and self.related_invoice_id:
-            report = self.env.ref("account.account_invoices")
-            resource_ids = [self.related_invoice_id.id]
-
-        if self.type == "P" and self.related_payment_id:
-            report = self.env.ref("account.action_report_payment_receipt")
-            resource_ids = [self.related_payment_id.id]
-
-        return report, resource_ids
-
     @api.depends("serie", "folio")
     def _compute_name(self):
         for entry in self:
@@ -303,88 +281,6 @@ class Document(models.Model):
     ###
     # Model methods
     ###
-
-    def create(self, vals_list):
-        # Set values to serie and folio from sequence if not provided
-
-        # check if vals_list is a list of dictionaries
-        if isinstance(vals_list, dict):
-            vals_list = [vals_list]
-
-        for vals in vals_list:
-            if "serie" not in vals or "folio" not in vals:
-                issuer = self._resolve_issuer_on_create(vals)
-                if (
-                    issuer.use_origin_document_sequence
-                    and vals.get("type", False) != "T"
-                    and vals.get("is_global_note", False) is False
-                ):
-                    self._set_serie_and_folio_from_document_sequence(vals)
-                else:
-                    self._set_serie_and_folio_from_cfdi_sequence(vals)
-
-        # Create certificate
-        return super().create(vals_list)
-
-    def _resolve_issuer_on_create(self, vals):
-        issuer_id = vals.get("issuer_id", False)
-        if not issuer_id:
-            raise UserError(_("Issuer is required to generate a new document."))
-
-        return self.env["l10n_mx_cfdi.issuer"].browse(issuer_id)
-
-    def _set_serie_and_folio_from_cfdi_sequence(self, vals):
-        sequence_id = self.get_sequence_for_cfdi_type(vals)
-
-        vals["serie"] = sequence_id.prefix
-        vals["folio"] = sequence_id.number_next
-
-        sequence_id.next_by_id(sequence_id.id)
-
-    def _set_serie_and_folio_from_document_sequence(self, vals):
-        serie = ""
-        folio = ""
-        document_name = ""
-
-        if "related_invoice_id" in vals:
-            invoice = self.env["account.move"].browse(vals["related_invoice_id"])
-            document_name = invoice.name
-
-        if "related_payment_id" in vals:
-            payment = self.env["account.payment"].browse(vals["related_payment_id"])
-            document_name = payment.name
-
-        if not document_name:
-            raise UserError(_("Unable to determine the origin document name."))
-
-        # extract numeric postfix from invoice name using regex
-        match = re.search(r"\d+$", document_name)
-        if match:
-            folio = match.group()
-            serie = document_name[: -len(match.group())]
-        else:
-            raise UserError(_("Invoice name does not contain a numeric postfix."))
-
-        # remove non-alphanumeric characters from serie
-        serie = re.sub(r"\W+", "", serie)
-
-        vals["serie"] = serie
-        vals["folio"] = folio
-
-    @api.model
-    def get_sequence_for_cfdi_type(self, vals_list):
-        issuer_id = self.env["l10n_mx_cfdi.issuer"].browse(vals_list["issuer_id"])
-
-        if vals_list["type"] == "I":
-            return issuer_id.invoice_sequence_id
-        elif vals_list["type"] == "E":
-            return issuer_id.refund_sequence_id
-        elif vals_list["type"] == "P":
-            return issuer_id.payment_sequence_id
-        elif vals_list["type"] == "T":
-            return issuer_id.transfer_sequence_id
-        else:
-            raise UserError(_("Type of certificate unknown."))
 
     def cancel(self, reason: str, replacement=None, simulate=False):
         self.ensure_one()
