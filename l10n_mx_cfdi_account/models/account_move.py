@@ -5,7 +5,7 @@ from lxml import etree
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError, ValidationError
-from odoo.tools import json_float_round
+from odoo.tools.float_utils import json_float_round
 
 
 class AccountMove(models.Model):
@@ -272,7 +272,7 @@ class AccountMove(models.Model):
 
         """
         fixed_tz_recordset = self.with_context(**{"tz": self.env.user.tz})
-        now_utc = fields.datetime.now()
+        now_utc = fields.Datetime.now()
         now_utc_tz = fields.Datetime.context_timestamp(fixed_tz_recordset, now_utc)
 
         # add 2h if there is a difference larger than 24h between
@@ -534,7 +534,6 @@ class AccountMove(models.Model):
             cfdi_data["Receiver"]["TaxZipCode"] = self.issuer_id.zip
             cfdi_data["Receiver"]["FiscalRegime"] = "616"
 
-    @api.returns("self", lambda value: value.id)
     def copy(self, default=None):
         # avoid copying the related cfdis
         default = (default or {}).update(

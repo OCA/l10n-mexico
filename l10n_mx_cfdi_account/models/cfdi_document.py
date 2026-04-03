@@ -99,15 +99,7 @@ class Document(models.Model):
 
         for vals in vals_list:
             if "serie" not in vals or "folio" not in vals:
-                issuer = self._resolve_issuer_on_create(vals)
-                if (
-                    issuer.use_origin_document_sequence
-                    and vals.get("type", False) != "T"
-                    and vals.get("is_global_note", False) is False
-                ):
-                    self._set_serie_and_folio_from_document_sequence(vals)
-                else:
-                    self._set_serie_and_folio_from_cfdi_sequence(vals)
+                self._set_serie_and_folio_from_document_sequence(vals)
 
         # Create certificate
         return super().create(vals_list)

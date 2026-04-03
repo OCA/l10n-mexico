@@ -1,5 +1,5 @@
 from odoo import api, fields, models
-from odoo.tools import float_is_zero, float_round, json_float_round
+from odoo.tools.float_utils import float_is_zero, float_round, json_float_round
 
 
 class AccountMoveLine(models.Model):
