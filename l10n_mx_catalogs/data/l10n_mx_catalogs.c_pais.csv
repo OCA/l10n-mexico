@@ -1,0 +1,251 @@
+id,code,description
+c_pais_AFG,AFG,Afganistán
+c_pais_ALA,ALA,Islas Åland
+c_pais_ALB,ALB,Albania
+c_pais_DEU,DEU,Alemania
+c_pais_AND,AND,Andorra
+c_pais_AGO,AGO,Angola
+c_pais_AIA,AIA,Anguila
+c_pais_ATA,ATA,Antártida
+c_pais_ATG,ATG,Antigua y Barbuda
+c_pais_SAU,SAU,Arabia Saudita
+c_pais_DZA,DZA,Argelia
+c_pais_ARG,ARG,Argentina
+c_pais_ARM,ARM,Armenia
+c_pais_ABW,ABW,Aruba
+c_pais_AUS,AUS,Australia
+c_pais_AUT,AUT,Austria
+c_pais_AZE,AZE,Azerbaiyán
+c_pais_BHS,BHS,Bahamas (las)
+c_pais_BGD,BGD,Bangladés
+c_pais_BRB,BRB,Barbados
+c_pais_BHR,BHR,Baréin
+c_pais_BEL,BEL,Bélgica
+c_pais_BLZ,BLZ,Belice
+c_pais_BEN,BEN,Benín
+c_pais_BMU,BMU,Bermudas
+c_pais_BLR,BLR,Bielorrusia
+c_pais_MMR,MMR,Myanmar
+c_pais_BOL,BOL,"Bolivia, Estado Plurinacional de"
+c_pais_BIH,BIH,Bosnia y Herzegovina
+c_pais_BWA,BWA,Botsuana
+c_pais_BRA,BRA,Brasil
+c_pais_BRN,BRN,Brunéi Darussalam
+c_pais_BGR,BGR,Bulgaria
+c_pais_BFA,BFA,Burkina Faso
+c_pais_BDI,BDI,Burundi
+c_pais_BTN,BTN,Bután
+c_pais_CPV,CPV,Cabo Verde
+c_pais_KHM,KHM,Camboya
+c_pais_CMR,CMR,Camerún
+c_pais_CAN,CAN,Canadá
+c_pais_QAT,QAT,Catar
+c_pais_BES,BES,"Bonaire, San Eustaquio y Saba"
+c_pais_TCD,TCD,Chad
+c_pais_CHL,CHL,Chile
+c_pais_CHN,CHN,China
+c_pais_CYP,CYP,Chipre
+c_pais_COL,COL,Colombia
+c_pais_COM,COM,Comoras
+c_pais_PRK,PRK,Corea (la República Democrática Popular de)
+c_pais_KOR,KOR,Corea (la República de)
+c_pais_CIV,CIV,Côte d'Ivoire
+c_pais_CRI,CRI,Costa Rica
+c_pais_HRV,HRV,Croacia
+c_pais_CUB,CUB,Cuba
+c_pais_CUW,CUW,Curaçao
+c_pais_DNK,DNK,Dinamarca
+c_pais_DMA,DMA,Dominica
+c_pais_ECU,ECU,Ecuador
+c_pais_EGY,EGY,Egipto
+c_pais_SLV,SLV,El Salvador
+c_pais_ARE,ARE,Emiratos Árabes Unidos (Los)
+c_pais_ERI,ERI,Eritrea
+c_pais_SVK,SVK,Eslovaquia
+c_pais_SVN,SVN,Eslovenia
+c_pais_ESP,ESP,España
+c_pais_USA,USA,Estados Unidos (los)
+c_pais_EST,EST,Estonia
+c_pais_ETH,ETH,Etiopía
+c_pais_PHL,PHL,Filipinas (las)
+c_pais_FIN,FIN,Finlandia
+c_pais_FJI,FJI,Fiyi
+c_pais_FRA,FRA,Francia
+c_pais_GAB,GAB,Gabón
+c_pais_GMB,GMB,Gambia (La)
+c_pais_GEO,GEO,Georgia
+c_pais_GHA,GHA,Ghana
+c_pais_GIB,GIB,Gibraltar
+c_pais_GRD,GRD,Granada
+c_pais_GRC,GRC,Grecia
+c_pais_GRL,GRL,Groenlandia
+c_pais_GLP,GLP,Guadalupe
+c_pais_GUM,GUM,Guam
+c_pais_GTM,GTM,Guatemala
+c_pais_GUF,GUF,Guayana Francesa
+c_pais_GGY,GGY,Guernsey
+c_pais_GIN,GIN,Guinea
+c_pais_GNB,GNB,Guinea-Bisáu
+c_pais_GNQ,GNQ,Guinea Ecuatorial
+c_pais_GUY,GUY,Guyana
+c_pais_HTI,HTI,Haití
+c_pais_HND,HND,Honduras
+c_pais_HKG,HKG,Hong Kong
+c_pais_HUN,HUN,Hungría
+c_pais_IND,IND,India
+c_pais_IDN,IDN,Indonesia
+c_pais_IRQ,IRQ,Irak
+c_pais_IRN,IRN,Irán (la República Islámica de)
+c_pais_IRL,IRL,Irlanda
+c_pais_BVT,BVT,Isla Bouvet
+c_pais_IMN,IMN,Isla de Man
+c_pais_CXR,CXR,Isla de Navidad
+c_pais_NFK,NFK,Isla Norfolk
+c_pais_ISL,ISL,Islandia
+c_pais_CYM,CYM,Islas Caimán (las)
+c_pais_CCK,CCK,Islas Cocos (Keeling)
+c_pais_COK,COK,Islas Cook (las)
+c_pais_FRO,FRO,Islas Feroe (las)
+c_pais_SGS,SGS,Georgia del sur y las islas sandwich del sur
+c_pais_HMD,HMD,Isla Heard e Islas McDonald
+c_pais_FLK,FLK,Islas Malvinas [Falkland] (las)
+c_pais_MNP,MNP,Islas Marianas del Norte (las)
+c_pais_MHL,MHL,Islas Marshall (las)
+c_pais_PCN,PCN,Pitcairn
+c_pais_SLB,SLB,Islas Salomón (las)
+c_pais_TCA,TCA,Islas Turcas y Caicos (las)
+c_pais_UMI,UMI,Islas de Ultramar Menores de Estados Unidos (las)
+c_pais_VGB,VGB,Islas Vírgenes (Británicas)
+c_pais_VIR,VIR,Islas Vírgenes (EE.UU.)
+c_pais_ISR,ISR,Israel
+c_pais_ITA,ITA,Italia
+c_pais_JAM,JAM,Jamaica
+c_pais_JPN,JPN,Japón
+c_pais_JEY,JEY,Jersey
+c_pais_JOR,JOR,Jordania
+c_pais_KAZ,KAZ,Kazajistán
+c_pais_KEN,KEN,Kenia
+c_pais_KGZ,KGZ,Kirguistán
+c_pais_KIR,KIR,Kiribati
+c_pais_KWT,KWT,Kuwait
+c_pais_LAO,LAO,"Lao, (la) República Democrática Popular"
+c_pais_LSO,LSO,Lesoto
+c_pais_LVA,LVA,Letonia
+c_pais_LBN,LBN,Líbano
+c_pais_LBR,LBR,Liberia
+c_pais_LBY,LBY,Libia
+c_pais_LIE,LIE,Liechtenstein
+c_pais_LTU,LTU,Lituania
+c_pais_LUX,LUX,Luxemburgo
+c_pais_MAC,MAC,Macao
+c_pais_MDG,MDG,Madagascar
+c_pais_MYS,MYS,Malasia
+c_pais_MWI,MWI,Malaui
+c_pais_MDV,MDV,Maldivas
+c_pais_MLI,MLI,Malí
+c_pais_MLT,MLT,Malta
+c_pais_MAR,MAR,Marruecos
+c_pais_MTQ,MTQ,Martinica
+c_pais_MUS,MUS,Mauricio
+c_pais_MRT,MRT,Mauritania
+c_pais_MYT,MYT,Mayotte
+c_pais_MEX,MEX,México
+c_pais_FSM,FSM,Micronesia (los Estados Federados de)
+c_pais_MDA,MDA,Moldavia (la República de)
+c_pais_MCO,MCO,Mónaco
+c_pais_MNG,MNG,Mongolia
+c_pais_MNE,MNE,Montenegro
+c_pais_MSR,MSR,Montserrat
+c_pais_MOZ,MOZ,Mozambique
+c_pais_NAM,NAM,Namibia
+c_pais_NRU,NRU,Nauru
+c_pais_NPL,NPL,Nepal
+c_pais_NIC,NIC,Nicaragua
+c_pais_NER,NER,Níger (el)
+c_pais_NGA,NGA,Nigeria
+c_pais_NIU,NIU,Niue
+c_pais_NOR,NOR,Noruega
+c_pais_NCL,NCL,Nueva Caledonia
+c_pais_NZL,NZL,Nueva Zelanda
+c_pais_OMN,OMN,Omán
+c_pais_NLD,NLD,Países Bajos (los)
+c_pais_PAK,PAK,Pakistán
+c_pais_PLW,PLW,Palaos
+c_pais_PSE,PSE,"Palestina, Estado de"
+c_pais_PAN,PAN,Panamá
+c_pais_PNG,PNG,Papúa Nueva Guinea
+c_pais_PRY,PRY,Paraguay
+c_pais_PER,PER,Perú
+c_pais_PYF,PYF,Polinesia Francesa
+c_pais_POL,POL,Polonia
+c_pais_PRT,PRT,Portugal
+c_pais_PRI,PRI,Puerto Rico
+c_pais_GBR,GBR,Reino Unido (el)
+c_pais_CAF,CAF,República Centroafricana (la)
+c_pais_CZE,CZE,República Checa (la)
+c_pais_MKD,MKD,Macedonia (la antigua República Yugoslava de)
+c_pais_COG,COG,Congo
+c_pais_COD,COD,Congo (la República Democrática del)
+c_pais_DOM,DOM,República Dominicana (la)
+c_pais_REU,REU,Reunión
+c_pais_RWA,RWA,Ruanda
+c_pais_ROU,ROU,Rumania
+c_pais_RUS,RUS,"Rusia, (la) Federación de"
+c_pais_ESH,ESH,Sahara Occidental
+c_pais_WSM,WSM,Samoa
+c_pais_ASM,ASM,Samoa Americana
+c_pais_BLM,BLM,San Bartolomé
+c_pais_KNA,KNA,San Cristóbal y Nieves
+c_pais_SMR,SMR,San Marino
+c_pais_MAF,MAF,San Martín (parte francesa)
+c_pais_SPM,SPM,San Pedro y Miquelón
+c_pais_VCT,VCT,San Vicente y las Granadinas
+c_pais_SHN,SHN,"Santa Helena, Ascensión y Tristán de Acuña"
+c_pais_LCA,LCA,Santa Lucía
+c_pais_STP,STP,Santo Tomé y Príncipe
+c_pais_SEN,SEN,Senegal
+c_pais_SRB,SRB,Serbia
+c_pais_SYC,SYC,Seychelles
+c_pais_SLE,SLE,Sierra leona
+c_pais_SGP,SGP,Singapur
+c_pais_SXM,SXM,Sint Maarten (parte holandesa)
+c_pais_SYR,SYR,"Siria, (la) República Árabe"
+c_pais_SOM,SOM,Somalia
+c_pais_LKA,LKA,Sri Lanka
+c_pais_SWZ,SWZ,Suazilandia
+c_pais_ZAF,ZAF,Sudáfrica
+c_pais_SDN,SDN,Sudán (el)
+c_pais_SSD,SSD,Sudán del Sur
+c_pais_SWE,SWE,Suecia
+c_pais_CHE,CHE,Suiza
+c_pais_SUR,SUR,Surinam
+c_pais_SJM,SJM,Svalbard y Jan Mayen
+c_pais_THA,THA,Tailandia
+c_pais_TWN,TWN,Taiwán (Provincia de China)
+c_pais_TZA,TZA,"Tanzania, República Unida de"
+c_pais_TJK,TJK,Tayikistán
+c_pais_IOT,IOT,Territorio Británico del Océano Índico (el)
+c_pais_ATF,ATF,Territorios Australes Franceses (los)
+c_pais_TLS,TLS,Timor-Leste
+c_pais_TGO,TGO,Togo
+c_pais_TKL,TKL,Tokelau
+c_pais_TON,TON,Tonga
+c_pais_TTO,TTO,Trinidad y Tobago
+c_pais_TUN,TUN,Túnez
+c_pais_TKM,TKM,Turkmenistán
+c_pais_TUR,TUR,Turquía
+c_pais_TUV,TUV,Tuvalu
+c_pais_UKR,UKR,Ucrania
+c_pais_UGA,UGA,Uganda
+c_pais_URY,URY,Uruguay
+c_pais_UZB,UZB,Uzbekistán
+c_pais_VUT,VUT,Vanuatu
+c_pais_VAT,VAT,Santa Sede[Estado de la Ciudad del Vaticano] (la)
+c_pais_VEN,VEN,"Venezuela, República Bolivariana de"
+c_pais_VNM,VNM,Viet Nam
+c_pais_WLF,WLF,Wallis y Futuna
+c_pais_YEM,YEM,Yemen
+c_pais_DJI,DJI,Yibuti
+c_pais_ZMB,ZMB,Zambia
+c_pais_ZWE,ZWE,Zimbabue
+c_pais_ZZZ,ZZZ,Países no declarados

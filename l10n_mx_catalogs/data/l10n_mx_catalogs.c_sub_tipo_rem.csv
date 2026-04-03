@@ -1,0 +1,32 @@
+id,code,description
+c_sub_tipo_rem_CTR001,CTR001,Caballete
+c_sub_tipo_rem_CTR002,CTR002,Caja
+c_sub_tipo_rem_CTR003,CTR003,Caja Abierta
+c_sub_tipo_rem_CTR004,CTR004,Caja Cerrada
+c_sub_tipo_rem_CTR005,CTR005,Caja De Recolección Con Cargador Frontal
+c_sub_tipo_rem_CTR006,CTR006,Caja Refrigerada
+c_sub_tipo_rem_CTR007,CTR007,Caja Seca
+c_sub_tipo_rem_CTR008,CTR008,Caja Transferencia
+c_sub_tipo_rem_CTR009,CTR009,Cama Baja o Cuello Ganso
+c_sub_tipo_rem_CTR010,CTR010,Chasis Portacontenedor
+c_sub_tipo_rem_CTR011,CTR011,Convencional De Chasis
+c_sub_tipo_rem_CTR012,CTR012,Equipo Especial
+c_sub_tipo_rem_CTR013,CTR013,Estacas
+c_sub_tipo_rem_CTR014,CTR014,Góndola Madrina
+c_sub_tipo_rem_CTR015,CTR015,Grúa Industrial
+c_sub_tipo_rem_CTR016,CTR016,Grúa
+c_sub_tipo_rem_CTR017,CTR017,Integral
+c_sub_tipo_rem_CTR018,CTR018,Jaula
+c_sub_tipo_rem_CTR019,CTR019,Media Redila
+c_sub_tipo_rem_CTR020,CTR020,Pallet o Celdillas
+c_sub_tipo_rem_CTR021,CTR021,Plataforma
+c_sub_tipo_rem_CTR022,CTR022,Plataforma Con Grúa
+c_sub_tipo_rem_CTR023,CTR023,Plataforma Encortinada
+c_sub_tipo_rem_CTR024,CTR024,Redilas
+c_sub_tipo_rem_CTR025,CTR025,Refrigerador
+c_sub_tipo_rem_CTR026,CTR026,Revolvedora
+c_sub_tipo_rem_CTR027,CTR027,Semicaja
+c_sub_tipo_rem_CTR028,CTR028,Tanque
+c_sub_tipo_rem_CTR029,CTR029,Tolva
+c_sub_tipo_rem_CTR031,CTR031,Volteo
+c_sub_tipo_rem_CTR032,CTR032,Volteo Desmontable

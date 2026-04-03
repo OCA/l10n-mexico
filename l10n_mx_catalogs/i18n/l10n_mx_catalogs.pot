@@ -1,0 +1,399 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_mx_catalogs
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_regimen_fiscal__applies_to_natural_person
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_uso_cfdi__applies_to_natural_person
+msgid "Aplica para persona física"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_regimen_fiscal__applies_to_legal_person
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_uso_cfdi__applies_to_legal_person
+msgid "Aplica para persona moral"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_uso_cfdi__applies_to_fiscal_regimes
+msgid "Aplica para régimen fiscal"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model,name:l10n_mx_catalogs.model_l10n_mx_catalogs_c_localidad
+msgid "Catalogo SAT Localidad"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model,name:l10n_mx_catalogs.model_l10n_mx_catalogs_c_forma_pago
+msgid "Catalogo SAT de Formas de Pago"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model,name:l10n_mx_catalogs.model_l10n_mx_catalogs_c_metodo_pago
+msgid "Catalogo SAT de Metodos de pago"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model,name:l10n_mx_catalogs.model_l10n_mx_catalogs_c_motivo_cancelacion
+msgid "Catalogo SAT de Motivos de Cancelación"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model,name:l10n_mx_catalogs.model_l10n_mx_catalogs_c_periodicidad
+msgid "Catalogo SAT de Periodicidad"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model,name:l10n_mx_catalogs.model_l10n_mx_catalogs_c_uso_cfdi
+msgid "Catalogo SAT de uso de CFDI"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model,name:l10n_mx_catalogs.model_l10n_mx_catalogs_c_meses
+msgid "Catalogo Sat Meses"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model,name:l10n_mx_catalogs.model_l10n_mx_catalogs_c_config_autotransporte
+msgid "Catálogo Configuración Autotransporte"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model,name:l10n_mx_catalogs.model_l10n_mx_catalogs_c_figura_transporte
+msgid "Catálogo Figura Transporte"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model,name:l10n_mx_catalogs.model_l10n_mx_catalogs_c_parte_transporte
+msgid "Catálogo Parte Transporte"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model,name:l10n_mx_catalogs.model_l10n_mx_catalogs_c_regimen_fiscal
+msgid "Catálogo Regimen Fiscal"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model,name:l10n_mx_catalogs.model_l10n_mx_catalogs_c_clave_prod_serv
+msgid "Catálogo SAT Clave Producto/Servicio"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model,name:l10n_mx_catalogs.model_l10n_mx_catalogs_c_clave_unidad
+msgid "Catálogo SAT Clave Unidad"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model,name:l10n_mx_catalogs.model_l10n_mx_catalogs_c_colonia
+msgid "Catálogo SAT Colonia"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model,name:l10n_mx_catalogs.model_l10n_mx_catalogs_c_sub_tipo_rem
+msgid "Catálogo Subtipo de Remolque"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model,name:l10n_mx_catalogs.model_l10n_mx_catalogs_c_tipo_permiso
+msgid "Catálogo Tipo de Permiso"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model,name:l10n_mx_catalogs.model_l10n_mx_catalogs_c_tipo_relacion
+msgid "Catálogo Tipo de Relación"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model,name:l10n_mx_catalogs.model_l10n_mx_catalogs_c_codigo_postal
+msgid "Catálogo de Codigo Postal de México (SAT)"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model,name:l10n_mx_catalogs.model_l10n_mx_catalogs_c_pais
+msgid "Catálogo de Países SAT"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_tipo_permiso__clave_transporte
+msgid "Clave Transporte"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_colonia__code
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_tipo_permiso__code
+msgid "Code"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_localidad__code
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_metodo_pago__code
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_periodicidad__code
+msgid "Codigo"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_localidad__state_code
+msgid "Codigo de Estado"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_clave_prod_serv__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_clave_unidad__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_codigo_postal__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_colonia__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_config_autotransporte__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_figura_transporte__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_forma_pago__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_localidad__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_meses__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_metodo_pago__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_motivo_cancelacion__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_pais__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_parte_transporte__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_periodicidad__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_regimen_fiscal__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_sub_tipo_rem__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_tipo_permiso__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_tipo_relacion__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_uso_cfdi__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_clave_prod_serv__create_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_clave_unidad__create_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_codigo_postal__create_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_colonia__create_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_config_autotransporte__create_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_figura_transporte__create_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_forma_pago__create_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_localidad__create_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_meses__create_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_metodo_pago__create_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_motivo_cancelacion__create_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_pais__create_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_parte_transporte__create_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_periodicidad__create_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_regimen_fiscal__create_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_sub_tipo_rem__create_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_tipo_permiso__create_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_tipo_relacion__create_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_uso_cfdi__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_clave_prod_serv__code
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_clave_unidad__code
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_config_autotransporte__code
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_figura_transporte__code
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_forma_pago__code
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_meses__code
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_motivo_cancelacion__code
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_pais__code
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_parte_transporte__code
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_regimen_fiscal__code
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_sub_tipo_rem__code
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_tipo_relacion__code
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_uso_cfdi__code
+msgid "Código"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_codigo_postal__code
+msgid "Código Postal"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_codigo_postal__state_code
+msgid "Código de Estado"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_codigo_postal__locality_code
+msgid "Código de Localidad"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_codigo_postal__municipality_code
+msgid "Código de Municipio"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_clave_prod_serv__name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_clave_unidad__description
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_config_autotransporte__description
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_figura_transporte__description
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_pais__description
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_parte_transporte__description
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_sub_tipo_rem__description
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_tipo_relacion__description
+msgid "Descripción"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_tipo_permiso__description
+msgid "Description"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_clave_prod_serv__display_name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_clave_unidad__display_name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_codigo_postal__display_name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_colonia__display_name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_config_autotransporte__display_name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_figura_transporte__display_name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_forma_pago__display_name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_localidad__display_name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_meses__display_name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_metodo_pago__display_name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_motivo_cancelacion__display_name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_pais__display_name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_parte_transporte__display_name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_periodicidad__display_name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_regimen_fiscal__display_name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_sub_tipo_rem__display_name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_tipo_permiso__display_name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_tipo_relacion__display_name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_uso_cfdi__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_localidad__state_id
+msgid "Estado"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_clave_prod_serv__border_incentive
+msgid "Estímulo Fronterizo"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_clave_prod_serv__id
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_clave_unidad__id
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_codigo_postal__id
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_colonia__id
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_config_autotransporte__id
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_figura_transporte__id
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_forma_pago__id
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_localidad__id
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_meses__id
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_metodo_pago__id
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_motivo_cancelacion__id
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_pais__id
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_parte_transporte__id
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_periodicidad__id
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_regimen_fiscal__id
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_sub_tipo_rem__id
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_tipo_permiso__id
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_tipo_relacion__id
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_uso_cfdi__id
+msgid "ID"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_clave_prod_serv__includes_ieps
+msgid "Incluye IEPS Trasladado"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_clave_prod_serv__includes_iva
+msgid "Incluye IVA Trasladado"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_clave_prod_serv__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_clave_unidad__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_codigo_postal__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_colonia__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_config_autotransporte__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_figura_transporte__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_forma_pago__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_localidad__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_meses__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_metodo_pago__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_motivo_cancelacion__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_pais__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_parte_transporte__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_periodicidad__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_regimen_fiscal__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_sub_tipo_rem__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_tipo_permiso__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_tipo_relacion__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_uso_cfdi__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_clave_prod_serv__write_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_clave_unidad__write_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_codigo_postal__write_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_colonia__write_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_config_autotransporte__write_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_figura_transporte__write_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_forma_pago__write_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_localidad__write_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_meses__write_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_metodo_pago__write_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_motivo_cancelacion__write_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_pais__write_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_parte_transporte__write_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_periodicidad__write_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_regimen_fiscal__write_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_sub_tipo_rem__write_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_tipo_permiso__write_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_tipo_relacion__write_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_uso_cfdi__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_localidad__name
+msgid "Localidad"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_colonia__name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_tipo_relacion__name
+msgid "Name"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_clave_unidad__name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_forma_pago__name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_meses__name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_metodo_pago__name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_motivo_cancelacion__name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_periodicidad__name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_regimen_fiscal__name
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_uso_cfdi__name
+msgid "Nombre"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_clave_prod_serv__alternative_names
+msgid "Nombres Alternos"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_clave_unidad__symbol
+msgid "Símbolo"
+msgstr ""
+
+#. module: l10n_mx_catalogs
+#: model:ir.model.fields,field_description:l10n_mx_catalogs.field_l10n_mx_catalogs_c_colonia__zip
+msgid "Zip"
+msgstr ""
