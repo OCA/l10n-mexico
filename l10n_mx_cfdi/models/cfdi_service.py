@@ -3,7 +3,7 @@ import logging
 
 import facturama
 
-from odoo import _, api, fields, models
+from odoo import _, fields, models
 from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
@@ -13,56 +13,14 @@ class CFDIService(models.Model):
     _name = "l10n_mx_cfdi.cfdi_service"
     _description = "CFDI Service Settings"
 
-    name = fields.Char(string="Nombre", required=True)
+    name = fields.Char(string="Name", required=True)
     company_ids = fields.Many2many(
-        "res.company", string="Compañías", default=lambda self: self.env.company
+        "res.company", string="Companies", default=lambda self: self.env.company
     )
     user = fields.Char(required=True, groups="base.group_system")
     password = fields.Char(required=True, groups="base.group_system")
     sandbox_mode = fields.Boolean(default=False, groups="base.group_system")
-    topup_ids = fields.One2many(
-        "l10n_mx_cfdi.cfdi_service.topup", "service_id", string="Recargas"
-    )
-    stamps_used = fields.Integer(readonly=True, compute="_compute_stamps_used")
-
-    def _compute_stamps_used(self):
-        for record in self:
-            if self.usage_sequence_id:
-                record.stamps_used = self.usage_sequence_id.number_next_actual - 1
-            else:
-                record.stamps_used = 0
-
-    stamps_available = fields.Integer(
-        string="Folios Disponibles", readonly=True, compute="_compute_stamps_available"
-    )
-
-    def _compute_stamps_available(self):
-        for record in self:
-            total_stamps_acquired = sum(record.topup_ids.mapped("stamp_number"))
-            record.stamps_available = total_stamps_acquired - record.stamps_used
-
-    def _create_usage_sequence(self):
-        return self.env["ir.sequence"].create(
-            {
-                "name": "CFDI Folios Usados",
-                "implementation": "no_gap",
-                "number_increment": 1,
-                "number_next_actual": 0,
-                "company_id": self.env.user.company_id.id,
-                "code": "l10n_mx_cfdi.cfdi_service.usage",
-            }
-        )
-
-    usage_sequence_id = fields.Many2one(
-        "ir.sequence",
-        string="Secuencia de uso de Folios",
-        default=_create_usage_sequence,
-        ondelete="cascade",
-    )
-
-    @api.ondelete(at_uninstall=False)
-    def _unlink_related_usage_sequence(self):
-        self.usage_sequence_id.unlink()
+    stamps_available = fields.Integer(string="Stamps available", readonly=True)
 
     def _get_client(self):
         self.ensure_one()
