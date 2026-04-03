@@ -6,12 +6,12 @@
             <form>
                 <group>
                     <field name="certificate_ids" readonly="True">
-                        <tree>
+                        <list>
                             <field name="name" string="Folio" />
                             <field name="type" />
                             <field name="uuid" />
                             <field name="state" widget="badge" />
-                        </tree>
+                        </list>
                     </field>
                     <field name="cancel_reason_id" />
                     <field name="requires_replacement" invisible="1" />
