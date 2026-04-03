@@ -3,7 +3,6 @@ from . import (
     res_partner,
     cfdi_issuer,
     # cfdi_document,
-    # res_company,
-
+    res_company,
     # product_template,
 )
