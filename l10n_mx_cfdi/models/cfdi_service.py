@@ -69,14 +69,6 @@ class CFDIService(models.Model):
 
     def create_cfdi(self, cfdi_data: dict):
         self.ensure_one()
-        if not self.stamps_available:
-            raise UserError(
-                _(
-                    "No hay folios disponibles para emitir CFDIs.\n"
-                    "Comuníquese con el administrador del sistema."
-                )
-            )
-
         client = self._get_client()
         try:
             res = client.CfdiMultiEmisor.build_http_request(
@@ -84,7 +76,6 @@ class CFDIService(models.Model):
             )
             if "Id" in res:
                 _logger.info("CFDI creado: %s", res["Id"])
-            self.usage_sequence_id.next_by_id()
             return res
         except facturama.MalformedRequestError as e:
             error_message = (
