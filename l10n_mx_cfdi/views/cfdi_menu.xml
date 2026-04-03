@@ -1,0 +1,5 @@
+<odoo>
+
+    <menuitem id="cfdi_menu" name="CFDI" groups="base.group_user" />
+
+</odoo>

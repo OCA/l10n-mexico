@@ -1,0 +1,55 @@
+<odoo>
+
+    <record id="document_cfdi_admin_access" model="ir.rule">
+        <field name="name">Document CFDI Admin Access</field>
+        <field name="model_id" ref="model_l10n_mx_cfdi_document" />
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[(4, ref('base.group_system'))]" />
+    </record>
+
+    <!-- Restrict access to the CFDI documents by company -->
+    <record id="document_cfdi_company_access" model="ir.rule">
+        <field name="name">Document CFDI Company Access</field>
+        <field name="model_id" ref="model_l10n_mx_cfdi_document" />
+        <field
+            name="domain_force"
+        >['|',('company_id', '=', False),('company_id', 'in', company_ids)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]" />
+    </record>
+
+    <!-- Allow access to the CFDI issuer to sysadmin -->
+    <record id="issuer_cfdi_admin_access" model="ir.rule">
+        <field name="name">Issuer CFDI Admin Access</field>
+        <field name="model_id" ref="model_l10n_mx_cfdi_issuer" />
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[(4, ref('base.group_system'))]" />
+    </record>
+
+    <!-- Restrict access to the CFDI issuer by company -->
+    <record id="issuer_cfdi_company_access" model="ir.rule">
+        <field name="name">Issuer CFDI Company Access</field>
+        <field name="model_id" ref="model_l10n_mx_cfdi_issuer" />
+        <field
+            name="domain_force"
+        >['|',('company_id', '=', False),('company_id', 'in', company_ids)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]" />
+    </record>
+
+    <!-- Allow access to the CFDI service to company -->
+    <record id="service_cfdi_admin_access" model="ir.rule">
+        <field name="name">CFDI Service Admin Access</field>
+        <field name="model_id" ref="model_l10n_mx_cfdi_cfdi_service" />
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[(4, ref('base.group_system'))]" />
+    </record>
+
+    <record id="service_cfdi_company_access" model="ir.rule">
+        <field name="name">CFDI Service Company Access</field>
+        <field name="model_id" ref="model_l10n_mx_cfdi_cfdi_service" />
+        <field
+            name="domain_force"
+        >['|',('company_ids', '=', False),('company_ids', 'in', company_ids)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]" />
+    </record>
+
+</odoo>
