@@ -4,5 +4,5 @@ from . import (
     cfdi_issuer,
     # cfdi_document,
     res_company,
-    # product_template,
+    product_template,
 )
