@@ -534,16 +534,6 @@ class AccountMove(models.Model):
             cfdi_data["Receiver"]["TaxZipCode"] = self.issuer_id.zip
             cfdi_data["Receiver"]["FiscalRegime"] = "616"
 
-    def copy(self, default=None):
-        # avoid copying the related cfdis
-        default = (default or {}).update(
-            {
-                "related_cert_ids": [(6, 0, [])],
-            }
-        )
-
-        return super().copy(default)
-
     def _get_name_invoice_report(self):
         self.ensure_one()
         if self.company_id.account_fiscal_country_id.code == "MX":
