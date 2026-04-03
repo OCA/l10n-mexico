@@ -1,0 +1,15 @@
+<odoo>
+    <record id="view_account_invoice_send_wizard_form_inherit" model="ir.ui.view">
+        <field name="name">account.move.send.no_print</field>
+        <field name="model">account.move.send</field>
+        <field name="inherit_id" ref="account.account_move_send_form" />
+        <field name="arch" type="xml">
+            <div name="option_download" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </div>
+            <div name="option_send_mail" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </div>
+        </field>
+    </record>
+</odoo>
