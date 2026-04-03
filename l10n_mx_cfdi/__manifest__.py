@@ -16,6 +16,7 @@
         "views/cfdi_menu.xml",
         "views/cfdi_service.xml",
         "views/cfdi_issuer.xml",
+        "views/res_partner.xml",
         "views/product_template.xml",
         # "security/l10n_mx_cfdi_security.xml",
         # "data/cfdi_publico_en_general.xml",
@@ -25,7 +26,6 @@
 
         # "views/cfdi_series.xml",
 
-        # "views/res_partner.xml",
         # "reports/report_cfdi_blocks.xml",
     ],
 }
