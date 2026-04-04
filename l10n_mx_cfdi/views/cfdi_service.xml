@@ -4,7 +4,7 @@
         <field name="name">CFDI Service Settings</field>
         <field name="model">l10n_mx_cfdi.cfdi_service</field>
         <field name="arch" type="xml">
-            <form string="CFDI Service">
+            <form string="PAC Settings">
                 <sheet>
                     <group>
                         <group>
@@ -28,14 +28,14 @@
 
     <!-- CFDI Settings action -->
     <record id="action_l10n_mx_cfdi_settings" model="ir.actions.act_window">
-        <field name="name">CFDI Service Settings</field>
+        <field name="name">PAC Settings</field>
         <field name="res_model">l10n_mx_cfdi.cfdi_service</field>
         <field name="view_mode">list,form</field>
     </record>
 
     <menuitem
         id="cfdi_settings_menu"
-        name="CFDI Service Settings"
+        name="PAC Settings"
         parent="l10n_mx_cfdi.cfdi_menu"
         groups="base.group_user"
         action="action_l10n_mx_cfdi_settings"

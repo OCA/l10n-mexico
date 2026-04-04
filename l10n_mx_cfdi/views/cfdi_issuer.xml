@@ -91,7 +91,7 @@
 
     <menuitem
         id="menu_cfdi_issuer"
-        name="CFDI Issuers"
+        name="Issuers"
         parent="l10n_mx_cfdi.cfdi_menu"
         groups="base.group_user"
         action="action_l10n_mx_cfdi_issuer"
