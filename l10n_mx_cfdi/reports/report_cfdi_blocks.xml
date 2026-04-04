@@ -142,7 +142,7 @@
     </template>
 
     <template id="cfdi_signature_data">
-        <div class="row m-0 p-0 mt-1 ">
+        <div class="row col-12 m-0 p-0 mt-1 ">
             <div class="col col-3 p-0 m-0">
                 <div>
                     <b>Tipo de Comprobante:</b>
@@ -188,19 +188,18 @@
         </div>
         <div
             class="row m-0 p-0 mt-1"
-            style="font-size: 10px;"
+            style="font-size: 10px; break-inside: avoid; page-break-inside: avoid;"
             name="cfdi_signature_data"
         >
-            <div class="col col-2 m-0 p-0" name="cfdi_qr">
+            <div class="col col-3 m-0 p-0" name="cfdi_qr">
                 <b>Versión: 4.0</b>
                 <img
                     t-att-src="'data:image/png;base64,%s'% o.cfdi_document_id.verification_qr_code.decode('utf-8')"
                     alt="Enlace de Verificación"
                     class="img-fluid mx-auto"
-                    style="min-height: 3cm; min-width: 3cm;"
                 />
             </div>
-            <div class="col-10 m-0 p-0 pl-2">
+            <div class="col-9 m-0 p-2">
 
                 <b
                     class="m-0 p-0 font-weight-bold"

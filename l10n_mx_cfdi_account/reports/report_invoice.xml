@@ -38,27 +38,6 @@
             </t>
         </t>
 
-        <!-- remove default Title Line in CFDI documents -->
-        <xpath expr="//h2" position="replace">
-            <h2 t-if="not cfdi">
-                <span
-                    t-if="o.move_type == 'out_invoice' and o.state == 'posted'"
-                >Factura</span>
-                <span
-                    t-if="o.move_type == 'out_invoice' and o.state == 'draft'"
-                >Borrador de Factura</span>
-                <span
-                    t-if="o.move_type == 'out_invoice' and o.state == 'cancel'"
-                >Factura Cancelada</span>
-                <span t-if="o.move_type == 'out_refund'">Nota de Crédito</span>
-                <span
-                    t-if="o.move_type == 'in_refund'"
-                >Nota de Crédito de Proveedor</span>
-                <span t-if="o.move_type == 'in_invoice'">Factura de Proveedor</span>
-                <span t-if="o.name != '/'" t-field="o.name" />
-            </h2>
-        </xpath>
-
         <xpath expr="//div[hasclass('page')]" position="attributes">
             <attribute name="t-attf-style">font-size: 12px;</attribute>
         </xpath>

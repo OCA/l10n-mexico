@@ -18,8 +18,7 @@
         "wizards/create_cfdi_publico_en_general.xml",
         # "wizards/account_invoice_send_views.xml",
         # "wizards/download_cfdi_files_wizard.xml",
-        # "reports/report_external_layouts.xml",
-        # "reports/report_invoice.xml",
-        # "reports/report_payment.xml",
+        "reports/report_invoice.xml",
+        "reports/report_payment.xml",
     ],
 }
