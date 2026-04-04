@@ -124,6 +124,8 @@ class CFDIGenericInvoiceCreate(models.TransientModel):
                 "issuer_id": self.issuer_id.id,
                 "receiver_id": receiver.id,
                 "is_global_note": True,
+                "serie": "IG",
+                "folio": self._compute_folio()
             }
         )
 
@@ -164,3 +166,24 @@ class CFDIGenericInvoiceCreate(models.TransientModel):
         except Exception as e:
             cert.unlink()
             raise e
+
+    def _compute_folio(self) -> str:
+        # compute "folio" from date considering periodicity
+        folio = ""
+        if self.periodicity_id.code == "01":  # Diaria
+            folio = self.date.strftime("%Y%m%d")
+        elif self.periodicity_id.code == "02":  # Semanal
+            folio = self.date.strftime("%Y%W")
+        elif self.periodicity_id.code == "03":  # Quincenal
+            day = self.date.day
+            if day <= 15:
+                folio = self.date.strftime("%Y%m") + "1"
+            else:
+                folio = self.date.strftime("%Y%m") + "2"
+        elif self.periodicity_id.code == "04":  # Mensual
+            folio = self.date.strftime("%Y%m")
+        elif self.periodicity_id.code == "05":  # Bimestral
+            month = self.date.month
+            bimestre = (month - 1) // 2 + 1
+            folio = self.date.strftime("%Y") + str(bimestre)
+        return folio

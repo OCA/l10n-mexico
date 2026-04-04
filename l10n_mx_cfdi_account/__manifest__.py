@@ -2,7 +2,7 @@
     "name": "Mexico - CFDI - Account",
     "summary": "Mexico CFDI Account Integration",
     "author": "Alexis López Zubieta <alexis.lopez@augetec.com> (Auge TEC), "
-    "Odoo Community Association (OCA)",
+              "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/l10n-mexico",
     "license": "LGPL-3",
     "category": "Accounting",
@@ -15,7 +15,7 @@
         "views/account_payment.xml",
         # "views/res_config_settings.xml",
         "wizards/document_cancel_form.xml",
-        # "wizards/create_cfdi_publico_en_general.xml",
+        "wizards/create_cfdi_publico_en_general.xml",
         # "wizards/account_invoice_send_views.xml",
         # "wizards/download_cfdi_files_wizard.xml",
         # "reports/report_external_layouts.xml",
