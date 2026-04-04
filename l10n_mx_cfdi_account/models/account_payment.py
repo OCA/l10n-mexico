@@ -2,7 +2,7 @@ from datetime import datetime
 
 from odoo import _, models
 from odoo.exceptions import ValidationError
-from odoo.tools import json_float_round
+from odoo.tools.float_utils import json_float_round
 
 
 class AccountPayment(models.Model):

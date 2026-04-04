@@ -431,7 +431,7 @@ class AccountMove(models.Model):
             items_data = self.gather_invoice_cfdi_items_data()
 
             receivables = refund.line_ids.filtered(
-                lambda L: L.account_id.user_type_id.type == "receivable"
+                lambda L: L.account_id.account_type == 'asset_receivable'
             )
             partial_reconcile = self.env["account.partial.reconcile"].search(
                 [("debit_move_id", "in", receivables.ids)]

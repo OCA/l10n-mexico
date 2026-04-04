@@ -15,19 +15,19 @@ class AccountPartialReconcile(models.Model):
             for move in move_line_ids.move_id:
                 if move.move_type == "entry":
                     # create payment CFDI if required
-                    payment = move.payment_id
-                    payment_requires_cfdi = any(
-                        invoice.cfdi_required
-                        and invoice.payment_method_id.code == "PPD"
-                        for invoice in payment.reconciled_invoice_ids
-                    )
+                    for payment in move.payment_ids:
+                        payment_requires_cfdi = any(
+                            invoice.cfdi_required
+                            and invoice.payment_method_id.code == "PPD"
+                            for invoice in payment.reconciled_invoice_ids
+                        )
 
-                    if (
-                        payment.payment_type == "inbound"
-                        and payment.is_reconciled
-                        and payment_requires_cfdi
-                    ):
-                        payment.create_payment_cfdi()
+                        if (
+                            payment.payment_type == "inbound"
+                            and payment.is_reconciled
+                            and payment_requires_cfdi
+                        ):
+                            payment.create_payment_cfdi()
 
                 if move.move_type == "out_refund":
                     # create credit note CFDI if required
@@ -53,12 +53,12 @@ class AccountPartialReconcile(models.Model):
         if self.env.company.l10n_mx_cfdi_auto:
             for move in move_line_ids.move_id:
                 if move.move_type == "entry":
-                    payment = move.payment_id
-                    related_cfdi = payment.related_cert_ids.filtered_domain(
-                        [("type", "=", "P"), ("state", "=", "published")]
-                    )
-                    if related_cfdi and not payment.is_reconciled:
-                        payment.cancel_payment_cfdi()
+                    for payment in move.payment_ids:
+                        related_cfdi = payment.related_cert_ids.filtered_domain(
+                            [("type", "=", "P"), ("state", "=", "published")]
+                        )
+                        if related_cfdi and not payment.is_reconciled:
+                            payment.cancel_payment_cfdi()
 
                 if move.move_type == "out_refund":
                     for cfdi in move.related_cert_ids:
