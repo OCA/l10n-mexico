@@ -11,8 +11,8 @@
     "data": [
         "security/ir.model.access.csv",
         "views/account_move.xml",
-        # "views/account_payment_register.xml",
-        # "views/account_payment.xml",
+        "views/account_payment_register.xml",
+        "views/account_payment.xml",
         # "views/res_config_settings.xml",
         "wizards/document_cancel_form.xml",
         # "wizards/create_cfdi_publico_en_general.xml",
