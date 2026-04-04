@@ -15,13 +15,13 @@
                         t-if="o.date"
                         name="invoice_date"
                     >
-                        <t t-if="o.move_type == 'out_invoice'">
+                        <t t-if="o.move_id.move_type == 'out_invoice'">
                             <strong>Fecha de Factura:</strong>
                         </t>
-                        <t t-elif="o.move_type == 'out_refund'">
+                        <t t-elif="o.move_id.move_type == 'out_refund'">
                             <strong>Fecha de Nota de Crédito:</strong>
                         </t>
-                        <t t-elif="o.move_type == 'out_receipt'">
+                        <t t-elif="o.move_id.move_type == 'out_receipt'">
                             <strong>Fecha de Recibo:</strong>
                         </t>
                         <t t-else="">
@@ -30,7 +30,7 @@
                         <p class="m-0" t-field="o.date" />
                     </div>
 
-                    <div t-if="o.invoice_payment_term_id" class="col-auto col-3 mw-100">
+                    <div t-if="o.move_id.invoice_payment_term_id" class="col-auto col-3 mw-100">
                         <strong>Plazo de Pago:</strong>
                         <p name="payment_term">
                             <span t-field="o.invoice_payment_term_id.name" />
