@@ -17,7 +17,7 @@ class FormaPago(models.Model):
                 if not record.name
                 else (
                     "{} - {}".format(
-                        record.code and "[%s] " % record.code or "", record.name
+                        record.code and f"[{record.code}] " or "", record.name
                     )
                 )
             )

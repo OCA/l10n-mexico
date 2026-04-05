@@ -17,5 +17,5 @@ class RegimenFiscal(models.Model):
             res.display_name = (
                 False
                 if not res.name
-                else ("{} - {}".format(res.code and "[%s] " % res.code or "", res.name))
+                else ("{} - {}".format(res.code and f"[{res.code}] " or "", res.name))
             )

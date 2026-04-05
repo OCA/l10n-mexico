@@ -19,7 +19,7 @@ class ClaveUnidad(models.Model):
                 if not clave.name
                 else (
                     "{} - {}".format(
-                        clave.code and "[%s] " % clave.code or "", clave.name
+                        clave.code and f"[{clave.code}] " or "", clave.name
                     )
                 )
             )

@@ -1,11 +1,10 @@
 {
-    "name": "Catálogos SAT para localización mexicana",
-    "summary": "Catálogos del Servicio de Administración Tributaria de México",
-    "author": "Alexis López Zubieta <alexis.lopez@augetec.com> (Auge TEC), "
-    "Odoo Community Association (OCA)",
+    "name": "SAT Catalog for the mexican localization",
+    "summary": "Catalogs of Servicio de Administración Tributaria (SAT) from México",
+    "author": "Auge TEC, Gray Matter Logic, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/l10n-mexico",
     "category": "Localization",
-    "version": "17.0.1.2.0",
+    "version": "19.0.1.0.0",
     "license": "LGPL-3",
     "depends": ["base"],
     "data": [

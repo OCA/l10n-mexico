@@ -18,7 +18,7 @@ class ConfigAutotransporte(models.Model):
                 if not clave.description
                 else (
                     "{} - {}".format(
-                        clave.code and "[%s] " % clave.code or "", clave.description
+                        clave.code and f"[{clave.code}] " or "", clave.description
                     )
                 )
             )

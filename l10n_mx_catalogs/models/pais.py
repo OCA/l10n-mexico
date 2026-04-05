@@ -26,7 +26,7 @@ class Pais(models.Model):
                 if not res.description
                 else (
                     "{} - {}".format(
-                        res.code and "[%s] " % res.code or "", res.description
+                        res.code and f"[{res.code}] " or "", res.description
                     )
                 )
             )

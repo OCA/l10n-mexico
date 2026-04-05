@@ -157,7 +157,7 @@ class CatalogImporter:
         name = self.catalog_name
         for key in self.key_fields:
             field_name = self.row_mapping[key]
-            name += "_%s" % row[field_name]
+            name += f"_{row[field_name]}"
 
         row["id"] = name
         return row
