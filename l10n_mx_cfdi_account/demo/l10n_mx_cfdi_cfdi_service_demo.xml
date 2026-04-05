@@ -1,0 +1,8 @@
+<odoo noupdate="1">
+    <record id="cfdi_account_demo_service" model="l10n_mx_cfdi.cfdi_service">
+        <field name="name">Demo CFDI Service</field>
+        <field name="user">demo</field>
+        <field name="password">demo</field>
+        <field name="sandbox_mode" eval="True" />
+    </record>
+</odoo>

@@ -1,4 +1,4 @@
-from odoo import _, fields, models
+from odoo import fields, models
 from odoo.exceptions import UserError
 
 
@@ -32,7 +32,7 @@ class AccountPaymentRegister(models.TransientModel):
                 for invoice in related_invoices
             ):
                 raise UserError(
-                    _(
+                    self.env._(
                         "You cannot register a partial payment against an "
                         "invoice with a CFDI and PUE as the payment method."
                     )

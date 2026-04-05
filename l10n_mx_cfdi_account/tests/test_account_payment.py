@@ -1,142 +1,159 @@
-# from odoo.exceptions import ValidationError
-# from odoo.tests import TransactionCase
-#
-#
-# class TestAccountPayment(TransactionCase):
-#
-#     def setUp(self):
-#         super().setUp()
-#
-#         # Create test data
-#         self.partner = self.env["res.partner"].create(
-#             {
-#                 "name": "Test Partner",
-#                 "vat": "TESTVAT",
-#                 "zip": "12345",  # Add other required fields
-#             }
-#         )
-#
-#         self.payment_journal = self.env["account.journal"].create(
-#             {
-#                 "name": "Test Journal",
-#                 "code": "TEST",
-#                 "type": "sale",
-#             }
-#         )
-#
-#         self.payment_method = self.env["account.payment.method"].create(
-#             {
-#                 "name": "Test Payment Method",
-#                 "code": "TEST_PM",
-#                 "payment_type": "inbound",  # Adjust payment type as needed
-#             }
-#         )
-#
-#         self.payment_method_line = self.env["account.payment.method.line"].create(
-#             {
-#                 "payment_method_id": self.payment_method.id,
-#                 "payment_type": "inbound",  # Adjust payment type as needed
-#                 "journal_id": self.payment_journal.id,
-#                 "sequence": 1,
-#                 # Add other required fields
-#             }
-#         )
-#
-#         self.payment = self.env["account.payment"].create(
-#             {
-#                 "partner_id": self.partner.id,
-#                 "journal_id": self.payment_journal.id,
-#                 "amount": 100.0,
-#                 "payment_type": "inbound",
-#                 "payment_method_line_id": self.payment_method_line.id,
-#             }
-#         )
-#
-#         self.issuer = self.env["res.partner"].create(
-#             {
-#                 "name": "Issuer",
-#                 "vat": "ISSUERVAT",
-#                 "zip": "54321",  # Add other required fields
-#             }
-#         )
-#
-#         self.invoice = self.env["account.move"].create(
-#             {
-#                 "partner_id": self.partner.id,
-#                 "type": "out_invoice",  # Example type, adjust as needed
-#                 "issuer_id": self.issuer.id,
-#                 "amount_total": 50.0,  # Example amount, adjust as needed
-#                 # Add other required fields
-#             }
-#         )
-#
-#         self.payment.reconciled_invoice_ids = [(4, self.invoice.id)]
-#
-#     def test_action_generate_cfdi_with_existing_cfdi(self):
-#         # Add a related CFDI to the payment
-#         self.payment.write(
-#             {"cfdi_document_id": self.env["l10n_mx_cfdi.document"].create({}).id}
-#         )
-#
-#         # Try to generate CFDI again, it should raise validation error
-#         with self.assertRaises(ValidationError):
-#             self.payment.action_generate_cfdi()
-#
-#     def test_action_generate_cfdi_not_fully_reconciled(self):
-#         # Try to generate CFDI for a payment that is not fully reconciled
-#         with self.assertRaises(ValidationError):
-#             self.payment.action_generate_cfdi()
-#
-#     def test_create_payment_cfdi(self):
-#         # Create a fully reconciled payment
-#         self.payment.move_type = "entry"
-#         self.payment.is_reconciled = True
-#         self.payment.create_payment_cfdi()
-#
-#         # Check if the payment has a related CFDI
-#         self.assertTrue(self.payment.cfdi_document_id)
-#         self.assertEqual(self.payment.cfdi_document_id.type, "P")
-#         self.assertEqual(self.payment.cfdi_document_id.issuer_id.zip, "12345")
-#         self.assertEqual(self.payment.cfdi_document_id.receiver_id.vat, "TESTVAT")
-#
-#     def test_create_payment_cfdi_with_legacy_invoice(self):
-#         # Create a fully reconciled payment with a legacy invoice
-#         self.payment.move_type = "entry"
-#         self.payment.is_reconciled = True
-#         self.payment.reconciled_invoice_ids = [
-#             (
-#                 0,
-#                 0,
-#                 {
-#                     "related_cert_ids": [
-#                         (
-#                             0,
-#                             0,
-#                             {
-#                                 "type": "I",
-#                                 "state": "published",
-#                                 "receiver_id": self.partner.id,
-#                             },
-#                         )
-#                     ]
-#                 },
-#             )
-#         ]
-#
-#         # Now, receiver should be resolved from invoice CFDI
-#         self.payment.create_payment_cfdi()
-#
-#         # Check if the payment has a related CFDI
-#         self.assertTrue(self.payment.cfdi_document_id)
-#
-#     def test_cancel_payment_cfdi(self):
-#         # Create a payment with related CFDI
-#         self.payment.move_type = "entry"
-#         self.payment.is_reconciled = True
-#         self.payment.create_payment_cfdi()
-#
-#         # Cancel the payment CFDI
-#         self.payment.cancel_payment_cfdi()
-#
-#         # Check if the CFDI is canceled
-#         self.assertEqual(self.payment.cfdi_document_id.state, "canceled")
+from unittest.mock import PropertyMock, patch
+
+from odoo.exceptions import ValidationError
+
+from .common import CFDIAccountTestCommon
+
+
+class TestAccountPayment(CFDIAccountTestCommon):
+    def test_action_generate_cfdi_with_existing_cfdi(self):
+        payment = self.env["account.payment"].new(
+            {
+                "payment_type": "inbound",
+                "is_reconciled": True,
+            }
+        )
+        document = self._create_document(type="P", state="published")
+        with (
+            patch.object(
+                type(payment),
+                "cfdi_document_id",
+                new_callable=PropertyMock,
+                return_value=document,
+            ),
+            self.assertRaises(ValidationError),
+        ):
+            payment.action_generate_cfdi()
+
+    def test_action_generate_cfdi_not_reconciled(self):
+        payment = self.env["account.payment"].new(
+            {
+                "payment_type": "inbound",
+                "is_reconciled": False,
+            }
+        )
+        with (
+            patch.object(
+                type(payment),
+                "cfdi_document_id",
+                new_callable=PropertyMock,
+                return_value=False,
+            ),
+            self.assertRaises(ValidationError),
+        ):
+            payment.action_generate_cfdi()
+
+    def test_create_payment_cfdi_outbound_raises(self):
+        payment = self.env["account.payment"].new({"payment_type": "outbound"})
+        with self.assertRaises(ValidationError):
+            payment.create_payment_cfdi()
+
+    def test_prepare_payment_cfdi_missing_invoice_cfdi(self):
+        invoice = self._post_cfdi_invoice(
+            self._create_cfdi_invoice(
+                payment_method_id=self.env.ref("l10n_mx_catalogs.c_metodo_pago_PPD").id
+            )
+        )
+        payment = self._register_invoice_payment(invoice)
+        with self.assertRaises(ValidationError):
+            payment.prepare_payment_cfdi()
+
+    def test_create_payment_cfdi_success(self):
+        invoice = self._post_cfdi_invoice(
+            self._create_cfdi_invoice(
+                payment_method_id=self.env.ref("l10n_mx_catalogs.c_metodo_pago_PPD").id
+            )
+        )
+        self._create_published_invoice_cfdi(invoice)
+        payment = self._register_invoice_payment(invoice)
+        with self._mock_cfdi_publish():
+            payment.create_payment_cfdi()
+        self.assertTrue(payment.related_cert_ids)
+        self.assertEqual(payment.cfdi_use_id.code, "CP01")
+
+    def test_create_payment_cfdi_publico_en_general(self):
+        public_partner = self.env.ref(
+            "l10n_mx_cfdi.l10n_mx_cfdi_res_partner_publico_en_general"
+        )
+        invoice = self._post_cfdi_invoice(
+            self._create_cfdi_invoice(
+                partner_id=public_partner.id,
+                receiver_id=public_partner.id,
+                payment_method_id=self.env.ref("l10n_mx_catalogs.c_metodo_pago_PPD").id,
+            )
+        )
+        self._create_published_invoice_cfdi(invoice)
+        payment = self._register_invoice_payment(invoice)
+        with self._mock_cfdi_publish():
+            payment.create_payment_cfdi()
+        self.assertTrue(payment.related_cert_ids)
+
+    def test_create_payment_cfdi_legacy_receiver(self):
+        invoice = self._post_cfdi_invoice(
+            self._create_cfdi_invoice(
+                receiver_id=False,
+                payment_method_id=self.env.ref("l10n_mx_catalogs.c_metodo_pago_PPD").id,
+            )
+        )
+        document = self._create_published_invoice_cfdi(invoice)
+        document.receiver_id = self.customer
+        payment = self._register_invoice_payment(invoice)
+        with self._mock_cfdi_publish():
+            payment.create_payment_cfdi()
+        self.assertTrue(payment.related_cert_ids)
+
+    def test_compute_taxes(self):
+        self.cfdi_product.taxes_id = [(6, 0, [self._iva_tax().id])]
+        invoice = self._post_cfdi_invoice(self._create_cfdi_invoice())
+        payment = self._register_invoice_payment(invoice)
+        taxes = payment._compute_taxes(invoice.amount_total, invoice)
+        self.assertTrue(taxes)
+
+    def test_cancel_payment_cfdi(self):
+        invoice = self._post_cfdi_invoice(
+            self._create_cfdi_invoice(
+                payment_method_id=self.env.ref("l10n_mx_catalogs.c_metodo_pago_PPD").id
+            )
+        )
+        self._create_published_invoice_cfdi(invoice)
+        payment = self._register_invoice_payment(invoice)
+        document = self._create_document(
+            type="P",
+            state="published",
+            related_payment_id=payment.id,
+            receiver_id=self.customer.id,
+        )
+        payment.related_cert_ids = [(4, document.id)]
+        with patch.object(type(document), "cancel", return_value=None):
+            payment.cancel_payment_cfdi()
+
+    def test_action_generate_cfdi_inbound_success(self):
+        invoice = self._post_cfdi_invoice(
+            self._create_cfdi_invoice(
+                payment_method_id=self.env.ref("l10n_mx_catalogs.c_metodo_pago_PPD").id
+            )
+        )
+        self._create_published_invoice_cfdi(invoice)
+        payment = self._register_invoice_payment(invoice)
+        with self._mock_cfdi_publish():
+            payment.action_generate_cfdi()
+        self.assertTrue(payment.related_cert_ids)
+
+    def test_create_payment_cfdi_failure_unlinks_document(self):
+        invoice = self._post_cfdi_invoice(
+            self._create_cfdi_invoice(
+                payment_method_id=self.env.ref("l10n_mx_catalogs.c_metodo_pago_PPD").id
+            )
+        )
+        self._create_published_invoice_cfdi(invoice)
+        payment = self._register_invoice_payment(invoice)
+        with (
+            patch.object(
+                type(self.service),
+                "create_cfdi",
+                side_effect=ValidationError("publish failed"),
+            ),
+            self.assertRaises(ValidationError),
+        ):
+            payment.create_payment_cfdi()
+        self.assertFalse(payment.related_cert_ids)

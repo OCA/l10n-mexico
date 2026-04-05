@@ -3,9 +3,9 @@ from datetime import datetime, timedelta
 
 from lxml import etree
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import UserError, ValidationError
-from odoo.tools import json_float_round
+from odoo.tools.float_utils import json_float_round
 
 
 class AccountMove(models.Model):
@@ -52,7 +52,7 @@ class AccountMove(models.Model):
     )
 
     cfdi_posted = fields.Boolean(
-        string="Requiere CFDI", compute="_compute_cfdi_posted", store=True
+        string="CFDI Posted", compute="_compute_cfdi_posted", store=True
     )
     cfdi_data_in_attachments = fields.Boolean(
         string="CFDI data in attachments", compute="_compute_cfdi_data_in_attachments"
@@ -238,7 +238,7 @@ class AccountMove(models.Model):
         err_msg += self.validate_invoice_items_for_cfdi_generation()
 
         if err_msg:
-            raise ValidationError(_("Cannot generate the CFDI:\n") + err_msg)
+            raise ValidationError(self.env._("Cannot generate the CFDI:\n") + err_msg)
 
     def _gather_invoice_cfdi_data(self):
         cfdi_data = {
@@ -272,7 +272,7 @@ class AccountMove(models.Model):
 
         """
         fixed_tz_recordset = self.with_context(**{"tz": self.env.user.tz})
-        now_utc = fields.datetime.now()
+        now_utc = fields.Datetime.now()
         now_utc_tz = fields.Datetime.context_timestamp(fixed_tz_recordset, now_utc)
 
         # add 2h if there is a difference larger than 24h between
@@ -323,15 +323,15 @@ class AccountMove(models.Model):
                 continue
 
             if not line.product_id.l10n_mx_cfdi_product_code_id:
-                err_msg += (
-                    "- No se ha definido el código de producto para el producto %s\n"
-                    % line.product_id.name
+                err_msg += self.env._(
+                    "- The product code has not been defined for the product %s\n",
+                    line.product_id.name,
                 )
 
             if not line.product_id.l10n_mx_cfdi_product_measurement_unit_id:
-                err_msg += (
-                    "- No se ha definido la unidad de medida para el producto %s\n"
-                    % line.product_id.name
+                err_msg += self.env._(
+                    "- The unit of measure has not been defined for the product %s\n",
+                    line.product_id.name,
                 )
 
         return err_msg
@@ -378,8 +378,10 @@ class AccountMove(models.Model):
                 tax_code = tax_id.extract_l10n_mx_tax_code()
                 if not tax_code:
                     raise UserError(
-                        _("The tax code for tax %s is not defined.")
-                        % line.tax_ids[0].name
+                        self.env._(
+                            "The tax code for tax %s is not defined.",
+                            line.tax_ids[0].name,
+                        )
                     )
 
                 tax_rate = (
@@ -431,7 +433,7 @@ class AccountMove(models.Model):
             items_data = self.gather_invoice_cfdi_items_data()
 
             receivables = refund.line_ids.filtered(
-                lambda L: L.account_id.user_type_id.type == "receivable"
+                lambda L: L.account_id.account_type == "asset_receivable"
             )
             partial_reconcile = self.env["account.partial.reconcile"].search(
                 [("debit_move_id", "in", receivables.ids)]
@@ -534,17 +536,6 @@ class AccountMove(models.Model):
             cfdi_data["Receiver"]["TaxZipCode"] = self.issuer_id.zip
             cfdi_data["Receiver"]["FiscalRegime"] = "616"
 
-    @api.returns("self", lambda value: value.id)
-    def copy(self, default=None):
-        # avoid copying the related cfdis
-        default = (default or {}).update(
-            {
-                "related_cert_ids": [(6, 0, [])],
-            }
-        )
-
-        return super().copy(default)
-
     def _get_name_invoice_report(self):
         self.ensure_one()
         if self.company_id.account_fiscal_country_id.code == "MX":
@@ -566,7 +557,7 @@ class AccountMove(models.Model):
         )
 
         if not xml_attachment:
-            raise UserError(_("No XML attachment found for this invoice."))
+            raise UserError(self.env._("No XML attachment found for this invoice."))
 
         # decode attachment
         xml = base64.b64decode(xml_attachment.datas)
@@ -647,8 +638,10 @@ class AccountMove(models.Model):
         )
         if not receiver_id:
             raise UserError(
-                _("Cannot find the receptor of the certificate. RFC: %s")
-                % receiver.attrib["Rfc"]
+                self.env._(
+                    "Cannot find the receptor of the certificate. RFC: %s",
+                    receiver.attrib["Rfc"],
+                )
             )
 
         cfdi_use = receiver.attrib["UsoCFDI"]
@@ -669,8 +662,10 @@ class AccountMove(models.Model):
             )
             if not partner_id:
                 raise UserError(
-                    _("Cannot find the partner who emitted the certificate. " "RFC: %s")
-                    % issuer.attrib["Rfc"]
+                    self.env._(
+                        "Cannot find the partner who emitted the certificate. RFC: %s",
+                        issuer.attrib["Rfc"],
+                    )
                 )
 
             # create issuer
@@ -685,7 +680,7 @@ class AccountMove(models.Model):
         self.ensure_one()
 
         if self.cfdi_document_id.state == "published":
-            raise UserError(_("The CFDI has been published."))
+            raise UserError(self.env._("The CFDI has been published."))
 
         if self.move_type == "out_invoice":
             self.create_invoice_cfdi()
@@ -694,7 +689,7 @@ class AccountMove(models.Model):
             # create credit note CFDI if required
             if self.amount_residual != 0:
                 raise UserError(
-                    _(
+                    self.env._(
                         "You cannot generate a CFDI for a credit note with a "
                         "pending amount."
                     )

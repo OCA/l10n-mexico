@@ -24,7 +24,7 @@ class DownloadCFDIFilesWizard(models.TransientModel):
         defaults_dict = super().default_get(field_names)
         context = self.env.context
 
-        if context["active_model"] == "account.move":
+        if context.get("active_model") == "account.move":
             related_invoice_objs = self.env["account.move"].browse(
                 context["active_ids"]
             )
@@ -74,6 +74,6 @@ class DownloadCFDIFilesWizard(models.TransientModel):
 
         return {
             "type": "ir.actions.act_url",
-            "url": "/web/content/%s?download=true" % self.zip_file.id,
+            "url": f"/web/content/{self.zip_file.id}?download=true",
             "target": "self",
         }

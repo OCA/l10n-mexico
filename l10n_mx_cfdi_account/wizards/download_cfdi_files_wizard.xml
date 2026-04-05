@@ -1,5 +1,4 @@
 <odoo>
-
     <record id="download_cfdi_files_wizard_form" model="ir.ui.view">
         <field name="name">Descargar CFDIs</field>
         <field name="model">l10n_mx_cfdi_account.dl_cfdi_files_wizard</field>
@@ -7,15 +6,15 @@
             <form>
                 <h4>CFDIs Encontrados</h4>
                 <field name="cfdi_document_ids" readonly="True">
-                    <tree>
+                    <list>
                         <field name="name" string="Factura" />
                         <field name="pdf_file" widget="file" filename="pdf_filename" />
-                        <field name="pdf_filename" column_invisible='1' />
+                        <field name="pdf_filename" column_invisible="1" />
                         <field name="xml_file" widget="file" filename="xml_filename" />
-                        <field name="xml_filename" column_invisible='1' />
-                    </tree>
-                    <field name="zip_file" />
+                        <field name="xml_filename" column_invisible="1" />
+                    </list>
                 </field>
+                <field name="zip_file" invisible="1" />
 
                 <footer>
                     <button
@@ -38,5 +37,4 @@
         <field name="binding_model_id" ref="model_account_move" />
         <field name="binding_view_types">list</field>
     </record>
-
 </odoo>

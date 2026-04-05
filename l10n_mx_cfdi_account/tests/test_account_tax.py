@@ -60,3 +60,13 @@ class TestAccountTax(TransactionCase):
         self.assertFalse(self.tax_isr.extract_is_retention())
         self.assertFalse(self.tax_iva.extract_is_retention())
         self.assertFalse(self.tax_ieps.extract_is_retention())
+        retention_tax = self.env["account.tax"].create(
+            {
+                "name": "IVA RET Tax",
+                "amount": 4.0,
+                "amount_type": "percent",
+                "type_tax_use": "sale",
+                "tax_group_id": self.tax_group.id,
+            }
+        )
+        self.assertTrue(retention_tax.extract_is_retention())

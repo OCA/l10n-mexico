@@ -1,108 +1,101 @@
-from odoo.tests import TransactionCase
+from .common import CFDIAccountTestCommon
 
 
-class TestAccountMoveLine(TransactionCase):
-    def setUp(self):
-        super().setUp()
+class TestAccountMoveLine(CFDIAccountTestCommon):
+    def test_compute_cfdi_fields(self):
+        invoice = self._create_cfdi_invoice()
+        line = invoice.invoice_line_ids[0]
+        self.assertEqual(line.cfdi_subtotal, 100.0)
+        self.assertEqual(line.cfdi_price_unit, 100.0)
+        self.assertEqual(line.cfdi_discount, 0.0)
 
-        self.partner = self.env["res.partner"].create(
-            {
-                "name": "Test Partner",
-            }
+    def test_compute_cfdi_fields_with_discount(self):
+        invoice = self._create_cfdi_invoice(
+            invoice_line_ids=[
+                (
+                    0,
+                    0,
+                    {
+                        "product_id": self.cfdi_product.id,
+                        "quantity": 1,
+                        "price_unit": 100.0,
+                        "discount": 10.0,
+                    },
+                )
+            ]
         )
+        line = invoice.invoice_line_ids[0]
+        self.assertGreater(line.cfdi_discount, 0)
 
-        self.account = self.env["account.account"].search(
-            [("account_type", "=", "income")],
-            limit=1,
-        )
+    def test_compute_cfdi_fields_with_default_code(self):
+        self.cfdi_product.default_code = "SKU-001"
+        invoice = self._create_cfdi_invoice()
+        item = invoice.invoice_line_ids[0]._gater_cfdi_item_data()
+        self.assertEqual(item["IdentificationNumber"], "SKU-001")
 
-        self.account_iva = self.env["account.account"].create(
+    def test_compute_cfdi_fields_with_retention_tax(self):
+        retention_tax = self.env["account.tax"].create(
             {
-                "name": "IVA account",
-                "code": "10",
-                "account_type": "liability_current",
-            }
-        )
-
-        self.tax_group = self.env["account.tax.group"].create(
-            {
-                "name": "IVA",
-                "country_id": self.env.ref("base.us").id,
-            }
-        )
-
-        self.tax = self.env["account.tax"].create(
-            {
-                "name": "IVA",
-                "amount": 16.00,
+                "name": "IVA RET 4%",
+                "amount": 4.0,
                 "amount_type": "percent",
                 "type_tax_use": "sale",
-                "country_id": self.env.ref("base.us").id,
-                "tax_group_id": self.tax_group.id,
-                "invoice_repartition_line_ids": [
-                    (0, 0, {"repartition_type": "base"}),
-                    (
-                        0,
-                        0,
-                        {
-                            "factor_percent": 100.0,
-                            "repartition_type": "tax",
-                            "account_id": self.account_iva.id,
-                        },
-                    ),
-                ],
+                "tax_group_id": self.tax_sale_a.tax_group_id.id,
             }
         )
-
-        self.product = self.env["product.template"].create(
+        product = self.env["product.product"].create(
             {
-                "name": "Test Product",
-                "default_code": "TP",
-                "list_price": "100",
+                "name": "Retention Product",
+                "list_price": 100.0,
+                "l10n_mx_cfdi_product_code_id": self.env.ref(
+                    "l10n_mx_catalogs.c_clave_prod_serv_01010101"
+                ).id,
+                "l10n_mx_cfdi_product_measurement_unit_id": self.env.ref(
+                    "l10n_mx_catalogs.c_clave_unidad_H87"
+                ).id,
+                "taxes_id": [(6, 0, retention_tax.ids)],
             }
         )
-
-        self.journal = self.env["account.journal"].search(
-            [("type", "=", "sale")],
-            limit=1,
+        invoice = self._create_cfdi_invoice(
+            invoice_line_ids=[
+                (0, 0, {"product_id": product.id, "quantity": 1, "price_unit": 100.0})
+            ]
         )
+        item = invoice.invoice_line_ids[0]._gater_cfdi_item_data()
+        self.assertEqual(item["TaxObject"], "02")
+        self.assertTrue(item["Taxes"][0]["IsRetention"])
 
-        self.move_line_1_vals = {
-            "product_id": self.env["product.product"]
-            .search(
-                [("default_code", "=", "TP")],
-                limit=1,
-            )
-            .id,
-            "name": "Test Move Line 1",
-            "quantity": 2,
-            "account_id": self.account.id,
-            "price_unit": 100.00,
-            "display_type": "product",
-            "tax_ids": [(6, 0, [self.tax.id])],
-        }
-
-        self.move_vals = {
-            "name": "Test Move",
-            "move_type": "out_invoice",
-            "journal_id": self.journal.id,
-            "partner_id": self.partner.id,
-            "invoice_line_ids": [(0, 0, self.move_line_1_vals)],
-        }
-
-    def test_compute_cfdi_fields(self):
-        move = self.env["account.move"].create(self.move_vals)
-
-        move_line_1 = move.invoice_line_ids.search(
-            [("name", "=", "Test Move Line 1")],
-            limit=1,
+    def test_compute_cfdi_fields_with_price_include_tax(self):
+        included_tax = self.env["account.tax"].create(
+            {
+                "name": "IVA 16% Included",
+                "amount": 16.0,
+                "amount_type": "percent",
+                "type_tax_use": "sale",
+                "price_include": True,
+                "tax_group_id": self.tax_sale_a.tax_group_id.id,
+                "company_id": self.company.id,
+            }
         )
-
-        move_line_1._compute_cfdi_fields()
-
-        # Assuming the test logic for computing CFDI fields here...
-
-        self.assertEqual(move_line_1.cfdi_subtotal, 200.00)
-        self.assertEqual(move_line_1.cfdi_price_unit, 100.00)
-
-        # Add assertions for move_line_2 if necessary
+        product = self.env["product.product"].create(
+            {
+                "name": "Included Tax Product",
+                "list_price": 116.0,
+                "l10n_mx_cfdi_product_code_id": self.env.ref(
+                    "l10n_mx_catalogs.c_clave_prod_serv_01010101"
+                ).id,
+                "l10n_mx_cfdi_product_measurement_unit_id": self.env.ref(
+                    "l10n_mx_catalogs.c_clave_unidad_H87"
+                ).id,
+                "taxes_id": [(6, 0, included_tax.ids)],
+            }
+        )
+        invoice = self._create_cfdi_invoice(
+            invoice_line_ids=[
+                (0, 0, {"product_id": product.id, "quantity": 1, "price_unit": 116.0})
+            ]
+        )
+        line = invoice.invoice_line_ids[0]
+        item = line._gater_cfdi_item_data()
+        self.assertEqual(item["TaxObject"], "02")
+        self.assertGreater(line.cfdi_subtotal, 0)

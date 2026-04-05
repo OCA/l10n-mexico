@@ -1,4 +1,4 @@
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 from odoo.tools.safe_eval import datetime
 
@@ -64,7 +64,7 @@ class CFDIGenericInvoiceCreate(models.TransientModel):
         defaults_dict = super().default_get(field_names)
         context = self.env.context
 
-        if context["active_model"] == "account.move":
+        if context.get("active_model") == "account.move":
             related_invoice_objs = self.env["account.move"].browse(
                 context["active_ids"]
             )
@@ -97,14 +97,14 @@ class CFDIGenericInvoiceCreate(models.TransientModel):
         invoice.ensure_one()
 
         if invoice.state != "posted":
-            raise ValidationError(_("Invoice %s is not posted.") % invoice.name)
+            raise ValidationError(self.env._("Invoice %s is not posted.", invoice.name))
 
         related_cfdi = invoice.related_cert_ids.filtered_domain(
             [("state", "=", "published")]
         )
         if related_cfdi:
             raise ValidationError(
-                _("Invoice %s already has a published CFDI.") % invoice.name
+                self.env._("Invoice %s already has a published CFDI.", invoice.name)
             )
 
         err_msg = invoice.validate_invoice_items_for_cfdi_generation()
@@ -124,6 +124,8 @@ class CFDIGenericInvoiceCreate(models.TransientModel):
                 "issuer_id": self.issuer_id.id,
                 "receiver_id": receiver.id,
                 "is_global_note": True,
+                "serie": "IG",
+                "folio": self._compute_folio(),
             }
         )
 
@@ -164,3 +166,24 @@ class CFDIGenericInvoiceCreate(models.TransientModel):
         except Exception as e:
             cert.unlink()
             raise e
+
+    def _compute_folio(self) -> str:
+        # compute "folio" from date considering periodicity
+        folio = ""
+        if self.periodicity_id.code == "01":  # Diaria
+            folio = self.date.strftime("%Y%m%d")
+        elif self.periodicity_id.code == "02":  # Semanal
+            folio = self.date.strftime("%Y%W")
+        elif self.periodicity_id.code == "03":  # Quincenal
+            day = self.date.day
+            if day <= 15:
+                folio = self.date.strftime("%Y%m") + "1"
+            else:
+                folio = self.date.strftime("%Y%m") + "2"
+        elif self.periodicity_id.code == "04":  # Mensual
+            folio = self.date.strftime("%Y%m")
+        elif self.periodicity_id.code == "05":  # Bimestral
+            month = self.date.month
+            bimestre = (month - 1) // 2 + 1
+            folio = self.date.strftime("%Y") + str(bimestre)
+        return folio

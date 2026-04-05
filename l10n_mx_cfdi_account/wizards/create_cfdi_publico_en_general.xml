@@ -19,7 +19,7 @@
                         <field name="year" widget="char" />
                     </group>
                     <field name="move_ids" domain="[('move_type', '=', 'out_invoice')]">
-                        <tree js_class="account_tree">
+                        <list js_class="account_tree">
                             <field name="name" />
                             <field name="invoice_partner_display_name" />
                             <field
@@ -37,7 +37,7 @@
                                 optional="show"
                                 modifiers="{&quot;readonly&quot;: true}"
                             />
-                        </tree>
+                        </list>
                     </field>
                 </group>
                 <footer>

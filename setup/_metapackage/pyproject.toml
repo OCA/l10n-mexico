@@ -5,6 +5,7 @@ dependencies = [
     "odoo-addon-currency_rate_update_banxico==19.0.*",
     "odoo-addon-l10n_mx_catalogs==19.0.*",
     "odoo-addon-l10n_mx_cfdi==19.0.*",
+    "odoo-addon-l10n_mx_cfdi_account==19.0.*",
 ]
 classifiers=[
     "Programming Language :: Python",

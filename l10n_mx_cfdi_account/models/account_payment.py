@@ -1,21 +1,58 @@
 from datetime import datetime
 
-from odoo import _, models
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError
-from odoo.tools import json_float_round
+from odoo.tools.float_utils import json_float_round
 
 
 class AccountPayment(models.Model):
     _inherit = "account.payment"
 
+    cfdi_document_id = fields.Many2one(
+        "l10n_mx_cfdi.document",
+        string="CFDI",
+        readonly=True,
+        copy=False,
+        compute="_compute_cfdi_document_id",
+        store=True,
+    )
+    cfdi_document_state = fields.Selection(
+        string="CFDI Status", readonly=True, related="cfdi_document_id.state"
+    )
+
+    related_cert_ids = fields.Many2many(
+        "l10n_mx_cfdi.document", string="Documentos", readonly=True, copy=False
+    )
+    cfdi_use_id = fields.Many2one("l10n_mx_catalogs.c_uso_cfdi", string="Uso de CFDI")
+    payment_form_id = fields.Many2one(
+        "l10n_mx_catalogs.c_forma_pago", string="Forma de pago"
+    )
+    l10n_mx_cfdi_auto = fields.Boolean(
+        string="CFDI Automatico", related="company_id.l10n_mx_cfdi_auto", readonly=True
+    )
+
+    l10n_mx_cfdi_enabled = fields.Boolean(
+        string="CFDI Habilitado",
+        related="company_id.l10n_mx_cfdi_enabled",
+        readonly=True,
+    )
+
+    @api.depends("related_cert_ids")
+    def _compute_cfdi_document_id(self):
+        for payment in self:
+            payment.cfdi_document_id = False
+            payment.cfdi_document_id = payment.related_cert_ids.filtered(
+                lambda x: x.type == "P" and x.state == "published"
+            )
+
     def action_generate_cfdi(self):
         self.ensure_one()
 
         if self.cfdi_document_id:
-            raise ValidationError(_("The payment already has a related CFDI."))
+            raise ValidationError(self.env._("The payment already has a related CFDI."))
 
         if not self.is_reconciled:
-            raise ValidationError(_("The payment is not fully reconciled."))
+            raise ValidationError(self.env._("The payment is not fully reconciled."))
 
         if self.payment_type == "inbound":
             self.create_payment_cfdi()
@@ -28,12 +65,12 @@ class AccountPayment(models.Model):
         self.ensure_one()
 
         # assert move type is inbound payment
-        if self.move_type != "entry" or self.payment_type != "inbound":
-            raise ValidationError(_("You can only create customer payments."))
+        if self.payment_type != "inbound":
+            raise ValidationError(self.env._("You can only create customer payments."))
 
         # check if the payment is fully reconciled
         if not self.is_reconciled:
-            raise ValidationError(_("The payment is not fully reconciled."))
+            raise ValidationError(self.env._("The payment is not fully reconciled."))
 
         payment_data = self.prepare_payment_cfdi()
 
@@ -112,11 +149,11 @@ class AccountPayment(models.Model):
         for invoice in self.reconciled_invoice_ids:
             if not invoice.cfdi_document_id:
                 raise ValidationError(
-                    _(
+                    self.env._(
                         "Error al emitir CFDI tipo Comprobante de Pago. "
-                        "La factura %s no tiene CFDI"
+                        "La factura %s no tiene CFDI",
+                        invoice.name,
                     )
-                    % invoice.name
                 )
 
             # get related cfdi of type 'Ingreso'

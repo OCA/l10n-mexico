@@ -1,7 +1,7 @@
 import base64
 import re
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import UserError
 
 
@@ -54,14 +54,14 @@ class Document(models.Model):
                         entry.pdf_file = res["Content"]
 
                     # set filename
-                    entry.pdf_filename = "%s.pdf" % entry.name
+                    entry.pdf_filename = f"{entry.name}.pdf"
 
                 if not entry.xml_file:
                     res = entry.issuer_id.service_id.sudo().get_cfdi_xml(
                         entry.tracking_id
                     )
                     entry.xml_file = res["Content"].encode("utf-8")
-                    entry.xml_filename = "%s.xml" % entry.name
+                    entry.xml_filename = f"{entry.name}.xml"
 
                 entry.files_in_cache = True
             else:
@@ -99,15 +99,7 @@ class Document(models.Model):
 
         for vals in vals_list:
             if "serie" not in vals or "folio" not in vals:
-                issuer = self._resolve_issuer_on_create(vals)
-                if (
-                    issuer.use_origin_document_sequence
-                    and vals.get("type", False) != "T"
-                    and vals.get("is_global_note", False) is False
-                ):
-                    self._set_serie_and_folio_from_document_sequence(vals)
-                else:
-                    self._set_serie_and_folio_from_cfdi_sequence(vals)
+                self._set_serie_and_folio_from_document_sequence(vals)
 
         # Create certificate
         return super().create(vals_list)
@@ -126,7 +118,7 @@ class Document(models.Model):
             document_name = payment.name
 
         if not document_name:
-            raise UserError(_("Unable to determine the origin document name."))
+            raise UserError(self.env._("Unable to determine the origin document name."))
 
         # extract numeric postfix from invoice name using regex
         match = re.search(r"\d+$", document_name)
@@ -134,7 +126,9 @@ class Document(models.Model):
             folio = match.group()
             serie = document_name[: -len(match.group())]
         else:
-            raise UserError(_("Invoice name does not contain a numeric postfix."))
+            raise UserError(
+                self.env._("Invoice name does not contain a numeric postfix.")
+            )
 
         # remove non-alphanumeric characters from serie
         serie = re.sub(r"\W+", "", serie)
@@ -159,3 +153,6 @@ class Document(models.Model):
 
         if self.state != status:
             self.state = status
+
+    def download_files_if_needed(self):
+        self._compute_download_files_if_needed()
