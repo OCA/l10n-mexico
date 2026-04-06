@@ -16,41 +16,41 @@ _logger = logging.getLogger(__name__)
 
 
 class SatClient:
-    """Adaptador para los servicios web del SAT via cfdiclient.
+    """SAT web service adapter via cfdiclient.
 
-    Clase Python pura, sin dependencia del ORM de Odoo.
-    Intercambiable via factory res.company.l10n_mx_sat_get_client().
+    Pure Python class with no Odoo ORM dependency.
+    Swappable through the res.company.l10n_mx_sat_get_client() factory.
     """
 
     def __init__(self, cer_der, key_der, password):
-        """Inicializa el cliente con credenciales FIEL.
+        """Initialize the client with FIEL credentials.
 
-        :param cer_der: certificado en formato DER (bytes)
-        :param key_der: llave privada en formato DER (bytes)
-        :param password: contrasena de la llave privada (str)
+        :param cer_der: certificate in DER format (bytes)
+        :param key_der: private key in DER format (bytes)
+        :param password: private key password (str)
         """
         self._fiel = Fiel(cer_der, key_der, password)
 
     def authenticate(self):
-        """Autentica con el SAT y retorna el token.
+        """Authenticate with the SAT and return the token.
 
-        :raises ValueError: si el token esta vacio
-        :return: token de autenticacion SAT
+        :raises ValueError: if the token is empty
+        :return: SAT authentication token
         :rtype: str
         """
         auth = Autenticacion(self._fiel)
         token = auth.obtener_token()
         if not token:
-            raise ValueError("El SAT retorno un token vacio.")
+            raise ValueError("SAT returned an empty token.")
         return token
 
     def request_download(self, token, rfc, fecha_inicial, fecha_final, **kwargs):
-        """Envia solicitud de descarga al SAT (Descarga Masiva).
+        """Send a download request to the SAT (Descarga Masiva).
 
-        Fuerza estado_comprobante='Vigente' por defecto porque cfdiclient
-        lo deja en None, lo que genera XML mal formado en el SAT.
+        Defaults estado_comprobante to 'Vigente' because cfdiclient leaves
+        it as None, which produces malformed XML on the SAT side.
 
-        :return: dict con claves cod_estatus, id_solicitud, mensaje
+        :return: dict with keys cod_estatus, id_solicitud, mensaje
         """
         kwargs.setdefault("estado_comprobante", "Vigente")
         solicitud = SolicitaDescargaRecibidos(self._fiel)
@@ -59,25 +59,25 @@ class SatClient:
         )
 
     def verify_download(self, token, rfc, id_solicitud):
-        """Verifica el estado de una solicitud de descarga.
+        """Check the status of a download request.
 
-        :return: dict con claves estado_solicitud, paquetes, numero_cfdis, mensaje
+        :return: dict with keys estado_solicitud, paquetes, numero_cfdis, mensaje
         """
         verificacion = VerificaSolicitudDescarga(self._fiel)
         return verificacion.verificar_descarga(token, rfc, id_solicitud)
 
     def download_package(self, token, rfc, id_paquete):
-        """Descarga un paquete del SAT.
+        """Download a package from the SAT.
 
-        :return: dict con claves cod_estatus, paquete_b64, mensaje
+        :return: dict with keys cod_estatus, paquete_b64, mensaje
         """
         descarga = DescargaMasiva(self._fiel)
         return descarga.descargar_paquete(token, rfc, id_paquete)
 
     def validate_cfdi(self, rfc_emisor, rfc_receptor, total, uuid):
-        """Valida el estado de un CFDI ante el SAT.
+        """Validate a CFDI status against the SAT.
 
-        :return: dict con claves codigo_estatus, es_cancelable, estado
+        :return: dict with keys codigo_estatus, es_cancelable, estado
         """
         validacion = Validacion()
         return validacion.obtener_estado(rfc_emisor, rfc_receptor, total, uuid)

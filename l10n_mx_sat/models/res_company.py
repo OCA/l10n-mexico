@@ -31,10 +31,10 @@ class ResCompany(models.Model):
     )
 
     def l10n_mx_sat_get_credentials(self):
-        """Retorna las credenciales FIEL decodificadas.
+        """Return decoded FIEL credentials.
 
-        :raises UserError: si falta algun campo
-        :return: tupla (cer_der bytes, key_der bytes, password str)
+        :raises UserError: if any credential field is missing
+        :return: tuple (cer_der bytes, key_der bytes, password str)
         """
         self.ensure_one()
         if not self.l10n_mx_sat_fiel_cer:
@@ -59,13 +59,13 @@ class ResCompany(models.Model):
         return cer_der, key_der, self.l10n_mx_sat_fiel_password
 
     def l10n_mx_sat_get_client(self):
-        """Factory: retorna instancia de SatClient.
+        """Factory: return a SatClient instance.
 
-        Sobreescribir este metodo para cambiar la implementacion
-        del cliente SAT (por ejemplo, usar otra libreria).
+        Override this method to swap the SAT client implementation
+        (e.g. use a different library).
 
-        :raises UserError: si las credenciales son invalidas
-        :return: instancia de SatClient
+        :raises UserError: if credentials are invalid
+        :return: SatClient instance
         """
         self.ensure_one()
         cer_der, key_der, password = self.l10n_mx_sat_get_credentials()
@@ -77,10 +77,10 @@ class ResCompany(models.Model):
             ) from e
 
     def l10n_mx_sat_get_token(self):
-        """Autentica con el SAT y retorna un token.
+        """Authenticate with the SAT and return a token.
 
-        :raises UserError: si la autenticacion falla
-        :return: token de autenticacion SAT
+        :raises UserError: if authentication fails
+        :return: SAT authentication token
         :rtype: str
         """
         self.ensure_one()
@@ -89,16 +89,16 @@ class ResCompany(models.Model):
             return client.authenticate()
         except Exception as e:
             _logger.warning(
-                "Autenticacion SAT fallo para %s: %s", self.name, e
+                "SAT authentication failed for %s: %s", self.name, e
             )
             raise UserError(
                 _("Autenticacion SAT fallo: %s", e)
             ) from e
 
     def l10n_mx_sat_test_connection(self):
-        """Boton para probar la conexion con el SAT.
+        """Button to test the SAT connection.
 
-        :return: accion de notificacion
+        :return: notification action
         :rtype: dict
         """
         self.ensure_one()

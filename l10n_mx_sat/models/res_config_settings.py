@@ -21,5 +21,5 @@ class ResConfigSettings(models.TransientModel):
     )
 
     def l10n_mx_sat_test_connection(self):
-        """Boton 'Probar conexion' en ajustes."""
+        """Proxy for the 'Test connection' button in settings."""
         return self.company_id.l10n_mx_sat_test_connection()
