@@ -313,6 +313,7 @@ class L10nMxSatDownloadRequest(models.Model):
         """ready -> downloading -> done: Download packages and process XMLs."""
         self.ensure_one()
         company = self.company_id
+
         client = company.l10n_mx_sat_get_client()
         token = client.authenticate()
 
@@ -357,10 +358,22 @@ class L10nMxSatDownloadRequest(models.Model):
                     continue
 
                 # Process the ZIP package
-                moves, count = self._process_package(paquete_b64, company)
-                created_moves |= moves
-                cfdi_count += count
+                result = self._process_package(paquete_b64, company)
+                created_moves |= result["moves"]
+                cfdi_count += result["xml_total"]
                 package.write({"state": "processed"})
+                _logger.info(
+                    "Package %s: %d XMLs, %d created, %d skipped%s",
+                    package.id_paquete,
+                    result["xml_total"],
+                    result["created"],
+                    result["skipped"],
+                    (
+                        " -> reasons: %s" % "; ".join(result["skip_reasons"])
+                        if result["skip_reasons"]
+                        else ""
+                    ),
+                )
 
             except Exception:
                 package.write({"state": "error"})
@@ -408,10 +421,13 @@ class L10nMxSatDownloadRequest(models.Model):
     def _process_package(self, paquete_b64, company):
         """Extract ZIP from base64 and process each XML file.
 
-        :return: tuple (created_moves recordset, xml_count int)
+        :return: dict with keys: moves (recordset), xml_total (int),
+            skipped (int), created (int), skip_reasons (list of str)
         """
         created_moves = self.env["account.move"]
-        xml_count = 0
+        xml_total = 0
+        skipped = 0
+        skip_reasons = []
 
         zip_data = base64.b64decode(paquete_b64)
         with zipfile.ZipFile(BytesIO(zip_data)) as zf:
@@ -424,37 +440,52 @@ class L10nMxSatDownloadRequest(models.Model):
                     total_size,
                     file_count,
                 )
-                return created_moves, 0
+                return {
+                    "moves": created_moves,
+                    "xml_total": 0,
+                    "skipped": 0,
+                    "created": 0,
+                    "skip_reasons": ["ZIP bomb guard triggered"],
+                }
 
             for xml_filename in zf.namelist():
                 if not xml_filename.lower().endswith(".xml"):
                     continue
                 xml_bytes = zf.read(xml_filename)
-                xml_count += 1
+                xml_total += 1
 
                 try:
                     tree = etree.fromstring(xml_bytes, SAFE_XML_PARSER)
                 except etree.XMLSyntaxError:
+                    reason = "invalid XML: %s" % xml_filename
                     _logger.warning("Invalid XML in package: %s", xml_filename)
+                    skip_reasons.append(reason)
+                    skipped += 1
                     continue
 
                 # Verify receptor matches our company
                 receptor = tree.find("{*}Receptor")
                 if receptor is None:
+                    reason = "no Receptor element: %s" % xml_filename
                     _logger.warning(
                         "CFDI without Receptor element, skipping: %s",
                         xml_filename,
                     )
+                    skip_reasons.append(reason)
+                    skipped += 1
                     continue
                 receptor_rfc = receptor.get("Rfc", "")
                 if receptor_rfc != company.vat:
-                    _logger.warning(
-                        "SAT package XML skipped (receptor RFC mismatch): file=%s "
-                        "receptor_rfc=%s company_vat=%s",
-                        xml_filename,
-                        receptor_rfc,
-                        company.vat,
+                    reason = (
+                        "receptor RFC mismatch: file=%s "
+                        "receptor=%s company=%s"
+                        % (xml_filename, receptor_rfc, company.vat)
                     )
+                    _logger.warning(
+                        "SAT package XML skipped (%s)", reason
+                    )
+                    skip_reasons.append(reason)
+                    skipped += 1
                     continue
 
                 move = self.env[
@@ -462,8 +493,20 @@ class L10nMxSatDownloadRequest(models.Model):
                 ]._l10n_mx_sat_create_bill_from_cfdi(tree, xml_bytes, self)
                 if move:
                     created_moves |= move
+                else:
+                    skipped += 1
+                    skip_reasons.append(
+                        "bill creation returned False: %s" % xml_filename
+                    )
 
-        return created_moves, xml_count
+        created = len(created_moves)
+        return {
+            "moves": created_moves,
+            "xml_total": xml_total,
+            "skipped": skipped,
+            "created": created,
+            "skip_reasons": skip_reasons,
+        }
 
     # ------------------------------------------------------------------
     # Cron entry point
