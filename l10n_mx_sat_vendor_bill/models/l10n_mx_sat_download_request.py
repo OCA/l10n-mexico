@@ -141,7 +141,10 @@ class L10nMxSatDownloadRequest(models.Model):
         id_solicitud = sat_str(result.get("id_solicitud"))
         mensaje = sat_str(result.get("mensaje"))
 
-        # Success: got id_solicitud with accepted code
+        # Success: got id_solicitud with accepted code.
+        # NOTE: 5004 is NOT in the SAT spec for WS SolicitaDescargaRecibidos,
+        # but the API returns it in practice. When it comes WITH an id_solicitud
+        # we treat it as accepted; without id_solicitud -> no data found.
         if id_solicitud and cod_estatus in (SAT_CODE_SUCCESS, SAT_CODE_NO_INFO):
             self.write(
                 {
@@ -275,6 +278,9 @@ class L10nMxSatDownloadRequest(models.Model):
                 len(paquetes),
             )
         elif estado == 0:
+            # EstadoSolicitud=0 is NOT in the SAT spec (valid: 1-6).
+            # cfdiclient returns 0 when the token is invalid or the response
+            # is empty. Treating it as error is the safe default.
             self.write(
                 {
                     "state": "error",
@@ -498,6 +504,10 @@ class L10nMxSatDownloadRequest(models.Model):
             successful_requests = self.browse()
             for req in pending_requests:
                 try:
+                    # Sequential if (NOT elif) is intentional: each action may
+                    # advance the state, allowing a request to traverse multiple
+                    # states in a single cron tick (e.g. draft -> requested ->
+                    # processing -> ready -> done).
                     if req.state == "draft":
                         req._action_request()
                     if req.state in ("requested", "processing"):
@@ -615,7 +625,6 @@ class L10nMxSatDownloadPackage(models.Model):
     state = fields.Selection(
         selection=[
             ("pending", "Pending"),
-            ("downloaded", "Downloaded"),
             ("processed", "Processed"),
             ("error", "Error"),
         ],

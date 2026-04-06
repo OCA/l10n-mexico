@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 import logging
+from datetime import datetime as dt
 
 from lxml import etree
 
@@ -85,8 +86,6 @@ class AccountMove(models.Model):
             domain.append(("l10n_mx_tax_type", "=", tax_type))
 
         taxes = self.env["account.tax"].search(domain, limit=2)
-        if len(taxes) != 1:
-            self.checked = False
         if not taxes:
             if is_withholding:
                 msg = _(
@@ -206,15 +205,19 @@ class AccountMove(models.Model):
         rfc = emisor.get("Rfc")
         nombre = emisor.get("Nombre")
 
+        # Generic RFC for foreign (XEXX) and general public (XAXX) partners
+        # should not carry VAT; foreign partners skip country_id = MX.
+        rfc_foreign = "XEXX010101000"
+        rfc_public = "XAXX010101000"
+
         partner = self.env["res.partner"]._retrieve_partner(
             name=nombre, vat=rfc, company=company
         )
         if not partner and nombre:
-            is_foreign = rfc == "XEXX010101000"
             partner_vals = {"name": nombre}
-            if not is_foreign:
+            if rfc != rfc_foreign:
                 partner_vals["country_id"] = self.env.ref("base.mx").id
-            if not (is_foreign or rfc == "XAXX010101000"):
+            if rfc not in (rfc_foreign, rfc_public):
                 partner_vals["vat"] = rfc
             partner = self.env["res.partner"].create(partner_vals)
 
@@ -230,10 +233,7 @@ class AccountMove(models.Model):
         date_str = fecha_timbrado or fecha_emision
         invoice_date = False
         if date_str:
-            from datetime import datetime as dt
-
-            date_clean = date_str.replace("T", " ")[:19]
-            invoice_date = dt.strptime(date_clean, "%Y-%m-%d %H:%M:%S").date()
+            invoice_date = dt.strptime(date_str[:19], CFDI_DATE_FORMAT).date()
 
         # 7. Build ref from Serie + Folio
         serie = tree.get("Serie", "")
@@ -273,7 +273,7 @@ class AccountMove(models.Model):
                 move._l10n_mx_sat_fill_invoice_line(concepto, line)
 
         # 10. Store CFDI XML as attachment
-        attachment = self.env["ir.attachment"].create(
+        self.env["ir.attachment"].create(
             {
                 "name": "%s.xml" % uuid,
                 "raw": xml_bytes,
