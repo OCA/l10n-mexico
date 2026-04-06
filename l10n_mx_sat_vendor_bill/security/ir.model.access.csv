@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_l10n_mx_sat_download_request_accountant,l10n_mx_sat.download.request accountant,model_l10n_mx_sat_download_request,account.group_account_invoice,1,0,0,0
+access_l10n_mx_sat_download_request_manager,l10n_mx_sat.download.request manager,model_l10n_mx_sat_download_request,account.group_account_manager,1,1,1,1
+access_l10n_mx_sat_download_package_accountant,l10n_mx_sat.download.package accountant,model_l10n_mx_sat_download_package,account.group_account_invoice,1,0,0,0
+access_l10n_mx_sat_download_package_manager,l10n_mx_sat.download.package manager,model_l10n_mx_sat_download_package,account.group_account_manager,1,1,1,1

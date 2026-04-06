@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Tree View -->
+    <record id="l10n_mx_sat_download_request_view_list" model="ir.ui.view">
+        <field name="name">l10n_mx_sat.download.request.list</field>
+        <field name="model">l10n_mx_sat.download.request</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="fecha_inicial" />
+                <field name="fecha_final" />
+                <field name="state" widget="badge"
+                    decoration-info="state in ('draft', 'requested', 'processing')"
+                    decoration-warning="state in ('ready', 'downloading')"
+                    decoration-success="state == 'done'"
+                    decoration-danger="state == 'error'"
+                />
+                <field name="numero_cfdis" string="SAT CFDIs" />
+                <field name="cfdi_count" string="Processed" />
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="l10n_mx_sat_download_request_view_form" model="ir.ui.view">
+        <field name="name">l10n_mx_sat.download.request.form</field>
+        <field name="model">l10n_mx_sat.download.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="draft,requested,processing,ready,done"
+                    />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="company_id" />
+                            <field name="fecha_inicial" />
+                            <field name="fecha_final" />
+                        </group>
+                        <group>
+                            <field name="id_solicitud" />
+                            <field name="numero_cfdis" />
+                            <field name="cfdi_count" />
+                        </group>
+                    </group>
+                    <group
+                        string="Error"
+                        invisible="not error_message"
+                    >
+                        <field
+                            name="error_message"
+                            nolabel="1"
+                            colspan="2"
+                        />
+                    </group>
+                    <notebook>
+                        <page string="Packages" name="packages">
+                            <field name="package_ids" readonly="1">
+                                <list>
+                                    <field name="id_paquete" />
+                                    <field name="state" widget="badge"
+                                        decoration-info="state == 'pending'"
+                                        decoration-success="state == 'processed'"
+                                        decoration-danger="state == 'error'"
+                                    />
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Created Bills" name="bills">
+                            <field name="move_ids" readonly="1">
+                                <list>
+                                    <field name="name" />
+                                    <field name="partner_id" />
+                                    <field name="ref" />
+                                    <field name="invoice_date" />
+                                    <field name="amount_total" />
+                                    <field name="state" />
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="l10n_mx_sat_download_request_action" model="ir.actions.act_window">
+        <field name="name">SAT Download Requests</field>
+        <field name="res_model">l10n_mx_sat.download.request</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Menu under Accounting > Configuration -->
+    <menuitem
+        id="l10n_mx_sat_download_request_menu"
+        name="SAT Downloads"
+        parent="account.account_account_menu"
+        action="l10n_mx_sat_download_request_action"
+        sequence="99"
+    />
+</odoo>

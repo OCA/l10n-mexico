@@ -1,0 +1,557 @@
+# Copyright 2026 Open Source Integrators
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+
+import base64
+import logging
+import zipfile
+from datetime import datetime, timedelta
+from io import BytesIO
+
+from lxml import etree
+from pytz import timezone
+
+from odoo import _, Command, api, fields, models
+from odoo.exceptions import UserError
+
+_logger = logging.getLogger(__name__)
+
+MX_TZ = timezone("America/Mexico_City")
+
+# SolicitaDescargaRecibidos: códigos de rechazo / error frecuentes (SAT).
+_SOLICITUD_REJECT_CODES = frozenset({"5001", "5002", "5005", "404"})
+
+
+def _sat_str(value):
+    """Normaliza valores del SAT/cfdiclient a str (XML suele ser texto; tests pueden usar int)."""
+    if value is None:
+        return ""
+    return str(value).strip()
+
+
+def _sat_int(value, default=0):
+    """Convierte estado numérico del SAT a int de forma segura."""
+    if value is None or value == "":
+        return default
+    try:
+        return int(str(value).strip())
+    except (TypeError, ValueError):
+        return default
+
+
+class L10nMxSatDownloadRequest(models.Model):
+    _name = "l10n_mx_sat.download.request"
+    _description = "SAT Download Request"
+    _order = "create_date desc"
+
+    name = fields.Char(compute="_compute_name", store=True)
+    company_id = fields.Many2one(
+        comodel_name="res.company",
+        required=True,
+        default=lambda self: self.env.company,
+    )
+    state = fields.Selection(
+        selection=[
+            ("draft", "Draft"),
+            ("requested", "Requested"),
+            ("processing", "Processing"),
+            ("ready", "Ready"),
+            ("downloading", "Downloading"),
+            ("done", "Done"),
+            ("error", "Error"),
+        ],
+        default="draft",
+        required=True,
+        readonly=True,
+    )
+    fecha_inicial = fields.Datetime(string="From", required=True)
+    fecha_final = fields.Datetime(string="To", required=True)
+    id_solicitud = fields.Char(string="SAT Request ID", readonly=True)
+    package_ids = fields.One2many(
+        comodel_name="l10n_mx_sat.download.package",
+        inverse_name="request_id",
+        string="Packages",
+        readonly=True,
+    )
+    error_message = fields.Text(readonly=True)
+    cfdi_count = fields.Integer(string="CFDIs Processed", readonly=True)
+    numero_cfdis = fields.Integer(string="CFDIs Reported by SAT", readonly=True)
+    move_ids = fields.Many2many(
+        comodel_name="account.move",
+        string="Created Bills",
+        readonly=True,
+    )
+
+    @api.depends("company_id.vat", "fecha_inicial", "fecha_final")
+    def _compute_name(self):
+        for rec in self:
+            vat = rec.company_id.vat or "?"
+            fi = rec.fecha_inicial.strftime("%Y-%m-%d") if rec.fecha_inicial else "?"
+            ff = rec.fecha_final.strftime("%Y-%m-%d") if rec.fecha_final else "?"
+            rec.name = "%s / %s - %s" % (vat, fi, ff)
+
+    # ------------------------------------------------------------------
+    # State machine actions
+    # ------------------------------------------------------------------
+
+    def _action_request(self):
+        """draft -> requested: Send download request to SAT."""
+        self.ensure_one()
+        company = self.company_id
+        client = company.l10n_mx_sat_get_client()
+        token = client.authenticate()
+
+        result = client.request_download(
+            token,
+            company.vat,
+            self.fecha_inicial.replace(tzinfo=None),
+            self.fecha_final.replace(tzinfo=None),
+            rfc_receptor=company.vat,
+            tipo_solicitud="CFDI",
+        )
+
+        cod_estatus = _sat_str(result.get("cod_estatus"))
+        id_solicitud = _sat_str(result.get("id_solicitud"))
+        mensaje = _sat_str(result.get("mensaje"))
+        mensaje_lower = mensaje.lower()
+
+        if id_solicitud and cod_estatus in ("5000", "5004"):
+            self.write(
+                {
+                    "state": "requested",
+                    "id_solicitud": id_solicitud,
+                    "error_message": False,
+                }
+            )
+            _logger.info(
+                "SAT download requested for %s: %s", company.vat, id_solicitud
+            )
+        elif cod_estatus == "5004" and not id_solicitud:
+            # No information found — not an error, just empty
+            self.write(
+                {
+                    "state": "done",
+                    "cfdi_count": 0,
+                    "error_message": False,
+                }
+            )
+            _logger.info("SAT returned no data for %s", company.vat)
+        elif cod_estatus in _SOLICITUD_REJECT_CODES:
+            self.write(
+                {
+                    "state": "error",
+                    "error_message": _(
+                        "SAT rejected request. Code: %(code)s, "
+                        "Message: %(message)s",
+                        code=cod_estatus,
+                        message=mensaje,
+                    ),
+                }
+            )
+            _logger.warning(
+                "SAT request rejected for %s: %s - %s",
+                company.vat,
+                cod_estatus,
+                mensaje,
+            )
+        elif id_solicitud and "aceptada" in mensaje_lower:
+            # Respuesta inconsistente (p. ej. mensaje genérico); si hay id, continuar
+            self.write(
+                {
+                    "state": "requested",
+                    "id_solicitud": id_solicitud,
+                    "error_message": False,
+                }
+            )
+            _logger.info(
+                "SAT download accepted (fallback) for %s: %s code=%s",
+                company.vat,
+                id_solicitud,
+                cod_estatus,
+            )
+        else:
+            self.write(
+                {
+                    "state": "error",
+                    "error_message": _(
+                        "SAT rejected request. Code: %(code)s, "
+                        "Message: %(message)s",
+                        code=cod_estatus or _("(empty)"),
+                        message=mensaje,
+                    ),
+                }
+            )
+            _logger.warning(
+                "SAT request rejected for %s: %s - %s",
+                company.vat,
+                cod_estatus,
+                mensaje,
+            )
+
+    def _action_verify(self):
+        """requested/processing -> processing/ready/error: Verify status."""
+        self.ensure_one()
+        company = self.company_id
+        client = company.l10n_mx_sat_get_client()
+        token = client.authenticate()
+
+        result = client.verify_download(token, company.vat, self.id_solicitud)
+
+        cod_estatus = _sat_str(result.get("cod_estatus"))
+        estado = _sat_int(result.get("estado_solicitud"), 0)
+        codigo_estado = _sat_str(result.get("codigo_estado_solicitud"))
+        paquetes = result.get("paquetes") or []
+        numero_cfdis = _sat_int(result.get("numero_cfdis"), 0)
+        mensaje = _sat_str(result.get("mensaje"))
+
+        # VerificaSolicitudDescarga: 5004 = aún no hay información de esa solicitud (reintentar).
+        if cod_estatus == "5004":
+            self.write(
+                {
+                    "state": "processing",
+                    "numero_cfdis": numero_cfdis,
+                    "error_message": False,
+                }
+            )
+            _logger.info(
+                "SAT verify returned 5004 for request %s; will retry later",
+                self.id_solicitud,
+            )
+            return
+
+        if estado in (1, 2):
+            # Accepted / In process — keep waiting
+            self.write({"state": "processing", "numero_cfdis": numero_cfdis})
+            _logger.info(
+                "SAT request %s still processing (estado=%s, cfdis=%s)",
+                self.id_solicitud,
+                estado,
+                numero_cfdis,
+            )
+        elif estado == 3:
+            # Ready — create package records
+            for id_paquete in paquetes:
+                self.env["l10n_mx_sat.download.package"].create(
+                    {
+                        "request_id": self.id,
+                        "id_paquete": id_paquete,
+                        "state": "pending",
+                    }
+                )
+            self.write(
+                {
+                    "state": "ready",
+                    "numero_cfdis": numero_cfdis,
+                    "error_message": False,
+                }
+            )
+            _logger.info(
+                "SAT request %s ready with %d packages",
+                self.id_solicitud,
+                len(paquetes),
+            )
+        elif estado == 0:
+            self.write(
+                {
+                    "state": "error",
+                    "error_message": _(
+                        "SAT verify: invalid or empty estado_solicitud (0). "
+                        "CodEstatus: %(ce)s, Message: %(msg)s",
+                        ce=cod_estatus,
+                        msg=mensaje,
+                    ),
+                }
+            )
+        else:
+            # 4=Error, 5=Rejected, 6=Expired
+            state_labels = {4: "Error", 5: "Rejected", 6: "Expired"}
+            self.write(
+                {
+                    "state": "error",
+                    "error_message": _(
+                        "SAT verification: EstadoSolicitud=%(estado)s (%(label)s). "
+                        "CodigoEstadoSolicitud=%(ces)s, CodEstatus=%(ce)s, "
+                        "Message: %(msg)s",
+                        estado=estado,
+                        label=state_labels.get(estado, str(estado)),
+                        ces=codigo_estado,
+                        ce=cod_estatus,
+                        msg=mensaje,
+                    ),
+                }
+            )
+
+    def _action_download(self):
+        """ready -> downloading -> done: Download packages and process XMLs."""
+        self.ensure_one()
+        company = self.company_id
+        client = company.l10n_mx_sat_get_client()
+        token = client.authenticate()
+
+        self.write({"state": "downloading"})
+
+        created_moves = self.env["account.move"]
+        cfdi_count = 0
+
+        for package in self.package_ids.filtered(
+            lambda p: p.state == "pending"
+        ):
+            try:
+                result = client.download_package(
+                    token, company.vat, package.id_paquete
+                )
+                cod_estatus = _sat_str(result.get("cod_estatus"))
+                paquete_b64 = result.get("paquete_b64", "")
+
+                if cod_estatus != "5000" or not paquete_b64:
+                    package.write(
+                        {
+                            "state": "error",
+                        }
+                    )
+                    _logger.warning(
+                        "Failed to download package %s: %s",
+                        package.id_paquete,
+                        result.get("mensaje", ""),
+                    )
+                    continue
+
+                # Process the ZIP package
+                moves, count = self._process_package(paquete_b64, company)
+                created_moves |= moves
+                cfdi_count += count
+                package.write({"state": "processed"})
+
+            except Exception:
+                package.write({"state": "error"})
+                _logger.exception(
+                    "Error processing package %s", package.id_paquete
+                )
+
+        self.write(
+            {
+                "state": "done",
+                "cfdi_count": cfdi_count,
+                "move_ids": [Command.set(created_moves.ids)],
+                "error_message": False,
+            }
+        )
+
+        # Update last sync on success
+        company.sudo().write(
+            {"l10n_mx_sat_vendor_bill_last_sync": fields.Datetime.now()}
+        )
+
+        _logger.info(
+            "SAT download complete for %s: %d CFDIs processed, %d bills created",
+            company.vat,
+            cfdi_count,
+            len(created_moves),
+        )
+
+    def _process_package(self, paquete_b64, company):
+        """Extract ZIP from base64 and process each XML file.
+
+        :return: tuple (created_moves recordset, xml_count int)
+        """
+        created_moves = self.env["account.move"]
+        xml_count = 0
+
+        zip_data = base64.b64decode(paquete_b64)
+        with zipfile.ZipFile(BytesIO(zip_data)) as zf:
+            for xml_filename in zf.namelist():
+                if not xml_filename.lower().endswith(".xml"):
+                    continue
+                xml_bytes = zf.read(xml_filename)
+                xml_count += 1
+
+                try:
+                    tree = etree.fromstring(xml_bytes)
+                except etree.XMLSyntaxError:
+                    _logger.warning("Invalid XML in package: %s", xml_filename)
+                    continue
+
+                # Verify receptor matches our company
+                receptor = tree.find("{*}Receptor")
+                if receptor is not None:
+                    receptor_rfc = receptor.get("Rfc", "")
+                    if receptor_rfc != company.vat:
+                        _logger.warning(
+                            "SAT package XML skipped (receptor RFC mismatch): file=%s "
+                            "receptor_rfc=%s company_vat=%s",
+                            xml_filename,
+                            receptor_rfc,
+                            company.vat,
+                        )
+                        continue  # Not for this company
+
+                move = self.env[
+                    "account.move"
+                ]._l10n_mx_sat_create_bill_from_cfdi(tree, xml_bytes, self)
+                if move:
+                    created_moves |= move
+
+        return created_moves, xml_count
+
+    # ------------------------------------------------------------------
+    # Cron entry point
+    # ------------------------------------------------------------------
+
+    @api.model
+    def _cron_process_requests(self, companies=None):
+        """Main cron entry point. Process requests through their state machine.
+
+        :param companies: optional recordset to limit processing
+        """
+        if companies is None:
+            companies = self.env["res.company"].search(
+                [
+                    ("l10n_mx_sat_fiel_cer", "!=", False),
+                    ("l10n_mx_sat_fiel_key", "!=", False),
+                    ("l10n_mx_sat_fiel_password", "!=", False),
+                ]
+            )
+
+        manual_sync = self.env.context.get("l10n_mx_sat_vendor_bill_manual_sync")
+
+        for company in companies:
+            # Process existing requests (advance state machine). If none exist,
+            # create one and process it in this same cycle so manual "Sync Now"
+            # does not stop at draft.
+            pending_requests = self.search(
+                [
+                    ("company_id", "=", company.id),
+                    ("state", "not in", ("done", "error")),
+                ],
+                order="create_date asc",
+            )
+            if not pending_requests:
+                new_request = self._create_next_request(company)
+                pending_requests = new_request or self.browse()
+
+            successful_requests = self.browse()
+            for req in pending_requests:
+                try:
+                    if req.state == "draft":
+                        req._action_request()
+                    if req.state in ("requested", "processing"):
+                        req._action_verify()
+                    if req.state == "ready":
+                        req._action_download()
+                    if req.state == "done":
+                        successful_requests |= req
+                    # Commit after each request to avoid losing progress
+                    if not self.env.context.get("test_queue_job_no_delay"):
+                        self.env.cr.commit()  # pylint: disable=invalid-commit
+                except (UserError, Exception) as e:
+                    if not self.env.context.get("test_queue_job_no_delay"):
+                        self.env.cr.rollback()  # pylint: disable=invalid-commit
+                    req_safe = req.exists()
+                    if req_safe:
+                        req_safe.write({"state": "error", "error_message": str(e)})
+                    if not self.env.context.get("test_queue_job_no_delay"):
+                        self.env.cr.commit()  # pylint: disable=invalid-commit
+                    _logger.exception(
+                        "Error processing SAT request id=%s", req.id
+                    )
+
+            # Encadenar siguiente rango solo tras al menos un request en "done"
+            # en esta corrida (evita un draft extra cuando lo último fue error).
+            pending_count = self.search_count(
+                [
+                    ("company_id", "=", company.id),
+                    ("state", "not in", ("done", "error")),
+                ]
+            )
+            if (
+                not manual_sync
+                and not pending_count
+                and successful_requests
+            ):
+                self._create_next_request(company)
+
+    @api.model
+    def _create_next_request(self, company):
+        """Create a new download request for the next date range.
+
+        Precedence for *fecha_inicial*:
+        1. If there is at least one completed request, start the instant **after**
+           its ``fecha_final`` (avoids overlapping the same second the SAT already
+           covered and reduces duplicate/rejected solicitations).
+        2. Else if ``l10n_mx_sat_vendor_bill_sync_from`` is set on the company,
+           use that date at 00:00:00 (first sync / backfill start).
+        3. Else default to 30 days ago (Mexico timezone) at 00:00:00.
+
+        ``Sync from date`` in settings does **not** override (1): once incremental
+        sync has completed ranges, the next chunk always continues from the last
+        successful period. To re-download from an earlier date, remove or adjust
+        completed ``SAT Download Request`` records or change company data with care.
+        """
+        # Determine fecha_inicial
+        last_done = self.search(
+            [
+                ("company_id", "=", company.id),
+                ("state", "=", "done"),
+            ],
+            order="fecha_final desc",
+            limit=1,
+        )
+
+        if last_done:
+            # Avoid inclusive overlap with the previous completed window
+            fecha_inicial = last_done.fecha_final + timedelta(seconds=1)
+        elif company.l10n_mx_sat_vendor_bill_sync_from:
+            fecha_inicial = datetime.combine(
+                company.l10n_mx_sat_vendor_bill_sync_from, datetime.min.time()
+            )
+        else:
+            # Default: 30 days ago in Mexico timezone
+            mx_now = datetime.now(MX_TZ)
+            fecha_inicial = (mx_now - timedelta(days=30)).replace(
+                hour=0, minute=0, second=0, tzinfo=None
+            )
+
+        # fecha_final = yesterday 23:59:59 in Mexico timezone (SAT rejects
+        # today or future)
+        mx_now = datetime.now(MX_TZ)
+        fecha_final = (mx_now - timedelta(days=1)).replace(
+            hour=23, minute=59, second=59, tzinfo=None
+        )
+
+        # Ensure fecha_inicial is a naive datetime
+        if hasattr(fecha_inicial, "tzinfo") and fecha_inicial.tzinfo:
+            fecha_inicial = fecha_inicial.replace(tzinfo=None)
+
+        if fecha_inicial >= fecha_final:
+            return  # Nothing to sync
+
+        return self.create(
+            {
+                "company_id": company.id,
+                "fecha_inicial": fecha_inicial,
+                "fecha_final": fecha_final,
+                "state": "draft",
+            }
+        )
+
+
+class L10nMxSatDownloadPackage(models.Model):
+    _name = "l10n_mx_sat.download.package"
+    _description = "SAT Download Package"
+
+    request_id = fields.Many2one(
+        comodel_name="l10n_mx_sat.download.request",
+        required=True,
+        ondelete="cascade",
+    )
+    id_paquete = fields.Char(string="Package ID", required=True, readonly=True)
+    state = fields.Selection(
+        selection=[
+            ("pending", "Pending"),
+            ("downloaded", "Downloaded"),
+            ("processed", "Processed"),
+            ("error", "Error"),
+        ],
+        default="pending",
+        required=True,
+        readonly=True,
+    )

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">
+            res.config.settings.view.form.inherit.l10n_mx_sat_vendor_bill
+        </field>
+        <field name="model">res.config.settings</field>
+        <field
+            name="inherit_id"
+            ref="l10n_mx_sat.res_config_settings_view_form"
+        />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//block[@id='l10n_mx_sat_settings']//setting[last()]"
+                position="after"
+            >
+                <setting
+                    string="Vendor Bill Download"
+                    help="Download CFDIs recibidos from SAT. The end of the range is always “yesterday” (Mexico time). “Sync from date” is only used when there is no completed download request yet; afterwards, the next chunk starts after the last successful period. Use Sync Now to run once without creating an extra draft after errors."
+                >
+                    <div class="content-group">
+                        <div class="row mt16">
+                            <label
+                                for="l10n_mx_sat_vendor_bill_sync_from"
+                                string="Sync from date"
+                                class="col-lg-3 o_light_label"
+                            />
+                            <field
+                                name="l10n_mx_sat_vendor_bill_sync_from"
+                            />
+                        </div>
+                        <div class="row">
+                            <label
+                                for="l10n_mx_sat_vendor_bill_last_sync"
+                                string="Last sync"
+                                class="col-lg-3 o_light_label"
+                            />
+                            <field
+                                name="l10n_mx_sat_vendor_bill_last_sync"
+                            />
+                        </div>
+                        <div class="mt16">
+                            <button
+                                name="l10n_mx_sat_vendor_bill_sync_now"
+                                type="object"
+                                string="Sync Now"
+                                class="btn-secondary"
+                                icon="fa-refresh"
+                            />
+                        </div>
+                    </div>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>
