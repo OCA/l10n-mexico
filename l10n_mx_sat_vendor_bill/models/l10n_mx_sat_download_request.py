@@ -24,6 +24,14 @@ from odoo.addons.l10n_mx_sat.services import (
 
 _logger = logging.getLogger(__name__)
 
+# SAT VerificaSolicitudDescarga - additional response codes (V1.5)
+SAT_CODE_MAX_ELEMENTS = "5003"
+SAT_CODE_DAILY_LIMIT = "5011"
+
+# SAT DescargaMasiva - package-level error codes (V1.5)
+SAT_DOWNLOAD_EXPIRED = "5007"
+SAT_DOWNLOAD_MAX_REACHED = "5008"
+
 
 class L10nMxSatDownloadRequest(models.Model):
     _name = "l10n_mx_sat.download.request"
@@ -190,8 +198,32 @@ class L10nMxSatDownloadRequest(models.Model):
         numero_cfdis = sat_int(result.get("numero_cfdis"), 0)
         mensaje = sat_str(result.get("mensaje"))
 
-        # VerificaSolicitudDescarga: 5004 = aún no hay información de esa solicitud (reintentar).
-        if cod_estatus == "5004":
+        # VerificaSolicitudDescarga: 5003 = max elements exceeded for the query.
+        if cod_estatus == SAT_CODE_MAX_ELEMENTS:
+            self.write(
+                {
+                    "state": "error",
+                    "error_message": _(
+                        "SAT: maximum elements exceeded. Reduce the date range."
+                    ),
+                }
+            )
+            return
+
+        # VerificaSolicitudDescarga: 5011 = daily download limit reached (V1.5).
+        if cod_estatus == SAT_CODE_DAILY_LIMIT:
+            self.write(
+                {
+                    "state": "error",
+                    "error_message": _(
+                        "SAT: daily download limit reached. Retry tomorrow."
+                    ),
+                }
+            )
+            return
+
+        # VerificaSolicitudDescarga: 5004 = no info for this request yet (retry).
+        if cod_estatus == SAT_CODE_NO_INFO:
             self.write(
                 {
                     "state": "processing",
@@ -292,12 +324,24 @@ class L10nMxSatDownloadRequest(models.Model):
                 cod_estatus = sat_str(result.get("cod_estatus"))
                 paquete_b64 = result.get("paquete_b64", "")
 
-                if cod_estatus != "5000" or not paquete_b64:
-                    package.write(
-                        {
-                            "state": "error",
-                        }
+                if cod_estatus == SAT_DOWNLOAD_EXPIRED:
+                    package.write({"state": "error"})
+                    _logger.warning(
+                        "Package %s expired (72h TTL). "
+                        "Must create a new SAT request.",
+                        package.id_paquete,
                     )
+                    continue
+                if cod_estatus == SAT_DOWNLOAD_MAX_REACHED:
+                    package.write({"state": "error"})
+                    _logger.warning(
+                        "Package %s reached max downloads (2). "
+                        "Must create a new SAT request.",
+                        package.id_paquete,
+                    )
+                    continue
+                if cod_estatus != SAT_CODE_SUCCESS or not paquete_b64:
+                    package.write({"state": "error"})
                     _logger.warning(
                         "Failed to download package %s: %s",
                         package.id_paquete,
