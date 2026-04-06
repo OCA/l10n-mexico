@@ -68,7 +68,7 @@ class AccountMove(models.Model):
                 return self.env["account.tax"]
 
         domain = [
-            *self.env["account.journal"]._check_company_domain(line.company_id),
+            *self.env["account.tax"]._check_company_domain(line.company_id),
             ("amount", "=", amount),
             ("type_tax_use", "=", "purchase"),
             ("amount_type", "=", "percent"),
@@ -200,8 +200,11 @@ class AccountMove(models.Model):
 
         # 4. Resolve partner (Emisor for purchase bills)
         emisor = tree.find("{*}Emisor")
-        rfc = emisor.get("Rfc") if emisor is not None else None
-        nombre = emisor.get("Nombre") if emisor is not None else None
+        if emisor is None:
+            _logger.warning("CFDI UUID %s has no Emisor element, skipping", uuid)
+            return False
+        rfc = emisor.get("Rfc")
+        nombre = emisor.get("Nombre")
 
         partner = self.env["res.partner"]._retrieve_partner(
             name=nombre, vat=rfc, company=company

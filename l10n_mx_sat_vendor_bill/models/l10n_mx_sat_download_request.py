@@ -215,8 +215,11 @@ class L10nMxSatDownloadRequest(models.Model):
                 numero_cfdis,
             )
         elif estado == 3:
-            # Ready — create package records
+            # Ready - create package records (idempotent on retry)
+            existing_ids = set(self.package_ids.mapped("id_paquete"))
             for id_paquete in paquetes:
+                if id_paquete in existing_ids:
+                    continue
                 self.env["l10n_mx_sat.download.package"].create(
                     {
                         "request_id": self.id,
@@ -314,19 +317,30 @@ class L10nMxSatDownloadRequest(models.Model):
                     "Error processing package %s", package.id_paquete
                 )
 
-        self.write(
-            {
-                "state": "done",
-                "cfdi_count": cfdi_count,
-                "move_ids": [Command.set(created_moves.ids)],
-                "error_message": False,
-            }
+        all_error = self.package_ids and all(
+            p.state == "error" for p in self.package_ids
         )
-
-        # Update last sync on success
-        company.sudo().write(
-            {"l10n_mx_sat_vendor_bill_last_sync": fields.Datetime.now()}
-        )
+        if all_error:
+            self.write(
+                {
+                    "state": "error",
+                    "cfdi_count": cfdi_count,
+                    "move_ids": [Command.set(created_moves.ids)],
+                    "error_message": _("All packages failed to download."),
+                }
+            )
+        else:
+            self.write(
+                {
+                    "state": "done",
+                    "cfdi_count": cfdi_count,
+                    "move_ids": [Command.set(created_moves.ids)],
+                    "error_message": False,
+                }
+            )
+            company.sudo().write(
+                {"l10n_mx_sat_vendor_bill_last_sync": fields.Datetime.now()}
+            )
 
         _logger.info(
             "SAT download complete for %s: %d CFDIs processed, %d bills created",
@@ -375,17 +389,22 @@ class L10nMxSatDownloadRequest(models.Model):
 
                 # Verify receptor matches our company
                 receptor = tree.find("{*}Receptor")
-                if receptor is not None:
-                    receptor_rfc = receptor.get("Rfc", "")
-                    if receptor_rfc != company.vat:
-                        _logger.warning(
-                            "SAT package XML skipped (receptor RFC mismatch): file=%s "
-                            "receptor_rfc=%s company_vat=%s",
-                            xml_filename,
-                            receptor_rfc,
-                            company.vat,
-                        )
-                        continue  # Not for this company
+                if receptor is None:
+                    _logger.warning(
+                        "CFDI without Receptor element, skipping: %s",
+                        xml_filename,
+                    )
+                    continue
+                receptor_rfc = receptor.get("Rfc", "")
+                if receptor_rfc != company.vat:
+                    _logger.warning(
+                        "SAT package XML skipped (receptor RFC mismatch): file=%s "
+                        "receptor_rfc=%s company_vat=%s",
+                        xml_filename,
+                        receptor_rfc,
+                        company.vat,
+                    )
+                    continue
 
                 move = self.env[
                     "account.move"
@@ -445,9 +464,10 @@ class L10nMxSatDownloadRequest(models.Model):
                     # Commit after each request to avoid losing progress
                     if not self.env.context.get("test_queue_job_no_delay"):
                         self.env.cr.commit()  # pylint: disable=invalid-commit
-                except (UserError, Exception) as e:
+                except Exception as e:
                     if not self.env.context.get("test_queue_job_no_delay"):
                         self.env.cr.rollback()  # pylint: disable=invalid-commit
+                        self.env.invalidate_all()
                     req_safe = req.exists()
                     if req_safe:
                         req_safe.write({"state": "error", "error_message": str(e)})
