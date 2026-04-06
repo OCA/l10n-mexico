@@ -2,11 +2,14 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 import base64
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 
 from odoo.exceptions import UserError
 from odoo.tests import tagged
 from odoo.tests.common import TransactionCase
+from odoo.tools import mute_logger
+
+from ..services import SatClient
 
 MOCK_CER = base64.b64encode(b"fake-cer-content")
 MOCK_KEY = base64.b64encode(b"fake-key-content")
@@ -81,8 +84,6 @@ class TestResCompanySATConnection(TransactionCase):
 
     @patch(f"{_SVC}.Fiel")
     def test_get_client_returns_sat_client(self, MockFiel):
-        from odoo.addons.l10n_mx_sat.services import SatClient
-
         self._set_credentials()
         client = self.company.l10n_mx_sat_get_client()
         self.assertIsInstance(client, SatClient)
@@ -109,6 +110,7 @@ class TestResCompanySATConnection(TransactionCase):
         self.assertEqual(result["type"], "ir.actions.client")
         self.assertEqual(result["params"]["type"], "success")
 
+    @mute_logger("odoo.addons.l10n_mx_sat.models.res_company")
     @patch(f"{_SVC}.Autenticacion")
     @patch(f"{_SVC}.Fiel")
     def test_connection_exception_raises(self, MockFiel, MockAuth):
@@ -118,6 +120,7 @@ class TestResCompanySATConnection(TransactionCase):
         with self.assertRaises(UserError):
             self.company.l10n_mx_sat_test_connection()
 
+    @mute_logger("odoo.addons.l10n_mx_sat.models.res_company")
     @patch(f"{_SVC}.Autenticacion")
     @patch(f"{_SVC}.Fiel")
     def test_empty_token_raises(self, MockFiel, MockAuth):

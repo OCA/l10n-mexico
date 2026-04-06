@@ -17,17 +17,11 @@
                     >
                         <div class="content-group">
                             <div class="row mt16">
-                                <label
-                                    for="l10n_mx_sat_fiel_cer"
-                                    class="col-lg-3"
-                                />
+                                <label for="l10n_mx_sat_fiel_cer" class="col-lg-3" />
                                 <field name="l10n_mx_sat_fiel_cer" />
                             </div>
                             <div class="row">
-                                <label
-                                    for="l10n_mx_sat_fiel_key"
-                                    class="col-lg-3"
-                                />
+                                <label for="l10n_mx_sat_fiel_key" class="col-lg-3" />
                                 <field name="l10n_mx_sat_fiel_key" />
                             </div>
                             <div class="row">
