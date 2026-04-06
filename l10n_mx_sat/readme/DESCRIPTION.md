@@ -1,14 +1,18 @@
-Modulo base para conectar Odoo con el portal del SAT usando credenciales FIEL.
+Base module to connect Odoo to the Mexican Tax Administration (SAT)
+portal using FIEL electronic signature credentials.
 
-Provee:
+It provides:
 
-- Campos para almacenar certificado (.cer), llave privada (.key) y contrasena FIEL
-  en la configuracion de la empresa.
-- Boton para probar la conexion con el SAT.
-- Adaptador (`SatClient`) que encapsula la comunicacion con el SAT via cfdiclient.
-  Otros modulos pueden usar este adaptador sin depender directamente de cfdiclient.
-- Factory `company.l10n_mx_sat_get_client()` para obtener una instancia del adaptador.
-  Se puede sobreescribir via `_inherit` para cambiar la implementacion.
+- Fields to store the FIEL certificate (.cer), private key (.key) and
+  password on the company configuration.
+- A button to test the connection to the SAT.
+- An adapter (`SatClient`) that wraps communication with the SAT via
+  the `cfdiclient` library. Other modules can use this adapter without
+  depending directly on `cfdiclient`.
+- A factory method `company.l10n_mx_sat_get_client()` that returns an
+  adapter instance. It can be overridden via `_inherit` to swap the
+  underlying implementation.
 
-Este modulo NO realiza operaciones de negocio por si solo. Es una base para
-modulos como `l10n_mx_sat_vendor_bill` que descargan facturas del SAT.
+This module does NOT perform any business operation on its own. It is
+a base for modules such as `l10n_mx_sat_vendor_bill` that download
+invoices from the SAT.

@@ -1,8 +1,12 @@
-Otros modulos pueden usar los metodos de `res.company` para interactuar con el SAT:
+Other modules can use the methods on `res.company` to interact with
+the SAT:
 
-- `company.l10n_mx_sat_get_client()` -> retorna instancia de `SatClient`
-- `company.l10n_mx_sat_get_token()` -> autentica y retorna token SAT
-- `company.l10n_mx_sat_get_credentials()` -> retorna tupla (cer_der, key_der, password)
+- `company.l10n_mx_sat_get_client()` -> returns a `SatClient` instance
+- `company.l10n_mx_sat_get_token()` -> authenticates and returns the
+  SAT token
+- `company.l10n_mx_sat_get_credentials()` -> returns a tuple
+  `(cer_der, key_der, password)`
 
-Para cambiar la implementacion del cliente SAT (por ejemplo, usar otra libreria),
-sobreescribir `l10n_mx_sat_get_client()` en un modulo que herede `res.company`.
+To swap the SAT client implementation (for example, to use a different
+library), override `l10n_mx_sat_get_client()` in a module that
+inherits `res.company`.
