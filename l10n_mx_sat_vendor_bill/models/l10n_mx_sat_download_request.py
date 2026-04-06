@@ -112,7 +112,7 @@ class L10nMxSatDownloadRequest(models.Model):
                 ),
             }
         )
-        _logger.warning(
+        _logger.info(
             "SAT request rejected for %s: %s - %s",
             self.company_id.vat,
             cod_estatus,

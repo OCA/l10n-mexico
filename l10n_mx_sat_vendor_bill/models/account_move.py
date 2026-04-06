@@ -170,7 +170,7 @@ class AccountMove(models.Model):
             limit=1,
         )
         if existing:
-            _logger.warning(
+            _logger.info(
                 "CFDI UUID %s already imported (account.move id=%s), skipping",
                 uuid,
                 existing.id,
@@ -180,7 +180,7 @@ class AccountMove(models.Model):
         # 3. Determine move type
         tipo = tree.get("TipoDeComprobante")
         if tipo not in ("I", "E"):
-            _logger.warning(
+            _logger.info(
                 "CFDI TipoDeComprobante=%s not imported as vendor bill "
                 "(only I and E are supported), skipping",
                 tipo,
