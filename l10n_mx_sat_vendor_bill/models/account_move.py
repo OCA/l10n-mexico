@@ -57,7 +57,15 @@ class AccountMove(models.Model):
         if tipo_factor == "Exento":
             amount = 0
         else:
-            amount = float(tasa_o_cuota) * (-100 if is_withholding else 100)
+            try:
+                amount = float(tasa_o_cuota) * (-100 if is_withholding else 100)
+            except (ValueError, TypeError):
+                _logger.warning(
+                    "Tax %s has invalid rate '%s', skipping",
+                    tax_code,
+                    tasa_o_cuota,
+                )
+                return self.env["account.tax"]
 
         domain = [
             *self.env["account.journal"]._check_company_domain(line.company_id),
@@ -118,8 +126,17 @@ class AccountMove(models.Model):
             if tax:
                 tax_ids.append(tax.id)
 
-        discount_amount = float(concepto.get("Descuento") or 0)
-        importe = float(concepto.get("Importe") or 0)
+        try:
+            discount_amount = float(concepto.get("Descuento") or 0)
+            importe = float(concepto.get("Importe") or 0)
+            quantity = float(concepto.get("Cantidad", 1))
+            price_unit = float(concepto.get("ValorUnitario", 0))
+        except (ValueError, TypeError):
+            _logger.warning(
+                "Concepto with invalid numeric attributes, skipping: %s",
+                concepto.get("ClaveProdServ", "?"),
+            )
+            return
         discount_percent = 0
         if importe and not self.currency_id.is_zero(discount_amount):
             discount_percent = (discount_amount / importe) * 100
@@ -127,8 +144,8 @@ class AccountMove(models.Model):
         line.write(
             {
                 "name": line_name,
-                "quantity": float(concepto.get("Cantidad", 1)),
-                "price_unit": float(concepto.get("ValorUnitario", 0)),
+                "quantity": quantity,
+                "price_unit": price_unit,
                 "discount": discount_percent,
                 "tax_ids": [Command.set(tax_ids)],
             }

@@ -335,6 +335,11 @@ class L10nMxSatDownloadRequest(models.Model):
             len(created_moves),
         )
 
+    # Maximum decompressed size (500 MB) and file count (10 000) to prevent
+    # ZIP bombs from exhausting server memory.
+    _ZIP_MAX_SIZE = 500 * 1024 * 1024
+    _ZIP_MAX_FILES = 10_000
+
     def _process_package(self, paquete_b64, company):
         """Extract ZIP from base64 and process each XML file.
 
@@ -345,6 +350,17 @@ class L10nMxSatDownloadRequest(models.Model):
 
         zip_data = base64.b64decode(paquete_b64)
         with zipfile.ZipFile(BytesIO(zip_data)) as zf:
+            total_size = sum(info.file_size for info in zf.infolist())
+            file_count = len(zf.namelist())
+            if total_size > self._ZIP_MAX_SIZE or file_count > self._ZIP_MAX_FILES:
+                _logger.warning(
+                    "ZIP bomb guard: package exceeds limits "
+                    "(size=%s, files=%s), skipping",
+                    total_size,
+                    file_count,
+                )
+                return created_moves, 0
+
             for xml_filename in zf.namelist():
                 if not xml_filename.lower().endswith(".xml"):
                     continue
@@ -352,7 +368,7 @@ class L10nMxSatDownloadRequest(models.Model):
                 xml_count += 1
 
                 try:
-                    tree = etree.fromstring(xml_bytes)
+                    tree = etree.fromstring(xml_bytes, SAFE_XML_PARSER)
                 except etree.XMLSyntaxError:
                     _logger.warning("Invalid XML in package: %s", xml_filename)
                     continue
