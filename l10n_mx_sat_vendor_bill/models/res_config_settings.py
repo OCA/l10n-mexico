@@ -1,7 +1,7 @@
 # Copyright 2026 Open Source Integrators
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from odoo import _, fields, models
+from odoo import fields, models
 
 
 class ResConfigSettings(models.TransientModel):
@@ -24,8 +24,8 @@ class ResConfigSettings(models.TransientModel):
             "type": "ir.actions.client",
             "tag": "display_notification",
             "params": {
-                "title": _("SAT Vendor Bill Sync"),
-                "message": _(
+                "title": self.env._("SAT Vendor Bill Sync"),
+                "message": self.env._(
                     "Sync initiated. Open SAT Download Requests to follow progress. "
                     "Note: “Sync from date” applies only until the first successful "
                     "download; after that, each new request continues from the last "

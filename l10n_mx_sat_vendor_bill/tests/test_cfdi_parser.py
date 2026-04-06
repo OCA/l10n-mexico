@@ -208,9 +208,7 @@ class TestCfdiParser(TransactionCase):
         self.assertTrue(len(move.invoice_line_ids) >= 1)
 
         # Check line
-        line = move.invoice_line_ids.filtered(
-            lambda l: l.display_type == "product"
-        )
+        line = move.invoice_line_ids.filtered(lambda rec: rec.display_type == "product")
         self.assertTrue(line, "Should have at least one product line")
         line = line[0]
         self.assertIn("43232400", line.name)
@@ -304,9 +302,7 @@ class TestCfdiParser(TransactionCase):
         from lxml import etree
 
         # Ensure no partner with this RFC exists
-        self.env["res.partner"].search(
-            [("vat", "=", EMISOR_RFC)]
-        ).unlink()
+        self.env["res.partner"].search([("vat", "=", EMISOR_RFC)]).unlink()
 
         xml_bytes = self._get_iva_16_xml()
         tree = etree.fromstring(xml_bytes)
@@ -318,9 +314,7 @@ class TestCfdiParser(TransactionCase):
         self.assertTrue(move.partner_id)
         self.assertEqual(move.partner_id.vat, EMISOR_RFC)
         self.assertEqual(move.partner_id.name, EMISOR_NAME)
-        self.assertEqual(
-            move.partner_id.country_id, self.env.ref("base.mx")
-        )
+        self.assertEqual(move.partner_id.country_id, self.env.ref("base.mx"))
 
     def test_product_not_created(self):
         """Products should NOT be auto-created. Lines should have no product."""
@@ -334,7 +328,7 @@ class TestCfdiParser(TransactionCase):
         )
 
         product_lines = move.invoice_line_ids.filtered(
-            lambda l: l.display_type == "product"
+            lambda rec: rec.display_type == "product"
         )
         for line in product_lines:
             self.assertFalse(

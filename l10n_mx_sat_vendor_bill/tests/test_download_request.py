@@ -218,9 +218,9 @@ class TestDownloadRequest(TransactionCase):
             [("company_id", "=", self.company.id)]
         ).unlink()
 
-        req = self.env[
-            "l10n_mx_sat.download.request"
-        ]._create_next_request(self.company)
+        req = self.env["l10n_mx_sat.download.request"]._create_next_request(
+            self.company
+        )
 
         self.assertTrue(req, "Should create a request")
         self.assertEqual(req.state, "draft")
@@ -238,14 +238,12 @@ class TestDownloadRequest(TransactionCase):
             [("company_id", "=", self.company.id)]
         ).unlink()
 
-        req = self.env[
-            "l10n_mx_sat.download.request"
-        ]._create_next_request(self.company)
+        req = self.env["l10n_mx_sat.download.request"]._create_next_request(
+            self.company
+        )
 
         self.assertTrue(req)
-        self.assertEqual(
-            req.fecha_inicial.date().isoformat(), "2026-01-01"
-        )
+        self.assertEqual(req.fecha_inicial.date().isoformat(), "2026-01-01")
 
     def test_create_next_request_chains_from_last_done(self):
         """After a completed request, next one starts after its fecha_final."""
@@ -259,14 +257,12 @@ class TestDownloadRequest(TransactionCase):
             state="done",
         )
 
-        req = self.env[
-            "l10n_mx_sat.download.request"
-        ]._create_next_request(self.company)
+        req = self.env["l10n_mx_sat.download.request"]._create_next_request(
+            self.company
+        )
 
         self.assertTrue(req)
-        self.assertEqual(
-            req.fecha_inicial, done_req.fecha_final + timedelta(seconds=1)
-        )
+        self.assertEqual(req.fecha_inicial, done_req.fecha_final + timedelta(seconds=1))
 
     def test_cron_does_not_autochain_after_error(self):
         """Tras error en solicitud, no debe crearse un segundo draft automático."""
@@ -283,11 +279,9 @@ class TestDownloadRequest(TransactionCase):
         }
 
         with self._patch_factory(client):
-            self.env[
-                "l10n_mx_sat.download.request"
-            ].with_context(test_queue_job_no_delay=True)._cron_process_requests(
-                companies=self.company
-            )
+            self.env["l10n_mx_sat.download.request"].with_context(
+                test_queue_job_no_delay=True
+            )._cron_process_requests(companies=self.company)
 
         requests = self.env["l10n_mx_sat.download.request"].search(
             [("company_id", "=", self.company.id)]

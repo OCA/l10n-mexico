@@ -9,7 +9,9 @@
                 <field name="name" />
                 <field name="fecha_inicial" />
                 <field name="fecha_final" />
-                <field name="state" widget="badge"
+                <field
+                    name="state"
+                    widget="badge"
                     decoration-info="state in ('draft', 'requested', 'processing')"
                     decoration-warning="state in ('ready', 'downloading')"
                     decoration-success="state == 'done'"
@@ -52,22 +54,17 @@
                             <field name="cfdi_count" />
                         </group>
                     </group>
-                    <group
-                        string="Error"
-                        invisible="not error_message"
-                    >
-                        <field
-                            name="error_message"
-                            nolabel="1"
-                            colspan="2"
-                        />
+                    <group string="Error" invisible="not error_message">
+                        <field name="error_message" nolabel="1" colspan="2" />
                     </group>
                     <notebook>
                         <page string="Packages" name="packages">
                             <field name="package_ids" readonly="1">
                                 <list>
                                     <field name="id_paquete" />
-                                    <field name="state" widget="badge"
+                                    <field
+                                        name="state"
+                                        widget="badge"
                                         decoration-info="state == 'pending'"
                                         decoration-success="state == 'processed'"
                                         decoration-danger="state == 'error'"
