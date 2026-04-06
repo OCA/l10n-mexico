@@ -32,6 +32,19 @@ SAT_CODE_DAILY_LIMIT = "5011"
 SAT_DOWNLOAD_EXPIRED = "5007"
 SAT_DOWNLOAD_MAX_REACHED = "5008"
 
+# SAT EstadoSolicitud values (VerificaSolicitudDescarga)
+SAT_ESTADO_ACCEPTED = 1
+SAT_ESTADO_PROCESSING = 2
+SAT_ESTADO_READY = 3
+SAT_ESTADO_ERROR = 4
+SAT_ESTADO_REJECTED = 5
+SAT_ESTADO_EXPIRED = 6
+SAT_ESTADO_LABELS = {
+    SAT_ESTADO_ERROR: "Error",
+    SAT_ESTADO_REJECTED: "Rejected",
+    SAT_ESTADO_EXPIRED: "Expired",
+}
+
 
 class L10nMxSatDownloadRequest(models.Model):
     _name = "l10n_mx_sat.download.request"
@@ -88,6 +101,26 @@ class L10nMxSatDownloadRequest(models.Model):
     # State machine actions
     # ------------------------------------------------------------------
 
+    def _write_request_error(self, cod_estatus, mensaje):
+        """Write error state with standardized SAT rejection message."""
+        self.write(
+            {
+                "state": "error",
+                "error_message": _(
+                    "SAT rejected request. Code: %(code)s, "
+                    "Message: %(message)s",
+                    code=cod_estatus or _("(empty)"),
+                    message=mensaje,
+                ),
+            }
+        )
+        _logger.warning(
+            "SAT request rejected for %s: %s - %s",
+            self.company_id.vat,
+            cod_estatus,
+            mensaje,
+        )
+
     def _action_request(self):
         """draft -> requested: Send download request to SAT."""
         self.ensure_one()
@@ -107,9 +140,9 @@ class L10nMxSatDownloadRequest(models.Model):
         cod_estatus = sat_str(result.get("cod_estatus"))
         id_solicitud = sat_str(result.get("id_solicitud"))
         mensaje = sat_str(result.get("mensaje"))
-        mensaje_lower = mensaje.lower()
 
-        if id_solicitud and cod_estatus in ("5000", "5004"):
+        # Success: got id_solicitud with accepted code
+        if id_solicitud and cod_estatus in (SAT_CODE_SUCCESS, SAT_CODE_NO_INFO):
             self.write(
                 {
                     "state": "requested",
@@ -120,36 +153,21 @@ class L10nMxSatDownloadRequest(models.Model):
             _logger.info(
                 "SAT download requested for %s: %s", company.vat, id_solicitud
             )
-        elif cod_estatus == "5004" and not id_solicitud:
-            # No information found — not an error, just empty
-            self.write(
-                {
-                    "state": "done",
-                    "cfdi_count": 0,
-                    "error_message": False,
-                }
-            )
+            return
+
+        # No data found (5004 without id_solicitud)
+        if cod_estatus == SAT_CODE_NO_INFO and not id_solicitud:
+            self.write({"state": "done", "cfdi_count": 0, "error_message": False})
             _logger.info("SAT returned no data for %s", company.vat)
-        elif cod_estatus in SAT_REJECT_CODES:
-            self.write(
-                {
-                    "state": "error",
-                    "error_message": _(
-                        "SAT rejected request. Code: %(code)s, "
-                        "Message: %(message)s",
-                        code=cod_estatus,
-                        message=mensaje,
-                    ),
-                }
-            )
-            _logger.warning(
-                "SAT request rejected for %s: %s - %s",
-                company.vat,
-                cod_estatus,
-                mensaje,
-            )
-        elif id_solicitud and "aceptada" in mensaje_lower:
-            # Respuesta inconsistente (p. ej. mensaje genérico); si hay id, continuar
+            return
+
+        # Explicit rejection
+        if cod_estatus in SAT_REJECT_CODES:
+            self._write_request_error(cod_estatus, mensaje)
+            return
+
+        # Fallback: accepted with non-standard code
+        if id_solicitud and "aceptada" in mensaje.lower():
             self.write(
                 {
                     "state": "requested",
@@ -163,24 +181,10 @@ class L10nMxSatDownloadRequest(models.Model):
                 id_solicitud,
                 cod_estatus,
             )
-        else:
-            self.write(
-                {
-                    "state": "error",
-                    "error_message": _(
-                        "SAT rejected request. Code: %(code)s, "
-                        "Message: %(message)s",
-                        code=cod_estatus or _("(empty)"),
-                        message=mensaje,
-                    ),
-                }
-            )
-            _logger.warning(
-                "SAT request rejected for %s: %s - %s",
-                company.vat,
-                cod_estatus,
-                mensaje,
-            )
+            return
+
+        # Unknown response -> error
+        self._write_request_error(cod_estatus, mensaje)
 
     def _action_verify(self):
         """requested/processing -> processing/ready/error: Verify status."""
@@ -237,8 +241,7 @@ class L10nMxSatDownloadRequest(models.Model):
             )
             return
 
-        if estado in (1, 2):
-            # Accepted / In process — keep waiting
+        if estado in (SAT_ESTADO_ACCEPTED, SAT_ESTADO_PROCESSING):
             self.write({"state": "processing", "numero_cfdis": numero_cfdis})
             _logger.info(
                 "SAT request %s still processing (estado=%s, cfdis=%s)",
@@ -246,8 +249,8 @@ class L10nMxSatDownloadRequest(models.Model):
                 estado,
                 numero_cfdis,
             )
-        elif estado == 3:
-            # Ready - create package records (idempotent on retry)
+        elif estado == SAT_ESTADO_READY:
+            # Create package records (idempotent on retry)
             existing_ids = set(self.package_ids.mapped("id_paquete"))
             for id_paquete in paquetes:
                 if id_paquete in existing_ids:
@@ -284,8 +287,6 @@ class L10nMxSatDownloadRequest(models.Model):
                 }
             )
         else:
-            # 4=Error, 5=Rejected, 6=Expired
-            state_labels = {4: "Error", 5: "Rejected", 6: "Expired"}
             self.write(
                 {
                     "state": "error",
@@ -294,7 +295,7 @@ class L10nMxSatDownloadRequest(models.Model):
                         "CodigoEstadoSolicitud=%(ces)s, CodEstatus=%(ce)s, "
                         "Message: %(msg)s",
                         estado=estado,
-                        label=state_labels.get(estado, str(estado)),
+                        label=SAT_ESTADO_LABELS.get(estado, str(estado)),
                         ces=codigo_estado,
                         ce=cod_estatus,
                         msg=mensaje,
