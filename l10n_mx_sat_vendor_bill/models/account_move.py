@@ -30,13 +30,10 @@ class AccountMove(models.Model):
         readonly=True,
     )
 
-    _sql_constraints = [
-        (
-            "l10n_mx_cfdi_uuid_company_uniq",
-            "UNIQUE(l10n_mx_cfdi_uuid, company_id)",
-            "A CFDI with this UUID already exists for this company.",
-        ),
-    ]
+    _l10n_mx_cfdi_uuid_company_uniq = models.Constraint(
+        "UNIQUE(l10n_mx_cfdi_uuid, company_id)",
+        "A CFDI with this UUID already exists for this company.",
+    )
 
     # ------------------------------------------------------------------
     # CFDI XML Parsing helpers
