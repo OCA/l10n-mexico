@@ -9,8 +9,7 @@ from io import BytesIO
 
 from lxml import etree
 
-from odoo import _, Command, api, fields, models
-from odoo.exceptions import UserError
+from odoo import Command, api, fields, models
 
 from odoo.addons.l10n_mx_sat.services import (
     MX_TZ,
@@ -95,7 +94,7 @@ class L10nMxSatDownloadRequest(models.Model):
             vat = rec.company_id.vat or "?"
             fi = rec.fecha_inicial.strftime("%Y-%m-%d") if rec.fecha_inicial else "?"
             ff = rec.fecha_final.strftime("%Y-%m-%d") if rec.fecha_final else "?"
-            rec.name = "%s / %s - %s" % (vat, fi, ff)
+            rec.name = f"{vat} / {fi} - {ff}"
 
     # ------------------------------------------------------------------
     # State machine actions
@@ -106,10 +105,9 @@ class L10nMxSatDownloadRequest(models.Model):
         self.write(
             {
                 "state": "error",
-                "error_message": _(
-                    "SAT rejected request. Code: %(code)s, "
-                    "Message: %(message)s",
-                    code=cod_estatus or _("(empty)"),
+                "error_message": self.env._(
+                    "SAT rejected request. Code: %(code)s, Message: %(message)s",
+                    code=cod_estatus or self.env._("(empty)"),
                     message=mensaje,
                 ),
             }
@@ -153,9 +151,7 @@ class L10nMxSatDownloadRequest(models.Model):
                     "error_message": False,
                 }
             )
-            _logger.info(
-                "SAT download requested for %s: %s", company.vat, id_solicitud
-            )
+            _logger.info("SAT download requested for %s: %s", company.vat, id_solicitud)
             return
 
         # No data found (5004 without id_solicitud)
@@ -210,7 +206,7 @@ class L10nMxSatDownloadRequest(models.Model):
             self.write(
                 {
                     "state": "error",
-                    "error_message": _(
+                    "error_message": self.env._(
                         "SAT: maximum elements exceeded. Reduce the date range."
                     ),
                 }
@@ -222,7 +218,7 @@ class L10nMxSatDownloadRequest(models.Model):
             self.write(
                 {
                     "state": "error",
-                    "error_message": _(
+                    "error_message": self.env._(
                         "SAT: daily download limit reached. Retry tomorrow."
                     ),
                 }
@@ -284,7 +280,7 @@ class L10nMxSatDownloadRequest(models.Model):
             self.write(
                 {
                     "state": "error",
-                    "error_message": _(
+                    "error_message": self.env._(
                         "SAT verify: invalid or empty estado_solicitud (0). "
                         "CodEstatus: %(ce)s, Message: %(msg)s",
                         ce=cod_estatus,
@@ -296,7 +292,7 @@ class L10nMxSatDownloadRequest(models.Model):
             self.write(
                 {
                     "state": "error",
-                    "error_message": _(
+                    "error_message": self.env._(
                         "SAT verification: EstadoSolicitud=%(estado)s (%(label)s). "
                         "CodigoEstadoSolicitud=%(ces)s, CodEstatus=%(ce)s, "
                         "Message: %(msg)s",
@@ -322,21 +318,16 @@ class L10nMxSatDownloadRequest(models.Model):
         created_moves = self.env["account.move"]
         cfdi_count = 0
 
-        for package in self.package_ids.filtered(
-            lambda p: p.state == "pending"
-        ):
+        for package in self.package_ids.filtered(lambda p: p.state == "pending"):
             try:
-                result = client.download_package(
-                    token, company.vat, package.id_paquete
-                )
+                result = client.download_package(token, company.vat, package.id_paquete)
                 cod_estatus = sat_str(result.get("cod_estatus"))
                 paquete_b64 = result.get("paquete_b64", "")
 
                 if cod_estatus == SAT_DOWNLOAD_EXPIRED:
                     package.write({"state": "error"})
                     _logger.warning(
-                        "Package %s expired (72h TTL). "
-                        "Must create a new SAT request.",
+                        "Package %s expired (72h TTL). Must create a new SAT request.",
                         package.id_paquete,
                     )
                     continue
@@ -369,7 +360,7 @@ class L10nMxSatDownloadRequest(models.Model):
                     result["created"],
                     result["skipped"],
                     (
-                        " -> reasons: %s" % "; ".join(result["skip_reasons"])
+                        f" -> reasons: {'; '.join(result['skip_reasons'])}"
                         if result["skip_reasons"]
                         else ""
                     ),
@@ -377,9 +368,7 @@ class L10nMxSatDownloadRequest(models.Model):
 
             except Exception:
                 package.write({"state": "error"})
-                _logger.exception(
-                    "Error processing package %s", package.id_paquete
-                )
+                _logger.exception("Error processing package %s", package.id_paquete)
 
         all_error = self.package_ids and all(
             p.state == "error" for p in self.package_ids
@@ -390,7 +379,7 @@ class L10nMxSatDownloadRequest(models.Model):
                     "state": "error",
                     "cfdi_count": cfdi_count,
                     "move_ids": [Command.set(created_moves.ids)],
-                    "error_message": _("All packages failed to download."),
+                    "error_message": self.env._("All packages failed to download."),
                 }
             )
         else:
@@ -457,7 +446,7 @@ class L10nMxSatDownloadRequest(models.Model):
                 try:
                     tree = etree.fromstring(xml_bytes, SAFE_XML_PARSER)
                 except etree.XMLSyntaxError:
-                    reason = "invalid XML: %s" % xml_filename
+                    reason = f"invalid XML: {xml_filename}"
                     _logger.warning("Invalid XML in package: %s", xml_filename)
                     skip_reasons.append(reason)
                     skipped += 1
@@ -466,7 +455,7 @@ class L10nMxSatDownloadRequest(models.Model):
                 # Verify receptor matches our company
                 receptor = tree.find("{*}Receptor")
                 if receptor is None:
-                    reason = "no Receptor element: %s" % xml_filename
+                    reason = f"no Receptor element: {xml_filename}"
                     _logger.warning(
                         "CFDI without Receptor element, skipping: %s",
                         xml_filename,
@@ -477,27 +466,22 @@ class L10nMxSatDownloadRequest(models.Model):
                 receptor_rfc = receptor.get("Rfc", "")
                 if receptor_rfc != company.vat:
                     reason = (
-                        "receptor RFC mismatch: file=%s "
-                        "receptor=%s company=%s"
-                        % (xml_filename, receptor_rfc, company.vat)
+                        f"receptor RFC mismatch: file={xml_filename}"
+                        f" receptor={receptor_rfc} company={company.vat}"
                     )
-                    _logger.warning(
-                        "SAT package XML skipped (%s)", reason
-                    )
+                    _logger.warning("SAT package XML skipped (%s)", reason)
                     skip_reasons.append(reason)
                     skipped += 1
                     continue
 
-                move = self.env[
-                    "account.move"
-                ]._l10n_mx_sat_create_bill_from_cfdi(tree, xml_bytes, self)
+                move = self.env["account.move"]._l10n_mx_sat_create_bill_from_cfdi(
+                    tree, xml_bytes, self
+                )
                 if move:
                     created_moves |= move
                 else:
                     skipped += 1
-                    skip_reasons.append(
-                        "bill creation returned False: %s" % xml_filename
-                    )
+                    skip_reasons.append(f"bill creation returned False: {xml_filename}")
 
         created = len(created_moves)
         return {
@@ -571,9 +555,7 @@ class L10nMxSatDownloadRequest(models.Model):
                         req_safe.write({"state": "error", "error_message": str(e)})
                     if not self.env.context.get("test_queue_job_no_delay"):
                         self.env.cr.commit()  # pylint: disable=invalid-commit
-                    _logger.exception(
-                        "Error processing SAT request id=%s", req.id
-                    )
+                    _logger.exception("Error processing SAT request id=%s", req.id)
 
             # Encadenar siguiente rango solo tras al menos un request en "done"
             # en esta corrida (evita un draft extra cuando lo último fue error).
@@ -583,11 +565,7 @@ class L10nMxSatDownloadRequest(models.Model):
                     ("state", "not in", ("done", "error")),
                 ]
             )
-            if (
-                not manual_sync
-                and not pending_count
-                and successful_requests
-            ):
+            if not manual_sync and not pending_count and successful_requests:
                 self._create_next_request(company)
 
     @api.model

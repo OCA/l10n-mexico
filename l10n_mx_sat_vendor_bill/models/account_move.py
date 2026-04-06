@@ -4,9 +4,7 @@
 import logging
 from datetime import datetime as dt
 
-from lxml import etree
-
-from odoo import Command, _, fields, models
+from odoo import Command, fields, models
 
 _logger = logging.getLogger(__name__)
 
@@ -40,9 +38,7 @@ class AccountMove(models.Model):
     # CFDI XML Parsing helpers
     # ------------------------------------------------------------------
 
-    def _l10n_mx_sat_get_tax_from_cfdi_node(
-        self, tax_node, line, is_withholding=False
-    ):
+    def _l10n_mx_sat_get_tax_from_cfdi_node(self, tax_node, line, is_withholding=False):
         """Match a CFDI tax node to an Odoo account.tax."""
         tax_code = tax_node.get("Impuesto")
         tax_type = CFDI_CODE_TO_TAX_TYPE.get(tax_code)
@@ -51,7 +47,7 @@ class AccountMove(models.Model):
 
         if not tasa_o_cuota and tipo_factor != "Exento":
             self.message_post(
-                body=_("Tax %s cannot be imported (no rate).", tax_code)
+                body=self.env._("Tax %s cannot be imported (no rate).", tax_code)
             )
             return self.env["account.tax"]
 
@@ -76,7 +72,7 @@ class AccountMove(models.Model):
         ]
 
         tax_group = self.env.ref(
-            "account.%s_tax_group_exe_0" % line.company_id.id,
+            f"account.{line.company_id.id}_tax_group_exe_0",
             raise_if_not_found=False,
         )
         if tax_group and tipo_factor == "Exento":
@@ -88,14 +84,13 @@ class AccountMove(models.Model):
         taxes = self.env["account.tax"].search(domain, limit=2)
         if not taxes:
             if is_withholding:
-                msg = _(
-                    "Could not find %(tax_type)s withholding tax "
-                    "at rate %(rate)s%%.",
+                msg = self.env._(
+                    "Could not find %(tax_type)s withholding tax at rate %(rate)s%%.",
                     tax_type=tax_type or tax_code,
                     rate=amount,
                 )
             else:
-                msg = _(
+                msg = self.env._(
                     "Could not find %(tax_type)s tax at rate %(rate)s%%.",
                     tax_type=tax_type or tax_code,
                     rate=amount,
@@ -107,18 +102,14 @@ class AccountMove(models.Model):
         """Fill an invoice line from a CFDI Concepto node."""
         clave = concepto.get("ClaveProdServ", "")
         descripcion = concepto.get("Descripcion", "")
-        line_name = "[%s] %s" % (clave, descripcion) if clave else descripcion
+        line_name = f"[{clave}] {descripcion}" if clave else descripcion
 
         tax_ids = []
-        for traslado in concepto.findall(
-            "{*}Impuestos/{*}Traslados/{*}Traslado"
-        ):
+        for traslado in concepto.findall("{*}Impuestos/{*}Traslados/{*}Traslado"):
             tax = self._l10n_mx_sat_get_tax_from_cfdi_node(traslado, line)
             if tax:
                 tax_ids.append(tax.id)
-        for retencion in concepto.findall(
-            "{*}Impuestos/{*}Retenciones/{*}Retencion"
-        ):
+        for retencion in concepto.findall("{*}Impuestos/{*}Retenciones/{*}Retencion"):
             tax = self._l10n_mx_sat_get_tax_from_cfdi_node(
                 retencion, line, is_withholding=True
             )
@@ -223,9 +214,10 @@ class AccountMove(models.Model):
 
         # 5. Resolve currency
         currency_name = tree.get("Moneda", "MXN")
-        currency = self.env["res.currency"].search(
-            [("name", "=", currency_name)], limit=1
-        ) or company.currency_id
+        currency = (
+            self.env["res.currency"].search([("name", "=", currency_name)], limit=1)
+            or company.currency_id
+        )
 
         # 6. Extract invoice_date
         fecha_timbrado = tfd_nodes[0].get("FechaTimbrado")
@@ -238,7 +230,7 @@ class AccountMove(models.Model):
         # 7. Build ref from Serie + Folio
         serie = tree.get("Serie", "")
         folio = tree.get("Folio", "")
-        ref = "%s-%s" % (serie, folio) if serie and folio else folio or uuid[:8]
+        ref = f"{serie}-{folio}" if serie and folio else folio or uuid[:8]
 
         # 8. Find purchase journal
         journal = self.env["account.journal"].search(
@@ -246,9 +238,7 @@ class AccountMove(models.Model):
             limit=1,
         )
         if not journal:
-            _logger.warning(
-                "No purchase journal found for company %s", company.name
-            )
+            _logger.warning("No purchase journal found for company %s", company.name)
             return False
 
         # 9. Create the move
@@ -275,7 +265,7 @@ class AccountMove(models.Model):
         # 10. Store CFDI XML as attachment
         self.env["ir.attachment"].create(
             {
-                "name": "%s.xml" % uuid,
+                "name": f"{uuid}.xml",
                 "raw": xml_bytes,
                 "res_model": "account.move",
                 "res_id": move.id,
@@ -288,7 +278,7 @@ class AccountMove(models.Model):
 
         # 12. Chatter message
         move.message_post(
-            body=_(
+            body=self.env._(
                 "Vendor bill imported from SAT Descarga Masiva. UUID: %s", uuid
             ),
         )
