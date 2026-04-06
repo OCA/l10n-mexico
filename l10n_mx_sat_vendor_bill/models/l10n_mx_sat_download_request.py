@@ -8,34 +8,21 @@ from datetime import datetime, timedelta
 from io import BytesIO
 
 from lxml import etree
-from pytz import timezone
 
 from odoo import _, Command, api, fields, models
 from odoo.exceptions import UserError
 
+from odoo.addons.l10n_mx_sat.services import (
+    MX_TZ,
+    SAFE_XML_PARSER,
+    SAT_CODE_NO_INFO,
+    SAT_CODE_SUCCESS,
+    SAT_REJECT_CODES,
+    sat_int,
+    sat_str,
+)
+
 _logger = logging.getLogger(__name__)
-
-MX_TZ = timezone("America/Mexico_City")
-
-# SolicitaDescargaRecibidos: códigos de rechazo / error frecuentes (SAT).
-_SOLICITUD_REJECT_CODES = frozenset({"5001", "5002", "5005", "404"})
-
-
-def _sat_str(value):
-    """Normaliza valores del SAT/cfdiclient a str (XML suele ser texto; tests pueden usar int)."""
-    if value is None:
-        return ""
-    return str(value).strip()
-
-
-def _sat_int(value, default=0):
-    """Convierte estado numérico del SAT a int de forma segura."""
-    if value is None or value == "":
-        return default
-    try:
-        return int(str(value).strip())
-    except (TypeError, ValueError):
-        return default
 
 
 class L10nMxSatDownloadRequest(models.Model):
@@ -109,9 +96,9 @@ class L10nMxSatDownloadRequest(models.Model):
             tipo_solicitud="CFDI",
         )
 
-        cod_estatus = _sat_str(result.get("cod_estatus"))
-        id_solicitud = _sat_str(result.get("id_solicitud"))
-        mensaje = _sat_str(result.get("mensaje"))
+        cod_estatus = sat_str(result.get("cod_estatus"))
+        id_solicitud = sat_str(result.get("id_solicitud"))
+        mensaje = sat_str(result.get("mensaje"))
         mensaje_lower = mensaje.lower()
 
         if id_solicitud and cod_estatus in ("5000", "5004"):
@@ -135,7 +122,7 @@ class L10nMxSatDownloadRequest(models.Model):
                 }
             )
             _logger.info("SAT returned no data for %s", company.vat)
-        elif cod_estatus in _SOLICITUD_REJECT_CODES:
+        elif cod_estatus in SAT_REJECT_CODES:
             self.write(
                 {
                     "state": "error",
@@ -196,12 +183,12 @@ class L10nMxSatDownloadRequest(models.Model):
 
         result = client.verify_download(token, company.vat, self.id_solicitud)
 
-        cod_estatus = _sat_str(result.get("cod_estatus"))
-        estado = _sat_int(result.get("estado_solicitud"), 0)
-        codigo_estado = _sat_str(result.get("codigo_estado_solicitud"))
+        cod_estatus = sat_str(result.get("cod_estatus"))
+        estado = sat_int(result.get("estado_solicitud"), 0)
+        codigo_estado = sat_str(result.get("codigo_estado_solicitud"))
         paquetes = result.get("paquetes") or []
-        numero_cfdis = _sat_int(result.get("numero_cfdis"), 0)
-        mensaje = _sat_str(result.get("mensaje"))
+        numero_cfdis = sat_int(result.get("numero_cfdis"), 0)
+        mensaje = sat_str(result.get("mensaje"))
 
         # VerificaSolicitudDescarga: 5004 = aún no hay información de esa solicitud (reintentar).
         if cod_estatus == "5004":
@@ -299,7 +286,7 @@ class L10nMxSatDownloadRequest(models.Model):
                 result = client.download_package(
                     token, company.vat, package.id_paquete
                 )
-                cod_estatus = _sat_str(result.get("cod_estatus"))
+                cod_estatus = sat_str(result.get("cod_estatus"))
                 paquete_b64 = result.get("paquete_b64", "")
 
                 if cod_estatus != "5000" or not paquete_b64:
