@@ -39,8 +39,9 @@ class AccountPayment(models.Model):
 
     @api.depends("related_cert_ids")
     def _compute_cfdi_document_id(self):
-        for move in self:
+        for payment in self:
             # remove current reference
+            move = payment.move_id
             move.cfdi_document_id = False
 
             # get the last CFDI
