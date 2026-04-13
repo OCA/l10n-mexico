@@ -888,6 +888,11 @@ msgid "Formatted Email"
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__global_location_number
+msgid "GLN"
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__partner_latitude
 msgid "Geo Latitude"
 msgstr ""
@@ -895,6 +900,11 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__partner_longitude
 msgid "Geo Longitude"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__global_location_number
+msgid "Global Location Number"
 msgstr ""
 
 #. module: l10n_mx_cfdi
