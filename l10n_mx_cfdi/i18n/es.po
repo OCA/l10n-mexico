@@ -6,16 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-03-08 19:06+0000\n"
-"Last-Translator: Demetrio Salvador Ortiz Arizaga "
-"<dortiz@opensourceintegrators.com>\n"
+"PO-Revision-Date: 2026-04-13 21:45+0000\n"
+"Last-Translator: iServicio <jlsosa@iservicio.com.mx>\n"
 "Language-Team: none\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10.2\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__supplier_invoice_count
@@ -201,23 +200,23 @@ msgstr "Ya se ha publicado un certificado con esta serie y número."
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_account_payable_id
 msgid "Account Payable"
-msgstr ""
+msgstr "Cuentas por pagar"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_account_receivable_id
 msgid "Account Receivable"
-msgstr ""
+msgstr "Cuentas por cobrar"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_needaction
 msgid "Action Needed"
-msgstr ""
+msgstr "Acción Requerida"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__active
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_series__active
 msgid "Active"
-msgstr ""
+msgstr "Activo"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__active_lang_count
@@ -227,7 +226,7 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__activity_ids
 msgid "Activities"
-msgstr ""
+msgstr "Actividades"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__activity_exception_decoration
@@ -316,7 +315,7 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__bank_account_count
 msgid "Bank"
-msgstr ""
+msgstr "Banco"
 
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__bank_ids
