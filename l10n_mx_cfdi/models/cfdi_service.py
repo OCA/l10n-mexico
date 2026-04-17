@@ -100,10 +100,10 @@ class CFDIService(models.Model):
                 _("No se creo el CFDI por el siguiente motivo:\n\n%s") % message
             )
 
-            _logger.warning(dumps(e.error_json, indent=4))
+            _logger.warning("Unable to create CFDI:\n" + dumps(cfdi_data) + "\n" + dumps(e.error_json, indent=4))
             raise UserError(error_message) from e
         except facturama.ApiError as e:
-            logging.error(e)
+            _logger.warning("Unable to create CFDI:\n" + dumps(cfdi_data) + "\n" + dumps(e, indent=4))
             raise UserError(
                 _("Ocurrió un error con el servicio de facturación.\n")
             ) from e
