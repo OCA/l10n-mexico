@@ -97,7 +97,7 @@ class CFDIService(models.Model):
             if "ModelState" in e.error_json:
                 model_state = e.error_json["ModelState"]
                 error_message += json.dumps(model_state, indent=4) + "\n"
-
+            _logger.warning(dumps(e.error_json, indent=4))
             raise UserError(error_message) from e
         except facturama.ApiError as e:
             logging.error(e)
