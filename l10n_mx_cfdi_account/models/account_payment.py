@@ -219,7 +219,7 @@ class AccountPayment(models.Model):
         payment_date = self.move_id._format_cfdi_date_str(self.date)
         payment_data = {
             "Date": payment_date,
-            "PaymentForm": self.move_id.payment_form_id.code,
+            "PaymentForm": self.payment_form_id.code,
             "Amount": json_float_round(self.amount, 2),
             "RelatedDocuments": related_documents_data,
         }
