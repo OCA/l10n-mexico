@@ -100,19 +100,4 @@
         </xpath>
     </template>
 
-    <template
-        id="report_invoice_with_payments"
-        inherit_id="account.report_invoice_with_payments"
-    >
-        <xpath expr='//t[@t-call="account.report_invoice"]' position="attributes">
-            <attribute name="invisible">True</attribute>
-        </xpath>
-
-        <xpath expr='//t[@t-call="account.report_invoice"]' position="after">
-            <t t-call="l10n_mx_cfdi_account.report_invoice">
-                <t t-set="print_with_payments" t-value="True" />
-            </t>
-        </xpath>
-    </template>
-
 </odoo>
