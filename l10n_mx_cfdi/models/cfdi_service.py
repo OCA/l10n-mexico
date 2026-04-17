@@ -81,12 +81,17 @@ class CFDIService(models.Model):
                 _logger.info("CFDI creado: %s", res["Id"])
             return res
         except facturama.FacturamaError as e:
-            message = False
+            message = ""
             if 'message' in e.error_json:
                 message = e.error_json["message"]
+
             if 'response' in e.error_json:
-                if 'Message' in e.error_json['response']:
-                    message = e.error_json["response"]["Message"]
+                response_json = e.error_json['response']
+                if 'Message' in response_json:
+                    message = response_json["Message"]
+                if "ModelState" in response_json:
+                    model_state = response_json["ModelState"]
+                    message += "\n" + json.dumps(model_state, indent=4)
 
             if not message:
                 message = dumps(e.error_json)
@@ -94,9 +99,7 @@ class CFDIService(models.Model):
             error_message = (
                 _("No se creo el CFDI por el siguiente motivo:\n\n%s") % message
             )
-            if "ModelState" in e.error_json:
-                model_state = e.error_json["ModelState"]
-                error_message += json.dumps(model_state, indent=4) + "\n"
+
             _logger.warning(dumps(e.error_json, indent=4))
             raise UserError(error_message) from e
         except facturama.ApiError as e:
