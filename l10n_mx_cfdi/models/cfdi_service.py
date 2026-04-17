@@ -1,5 +1,8 @@
 import json
 import logging
+from email import message
+from json import dumps
+from urllib import error
 
 import facturama
 
@@ -77,9 +80,19 @@ class CFDIService(models.Model):
             if "Id" in res:
                 _logger.info("CFDI creado: %s", res["Id"])
             return res
-        except facturama.MalformedRequestError as e:
+        except facturama.FacturamaError as e:
+            message = False
+            if 'message' in e.error_json:
+                message = e.error_json["message"]
+            if 'response' in e.error_json:
+                if 'Message' in e.error_json['response']:
+                    message = e.error_json["response"]["Message"]
+
+            if not message:
+                message = dumps(e.error_json)
+
             error_message = (
-                _("Error when creating the CFDI: %s\n") % e.error_json["Message"]
+                _("No se creo el CFDI por el siguiente motivo:\n\n%s") % message
             )
             if "ModelState" in e.error_json:
                 model_state = e.error_json["ModelState"]
