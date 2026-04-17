@@ -88,6 +88,15 @@ class AccountMove(models.Model):
                 if b"cfdi:Comprobante" in xml:
                     move.cfdi_data_in_attachments = True
 
+    @api.depends('cfdi_document_state')
+    def _compute_show_reset_to_draft_button(self):
+        # OVERRIDE
+        super()._compute_show_reset_to_draft_button()
+        for move in self:
+            if move.cfdi_document_id and move.cfdi_document_id.state == 'published' and move.state == 'posted':
+                move.need_cancel_request = True
+                move.show_reset_to_draft_button = False
+
     @api.model
     def default_get(self, field_names):
         defaults_dict = super().default_get(field_names)
@@ -407,7 +416,7 @@ class AccountMove(models.Model):
 
         return list(total_taxes.values())
 
-    def button_draft(self):
+    def button_request_cancel(self):
         for rec in self:
             if rec.l10n_mx_cfdi_auto:
                 published_related_cfdi = rec.related_cert_ids.filtered_domain(
@@ -421,7 +430,7 @@ class AccountMove(models.Model):
                         .read()[0]
                     )
 
-        return super().button_draft()
+        return super().button_request_cancel()
 
     def create_refund_cfdi(self):
         """
