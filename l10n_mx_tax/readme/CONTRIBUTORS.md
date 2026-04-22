@@ -1,0 +1,2 @@
+- Maxime Chambreuil <mchambreuil@opensourceintegrators.com>
+- Erick Gonzalez <egonzalez@opensourceintegrators.com>
