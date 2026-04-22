@@ -2,11 +2,13 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 {
-    "name": "Mexico - Conexion SAT",
+    "name": "Mexico - SAT Connection",
     "version": "19.0.1.0.0",
     "category": "Accounting/Localizations",
-    "summary": "Modulo base para conectar Odoo con el SAT usando credenciales FIEL",
-    "author": "Open Source Integrators, Odoo Community Association (OCA)",
+    "summary": "Connect with the SAT using the Electronic Signature (FIEL) credentials",
+    "author": "Open Source Integrators, "
+    "Asociacion Mexicana de Odoo (AMOdoo), "
+    "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/l10n-mexico",
     "license": "AGPL-3",
     "depends": ["account"],

@@ -2,9 +2,9 @@
    :target: https://odoo-community.org/get-involved?utm_source=readme
    :alt: Odoo Community Association
 
-=====================
-Mexico - Conexion SAT
-=====================
+=======================
+Mexico - SAT Connection
+=======================
 
 .. 
    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -117,6 +117,7 @@ Authors
 -------
 
 * Open Source Integrators
+* Asociacion Mexicana de Odoo (AMOdoo)
 
 Contributors
 ------------

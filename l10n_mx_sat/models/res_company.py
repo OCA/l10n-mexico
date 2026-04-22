@@ -16,17 +16,17 @@ class ResCompany(models.Model):
     _inherit = "res.company"
 
     l10n_mx_sat_fiel_cer = fields.Binary(
-        string="Certificado FIEL (.cer)",
+        string="Electronic Signature Certificate (.cer)",
         groups="base.group_system",
         attachment=False,
     )
     l10n_mx_sat_fiel_key = fields.Binary(
-        string="Llave privada FIEL (.key)",
+        string="Electronic Signature Private Key (.key)",
         groups="base.group_system",
         attachment=False,
     )
     l10n_mx_sat_fiel_password = fields.Char(
-        string="Contrasena FIEL",
+        string="Electronic Signature Password",
         groups="base.group_system",
     )
 
@@ -38,17 +38,23 @@ class ResCompany(models.Model):
         """
         self.ensure_one()
         if not self.l10n_mx_sat_fiel_cer:
-            raise UserError(self.env._("Suba el certificado FIEL (.cer) primero."))
+            raise UserError(
+                self.env._("Set the Electronic Signature Certificate (.cer) first.")
+            )
         if not self.l10n_mx_sat_fiel_key:
-            raise UserError(self.env._("Suba la llave privada FIEL (.key) primero."))
+            raise UserError(
+                self.env._("Set the Electronic Signature Private Key (.key) first.")
+            )
         if not self.l10n_mx_sat_fiel_password:
-            raise UserError(self.env._("Ingrese la contrasena FIEL primero."))
+            raise UserError(self.env._("Set the Electronic Signature Password first."))
         try:
             cer_der = base64.b64decode(self.l10n_mx_sat_fiel_cer)
             key_der = base64.b64decode(self.l10n_mx_sat_fiel_key)
         except Exception as e:
             raise UserError(
-                self.env._("Error al decodificar credenciales FIEL: %s", e)
+                self.env._(
+                    "Error decoding the credentials of the Electronic Signature: %s", e
+                )
             ) from e
         return cer_der, key_der, self.l10n_mx_sat_fiel_password
 
@@ -67,7 +73,7 @@ class ResCompany(models.Model):
             return SatClient(cer_der, key_der, password)
         except Exception as e:
             raise UserError(
-                self.env._("Error al cargar credenciales FIEL: %s", e)
+                self.env._("Error loading the Electronic Signature credentials: %s", e)
             ) from e
 
     def l10n_mx_sat_get_token(self):
@@ -83,7 +89,7 @@ class ResCompany(models.Model):
             return client.authenticate()
         except Exception as e:
             _logger.warning("SAT authentication failed for %s: %s", self.name, e)
-            raise UserError(self.env._("Autenticacion SAT fallo: %s", e)) from e
+            raise UserError(self.env._("SAT authentication failed: %s", e)) from e
 
     def l10n_mx_sat_test_connection(self):
         """Button to test the SAT connection.
@@ -97,8 +103,8 @@ class ResCompany(models.Model):
             "type": "ir.actions.client",
             "tag": "display_notification",
             "params": {
-                "title": self.env._("Conexion SAT"),
-                "message": self.env._("Conexion exitosa. Token obtenido."),
+                "title": self.env._("SAT Connection"),
+                "message": self.env._("Connection successful. Token received."),
                 "type": "success",
                 "sticky": False,
             },

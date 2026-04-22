@@ -7,13 +7,13 @@
         <field name="arch" type="xml">
             <xpath expr="//block[@id='invoicing_settings']" position="after">
                 <block
-                    title="Conexion SAT"
+                    title="SAT Connection"
                     id="l10n_mx_sat_settings"
                     invisible="company_country_code != 'MX'"
                 >
                     <setting
-                        string="Credenciales FIEL"
-                        help="Suba sus archivos FIEL (.cer y .key) para conectar con el SAT."
+                        string="Electronic Signature (FIEL) Credentials"
+                        help="Set the Electronic Signature files (.cer y .key) to connect to the SAT."
                     >
                         <div class="content-group">
                             <div class="row mt16">
@@ -39,7 +39,7 @@
                                 <button
                                     name="l10n_mx_sat_test_connection"
                                     type="object"
-                                    string="Probar conexion"
+                                    string="Test Connection"
                                     class="btn-secondary"
                                     icon="fa-plug"
                                 />
