@@ -306,7 +306,7 @@ class AccountMove(models.Model):
 
         cfdi_items_data = []
         for line in self.line_ids:
-            if not line.product_id or line.display_type != 'product':
+            if not line.product_id or line.display_type != 'product' or line.price_unit == 0:
                 continue
 
             cfdi_item_data = line._gater_cfdi_item_data()
