@@ -8,10 +8,11 @@
     'category': 'Localization',
     'version': '19.0.0.0.1',
     'license': 'GPL-3',
-    'depends': ['base', 'l10n_mx_cfdi_account', 'l10n_mx_cfdi_catalogs_comex'],
+    'depends': ['base', 'l10n_mx_cfdi_account', 'l10n_mx_catalogs_comex'],
     'data': [
         'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
+        'reports/report_invoice_document.xml',
+        'views/product_template_views.xml',
+        'views/stock_lot_views.xml',
     ],
 }
