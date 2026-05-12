@@ -2,7 +2,7 @@ from odoo import api, fields, models
 
 
 class Customs(models.Model):
-    _name = "l10n_mx_cfdi.c_aduana"
+    _name = "l10n_mx_catalogs.c_aduana"
     _description = "Aduana"
     _rec_name = "display_name"
     _order = "code, name"
