@@ -10,6 +10,8 @@
     'license': 'GPL-3',
     'depends': ['base'],
     'data': [
+        'data/l10n_mx_catalogs.c_aduana.csv',
+        'data/l10n_mx_catalogs.c_fraccion.csv',
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
