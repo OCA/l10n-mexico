@@ -19,13 +19,6 @@ class Customs(models.Model):
         store=True,
     )
 
-    _sql_constraints = [
-        (
-            "code_name_unique",
-            "Ya existe una aduna registrada con ese nombre.",
-        ),
-    ]
-
     @api.depends("code", "name")
     def _compute_display_name(self):
         for rec in self:

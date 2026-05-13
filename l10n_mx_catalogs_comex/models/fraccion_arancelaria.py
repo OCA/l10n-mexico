@@ -8,6 +8,7 @@ class Fraccion(models.Model):
 
     code = fields.Char(string="Código", required=True)
     name = fields.Char(string="Descripción", required=True)
+    active = fields.Boolean(default=True)
 
     @api.depends("name", "code")
     def _compute_display_name(self):
