@@ -8,7 +8,7 @@
     'category': 'Localization',
     'version': '19.0.0.0.1',
     'license': 'GPL-3',
-    'depends': ['base', 'stock_landed_costs', 'l10n_mx_cfdi_account', 'l10n_mx_catalogs_comex'],
+    'depends': ['base', 'account', 'stock_landed_costs', 'l10n_mx_cfdi_account', 'l10n_mx_catalogs_comex'],
     'data': [
         'security/ir.model.access.csv',
         'reports/report_invoice_document.xml',
