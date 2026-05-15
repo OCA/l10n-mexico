@@ -64,7 +64,7 @@ class CertificateCancel(models.TransientModel):
                     certificate.cancel(
                         record.cancel_reason_id.code,
                         record.replacement_certificate_id,
-                        record.simulate_operation,
+                        record.sudo().simulate_operation,
                     )
 
             for invoice in record.certificate_ids.related_invoice_id:
