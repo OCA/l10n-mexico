@@ -370,8 +370,9 @@ class Document(models.Model):
                 self.tracking_id = res["Id"]
                 self.state = "published"
             else:
+                e_message = res["Message"].encode('utf-8').decode('unicode_escape')
                 raise UserError(
-                    _("Error when publishing the certificate: %s") % res["Message"]
+                    _("Error when publishing the certificate: %s") % e_message
                 )
 
     def action_cancel(self):

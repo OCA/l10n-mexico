@@ -96,6 +96,7 @@ class CFDIService(models.Model):
             if not message:
                 message = dumps(e.error_json)
 
+            message = message.encode('utf-8').decode('unicode_escape')
             error_message = (
                 _("No se creo el CFDI por el siguiente motivo:\n\n%s") % message
             )
