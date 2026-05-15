@@ -24,7 +24,6 @@ class CertificateCancel(models.TransientModel):
     simulate_operation = fields.Boolean(
         default=False,
         help="Simulate the cancel operation without sending the request to the SAT",
-        groups="base.group_system",
     )
 
     @api.depends("cancel_reason_id")
@@ -64,7 +63,7 @@ class CertificateCancel(models.TransientModel):
                     certificate.cancel(
                         record.cancel_reason_id.code,
                         record.replacement_certificate_id,
-                        record.sudo().simulate_operation,
+                        record.simulate_operation,
                     )
 
             for invoice in record.certificate_ids.related_invoice_id:
