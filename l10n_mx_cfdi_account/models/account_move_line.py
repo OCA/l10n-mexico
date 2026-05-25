@@ -146,12 +146,33 @@ class AccountMoveLine(models.Model):
             - expected_subtotal_wo_discount
             - taxes_included
         )
-        if float_is_zero(discount, precision_digits=currency.decimal_places):
-            # ignore a difference below the currency precision
-            discount = 0
 
+        if float_is_zero(discount, precision_digits=currency.decimal_places):
+            discount = 0.0
+
+        discount = float(int(discount))
         res["Discount"] = discount
-        res["Subtotal"] += discount
+        # Subtotal - Discount + Taxes = Total
+        res["Subtotal"] = res["Subtotal"] + discount
+
+        if res.get("Taxes"):
+            base = res["Subtotal"] - res["Discount"]
+            tax_total = 0.0
+
+            for tax in res["Taxes"]:
+                tax["Base"] = base
+                tax["Total"] = json_float_round(
+                    base * (tax.get("Rate") or 0.0),
+                    precision_digits=currency.decimal_places,
+                )
+                tax_total += tax["Total"]
+
+            res["Total"] = json_float_round(
+                base + tax_total,
+                precision_digits=currency.decimal_places,
+            )
+        else:
+            res["Total"] = res["Subtotal"] - res["Discount"]
 
         # recompute the unit price from the subtotal to avoid rounding
         res["UnitPrice"] = res["Subtotal"] / (self.quantity or 1)
