@@ -196,39 +196,24 @@ class HrExpenseSheet(models.Model):
         return invoices
 
     def _reconcile_account_lines(self):
-        # Wizard de conciliación automática
-        ReconcileWizard = self.env["account.reconcile.wizard"]
-
         for sheet in self:
-            # Wizard de conciliación automática
-            ReconcileWizard = self.env["account.reconcile.wizard"]
-
-            for sheet in self:
-                account = sheet.company_id.hr_expense_reimbursement_credit_account_id
-                if not account:
-                    raise UserError(
-                        _(
-                            "Configurar en Contabilidad → Configuración → Empresas"
-                            "la cuenta para poder conciliar."
-                        )
+            account = sheet.company_id.hr_expense_reimbursement_credit_account_id
+            if not account:
+                raise UserError(
+                    _(
+                        "Configurar en Contabilidad → Configuración → Empresas"
+                        "la cuenta para poder conciliar."
                     )
-                # Busca las líneas contables de la cuenta en los movimientos del sheet
-                move_lines = self.env["account.move.line"].search(
-                    [
-                        ("move_id", "in", sheet.account_move_ids.ids),
-                        ("account_id", "=", account.id),
-                    ]
                 )
-                if len(move_lines) >= 2:
-                    context = {
-                        "active_model": "account.move.line",
-                        "active_ids": move_lines.ids,
-                        "allow_partials": True,
-                    }
-                    wizard = ReconcileWizard.with_context(**context).new(
-                        {"allow_partials": True}
-                    )
-                    wizard.reconcile()
+            move_lines = self.env["account.move.line"].search(
+                [
+                    ("move_id", "in", sheet.account_move_ids.ids),
+                    ("account_id", "=", account.id),
+                    ("reconciled", "=", False),
+                ]
+            )
+            if len(move_lines) >= 2:
+                move_lines.reconcile()
 
     def action_approve_expense_sheets(self):
         # Método original para aprobar hojas de gasto
