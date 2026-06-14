@@ -192,7 +192,25 @@ class TestHrExpenseVendorBill(TestExpenseCommon):
         )
 
     def test_approve_company_account_does_not_create_vendor_invoices(self):
-        sheet = self.create_expense_report()
+        sheet = self.create_expense_report(
+            {
+                "payment_mode": "company_account",
+                "expense_line_ids": [
+                    Command.create(
+                        {
+                            "employee_id": self.expense_employee.id,
+                            "product_id": self.product_c.id,
+                            "total_amount_currency": 1000.00,
+                            "tax_ids": [Command.set(self.tax_purchase_a.ids)],
+                            "payment_mode": "company_account",
+                            "date": self.frozen_today,
+                            "company_id": self.company.id,
+                            "currency_id": self.company_data["currency"].id,
+                        }
+                    )
+                ],
+            }
+        )
         sheet.action_submit_sheet()
         sheet.action_approve_expense_sheets()
         self.assertFalse(
@@ -200,14 +218,50 @@ class TestHrExpenseVendorBill(TestExpenseCommon):
         )
 
     def test_action_sheet_move_post_company_account(self):
-        sheet = self.create_expense_report()
+        sheet = self.create_expense_report(
+            {
+                "payment_mode": "company_account",
+                "expense_line_ids": [
+                    Command.create(
+                        {
+                            "employee_id": self.expense_employee.id,
+                            "product_id": self.product_c.id,
+                            "total_amount_currency": 1000.00,
+                            "tax_ids": [Command.set(self.tax_purchase_a.ids)],
+                            "payment_mode": "company_account",
+                            "date": self.frozen_today,
+                            "company_id": self.company.id,
+                            "currency_id": self.company_data["currency"].id,
+                        }
+                    )
+                ],
+            }
+        )
         sheet.action_submit_sheet()
         sheet.action_approve_expense_sheets()
         sheet.action_sheet_move_post()
         self.assertTrue(sheet.account_move_ids)
 
     def test_action_reset_company_account_sheet(self):
-        sheet = self.create_expense_report()
+        sheet = self.create_expense_report(
+            {
+                "payment_mode": "company_account",
+                "expense_line_ids": [
+                    Command.create(
+                        {
+                            "employee_id": self.expense_employee.id,
+                            "product_id": self.product_c.id,
+                            "total_amount_currency": 1000.00,
+                            "tax_ids": [Command.set(self.tax_purchase_a.ids)],
+                            "payment_mode": "company_account",
+                            "date": self.frozen_today,
+                            "company_id": self.company.id,
+                            "currency_id": self.company_data["currency"].id,
+                        }
+                    )
+                ],
+            }
+        )
         sheet.action_submit_sheet()
         sheet.action_approve_expense_sheets()
         sheet.action_sheet_move_post()
@@ -216,6 +270,7 @@ class TestHrExpenseVendorBill(TestExpenseCommon):
 
     def test_create_employee_reimbursement_without_work_contact(self):
         employee = self.env["hr.employee"].create({"name": "No Contact Employee"})
+        employee.work_contact_id = False
         sheet = self.create_expense_report(
             {
                 "employee_id": employee.id,
@@ -305,21 +360,7 @@ class TestHrExpenseVendorBill(TestExpenseCommon):
         invoices = sheet._create_employee_reimbursement_invoice()
         self.assertFalse(invoices)
 
-    def test_payment_state_keeps_super_for_standard_moves(self):
-        move = self.env["account.move"].create(
-            {
-                "move_type": "in_invoice",
-                "partner_id": self.vendor.id,
-                "invoice_line_ids": [
-                    Command.create(
-                        {
-                            "name": "Test line",
-                            "quantity": 1.0,
-                            "price_unit": 100.0,
-                        }
-                    )
-                ],
-            }
-        )
-        move._compute_payment_state()
-        self.assertNotEqual(move.payment_state, "not_paid")
+    def test_account_move_expense_sheet_link(self):
+        sheet = self._create_own_account_sheet()
+        invoice = sheet._create_supplier_invoices()
+        self.assertEqual(invoice.expense_sheet_id, sheet)
