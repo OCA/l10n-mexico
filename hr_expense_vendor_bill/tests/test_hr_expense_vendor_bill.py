@@ -214,7 +214,10 @@ class TestHrExpenseVendorBill(TestExpenseCommon):
         sheet.action_submit_sheet()
         sheet.action_approve_expense_sheets()
         self.assertFalse(
-            sheet.account_move_ids.filtered(lambda move: move.expense_sheet_id)
+            sheet.account_move_ids.filtered(
+                lambda move: move.move_type == "in_invoice"
+                and move.partner_id == self.vendor
+            )
         )
 
     def test_action_sheet_move_post_company_account(self):
