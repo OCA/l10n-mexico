@@ -198,11 +198,6 @@ msgid "Expense"
 msgstr ""
 
 #. module: hr_expense_vendor_bill
-#: model:ir.model,name:hr_expense_vendor_bill.model_hr_expense_sheet
-msgid "Expense Report"
-msgstr ""
-
-#. module: hr_expense_vendor_bill
 #: model:ir.model,name:hr_expense_vendor_bill.model_res_company
 msgid "Companies"
 msgstr ""
