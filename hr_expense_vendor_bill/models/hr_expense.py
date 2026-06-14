@@ -6,6 +6,6 @@ class HrExpense(models.Model):
 
     vendor_id = fields.Many2one(
         "res.partner",
-        string="Proveedor",
-        help="Proveedor del cual proviene este gasto.",
+        string="Vendor",
+        help="Vendor from which this expense originates.",
     )

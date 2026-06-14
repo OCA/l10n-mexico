@@ -6,15 +6,15 @@ class AccountMove(models.Model):
 
     expense_sheet_id = fields.Many2one(
         "hr.expense.sheet",
-        string="Reporte de Gastos",
-        help="Hoja de gastos de la que se originó esta factura de proveedor.",
+        string="Expense Report",
+        help="Expense sheet from which this vendor bill was created.",
         ondelete="set null",
     )
 
     is_employee_reimbursement = fields.Boolean(
-        string="Reembolso de empleado",
+        string="Employee reimbursement",
         default=False,
-        help="Marca las facturas creadas por hr_expense_vendor_bill",
+        help="Marks vendor bills created by hr_expense_vendor_bill.",
     )
 
     def _compute_payment_state(self):

@@ -12,15 +12,15 @@
                     <div class="col-6 o_setting_box">
                         <label for="hr_expense_reimbursement_debit_account_id" />
                         <div class="text-muted">
-      Cuenta contable para cargar el reembolso al empleado.
-            </div>
+                            Account used to debit employee reimbursements.
+                        </div>
                         <field name="hr_expense_reimbursement_debit_account_id" />
                     </div>
                     <div class="col-6 o_setting_box">
                         <label for="hr_expense_reimbursement_credit_account_id" />
                         <div class="text-muted">
-      Cuenta contable para abonar a empleados.
-            </div>
+                            Account used to credit employee reimbursements.
+                        </div>
                         <field name="hr_expense_reimbursement_credit_account_id" />
                     </div>
                 </div>

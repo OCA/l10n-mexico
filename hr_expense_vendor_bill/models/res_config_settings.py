@@ -7,12 +7,12 @@ class ResConfigSettings(models.TransientModel):
     hr_expense_reimbursement_debit_account_id = fields.Many2one(
         "account.account",
         related="company_id.hr_expense_reimbursement_debit_account_id",
-        string="Cuenta débito reembolso empleado",
+        string="Employee reimbursement debit account",
         readonly=False,
     )
     hr_expense_reimbursement_credit_account_id = fields.Many2one(
         "account.account",
         related="company_id.hr_expense_reimbursement_credit_account_id",
-        string="Cuenta acreedores diversos – empleados",
+        string="Miscellaneous payables - employees",
         readonly=False,
     )

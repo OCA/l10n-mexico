@@ -6,13 +6,13 @@ class ResCompany(models.Model):
 
     hr_expense_reimbursement_debit_account_id = fields.Many2one(
         "account.account",
-        string="Cuenta débito reembolso empleado",
+        string="Employee reimbursement debit account",
         domain=[("deprecated", "=", False)],
-        help="Cuenta para el débito en la factura de reembolso al empleado",
+        help="Account used for the debit line on employee reimbursement bills.",
     )
     hr_expense_reimbursement_credit_account_id = fields.Many2one(
         "account.account",
-        string="Cuenta acreedores diversos – empleados",
+        string="Miscellaneous payables - employees",
         domain=[("deprecated", "=", False)],
-        help="Cuenta para el crédito en la factura de reembolso al empleado",
+        help="Account used for the credit line on employee reimbursement bills.",
     )

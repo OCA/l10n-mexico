@@ -29,7 +29,8 @@ class HrExpenseSheet(models.Model):
                             0,
                             0,
                             {
-                                "name": exp.name or _("Gasto de %s") % supplier.name,
+                                "name": exp.name
+                                or _("Expense from %s") % supplier.name,
                                 "account_id": exp.account_id.id,
                                 "quantity": 1.0,
                                 "price_unit": net_amount,
@@ -45,7 +46,7 @@ class HrExpenseSheet(models.Model):
                     "invoice_date": inv_date,
                     "invoice_date_due": inv_date,
                     "journal_id": sheet.journal_id.id,
-                    "ref": _("Gastos %s") % sheet.name,
+                    "ref": _("Expenses %s") % sheet.name,
                     "expense_sheet_id": sheet.id,
                     "invoice_line_ids": invoice_lines,
                     "state": "draft",
@@ -62,7 +63,7 @@ class HrExpenseSheet(models.Model):
             pay_journal = self.env["account.journal"].search(
                 [
                     ("type", "=", "bank"),
-                    ("name", "ilike", "Pagos del empleado"),
+                    ("name", "ilike", "Employee payments"),
                     ("company_id", "=", sheet.company_id.id),
                 ],
                 limit=1,
@@ -73,8 +74,8 @@ class HrExpenseSheet(models.Model):
             if not pay_journal:
                 raise UserError(
                     _(
-                        "Debe configurar al menos un diario bancario "
-                        "para registrar pagos de proveedores."
+                        "Configure at least one bank journal "
+                        "to register vendor payments."
                     )
                 )
 
@@ -88,8 +89,8 @@ class HrExpenseSheet(models.Model):
                 if not manual:
                     raise UserError(
                         _(
-                            "El diario '%s' no tiene método de pago"
-                            " y no existe el método manual."
+                            "Journal '%s' has no payment method "
+                            "and the manual method does not exist."
                         )
                         % pay_journal.name
                     )
@@ -139,8 +140,8 @@ class HrExpenseSheet(models.Model):
         if not acc_debit or not acc_credit:
             raise UserError(
                 _(
-                    "Debes configurar en Ajustes → Empresas "
-                    "las cuentas de débito y crédito para el reembolso de empleados."
+                    "Configure the debit and credit accounts for employee "
+                    "reimbursements in Settings > Companies."
                 )
             )
 
@@ -152,7 +153,7 @@ class HrExpenseSheet(models.Model):
             partner = sheet.employee_id.sudo().work_contact_id
             if not partner:
                 raise UserError(
-                    _("El empleado %s no tiene un contacto laboral configurado.")
+                    _("Employee %s has no work contact configured.")
                     % sheet.employee_id.name
                 )
             partner = partner.with_company(sheet.company_id)
@@ -161,14 +162,14 @@ class HrExpenseSheet(models.Model):
 
             journal = sheet.journal_id
             if not journal:
-                raise UserError(_("No se ha definido un diario en la hoja de gastos."))
+                raise UserError(_("No journal is defined on the expense sheet."))
 
             invoice_lines = [
                 (
                     0,
                     0,
                     {
-                        "name": _("Reembolso de gastos"),
+                        "name": _("Expense reimbursement"),
                         "account_id": acc_debit.id,
                         "quantity": 1.0,
                         "price_unit": total_amount,
@@ -182,7 +183,7 @@ class HrExpenseSheet(models.Model):
                 "partner_id": partner.id,
                 "invoice_date": inv_date,
                 "invoice_date_due": inv_date,
-                "ref": _("Reembolso %s") % sheet.name,
+                "ref": _("Reimbursement %s") % sheet.name,
                 "journal_id": journal.id,
                 "invoice_line_ids": invoice_lines,
                 "state": "draft",
@@ -201,8 +202,8 @@ class HrExpenseSheet(models.Model):
             if not account:
                 raise UserError(
                     _(
-                        "Configurar en Contabilidad → Configuración → Empresas"
-                        "la cuenta para poder conciliar."
+                        "Configure the reconciliation account in "
+                        "Accounting > Configuration > Companies."
                     )
                 )
             move_lines = self.env["account.move.line"].search(
@@ -249,8 +250,8 @@ class HrExpenseSheet(models.Model):
             if not sheet.account_move_ids:
                 raise UserError(
                     _(
-                        "No hay movimientos contables para contabilizar. "
-                        "Asegúrate de que la hoja de gastos esté aprobada."
+                        "There are no journal entries to post. "
+                        "Make sure the expense sheet is approved."
                     )
                 )
 

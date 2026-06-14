@@ -1,0 +1,4 @@
+- Diego Vega <dcamacho@opensourceintegrators.com> (https://opensourceintegrators.com)
+- Samuel Macias Oropeza <smacias@opensourceintegrators.com> (https://opensourceintegrators.com)
+- Hector del Reguero
+- Maxime Chambreuil <mchambreuil@opensourceintegrators.com> (https://opensourceintegrators.com)
