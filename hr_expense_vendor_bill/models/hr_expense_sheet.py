@@ -58,47 +58,52 @@ class HrExpenseSheet(models.Model):
     def _generate_supplier_payments(self):
         PaymentRegister = self.env["account.payment.register"]
 
-        # Selección de diario de pagos "Pagos del empleado"
-        pay_journal = self.env["account.journal"].search(
-            [("type", "=", "bank"), ("name", "ilike", "Pagos del empleado")], limit=1
-        ) or self.env["account.journal"].search([("type", "=", "bank")], limit=1)
-        if not pay_journal:
-            raise UserError(
-                _(
-                    "Debe configurar al menos un diario bancario "
-                    "para registrar pagos de proveedores."
-                )
+        for sheet in self:
+            pay_journal = self.env["account.journal"].search(
+                [
+                    ("type", "=", "bank"),
+                    ("name", "ilike", "Pagos del empleado"),
+                    ("company_id", "=", sheet.company_id.id),
+                ],
+                limit=1,
+            ) or self.env["account.journal"].search(
+                [("type", "=", "bank"), ("company_id", "=", sheet.company_id.id)],
+                limit=1,
             )
-
-        # Elegir o crear un método de pago de salida (outbound)
-        if pay_journal.outbound_payment_method_line_ids:
-            pm_line = pay_journal.outbound_payment_method_line_ids[:1]
-        else:
-            manual = self.env.ref(
-                "account.account_payment_method_manual_out", raise_if_not_found=False
-            )
-            if not manual:
+            if not pay_journal:
                 raise UserError(
                     _(
-                        "El diario '%s' no tiene método de pago"
-                        " y no existe el método manual."
+                        "Debe configurar al menos un diario bancario "
+                        "para registrar pagos de proveedores."
                     )
-                    % pay_journal.name
                 )
-            pm_line = self.env["account.payment.method.line"].create(
-                {
-                    "journal_id": pay_journal.id,
-                    "payment_method_id": manual.id,
-                    "payment_type": "outbound",
-                    "code": manual.code or "manual",
-                    "name": manual.name or _("Manual"),
-                }
-            )
 
-        # Para cada factura in_invoice que está en estado draft o posted y no pagada
-        for sheet in self:
+            if pay_journal.outbound_payment_method_line_ids:
+                pm_line = pay_journal.outbound_payment_method_line_ids[:1]
+            else:
+                manual = self.env.ref(
+                    "account.account_payment_method_manual_out",
+                    raise_if_not_found=False,
+                )
+                if not manual:
+                    raise UserError(
+                        _(
+                            "El diario '%s' no tiene método de pago"
+                            " y no existe el método manual."
+                        )
+                        % pay_journal.name
+                    )
+                pm_line = self.env["account.payment.method.line"].create(
+                    {
+                        "journal_id": pay_journal.id,
+                        "payment_method_id": manual.id,
+                        "payment_type": "outbound",
+                        "code": manual.code or "manual",
+                        "name": manual.name or _("Manual"),
+                    }
+                )
+
             employee_contact = sheet.employee_id.sudo().work_contact_id
-            # Filter for supplier invoices that are either draft or posted and unpaid
             invoices_to_pay = sheet.account_move_ids.filtered(
                 lambda m, employee_contact=employee_contact: (
                     m.move_type == "in_invoice"
@@ -108,7 +113,6 @@ class HrExpenseSheet(models.Model):
             )
 
             for invoice in invoices_to_pay:
-                # Only proceed if invoice has a valid amount to pay
                 if invoice.amount_residual > 0:
                     context = {
                         "active_model": "account.move",
@@ -120,7 +124,7 @@ class HrExpenseSheet(models.Model):
                             "journal_id": pay_journal.id,
                             "payment_method_line_id": pm_line.id,
                             "amount": invoice.amount_residual,
-                            "payment_date": fields.Date.context_today(self),
+                            "payment_date": fields.Date.context_today(sheet),
                         }
                     )
                     wizard.action_create_payments()
