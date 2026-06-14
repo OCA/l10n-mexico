@@ -97,11 +97,14 @@ class HrExpenseSheet(models.Model):
 
         # Para cada factura in_invoice que está en estado draft o posted y no pagada
         for sheet in self:
+            employee_contact = sheet.employee_id.sudo().work_contact_id
             # Filter for supplier invoices that are either draft or posted and unpaid
             invoices_to_pay = sheet.account_move_ids.filtered(
-                lambda m: m.move_type == "in_invoice"
-                and m.partner_id != sheet.employee_id.sudo().work_contact_id
-                and m.payment_state != "paid"
+                lambda m, employee_contact=employee_contact: (
+                    m.move_type == "in_invoice"
+                    and m.partner_id != employee_contact
+                    and m.payment_state != "paid"
+                )
             )
 
             for invoice in invoices_to_pay:
@@ -262,17 +265,22 @@ class HrExpenseSheet(models.Model):
                     )
                 )
 
+            employee_contact = sheet.employee_id.sudo().work_contact_id
             # Separate employee reimbursement from supplier invoices
             supplier_invoices = sheet.account_move_ids.filtered(
-                lambda m: m.move_type == "in_invoice"
-                and m.state == "draft"
-                and m.partner_id != sheet.employee_id.sudo().work_contact_id
+                lambda m, employee_contact=employee_contact: (
+                    m.move_type == "in_invoice"
+                    and m.state == "draft"
+                    and m.partner_id != employee_contact
+                )
             )
 
             employee_reimbursement = sheet.account_move_ids.filtered(
-                lambda m: m.move_type == "in_invoice"
-                and m.state == "draft"
-                and m.partner_id == sheet.employee_id.sudo().work_contact_id
+                lambda m, employee_contact=employee_contact: (
+                    m.move_type == "in_invoice"
+                    and m.state == "draft"
+                    and m.partner_id == employee_contact
+                )
             )
 
             # Step 1: Post supplier invoices
