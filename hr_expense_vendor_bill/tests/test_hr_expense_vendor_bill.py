@@ -104,3 +104,89 @@ class TestHrExpenseVendorBill(TestExpenseCommon):
         self.assertEqual(len(supplier_invoices), 1)
         self.assertEqual(len(employee_invoices), 1)
         self.assertEqual(supplier_invoices.expense_sheet_id, sheet)
+
+    def test_create_supplier_invoices_without_vendor(self):
+        sheet = self.create_expense_report(
+            {
+                "payment_mode": "own_account",
+                "expense_line_ids": [
+                    Command.create(
+                        {
+                            "employee_id": self.expense_employee.id,
+                            "product_id": self.product_c.id,
+                            "total_amount_currency": 100.0,
+                            "payment_mode": "own_account",
+                            "date": self.frozen_today,
+                            "company_id": self.company.id,
+                            "currency_id": self.company_data["currency"].id,
+                        }
+                    )
+                ],
+            }
+        )
+        invoices = sheet._create_supplier_invoices()
+        self.assertFalse(invoices)
+
+    def test_action_sheet_move_post_without_moves_raises(self):
+        sheet = self._create_own_account_sheet()
+        with self.assertRaises(UserError):
+            sheet.action_sheet_move_post()
+
+    def test_action_sheet_move_post(self):
+        sheet = self._create_own_account_sheet()
+        sheet.action_submit_sheet()
+        sheet.action_approve_expense_sheets()
+        sheet.action_sheet_move_post()
+        self.assertEqual(sheet.state, "done")
+        posted_moves = sheet.account_move_ids.filtered(
+            lambda move: move.state == "posted"
+        )
+        self.assertTrue(posted_moves)
+
+    def test_action_reset_expense_sheets_clears_moves(self):
+        sheet = self._create_own_account_sheet()
+        sheet.action_submit_sheet()
+        sheet.action_approve_expense_sheets()
+        sheet.action_sheet_move_post()
+        sheet.action_reset_expense_sheets()
+        self.assertFalse(sheet.account_move_ids)
+        self.assertFalse(sheet.accounting_date)
+
+    def test_action_open_account_moves(self):
+        sheet = self._create_own_account_sheet()
+        invoice = sheet._create_supplier_invoices()
+        action = sheet.action_open_account_moves()
+        self.assertEqual(action["type"], "ir.actions.act_window")
+        self.assertEqual(action["res_model"], "account.move")
+        self.assertEqual(action["res_id"], invoice.id)
+        self.assertEqual(action["view_mode"], "form")
+
+    def test_action_open_account_moves_multiple(self):
+        sheet = self._create_own_account_sheet()
+        sheet._create_supplier_invoices()
+        sheet._create_employee_reimbursement_invoice()
+        action = sheet.action_open_account_moves()
+        self.assertEqual(len(sheet.account_move_ids), 2)
+        self.assertNotIn("res_id", action)
+
+    def test_res_config_settings_reimbursement_accounts(self):
+        settings = self.env["res.config.settings"].create(
+            {
+                "company_id": self.company.id,
+                "hr_expense_reimbursement_debit_account_id": self.company_data[
+                    "default_account_expense"
+                ].id,
+                "hr_expense_reimbursement_credit_account_id": self.company_data[
+                    "default_account_payable"
+                ].id,
+            }
+        )
+        settings.execute()
+        self.assertEqual(
+            self.company.hr_expense_reimbursement_debit_account_id,
+            self.company_data["default_account_expense"],
+        )
+        self.assertEqual(
+            self.company.hr_expense_reimbursement_credit_account_id,
+            self.company_data["default_account_payable"],
+        )
