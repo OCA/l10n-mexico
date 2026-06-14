@@ -2,9 +2,10 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 from odoo import Command
-from odoo.addons.hr_expense.tests.common import TestExpenseCommon
 from odoo.exceptions import UserError
 from odoo.tests import tagged
+
+from odoo.addons.hr_expense.tests.common import TestExpenseCommon
 
 
 @tagged("post_install", "-at_install")
