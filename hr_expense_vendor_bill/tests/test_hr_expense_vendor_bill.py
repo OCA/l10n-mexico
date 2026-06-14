@@ -190,3 +190,136 @@ class TestHrExpenseVendorBill(TestExpenseCommon):
             self.company.hr_expense_reimbursement_credit_account_id,
             self.company_data["default_account_payable"],
         )
+
+    def test_approve_company_account_does_not_create_vendor_invoices(self):
+        sheet = self.create_expense_report()
+        sheet.action_submit_sheet()
+        sheet.action_approve_expense_sheets()
+        self.assertFalse(
+            sheet.account_move_ids.filtered(lambda move: move.expense_sheet_id)
+        )
+
+    def test_action_sheet_move_post_company_account(self):
+        sheet = self.create_expense_report()
+        sheet.action_submit_sheet()
+        sheet.action_approve_expense_sheets()
+        sheet.action_sheet_move_post()
+        self.assertTrue(sheet.account_move_ids)
+
+    def test_action_reset_company_account_sheet(self):
+        sheet = self.create_expense_report()
+        sheet.action_submit_sheet()
+        sheet.action_approve_expense_sheets()
+        sheet.action_sheet_move_post()
+        sheet.action_reset_expense_sheets()
+        self.assertFalse(sheet.accounting_date)
+
+    def test_create_employee_reimbursement_without_work_contact(self):
+        employee = self.env["hr.employee"].create({"name": "No Contact Employee"})
+        sheet = self.create_expense_report(
+            {
+                "employee_id": employee.id,
+                "payment_mode": "own_account",
+                "expense_line_ids": [
+                    Command.create(
+                        {
+                            "employee_id": employee.id,
+                            "product_id": self.product_c.id,
+                            "total_amount_currency": 100.0,
+                            "vendor_id": self.vendor.id,
+                            "payment_mode": "own_account",
+                            "date": self.frozen_today,
+                            "company_id": self.company.id,
+                            "currency_id": self.company_data["currency"].id,
+                        }
+                    )
+                ],
+            }
+        )
+        with self.assertRaises(UserError):
+            sheet._create_employee_reimbursement_invoice()
+
+    def test_reconcile_without_credit_account_raises(self):
+        self.company.write({"hr_expense_reimbursement_credit_account_id": False})
+        sheet = self._create_own_account_sheet()
+        with self.assertRaises(UserError):
+            sheet._reconcile_account_lines()
+
+    def test_create_supplier_invoices_multiple_vendors(self):
+        vendor2 = self.env["res.partner"].create({"name": "Vendor 2"})
+        sheet = self.create_expense_report(
+            {
+                "payment_mode": "own_account",
+                "expense_line_ids": [
+                    Command.create(
+                        {
+                            "employee_id": self.expense_employee.id,
+                            "product_id": self.product_c.id,
+                            "total_amount_currency": 100.0,
+                            "vendor_id": self.vendor.id,
+                            "payment_mode": "own_account",
+                            "date": self.frozen_today,
+                            "company_id": self.company.id,
+                            "currency_id": self.company_data["currency"].id,
+                        }
+                    ),
+                    Command.create(
+                        {
+                            "employee_id": self.expense_employee.id,
+                            "product_id": self.product_c.id,
+                            "total_amount_currency": 50.0,
+                            "vendor_id": vendor2.id,
+                            "payment_mode": "own_account",
+                            "date": self.frozen_today,
+                            "company_id": self.company.id,
+                            "currency_id": self.company_data["currency"].id,
+                        }
+                    ),
+                ],
+            }
+        )
+        invoices = sheet._create_supplier_invoices()
+        self.assertEqual(len(invoices), 2)
+        self.assertEqual(set(invoices.mapped("partner_id")), {self.vendor, vendor2})
+
+    def test_create_employee_reimbursement_skips_zero_amount(self):
+        sheet = self.create_expense_report(
+            {
+                "payment_mode": "own_account",
+                "expense_line_ids": [
+                    Command.create(
+                        {
+                            "employee_id": self.expense_employee.id,
+                            "product_id": self.product_c.id,
+                            "total_amount_currency": 0.0,
+                            "vendor_id": self.vendor.id,
+                            "payment_mode": "own_account",
+                            "date": self.frozen_today,
+                            "company_id": self.company.id,
+                            "currency_id": self.company_data["currency"].id,
+                        }
+                    )
+                ],
+            }
+        )
+        invoices = sheet._create_employee_reimbursement_invoice()
+        self.assertFalse(invoices)
+
+    def test_payment_state_keeps_super_for_standard_moves(self):
+        move = self.env["account.move"].create(
+            {
+                "move_type": "in_invoice",
+                "partner_id": self.vendor.id,
+                "invoice_line_ids": [
+                    Command.create(
+                        {
+                            "name": "Test line",
+                            "quantity": 1.0,
+                            "price_unit": 100.0,
+                        }
+                    )
+                ],
+            }
+        )
+        move._compute_payment_state()
+        self.assertNotEqual(move.payment_state, "not_paid")
