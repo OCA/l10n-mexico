@@ -1,0 +1,2 @@
+- Alexis López Zubieta \<alexis.lopez@augetec.com\>
+- Maxime Chambreuil \<maxime.chambreuil@graymatterlogic.com\>
