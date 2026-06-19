@@ -47,6 +47,16 @@ msgid "Currency Rates Provider"
 msgstr ""
 
 #. module: currency_rate_update_banxico
+#: model:ir.model.fields,field_description:currency_rate_update_banxico.field_res_currency_rate_provider__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: currency_rate_update_banxico
+#: model:ir.model.fields,field_description:currency_rate_update_banxico.field_res_currency_rate_provider__id
+msgid "ID"
+msgstr ""
+
+#. module: currency_rate_update_banxico
 #: model:ir.model.fields,field_description:currency_rate_update_banxico.field_res_currency_rate_provider__service
 msgid "Provider"
 msgstr ""
