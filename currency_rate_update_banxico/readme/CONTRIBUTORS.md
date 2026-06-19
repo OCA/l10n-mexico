@@ -1,0 +1,5 @@
+- [Jarsa](https://www.jarsa.com):
+  - Alan Ramos
+- [AMOdoo](https://amodoo.org/)
+- [Gray Matter Logic](https://www.graymatterlogic.com):
+  - Maxime Chambreuil \<<maxime.chambreuil@graymatterlogic.com>\>
