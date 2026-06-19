@@ -1,10 +1,13 @@
-Now you can choose the 'Bank of Mexico' service when configuring a currency
-rates providers.
+To enable scheduled currency rates update:
 
-1. Go to Banxico to [generate a token](https://www.banxico.org.mx/SieAPIRest/service/v1/token).
-2.  Go to *Invoicing \> Configuration \> Currency Rates Providers*.
-3.  Create a new 'Currency Rates Providers' or edit an existing one and
-    you will see 'Bank of Mexico' among the available 'Source Services' to
-    choose and set the token generated in step 1.
-4.  If you choose 'Bank of Mexico' as a 'Source Service', the exchange rates
-    will be updated from that provider.
+1. Go to *Invoicing \> Configuration \> Settings*.
+2. Ensure *Automatic Currency Rates (OCA)* is checked.
+
+To configure the Banxico provider:
+
+1. Go to [Banxico](https://www.banxico.org.mx/SieAPIRest/service/v1/token) to
+   generate an API token.
+2. Go to *Invoicing \> Configuration \> Currency Rates Providers*.
+3. Create a provider or edit an existing one, select **Bank of Mexico** as the
+   *Source Service*, and paste the token in *Banxico Token*.
+4. Select the currencies to update and save the provider.

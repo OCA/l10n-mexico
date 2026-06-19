@@ -3,7 +3,7 @@
 
 {
     "name": "Currency Rate Update: Banxico",
-    "version": "18.0.1.0.0",
+    "version": "19.0.1.0.0",
     "category": "Financial Management/Configuration",
     "summary": "Update exchange rates using Banxico",
     "author": "Jarsa, AMOdoo, Odoo Community Association (OCA)",

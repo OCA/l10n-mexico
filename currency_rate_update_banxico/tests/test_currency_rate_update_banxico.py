@@ -6,13 +6,17 @@ from datetime import timedelta
 import requests_mock
 
 from odoo import fields
-from odoo.tests import common
+from odoo.tests import tagged
+
+from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 
 
-class TestResCurrencyRateProviderBanxico(common.TransactionCase):
+@tagged("post_install", "-at_install")
+class TestResCurrencyRateProviderBanxico(AccountTestInvoicingCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+        cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
         cls.today = fields.Date.today()
         cls.yesterday = cls.today - timedelta(days=1)
         cls.currency_rate = cls.env["res.currency.rate"]
@@ -21,7 +25,7 @@ class TestResCurrencyRateProviderBanxico(common.TransactionCase):
             {"name": "Test company", "currency_id": cls.env.ref("base.MXN").id}
         )
         cls.env.user.company_ids += cls.company
-        cls.env.company = cls.company
+        cls.env.user.company_id = cls.company
         cls.banxico_provider = cls.env["res.currency.rate.provider"].create(
             {
                 "service": "banxico",
