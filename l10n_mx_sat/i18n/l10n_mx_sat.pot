@@ -1,0 +1,910 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_mx_sat
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "(empty)"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "(no message)"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_document.py:0
+msgid "A SAT document with this UUID already exists for this company."
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "A SAT download request with the same company and date range already exists."
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "A SAT download request with the same parameters already exists."
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/services/sat_constants.py:0
+msgid "Accepted"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.ui.menu,name:l10n_mx_sat.menu_l10n_mx_sat_settings
+msgid "Ajustes"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "All packages failed."
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_res_company__l10n_mx_sat_auto_download
+msgid "Automatic SAT download"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_download_request__can_retry
+msgid "Can retry"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_fiel_credentials_wizard_view_form
+msgid "Cancelar"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_document__cancellation_date
+msgid "Cancellation date"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields.selection,name:l10n_mx_sat.selection__l10n_mx_sat_document__sat_status__cancelled
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_document_view_search
+msgid "Cancelled"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields.selection,name:l10n_mx_sat.selection__l10n_mx_sat_document__document_kind__cfdi
+#: model:ir.model.fields.selection,name:l10n_mx_sat.selection__l10n_mx_sat_download_request__document_kind__cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_document_view_search
+msgid "CFDI"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_document__company_id
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_download_request__company_id
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_fiel_credentials_wizard__company_id
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_document_view_search
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_download_request_view_search
+msgid "Company"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/services/sat_constants.py:0
+#: model:ir.model.fields.selection,name:l10n_mx_sat.selection__l10n_mx_sat_download_request__state__done
+msgid "Completed"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.actions.act_window,name:l10n_mx_sat.l10n_mx_sat_company_connection_action
+#: model:ir.ui.menu,name:l10n_mx_sat.menu_l10n_mx_sat_configure_connections
+msgid "Configurar conexiones"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/res_company.py:0
+msgid "Configure FIEL credentials before starting SAT synchronization."
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/res_company.py:0
+msgid "Connection successful. Token obtained."
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/res_company.py:0
+msgid "Could not determine the RFC. Set the company RFC/VAT or verify the FIEL certificate."
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/wizards/l10n_mx_sat_fiel_credentials_wizard.py:0
+msgid "Could not read the RFC from the FIEL certificate."
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_document__currency_code
+msgid "Currency"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/services/sat_constants.py:0
+msgid "Daily limit reached"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_document_view_search
+msgid "Date stamped"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_download_request__name
+msgid "Description"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_document_view_search
+msgid "Direction"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_document__document_kind
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_download_request__document_kind
+msgid "Document kind"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_download_request__document_ids
+#: model:ir.ui.menu,name:l10n_mx_sat.menu_l10n_mx_sat_documents
+msgid "Documents"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_res_company__l10n_mx_sat_download_cfdi_issued
+msgid "Download issued CFDIs"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_res_company__l10n_mx_sat_download_retention_issued
+msgid "Download issued retentions"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_res_company__l10n_mx_sat_download_cfdi_received
+msgid "Download received CFDIs"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_res_company__l10n_mx_sat_download_retention_received
+msgid "Download received retentions"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.ui.menu,name:l10n_mx_sat.menu_l10n_mx_sat_download_requests
+msgid "Download requests"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_document_view_form
+msgid "Download XML"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields.selection,name:l10n_mx_sat.selection__l10n_mx_sat_download_request__state__downloading
+msgid "Downloading"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields.selection,name:l10n_mx_sat.selection__l10n_mx_sat_download_request__state__draft
+msgid "Draft"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/services/sat_constants.py:0
+msgid "Duplicate request"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,help:l10n_mx_sat.field_l10n_mx_sat_download_request__next_process_at
+msgid "Earliest datetime when the cron should verify this request again after the SAT accepted it but has not finished processing."
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,help:l10n_mx_sat.field_res_company__l10n_mx_sat_auto_download
+msgid "Enables daily creation and processing of bulk download requests for this company."
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_download_request_view_form
+msgid "Encolar"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/res_company.py:0
+#: code:addons/l10n_mx_sat/wizards/l10n_mx_sat_fiel_credentials_wizard.py:0
+msgid "Enter the FIEL password first."
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/services/sat_constants.py:0
+#: model:ir.model.fields.selection,name:l10n_mx_sat.selection__l10n_mx_sat_download_package__state__error
+#: model:ir.model.fields.selection,name:l10n_mx_sat.selection__l10n_mx_sat_download_request__state__error
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_download_request_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_download_request_view_search
+msgid "Error"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_download_request__error_message
+msgid "Error message"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "Esta solicitud no puede reintentarse automatically. Revise el message de error."
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_download_request_view_search
+msgid "Estado"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/services/sat_constants.py:0
+msgid "Expired"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/res_company.py:0
+msgid "Failed to decode FIEL credentials: %s"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/res_company.py:0
+msgid "Failed to load FIEL credentials: %s"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "Failed to retry SAT request: %s"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/wizards/l10n_mx_sat_fiel_credentials_wizard.py:0
+msgid "Failed to validate FIEL credentials: %s"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_fiel_credentials_wizard__fiel_cer
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_res_company__l10n_mx_sat_fiel_cer
+msgid "FIEL certificate (.cer)"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_res_company__l10n_mx_sat_fiel_certificate_configured
+msgid "FIEL certificate configured"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_res_company__l10n_mx_sat_fiel_configured
+msgid "FIEL configured"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.view_company_form_inherit_l10n_mx_sat
+msgid "FIEL credentials"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_fiel_credentials_wizard__fiel_password
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_res_company__l10n_mx_sat_fiel_password
+msgid "FIEL password"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_fiel_credentials_wizard__fiel_key
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_res_company__l10n_mx_sat_fiel_key
+msgid "FIEL private key (.key)"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_document__folio_number
+msgid "Folio"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_download_request__date_from
+msgid "From"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_document_view_search
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_download_request_view_search
+msgid "Group by"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_fiel_credentials_wizard_view_form
+msgid "Guardar"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_document__has_xml
+msgid "Has XML"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/services/sat_constants.py:0
+#: model:ir.model.fields.selection,name:l10n_mx_sat.selection__l10n_mx_sat_document__sat_status__in_progress
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_document_view_search
+msgid "In progress"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,help:l10n_mx_sat.field_res_company__l10n_mx_sat_metadata_sync_from
+msgid "Initial date for bulk metadata download (SAT status). If empty, the same date as XML sync is used."
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,help:l10n_mx_sat.field_res_company__l10n_mx_sat_sync_from
+msgid "Initial date for the first bulk XML download. After the first successful sync, the system continues incrementally from the last completed range."
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_document__issue_date
+msgid "Issue date"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields.selection,name:l10n_mx_sat.selection__l10n_mx_sat_document__direction__issued
+#: model:ir.model.fields.selection,name:l10n_mx_sat.selection__l10n_mx_sat_download_request__direction__issued
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_document_view_search
+msgid "Issued"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_document__issuer_name
+msgid "Issuer name"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_document__issuer_rfc
+msgid "Issuer RFC"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_res_company__l10n_mx_sat_last_metadata_sync
+msgid "Last metadata sync"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_res_company__l10n_mx_sat_last_sync
+msgid "Last XML sync"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_res_company__l10n_mx_sat_fiel_key_configured
+msgid "Llave FIEL configured"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/services/sat_constants.py:0
+msgid "Maximum number of elements exceeded"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields.selection,name:l10n_mx_sat.selection__l10n_mx_sat_download_request__request_type__metadata
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_download_request_view_search
+msgid "Metadata"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_download_request__next_process_at
+msgid "Next process at"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/services/sat_constants.py:0
+msgid "No information"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "Only draft SAT download requests can be queued."
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "Only requests in error state can be retried."
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_download_package__sat_package_id
+msgid "Package ID"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_download_request__package_ids
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_download_request_view_form
+msgid "Packages"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields.selection,name:l10n_mx_sat.selection__l10n_mx_sat_download_package__state__pending
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_download_request_view_search
+msgid "Pending"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.view_company_form_inherit_l10n_mx_sat
+msgid "Probar conexion"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_download_request_view_list
+msgid "Procesados"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields.selection,name:l10n_mx_sat.selection__l10n_mx_sat_download_package__state__processed
+msgid "Processed"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_download_request__document_count
+msgid "Processed documents"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields.selection,name:l10n_mx_sat.selection__l10n_mx_sat_download_request__state__processing
+msgid "Processing"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields.selection,name:l10n_mx_sat.selection__l10n_mx_sat_download_request__state__ready
+msgid "Ready"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields.selection,name:l10n_mx_sat.selection__l10n_mx_sat_document__direction__received
+#: model:ir.model.fields.selection,name:l10n_mx_sat.selection__l10n_mx_sat_download_request__direction__received
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_document_view_search
+msgid "Received"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_document__receiver_name
+msgid "Receiver name"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_document__receiver_rfc
+msgid "Receiver RFC"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/services/sat_constants.py:0
+msgid "Rejected"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_download_request__request_fingerprint
+msgid "Request fingerprint"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_download_request__request_type
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_download_request_view_search
+msgid "Request type"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "Request(s) queued for background processing."
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields.selection,name:l10n_mx_sat.selection__l10n_mx_sat_download_request__state__requested
+msgid "Requested"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields.selection,name:l10n_mx_sat.selection__l10n_mx_sat_document__document_kind__retention
+#: model:ir.model.fields.selection,name:l10n_mx_sat.selection__l10n_mx_sat_download_request__document_kind__retention
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_document_view_search
+msgid "Retention"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_download_request_view_form
+msgid "Retry"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "Retry started. Current state: %(state)s."
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_res_company__l10n_mx_sat_fiel_rfc
+msgid "RFC FIEL"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.view_company_form_inherit_l10n_mx_sat
+msgid "SAT"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:res.groups,name:l10n_mx_sat.group_sat_manager
+msgid "SAT / Manager"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:res.groups,name:l10n_mx_sat.group_sat_user
+msgid "SAT / User"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/res_company.py:0
+msgid "SAT authentication failed: %s"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/res_company.py:0
+#: model:ir.ui.menu,name:l10n_mx_sat.menu_l10n_mx_sat_root
+msgid "SAT connection"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model,name:l10n_mx_sat.model_l10n_mx_sat_document
+msgid "SAT Document"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.rule,name:l10n_mx_sat.l10n_mx_sat_document_company_rule
+msgid "SAT Document multi-company"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/res_company.py:0
+#: model:ir.actions.act_window,name:l10n_mx_sat.l10n_mx_sat_document_action
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_res_company__l10n_mx_sat_document_count
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.view_company_form_inherit_l10n_mx_sat
+msgid "SAT documents"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_document.py:0
+msgid "SAT documents are read-only and can only be updated through SAT download requests."
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model,name:l10n_mx_sat.model_l10n_mx_sat_download_package
+msgid "SAT Download Package"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.rule,name:l10n_mx_sat.l10n_mx_sat_download_package_company_rule
+msgid "SAT Download Package multi-company"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model,name:l10n_mx_sat.model_l10n_mx_sat_download_request
+msgid "SAT Download Request"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.rule,name:l10n_mx_sat.l10n_mx_sat_download_request_company_rule
+msgid "SAT Download Request multi-company"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/res_company.py:0
+#: model:ir.actions.act_window,name:l10n_mx_sat.l10n_mx_sat_download_request_action
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_res_company__l10n_mx_sat_download_request_count
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.view_company_form_inherit_l10n_mx_sat
+msgid "SAT download requests"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model,name:l10n_mx_sat.model_l10n_mx_sat_fiel_credentials_wizard
+msgid "SAT FIEL Credentials Wizard"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "SAT marked the request as expired (EstadoSolicitud=6, %(status)s). CodigoEstadoSolicitud=%(ces)s (%(ces_label)s). Use Retry to request the same range again."
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "SAT queue"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "SAT rejected the download request. CodEstatus=%(code)s (%(label)s). SAT message: %(message)s"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "SAT rejected the request (EstadoSolicitud=5, %(status)s). CodigoEstadoSolicitud=%(ces)s (%(ces_label)s). Verification was accepted (CodEstatus=%(ce)s, %(ce_label)s). SAT message: %(msg)s. Review type, direction, and date range."
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_download_request_view_list
+msgid "SAT reported"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "SAT reported an error on the request (EstadoSolicitud=4, %(status)s). CodigoEstadoSolicitud=%(ces)s (%(ces_label)s). Verification was accepted (CodEstatus=%(ce)s). SAT message: %(msg)s. Review the date range or retry."
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_download_request__reported_cfdi_count
+msgid "SAT reported CFDIs"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_document__download_request_id
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_download_package__request_id
+msgid "SAT request"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_download_request__sat_request_id
+msgid "SAT request ID"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "SAT retry"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "SAT returned an invalid EstadoSolicitud (0). CodEstatus=%(ce)s (%(ce_label)s). CodigoEstadoSolicitud=%(ces)s. SAT message: %(msg)s"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "SAT returned an unrecognized request status (EstadoSolicitud=%(status)s, %(status_label)s). CodigoEstadoSolicitud=%(ces)s (%(ces_label)s). CodEstatus=%(ce)s (%(ce_label)s). SAT message: %(msg)s"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_document__sat_status
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_document_view_search
+msgid "SAT status"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/res_company.py:0
+msgid "SAT synchronization"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.cron,name:l10n_mx_sat.ir_cron_sat_download
+msgid "SAT: Daily bulk download"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "SAT: daily download limit reached (5011). Retry tomorrow."
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "SAT: duplicate request (5002). Will not retry automatically with the same parameters."
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "SAT: duplicate request limit reached (5002)."
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "SAT: maximum number of records exceeded even with ventana minima. Revise manualmente."
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "Solicitud completada. Processed documents: %(count)s."
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_document__stamp_date
+msgid "Stamp date"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/services/sat_constants.py:0
+msgid "Successful"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_res_company__l10n_mx_sat_sync_from
+msgid "Sync documents from"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_res_company__l10n_mx_sat_metadata_sync_from
+msgid "Sync metadata from"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.view_company_form_inherit_l10n_mx_sat
+msgid "Sync now"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.view_company_form_inherit_l10n_mx_sat
+msgid "Synchronization"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/res_company.py:0
+msgid "Synchronization scheduled in the background. Review SAT download requests to monitor progress."
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/res_company.py:0
+msgid "The FIEL certificate RFC (%(fiel)s) does not match the company RFC (%(company)s)."
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "The request failed again."
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.view_company_form_inherit_l10n_mx_sat
+msgid "Tipos de descarga"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_download_request__date_to
+msgid "To"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_document_view_search
+msgid "Type"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/res_company.py:0
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_fiel_credentials_wizard_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.view_company_form_inherit_l10n_mx_sat
+msgid "Update FIEL credentials"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/res_company.py:0
+#: code:addons/l10n_mx_sat/wizards/l10n_mx_sat_fiel_credentials_wizard.py:0
+msgid "Upload the FIEL certificate (.cer) first."
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/res_company.py:0
+#: code:addons/l10n_mx_sat/wizards/l10n_mx_sat_fiel_credentials_wizard.py:0
+msgid "Upload the FIEL private key (.key) first."
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_document__uuid
+msgid "UUID"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields.selection,name:l10n_mx_sat.selection__l10n_mx_sat_document__sat_status__valid
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_document_view_search
+msgid "Valid"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_document__voucher_type
+msgid "Voucher type"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
+msgid "Window automatically reduced due to SAT 5003."
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_document_view_search
+msgid "With XML"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_document_view_search
+msgid "Without XML"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_document__attachment_id
+#: model:ir.model.fields.selection,name:l10n_mx_sat.selection__l10n_mx_sat_download_request__request_type__xml
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_download_request_view_search
+msgid "XML"
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/res_company.py:0
+msgid "You cannot change the company RFC/VAT while FIEL credentials are configured. Update the FIEL to change it."
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_download_request_view_form
+msgid "¿Encolar esta solicitud SAT para procesamiento en segundo plano?"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_download_request_view_form
+msgid "¿Retry esta solicitud SAT?"
+msgstr ""
