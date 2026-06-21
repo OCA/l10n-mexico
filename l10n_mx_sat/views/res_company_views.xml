@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="l10n_mx_sat_company_connection_view_list" model="ir.ui.view">
+        <field name="name">res.company.l10n_mx_sat.connection.list</field>
+        <field name="model">res.company</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="vat" />
+                <field name="l10n_mx_sat_fiel_configured" />
+                <field name="l10n_mx_sat_fiel_rfc" />
+                <field name="l10n_mx_sat_auto_download" />
+                <field name="l10n_mx_sat_last_sync" />
+            </list>
+        </field>
+    </record>
+
+    <record id="l10n_mx_sat_company_connection_action" model="ir.actions.act_window">
+        <field name="name">Configurar conexiones</field>
+        <field name="res_model">res.company</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="l10n_mx_sat_company_connection_view_list" />
+    </record>
+
+    <record id="view_company_form_inherit_l10n_mx_sat" model="ir.ui.view">
+        <field name="name">res.company.form.inherit.l10n_mx_sat</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    class="oe_stat_button"
+                    type="object"
+                    name="action_l10n_mx_sat_view_documents"
+                    icon="fa-file-text-o"
+                    groups="l10n_mx_sat.group_sat_user"
+                >
+                    <field
+                        name="l10n_mx_sat_document_count"
+                        widget="statinfo"
+                        string="SAT documents"
+                    />
+                </button>
+                <button
+                    class="oe_stat_button"
+                    type="object"
+                    name="action_l10n_mx_sat_view_download_requests"
+                    icon="fa-cloud-download"
+                    groups="l10n_mx_sat.group_sat_user"
+                >
+                    <field
+                        name="l10n_mx_sat_download_request_count"
+                        widget="statinfo"
+                        string="SAT download requests"
+                    />
+                </button>
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="before">
+                <field name="l10n_mx_sat_fiel_configured" invisible="1" />
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="attributes">
+                <attribute name="readonly">l10n_mx_sat_fiel_configured</attribute>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page
+                    string="SAT"
+                    name="l10n_mx_sat"
+                    invisible="country_code != 'MX'"
+                    groups="l10n_mx_sat.group_sat_manager"
+                >
+                    <group string="FIEL credentials">
+                        <group>
+                            <field
+                                name="l10n_mx_sat_fiel_configured"
+                                widget="boolean"
+                                readonly="1"
+                            />
+                            <field
+                                name="l10n_mx_sat_fiel_rfc"
+                                readonly="1"
+                                invisible="not l10n_mx_sat_fiel_configured"
+                            />
+                        </group>
+                        <group>
+                            <button
+                                name="action_l10n_mx_sat_open_fiel_wizard"
+                                type="object"
+                                string="Update FIEL credentials"
+                                class="btn-secondary"
+                                icon="fa-key"
+                            />
+                            <button
+                                name="l10n_mx_sat_test_connection"
+                                type="object"
+                                string="Probar conexion"
+                                class="btn-secondary"
+                                icon="fa-plug"
+                            />
+                            <button
+                                name="l10n_mx_sat_sync_now"
+                                type="object"
+                                string="Sync now"
+                                class="btn-primary"
+                                icon="fa-refresh"
+                                groups="l10n_mx_sat.group_sat_manager"
+                            />
+                        </group>
+                    </group>
+                    <group string="Tipos de descarga">
+                        <group>
+                            <field name="l10n_mx_sat_download_cfdi_issued" />
+                            <field name="l10n_mx_sat_download_cfdi_received" />
+                        </group>
+                        <group>
+                            <field name="l10n_mx_sat_download_retention_issued" />
+                            <field name="l10n_mx_sat_download_retention_received" />
+                        </group>
+                    </group>
+                    <group string="Synchronization">
+                        <group>
+                            <field name="l10n_mx_sat_auto_download" />
+                            <field name="l10n_mx_sat_sync_from" />
+                        </group>
+                        <group>
+                            <field name="l10n_mx_sat_last_sync" />
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
