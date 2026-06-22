@@ -143,13 +143,45 @@ class CFDIService(models.Model):
                 _("Ocurrió un error con el servicio de facturación.\n")
             ) from e
 
-    def get_cfdi_pdf(self, cfdi_id: str):
+    def _format_facturama_error(self, error):
+        error_json = error.error_json
+        if isinstance(error_json, dict):
+            if error_json.get("Message"):
+                return error_json["Message"]
+            if error_json.get("response"):
+                return error_json["response"]
+        return str(error_json)
+
+    def _get_cfdi_file(self, file_format, cfdi_id):
+        self.ensure_one()
         client = self._get_client()
-        return client.CfdiMultiEmisor.get_by_file("pdf", "IssuedLite", cfdi_id)
+        try:
+            return client.CfdiMultiEmisor.get_by_file(
+                file_format, "IssuedLite", cfdi_id
+            )
+        except facturama.FacturamaError as error:
+            raise UserError(
+                _("Error downloading the CFDI %(file_format)s: %(message)s")
+                % {
+                    "file_format": file_format.upper(),
+                    "message": self._format_facturama_error(error),
+                }
+            ) from error
+        except Exception as error:
+            _logger.exception("Unexpected error downloading CFDI %s", file_format)
+            raise UserError(
+                _(
+                    "An error occurred while downloading the CFDI %(file_format)s "
+                    "from the billing service."
+                )
+                % {"file_format": file_format.upper()}
+            ) from error
+
+    def get_cfdi_pdf(self, cfdi_id: str):
+        return self._get_cfdi_file("pdf", cfdi_id)
 
     def get_cfdi_xml(self, cfdi_id: str):
-        client = self._get_client()
-        return client.CfdiMultiEmisor.get_by_file("xml", "IssuedLite", cfdi_id)
+        return self._get_cfdi_file("xml", cfdi_id)
 
     def cancel_cfdi(self, cfdi_id: str, reason, uuid_replacement):
         client = self._get_client()

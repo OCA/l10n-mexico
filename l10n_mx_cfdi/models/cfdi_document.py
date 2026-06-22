@@ -1,5 +1,6 @@
 import base64
 import json
+import logging
 import re
 from io import BytesIO
 
@@ -8,6 +9,8 @@ from dateutil import parser
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
+
+_logger = logging.getLogger(__name__)
 
 
 class Document(models.Model):
@@ -235,40 +238,51 @@ class Document(models.Model):
     def _compute_download_files_if_needed(self):
         for entry in self:
             if entry.tracking_id:
-                if not entry.pdf_file:
-                    report, resource_ids = self._resolve_report()
-
-                    if report:
-                        # force the report to be rendered to work around a bug
-                        # in _render_qweb_pdf
-                        report = report.with_context(**{"force_report_rendering": True})
-                        doc_data, doc_format = report._render_qweb_pdf(resource_ids)
-                        # in some scenarios, the report is not generated,
-                        # so we need to check if the file is empty
-                        if doc_data:
-                            result = base64.b64encode(doc_data)
-                            entry.pdf_file = result
-
-                    if not entry.pdf_file:
-                        # fallback to the provider's PDF
-                        res = entry.issuer_id.service_id.sudo().get_cfdi_pdf(
-                            entry.tracking_id
-                        )
-                        entry.pdf_file = res["Content"]
-
-                    # set filename
-                    entry.pdf_filename = "%s.pdf" % entry.name
-
-                if not entry.xml_file:
-                    res = entry.issuer_id.service_id.sudo().get_cfdi_xml(
-                        entry.tracking_id
-                    )
-                    entry.xml_file = res["Content"].encode("utf-8")
-                    entry.xml_filename = "%s.xml" % entry.name
-
+                entry._download_pdf_file_if_needed()
+                entry._download_xml_file_if_needed()
                 entry.files_in_cache = True
             else:
                 entry.files_in_cache = False
+
+    def _download_pdf_file_if_needed(self):
+        self.ensure_one()
+        if self.pdf_file:
+            return
+
+        report, resource_ids = self._resolve_report()
+        if report:
+            # force the report to be rendered to work around a bug
+            # in _render_qweb_pdf
+            report = report.with_context(force_report_rendering=True)
+            doc_data, doc_format = report._render_qweb_pdf(resource_ids)
+            # in some scenarios, the report is not generated,
+            # so we need to check if the file is empty
+            if doc_data:
+                self.pdf_file = base64.b64encode(doc_data)
+
+        if not self.pdf_file:
+            try:
+                res = self.issuer_id.service_id.sudo().get_cfdi_pdf(self.tracking_id)
+                self.pdf_file = res["Content"]
+            except UserError as error:
+                _logger.warning(
+                    "Could not download PDF for CFDI %s: %s", self.name, error
+                )
+
+        if self.pdf_file:
+            self.pdf_filename = "%s.pdf" % self.name
+
+    def _download_xml_file_if_needed(self):
+        self.ensure_one()
+        if self.xml_file:
+            return
+
+        res = self.issuer_id.service_id.sudo().get_cfdi_xml(self.tracking_id)
+        self.xml_file = res["Content"]
+        self.xml_filename = "%s.xml" % self.name
+
+    def download_files_if_needed(self):
+        self.mapped("files_in_cache")
 
     def _resolve_report(self):
         """Returns the report and the resource ids to
