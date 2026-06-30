@@ -8,9 +8,9 @@ class CFDISeries(models.Model):
 
     code = fields.Char(copy=False)
 
-    # override create method to set the code
-    @api.model
-    def create(self, vals):
-        if not vals.get("implementation"):
-            vals["implementation"] = "no_gap"
-        return super().create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if not vals.get("implementation"):
+                vals["implementation"] = "no_gap"
+        return super().create(vals_list)

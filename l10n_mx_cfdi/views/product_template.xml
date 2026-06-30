@@ -7,8 +7,6 @@
         <field name="arch" type="xml">
             <xpath expr="//page" position="after">
                 <page name="CFDI">
-
-
                     <group string="CFDI">
                         <field name="l10n_mx_cfdi_product_code_id" />
                         <field name="l10n_mx_cfdi_product_measurement_unit_id" />

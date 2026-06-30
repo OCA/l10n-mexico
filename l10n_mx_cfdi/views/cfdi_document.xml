@@ -1,7 +1,6 @@
 <odoo>
-
     <record id="view_l10n_mx_cfdi_document_search" model="ir.ui.view">
-        <field name="name">Documentos CFDI</field>
+        <field name="name">CFDI Search View</field>
         <field name="model">l10n_mx_cfdi.document</field>
         <field name="arch" type="xml">
             <search>
@@ -36,24 +35,28 @@
                     string="Nota de Crédito"
                     domain="[('type','=','E')]"
                 />
-                <separator />
-                <group expand="0" string="Group By">
+
+                <group name="groupby">
                     <filter
                         string="Receptor"
-                        name="receiver_id"
+                        name="groupby_receiver_id"
                         context="{'group_by': 'receiver_id'}"
                     />
-                    <filter string="Tipo" name="type" context="{'group_by': 'type'}" />
+                    <filter
+                        string="Tipo"
+                        name="groupby_type"
+                        context="{'group_by': 'type'}"
+                    />
                 </group>
             </search>
         </field>
     </record>
 
-    <record id="view_l10n_mx_cfdi_document_tree" model="ir.ui.view">
-        <field name="name">Documentos CFDI</field>
+    <record id="view_l10n_mx_cfdi_document_list" model="ir.ui.view">
+        <field name="name">CFDI List View</field>
         <field name="model">l10n_mx_cfdi.document</field>
         <field name="arch" type="xml">
-            <tree create="false" delete="false">
+            <list>
                 <field name="name" string="Folio" />
                 <field name="type" />
                 <field name="create_date" string="Fecha" />
@@ -64,16 +67,15 @@
                 <field name="pdf_filename" column_invisible='1' />
                 <field name="xml_file" widget="file" filename="xml_filename" />
                 <field name="xml_filename" column_invisible='1' />
-            </tree>
+            </list>
         </field>
     </record>
 
     <record id="view_l10n_mx_cfdi_document_form" model="ir.ui.view">
-        <field name="name">Documentos CFDI</field>
+        <field name="name">CFDI Form View</field>
         <field name="model">l10n_mx_cfdi.document</field>
         <field name="arch" type="xml">
-            <form create="false" edit="false" delete="false">
-
+            <form>
                 <sheet>
                     <group>
                         <group>
@@ -126,17 +128,17 @@
                                     string="Descargar"
                                     type="object"
                                     class="btn btn-secondary"
-                                    groups="account.group_account_invoice"
+                                    groups="base.group_user"
                                     invisible="state != 'canceled' or cancellation_request_proof_file != False"
                                 />
                             </div>
                         </group>
                         <h6 class="mt-4">Documentos Relacionados</h6>
                         <field name="related_document_ids">
-                            <tree>
+                            <list>
                                 <field name="relation_type_id" string="Relación" />
                                 <field name="target_id" string="Documento" />
-                            </tree>
+                            </list>
                         </field>
                     </group>
                     <div class="text-right">
@@ -147,7 +149,7 @@
                             string="Cancelar"
                             type="object"
                             class="btn btn-primary"
-                            groups="account.group_account_invoice"
+                            groups="base.group_user"
                             invisible="state != 'canceled' or l10n_mx_cfdi_auto == True"
                         />
                     </div>
@@ -156,4 +158,19 @@
         </field>
     </record>
 
+    <record id="action_l10n_mx_cfdi_documents" model="ir.actions.act_window">
+        <field name="name">CFDI Documents</field>
+        <field name="res_model">l10n_mx_cfdi.document</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_l10n_mx_cfdi_document_list" />
+        <field name="search_view_id" ref="view_l10n_mx_cfdi_document_search" />
+    </record>
+
+    <menuitem
+        id="menu_cfdi_list"
+        name="Documents"
+        parent="l10n_mx_cfdi.cfdi_menu"
+        groups="base.group_user"
+        action="action_l10n_mx_cfdi_documents"
+    />
 </odoo>

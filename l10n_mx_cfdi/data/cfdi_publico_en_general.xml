@@ -1,5 +1,4 @@
 <odoo>
-
     <record id="l10n_mx_cfdi_res_partner_publico_en_general" model="res.partner">
         <field name="name">PUBLICO EN GENERAL</field>
         <field name="zip" eval="None" />
@@ -13,5 +12,4 @@
             eval="ref('l10n_mx_catalogs.c_metodo_pago_PUE')"
         />
     </record>
-
 </odoo>

@@ -21,6 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
+[currency_rate_update_banxico](currency_rate_update_banxico/) | 19.0.1.0.0 |  | Update exchange rates using Banxico
 [l10n_mx_catalogs](l10n_mx_catalogs/) | 19.0.1.0.0 |  | Catalogs of Servicio de Administración Tributaria (SAT) from México
 
 [//]: # (end addons)
