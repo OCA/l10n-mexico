@@ -1,0 +1,665 @@
+id,code,state_code,name
+c_localidad_AGU_01,01,AGU,Aguascalientes
+c_localidad_BCN_01,01,BCN,Ensenada
+c_localidad_BCS_01,01,BCS,Ciudad Constitución
+c_localidad_CAM_01,01,CAM,San Francisco de Campeche
+c_localidad_COA_01,01,COA,Ciudad Acuña
+c_localidad_COL_01,01,COL,Colima
+c_localidad_CHH_01,01,CHH,Santa Rosalía de Camargo
+c_localidad_CHP_01,01,CHP,Comitán de Domínguez
+c_localidad_CMX_01,01,CMX,Ciudad de México
+c_localidad_DUR_01,01,DUR,Victoria de Durango
+c_localidad_GRO_01,01,GRO,Acapulco de Juárez
+c_localidad_GUA_01,01,GUA,Acámbaro
+c_localidad_HID_01,01,HID,Actopan
+c_localidad_JAL_01,01,JAL,Ameca
+c_localidad_MEX_01,01,MEX,Ciudad Adolfo López Mateos
+c_localidad_MIC_01,01,MIC,Apatzingán de la Constitución
+c_localidad_MOR_01,01,MOR,Cuautla (Cuautla de Morelos)
+c_localidad_NAY_01,01,NAY,Santiago Ixcuintla
+c_localidad_NLE_01,01,NLE,Ciudad Apodaca
+c_localidad_OAX_01,01,OAX,Juchitán (Juchitán de Zaragoza)
+c_localidad_PUE_01,01,PUE,Atlixco
+c_localidad_QUE_01,01,QUE,Querétaro
+c_localidad_ROO_01,01,ROO,Cancún
+c_localidad_SIN_01,01,SIN,Los Mochis
+c_localidad_SLP_01,01,SLP,Ciudad Valles
+c_localidad_SON_01,01,SON,San Luis Río Colorado
+c_localidad_TAB_01,01,TAB,Cárdenas
+c_localidad_TAM_01,01,TAM,Altamira
+c_localidad_TLA_01,01,TLA,Apizaco
+c_localidad_VER_01,01,VER,Acayucan
+c_localidad_YUC_01,01,YUC,Mérida
+c_localidad_ZAC_01,01,ZAC,Fresnillo
+c_localidad_AGU_02,02,AGU,Calvillo
+c_localidad_BCN_02,02,BCN,Mexicali
+c_localidad_BCS_02,02,BCS,La Paz
+c_localidad_CAM_02,02,CAM,Ciudad del Carmen
+c_localidad_COA_02,02,COA,Frontera
+c_localidad_COL_02,02,COL,Manzanillo
+c_localidad_CHH_02,02,CHH,Chihuahua
+c_localidad_CHP_02,02,CHP,San Cristóbal de las Casas
+c_localidad_CMX_02,02,CMX,Ciudad de México
+c_localidad_DUR_02,02,DUR,Gómez Palacio
+c_localidad_GRO_02,02,GRO,Chilpancingo de los Bravo
+c_localidad_GUA_02,02,GUA,San miguel de Allende
+c_localidad_HID_02,02,HID,Apan
+c_localidad_JAL_02,02,JAL,Ciudad Guzmán
+c_localidad_MEX_02,02,MEX,Chimalhuacán
+c_localidad_MIC_02,02,MIC,Los Reyes de Salgado
+c_localidad_MOR_02,02,MOR,Cuernavaca
+c_localidad_NAY_02,02,NAY,Tepic
+c_localidad_NLE_02,02,NLE,San Pedro Garza García
+c_localidad_OAX_02,02,OAX,Oaxaca de Juárez
+c_localidad_PUE_02,02,PUE,Izúcar de Matamoros
+c_localidad_QUE_02,02,QUE,San Juan del Rio
+c_localidad_ROO_02,02,ROO,Cozumel
+c_localidad_SIN_02,02,SIN,Culiacán Rosales
+c_localidad_SLP_02,02,SLP,Ébano
+c_localidad_SON_02,02,SON,Agua Prieta
+c_localidad_TAB_02,02,TAB,Villahermosa
+c_localidad_TAM_02,02,TAM,Ciudad Camargo
+c_localidad_TLA_02,02,TLA,Villa Vicente Guerrero
+c_localidad_VER_02,02,VER,Naranjos
+c_localidad_YUC_02,02,YUC,Tizimín
+c_localidad_ZAC_02,02,ZAC,Jerez de García Salinas
+c_localidad_AGU_03,03,AGU,San Francisco de los Romo
+c_localidad_BCN_03,03,BCN,Tecate
+c_localidad_BCS_03,03,BCS,Cabo San Lucas
+c_localidad_CAM_03,03,CAM,Calkiní
+c_localidad_COA_03,03,COA,Matamoros
+c_localidad_COL_03,03,COL,Tecoman
+c_localidad_CHH_03,03,CHH,Cuauhtémoc
+c_localidad_CHP_03,03,CHP,Tapachula de Córdova y Ordóñez
+c_localidad_CMX_03,03,CMX,Ciudad de México
+c_localidad_DUR_03,03,DUR,Ciudad Lerdo
+c_localidad_GRO_03,03,GRO,Iguala de la Independencia
+c_localidad_GUA_03,03,GUA,Celaya
+c_localidad_HID_03,03,HID,Pachuca de Soto
+c_localidad_JAL_03,03,JAL,Guadalajara
+c_localidad_MEX_03,03,MEX,Coacalco de Berriozabal
+c_localidad_MIC_03,03,MIC,Ciudad Hidalgo
+c_localidad_MOR_03,03,MOR,Galeana
+c_localidad_NAY_03,03,NAY,Tuxpan
+c_localidad_NLE_03,03,NLE,Ciudad General Escobedo
+c_localidad_OAX_03,03,OAX,Salina Cruz
+c_localidad_PUE_03,03,PUE,Puebla (Heroica Puebla)
+c_localidad_ROO_03,03,ROO,Felipe Carrillo Puerto
+c_localidad_SIN_03,03,SIN,Escuinapa de Hidalgo
+c_localidad_SLP_03,03,SLP,Matehuala
+c_localidad_SON_03,03,SON,Heroica Caborca
+c_localidad_TAB_03,03,TAB,Comalcalco
+c_localidad_TAM_03,03,TAM,Ciudad Madero
+c_localidad_TLA_03,03,TLA,Tlaxcala (Tlaxcala de Xicotencatl)
+c_localidad_VER_03,03,VER,Boca del RÍo
+c_localidad_YUC_03,03,YUC,Ticul
+c_localidad_ZAC_03,03,ZAC,Zacatecas
+c_localidad_AGU_04,04,AGU,Jesús María
+c_localidad_BCN_04,04,BCN,Tijuana
+c_localidad_BCS_04,04,BCS,San José del Cabo
+c_localidad_CAM_04,04,CAM,Candelaria
+c_localidad_COA_04,04,COA,Monclova
+c_localidad_COL_04,04,COL,Ciudad de Villa de Álvarez
+c_localidad_CHH_04,04,CHH,Delicias
+c_localidad_CHP_04,04,CHP,Tuxtla Gutiérrez
+c_localidad_CMX_04,04,CMX,Ciudad de México
+c_localidad_DUR_04,04,DUR,Santiago Papasquiaro
+c_localidad_GRO_04,04,GRO,Taxco de Alarcón
+c_localidad_GUA_04,04,GUA,Cortazar
+c_localidad_HID_04,04,HID,Cd. de Fray Bernardino de Sahagún
+c_localidad_JAL_04,04,JAL,Lagos de Moreno
+c_localidad_MEX_04,04,MEX,Cuautitlán Izcalli
+c_localidad_MIC_04,04,MIC,Jacona de Plancarte
+c_localidad_MOR_04,04,MOR,Jojutla
+c_localidad_NAY_04,04,NAY,Acaponeta
+c_localidad_NLE_04,04,NLE,Guadalupe
+c_localidad_OAX_04,04,OAX,San Juan Bautista Tuxtepec
+c_localidad_PUE_04,04,PUE,San Martín Texmelucan de Labastida
+c_localidad_QUE_04,04,QUE,El Pueblito
+c_localidad_ROO_04,04,ROO,Chetumal
+c_localidad_SIN_04,04,SIN,Guasave
+c_localidad_SLP_04,04,SLP,Rioverde
+c_localidad_SON_04,04,SON,Ciudad Obregón
+c_localidad_TAB_04,04,TAB,Emiliano Zapata
+c_localidad_TAM_04,04,TAM,Ciudad Mante
+c_localidad_TLA_04,04,TLA,Huamantla
+c_localidad_VER_04,04,VER,Coatepec
+c_localidad_YUC_04,04,YUC,Motul de Carrillo Puerto
+c_localidad_ZAC_04,04,ZAC,Guadalupe
+c_localidad_AGU_05,05,AGU,Pabellón de Arteaga
+c_localidad_BCN_05,05,BCN,Playas de Rosarito
+c_localidad_BCS_05,05,BCS,Loreto
+c_localidad_CAM_05,05,CAM,Escárcega
+c_localidad_COA_05,05,COA,Parras de la Fuente
+c_localidad_COL_05,05,COL,Ciudad de Armería
+c_localidad_CHH_05,05,CHH,Hidalgo del Parral
+c_localidad_CHP_05,05,CHP,Venustiano Carranza
+c_localidad_CMX_05,05,CMX,Ciudad de México
+c_localidad_DUR_05,05,DUR,Canatlán
+c_localidad_GRO_05,05,GRO,Arcelia
+c_localidad_GUA_05,05,GUA,Guanajuato
+c_localidad_HID_05,05,HID,Tula de Allende
+c_localidad_JAL_05,05,JAL,Ocotlán
+c_localidad_MEX_05,05,MEX,Ecatepec de Morelos
+c_localidad_MIC_05,05,MIC,La piedad de Cabadas
+c_localidad_MOR_05,05,MOR,Puente de Ixtla
+c_localidad_NAY_05,05,NAY,Tecuala
+c_localidad_NLE_05,05,NLE,Linares
+c_localidad_OAX_05,05,OAX,Matías Romero Avendaño
+c_localidad_PUE_05,05,PUE,Tehuacan
+c_localidad_ROO_05,05,ROO,Playa del Carmen
+c_localidad_SIN_05,05,SIN,Mazatlán
+c_localidad_SLP_05,05,SLP,San Luis Potosí
+c_localidad_SON_05,05,SON,Empalme
+c_localidad_TAB_05,05,TAB,Jalpa de Méndez
+c_localidad_TAM_05,05,TAM,Heroica Matamoros
+c_localidad_TLA_05,05,TLA,Calpulalpan
+c_localidad_VER_05,05,VER,Agua dulce
+c_localidad_YUC_05,05,YUC,Valladolid
+c_localidad_ZAC_05,05,ZAC,Río Grande
+c_localidad_AGU_06,06,AGU,Rincón de Romos
+c_localidad_BCN_06,06,BCN,Rodolfo Sánchez T. (Maneadero)
+c_localidad_BCS_06,06,BCS,Puerto Adolfo López Mateos
+c_localidad_CAM_06,06,CAM,Sabancuy
+c_localidad_COA_06,06,COA,Piedras Negras
+c_localidad_CHH_06,06,CHH,Juárez
+c_localidad_CHP_06,06,CHP,Jiquipilas
+c_localidad_CMX_06,06,CMX,Ciudad de México
+c_localidad_DUR_06,06,DUR,San Juan del Río del Centauro del Norte
+c_localidad_GRO_06,06,GRO,Ayutla de los Libres
+c_localidad_GUA_06,06,GUA,Irapuato
+c_localidad_HID_06,06,HID,Tulancingo
+c_localidad_JAL_06,06,JAL,Puerto Vallarta
+c_localidad_MEX_06,06,MEX,Huixquilucan de Degollado
+c_localidad_MIC_06,06,MIC,Morelia
+c_localidad_MOR_06,06,MOR,Santa Rosa Treinta
+c_localidad_NAY_06,06,NAY,Compostela
+c_localidad_NLE_06,06,NLE,Montemorelos
+c_localidad_OAX_06,06,OAX,Heroica Ciudad de Huajuapan de León
+c_localidad_PUE_06,06,PUE,Teziutlan
+c_localidad_ROO_06,06,ROO,Kantunilkin
+c_localidad_SIN_06,06,SIN,Guamúchil
+c_localidad_SLP_06,06,SLP,Soledad de Graciano Sánchez
+c_localidad_SON_06,06,SON,Heroica Guaymas
+c_localidad_TAM_06,06,TAM,Nuevo Laredo
+c_localidad_TLA_06,06,TLA,Chiautempan
+c_localidad_VER_06,06,VER,Coatzacoalcos
+c_localidad_YUC_06,06,YUC,Kanasín
+c_localidad_ZAC_06,06,ZAC,Ciudad Cuauhtémoc
+c_localidad_AGU_07,07,AGU,Asientos
+c_localidad_BCN_07,07,BCN,San Felipe
+c_localidad_BCS_07,07,BCS,Todos Santos
+c_localidad_CAM_07,07,CAM,Hopelchén
+c_localidad_COA_07,07,COA,Sabinas
+c_localidad_CHH_07,07,CHH,Nuevo Casas Grandes
+c_localidad_CHP_07,07,CHP,Villaflores
+c_localidad_CMX_07,07,CMX,Ciudad de México
+c_localidad_DUR_07,07,DUR,Peñón Blanco
+c_localidad_GRO_07,07,GRO,Atoyac de Álvarez
+c_localidad_GUA_07,07,GUA,León de los Aldama
+c_localidad_HID_07,07,HID,Zimapan
+c_localidad_JAL_07,07,JAL,San Juan de los Lagos
+c_localidad_MEX_07,07,MEX,Los Reyes Acaquilpan (La Paz)
+c_localidad_MIC_07,07,MIC,Pátzcuaro
+c_localidad_MOR_07,07,MOR,Zacatepec de Hidalgo
+c_localidad_NAY_07,07,NAY,Francisco I. Madero (Puga)
+c_localidad_NLE_07,07,NLE,Monterrey
+c_localidad_OAX_07,07,OAX,Loma Bonita
+c_localidad_PUE_07,07,PUE,San Andrés Cholula
+c_localidad_ROO_07,07,ROO,Isla Mujeres
+c_localidad_SIN_07,07,SIN,Navolato
+c_localidad_SLP_07,07,SLP,Charcas
+c_localidad_SON_07,07,SON,Hermosillo
+c_localidad_TAB_07,07,TAB,Macuspana
+c_localidad_TAM_07,07,TAM,Reynosa
+c_localidad_VER_07,07,VER,Córdoba
+c_localidad_ZAC_07,07,ZAC,Ojocaliente
+c_localidad_AGU_08,08,AGU,Tepezalá
+c_localidad_BCS_08,08,BCS,Heroica Mulegé
+c_localidad_CAM_08,08,CAM,Champotón
+c_localidad_COA_08,08,COA,Saltillo
+c_localidad_CHP_08,08,CHP,Las Margaritas
+c_localidad_CMX_08,08,CMX,Ciudad de México
+c_localidad_DUR_08,08,DUR,Francisco I. Madero
+c_localidad_GUA_08,08,GUA,Moroleón
+c_localidad_HID_08,08,HID,Huejutla de Reyes
+c_localidad_JAL_08,08,JAL,Tepatitlán de Morelos
+c_localidad_MEX_08,08,MEX,Metepec
+c_localidad_MIC_08,08,MIC,Sahuayo de Morelos
+c_localidad_MOR_08,08,MOR,Tlaquiltenango
+c_localidad_NAY_08,08,NAY,Villa Hidalgo (El Nuevo)
+c_localidad_NLE_08,08,NLE,Ciudad Sabinas Hidalgo
+c_localidad_OAX_08,08,OAX,Puerto Escondido
+c_localidad_PUE_08,08,PUE,San Pedro Cholula
+c_localidad_ROO_08,08,ROO,Bacalar
+c_localidad_SIN_08,08,SIN,Quila
+c_localidad_SLP_08,08,SLP,Salinas de Hidalgo
+c_localidad_SON_08,08,SON,Huatabampo
+c_localidad_TAB_08,08,TAB,Tenosique de Pino Suárez
+c_localidad_TAM_08,08,TAM,Ciudad Río Bravo
+c_localidad_VER_08,08,VER,Tres Valles
+c_localidad_ZAC_08,08,ZAC,Villa Hidalgo
+c_localidad_AGU_09,09,AGU,Cosío
+c_localidad_BCS_09,09,BCS,Villa Alberto Andrés Alvarado Arámburo
+c_localidad_CAM_09,09,CAM,Hecelchakán
+c_localidad_COA_09,09,COA,Nueva Rosita
+c_localidad_CHH_09,09,CHH,Madera
+c_localidad_CHP_09,09,CHP,Arriaga
+c_localidad_CMX_09,09,CMX,Ciudad de México
+c_localidad_DUR_09,09,DUR,Nombre de Dios
+c_localidad_GRO_09,09,GRO,San Jerónimo de Juárez
+c_localidad_GUA_09,09,GUA,Salamanca
+c_localidad_HID_09,09,HID,Tlaxcoapan
+c_localidad_JAL_09,09,JAL,Tlaquepaque
+c_localidad_MEX_09,09,MEX,Naucalpan de Juárez
+c_localidad_MIC_09,09,MIC,Uruapan
+c_localidad_NAY_09,09,NAY,Ruiz
+c_localidad_NLE_09,09,NLE,San Nicolás de los Garza
+c_localidad_OAX_09,09,OAX,Río Grande o Piedra Parada
+c_localidad_PUE_09,09,PUE,Huauchinango
+c_localidad_SIN_09,09,SIN,Ahome
+c_localidad_SLP_09,09,SLP,Cárdenas
+c_localidad_SON_09,09,SON,Navojoa
+c_localidad_TAB_09,09,TAB,Teapa
+c_localidad_TAM_09,09,TAM,San Fernando
+c_localidad_VER_09,09,VER,Jáltipan de Morelos
+c_localidad_ZAC_09,09,ZAC,Villanueva
+c_localidad_BCS_10,10,BCS,San Ignacio
+c_localidad_COA_10,10,COA,San Pedro
+c_localidad_CHH_10,10,CHH,Colonia Anáhuac
+c_localidad_CHP_10,10,CHP,Palenque
+c_localidad_CMX_10,10,CMX,Ciudad de México
+c_localidad_DUR_10,10,DUR,Vicente Guerrero
+c_localidad_GRO_10,10,GRO,Ciudad Apaxtla de Castrejón
+c_localidad_GUA_10,10,GUA,San Francisco del Rincón
+c_localidad_HID_10,10,HID,Tizayuca
+c_localidad_JAL_10,10,JAL,Zapopan
+c_localidad_MEX_10,10,MEX,Ciudad Nezahualcoyotl
+c_localidad_MIC_10,10,MIC,Zacapu
+c_localidad_NAY_10,10,NAY,San Blas
+c_localidad_NLE_10,10,NLE,Ciudad Santa Catarina
+c_localidad_PUE_10,10,PUE,Acatlán de Osorio
+c_localidad_SIN_10,10,SIN,Higuera de Zaragoza
+c_localidad_SLP_10,10,SLP,Cerritos
+c_localidad_SON_10,10,SON,Heroica Nogales
+c_localidad_TAB_10,10,TAB,Paraíso
+c_localidad_TAM_10,10,TAM,Tampico
+c_localidad_VER_10,10,VER,Xalapa-Enríquez
+c_localidad_ZAC_10,10,ZAC,Villa de Cos
+c_localidad_BCS_11,11,BCS,Guerrero Negro
+c_localidad_CAM_11,11,CAM,Pomuch
+c_localidad_COA_11,11,COA,Torreón
+c_localidad_CHH_11,11,CHH,Juan Aldama
+c_localidad_CHP_11,11,CHP,Ocosingo
+c_localidad_CMX_11,11,CMX,Ciudad de México
+c_localidad_DUR_11,11,DUR,El Salto
+c_localidad_GRO_11,11,GRO,Ciudad Altamirano
+c_localidad_GUA_11,11,GUA,Silao
+c_localidad_HID_11,11,HID,Santiago Tulantepec
+c_localidad_JAL_11,11,JAL,Tlajomulco de Zúñiga
+c_localidad_MEX_11,11,MEX,Villa Nicolás Romero
+c_localidad_MIC_11,11,MIC,Zamora de Hidalgo
+c_localidad_NAY_11,11,NAY,Ixtlán del Río
+c_localidad_NLE_11,11,NLE,Doctor Arroyo
+c_localidad_OAX_11,11,OAX,Santiago Suchilquitongo
+c_localidad_PUE_11,11,PUE,Cuautlancingo
+c_localidad_SIN_11,11,SIN,Choix
+c_localidad_SLP_11,11,SLP,Tamuín
+c_localidad_SON_11,11,SON,Puerto Peñasco
+c_localidad_TAB_11,11,TAB,Frontera
+c_localidad_TAM_11,11,TAM,Ciudad Victoria
+c_localidad_VER_11,11,VER,Minatitlán
+c_localidad_ZAC_11,11,ZAC,Nochistlán de Mejía
+c_localidad_BCS_12,12,BCS,Santa Rosalía
+c_localidad_COA_12,12,COA,Castaños
+c_localidad_CHH_12,12,CHH,José Mariano Jiménez
+c_localidad_CHP_12,12,CHP,Tonalá
+c_localidad_CMX_12,12,CMX,Ciudad de México
+c_localidad_DUR_12,12,DUR,Santa María del Oro
+c_localidad_GRO_12,12,GRO,Buenavista de Cuellar
+c_localidad_GUA_12,12,GUA,Jerécuaro
+c_localidad_HID_12,12,HID,Ixmiquilpan
+c_localidad_JAL_12,12,JAL,Tonalá
+c_localidad_MEX_12,12,MEX,Tecamac de Felipe Villanueva
+c_localidad_MIC_12,12,MIC,Heroica Zitácuaro
+c_localidad_NAY_12,12,NAY,Bucerías
+c_localidad_NLE_12,12,NLE,Ciénega de Flores
+c_localidad_OAX_12,12,OAX,San Felipe Jalapa de Díaz
+c_localidad_PUE_12,12,PUE,Tepeaca
+c_localidad_SIN_12,12,SIN,Villa Unión
+c_localidad_SLP_12,12,SLP,Tamasopo
+c_localidad_SON_12,12,SON,Heroica Ciudad de Cananea
+c_localidad_TAB_12,12,TAB,Cunduacán
+c_localidad_TAM_12,12,TAM,González
+c_localidad_VER_12,12,VER,Orizaba
+c_localidad_ZAC_12,12,ZAC,Víctor Rosales
+c_localidad_COA_13,13,COA,Francisco I. Madero (Chávez)
+c_localidad_CHH_13,13,CHH,Manuel Ojinaga
+c_localidad_CHP_13,13,CHP,Mapastepec
+c_localidad_CMX_13,13,CMX,Ciudad de México
+c_localidad_GRO_13,13,GRO,Cutzamala de Pinzón
+c_localidad_GUA_13,13,GUA,Santiago Maravatío
+c_localidad_HID_13,13,HID,Tepeji del Rio
+c_localidad_JAL_13,13,JAL,Tuxpan
+c_localidad_MEX_13,13,MEX,Tepotzotlán
+c_localidad_MIC_13,13,MIC,Paracho de Verduzco
+c_localidad_NAY_13,13,NAY,Las Varas
+c_localidad_NLE_13,13,NLE,Hualahuises
+c_localidad_OAX_13,13,OAX,Bahias de Huatulco
+c_localidad_PUE_13,13,PUE,Tecamachalco
+c_localidad_SIN_13,13,SIN,Sinaloa de Leyva
+c_localidad_SLP_13,13,SLP,Ciudad del Maíz
+c_localidad_SON_13,13,SON,Sonoita
+c_localidad_TAB_13,13,TAB,Huimanguillo
+c_localidad_TAM_13,13,TAM,Jaumave
+c_localidad_VER_13,13,VER,Papantla de Olarte
+c_localidad_ZAC_13,13,ZAC,Valparaíso
+c_localidad_COA_14,14,COA,Cuatro Ciénegas de Carranza
+c_localidad_CHH_14,14,CHH,Bachíniva
+c_localidad_CHP_14,14,CHP,Las Rosas
+c_localidad_CMX_14,14,CMX,Ciudad de México
+c_localidad_GRO_14,14,GRO,Coyuca de Catalán
+c_localidad_GUA_14,14,GUA,Romita
+c_localidad_HID_14,14,HID,Cruz Azul
+c_localidad_JAL_14,14,JAL,Tototlán
+c_localidad_MEX_14,14,MEX,Tlalnepantla de Baz
+c_localidad_MIC_14,14,MIC,Tangancícuaro de Arista
+c_localidad_NAY_14,14,NAY,Xalisco
+c_localidad_OAX_14,14,OAX,Putla Villa de Guerrero
+c_localidad_PUE_14,14,PUE,Zacatlán
+c_localidad_SIN_14,14,SIN,Mocorito
+c_localidad_SLP_14,14,SLP,Cedral
+c_localidad_SON_14,14,SON,Magdalena de Kino
+c_localidad_TAM_14,14,TAM,Ciudad Gustavo Díaz Ordaz
+c_localidad_VER_14,14,VER,Poza Rica de Hidalgo
+c_localidad_ZAC_14,14,ZAC,Luis Moya
+c_localidad_COA_15,15,COA,Nadadores
+c_localidad_CHH_15,15,CHH,Saucillo
+c_localidad_CHP_15,15,CHP,Chiapa de Corzo
+c_localidad_CMX_15,15,CMX,Ciudad de México
+c_localidad_GRO_15,15,GRO,Tierra Colorada
+c_localidad_GUA_15,15,GUA,Tarandacuao
+c_localidad_HID_15,15,HID,Tepeapulco
+c_localidad_JAL_15,15,JAL,San Diego de Alejandría
+c_localidad_MEX_15,15,MEX,Santa Maria Tultepec
+c_localidad_MIC_15,15,MIC,Maravatío de Ocampo
+c_localidad_NAY_15,15,NAY,San pedro Lagunillas
+c_localidad_NLE_15,15,NLE,Cadereyta Jiménez
+c_localidad_OAX_15,15,OAX,Cosolapa
+c_localidad_PUE_15,15,PUE,Xicotepec
+c_localidad_SIN_15,15,SIN,Angostura
+c_localidad_SLP_15,15,SLP,Tierra Nueva
+c_localidad_TAM_15,15,TAM,Estación Manuel (Úrsulo Galván)
+c_localidad_VER_15,15,VER,San Andrés Tuxtla
+c_localidad_ZAC_15,15,ZAC,Moyahua de Estrada
+c_localidad_COA_16,16,COA,Ramos Arizpe
+c_localidad_CHP_16,16,CHP,Cacahoatán
+c_localidad_CMX_16,16,CMX,Ciudad de México
+c_localidad_GRO_16,16,GRO,Coyuca de Benítez
+c_localidad_GUA_16,16,GUA,Huanímaro
+c_localidad_JAL_16,16,JAL,La Resolana
+c_localidad_MEX_16,16,MEX,Tultitlán de Mariano Escobedo
+c_localidad_MIC_16,16,MIC,Zinapécuaro de Figueroa
+c_localidad_NAY_16,16,NAY,La peñita de Jaltemba
+c_localidad_OAX_16,16,OAX,Tlacolula de Matamoros
+c_localidad_PUE_16,16,PUE,Ciudad Serdán
+c_localidad_SIN_16,16,SIN,San Blas
+c_localidad_SLP_16,16,SLP,Villa de Reyes
+c_localidad_TAM_16,16,TAM,Xicoténcatl
+c_localidad_VER_16,16,VER,Túxpam de Rodríguez Cano
+c_localidad_ZAC_16,16,ZAC,Sombrerete
+c_localidad_COA_17,17,COA,Nava
+c_localidad_CHP_17,17,CHP,Ocozocoautla de Espinosa
+c_localidad_GRO_17,17,GRO,Olinalá
+c_localidad_GUA_17,17,GUA,Comonfort
+c_localidad_JAL_17,17,JAL,Atotonilco el Alto
+c_localidad_MEX_17,17,MEX,Cuautitlán
+c_localidad_MIC_17,17,MIC,Puruándiro
+c_localidad_NAY_17,17,NAY,Jala
+c_localidad_NLE_17,17,NLE,Santiago
+c_localidad_OAX_17,17,OAX,San Pablo Villa de Mitla
+c_localidad_PUE_17,17,PUE,Amozoc
+c_localidad_SIN_17,17,SIN,La Cruz
+c_localidad_SLP_17,17,SLP,Fracción el Refugio
+c_localidad_TAM_17,17,TAM,Ciudad Miguel Alemán
+c_localidad_VER_17,17,VER,Veracruz
+c_localidad_ZAC_17,17,ZAC,Jalpa
+c_localidad_COA_18,18,COA,Zaragoza
+c_localidad_CHP_18,18,CHP,Cintalapa de Figueroa
+c_localidad_GRO_18,18,GRO,Marquelia
+c_localidad_GUA_18,18,GUA,Uriangato
+c_localidad_JAL_18,18,JAL,Jalostotitlán
+c_localidad_MEX_18,18,MEX,Ixtapaluca
+c_localidad_MIC_18,18,MIC,Yurécuaro
+c_localidad_NAY_18,18,NAY,Ahuacatlán
+c_localidad_NLE_18,18,NLE,El cercado
+c_localidad_OAX_18,18,OAX,Natividad
+c_localidad_SIN_18,18,SIN,El rosario
+c_localidad_SLP_18,18,SLP,Tamazunchale
+c_localidad_TAM_18,18,TAM,Soto la Marina
+c_localidad_VER_18,18,VER,Tierra Blanca
+c_localidad_ZAC_18,18,ZAC,Loreto
+c_localidad_COA_19,19,COA,San Buenaventura
+c_localidad_CHP_19,19,CHP,Pichucalco
+c_localidad_GRO_19,19,GRO,Zumpango del Río
+c_localidad_GUA_19,19,GUA,Pénjamo
+c_localidad_JAL_19,19,JAL,Poncitlán
+c_localidad_MEX_19,19,MEX,Texcoco de Mora
+c_localidad_MIC_19,19,MIC,Huetamo de Núñez
+c_localidad_OAX_19,19,OAX,Teotitlán de Flores Magón
+c_localidad_SIN_19,19,SIN,Estación Naranjo
+c_localidad_SLP_19,19,SLP,Santa María del Río
+c_localidad_TAM_19,19,TAM,Ciudad Tula
+c_localidad_VER_19,19,VER,Cosamaloapan
+c_localidad_ZAC_19,19,ZAC,Juan Aldama
+c_localidad_COA_20,20,COA,Ciudad Melchor Múzquiz
+c_localidad_CHP_20,20,CHP,Puerto Madero (San Benito)
+c_localidad_GRO_20,20,GRO,San Luis de la Loma
+c_localidad_GUA_20,20,GUA,Cuerámaro
+c_localidad_JAL_20,20,JAL,Arandas
+c_localidad_MEX_20,20,MEX,Toluca de Lerdo
+c_localidad_MIC_20,20,MIC,Tacámbaro de Codallos
+c_localidad_NLE_20,20,NLE,Anáhuac
+c_localidad_OAX_20,20,OAX,Santa María Huatulco
+c_localidad_SIN_20,20,SIN,Aguaruto
+c_localidad_SLP_20,20,SLP,El Naranjo
+c_localidad_TAM_20,20,TAM,Nueva Ciudad Guerrero
+c_localidad_VER_20,20,VER,Carlos A. Carrillo
+c_localidad_COA_21,21,COA,Viesca
+c_localidad_CHP_21,21,CHP,Pijijiapan
+c_localidad_GRO_21,21,GRO,Petatlán
+c_localidad_GUA_21,21,GUA,Empalme Escobedo (Escobedo)
+c_localidad_JAL_21,21,JAL,Talpa de Allende
+c_localidad_MEX_21,21,MEX,Valle de Chalco Solidaridad
+c_localidad_MIC_21,21,MIC,Ciudad Lázaro Cárdenas
+c_localidad_NLE_21,21,NLE,García
+c_localidad_OAX_21,21,OAX,San Juan Bautista Cuicatlán
+c_localidad_SIN_21,21,SIN,Cosalá
+c_localidad_TAM_21,21,TAM,Valle Hermoso
+c_localidad_VER_21,21,VER,Pánuco
+c_localidad_COA_22,22,COA,Morelos
+c_localidad_CHP_22,22,CHP,Reforma
+c_localidad_GRO_22,22,GRO,La Unión
+c_localidad_GUA_22,22,GUA,San Luis de la Paz
+c_localidad_JAL_22,22,JAL,Etzatlán
+c_localidad_MEX_22,22,MEX,Tejupilco de Hidalgo
+c_localidad_MIC_22,22,MIC,Las Guacamayas
+c_localidad_NLE_22,22,NLE,Ciudad Benito Juárez
+c_localidad_OAX_22,22,OAX,Villa Sola de Vega
+c_localidad_SIN_22,22,SIN,San Ignacio
+c_localidad_VER_22,22,VER,Tampico Alto
+c_localidad_COA_23,23,COA,Arteaga
+c_localidad_CHP_23,23,CHP,Huixtla
+c_localidad_GRO_23,23,GRO,San Luis San Pedro
+c_localidad_GUA_23,23,GUA,Valle de Santiago
+c_localidad_JAL_23,23,JAL,Sayula
+c_localidad_MEX_23,23,MEX,Chalco de Díaz Covarrubias
+c_localidad_MIC_23,23,MIC,Jiquilpan de Juárez
+c_localidad_OAX_23,23,OAX,Ocotlán de Morelos
+c_localidad_SIN_23,23,SIN,Topolobampo
+c_localidad_VER_23,23,VER,Tempoal de Sánchez
+c_localidad_COA_24,24,COA,Allende
+c_localidad_CHP_24,24,CHP,Motozintla de Mendoza
+c_localidad_GRO_24,24,GRO,Teloloapan
+c_localidad_GUA_24,24,GUA,Abasolo
+c_localidad_JAL_24,24,JAL,Ahualulco de Mercado
+c_localidad_MEX_24,24,MEX,Amatepec
+c_localidad_MIC_24,24,MIC,Tuxpan
+c_localidad_OAX_24,24,OAX,Villa de Zaachila
+c_localidad_SIN_24,24,SIN,Lic. Benito Juárez (Campo Gobierno)
+c_localidad_VER_24,24,VER,Tantoyuca
+c_localidad_CHP_25,25,CHP,Acala
+c_localidad_GRO_25,25,GRO,Técpan de Galeana
+c_localidad_GUA_25,25,GUA,Rincón de Tamayo
+c_localidad_JAL_25,25,JAL,Autlán de Navarro
+c_localidad_MIC_25,25,MIC,Cotija de la Paz
+c_localidad_OAX_25,25,OAX,Miahuatlán de Porfirio Díaz
+c_localidad_VER_25,25,VER,Gutiérrez Zamora
+c_localidad_GRO_26,26,GRO,Huitzuco
+c_localidad_GUA_26,26,GUA,Villagrán
+c_localidad_JAL_26,26,JAL,Magdalena
+c_localidad_MEX_26,26,MEX,Melchor Ocampo
+c_localidad_MIC_26,26,MIC,Nueva Italia de Ruiz
+c_localidad_OAX_26,26,OAX,Unión Hidalgo
+c_localidad_VER_26,26,VER,Platón Sánchez
+c_localidad_GRO_27,27,GRO,Tixtla de Guerrero
+c_localidad_GUA_27,27,GUA,Yuriria
+c_localidad_JAL_27,27,JAL,San Julián
+c_localidad_MEX_27,27,MEX,San Vicente Chicoloapan de Juárez
+c_localidad_MIC_27,27,MIC,Cuitzeo del Porvenir
+c_localidad_OAX_27,27,OAX,El Camarón
+c_localidad_VER_27,27,VER,Juan Rodríguez Clara
+c_localidad_GRO_28,28,GRO,Tepecoacuilco de Trujano
+c_localidad_GUA_28,28,GUA,Apaseo el Grande
+c_localidad_JAL_28,28,JAL,Cocula
+c_localidad_MEX_28,28,MEX,Capulhuac
+c_localidad_OAX_28,28,OAX,San Pedro Mixtepec -Dto. 22-
+c_localidad_VER_28,28,VER,Huatusco de Chicuellar
+c_localidad_GRO_29,29,GRO,San Marcos
+c_localidad_GUA_29,29,GUA,Purísima de Bustos
+c_localidad_JAL_29,29,JAL,El Grullo
+c_localidad_MEX_29,29,MEX,Juchitepec de Mariano Riva Palacio
+c_localidad_OAX_29,29,OAX,Santa Cruz Itundujia
+c_localidad_VER_29,29,VER,Ixtaczoquitlán
+c_localidad_GRO_30,30,GRO,Azoyú
+c_localidad_GUA_30,30,GUA,Salvatierra
+c_localidad_JAL_30,30,JAL,San Miguel el Alto
+c_localidad_MEX_30,30,MEX,Tequixquiac
+c_localidad_OAX_30,30,OAX,Chahuites
+c_localidad_VER_30,30,VER,Río Blanco
+c_localidad_GRO_31,31,GRO,Tlapehuala
+c_localidad_GUA_31,31,GUA,Marfil
+c_localidad_JAL_31,31,JAL,Tala
+c_localidad_MEX_31,31,MEX,Xonacatlán
+c_localidad_OAX_31,31,OAX,Heroica Ciudad de Ejutla de Crespo
+c_localidad_VER_31,31,VER,Isla
+c_localidad_GRO_32,32,GRO,San Luis Acatlán
+c_localidad_GUA_32,32,GUA,San José Iturbide
+c_localidad_JAL_32,32,JAL,La Barca
+c_localidad_MEX_32,32,MEX,San Mateo Atenco
+c_localidad_OAX_32,32,OAX,San Pedro Tapanatepec
+c_localidad_VER_32,32,VER,Cuitláhuac
+c_localidad_GRO_33,33,GRO,Chilapa de Álvarez
+c_localidad_GUA_33,33,GUA,Apaseo el Alto
+c_localidad_JAL_33,33,JAL,Jamay
+c_localidad_OAX_33,33,OAX,Vicente Camalote
+c_localidad_VER_33,33,VER,Fortín de las Flores
+c_localidad_GRO_34,34,GRO,Tlapa de Comonfort
+c_localidad_GUA_34,34,GUA,Ciudad Manuel Doblado
+c_localidad_JAL_34,34,JAL,Yahualica de González Gallo
+c_localidad_OAX_34,34,OAX,Villa de Tamazulápam del Progreso
+c_localidad_VER_34,34,VER,Alvarado
+c_localidad_GRO_35,35,GRO,Tlalixtaquilla
+c_localidad_GUA_35,35,GUA,Jaral del Progreso
+c_localidad_JAL_35,35,JAL,Colotlán
+c_localidad_OAX_35,35,OAX,San Juan Bautista lo de Soto
+c_localidad_VER_35,35,VER,José Cardel
+c_localidad_GRO_36,36,GRO,Cuajinicuilapa
+c_localidad_GUA_36,36,GUA,San Diego de la Unión
+c_localidad_JAL_36,36,JAL,Cihuatlán
+c_localidad_MEX_36,36,MEX,Chiconcuac
+c_localidad_OAX_36,36,OAX,San Juan Cacahuatepec
+c_localidad_VER_36,36,VER,Banderilla
+c_localidad_GRO_37,37,GRO,Huamuxtitlán
+c_localidad_GUA_37,37,GUA,Santa Cruz Juventino Rosas
+c_localidad_JAL_37,37,JAL,Zapotiltic
+c_localidad_OAX_37,37,OAX,San Pedro Totolapa
+c_localidad_VER_37,37,VER,Paraje Nuevo
+c_localidad_GRO_38,38,GRO,Cruz Grande
+c_localidad_GUA_38,38,GUA,Doctor Mora
+c_localidad_JAL_38,38,JAL,Villa Corona
+c_localidad_OAX_38,38,OAX,San Miguel el Grande
+c_localidad_VER_38,38,VER,Playa Vicente
+c_localidad_GRO_39,39,GRO,Ocotito
+c_localidad_GUA_39,39,GUA,Dolores Hgo. Cuna de la Indep. Nal.
+c_localidad_JAL_39,39,JAL,Teocaltiche
+c_localidad_MEX_39,39,MEX,Almoloya de Juárez
+c_localidad_OAX_39,39,OAX,Zimatlán de Álvarez
+c_localidad_VER_39,39,VER,Altotonga
+c_localidad_GRO_40,40,GRO,Copala
+c_localidad_MEX_40,40,MEX,Ocoyoacac
+c_localidad_OAX_40,40,OAX,San Pablo Huitzo
+c_localidad_VER_40,40,VER,Juan Díaz Covarrubias
+c_localidad_GRO_41,41,GRO,Zihuatanejo
+c_localidad_JAL_41,41,JAL,Tequila
+c_localidad_MEX_41,41,MEX,Zumpango
+c_localidad_OAX_41,41,OAX,San Francisco Telixtlahuaca
+c_localidad_VER_41,41,VER,Cuichapa
+c_localidad_JAL_42,42,JAL,El Quince (San José el Quince)
+c_localidad_OAX_42,42,OAX,Mariscala de Juárez
+c_localidad_VER_42,42,VER,Santiago Tuxtla
+c_localidad_JAL_43,43,JAL,San José el Verde (El Verde)
+c_localidad_OAX_43,43,OAX,Santiago Pinotepa Nacional
+c_localidad_VER_43,43,VER,Huayacocotla
+c_localidad_JAL_44,44,JAL,Jocotepec
+c_localidad_OAX_44,44,OAX,Santiago Jamiltepec
+c_localidad_VER_44,44,VER,Paso de Ovejas
+c_localidad_JAL_45,45,JAL,Tecalitlán
+c_localidad_OAX_45,45,OAX,San Pedro Pochutla
+c_localidad_VER_45,45,VER,Catemaco
+c_localidad_JAL_46,46,JAL,Chapala
+c_localidad_OAX_46,46,OAX,Heroica Ciudad de Tlaxiaco
+c_localidad_VER_46,46,VER,Nogales
+c_localidad_JAL_47,47,JAL,Ajijic
+c_localidad_OAX_47,47,OAX,San Juan Bautista Valle Nacional
+c_localidad_VER_47,47,VER,Las Choapas
+c_localidad_JAL_48,48,JAL,San Ignacio Cerro Gordo
+c_localidad_OAX_48,48,OAX,Lagunas
+c_localidad_VER_48,48,VER,General Miguel Alemán (Potrero Nuevo)
+c_localidad_JAL_49,49,JAL,Zacoalco de Torres
+c_localidad_OAX_49,49,OAX,Ciudad Ixtepec
+c_localidad_VER_49,49,VER,Coatzintla
+c_localidad_JAL_50,50,JAL,Huejuquilla el Alto
+c_localidad_OAX_50,50,OAX,Santiago Juxtlahuaca
+c_localidad_VER_50,50,VER,Ángel R. Cabada
+c_localidad_JAL_51,51,JAL,Villa Hidalgo
+c_localidad_OAX_51,51,OAX,San Sebastián Tecomaxtlahuaca
+c_localidad_VER_51,51,VER,San Rafael
+c_localidad_JAL_52,52,JAL,Unión de San Antonio
+c_localidad_OAX_52,52,OAX,Asunción Nochixtlán
+c_localidad_VER_52,52,VER,Tlacojalpan
+c_localidad_JAL_53,53,JAL,Las Pintitas
+c_localidad_OAX_53,53,OAX,San Francisco Ixhuatán
+c_localidad_VER_53,53,VER,Cosoleacaque
+c_localidad_JAL_54,54,JAL,Tamazula de Gordiano
+c_localidad_OAX_54,54,OAX,San Blas Atempa
+c_localidad_VER_54,54,VER,Lerdo de Tejada
+c_localidad_JAL_55,55,JAL,Acatlán de Juárez
+c_localidad_OAX_55,55,OAX,Santo Domingo Tehuantepec
+c_localidad_VER_55,55,VER,Tihuatlán
+c_localidad_JAL_56,56,JAL,Valle de Guadalupe
+c_localidad_OAX_56,56,OAX,Cuilápam de Guerrero
+c_localidad_VER_56,56,VER,Atoyac
+c_localidad_OAX_57,57,OAX,El Rosario
+c_localidad_VER_57,57,VER,Huiloapan de Cuauhtémoc
+c_localidad_OAX_58,58,OAX,Santa Lucia del Camino
+c_localidad_VER_58,58,VER,Cazones de Herrera
+c_localidad_OAX_59,59,OAX,San Antonio de la Cal
+c_localidad_VER_59,59,VER,Yecuatla
+c_localidad_VER_60,60,VER,Soledad de Doblado
+c_localidad_VER_61,61,VER,Cerro Azul
+c_localidad_VER_62,62,VER,Tezonapa
+c_localidad_VER_66,66,VER,Sihuapan
+c_localidad_VER_67,67,VER,El Higo
+c_localidad_VER_68,68,VER,Paso del Macho
+c_localidad_VER_69,69,VER,Tlapacoyan
