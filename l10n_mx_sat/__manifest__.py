@@ -3,7 +3,7 @@
 
 {
     "name": "Mexico - SAT Connection",
-    "version": "18.0.1.0.0",
+    "version": "19.0.1.0.0",
     "category": "Accounting/Localizations",
     "summary": "Connect to the SAT portal using FIEL credentials & manage downloads",
     "author": (
@@ -13,6 +13,9 @@
     "website": "https://github.com/OCA/l10n-mexico",
     "license": "AGPL-3",
     "depends": ["base"],
+    "external_dependencies": {
+        "python": ["satcfdi"],
+    },
     "data": [
         "security/l10n_mx_sat_security.xml",
         "security/ir.model.access.csv",

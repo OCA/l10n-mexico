@@ -77,6 +77,8 @@ class SatClient:
         DOCUMENT_KIND_CFDI: "recover_comprobante_download",
         DOCUMENT_KIND_RETENTION: "recover_retencion_download",
     }
+    _LEGACY_RETENTION_REQUEST = "recover_retencion_request"
+    _MIN_SATCFDI_RETENTION = "26.7.2"
 
     def __init__(self, cer_der, key_der, password):
         """Initialize the client with FIEL credentials."""
@@ -110,7 +112,7 @@ class SatClient:
         """Send a download request to the SAT (Descarga Masiva)."""
         self._ensure_token(token)
         method_name = self._REQUEST_METHODS[(document_kind, direction)]
-        method = getattr(self._sat, method_name)
+        method = self._get_sat_method(method_name, document_kind=document_kind)
 
         tipo_solicitud = self._resolve_tipo_solicitud(request_type)
         request_kwargs = {
@@ -165,7 +167,9 @@ class SatClient:
         """Check the status of a download request."""
         self._ensure_token(token)
         method_name = self._STATUS_METHODS[document_kind]
-        response = getattr(self._sat, method_name)(sat_request_id)
+        response = self._get_sat_method(method_name, document_kind=document_kind)(
+            sat_request_id
+        )
         return self._normalize_status_response(response)
 
     def download_package(
@@ -174,7 +178,9 @@ class SatClient:
         """Download a package from the SAT."""
         self._ensure_token(token)
         method_name = self._DOWNLOAD_METHODS[document_kind]
-        response, paquete = getattr(self._sat, method_name)(package_id)
+        response, paquete = self._get_sat_method(
+            method_name, document_kind=document_kind
+        )(package_id)
         return self._normalize_download_response(response, paquete)
 
     def validate_cfdi(self, issuer_rfc, receiver_rfc, total, uuid):
@@ -201,6 +207,27 @@ class SatClient:
             "es_cancelable": result.get("EsCancelable", ""),
             "estado": result.get("Estado", ""),
         }
+
+    def _get_sat_method(self, method_name, document_kind=None):
+        """Resolve a SAT web-service method, with legacy retention fallback."""
+        if hasattr(self._sat, method_name):
+            return getattr(self._sat, method_name)
+        if (
+            document_kind == self.DOCUMENT_KIND_RETENTION
+            and method_name
+            in (
+                "recover_retencion_emitted_request",
+                "recover_retencion_received_request",
+            )
+            and hasattr(self._sat, self._LEGACY_RETENTION_REQUEST)
+        ):
+            return getattr(self._sat, self._LEGACY_RETENTION_REQUEST)
+        raise AttributeError(
+            f"'SAT' object has no attribute '{method_name}'. "
+            f"Retention downloads require satcfdi >= {self._MIN_SATCFDI_RETENTION}. "
+            f"Install or upgrade with: pip install "
+            f"'satcfdi>={self._MIN_SATCFDI_RETENTION}'"
+        )
 
     @classmethod
     def _resolve_tipo_solicitud(cls, request_type):

@@ -1,0 +1,10 @@
+# Extra Python deps for Runboat/CI.
+# satcfdi is also declared in l10n_mx_sat manifest external_dependencies;
+# pin the floor here so CI/Runboat get Python 3.10-compatible builds
+# (SAT-CFDI/python-satcfdi#74 — 26.7.2+).
+satcfdi>=26.7.2
+urllib3>=2.0
+requests>=2.32
+odoo-addon-currency_rate_update==19.0.*
+odoo==19.0.*
+requests-mock

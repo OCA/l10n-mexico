@@ -374,7 +374,7 @@ ul.auto-toc {
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !! source digest: sha256:27824c887ed886e5ab4755784175f0101fba1bf2f892495d981d17386a7be1e4
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Alpha" src="https://img.shields.io/badge/maturity-Alpha-red.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/license-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/l10n-mexico/tree/18.0/l10n_mx_sat"><img alt="OCA/l10n-mexico" src="https://img.shields.io/badge/github-OCA%2Fl10n--mexico-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/l10n-mexico-18-0/l10n-mexico-18-0-l10n_mx_sat"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/l10n-mexico&amp;target_branch=18.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
+<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Alpha" src="https://img.shields.io/badge/maturity-Alpha-red.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/license-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/l10n-mexico/tree/19.0/l10n_mx_sat"><img alt="OCA/l10n-mexico" src="https://img.shields.io/badge/github-OCA%2Fl10n--mexico-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/l10n-mexico-19-0/l10n-mexico-19-0-l10n_mx_sat"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/l10n-mexico&amp;target_branch=19.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
 <div class="section" id="description">
 <h2>Description</h2>
 <p>Base module to connect Odoo to the Mexican Tax Administration (SAT)
@@ -417,10 +417,15 @@ Only for development or testing purpose, do not use in production.
 <tt class="docutils literal">`satcfdi</tt> &lt;<a class="reference external" href="https://pypi.org/project/satcfdi/">https://pypi.org/project/satcfdi/</a>&gt;`__ to communicate with
 the SAT web services. Install it in the same Python environment as Odoo
 before using SAT connection features.</p>
-<p>Install it with pip:</p>
+<p>Install it with pip (<strong>satcfdi &gt;= 26.7.2</strong>, which restores Python 3.10
+support and the retention download API):</p>
 <pre class="literal-block">
-pip install satcfdi
+pip install &quot;satcfdi&gt;=26.7.2&quot;
 </pre>
+<p><tt class="docutils literal">satcfdi</tt> is declared in the module manifest
+<tt class="docutils literal">external_dependencies</tt>. OCA CI and Runboat also pin it in the
+repository root <tt class="docutils literal"><span class="pre">test-requirements.txt</span></tt> (<tt class="docutils literal"><span class="pre">satcfdi&gt;=26.7.2</span></tt>),
+together with compatible <tt class="docutils literal">urllib3</tt> and <tt class="docutils literal">requests</tt> pins.</p>
 </div>
 <div class="section" id="configuration">
 <h2>Configuration</h2>
@@ -489,7 +494,7 @@ refresh logic before expecting SAT status updates from metadata files.</p>
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/l10n-mexico/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-<a class="reference external" href="https://github.com/OCA/l10n-mexico/issues/new?body=module:%20l10n_mx_sat%0Aversion:%2018.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
+<a class="reference external" href="https://github.com/OCA/l10n-mexico/issues/new?body=module:%20l10n_mx_sat%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
@@ -524,7 +529,7 @@ mission is to support the collaborative development of Odoo features and
 promote its widespread use.</p>
 <p>Current <a class="reference external" href="https://odoo-community.org/page/maintainer-role">maintainer</a>:</p>
 <p><a class="reference external image-reference" href="https://github.com/max3903"><img alt="max3903" src="https://github.com/max3903.png?size=40px" /></a></p>
-<p>This module is part of the <a class="reference external" href="https://github.com/OCA/l10n-mexico/tree/18.0/l10n_mx_sat">OCA/l10n-mexico</a> project on GitHub.</p>
+<p>This module is part of the <a class="reference external" href="https://github.com/OCA/l10n-mexico/tree/19.0/l10n_mx_sat">OCA/l10n-mexico</a> project on GitHub.</p>
 <p>You are welcome to contribute. To learn how please visit <a class="reference external" href="https://odoo-community.org/page/Contribute">https://odoo-community.org/page/Contribute</a>.</p>
 </div>
 </div>

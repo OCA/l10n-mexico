@@ -8,6 +8,7 @@ dependencies = [
     "odoo-addon-l10n_mx_catalogs_comex==19.0.*",
     "odoo-addon-l10n_mx_cfdi==19.0.*",
     "odoo-addon-l10n_mx_cfdi_account==19.0.*",
+    "odoo-addon-l10n_mx_sat==19.0.*",
     "odoo-addon-l10n_mx_cfdi_waybill==19.0.*",
 ]
 classifiers=[

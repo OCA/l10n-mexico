@@ -90,13 +90,10 @@ class L10nMxSatDocument(models.Model):
         compute="_compute_display_name", store=True, readonly=True
     )
 
-    _sql_constraints = [
-        (
-            "uuid_company_kind_direction_uniq",
-            "UNIQUE(uuid, company_id, document_kind, direction)",
-            "A SAT document with this UUID already exists for this company.",
-        )
-    ]
+    _uuid_company_kind_direction_uniq = models.Constraint(
+        "UNIQUE(uuid, company_id, document_kind, direction)",
+        "A SAT document with this UUID already exists for this company.",
+    )
 
     @api.depends("uuid", "document_kind", "direction", "company_id.vat")
     def _compute_display_name(self):

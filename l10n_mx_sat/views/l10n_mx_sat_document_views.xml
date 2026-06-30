@@ -129,7 +129,7 @@
                     name="received"
                     domain="[('direction', '=', 'received')]"
                 />
-                <group expand="0" string="Group by">
+                <group>
                     <filter
                         string="Company"
                         name="group_company"

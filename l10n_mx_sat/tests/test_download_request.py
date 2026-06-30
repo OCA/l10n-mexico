@@ -27,6 +27,7 @@ from odoo.addons.l10n_mx_sat.services import (
     SAT_REQUEST_STATUS_PROCESSING,
     SAT_REQUEST_STATUS_READY,
     SAT_REQUEST_STATUS_REJECTED,
+    SAT_STATUS_CODE_LABELS,
 )
 from odoo.addons.l10n_mx_sat.services.sat_metadata import (
     build_request_fingerprint,
@@ -35,8 +36,9 @@ from odoo.addons.l10n_mx_sat.services.sat_metadata import (
 )
 
 _PATCH_GET_CLIENT = (
-    "odoo.addons.l10n_mx_sat.models.res_company.ResCompany." "l10n_mx_sat_get_client"
+    "odoo.addons.l10n_mx_sat.models.res_company.ResCompany.l10n_mx_sat_get_client"
 )
+_SVC = "odoo.addons.l10n_mx_sat.services.sat_client"
 _DEFAULT_CFDI_UUID = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
 
 
@@ -46,6 +48,13 @@ class TestSatMetadata(TransactionCase):
         self.assertEqual(normalize_sat_status("Valid"), "valid")
         self.assertEqual(normalize_sat_status("Cancelled"), "cancelled")
         self.assertEqual(normalize_sat_status("In progress"), "in_progress")
+        self.assertEqual(normalize_sat_status("Vigente"), "valid")
+        self.assertEqual(normalize_sat_status("Cancelado"), "cancelled")
+        self.assertEqual(normalize_sat_status("En Proceso"), "in_progress")
+        self.assertEqual(normalize_sat_status("enproceso"), "in_progress")
+        self.assertFalse(normalize_sat_status(""))
+        self.assertFalse(normalize_sat_status(None))
+        self.assertEqual(normalize_sat_status("Weird Status"), "weird_status")
 
     def test_parse_metadata_content(self):
         content = (
@@ -59,12 +68,38 @@ class TestSatMetadata(TransactionCase):
         self.assertEqual(rows[0]["uuid"], "AAA-BBB")
         self.assertEqual(rows[0]["sat_status"], "cancelled")
 
+    def test_parse_metadata_content_empty_and_csv(self):
+        self.assertEqual(parse_metadata_content(b""), [])
+        self.assertEqual(parse_metadata_content(b"   \n"), [])
+        content = (
+            b"\xef\xbb\xbfFolioFiscal,RfcEmisor,NombreEmisor,RfcReceptor,"
+            b"NombreReceptor,FechaEmision,FechaCertificacion,Total,"
+            b"EfectoComprobante,Estado\n"
+            b"abc-def,EKU9003173C9,EMPRESA,AAA010101AAA,CLIENTE,"
+            b"2026-01-01,2026-01-01,10.00,I,Vigente\n"
+            b",EKU9003173C9,EMPRESA,AAA010101AAA,CLIENTE,"
+            b"2026-01-01,2026-01-01,10.00,I,Vigente\n"
+        )
+        rows = parse_metadata_content(content)
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["uuid"], "ABC-DEF")
+        self.assertEqual(rows[0]["sat_status"], "valid")
+
     def test_build_request_fingerprint_stable(self):
         fi = datetime(2026, 1, 1)
         ff = datetime(2026, 1, 31)
         fp1 = build_request_fingerprint(1, "cfdi", "received", "metadata", fi, ff)
         fp2 = build_request_fingerprint(1, "cfdi", "received", "metadata", fi, ff)
         self.assertEqual(fp1, fp2)
+        fp_other_company = build_request_fingerprint(
+            2, "cfdi", "received", "metadata", fi, ff
+        )
+        self.assertNotEqual(fp1, fp_other_company)
+        fp_none_dates = build_request_fingerprint(
+            1, "cfdi", "received", "metadata", None, None
+        )
+        self.assertTrue(fp_none_dates)
+        self.assertNotEqual(fp1, fp_none_dates)
 
 
 @tagged("post_install", "-at_install")
@@ -82,7 +117,7 @@ class TestDownloadRequest(TransactionCase):
                 "l10n_mx_sat_fiel_password": "test",
             }
         )
-        cls.env.user.groups_id |= cls.env.ref("l10n_mx_sat.group_sat_manager")
+        cls.env.user.group_ids |= cls.env.ref("l10n_mx_sat.group_sat_manager")
 
     def setUp(self):
         super().setUp()
@@ -110,6 +145,11 @@ class TestDownloadRequest(TransactionCase):
         for attr, val in overrides.items():
             setattr(client, attr, val)
         return client
+
+    def test_mock_client_applies_overrides(self):
+        client = self._mock_client(rfc="OVERRIDE", authenticate=lambda: "tok")
+        self.assertEqual(client.rfc, "OVERRIDE")
+        self.assertEqual(client.authenticate(), "tok")
 
     def _patch_factory(self, mock_client):
         return patch(_PATCH_GET_CLIENT, return_value=mock_client)
@@ -181,16 +221,23 @@ class TestDownloadRequest(TransactionCase):
             "sat_request_id": "",
             "message": "Tope maximo",
         }
-        req = self._create_request()
+        req = self._create_request(
+            date_from="2026-03-01 00:00:00",
+            date_to="2026-03-31 23:59:59",
+        )
+        original_date_to = req.date_to
         with self._patch_factory(client):
             req._action_request()
         self.assertEqual(req.state, "draft")
-        self.assertTrue(
-            self.env["l10n_mx_sat.download.request"].search_count(
-                [("company_id", "=", self.company.id)]
-            )
-            >= 2
+        mid = req.date_to
+        second = self.env["l10n_mx_sat.download.request"].search(
+            [
+                ("company_id", "=", self.company.id),
+                ("date_from", "=", mid + timedelta(seconds=1)),
+                ("date_to", "=", original_date_to),
+            ]
         )
+        self.assertEqual(len(second), 1)
 
     def test_fingerprint_prevents_duplicate_request(self):
         req = self._create_request()
@@ -281,12 +328,19 @@ class TestDownloadRequest(TransactionCase):
         self.env["l10n_mx_sat.download.request"].search(
             [("company_id", "=", self.company.id)]
         ).unlink()
+        self.company.write(
+            {
+                "l10n_mx_sat_metadata_sync_from": "2025-01-01",
+                "l10n_mx_sat_sync_from": False,
+            }
+        )
         req = self.env["l10n_mx_sat.download.request"]._create_next_request(
             self.company, "cfdi", "received", "metadata"
         )
         self.assertTrue(req)
         delta = req.date_to - req.date_from
         self.assertLessEqual(delta.days, 7)
+        self.assertEqual(req.date_from.date().isoformat(), "2025-01-01")
 
     def test_manual_sync_creates_requests(self):
         """Manual sync must create and chain XML requests for enabled flows."""
@@ -466,6 +520,83 @@ class TestDownloadRequest(TransactionCase):
             ),
             count_before,
         )
+
+    @patch(f"{_SVC}.SAT")
+    @patch(f"{_SVC}.Signer.load")
+    def test_action_retry_retention_legacy_satcfdi_re_requests(
+        self, mock_signer_load, mock_sat_cls
+    ):
+        """Retry without sat_request_id uses legacy recover_retencion_request."""
+        legacy_sat = type(
+            "LegacySat",
+            (),
+            {
+                "_autentica_comprobante": lambda self: {
+                    "AutenticaResult": "fake-token"
+                },
+                "recover_retencion_request": lambda self, **kwargs: {
+                    "CodEstatus": SAT_CODE_SUCCESS,
+                    "IdSolicitud": "SOL-RETRY-L",
+                    "Mensaje": "Solicitud aceptada",
+                },
+                "recover_retencion_status": lambda self, sat_request_id: {
+                    "CodEstatus": SAT_CODE_SUCCESS,
+                    "EstadoSolicitud": SAT_REQUEST_STATUS_REJECTED,
+                    "CodigoEstadoSolicitud": SAT_CODE_NO_INFO,
+                    "NumeroCFDIs": 0,
+                    "IdsPaquetes": [],
+                    "Mensaje": "Solicitud Accepted",
+                },
+            },
+        )()
+        mock_sat_cls.return_value = legacy_sat
+        mock_signer_load.return_value.rfc = self.company.vat
+        req = self._create_request(
+            document_kind="retention",
+            direction="issued",
+            state="error",
+            error_message="Fallo inicial",
+        )
+        req.action_retry()
+        self.assertEqual(req.state, "done")
+        self.assertEqual(req.sat_request_id, "SOL-RETRY-L")
+        self.assertFalse(req.error_message)
+
+    @patch(f"{_SVC}.SAT")
+    @patch(f"{_SVC}.Signer.load")
+    def test_action_retry_retention_legacy_satcfdi_verify_only(
+        self, mock_signer_load, mock_sat_cls
+    ):
+        """Retry with sat_request_id verifies via legacy recover_retencion_status."""
+        legacy_sat = type(
+            "LegacySat",
+            (),
+            {
+                "_autentica_comprobante": lambda self: {
+                    "AutenticaResult": "fake-token"
+                },
+                "recover_retencion_status": lambda self, sat_request_id: {
+                    "CodEstatus": SAT_CODE_SUCCESS,
+                    "EstadoSolicitud": SAT_REQUEST_STATUS_REJECTED,
+                    "CodigoEstadoSolicitud": SAT_CODE_NO_INFO,
+                    "NumeroCFDIs": 0,
+                    "IdsPaquetes": [],
+                    "Mensaje": "Solicitud Accepted",
+                },
+            },
+        )()
+        mock_sat_cls.return_value = legacy_sat
+        mock_signer_load.return_value.rfc = self.company.vat
+        req = self._create_request(
+            document_kind="retention",
+            direction="received",
+            state="error",
+            sat_request_id="SOL-EXISTING-L",
+            error_message="Error de verificacion previo",
+        )
+        req.action_retry()
+        self.assertEqual(req.state, "done")
+        self.assertFalse(req.error_message)
 
     def test_action_retry_from_error_with_sat_request_id(self):
         client = self._mock_client()
@@ -855,6 +986,13 @@ class TestDownloadRequest(TransactionCase):
         still = Request._refresh_pending_companies(self.company)
         self.assertIn(self.company.id, still)
 
+    def test_refresh_pending_skips_when_auto_download_disabled(self):
+        Request = self.env["l10n_mx_sat.download.request"]
+        Request.search([("company_id", "=", self.company.id)]).unlink()
+        self.company.l10n_mx_sat_auto_download = False
+        still = Request._refresh_pending_companies(self.company)
+        self.assertNotIn(self.company.id, still)
+
     def test_cron_process_requests_batch_size_one(self):
         Request = self.env["l10n_mx_sat.download.request"]
         Request.search([("company_id", "=", self.company.id)]).unlink()
@@ -1097,13 +1235,470 @@ class TestDownloadRequest(TransactionCase):
         req = self._create_request(state="done")
         self.assertFalse(req.can_retry)
 
+    def test_action_verify_max_elements_5003_splits(self):
+        client = self._mock_client()
+        client.verify_download.return_value = {
+            "cod_estatus": SAT_CODE_MAX_ELEMENTS,
+            "request_status": 0,
+            "request_status_code": "",
+            "reported_cfdi_count": 0,
+            "packages": [],
+            "message": "Tope maximo",
+        }
+        req = self._create_request(
+            state="requested",
+            sat_request_id="SOL-5003",
+            date_from="2026-03-01 00:00:00",
+            date_to="2026-03-31 23:59:59",
+        )
+        original_date_to = req.date_to
+        with self._patch_factory(client):
+            req._action_verify()
+        self.assertEqual(req.state, "draft")
+        self.assertIn("5003", req.error_message or "")
+        mid = req.date_to
+        second = self.env["l10n_mx_sat.download.request"].search(
+            [
+                ("company_id", "=", self.company.id),
+                ("date_from", "=", mid + timedelta(seconds=1)),
+                ("date_to", "=", original_date_to),
+            ]
+        )
+        self.assertEqual(len(second), 1)
+        self.assertEqual(second.state, "draft")
+
+    def test_action_verify_max_elements_skips_existing_second_half(self):
+        client = self._mock_client()
+        client.verify_download.return_value = {
+            "cod_estatus": SAT_CODE_MAX_ELEMENTS,
+            "request_status": 0,
+            "request_status_code": "",
+            "reported_cfdi_count": 0,
+            "packages": [],
+            "message": "Tope maximo",
+        }
+        req = self._create_request(
+            state="requested",
+            sat_request_id="SOL-5003B",
+            date_from="2026-03-01 00:00:00",
+            date_to="2026-03-31 23:59:59",
+        )
+        mid = req.date_from + (req.date_to - req.date_from) / 2
+        self._create_request(
+            date_from=mid + timedelta(seconds=1),
+            date_to=req.date_to,
+            state="draft",
+        )
+        before = self.env["l10n_mx_sat.download.request"].search_count(
+            [("company_id", "=", self.company.id)]
+        )
+        with self._patch_factory(client):
+            req._action_verify()
+        after = self.env["l10n_mx_sat.download.request"].search_count(
+            [("company_id", "=", self.company.id)]
+        )
+        self.assertEqual(req.state, "draft")
+        self.assertEqual(after, before)
+
+    def test_action_download_partial_package_success(self):
+        uuid = "33333333-4444-5555-6666-777777777777"
+        package_ok = self._build_zip_b64(
+            {"cfdi.xml": self._minimal_cfdi_xml(uuid=uuid)}
+        )
+        client = self._mock_client()
+
+        def _download(_token, _rfc, package_id, document_kind="cfdi"):
+            if package_id == "PKG-OK":
+                return {"cod_estatus": SAT_CODE_SUCCESS, "package_b64": package_ok}
+            return {"cod_estatus": SAT_CODE_SUCCESS, "package_b64": ""}
+
+        client.download_package.side_effect = _download
+        req = self._create_request(state="ready", sat_request_id="SOL-PART")
+        pkg_ok = self._create_package(req, "PKG-OK")
+        pkg_bad = self._create_package(req, "PKG-BAD")
+        with self._patch_factory(client):
+            req._action_download()
+        self.assertEqual(pkg_ok.state, "processed")
+        self.assertEqual(pkg_bad.state, "error")
+        self.assertEqual(req.state, "done")
+        self.assertGreaterEqual(req.document_count, 1)
+
+    def test_action_download_empty_package_b64_marks_error(self):
+        client = self._mock_client()
+        client.download_package.return_value = {
+            "cod_estatus": SAT_CODE_SUCCESS,
+            "package_b64": "",
+        }
+        req = self._create_request(state="ready", sat_request_id="SOL-EMPTY")
+        pkg = self._create_package(req)
+        with self._patch_factory(client):
+            req._action_download()
+        self.assertEqual(pkg.state, "error")
+        self.assertEqual(req.state, "error")
+        self.assertIn("All packages failed", req.error_message)
+
+    @mute_logger("odoo.addons.l10n_mx_sat.models.l10n_mx_sat_download_request")
+    def test_action_download_package_exception_marks_error(self):
+        client = self._mock_client()
+        client.download_package.side_effect = Exception("boom")
+        req = self._create_request(state="ready", sat_request_id="SOL-EXC")
+        pkg = self._create_package(req)
+        with self._patch_factory(client):
+            req._action_download()
+        self.assertEqual(pkg.state, "error")
+        self.assertEqual(req.state, "error")
+        self.assertIn("All packages failed", req.error_message)
+
+    def test_is_request_executable_states(self):
+        Request = self.env["l10n_mx_sat.download.request"]
+        now = fields.Datetime.now()
+        draft = self._create_request(state="draft")
+        ready = self._create_request(
+            state="ready",
+            date_from="2026-04-01 00:00:00",
+            date_to="2026-04-15 23:59:59",
+        )
+        waiting_now = self._create_request(
+            state="requested",
+            sat_request_id="SOL-W1",
+            date_from="2026-04-16 00:00:00",
+            date_to="2026-04-20 23:59:59",
+            next_process_at=False,
+        )
+        waiting_past = self._create_request(
+            state="processing",
+            sat_request_id="SOL-W2",
+            date_from="2026-04-21 00:00:00",
+            date_to="2026-04-25 23:59:59",
+            next_process_at=now - timedelta(hours=1),
+        )
+        waiting_future = self._create_request(
+            state="processing",
+            sat_request_id="SOL-W3",
+            date_from="2026-04-26 00:00:00",
+            date_to="2026-04-30 23:59:59",
+            next_process_at=now + timedelta(hours=1),
+        )
+        done = self._create_request(
+            state="done",
+            date_from="2026-05-01 00:00:00",
+            date_to="2026-05-05 23:59:59",
+        )
+        self.assertTrue(Request._is_request_executable(draft, now=now))
+        self.assertTrue(Request._is_request_executable(ready, now=now))
+        self.assertTrue(Request._is_request_executable(waiting_now, now=now))
+        self.assertTrue(Request._is_request_executable(waiting_past, now=now))
+        self.assertFalse(Request._is_request_executable(waiting_future, now=now))
+        self.assertFalse(Request._is_request_executable(done, now=now))
+
+    def test_ensure_scheduled_skips_last_error_5002(self):
+        Request = self.env["l10n_mx_sat.download.request"]
+        Request.search([("company_id", "=", self.company.id)]).unlink()
+        self.company.write(
+            {
+                "l10n_mx_sat_download_cfdi_issued": False,
+                "l10n_mx_sat_download_cfdi_received": True,
+                "l10n_mx_sat_download_retention_issued": False,
+                "l10n_mx_sat_download_retention_received": False,
+            }
+        )
+        self._create_request(
+            state="error",
+            error_message="SAT: duplicate request limit reached (5002).",
+            date_from="2026-06-01 00:00:00",
+            date_to="2026-06-15 23:59:59",
+        )
+        Request._ensure_scheduled_requests(self.company)
+        drafts = Request.search(
+            [
+                ("company_id", "=", self.company.id),
+                ("state", "=", "draft"),
+                ("document_kind", "=", "cfdi"),
+                ("direction", "=", "received"),
+            ]
+        )
+        self.assertFalse(drafts)
+
+    def test_create_next_request_returns_empty_when_caught_up(self):
+        Request = self.env["l10n_mx_sat.download.request"]
+        yesterday_eod = (fields.Datetime.now() - timedelta(days=1)).replace(
+            hour=23, minute=59, second=59, microsecond=0
+        )
+        self._create_request(
+            state="done",
+            date_from=yesterday_eod - timedelta(days=7),
+            date_to=yesterday_eod,
+        )
+        nxt = Request._create_next_request(self.company, "cfdi", "received", "xml")
+        self.assertFalse(nxt)
+
+    def test_get_display_rfc_exception_falls_back_to_name(self):
+        self.company.write({"vat": False, "name": "Fallback Co"})
+        self.env.invalidate_all()
+        Request = self.env["l10n_mx_sat.download.request"]
+        with patch(
+            "odoo.addons.l10n_mx_sat.models.res_company.ResCompany.l10n_mx_sat_get_rfc",
+            side_effect=UserError("no rfc"),
+        ):
+            rfc = Request._get_display_rfc(self.company)
+        self.assertEqual(rfc, "Fallback Co")
+
+    def test_action_retry_success_notification(self):
+        client = self._mock_client()
+        client.verify_download.return_value = {
+            "cod_estatus": SAT_CODE_SUCCESS,
+            "request_status": SAT_REQUEST_STATUS_REJECTED,
+            "request_status_code": SAT_CODE_NO_INFO,
+            "reported_cfdi_count": 0,
+            "packages": [],
+            "message": "Solicitud Accepted",
+        }
+        req = self._create_request(
+            state="error",
+            sat_request_id="SOL-OK-RETRY",
+            error_message="temporary verify error",
+            date_from="2026-07-01 00:00:00",
+            date_to="2026-07-07 23:59:59",
+        )
+        with self._patch_factory(client):
+            action = req.action_retry()
+        self.assertEqual(req.state, "done")
+        self.assertEqual(action["params"]["type"], "success")
+        self.assertIn("Processed", action["params"]["message"])
+
+    def test_action_retry_danger_notification(self):
+        client = self._mock_client()
+        client.verify_download.return_value = {
+            "cod_estatus": SAT_CODE_SUCCESS,
+            "request_status": SAT_REQUEST_STATUS_REJECTED,
+            "request_status_code": "5005",
+            "reported_cfdi_count": 0,
+            "packages": [],
+            "message": "Rejected again",
+        }
+        req = self._create_request(
+            state="error",
+            sat_request_id="SOL-BAD-RETRY",
+            error_message="temporary verify error",
+            date_from="2026-07-08 00:00:00",
+            date_to="2026-07-10 23:59:59",
+        )
+        with self._patch_factory(client):
+            action = req.action_retry()
+        self.assertEqual(req.state, "error")
+        self.assertEqual(action["params"]["type"], "danger")
+        self.assertTrue(action["params"]["sticky"])
+
+    def test_cron_trigger_with_and_without_at(self):
+        Request = self.env["l10n_mx_sat.download.request"]
+        cron = self.env.ref("l10n_mx_sat.ir_cron_sat_download")
+        with patch.object(type(cron), "_trigger") as mock_trigger:
+            Request._cron_trigger()
+            mock_trigger.assert_called_once_with()
+            mock_trigger.reset_mock()
+            at = fields.Datetime.now() + timedelta(minutes=5)
+            Request._cron_trigger(at=at)
+            mock_trigger.assert_called_once_with(at=at)
+
+    def test_sat_label_helpers(self):
+        Request = self.env["l10n_mx_sat.download.request"]
+        self.assertTrue(Request._sat_request_status_label(SAT_REQUEST_STATUS_READY))
+        self.assertEqual(Request._sat_status_code_label(""), "(empty)")
+        self.assertEqual(
+            Request._sat_status_code_label(SAT_CODE_SUCCESS),
+            SAT_STATUS_CODE_LABELS[SAT_CODE_SUCCESS],
+        )
+        self.assertEqual(
+            Request._sat_status_code_label("9999"),
+            "9999",
+        )
+        self.assertEqual(Request._selection_label("state", "draft"), "Draft")
+        self.assertFalse(Request._selection_label("state", False))
+
+    def test_create_next_request_empty_on_fingerprint_collision(self):
+        Request = self.env["l10n_mx_sat.download.request"]
+        fake_done = MagicMock()
+        fake_done.date_to = datetime(2026, 1, 15, 23, 59, 59)
+        with patch.object(
+            type(Request),
+            "search",
+            side_effect=[fake_done, Request.browse([1])],
+        ):
+            nxt = Request._create_next_request(self.company, "cfdi", "received", "xml")
+        self.assertFalse(nxt)
+
+    def test_get_display_rfc_falls_back_to_question_mark(self):
+        Request = self.env["l10n_mx_sat.download.request"]
+        company = self.company.new(
+            {
+                "vat": False,
+                "name": False,
+                "l10n_mx_sat_fiel_cer": False,
+                "l10n_mx_sat_fiel_key": False,
+                "l10n_mx_sat_fiel_password": False,
+            }
+        )
+        self.assertEqual(Request._get_display_rfc(company), "?")
+
+    def test_action_request_unknown_response_writes_error(self):
+        client = self._mock_client()
+        client.request_download.return_value = {
+            "cod_estatus": "8888",
+            "sat_request_id": "",
+            "message": "Weird SAT reply",
+        }
+        req = self._create_request(
+            date_from="2026-08-01 00:00:00",
+            date_to="2026-08-05 23:59:59",
+        )
+        with self._patch_factory(client):
+            req._action_request()
+        self.assertEqual(req.state, "error")
+        self.assertIn("8888", req.error_message)
+
+    def test_process_pipeline_downloads_when_ready(self):
+        uuid = "PIPE-READY-UUID-1234567890123456789012"
+        package_b64 = self._build_zip_b64(
+            {"cfdi.xml": self._minimal_cfdi_xml(uuid=uuid)}
+        )
+        client = self._mock_client()
+        client.download_package.return_value = {
+            "cod_estatus": SAT_CODE_SUCCESS,
+            "package_b64": package_b64,
+        }
+        req = self._create_request(
+            state="ready",
+            sat_request_id="SOL-PIPE",
+            date_from="2026-08-06 00:00:00",
+            date_to="2026-08-10 23:59:59",
+        )
+        self._create_package(req)
+        with self._patch_factory(client):
+            req._process_request_pipeline()
+        self.assertEqual(req.state, "done")
+
+    def test_action_download_metadata_skips_non_text_files(self):
+        metadata = (
+            b"Uuid|RfcEmisor|RfcReceptor|Total|Estado\n"
+            b"META-SKIP|EKU9003173C9|AAA010101AAA|10.00|Valid\n"
+        )
+        package_b64 = self._build_zip_b64(
+            {"notes.pdf": b"ignored", "metadata.txt": metadata}
+        )
+        client = self._mock_client()
+        client.download_package.return_value = {
+            "cod_estatus": SAT_CODE_SUCCESS,
+            "package_b64": package_b64,
+        }
+        req = self._create_request(
+            request_type="metadata",
+            state="ready",
+            sat_request_id="SOL-META-SKIP",
+            date_from="2026-08-11 00:00:00",
+            date_to="2026-08-15 23:59:59",
+        )
+        self._create_package(req)
+        with self._patch_factory(client):
+            req._action_download()
+        self.assertEqual(req.state, "done")
+        self.assertEqual(req.document_count, 1)
+
+    def test_refresh_pending_schedules_when_idle_with_auto_download(self):
+        Request = self.env["l10n_mx_sat.download.request"]
+        Request.search([("company_id", "=", self.company.id)]).unlink()
+        self.company.write(
+            {
+                "l10n_mx_sat_auto_download": True,
+                "l10n_mx_sat_download_cfdi_issued": False,
+                "l10n_mx_sat_download_cfdi_received": True,
+                "l10n_mx_sat_download_retention_issued": False,
+                "l10n_mx_sat_download_retention_received": False,
+                "l10n_mx_sat_sync_from": "2026-01-01",
+            }
+        )
+        still = Request._refresh_pending_companies(self.company)
+        self.assertIn(self.company.id, still)
+        self.assertTrue(
+            Request.search(
+                [
+                    ("company_id", "=", self.company.id),
+                    ("state", "=", "draft"),
+                    ("direction", "=", "received"),
+                ]
+            )
+        )
+
+    def test_cron_process_requests_without_companies_arg(self):
+        Request = self.env["l10n_mx_sat.download.request"]
+        Request.search([("company_id", "=", self.company.id)]).unlink()
+        self.company.write(
+            {
+                "l10n_mx_sat_auto_download": True,
+                "l10n_mx_sat_download_cfdi_issued": False,
+                "l10n_mx_sat_download_cfdi_received": True,
+                "l10n_mx_sat_download_retention_issued": False,
+                "l10n_mx_sat_download_retention_received": False,
+                "l10n_mx_sat_sync_from": "2026-01-10",
+            }
+        )
+        client = self._mock_client()
+        client.request_download.return_value = {
+            "cod_estatus": SAT_CODE_SUCCESS,
+            "sat_request_id": "SOL-AUTO",
+            "message": "Solicitud aceptada",
+        }
+        client.verify_download.return_value = {
+            "cod_estatus": SAT_CODE_SUCCESS,
+            "request_status": SAT_REQUEST_STATUS_REJECTED,
+            "request_status_code": SAT_CODE_NO_INFO,
+            "reported_cfdi_count": 0,
+            "packages": [],
+            "message": "Accepted",
+        }
+        with (
+            self._patch_factory(client),
+            patch.object(type(Request), "_cron_trigger"),
+        ):
+            Request._cron_process_requests()
+        self.assertTrue(
+            Request.search(
+                [("company_id", "=", self.company.id), ("state", "!=", "draft")]
+            )
+        )
+
+    def test_create_next_request_uses_sync_from_without_last_done(self):
+        Request = self.env["l10n_mx_sat.download.request"]
+        Request.search([("company_id", "=", self.company.id)]).unlink()
+        self.company.write({"l10n_mx_sat_sync_from": "2026-02-01"})
+        req = Request._create_next_request(self.company, "cfdi", "received", "xml")
+        self.assertTrue(req)
+        self.assertEqual(req.date_from.date().isoformat(), "2026-02-01")
+
+    def test_create_next_request_strips_timezone_from_date_from(self):
+        from datetime import timezone
+
+        Request = self.env["l10n_mx_sat.download.request"]
+        Request.search([("company_id", "=", self.company.id)]).unlink()
+        aware = datetime(2026, 3, 1, 0, 0, 0, tzinfo=timezone.utc)
+        empty = Request.browse()
+        fake_done = MagicMock()
+        fake_done.date_to = aware
+        with patch.object(
+            type(Request),
+            "search",
+            side_effect=[fake_done, empty, empty, empty],
+        ):
+            req = Request._create_next_request(self.company, "cfdi", "received", "xml")
+        self.assertTrue(req)
+        self.assertIsNone(req.date_from.tzinfo)
+
 
 @tagged("post_install", "-at_install")
 class TestMultiCompanySAT(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.env.user.groups_id |= cls.env.ref("l10n_mx_sat.group_sat_manager")
+        cls.env.user.group_ids |= cls.env.ref("l10n_mx_sat.group_sat_manager")
         cls.company_a = cls.env.ref("base.main_company")
         cls.company_a.write(
             {

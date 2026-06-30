@@ -285,7 +285,7 @@ class TestResCompanySATConnection(TransactionCase):
         self.assertEqual(action["context"], {"default_company_id": self.company.id})
 
     def test_sat_document_and_request_counts(self):
-        self.env.user.groups_id = [(4, self.env.ref("l10n_mx_sat.group_sat_user").id)]
+        self.env.user.group_ids = [(4, self.env.ref("l10n_mx_sat.group_sat_user").id)]
         self.env["l10n_mx_sat.document"]._sat_create(
             [
                 {
@@ -312,3 +312,83 @@ class TestResCompanySATConnection(TransactionCase):
 
         self.assertEqual(self.company.l10n_mx_sat_document_count, 1)
         self.assertEqual(self.company.l10n_mx_sat_download_request_count, 1)
+
+    def test_sat_counts_zero_without_sat_group(self):
+        self.env["l10n_mx_sat.document"]._sat_create(
+            [
+                {
+                    "company_id": self.company.id,
+                    "uuid": "COUNT-NO-GROUP-UUID",
+                    "document_kind": "cfdi",
+                    "direction": "received",
+                }
+            ]
+        )
+        group_user = self.env.ref("l10n_mx_sat.group_sat_user")
+        group_manager = self.env.ref("l10n_mx_sat.group_sat_manager")
+        self.env.user.group_ids = [(3, group_user.id), (3, group_manager.id)]
+        self.company._compute_l10n_mx_sat_document_count()
+        self.company._compute_l10n_mx_sat_download_request_count()
+        self.assertEqual(self.company.l10n_mx_sat_document_count, 0)
+        self.assertEqual(self.company.l10n_mx_sat_download_request_count, 0)
+
+    @patch(f"{_SVC}.Signer.load")
+    @patch(f"{_SVC}.SAT")
+    def test_get_client_rfc_mismatch_raises(self, mock_sat_cls, mock_signer_load):
+        self._set_credentials()
+        self.company.vat = "EKU9003173C9"
+        mock_signer_load.return_value.rfc = "AAA010101AAA"
+        with self.assertRaises(UserError) as err:
+            self.company.l10n_mx_sat_get_client()
+        self.assertIn("does not match", err.exception.args[0])
+
+    def test_get_rfc_raises_when_unavailable(self):
+        self.company.vat = False
+        client = MagicMock()
+        client.rfc = False
+        with self.assertRaises(UserError) as err:
+            self.company.l10n_mx_sat_get_rfc(client)
+        self.assertIn("Could not determine the RFC", err.exception.args[0])
+
+    def test_xml_download_flows_respects_flags(self):
+        self.company.write(
+            {
+                "l10n_mx_sat_download_cfdi_issued": True,
+                "l10n_mx_sat_download_cfdi_received": False,
+                "l10n_mx_sat_download_retention_issued": False,
+                "l10n_mx_sat_download_retention_received": True,
+            }
+        )
+        flows = self.company.l10n_mx_sat_get_xml_download_flows()
+        self.assertEqual(
+            flows,
+            [
+                ("cfdi", "issued", "xml"),
+                ("retention", "received", "xml"),
+            ],
+        )
+
+    def test_vat_write_allowed_without_fiel(self):
+        self.company.write(
+            {
+                "l10n_mx_sat_fiel_cer": False,
+                "l10n_mx_sat_fiel_key": False,
+                "l10n_mx_sat_fiel_password": False,
+                "vat": "AAA010101AAA",
+            }
+        )
+        self.assertEqual(self.company.vat, "AAA010101AAA")
+
+    @patch(f"{_SVC}.Signer.load")
+    @patch(f"{_SVC}.SAT")
+    def test_fiel_status_when_client_fails(self, mock_sat_cls, mock_signer_load):
+        self._set_credentials()
+        mock_signer_load.side_effect = Exception("bad fiel")
+        self.company.invalidate_recordset(
+            [
+                "l10n_mx_sat_fiel_configured",
+                "l10n_mx_sat_fiel_rfc",
+            ]
+        )
+        self.assertTrue(self.company.l10n_mx_sat_fiel_configured)
+        self.assertFalse(self.company.l10n_mx_sat_fiel_rfc)
