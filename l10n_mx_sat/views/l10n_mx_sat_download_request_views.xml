@@ -161,14 +161,14 @@
                     name="pending"
                     domain="[('state', 'not in', ('done', 'error'))]"
                 />
-                <group expand="0" string="Group by">
+                <group>
                     <filter
                         string="Company"
                         name="group_company"
                         context="{'group_by': 'company_id'}"
                     />
                     <filter
-                        string="Estado"
+                        string="State"
                         name="group_state"
                         context="{'group_by': 'state'}"
                     />

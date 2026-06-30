@@ -44,8 +44,32 @@ class TestFielCredentialsWizard(TransactionCase):
         wizard = self.env["l10n_mx_sat.fiel.credentials.wizard"].create(
             {"company_id": self.company.id}
         )
-        with self.assertRaises(UserError):
+        with self.assertRaises(UserError) as err:
             wizard.action_apply()
+        self.assertIn("certificate", err.exception.args[0].lower())
+
+    def test_wizard_requires_key(self):
+        wizard = self.env["l10n_mx_sat.fiel.credentials.wizard"].create(
+            {
+                "company_id": self.company.id,
+                "fiel_cer": MOCK_CER,
+            }
+        )
+        with self.assertRaises(UserError) as err:
+            wizard.action_apply()
+        self.assertIn("private key", err.exception.args[0].lower())
+
+    def test_wizard_requires_password(self):
+        wizard = self.env["l10n_mx_sat.fiel.credentials.wizard"].create(
+            {
+                "company_id": self.company.id,
+                "fiel_cer": MOCK_CER,
+                "fiel_key": MOCK_KEY,
+            }
+        )
+        with self.assertRaises(UserError) as err:
+            wizard.action_apply()
+        self.assertIn("password", err.exception.args[0].lower())
 
     def test_open_fiel_wizard_action(self):
         action = self.company.action_l10n_mx_sat_open_fiel_wizard()
@@ -69,3 +93,48 @@ class TestFielCredentialsWizard(TransactionCase):
         wizard.action_apply()
         self.assertEqual(self.company.vat, "RFCFIEL123")
         self.assertTrue(self.company.l10n_mx_sat_has_credentials())
+
+    @patch(_WIZ_SVC)
+    def test_wizard_normalizes_fiel_rfc(self, MockSatClient):
+        MockSatClient.return_value.rfc = "  abc010101xyz  "
+        self.company.vat = False
+        wizard = self.env["l10n_mx_sat.fiel.credentials.wizard"].create(
+            {
+                "company_id": self.company.id,
+                "fiel_cer": MOCK_CER,
+                "fiel_key": MOCK_KEY,
+                "fiel_password": MOCK_PASSWORD,
+            }
+        )
+        wizard.action_apply()
+        self.assertEqual(self.company.vat, "ABC010101XYZ")
+
+    @patch(_WIZ_SVC)
+    def test_wizard_empty_rfc_raises(self, MockSatClient):
+        MockSatClient.return_value.rfc = ""
+        wizard = self.env["l10n_mx_sat.fiel.credentials.wizard"].create(
+            {
+                "company_id": self.company.id,
+                "fiel_cer": MOCK_CER,
+                "fiel_key": MOCK_KEY,
+                "fiel_password": MOCK_PASSWORD,
+            }
+        )
+        with self.assertRaises(UserError) as err:
+            wizard.action_apply()
+        self.assertIn("rfc", err.exception.args[0].lower())
+
+    @patch(_WIZ_SVC)
+    def test_wizard_satcfdi_exception_raises_user_error(self, MockSatClient):
+        MockSatClient.side_effect = Exception("bad key")
+        wizard = self.env["l10n_mx_sat.fiel.credentials.wizard"].create(
+            {
+                "company_id": self.company.id,
+                "fiel_cer": MOCK_CER,
+                "fiel_key": MOCK_KEY,
+                "fiel_password": MOCK_PASSWORD,
+            }
+        )
+        with self.assertRaises(UserError) as err:
+            wizard.action_apply()
+        self.assertIn("Failed to validate FIEL", err.exception.args[0])

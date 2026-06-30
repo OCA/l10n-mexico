@@ -4,8 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 18.0\n"
+"Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-22 13:44+0000\n"
+"PO-Revision-Date: 2026-06-22 13:44+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -181,6 +183,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_download_package__display_name
 #: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_download_request__display_name
 #: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_fiel_credentials_wizard__display_name
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_res_company__display_name
 msgid "Display Name"
 msgstr ""
 
@@ -285,11 +288,6 @@ msgid ""
 msgstr ""
 
 #. module: l10n_mx_sat
-#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_download_request_view_search
-msgid "Estado"
-msgstr ""
-
-#. module: l10n_mx_sat
 #: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_fiel_credentials_wizard__fiel_cer
 #: model:ir.model.fields,field_description:l10n_mx_sat.field_res_company__l10n_mx_sat_fiel_cer
 msgid "FIEL certificate (.cer)"
@@ -357,12 +355,6 @@ msgid "From"
 msgstr ""
 
 #. module: l10n_mx_sat
-#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_document_view_search
-#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_download_request_view_search
-msgid "Group by"
-msgstr ""
-
-#. module: l10n_mx_sat
 #: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_fiel_credentials_wizard_view_form
 msgid "Guardar"
 msgstr ""
@@ -377,6 +369,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_download_package__id
 #: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_download_request__id
 #: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_fiel_credentials_wizard__id
+#: model:ir.model.fields,field_description:l10n_mx_sat.field_res_company__id
 msgid "ID"
 msgstr ""
 
@@ -451,6 +444,11 @@ msgstr ""
 #. module: l10n_mx_sat
 #: model:ir.model.fields,field_description:l10n_mx_sat.field_res_company__l10n_mx_sat_fiel_key_configured
 msgid "Llave FIEL configured"
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:res.groups,name:l10n_mx_sat.group_sat_manager
+msgid "Manager"
 msgstr ""
 
 #. module: l10n_mx_sat
@@ -586,18 +584,9 @@ msgid "Retry started. Current state: %(state)s."
 msgstr ""
 
 #. module: l10n_mx_sat
+#: model:res.groups.privilege,name:l10n_mx_sat.res_groups_privilege_sat
 #: model_terms:ir.ui.view,arch_db:l10n_mx_sat.view_company_form_inherit_l10n_mx_sat
 msgid "SAT"
-msgstr ""
-
-#. module: l10n_mx_sat
-#: model:res.groups,name:l10n_mx_sat.group_sat_manager
-msgid "SAT / Manager"
-msgstr ""
-
-#. module: l10n_mx_sat
-#: model:res.groups,name:l10n_mx_sat.group_sat_user
-msgid "SAT / User"
 msgstr ""
 
 #. module: l10n_mx_sat
@@ -809,6 +798,7 @@ msgstr ""
 #. module: l10n_mx_sat
 #: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_download_package__state
 #: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_download_request__state
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_download_request_view_search
 msgid "State"
 msgstr ""
 
@@ -902,6 +892,11 @@ msgid "Upload the FIEL private key (.key) first."
 msgstr ""
 
 #. module: l10n_mx_sat
+#: model:res.groups,name:l10n_mx_sat.group_sat_user
+msgid "User"
+msgstr ""
+
+#. module: l10n_mx_sat
 #: model:ir.model.fields.selection,name:l10n_mx_sat.selection__l10n_mx_sat_document__sat_status__valid
 #: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_document_view_search
 msgid "Valid"
@@ -941,6 +936,12 @@ msgstr ""
 msgid ""
 "You cannot change the company RFC/VAT while FIEL credentials are configured."
 " Update the FIEL to change it."
+msgstr ""
+
+#. module: l10n_mx_sat
+#. odoo-python
+#: code:addons/l10n_mx_sat/models/res_company.py:0
+msgid "company_id"
 msgstr ""
 
 #. module: l10n_mx_sat

@@ -134,12 +134,12 @@ class ResCompany(models.Model):
             for company in self:
                 company.l10n_mx_sat_document_count = 0
             return
-        grouped = self.env["l10n_mx_sat.document"].read_group(
-            [("company_id", "in", self.ids)],
-            ["company_id"],
-            ["company_id"],
+        grouped = self.env["l10n_mx_sat.document"]._read_group(
+            domain=[("company_id", "in", self.ids)],
+            groupby=["company_id"],
+            aggregates=["__count"],
         )
-        counts = {item["company_id"][0]: item["company_id_count"] for item in grouped}
+        counts = {company.id: count for company, count in grouped}
         for company in self:
             company.l10n_mx_sat_document_count = counts.get(company.id, 0)
 
@@ -148,12 +148,12 @@ class ResCompany(models.Model):
             for company in self:
                 company.l10n_mx_sat_download_request_count = 0
             return
-        grouped = self.env["l10n_mx_sat.download.request"].read_group(
-            [("company_id", "in", self.ids)],
-            ["company_id"],
-            ["company_id"],
+        grouped = self.env["l10n_mx_sat.download.request"]._read_group(
+            domain=[("company_id", "in", self.ids)],
+            groupby=["company_id"],
+            aggregates=["__count"],
         )
-        counts = {item["company_id"][0]: item["company_id_count"] for item in grouped}
+        counts = {company.id: count for company, count in grouped}
         for company in self:
             company.l10n_mx_sat_download_request_count = counts.get(company.id, 0)
 
