@@ -1,0 +1,8 @@
+<odoo>
+    <menuitem
+        id="cfdi_menu"
+        name="CFDI"
+        groups="base.group_system"
+        parent="base.menu_custom"
+    />
+</odoo>
