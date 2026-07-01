@@ -1,0 +1,8 @@
+<odoo noupdate="1">
+    <record id="cfdi_account_demo_issuer" model="l10n_mx_cfdi.issuer">
+        <field name="partner_id" ref="cfdi_account_demo_issuer_partner" />
+        <field name="fiscal_name">Demo CFDI Issuer SA de CV</field>
+        <field name="service_id" ref="cfdi_account_demo_service" />
+        <field name="registered" eval="True" />
+    </record>
+</odoo>

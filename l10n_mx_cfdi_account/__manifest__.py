@@ -1,0 +1,31 @@
+{
+    "name": "Mexico - CFDI - Account",
+    "summary": "Mexico CFDI Account Integration",
+    "author": "Alexis López Zubieta <alexis.lopez@augetec.com> (Auge TEC), "
+    "Odoo Community Association (OCA)",
+    "website": "https://github.com/OCA/l10n-mexico",
+    "license": "LGPL-3",
+    "category": "Accounting",
+    "version": "19.0.1.0.0",
+    "depends": ["l10n_mx_cfdi", "l10n_mx"],
+    "data": [
+        "security/ir.model.access.csv",
+        "views/account_move.xml",
+        "views/account_payment_register.xml",
+        "views/account_payment.xml",
+        "views/res_config_settings.xml",
+        "wizards/document_cancel_form.xml",
+        "wizards/create_cfdi_publico_en_general.xml",
+        "wizards/download_cfdi_files_wizard.xml",
+        "reports/report_external_layouts.xml",
+        "reports/report_invoice.xml",
+        "reports/report_payment.xml",
+    ],
+    "demo": [
+        "demo/l10n_mx_cfdi_cfdi_service_demo.xml",
+        "demo/res_partner_demo.xml",
+        "demo/l10n_mx_cfdi_issuer_demo.xml",
+        "demo/product_product_demo.xml",
+        "demo/account_move_demo.xml",
+    ],
+}
