@@ -250,6 +250,15 @@ msgid ""
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
+#, python-format
+msgid ""
+"An error occurred while downloading the CFDI %(file_format)s from the "
+"billing service."
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__pdf_file
 msgid "Archivo PDF"
 msgstr ""
@@ -758,6 +767,13 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.cfdi_signature_data
 msgid "Enlace de Verificación"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
+#, python-format
+msgid "Error downloading the CFDI %(file_format)s: %(message)s"
 msgstr ""
 
 #. module: l10n_mx_cfdi
