@@ -1,4 +1,3 @@
-import base64
 import re
 
 from odoo import _, api, fields, models
@@ -28,63 +27,26 @@ class Document(models.Model):
     def _compute_download_files_if_needed(self):
         for entry in self:
             if entry.tracking_id:
-                if not entry.pdf_file:
-                    report_type, report, resource_ids = self._resolve_report()
-
-                    if report:
-                        # force the report to be rendered to work around a bug
-                        # in _render_qweb_pdf
-                        report = self.env["ir.actions.report"].with_context(
-                            force_report_rendering=True
-                        )
-                        doc_data, doc_format = report._render_qweb_pdf(
-                            report_type, resource_ids
-                        )
-                        # in some scenarios, the report is not generated,
-                        # so we need to check if the file is empty
-                        if doc_data:
-                            result = base64.b64encode(doc_data)
-                            entry.pdf_file = result
-
-                    if not entry.pdf_file:
-                        # fallback to the provider's PDF
-                        res = entry.issuer_id.service_id.sudo().get_cfdi_pdf(
-                            entry.tracking_id
-                        )
-                        entry.pdf_file = res["Content"]
-
-                    # set filename
-                    entry.pdf_filename = "%s.pdf" % entry.name
-
-                if not entry.xml_file:
-                    res = entry.issuer_id.service_id.sudo().get_cfdi_xml(
-                        entry.tracking_id
-                    )
-                    entry.xml_file = res["Content"].encode("utf-8")
-                    entry.xml_filename = "%s.xml" % entry.name
-
+                entry._download_pdf_file_if_needed()
+                entry._download_xml_file_if_needed()
                 entry.files_in_cache = True
             else:
                 entry.files_in_cache = False
 
     def _resolve_report(self):
         """Returns the report and resource IDs for generating the PDF file."""
-        report_type = None
+        self.ensure_one()
         report = None
         resource_ids = []
 
-        for document in self:
-            if document.type in ("I", "E") and document.related_invoice_id:
-                report_type = "account.account_invoices"
-                report = self.env.ref(report_type)
-                resource_ids = [document.related_invoice_id.id]
+        if self.type in ("I", "E") and self.related_invoice_id:
+            report = self.env.ref("account.account_invoices")
+            resource_ids = [self.related_invoice_id.id]
+        elif self.type == "P" and self.related_payment_id:
+            report = self.env.ref("account.action_report_payment_receipt")
+            resource_ids = [self.related_payment_id.id]
 
-            if document.type == "P" and document.related_payment_id:
-                report_type = "account.action_report_payment_receipt"
-                report = self.env.ref(report_type)
-                resource_ids = [document.related_payment_id.id]
-
-            return report_type, report, resource_ids
+        return report, resource_ids
 
     ###
     # Model methods

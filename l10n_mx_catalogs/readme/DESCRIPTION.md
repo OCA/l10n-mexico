@@ -4,7 +4,7 @@ This module provides the data from the Mexican tax authority (SAT).
 
 - Necessary fields for electronic invoicing
 - Necessary fields for electronic payroll
-- Official data from Servicio de Administración Tributaria (SAT
+- Official data from Servicio de Administración Tributaria (SAT)
 
 ## Updates
 
