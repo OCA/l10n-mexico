@@ -13,12 +13,5 @@ class Fraccion(models.Model):
     @api.depends("name", "code")
     def _compute_display_name(self):
         for clave in self:
-            clave.display_name = (
-                False
-                if not clave.name
-                else (
-                    "{} - {}".format(
-                        clave.code and "[%s] " % clave.code or "", clave.name
-                    )
-                )
-            )
+            prefix = f"[{clave.code}] " if clave.code else ""
+            clave.display_name = False if not clave.name else f"{prefix}{clave.name}"

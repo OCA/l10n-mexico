@@ -22,4 +22,4 @@ class Customs(models.Model):
     @api.depends("code", "name")
     def _compute_display_name(self):
         for rec in self:
-            rec.display_name = "%s - %s" % (rec.code or "", rec.name or "")
+            rec.display_name = f"{rec.code or ''} - {rec.name or ''}"
