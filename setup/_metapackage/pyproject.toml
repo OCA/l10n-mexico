@@ -4,6 +4,7 @@ version = "19.0.20260701.0"
 dependencies = [
     "odoo-addon-currency_rate_update_banxico==19.0.*",
     "odoo-addon-l10n_mx_catalogs==19.0.*",
+    "odoo-addon-l10n_mx_account_reports==19.0.*",
     "odoo-addon-l10n_mx_cfdi==19.0.*",
     "odoo-addon-l10n_mx_cfdi_account==19.0.*",
 ]

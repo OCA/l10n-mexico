@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_l10n_mx_financial_report_wizard_user,l10n_mx.financial.report.wizard user,model_l10n_mx_financial_report_wizard,account.group_account_readonly,1,1,1,0
+access_l10n_mx_financial_report_wizard_invoice,l10n_mx.financial.report.wizard invoice,model_l10n_mx_financial_report_wizard,account.group_account_invoice,1,1,1,0
+access_l10n_mx_financial_report_wizard_manager,l10n_mx.financial.report.wizard manager,model_l10n_mx_financial_report_wizard,account.group_account_manager,1,1,1,1

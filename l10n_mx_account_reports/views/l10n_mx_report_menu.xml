@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem
+        id="menu_l10n_mx_account_reports_root"
+        name="Mexico"
+        parent="account.menu_finance_reports"
+        sequence="80"
+    />
+    <record id="action_l10n_mx_report_balance_sheet" model="ir.actions.server">
+        <field name="name">Balance Sheet</field>
+        <field name="model_id" ref="model_l10n_mx_financial_report_wizard" />
+        <field name="state">code</field>
+        <field name="code">
+action = env["l10n_mx.financial.report.wizard"].action_open_wizard("balance_sheet")
+        </field>
+    </record>
+    <menuitem
+        id="menu_l10n_mx_report_balance_sheet"
+        name="Balance Sheet"
+        parent="menu_l10n_mx_account_reports_root"
+        action="action_l10n_mx_report_balance_sheet"
+        sequence="10"
+    />
+    <record id="action_l10n_mx_report_profit_loss" model="ir.actions.server">
+        <field name="name">Profit and Loss</field>
+        <field name="model_id" ref="model_l10n_mx_financial_report_wizard" />
+        <field name="state">code</field>
+        <field name="code">
+action = env["l10n_mx.financial.report.wizard"].action_open_wizard("profit_loss")
+        </field>
+    </record>
+    <menuitem
+        id="menu_l10n_mx_report_profit_loss"
+        name="Profit and Loss"
+        parent="menu_l10n_mx_account_reports_root"
+        action="action_l10n_mx_report_profit_loss"
+        sequence="20"
+    />
+    <record id="action_l10n_mx_report_trial_balance" model="ir.actions.server">
+        <field name="name">Trial Balance</field>
+        <field name="model_id" ref="model_l10n_mx_financial_report_wizard" />
+        <field name="state">code</field>
+        <field name="code">
+action = env["l10n_mx.financial.report.wizard"].action_open_wizard("trial_balance")
+        </field>
+    </record>
+    <menuitem
+        id="menu_l10n_mx_report_trial_balance"
+        name="Trial Balance"
+        parent="menu_l10n_mx_account_reports_root"
+        action="action_l10n_mx_report_trial_balance"
+        sequence="30"
+    />
+    <record id="action_l10n_mx_report_aged_receivable" model="ir.actions.server">
+        <field name="name">Aged Accounts Receivable</field>
+        <field name="model_id" ref="model_l10n_mx_financial_report_wizard" />
+        <field name="state">code</field>
+        <field name="code">
+action = env["l10n_mx.financial.report.wizard"].action_open_wizard("aged_receivable")
+        </field>
+    </record>
+    <menuitem
+        id="menu_l10n_mx_report_aged_receivable"
+        name="Aged Accounts Receivable"
+        parent="menu_l10n_mx_account_reports_root"
+        action="action_l10n_mx_report_aged_receivable"
+        sequence="40"
+    />
+    <record id="action_l10n_mx_report_aged_payable" model="ir.actions.server">
+        <field name="name">Aged Accounts Payable</field>
+        <field name="model_id" ref="model_l10n_mx_financial_report_wizard" />
+        <field name="state">code</field>
+        <field name="code">
+action = env["l10n_mx.financial.report.wizard"].action_open_wizard("aged_payable")
+        </field>
+    </record>
+    <menuitem
+        id="menu_l10n_mx_report_aged_payable"
+        name="Aged Accounts Payable"
+        parent="menu_l10n_mx_account_reports_root"
+        action="action_l10n_mx_report_aged_payable"
+        sequence="50"
+    />
+    <record id="action_l10n_mx_report_diot" model="ir.actions.server">
+        <field name="name">DIOT</field>
+        <field name="model_id" ref="model_l10n_mx_financial_report_wizard" />
+        <field name="state">code</field>
+        <field name="code">
+action = env["l10n_mx.financial.report.wizard"].action_open_wizard("diot")
+        </field>
+    </record>
+    <menuitem
+        id="menu_l10n_mx_report_diot"
+        name="DIOT"
+        parent="menu_l10n_mx_account_reports_root"
+        action="action_l10n_mx_report_diot"
+        sequence="60"
+    />
+</odoo>

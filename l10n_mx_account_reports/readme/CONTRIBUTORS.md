@@ -1,0 +1,5 @@
+- [CoSource](https://www.cosource.com.au):
+  - Antonio de la Peña <antonio@cosource.com.au>
+- [Gray Matter Logic](https://www.graymatterlogic.com):
+  - Cristhiane Guadalupe Rangel Ferrusca <cristhiane.rangel@graymatterlogic.com>
+  - Maxime Chambreuil <maxime.chambreuil@graymatterlogic.com>
