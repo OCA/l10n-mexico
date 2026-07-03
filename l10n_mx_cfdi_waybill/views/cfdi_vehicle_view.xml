@@ -7,25 +7,31 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="name"/>
-                            <field name="plate"/>
-                            <field name="model"/>
-                            <field name="gross_vehicle_weight"/>
-                            <field name="vehicle_setup"/>
+                            <field name="name" />
+                            <field name="plate" />
+                            <field name="model" />
+                            <field name="gross_vehicle_weight" />
+                            <field name="vehicle_setup" />
                         </group>
                         <group>
-                            <field name="company_id" groups="base.group_system"/>
-                            <field name="permit_type"/>
-                            <field name="permit_number"/>
-                            <field name="insurance_company"/>
-                            <field name="insurance_number"/>
+                            <field name="company_id" groups="base.group_system" />
+                            <field name="permit_type" />
+                            <field name="permit_number" />
+                            <field name="insurance_company" />
+                            <field name="insurance_number" />
                         </group>
                     </group>
                     <group>
                         <field name="trailers">
-                            <list editable="bottom" create="1" edit="1" js_class="singleton_list" sample="1">
-                                <field name="plate"/>
-                                <field name="type"/>
+                            <list
+                                editable="bottom"
+                                create="1"
+                                edit="1"
+                                js_class="singleton_list"
+                                sample="1"
+                            >
+                                <field name="plate" />
+                                <field name="type" />
                             </list>
                         </field>
                     </group>
@@ -46,9 +52,11 @@
         <field name="view_mode">list,form</field>
     </record>
 
-    <menuitem id="menu_cfdi_vehicle"
-              name="Vehículos"
-              parent="l10n_mx_cfdi_waybill.stock_transfer_cfdi_root_menu"
-              groups="base.group_user"
-              action="action_mx_cfdi_vehicle"/>
+    <menuitem
+        id="menu_cfdi_vehicle"
+        name="Vehículos"
+        parent="l10n_mx_cfdi_waybill.stock_transfer_cfdi_root_menu"
+        groups="base.group_user"
+        action="action_mx_cfdi_vehicle"
+    />
 </odoo>

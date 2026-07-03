@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from . import cfdi_document
 from . import cfdi_transporter
 from . import cfdi_vehicle

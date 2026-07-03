@@ -2,10 +2,10 @@
     <record id="view_partner_form_l10n_cfdi_transfer" model="ir.ui.view">
         <field name="name">Campo Licencia de Conducir</field>
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
             <field name="vat" position="after">
-                <field name="l10n_mx_cfdi_waybill_driving_license"/>
+                <field name="l10n_mx_cfdi_waybill_driving_license" />
             </field>
         </field>
     </record>
