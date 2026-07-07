@@ -1,0 +1,126 @@
+id,code,name,city,state,active
+c_aduana_010,010,"ACAPULCO, ACAPULCO DE JUAREZ, GUERRERO.",Acapulco de Juarez,Guerrero,True
+c_aduana_01,01,Aeropuerto Internacional General Juan N. Alvarez,Acapulco,Guerrero,True
+c_aduana_020,020,"AGUA PRIETA, AGUA PRIETA, SONORA.",Agua Prieta,Sonora,True
+c_aduana_012,012,Aeropuerto Internacional General Juan N. Alvarez,Acapulco,Guerrero,True
+c_aduana_050,050,"SUBTENIENTE LOPEZ, SUBTENIENTE LOPEZ, QUINTANA ROO.",Subteniente Lopez,Quintana Roo,True
+c_aduana_051,051,"SUBTENIENTE LOPEZ II âCHACTEMALâ, OTHÃN P. BLANCO, CHETUMAL, QUINTANA ROO.",Subteniente Lopez,Quintana Roo,True
+c_aduana_060,060,"CIUDAD DEL CARMEN, CIUDAD DEL CARMEN, CAMPECHE.",Ciudad del Carmen,Campeche,True
+c_aduana_063,063,"SEYBAPLAYA, CHAMPOTON, CAMPECHE.",ChampotÃ³n,Campeche,True
+c_aduana_070,070,"CIUDAD JUAREZ, CIUDAD JUAREZ, CHIHUAHUA.",Ciudad Juarez,Chihuahua,True
+c_aduana_071,071,"PUENTE INTERNACIONAL ZARAGOZA-ISLETA, CIUDAD JUAREZ, CHIHUAHUA.",Ciudad Juarez,Chihuahua,True
+c_aduana_072,072,"SAN JERONIMO-SANTA TERESA, CIUDAD JUAREZ, CHIHUAHUA.",Ciudad Juarez,Chihuahua,True
+c_aduana_073,073,"AEROPUERTO INTERNACIONAL ABRAHAM GONZALEZ, CIUDAD JUAREZ, CHIHUAHUA.",Ciudad Juarez,Chihuahua,True
+c_aduana_074,074,"GUADALUPE-TORNILLO, GUADALUPE DE BRAVO, CHIHUAHUA.",Guadalupe de Bravo,Chihuahua,True
+c_aduana_080,080,"COATZACOALCOS, COATZACOALCOS, VERACRUZ.",Coatzacoalcos,Veracruz,True
+c_aduana_110,110,"ENSENADA, ENSENADA, BAJA CALIFORNIA.",Ensenada,Baja California,True
+c_aduana_120,120,"GUAYMAS, GUAYMAS, SONORA.",Guaymas,Sonora,True
+c_aduana_121,121,"AEROPUERTO INTERNACIONAL GENERAL IGNACIO PESQUEIRA GARCIA, HERMOSILLO, SONORA.",Hermosillo,Sonora,True
+c_aduana_123,123,"CIUDAD OBREGON ADYACENTE AL AEROPUERTO DE CIUDAD OBREGON, CAJEME, SONORA.",Ciudad Obregon,Sonora,True
+c_aduana_140,140,"LA PAZ, LA PAZ, BAJA CALIFORNIA SUR.",La Paz,Baja California Sur,True
+c_aduana_142,142,"SAN JOSE DEL CABO, LOS CABOS, BAJA CALIFORNIA SUR.",San Jose del Cabo,Baja California Sur,True
+c_aduana_143,143,"CABO SAN LUCAS, LOS CABOS, BAJA CALIFORNIA SUR.",Cabo San Lucas,Baja California Sur,True
+c_aduana_144,144,"SANTA ROSALIA, MULEGE, BAJA CALIFORNIA SUR.",Santa Rosalia,Baja California Sur,True
+c_aduana_145,145,"LORETO, LORETO, BAJA CALIFORNIA SUR.",Loreto,Baja California Sur,True
+c_aduana_147,147,"PICHILINGÃE, LA PAZ, BAJA CALIFORNIA SUR.",La Paz,Baja California Sur,True
+c_aduana_160,160,"MANZANILLO, MANZANILLO, COLIMA.",Manzanillo,Colima,True
+c_aduana_161,161,"ARMERÃA, ARMERÃA, COLIMA.",ArmerÃ­a,Colima,True
+c_aduana_170,170,"MATAMOROS, MATAMOROS, TAMAULIPAS.",Matamoros,Tamaulipas,True
+c_aduana_171,171,"LUCIO BLANCO-LOS INDIOS, MATAMOROS, TAMAULIPAS.",Matamoros,Tamaulipas,True
+c_aduana_172,172,SECCION ADUANERA FERROVIARIA DE MATAMOROS.,Matamoros,Tamaulipas,True
+c_aduana_17,17,"PUERTO EL MEZQUITAL, MATAMOROS, TAMAULIPAS.",Matamoros,Tamaulipas,True
+c_aduana_17_airport,17,"AEROPUERTO INTERNACIONAL GENERAL SERVANDO CANALES, MATAMOROS, TAMAULIPAS.",Matamoros,Tamaulipas,True
+c_aduana_180,180,"MAZATLAN, MAZATLAN, SINALOA.",MazatlÃ¡n,Sinaloa,True
+c_aduana_183,183,"TOPOLOBAMPO, AHOME, SINALOA.",Topolobampo,Ahome,True
+c_aduana_184,184,"AEROPUERTO INTERNACIONAL DE CULIACAN, CULIACAN, SINALOA.",Culiacan,Sinaloa,True
+c_aduana_190,190,"MEXICALI, MEXICALI, BAJA CALIFORNIA.",Mexicali,Baja California,True
+c_aduana_192,192,"LOS ALGODONES, MEXICALI, BAJA CALIFORNIA.",Los Algodones,Mexicali,True
+c_aduana_193,193,"SAN FELIPE, MEXICALI, BAJA CALIFORNIA.",San Felipe,Mexicali,True
+c_aduana_200,200,"MÃXICO, CIUDAD DE MÃXICO.",Ciudad de MÃ©xico,,True
+c_aduana_202,202,"IMPORTACION Y EXPORTACION DE CONTENEDORES, DELEGACION AZCAPOTZALCO, CIUDAD DE MÃXICO.",Azcapotzalco,Ciudad de MÃ©xico,True
+c_aduana_220,220,"NACO, NACO, SONORA.",Naco,Sonora,True
+c_aduana_230,230,"NOGALES, NOGALES, SONORA.",Nogales,Sonora,True
+c_aduana_231,231,"SASABE, SARIC, SONORA.",Sasabe,Saric,True
+c_aduana_240,240,"NUEVO LAREDO, NUEVO LAREDO, TAMAULIPAS.",Nuevo Laredo,Tamaulipas,True
+c_aduana_24,24,"ESTACION SANCHEZ, NUEVO LAREDO, TAMAULIPAS.",Estacion Sanchez,Nuevo Laredo,True
+c_aduana_24_airport,24,"AEROPUERTO INTERNACIONAL DE NUEVO LAREDO âQUETZALCOATLâ, NUEVO LAREDO, TAMAULIPAS.",Nuevo Laredo,Tamaulipas,True
+c_aduana_250,250,"OJINAGA, OJINAGA, CHIHUAHUA.",Ojinaga,Chihuahua,True
+c_aduana_260,260,"PUERTO PALOMAS, PUERTO PALOMAS, CHIHUAHUA.",Puerto Palomas,Chihuahua,True
+c_aduana_270,270,"PIEDRAS NEGRAS, PIEDRAS NEGRAS, COAHUILA.",Piedras Negras,Coahuila,True
+c_aduana_271,271,"AEROPUERTO INTERNACIONAL PLAN DE GUADALUPE, RAMOS ARIZPE, COAHUILA.",Ramos Arizpe,Coahuila,True
+c_aduana_27,27,"RIO ESCONDIDO, NAVA, COAHUILA.",Rio Escondido,Nava,True
+c_aduana_280,280,"PROGRESO, PROGRESO, YUCATAN.",Progreso,Yucatan,True
+c_aduana_282,282,"AEROPUERTO INTERNACIONAL LIC. MANUEL CRESCENCIO REJON, MERIDA, YUCATAN.",Merida,Yucatan,True
+c_aduana_300,300,"CIUDAD REYNOSA, CIUDAD REYNOSA, TAMAULIPAS.",Ciudad Reynosa,Tamaulipas,True
+c_aduana_302,302,"LAS FLORES, RIO BRAVO, TAMAULIPAS.",Las Flores,Rio Bravo,True
+c_aduana_304,304,"AEROPUERTO INTERNACIONAL GENERAL. LUCIO BLANCO, CIUDAD REYNOSA, TAMAULIPAS.",Ciudad Reynosa,Tamaulipas,True
+c_aduana_305,305,"RIO BRAVO-DONNA, RIO BRAVO, TAMAULIPAS.",Rio Bravo,Tamaulipas,True
+c_aduana_306,306,"ANZALDUAS, CIUDAD REYNOSA, TAMAULIPAS.",Anzalduas,Ciudad Reynosa,True
+c_aduana_310,310,"SALINA CRUZ, SALINA CRUZ, OAXACA.",Salina Cruz,Oaxaca,True
+c_aduana_311,311,"AEROPUERTO INTERNACIONAL DE OAXACA, SANTA CRUZ XOXOCOTLAN, OAXACA.",Santa Cruz Xoxocotlan,Oaxaca,True
+c_aduana_330,330,"SAN LUIS RIO COLORADO, SAN LUIS RIO COLORADO, SONORA.",San Luis Rio Colorado,Sonora,True
+c_aduana_340,340,"CIUDAD MIGUEL ALEMAN, CIUDAD MIGUEL ALEMAN, TAMAULIPAS.",Ciudad Miguel Aleman,Tamaulipas,True
+c_aduana_342,342,"GUERRERO, GUERRERO, TAMAULIPAS.",Guerrero,Tamaulipas,True
+c_aduana_370,370,"CIUDAD HIDALGO, CIUDAD HIDALGO, CHIAPAS.",Ciudad Hidalgo,Chiapas,True
+c_aduana_372,372,"CIUDAD TALISMAN, TUXTLA CHICO, CHIAPAS.",Ciudad Talisman,Tuxtla Chico,True
+c_aduana_376,376,"CIUDAD CUAUHTEMOC, FRONTERA COMALAPA, CHIAPAS.",Ciudad Cuauhtemoc,Frontera Comalapa,True
+c_aduana_375,375,"PUERTO CHIAPAS, TAPACHULA, CHIAPAS.",Puerto Chiapas,Tapachula,True
+c_aduana_37,37,"AEROPUERTO INTERNACIONAL DE TAPACHULA, TAPACHULA, CHIAPAS.",Tapachula,Chiapas,True
+c_aduana_380,380,"TAMPICO, TAMPICO, TAMAULIPAS.",Tampico,Tamaulipas,True
+c_aduana_390,390,"TECATE, TECATE, BAJA CALIFORNIA.",Tecate,Baja California,True
+c_aduana_400,400,"TIJUANA, TIJUANA, BAJA CALIFORNIA.",Tijuana,Baja California,True
+c_aduana_402,402,"AEROPUERTO INTERNACIONAL GENERAL ABELARDO L. RODRIGUEZ, TIJUANA, BAJA CALIFORNIA.",Tijuana,Baja California,True
+c_aduana_420,420,"TUXPAN, TUXPAN DE RODRIGUEZ CANO, VERACRUZ.",Tuxpan,Veracruz,True
+c_aduana_421,421,"TUXPAN, TUXPAN, VERACRUZ.",Tuxpan,Veracruz,True
+c_aduana_430,430,"VERACRUZ, VERACRUZ, VERACRUZ.",Veracruz,Veracruz,True
+c_aduana_432,432,"AEROPUERTO INTERNACIONAL GENERAL HERIBERTO JARA CORONA, VERACRUZ, VERACRUZ.",Veracruz,Veracruz,True
+c_aduana_440,440,"CIUDAD ACUÃA, CIUDAD ACUÃA, COAHUILA.",Ciudad AcuÃ±a,Coahuila,True
+c_aduana_460,460,"TORREON, TORREON, COAHUILA.",Torreon,Coahuila,True
+c_aduana_462,462,"GOMEZ PALACIO, GOMEZ PALACIO, DURANGO.",Gomez Palacio,Durango,True
+c_aduana_463,463,"AEROPUERTO INTERNACIONAL GENERAL GUADALUPE VICTORIA, DURANGO, DURANGO.",Durango,Durango,True
+c_aduana_461,461,"AEROPUERTO DE TORREÃN, COAHUILA DE ZARAGOZA.",Torreon,Coahuila,True
+c_aduana_470,470,"AEROPUERTO INTERNACIONAL DE LA CIUDAD DE MEXICO,",Ciudad de MÃ©xico,,True
+c_aduana_471,471,"SATELITE, AEROPUERTO INTERNACIONAL BENITO JUAREZ DE LA CIUDAD DE MEXICO.",Satelite,Ciudad de MÃ©xico,True
+c_aduana_472,472,"CENTRO POSTAL MECANIZADO, AEROPUERTO INTERNACIONAL BENITO JUAREZ DE LA CIUDAD DE MEXICO.",Ciudad de MÃ©xico,,True
+c_aduana_480,480,"GUADALAJARA, TLACOMULCO DE ZUÃIGA, JALISCO.",Guadalajara,Jalisco,True
+c_aduana_481,481,"PUERTO VALLARTA, PUERTO VALLARTA, JALISCO.",Puerto Vallarta,Jalisco,True
+c_aduana_484,484,"TERMINAL INTERMODAL FERROVIARIA, GUADALAJARA, JALISCO.",Guadalajara,Jalisco,True
+c_aduana_500,500,"SONOYTA, SONOYTA, SONORA.",Sonoyta,Sonora,True
+c_aduana_501,501,"SAN EMETERIO, GENERAL PLUTARCO ELIAS CALLES, SONORA.",San Emeterio,General Plutarco Elias Calles,True
+c_aduana_50,50,"SONORA, PITIQUITO, SONORA.",Sonora,Pitiquito,True
+c_aduana_510,510,"LAZARO CARDENAS, LAZARO CARDENAS, MICHOACAN.",Lazaro Cardenas,Michoacan,True
+c_aduana_511,511,"AEROPUERTO INTERNACIONAL IXTAPA-ZIHUATANEJO, ZIHUATANEJO DE AZUETA, GUERRERO.",Ixtapa-Zihuatanejo,Guerrero,True
+c_aduana_520,520,"MONTERREY, GENERAL MARIANO ESCOBEDO, NUEVO LEON.",Monterrey,Nuevo Leon,True
+c_aduana_521,521,"AEROPUERTO INTERNACIONAL GENERAL MARIANO ESCOBEDO, APODACA, NUEVO LEON.",Apodaca,Nuevo Leon,True
+c_aduana_523,523,"SALINAS VICTORIA A (TERMINAL FERROVIARIA), SALINAS VICTORIA, NUEVO LEON.",Salinas Victoria,Nuevo Leon,True
+c_aduana_524,524,"GENERAL ESCOBEDO, GENERAL ESCOBEDO, NUEVO LEON.",General Escobedo,Nuevo Leon,True
+c_aduana_525,525,"SALINAS VICTORIA B (INTERPUERTO), SALINAS VICTORIA, NUEVO LEON.",Salinas Victoria B (Interpuerto),Salinas Victoria,True
+c_aduana_530,530,"CANCUN, CANCUN, QUINTANA ROO.",Cancun,Quintana Roo,True
+c_aduana_532,532,"AEROPUERTO INTERNACIONAL DE COZUMEL, COZUMEL, QUINTANA ROO.",Cozumel,Quintana Roo,True
+c_aduana_533,533,"PUERTO MORELOS, BENITO JUAREZ, QUINTANA ROO.",Puerto Morelos,Benito Juarez,True
+c_aduana_640,640,"QUERETARO, EL MARQUES Y COLON, QUERETARO.",Queretaro,Queretaro,True
+c_aduana_647,647,"HIDALGO, ATOTONILCO DE TULA, HIDALGO.",Hidalgo,Atotonilco de Tula,True
+c_aduana_650,650,"TOLUCA, TOLUCA, ESTADO DE MEXICO.",Toluca,Estado de Mexico,True
+c_aduana_651,651,"SAN CAYETANO MORELOS, TOLUCA, ESTADO DE MÃXICO.",San Cayetano Morelos,Toluca,True
+c_aduana_670,670,"CHIHUAHUA, CHIHUAHUA, CHIHUAHUA.",Chihuahua,Chihuahua,True
+c_aduana_671,671,"PARQUE INDUSTRIAL LAS AMERICAS, CHIHUAHUA, CHIHUAHUA.",Parque Industrial Las Americas,Chihuahua,True
+c_aduana_672,672,"AEROPUERTO INTERNACIONAL GENERAL ROBERTO FIERRO VILLALOBOS, CHIHUAHUA, CHIHUAHUA.",Chihuahua,Chihuahua,True
+c_aduana_730,730,"AGUASCALIENTES, AGUASCALIENTES, AGUASCALIENTES.",Aguascalientes,Aguascalientes,True
+c_aduana_731,731,"PARQUE MULTIMODAL INTERPUERTO, SAN LUIS POTOSI, SAN LUIS POTOSI.",Parque Multimodal Interpuerto,San Luis Potosi,True
+c_aduana_733,733,"AEROPUERTO INTERNACIONAL PONCIANO ARRIAGA, SOLEDAD DE GRACIANO SANCHEZ, SAN LUIS POTOSI.",Soledad de Graciano Sanchez,San Luis Potosi,True
+c_aduana_732,732,"AEROPUERTO INTERNACIONAL GENERAL LEOBARDO C. RUIZ, EN CALERA ZACATECAS.",En Calera Zacatecas,,True
+c_aduana_734,734,"LA PILA-VILLA, VILLA DE REYES, SAN LUIS POTOSI.",La Pila-Villa,Villa de Reyes,True
+c_aduana_73,73,"CHICALOTE, SAN FRANCISCO DE LOS ROMO, AGUASCALIENTES.",Chicalote,San Francisco de los Romo,True
+c_aduana_735,735,"AEROPUERTO INTERNACIONAL LIC. JESUS TERAN PEREDO, AGUASCALIENTES, AGUASCALIENTES.",Aguascalientes,Aguascalientes,True
+c_aduana_750,750,"PUEBLA, HEROICA PUEBLA DE ZARAGOZA, PUEBLA.",Puebla,Heroica Puebla de Zaragoza,True
+c_aduana_751,751,"CUERNAVACA, JIUTEPEC, MORELOS.",Cuernavaca,Jiutepec,True
+c_aduana_754,754,"AEROPUERTO INTERNACIONAL HERMANOS SERDAN, HUEJOTZINGO, PUEBLA.",Huejotzingo,Puebla,True
+c_aduana_800,800,"COLOMBIA, COLOMBIA, NUEVO LEON.",Colombia,Nuevo Leon,True
+c_aduana_810,810,"ALTAMIRA, ALTAMIRA, TAMAULIPAS.",Altamira,Tamaulipas,True
+c_aduana_820,820,"CIUDAD CAMARGO, CIUDAD CAMARGO, TAMAULIPAS.",Ciudad Camargo,Tamaulipas,True
+c_aduana_830,830,"DOS BOCAS, PARAISO, TABASCO.",Dos Bocas,Paraiso,True
+c_aduana_831,831,"AEROPUERTO INTERNACIONAL C.P.A. CARLOS ROVIROSA PEREZ, CIUDAD DE VILLAHERMOSA, CENTRO, TABASCO.",Ciudad de Villahermosa,Centro,True
+c_aduana_834,834,"EL CEIBO, TENOSIQUE, TABASCO.",El Ceibo,Tenosique,True
+c_aduana_840,840,"GUANAJUATO, SILAO, GUANAJUATO.",Guanajuato,Silao,True
+c_aduana_841,841,"CELAYA, CELAYA, GUANAJUATO.",Celaya,Guanajuato,True
+c_aduana_842,842,"AEROPUERTO INTERNACIONAL DE GUANAJUATO, SILAO, GUANAJUATO.",Guanajuato,Silao,True
