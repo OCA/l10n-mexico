@@ -1657,14 +1657,6 @@ msgid ""
 msgstr ""
 
 #. module: l10n_mx_cfdi
-#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__vat
-msgid ""
-"The Tax Identification Number. Values here will be validated based on the "
-"country format. You can use '/' to indicate that the partner is not subject "
-"to tax."
-msgstr ""
-
-#. module: l10n_mx_cfdi
 #. odoo-python
 #: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
 msgid "The certificate is not cancelled."
@@ -1860,6 +1852,11 @@ msgid ""
 "already. While this sequence implementation will not skip any sequence "
 "number upon assignment, there can still be gaps in the sequence if records "
 "are deleted. The 'no gap' implementation is slower than the standard one."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__vat
+msgid "You can use '/' to indicate that the customer has no Tax ID."
 msgstr ""
 
 #. module: l10n_mx_cfdi
