@@ -118,6 +118,25 @@ class TestWaybill(WaybillTestCommon):
         self.assertEqual(address["Pais"], "MEX")
         self.assertEqual(address["CodigoPostal"], "06000")
 
+    def test_format_address_mexico_country_fallback(self):
+        waybill = self._create_waybill()
+        partner = self.env["res.partner"].create(
+            {
+                "name": "MX Address",
+                "country_id": self.env.ref("base.mx").id,
+                "zip": "06000",
+                "street": "Reforma 100",
+            }
+        )
+        with patch(
+            "odoo.addons.l10n_mx_catalogs.models.pais.Pais.map_res_country",
+            return_value=self.env["l10n_mx_catalogs.c_pais"],
+        ):
+            address = waybill._format_address(partner)
+        self.assertEqual(address["Pais"], "MEX")
+        self.assertEqual(address["Calle"], "Reforma")
+        self.assertEqual(address["NumeroExterior"], "100")
+
     @patch(
         "odoo.addons.l10n_mx_catalogs.models.pais.Pais.map_res_country",
         autospec=True,

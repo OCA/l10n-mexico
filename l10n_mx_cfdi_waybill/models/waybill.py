@@ -341,10 +341,26 @@ class Waybill(models.Model):
         }
         return data
 
-    def _format_address(self, location):
-        c_pais = self.env["l10n_mx_catalogs.c_pais"].map_res_country(
-            location.country_id
+    def _map_partner_country_to_c_pais(self, country):
+        c_pais = self.env["l10n_mx_catalogs.c_pais"].map_res_country(country)
+        if c_pais:
+            return c_pais
+        if country.code == "MX":
+            return self.env.ref("l10n_mx_catalogs.c_pais_MEX")
+        return self.env["l10n_mx_catalogs.c_pais"].search(
+            [("description", "ilike", country.name)],
+            limit=1,
         )
+
+    def _format_address(self, location):
+        c_pais = self._map_partner_country_to_c_pais(location.country_id)
+        if not c_pais:
+            raise ValidationError(
+                self.env._(
+                    "No se encontró el código de país SAT para: %s",
+                    location.country_id.name,
+                )
+            )
         if c_pais.code == "MEX":
             c_codigo_postal = self.env["l10n_mx_catalogs.c_codigo_postal"].search(
                 [("code", "=", location.zip)], limit=1
@@ -358,7 +374,7 @@ class Waybill(models.Model):
                 "Referencia": location.street2 or "",
                 "NumeroExterior": location.street_number or "",
                 "NumeroInterior": location.street_number2 or "",
-                "Calle": location.street_name,
+                "Calle": location.street_name or location.street,
             }
         else:
             data = {
