@@ -1,0 +1,96 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_mx_catalogs_comex
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_mx_catalogs_comex
+#: model:ir.model.fields,field_description:l10n_mx_catalogs_comex.field_l10n_mx_catalogs_c_aduana__active
+#: model:ir.model.fields,field_description:l10n_mx_catalogs_comex.field_l10n_mx_catalogs_c_fraccion__active
+msgid "Active"
+msgstr ""
+
+#. module: l10n_mx_catalogs_comex
+#: model:ir.model,name:l10n_mx_catalogs_comex.model_l10n_mx_catalogs_c_aduana
+msgid "Aduana"
+msgstr ""
+
+#. module: l10n_mx_catalogs_comex
+#: model:ir.model.fields,field_description:l10n_mx_catalogs_comex.field_l10n_mx_catalogs_c_aduana__city
+msgid "Ciudad"
+msgstr ""
+
+#. module: l10n_mx_catalogs_comex
+#: model:ir.model.fields,field_description:l10n_mx_catalogs_comex.field_l10n_mx_catalogs_c_aduana__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs_comex.field_l10n_mx_catalogs_c_fraccion__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: l10n_mx_catalogs_comex
+#: model:ir.model.fields,field_description:l10n_mx_catalogs_comex.field_l10n_mx_catalogs_c_aduana__create_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs_comex.field_l10n_mx_catalogs_c_fraccion__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: l10n_mx_catalogs_comex
+#: model:ir.model.fields,field_description:l10n_mx_catalogs_comex.field_l10n_mx_catalogs_c_aduana__code
+#: model:ir.model.fields,field_description:l10n_mx_catalogs_comex.field_l10n_mx_catalogs_c_fraccion__code
+msgid "Código"
+msgstr ""
+
+#. module: l10n_mx_catalogs_comex
+#: model:ir.model.fields,field_description:l10n_mx_catalogs_comex.field_l10n_mx_catalogs_c_fraccion__name
+msgid "Descripción"
+msgstr ""
+
+#. module: l10n_mx_catalogs_comex
+#: model:ir.model.fields,field_description:l10n_mx_catalogs_comex.field_l10n_mx_catalogs_c_fraccion__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: l10n_mx_catalogs_comex
+#: model:ir.model.fields,field_description:l10n_mx_catalogs_comex.field_l10n_mx_catalogs_c_aduana__state
+msgid "Estado"
+msgstr ""
+
+#. module: l10n_mx_catalogs_comex
+#: model:ir.model.fields,field_description:l10n_mx_catalogs_comex.field_l10n_mx_catalogs_c_aduana__id
+#: model:ir.model.fields,field_description:l10n_mx_catalogs_comex.field_l10n_mx_catalogs_c_fraccion__id
+msgid "ID"
+msgstr ""
+
+#. module: l10n_mx_catalogs_comex
+#: model:ir.model.fields,field_description:l10n_mx_catalogs_comex.field_l10n_mx_catalogs_c_aduana__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_catalogs_comex.field_l10n_mx_catalogs_c_fraccion__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: l10n_mx_catalogs_comex
+#: model:ir.model.fields,field_description:l10n_mx_catalogs_comex.field_l10n_mx_catalogs_c_aduana__write_date
+#: model:ir.model.fields,field_description:l10n_mx_catalogs_comex.field_l10n_mx_catalogs_c_fraccion__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: l10n_mx_catalogs_comex
+#: model:ir.model.fields,field_description:l10n_mx_catalogs_comex.field_l10n_mx_catalogs_c_aduana__name
+msgid "Nombre"
+msgstr ""
+
+#. module: l10n_mx_catalogs_comex
+#: model:ir.model.fields,field_description:l10n_mx_catalogs_comex.field_l10n_mx_catalogs_c_aduana__display_name
+msgid "Nombre completo"
+msgstr ""
+
+#. module: l10n_mx_catalogs_comex
+#: model:ir.model,name:l10n_mx_catalogs_comex.model_l10n_mx_catalogs_c_fraccion
+msgid "SAT Catalog for tariff code"
+msgstr ""

@@ -1,0 +1,15 @@
+<odoo>
+    <record id="product_template_form_view_inherit" model="ir.ui.view">
+        <field name="name">product.template.form.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='CFDI']" position="inside">
+                <group string="Waybill">
+                    <field name="l10n_mx_cfdi_dangerous_material_indicator" />
+                    <field name="l10n_mx_cfid_dangerous_material_code" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

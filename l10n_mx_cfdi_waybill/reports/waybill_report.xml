@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_waybill_report" model="ir.actions.report">
+        <field name="name">waybill</field>
+        <field name="model">l10n_mx_cfdi_waybill.waybill</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">l10n_mx_cfdi_waybill.report_waybill_document</field>
+        <field name="report_file">l10n_mx_cfdi_waybill.report_waybill_document</field>
+        <field name="binding_model_id" ref="model_l10n_mx_cfdi_waybill_waybill" />
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_waybill_document">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="o">
+                    <t t-set="cfdi" t-value="o.cfdi_id" />
+
+                    <div class="page" style="font-size: 12px;">
+                        <!-- Report content -->
+                        <t t-set="carta_porte" t-value="o._format_data()" />
+                        <t
+                            t-set="carta_porte"
+                            t-value="carta_porte['Complemento']['CartaPorte31']"
+                        />
+                        <t
+                            t-set="goods_data"
+                            t-value="carta_porte['Mercancias']['Mercancia']"
+                        />
+                        <t
+                            t-set="locations_data"
+                            t-value="carta_porte['Ubicaciones']"
+                        />
+
+                        <!-- Autotransporte -->
+                        <t t-if="'Autotransporte' in carta_porte['Mercancias']">
+                            <t
+                                t-set="autotransporte"
+                                t-value="carta_porte['Mercancias']['Autotransporte']"
+                            />
+                            <h5>Autotransporte</h5>
+                            <div class="row">
+                                <div class="col-6">
+                                    <b>Permiso SCT:</b>
+                                    <span t-out="autotransporte['PermSCT']" />
+                                </div>
+
+                                <div class="col-6">
+                                    <b>Número Permiso SCT:</b>
+                                    <span t-out="autotransporte['NumPermisoSCT']" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <b>Asegura Responsabilidad Civil:</b>
+                                    <span t-out="o.vehicle_id.insurance_company.name" />
+                                </div>
+
+                                <div class="col-6">
+                                    <b>Póliza Responsabilidad Civil:</b>
+                                    <span t-out="o.vehicle_id.insurance_number" />
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-6">
+                                    <b>Configuración Vehicular</b>
+                                    <br />
+                                    <span t-field="o.vehicle_id.vehicle_setup" />
+                                </div>
+                                <div class="col-2">
+                                    <b>Peso Bruto Vehicular</b>
+                                    <br />
+                                    <span t-field="o.vehicle_id.gross_vehicle_weight" />
+                                </div>
+                                <div class="col-2">
+                                    <b>Placa</b>
+                                    <br />
+                                    <span t-field="o.vehicle_id.plate" />
+                                </div>
+                                <div class="col-2">
+                                    <b>Año/Modelo</b>
+                                    <br />
+                                    <span t-field="o.vehicle_id.model" />
+                                </div>
+                            </div>
+                        </t>
+
+                        <!-- Figuras -->
+                        <h5 class="mt-4">Figuras</h5>
+                        <table class="col-12 table">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>RFC</th>
+                                    <th>Tipo</th>
+                                    <th>Licencia</th>
+                                </tr>
+                            </thead>
+                            <t
+                                t-foreach="carta_porte['FiguraTransporte']"
+                                t-as="contact"
+                            >
+                                <tr>
+                                    <td>
+                                        <span t-out="contact['NombreFigura']" />
+                                    </td>
+                                    <td>
+                                        <span t-out="contact['RFCFigura']" />
+                                    </td>
+                                    <td>
+                                        <span t-out="contact['TipoFigura']" />
+                                    </td>
+                                    <td>
+                                        <span
+                                            t-out="contact['NumLicencia'] if 'NumLicencia' in contact else ''"
+                                        />
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+
+                        <h5 class="mt-4">Mercancías</h5>
+                        <table class="col-12 table">
+                            <thead>
+                                <tr>
+                                    <th>Descripción</th>
+                                    <th>Clave Producto</th>
+                                    <th>Clave Unidad</th>
+                                    <th>Cantidad</th>
+                                    <th>Peso</th>
+                                </tr>
+                            </thead>
+                            <t t-foreach="goods_data" t-as="good">
+                                <tr>
+                                    <td>
+                                        <span t-out="good['Descripcion']" />
+                                    </td>
+                                    <td>
+                                        <span t-out="good['BienesTransp']" />
+                                    </td>
+                                    <td>
+                                        <span t-out="good['ClaveUnidad']" />
+                                    </td>
+                                    <td>
+                                        <span t-out="good['Cantidad']" />
+                                    </td>
+                                    <td>
+                                        <span t-out="good['PesoEnKg']" />
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+                        <div class="row px-3">
+                            <div class="col-4">
+                                <b>Unidad de Peso</b>
+                                <br />
+                                KGM
+                            </div>
+                            <div class="col-4">
+                                <b>Numero Total Mercancías</b>
+                                <br />
+                                <span t-out="len(goods_data)" />
+                            </div>
+                            <div class="col-4">
+                                <b>Peso Bruto Total</b>
+                                <br />
+                                <span t-out="o.format_peso_bruto_total(goods_data)" />
+                            </div>
+                        </div>
+
+                        <!-- Locations -->
+                        <h5 class="mt-4">Ubicaciones</h5>
+                        <table class="col-12 table">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Tipo</th>
+                                    <th>RFC</th>
+                                    <th>Fecha</th>
+                                    <th>Distancia Recorrida</th>
+                                </tr>
+                            </thead>
+                            <t t-foreach="locations_data" t-as="location">
+                                <tr>
+                                    <td rowspan="2">
+                                        <span t-out="location['IDUbicacion']" />
+                                    </td>
+                                    <td>
+                                        <span t-out="location['TipoUbicacion']" />
+                                    </td>
+                                    <td>
+                                        <span
+                                            t-out="location['RFCRemitenteDestinatario']"
+                                        />
+                                    </td>
+                                    <td>
+                                        <span
+                                            t-out="location['FechaHoraSalidaLlegada']"
+                                        />
+                                    </td>
+                                    <td>
+                                        <span t-out="location['DistanciaRecorrida']" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <!-- Domicilio -->
+                                    <td>
+                                        <b>Domicilio</b>
+                                    </td>
+                                    <td colspan="3">
+                                        <span
+                                            t-out="o.format_address_for_report(location['Domicilio'])"
+                                        />
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+
+                        <!-- Goods routes -->
+                        <h5 class="mt-4">Cantidades Transportadas</h5>
+                        <table class="col-12 table">
+                            <thead>
+                                <tr>
+                                    <th>Descripción</th>
+                                    <th>Cantidad</th>
+                                    <th>Origen</th>
+                                    <th>Destino</th>
+                                </tr>
+                            </thead>
+                            <t t-foreach="goods_data" t-as="good">
+                                <t t-foreach="good['CantidadTransporta']" t-as="entry">
+                                    <tr>
+                                        <td>
+                                            <span t-out="good['Descripcion']" />
+                                        </td>
+                                        <td>
+                                            <span t-out="entry['Cantidad']" />
+                                        </td>
+                                        <td>
+                                            <span t-out="entry['IDOrigen']" />
+                                        </td>
+                                        <td>
+                                            <span t-out="entry['IDDestino']" />
+                                        </td>
+                                    </tr>
+                                </t>
+                            </t>
+                        </table>
+
+                        <!-- CFDI Signature Info -->
+                        <t t-if="cfdi.state == 'published'">
+                            <div class="row m-0 p-0 mt-1">
+                                <div class="col-3">
+                                    <b class="row">Tipo de Comprobante:</b>
+                                    <span class="row" t-field="cfdi.type" />
+                                </div>
+
+                                <div class="col-5">
+                                    <b class="row">No. de Certificado Digital:</b>
+                                    <span class="row" t-field="cfdi.cert_number" />
+                                </div>
+                                <div class="col-5">
+                                    <b class="row">Folio Fiscal:</b>
+                                    <span class="row" t-field="cfdi.uuid" />
+                                </div>
+                            </div>
+                            <div class="row m-0 p-0 mt-1">
+                                <div class="col-3">
+                                    <b class="row">Fecha/Hora Certificación</b>
+                                    <span
+                                        class="row"
+                                        t-field="cfdi.signing_date"
+                                        t-options="{'widget': 'datetime'}"
+                                    />
+                                </div>
+                                <div class="col-5">
+                                    <b
+                                        class="row"
+                                    >Número de Serie Certificado del SAT</b>
+                                    <span class="row" t-field="cfdi.sat_cert_number" />
+                                </div>
+                                <div class="col-4">
+                                    <b class="row">RFC del PAC</b>
+                                    <span class="row" t-field="cfdi.rfc_prov_certif" />
+                                </div>
+                            </div>
+                            <div
+                                class="row m-0 p-0 mt-1"
+                                style="font-size: 10px;"
+                                name="cfdi_signature_data"
+                            >
+                                <div class="col col-2 m-0 p-0" name="cfdi_qr">
+                                    <b>Versión: 4.0</b>
+                                    <img
+                                        t-att-src="'data:image/png;base64,%s'% cfdi.verification_qr_code.decode('utf-8')"
+                                        alt="Enlace de Verificación"
+                                        class="img-fluid mx-auto"
+                                        style="min-height: 3cm; min-width: 3cm;"
+                                    />
+                                </div>
+                                <div class="col-10 m-0 p-0 pl-2">
+                                    <b
+                                        class="m-0 p-0 font-weight-bold"
+                                        style="font-size: 10px; line-height: 2;"
+                                    >
+                                        Sello Digital del CFDI
+                                    </b>
+                                    <div
+                                        style="overflow-wrap: anywhere; word-break: break-all;"
+                                        t-field="cfdi.cfdi_signature"
+                                    />
+
+                                    <b
+                                        class="m-0 p-0 font-weight-bold"
+                                        style="font-size: 10px; line-height: 2;"
+                                    >
+                                        Sello Digital del SAT
+                                    </b>
+                                    <div
+                                        style="overflow-wrap: anywhere; word-break: break-all;"
+                                        t-field="cfdi.sat_signature"
+                                    />
+                                    <b
+                                        class="m-0 p-0 font-weight-bold"
+                                        style="font-size: 10px; line-height: 2;"
+                                    >
+                                        Cadena Original del complemento de Certificación Digital del SAT
+                                    </b>
+                                    <div
+                                        style="overflow-wrap: anywhere; word-break: break-all; font-size: 10px; line-height: 2;"
+                                        t-field="cfdi.original_string"
+                                    />
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
