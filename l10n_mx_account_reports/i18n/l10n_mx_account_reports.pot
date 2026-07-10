@@ -1,0 +1,473 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_mx_account_reports
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_mx_account_reports
+#: model:ir.actions.report,print_report_name:l10n_mx_account_reports.action_report_l10n_mx_financial
+msgid "'%s - %s' % (object.company_id.name, object.report_type)"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_1
+msgid "ACTIVOS"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_10
+msgid "Activos adicionales fijos"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_12
+msgid "Activos adicionales no circulantes"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_2
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_6
+msgid "Activos circulantes"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.actions.server,name:l10n_mx_account_reports.action_l10n_mx_report_aged_payable
+#: model:ir.model.fields.selection,name:l10n_mx_account_reports.selection__l10n_mx_financial_report_wizard__report_type__aged_payable
+#: model:ir.ui.menu,name:l10n_mx_account_reports.menu_l10n_mx_report_aged_payable
+msgid "Aged Accounts Payable"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.actions.server,name:l10n_mx_account_reports.action_l10n_mx_report_aged_receivable
+#: model:ir.model.fields.selection,name:l10n_mx_account_reports.selection__l10n_mx_financial_report_wizard__report_type__aged_receivable
+#: model:ir.ui.menu,name:l10n_mx_account_reports.menu_l10n_mx_report_aged_receivable
+msgid "Aged Accounts Receivable"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model_terms:ir.ui.view,arch_db:l10n_mx_account_reports.report_financial
+msgid "Balance"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report,description:l10n_mx_account_reports.mis_report_balance_sheet
+#: model:mis.report.instance,name:l10n_mx_account_reports.mis_report_instance_balance_sheet
+msgid "Balance General"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.actions.server,name:l10n_mx_account_reports.action_l10n_mx_report_balance_sheet
+#: model:ir.model.fields.selection,name:l10n_mx_account_reports.selection__l10n_mx_financial_report_wizard__report_type__balance_sheet
+#: model:ir.ui.menu,name:l10n_mx_account_reports.menu_l10n_mx_report_balance_sheet
+msgid "Balance Sheet"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report,description:l10n_mx_account_reports.mis_report_trial_balance
+#: model:mis.report,name:l10n_mx_account_reports.mis_report_trial_balance
+#: model:mis.report.instance,name:l10n_mx_account_reports.mis_report_instance_trial_balance
+msgid "Balanza de comprobación"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_24
+msgid "CAPITAL"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_3
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_6
+msgid "COMPARATIVO"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model_terms:ir.ui.view,arch_db:l10n_mx_account_reports.view_l10n_mx_financial_report_wizard_form
+msgid "Cancel"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_25
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_26
+msgid "Capital contable"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.model.fields,field_description:l10n_mx_account_reports.field_l10n_mx_financial_report_wizard__company_id
+msgid "Company"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_41
+msgid "Costo de ingresos"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.model.fields,field_description:l10n_mx_account_reports.field_l10n_mx_financial_report_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.model.fields,field_description:l10n_mx_account_reports.field_l10n_mx_financial_report_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model_terms:ir.ui.view,arch_db:l10n_mx_account_reports.report_financial
+msgid "Credit"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_9
+msgid "Créditos del Periodo"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_36
+msgid "Créditos del periodo"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_3
+msgid "Cuentas bancarias y efectivo"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.actions.server,name:l10n_mx_account_reports.action_l10n_mx_report_diot
+#: model:ir.model.fields.selection,name:l10n_mx_account_reports.selection__l10n_mx_financial_report_wizard__report_type__diot
+#: model:ir.ui.menu,name:l10n_mx_account_reports.menu_l10n_mx_report_diot
+msgid "DIOT"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.model.fields,field_description:l10n_mx_account_reports.field_l10n_mx_financial_report_wizard__date_from
+msgid "Date From"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.model.fields,field_description:l10n_mx_account_reports.field_l10n_mx_financial_report_wizard__date_to
+msgid "Date To"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model_terms:ir.ui.view,arch_db:l10n_mx_account_reports.report_financial
+msgid "Debit"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_39
+msgid "Deducciones de ingresos"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_49
+msgid "Depreciación y amortización"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.model.fields,field_description:l10n_mx_account_reports.field_l10n_mx_financial_report__display_name
+#: model:ir.model.fields,field_description:l10n_mx_account_reports.field_l10n_mx_financial_report_wizard__display_name
+#: model:ir.model.fields,field_description:l10n_mx_account_reports.field_report_l10n_mx_account_reports_report_financial__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_8
+msgid "Débitos del Periodo"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_34
+msgid "Débitos del periodo"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report,name:l10n_mx_account_reports.mis_report_balance_sheet
+msgid "Estado de Posición Financiera"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report,name:l10n_mx_account_reports.mis_report_profit_and_loss
+msgid "Estado de Resultados"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report,description:l10n_mx_account_reports.mis_report_profit_and_loss
+#: model:mis.report.instance,name:l10n_mx_account_reports.mis_report_instance_profit_and_loss
+msgid "Estado de resultados"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model_terms:ir.ui.view,arch_db:l10n_mx_account_reports.view_l10n_mx_financial_report_wizard_form
+msgid "Export DIOT (TXT)"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_35
+msgid "Ganancia bruta"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_31
+msgid "Ganancias netas"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_46
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_47
+msgid "Gastos"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.model.fields,field_description:l10n_mx_account_reports.field_l10n_mx_financial_report__id
+#: model:ir.model.fields,field_description:l10n_mx_account_reports.field_l10n_mx_financial_report_wizard__id
+#: model:ir.model.fields,field_description:l10n_mx_account_reports.field_report_l10n_mx_account_reports_report_financial__id
+msgid "ID"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_33
+msgid "Ingreso"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_37
+msgid "Ingresos de operación"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.model.fields,field_description:l10n_mx_account_reports.field_l10n_mx_financial_report_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.model.fields,field_description:l10n_mx_account_reports.field_l10n_mx_financial_report_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_2
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_5
+msgid "MES ACTUAL"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_1
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_4
+msgid "MES ANTERIOR"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.ui.menu,name:l10n_mx_account_reports.menu_l10n_mx_account_reports_root
+msgid "Mexico"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.actions.report,name:l10n_mx_account_reports.action_report_l10n_mx_financial
+#: model:ir.model,name:l10n_mx_account_reports.model_report_l10n_mx_account_reports_report_financial
+#: model_terms:ir.ui.view,arch_db:l10n_mx_account_reports.view_l10n_mx_financial_report_wizard_form
+msgid "Mexico Financial Report"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.model,name:l10n_mx_account_reports.model_l10n_mx_financial_report
+msgid "Mexico Financial Report Engine"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.model,name:l10n_mx_account_reports.model_l10n_mx_financial_report_wizard
+msgid "Mexico Financial Report Wizard"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model_terms:ir.ui.view,arch_db:l10n_mx_account_reports.report_financial
+msgid "Name"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_44
+msgid "Otros costos"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_43
+msgid "Otros ingresos"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_15
+msgid "PASIVOS"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_30
+msgid "PASIVOS + CAPITAL"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_22
+msgid "Pasivos adicionales no circulantes"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_16
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_17
+msgid "Pasivos circulantes"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_5
+msgid "Por cobrar"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_19
+msgid "Por pagar"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_8
+msgid "Prepagos"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model_terms:ir.ui.view,arch_db:l10n_mx_account_reports.view_l10n_mx_financial_report_wizard_form
+msgid "Print PDF"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.actions.server,name:l10n_mx_account_reports.action_l10n_mx_report_profit_loss
+#: model:ir.model.fields.selection,name:l10n_mx_account_reports.selection__l10n_mx_financial_report_wizard__report_type__profit_loss
+#: model:ir.ui.menu,name:l10n_mx_account_reports.menu_l10n_mx_report_profit_loss
+msgid "Profit and Loss"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.model.fields,field_description:l10n_mx_account_reports.field_l10n_mx_financial_report_wizard__report_type
+msgid "Report Type"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_28
+msgid "Resultado de ejercicio"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_27
+msgid "Resultado de ejercicios anteriores"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_10
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_38
+msgid "Saldo Final"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_7
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_32
+msgid "Saldo inicial"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#. odoo-python
+#: code:addons/l10n_mx_account_reports/wizards/l10n_mx_financial_report_wizard.py:0
+msgid "The DIOT export is only available for the DIOT report."
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#. odoo-python
+#: code:addons/l10n_mx_account_reports/wizards/l10n_mx_financial_report_wizard.py:0
+msgid "The start date must be before the end date."
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_14
+msgid "Total ACTIVOS"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_11
+msgid "Total Activos adicionales fijos"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_13
+msgid "Total Activos adicionales no circulantes"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_7
+msgid "Total Activos circulantes"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_29
+msgid "Total CAPITAL"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_42
+msgid "Total Costo de ingresos"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_4
+msgid "Total Cuentas bancarias y de efectivo"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_48
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_50
+msgid "Total Gastos"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_45
+msgid "Total Ingreso"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_40
+msgid "Total Ingresos de Operación"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_23
+msgid "Total PASIVOS"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_18
+msgid "Total Pasivo circulante"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_21
+msgid "Total Pasivos circulantes"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_20
+msgid "Total Por Pagar"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_9
+msgid "Total activos circulantes"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.actions.server,name:l10n_mx_account_reports.action_l10n_mx_report_trial_balance
+#: model:ir.model.fields.selection,name:l10n_mx_account_reports.selection__l10n_mx_financial_report_wizard__report_type__trial_balance
+#: model:ir.ui.menu,name:l10n_mx_account_reports.menu_l10n_mx_report_trial_balance
+msgid "Trial Balance"
+msgstr ""
