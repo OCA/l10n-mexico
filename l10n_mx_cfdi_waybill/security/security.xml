@@ -1,0 +1,53 @@
+<odoo>
+    <record id="l10n_mx_cfdi_waybill_transporter_admin_access" model="ir.rule">
+        <field name="name">CFDI Traslado Contacto Acceso de Administrador</field>
+        <field name="model_id" ref="model_l10n_mx_cfdi_waybill_transporter" />
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[(4, ref('base.group_system'))]" />
+    </record>
+
+    <record id="l10n_mx_cfdi_waybill_transporter_company_access" model="ir.rule">
+        <field name="name">CFDI Traslado Contacto Acceso por Compañía</field>
+        <field name="model_id" ref="model_l10n_mx_cfdi_waybill_transporter" />
+        <field
+            name="domain_force"
+        >['|',('company_id', '=', False),('company_id', 'in', company_ids)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]" />
+    </record>
+
+    <record id="l10n_mx_cfdi_waybill_vehicle_admin_access" model="ir.rule">
+        <field name="name">CFDI Traslado Vehículo Acceso de Administrador</field>
+        <field name="model_id" ref="model_l10n_mx_cfdi_waybill_vehicle" />
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[(4, ref('base.group_system'))]" />
+    </record>
+
+    <record id="l10n_mx_cfdi_waybill_vehicle_company_access" model="ir.rule">
+        <field name="name">CFDI Traslado Vehículo Acceso por Compañía</field>
+        <field name="model_id" ref="model_l10n_mx_cfdi_waybill_vehicle" />
+        <field
+            name="domain_force"
+        >['|',('company_id', '=', False),('company_id', 'in', company_ids)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]" />
+    </record>
+
+    <record id="l10n_mx_cfdi_waybill_vehicle_trailer_admin_access" model="ir.rule">
+        <field
+            name="name"
+        >CFDI Traslado Remolque de Vehículo Acceso de Administrador</field>
+        <field name="model_id" ref="model_l10n_mx_cfdi_waybill_vehicle_trailer" />
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[(4, ref('base.group_system'))]" />
+    </record>
+
+    <record id="l10n_mx_cfdi_waybill_vehicle_trailer_company_access" model="ir.rule">
+        <field
+            name="name"
+        >CFDI Traslado Remolque de Vehículo Acceso por Compañía</field>
+        <field name="model_id" ref="model_l10n_mx_cfdi_waybill_vehicle_trailer" />
+        <field
+            name="domain_force"
+        >['|',('company_id', '=', False),('company_id', 'in', company_ids)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]" />
+    </record>
+</odoo>

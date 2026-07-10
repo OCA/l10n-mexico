@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_waybill_form" model="ir.ui.view">
+        <field name="name">waybill Form</field>
+        <field name="model">l10n_mx_cfdi_waybill.waybill</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button
+                        name="action_post"
+                        invisible="state != 'draft'"
+                        type="object"
+                        string="Publicar"
+                        class="oe_highlight"
+                        groups="base.group_user"
+                        data-hotkey="x"
+                    />
+                    <button
+                        name="action_cancel"
+                        invisible="state != 'published'"
+                        type="object"
+                        class="oe_highlight"
+                        string="Cancelar"
+                        groups="base.group_user"
+                        data-hotkey="x"
+                    />
+                    <button
+                        name="action_draft"
+                        invisible="state != 'canceled'"
+                        type="object"
+                        string="Restablecer a Borrador"
+                        class="oe_highlight"
+                        groups="base.group_user"
+                        data-hotkey="x"
+                    />
+                    <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="draft,published"
+                    />
+                </header>
+                <sheet>
+                    <h2>Carta Porte
+                        <field name="name" />
+                    </h2>
+                    <group>
+                        <group>
+                            <field name="issuer_id" readonly="state != 'draft'" />
+                            <field name="receiver_id" readonly="state != 'draft'" />
+                        </group>
+                        <group>
+                            <field name="vehicle_id" readonly="state != 'draft'" />
+                            <field
+                                name="federal_highway_use"
+                                readonly="state != 'draft'"
+                            />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Operaciones Detalladas">
+                            <field name="entry_ids" readonly="state != 'draft'">
+                                <list editable="bottom">
+                                    <field name="picking_id" optional="hide" />
+                                    <field name="move_id" optional="hide" />
+                                    <field name="product_id" />
+                                    <field name="product_qty" />
+                                    <field name="origin_address_id" />
+                                    <field name="destination_address_id" />
+                                    <field name="distance" />
+                                    <field name="departure_datetime" />
+                                    <field name="arrival_datetime" />
+                                    <field name="duration" invisible="1" />
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Contactos">
+                            <field name="transporter_ids" readonly="state != 'draft'" />
+                        </page>
+                        <page string="Traslados">
+                            <field name="picking_ids" readonly="state != 'draft'" />
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter />
+            </form>
+        </field>
+    </record>
+
+    <record id="view_waybill_list" model="ir.ui.view">
+        <field name="name">waybill List</field>
+        <field name="model">l10n_mx_cfdi_waybill.waybill</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="create_date" string="Fecha" />
+                <field name="receiver_id" />
+                <field name="state" />
+                <field name="pdf_file" widget="file" filename="pdf_filename" />
+                <field name="pdf_filename" column_invisible="1" />
+                <field name="xml_file" widget="file" filename="xml_filename" />
+                <field name="xml_filename" column_invisible="1" />
+            </list>
+        </field>
+    </record>
+
+    <record id="view_waybill_search" model="ir.ui.view">
+        <field name="name">waybill Search</field>
+        <field name="model">l10n_mx_cfdi_waybill.waybill</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="vehicle_id" />
+                <field name="federal_highway_use" />
+            </search>
+        </field>
+    </record>
+
+    <record id="action_waybill" model="ir.actions.act_window">
+        <field name="name">Carta Porte</field>
+        <field name="res_model">l10n_mx_cfdi_waybill.waybill</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_waybill_list" />
+        <field name="search_view_id" ref="view_waybill_search" />
+    </record>
+
+    <record id="action_waybill_from_many" model="ir.actions.act_window">
+        <field name="name">Crear Carta Porte</field>
+        <field name="res_model">l10n_mx_cfdi_waybill.waybill</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_waybill_list" />
+        <field name="search_view_id" ref="view_waybill_search" />
+        <field name="binding_type">action</field>
+        <field name="binding_model_id" ref="stock.model_stock_picking" />
+        <field name="binding_view_types">list</field>
+    </record>
+
+    <menuitem
+        id="menu_waybill"
+        name="Cartas Porte"
+        parent="l10n_mx_cfdi_waybill.stock_transfer_cfdi_root_menu"
+        action="action_waybill"
+    />
+</odoo>

@@ -1,0 +1,25 @@
+<odoo>
+    <record id="stock_view_picking_form_carta_porte" model="ir.ui.view">
+        <field name="name">Stock Picking: Campos para Carta Porte</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='do_print_picking']" position="after">
+                <field name="has_waybill" invisible="1" />
+                <button
+                name="action_create_waybill"
+                string="Crear Carta Porte"
+                type="object"
+                invisible="has_waybill == True"
+                class="oe_highlight"
+            />
+                />
+            </xpath>
+            <xpath expr="/form/sheet/notebook" position="inside">
+                <page string="Carta Porte" name="transport_permit">
+                    <field name="waybill_ids" string="Documentos" readonly="1" />
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

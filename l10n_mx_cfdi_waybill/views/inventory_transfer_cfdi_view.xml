@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem
+        id="stock_transfer_cfdi_root_menu"
+        name="Carta Porte"
+        parent="stock.menu_stock_root"
+        groups="base.group_user"
+    />
+</odoo>

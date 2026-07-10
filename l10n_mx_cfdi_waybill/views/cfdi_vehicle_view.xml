@@ -1,0 +1,62 @@
+<odoo>
+    <record id="view_cfdi_vehicle_form" model="ir.ui.view">
+        <field name="name">Vehículo de Transporte</field>
+        <field name="model">l10n_mx_cfdi_waybill.vehicle</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="plate" />
+                            <field name="model" />
+                            <field name="gross_vehicle_weight" />
+                            <field name="vehicle_setup" />
+                        </group>
+                        <group>
+                            <field name="company_id" groups="base.group_system" />
+                            <field name="permit_type" />
+                            <field name="permit_number" />
+                            <field name="insurance_company" />
+                            <field name="insurance_number" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="trailers">
+                            <list
+                                editable="bottom"
+                                create="1"
+                                edit="1"
+                                js_class="singleton_list"
+                                sample="1"
+                            >
+                                <field name="plate" />
+                                <field name="type" />
+                            </list>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mx_cfdi_vehicle" model="ir.actions.act_window">
+        <field name="name">Vehículos de Transporte</field>
+        <field name="res_model">l10n_mx_cfdi_waybill.vehicle</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_mx_cfdi_vehicle_trailer" model="ir.actions.act_window">
+        <field name="name">Trailer de Vehículo</field>
+        <field name="res_model">l10n_mx_cfdi_waybill.vehicle_trailer</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem
+        id="menu_cfdi_vehicle"
+        name="Vehículos"
+        parent="l10n_mx_cfdi_waybill.stock_transfer_cfdi_root_menu"
+        groups="base.group_user"
+        action="action_mx_cfdi_vehicle"
+    />
+</odoo>
