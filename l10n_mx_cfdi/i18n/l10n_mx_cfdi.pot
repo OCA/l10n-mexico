@@ -472,8 +472,20 @@ msgid "Check this box if this contact is an Employee."
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__country_enforce_cities
+msgid ""
+"Check this box to ensure every address created in that country has a 'City' "
+"chosen in the list of the country's cities."
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__city
 msgid "City"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__city_id
+msgid "City ID"
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -621,6 +633,11 @@ msgid "Currency"
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_stock_customer
+msgid "Customer Location"
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_payment_term_id
 msgid "Customer Payment Terms"
 msgstr ""
@@ -726,6 +743,11 @@ msgid "Documents"
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__street_number2
+msgid "Door"
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__duplicate_bank_partner_ids
 msgid "Duplicate Bank Partner"
 msgstr ""
@@ -782,6 +804,11 @@ msgstr ""
 #: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_document__l10n_mx_cfdi_auto
 #: model:ir.model.fields,help:l10n_mx_cfdi.field_res_company__l10n_mx_cfdi_auto
 msgid "Enable to automatically sign CFDI when validating invoices."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__country_enforce_cities
+msgid "Enforce Cities"
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -919,8 +946,18 @@ msgid "Geo Longitude"
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__date_localization
+msgid "Geolocation Date"
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__has_message
 msgid "Has Message"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__street_number
+msgid "House"
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -1128,6 +1165,11 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_has_error
 msgid "Message Delivery error"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__picking_warn_msg
+msgid "Message for Stock Picking"
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -1603,6 +1645,11 @@ msgid "Street"
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__street_name
+msgid "Street Name"
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__street2
 msgid "Street2"
 msgstr ""
@@ -1689,6 +1736,18 @@ msgstr ""
 msgid ""
 "The registry number of the company. Use it if it is different from the Tax "
 "ID. It must be unique across all partners of a same country"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_stock_customer
+msgid ""
+"The stock location used as destination when sending goods to this contact."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_stock_supplier
+msgid ""
+"The stock location used as source when receiving goods from this contact."
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -1809,6 +1868,11 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__user_ids
 msgid "Users"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_stock_supplier
+msgid "Vendor Location"
 msgstr ""
 
 #. module: l10n_mx_cfdi
