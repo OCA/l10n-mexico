@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_stock_landed_cost_form_pedimento" model="ir.ui.view">
+        <field name="name">stock.landed.cost.form.pedimento</field>
+        <field name="model">stock.landed.cost</field>
+        <field name="inherit_id" ref="stock_landed_costs.view_stock_landed_cost_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='picking_ids']" position="after">
+                <field name="l10n_mx_cfdi_pedimento_id" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
