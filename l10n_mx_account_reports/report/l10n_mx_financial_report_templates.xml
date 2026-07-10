@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="action_report_l10n_mx_financial" model="ir.actions.report">
+        <field name="name">Mexico Financial Report</field>
+        <field name="model">l10n_mx.financial.report.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">l10n_mx_account_reports.report_financial</field>
+        <field name="report_file">l10n_mx_account_reports.report_financial</field>
+        <field
+            name="print_report_name"
+        >'%s - %s' % (object.company_id.name, object.report_type)</field>
+    </record>
+    <template id="report_financial">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 t-esc="report_title" />
+                        <p>
+                            <span t-esc="company.name" />
+                            <br />
+                            <span t-esc="date_from" />
+                            -
+                            <span t-esc="date_to" />
+                        </p>
+                        <table class="table table-sm o_main_table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th class="text-end">Debit</th>
+                                    <th class="text-end">Credit</th>
+                                    <th class="text-end">Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="report_lines" t-as="line">
+                                    <td>
+                                        <t
+                                            t-if="line.get('account_code')"
+                                            t-esc="line.get('account_code')"
+                                        />
+                                        <t
+                                            t-if="line.get('partner_name')"
+                                            t-esc="line.get('partner_name')"
+                                        />
+                                        <t t-if="line.get('bucket')">
+                                            -
+                                            <t t-esc="line.get('bucket')" />
+                                        </t>
+                                    </td>
+                                    <td class="text-end">
+                                        <t
+                                            t-esc="line.get('debit', line.get('amount', line.get('base_amount', 0.0)))"
+                                        />
+                                    </td>
+                                    <td class="text-end">
+                                        <t
+                                            t-esc="line.get('credit', line.get('tax_amount', 0.0))"
+                                        />
+                                    </td>
+                                    <td class="text-end">
+                                        <t
+                                            t-esc="line.get('balance', line.get('amount', 0.0))"
+                                        />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
