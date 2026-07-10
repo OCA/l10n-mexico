@@ -1,0 +1,1156 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_mx_cfdi_waybill
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.stock_view_picking_form_carta_porte
+msgid "/&gt;"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid ""
+"<b class=\"m-0 p-0 font-weight-bold\" style=\"font-size: 10px; line-height: 2;\">\n"
+"                                        Cadena Original del complemento de Certificación Digital del SAT\n"
+"                                    </b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid ""
+"<b class=\"m-0 p-0 font-weight-bold\" style=\"font-size: 10px; line-height: 2;\">\n"
+"                                        Sello Digital del CFDI\n"
+"                                    </b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid ""
+"<b class=\"m-0 p-0 font-weight-bold\" style=\"font-size: 10px; line-height: 2;\">\n"
+"                                        Sello Digital del SAT\n"
+"                                    </b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "<b class=\"row\">Fecha/Hora Certificación</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "<b class=\"row\">Folio Fiscal:</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "<b class=\"row\">No. de Certificado Digital:</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "<b class=\"row\">Número de Serie Certificado del SAT</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "<b class=\"row\">RFC del PAC</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "<b class=\"row\">Tipo de Comprobante:</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "<b>Asegura Responsabilidad Civil:</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid ""
+"<b>Año/Modelo</b>\n"
+"                                    <br/>"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid ""
+"<b>Configuración Vehicular</b>\n"
+"                                    <br/>"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "<b>Domicilio</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid ""
+"<b>Numero Total Mercancías</b>\n"
+"                                <br/>"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "<b>Número Permiso SCT:</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "<b>Permiso SCT:</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid ""
+"<b>Peso Bruto Total</b>\n"
+"                                <br/>"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid ""
+"<b>Peso Bruto Vehicular</b>\n"
+"                                    <br/>"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid ""
+"<b>Placa</b>\n"
+"                                    <br/>"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "<b>Póliza Responsabilidad Civil:</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid ""
+"<b>Unidad de Peso</b>\n"
+"                                <br/>\n"
+"                                KGM"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "<b>Versión: 4.0</b>"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__cancellation_request_proof_file
+msgid "Acuse de solicitud de cancelación"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__pdf_file
+msgid "Archivo PDF"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__xml_file
+msgid "Archivo XML"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill_entry__arrival_datetime
+msgid "Arribo"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "Autotransporte"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle__model
+msgid "Año/Modelo"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__cfdi_id
+msgid "CFDI"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__l10n_mx_cfdi_auto
+msgid "CFDI Automatico"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model,name:l10n_mx_cfdi_waybill.model_l10n_mx_cfdi_waybill_waybill_entry
+msgid "CFDI Goods Transfer"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__l10n_mx_cfdi_enabled
+msgid "CFDI Habilitado"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model,name:l10n_mx_cfdi_waybill.model_l10n_mx_cfdi_document
+msgid "CFDI document"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__original_string
+msgid "Cadena original"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.view_waybill_form
+msgid "Cancelar"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill_entry__product_qty
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "Cantidad"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "Cantidades Transportadas"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.actions.act_window,name:l10n_mx_cfdi_waybill.action_waybill
+#: model:ir.ui.menu,name:l10n_mx_cfdi_waybill.stock_transfer_cfdi_root_menu
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.stock_view_picking_form_carta_porte
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.view_waybill_form
+msgid "Carta Porte"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/waybill.py:0
+msgid "Carta Porte cancelada"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill_entry__waybill_id
+msgid "Carta porte"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.ui.menu,name:l10n_mx_cfdi_waybill.menu_waybill
+msgid "Cartas Porte"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__cert_data_json
+msgid "Cert Data Json"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "Clave Producto"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "Clave Unidad"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_transporter__company_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle__company_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle_trailer__company_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__company_id
+msgid "Company"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle__insurance_company
+msgid "Compañía de Seguros"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle__vehicle_setup
+msgid "Configuración de Vehicular"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model,name:l10n_mx_cfdi_waybill.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_transporter__partner_id
+msgid "Contacto"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.actions.act_window,name:l10n_mx_cfdi_waybill.action_mx_cfdi_transporter
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__transporter_ids
+#: model:ir.ui.menu,name:l10n_mx_cfdi_waybill.menu_cfdi_transporter
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.view_waybill_form
+msgid "Contactos"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.actions.act_window,name:l10n_mx_cfdi_waybill.action_waybill_from_many
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.stock_view_picking_form_carta_porte
+msgid "Crear Carta Porte"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_transporter__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle_trailer__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill_entry__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_transporter__create_date
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle__create_date
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle_trailer__create_date
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__create_date
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill_entry__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_transporter__type_code
+msgid "Código"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__verification_qr_code
+msgid "Código QR de Verificación"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__tax_codes
+msgid "Código de impuesto"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_product_product__l10n_mx_cfid_dangerous_material_code
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_product_template__l10n_mx_cfid_dangerous_material_code
+msgid "Código de material Peligroso"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/waybill.py:0
+msgid "Debe ingresar el RFC del contact: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/cfdi_vehicle.py:0
+msgid "Debe ingresar el año/modelo del vehículo: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/waybill.py:0
+msgid "Debe ingresar el código del producto en la ficha del producto: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/waybill.py:0
+msgid "Debe ingresar el número de licencia del contact: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/cfdi_vehicle.py:0
+msgid "Debe ingresar el número de permiso del vehículo: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/cfdi_vehicle.py:0
+msgid "Debe ingresar el número de placa del vehículo: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/cfdi_vehicle.py:0
+msgid "Debe ingresar el número de seguro del vehículo: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/cfdi_vehicle.py:0
+msgid "Debe ingresar la configuración del vehículo: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/waybill.py:0
+msgid "Debe ingresar la distancia recorrida del traslado"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/waybill.py:0
+msgid "Debe ingresar la fecha y hora de llegada del traslado"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/waybill.py:0
+msgid "Debe ingresar la fecha y hora de salida del traslado"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/waybill.py:0
+msgid ""
+"Debe ingresar la unidad de medida del producto en la ficha del producto: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/waybill.py:0
+msgid "Debe seleccionar al menos un transportista con tipo \"Operador\""
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/waybill.py:0
+msgid "Debe seleccionar al menos un transportista en la sección \"Contactos\""
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/waybill.py:0
+msgid "Debe seleccionar el tipo de contacto para: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/cfdi_vehicle.py:0
+msgid "Debe seleccionar el tipo de permiso del vehículo: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/cfdi_vehicle.py:0
+msgid "Debe seleccionar la compañía de seguros del vehículo: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/waybill.py:0
+msgid "Debe seleccionar un vehículo para la carta porte"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/waybill.py:0
+msgid "Debe seleccionar una dirección de destino para el traslado de bienes"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/waybill.py:0
+msgid "Debe seleccionar una dirección de origen para el traslado de bienes"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "Descripción"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill_entry__destination_address_id
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "Destino"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_base_geocoder__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_document__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_transporter__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle_trailer__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill_entry__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_product_template__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_res_partner__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_stock_picking__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill_entry__distance
+msgid "Distancia (Km)"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "Distancia Recorrida"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.stock_view_picking_form_carta_porte
+msgid "Documentos"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__related_document_ids
+msgid "Documentos relacionados"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill_entry__duration
+msgid "Duración (Hrs)"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__issuer_id
+msgid "Emisor"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,help:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__l10n_mx_cfdi_enabled
+msgid "Enable CFDI for this company."
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,help:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__l10n_mx_cfdi_auto
+msgid "Enable to automatically sign CFDI when validating invoices."
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "Enlace de Verificación"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__entry_ids
+msgid "Entradas"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__state
+msgid "Estado"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__related_invoice_id
+msgid "Factura relacionada"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/waybill.py:0
+msgid "Falta el campo Calle en: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/waybill.py:0
+msgid "Falta el campo Código Postal en: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/waybill.py:0
+msgid "Falta el campo Peso en: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.view_waybill_list
+msgid "Fecha"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__issuing_datetime
+msgid "Fecha de emisión"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__signing_date
+msgid "Fecha de timbrado"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "Figuras"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__files_in_cache
+msgid "Files In Cache"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__cfdi_signature
+msgid "Firma del CFDI"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__sat_signature
+msgid "Firma del SAT"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__folio
+msgid "Folio"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,help:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model,name:l10n_mx_cfdi_waybill.model_base_geocoder
+msgid "Geo Coder"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_stock_picking__has_waybill
+msgid "Has Waybill"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_base_geocoder__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_document__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_transporter__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle_trailer__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill_entry__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_product_template__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_res_partner__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_stock_picking__id
+msgid "ID"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__tracking_id
+msgid "ID del documento en el API"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,help:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "Id"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,help:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,help:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__standalone
+msgid "Independiente"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_product_product__l10n_mx_cfdi_dangerous_material_indicator
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_product_template__l10n_mx_cfdi_dangerous_material_indicator
+msgid "Indicador de material peligroso CFDI"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/waybill.py:0
+msgid ""
+"La línea de traslado de \"%(move)s\" ya está incluido en la carta porte "
+"\"%(waybill)s\""
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/waybill.py:0
+msgid "La ubicación de origen y destino deben ser del mismo país."
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_transporter__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle_trailer__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill_entry__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_transporter__write_date
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle__write_date
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle_trailer__write_date
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__write_date
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill_entry__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "Licencia"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_issuer__l10n_mx_cfdi_waybill_driving_license
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_transporter__driving_license
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_res_partner__l10n_mx_cfdi_waybill_driving_license
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_res_users__l10n_mx_cfdi_waybill_driving_license
+msgid "Licencia de Conducir"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "Mercancías"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill_entry__move_id
+msgid "Movimiento"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/waybill.py:0
+msgid "No se encontró el código de país SAT para: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle__name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__name
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "Nombre"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__pdf_filename
+msgid "Nombre del archivo PDF"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__xml_filename
+msgid "Nombre del archivo XML"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__cancellation_request_proof_filename
+msgid "Nombre del archivo de acuse de solicitud de cancelación"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__is_global_note
+msgid "Nota global"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,help:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,help:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle__permit_number
+msgid "Número de Permiso"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle__plate
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle_trailer__plate
+msgid "Número de Placa"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle__insurance_number
+msgid "Número de Seguro"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__cert_number
+msgid "Número de certificado"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__sat_cert_number
+msgid "Número de certificado del SAT"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.view_waybill_form
+msgid "Operaciones Detalladas"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill_entry__origin_address_id
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "Origen"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__related_payment_id
+msgid "Pago relacionado"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_transporter__parte_transporte_ids
+msgid "Partes de Transporte"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "Peso"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle__gross_vehicle_weight
+msgid "Peso Bruto Vehicular"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,help:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle__gross_vehicle_weight
+msgid "Peso Bruto Vehicular (Kg)"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model,name:l10n_mx_cfdi_waybill.model_product_template
+msgid "Product"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill_entry__product_id
+msgid "Producto"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.view_waybill_form
+msgid "Publicar"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "RFC"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__rfc_prov_certif
+msgid "RFC del proveedor de certificación"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__receiver_id
+msgid "Receptor"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.view_waybill_form
+msgid "Restablecer a Borrador"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/base_geocoder.py:0
+msgid "Route computation is only available with Openstreetmap."
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill_entry__departure_datetime
+msgid "Salida"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/waybill.py:0
+msgid "Se ha publicado el CFDI de la carta porte"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__serie
+msgid "Serie"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,help:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__standalone
+msgid ""
+"Si está marcado, el certificado no esta relacionado a otros documentos del "
+"sistema"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_waybill/models/waybill.py:0
+msgid "Solo se pueden seleccionar traslados del mismo tipo"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,help:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_transporter__type
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "Tipo"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle__permit_type
+msgid "Tipo de Permiso"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle_trailer__type
+msgid "Tipo de Trailer"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.actions.act_window,name:l10n_mx_cfdi_waybill.action_mx_cfdi_vehicle_trailer
+msgid "Trailer de Vehículo"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_vehicle__trailers
+msgid "Trailers"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model,name:l10n_mx_cfdi_waybill.model_stock_picking
+msgid "Transfer"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model,name:l10n_mx_cfdi_waybill.model_l10n_mx_cfdi_waybill_transporter
+msgid "Transporter Record used in CFDI of type \"Carta Porte\""
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill_entry__picking_id
+msgid "Traslado"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__picking_ids
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.view_waybill_form
+msgid "Traslados"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__type
+msgid "Type"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,help:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__verification_url
+msgid "URL de verificación"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__uuid
+msgid "UUID"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,help:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__uuid
+msgid "UUID asignado por el SAT"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
+msgid "Ubicaciones"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__federal_highway_use
+msgid "Uso de carretera federal"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model,name:l10n_mx_cfdi_waybill.model_l10n_mx_cfdi_waybill_vehicle
+msgid "Vehicle Record used in CFDI of type \"Carta Porte\""
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model,name:l10n_mx_cfdi_waybill.model_l10n_mx_cfdi_waybill_vehicle_trailer
+msgid "Vehicle Trailer Record used in CFDI of type \"Carta Porte\""
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__vehicle_id
+msgid "Vehículo"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.ui.menu,name:l10n_mx_cfdi_waybill.menu_cfdi_vehicle
+msgid "Vehículos"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.actions.act_window,name:l10n_mx_cfdi_waybill.action_mx_cfdi_vehicle
+msgid "Vehículos de Transporte"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__version
+msgid "Version"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.product_template_form_view_inherit
+msgid "Waybill"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,help:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.actions.report,name:l10n_mx_cfdi_waybill.action_waybill_report
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_stock_picking__waybill_ids
+msgid "waybill"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model,name:l10n_mx_cfdi_waybill.model_l10n_mx_cfdi_waybill_waybill
+msgid "waybill (Carta Porte)"
+msgstr ""
