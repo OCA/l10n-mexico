@@ -459,6 +459,12 @@ class AccountMove(models.Model):
                     ("type", "=", "I"),
                 ]
             )
+            related_cfdis |= self.reversed_entry_id.related_cert_ids.filtered_domain(
+                [
+                    ("state", "=", "published"),
+                    ("type", "=", "I"),
+                ]
+            )
 
             cfdi_data = {
                 "NameId": "2",
