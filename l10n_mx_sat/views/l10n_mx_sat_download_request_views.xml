@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="l10n_mx_sat_download_request_view_list" model="ir.ui.view">
+        <field name="name">l10n_mx_sat.download.request.list</field>
+        <field name="model">l10n_mx_sat.download.request</field>
+        <field name="arch" type="xml">
+            <list delete="0">
+                <field name="name" readonly="1" />
+                <field
+                    name="company_id"
+                    groups="base.group_multi_company"
+                    readonly="1"
+                />
+                <field name="document_kind" readonly="1" />
+                <field name="direction" readonly="1" />
+                <field name="request_type" readonly="1" />
+                <field name="date_from" readonly="1" />
+                <field name="date_to" readonly="1" />
+                <field
+                    name="state"
+                    widget="badge"
+                    decoration-info="state in ('draft', 'requested', 'processing')"
+                    decoration-warning="state in ('ready', 'downloading')"
+                    decoration-success="state == 'done'"
+                    decoration-danger="state == 'error'"
+                />
+                <field name="reported_cfdi_count" string="SAT reported" />
+                <field name="document_count" string="Procesados" />
+            </list>
+        </field>
+    </record>
+
+    <record id="l10n_mx_sat_download_request_view_form" model="ir.ui.view">
+        <field name="name">l10n_mx_sat.download.request.form</field>
+        <field name="model">l10n_mx_sat.download.request</field>
+        <field name="arch" type="xml">
+            <form delete="0">
+                <header>
+                    <button
+                        name="action_queue"
+                        type="object"
+                        string="Encolar"
+                        class="btn-primary"
+                        icon="fa-play"
+                        invisible="state != 'draft'"
+                        groups="l10n_mx_sat.group_sat_manager"
+                        confirm="¿Encolar esta solicitud SAT para procesamiento en segundo plano?"
+                    />
+                    <button
+                        name="action_retry"
+                        type="object"
+                        string="Retry"
+                        class="btn-primary"
+                        icon="fa-refresh"
+                        invisible="state != 'error' or not can_retry"
+                        groups="l10n_mx_sat.group_sat_manager"
+                        confirm="¿Retry esta solicitud SAT?"
+                    />
+                    <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="draft,requested,processing,ready,done,error"
+                    />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="company_id" />
+                            <field name="document_kind" />
+                            <field name="direction" />
+                            <field name="request_type" />
+                            <field
+                                name="date_from"
+                                readonly="state not in ('draft', 'error')"
+                            />
+                            <field
+                                name="date_to"
+                                readonly="state not in ('draft', 'error')"
+                            />
+                        </group>
+                        <group>
+                            <field name="sat_request_id" />
+                            <field name="reported_cfdi_count" />
+                            <field name="document_count" />
+                            <field name="request_fingerprint" />
+                            <field name="next_process_at" />
+                            <field name="can_retry" invisible="1" />
+                        </group>
+                    </group>
+                    <group string="Error" invisible="not error_message">
+                        <field name="error_message" nolabel="1" colspan="2" />
+                    </group>
+                    <notebook>
+                        <page string="Packages" name="packages">
+                            <field name="package_ids" readonly="1">
+                                <list>
+                                    <field name="sat_package_id" />
+                                    <field
+                                        name="state"
+                                        widget="badge"
+                                        decoration-info="state == 'pending'"
+                                        decoration-success="state == 'processed'"
+                                        decoration-danger="state == 'error'"
+                                    />
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Documents" name="documents">
+                            <field
+                                name="document_ids"
+                                readonly="1"
+                                create="0"
+                                edit="0"
+                                delete="0"
+                            >
+                                <list create="0" edit="0" delete="0">
+                                    <field name="uuid" />
+                                    <field name="sat_status" />
+                                    <field name="issuer_rfc" />
+                                    <field name="receiver_rfc" />
+                                    <field name="issue_date" />
+                                    <field name="has_xml" />
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="l10n_mx_sat_download_request_view_search" model="ir.ui.view">
+        <field name="name">l10n_mx_sat.download.request.search</field>
+        <field name="model">l10n_mx_sat.download.request</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="company_id" groups="base.group_multi_company" />
+                <filter
+                    string="XML"
+                    name="xml"
+                    domain="[('request_type', '=', 'xml')]"
+                />
+                <filter
+                    string="Metadata"
+                    name="metadata"
+                    domain="[('request_type', '=', 'metadata')]"
+                />
+                <filter
+                    string="Error"
+                    name="error"
+                    domain="[('state', '=', 'error')]"
+                />
+                <filter
+                    string="Pending"
+                    name="pending"
+                    domain="[('state', 'not in', ('done', 'error'))]"
+                />
+                <group>
+                    <filter
+                        string="Company"
+                        name="group_company"
+                        context="{'group_by': 'company_id'}"
+                    />
+                    <filter
+                        string="State"
+                        name="group_state"
+                        context="{'group_by': 'state'}"
+                    />
+                    <filter
+                        string="Request type"
+                        name="group_request_type"
+                        context="{'group_by': 'request_type'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="l10n_mx_sat_download_request_action" model="ir.actions.act_window">
+        <field name="name">SAT download requests</field>
+        <field name="res_model">l10n_mx_sat.download.request</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="l10n_mx_sat_download_request_view_search" />
+    </record>
+
+    <menuitem
+        id="menu_l10n_mx_sat_root"
+        name="SAT connection"
+        web_icon="l10n_mx_sat,static/description/icon_sat.png"
+        sequence="45"
+        groups="l10n_mx_sat.group_sat_user"
+    />
+    <menuitem
+        id="menu_l10n_mx_sat_documents"
+        name="Documents"
+        parent="menu_l10n_mx_sat_root"
+        action="l10n_mx_sat_document_action"
+        sequence="10"
+    />
+    <menuitem
+        id="menu_l10n_mx_sat_download_requests"
+        name="Download requests"
+        parent="menu_l10n_mx_sat_root"
+        action="l10n_mx_sat_download_request_action"
+        sequence="20"
+        groups="l10n_mx_sat.group_sat_manager"
+    />
+    <menuitem
+        id="menu_l10n_mx_sat_settings"
+        name="Ajustes"
+        parent="menu_l10n_mx_sat_root"
+        sequence="30"
+        groups="l10n_mx_sat.group_sat_manager"
+    />
+    <menuitem
+        id="menu_l10n_mx_sat_configure_connections"
+        name="Configurar conexiones"
+        parent="menu_l10n_mx_sat_settings"
+        action="l10n_mx_sat_company_connection_action"
+        sequence="10"
+        groups="l10n_mx_sat.group_sat_manager"
+    />
+</odoo>
