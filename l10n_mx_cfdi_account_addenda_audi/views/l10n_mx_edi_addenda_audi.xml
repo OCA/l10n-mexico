@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <template id="l10n_mx_edi_addenda_audi" name="Addenda Audi">
         <S:Factura
@@ -29,8 +30,7 @@
                         t-att-montoLinea="round(move_line.price_unit * move_line.quantity)"
                         t-att-unidadMedida="move_line.product_uom_id.name"
                     >
-                        <t t-set="i" t-value="i+1" />
-
+                        <t t-set="i" t-value="i + 1" />
                         <S:Referencias t-att-ordenCompra="record.ref" />
                     </S:Parte>
                 </t>
@@ -41,5 +41,4 @@
     <record id="l10n_mx_edi_addenda_audi" model="ir.ui.view">
         <field name="l10n_mx_edi_addenda_flag" eval="True" />
     </record>
-
 </odoo>
