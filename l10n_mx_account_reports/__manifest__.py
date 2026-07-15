@@ -18,9 +18,12 @@
     "data": [
         "data/mis.report.style.csv",
         "data/mis.report.csv",
+        "data/mis.report.subkpi.csv",
+        "data/mis.report.query.csv",
         "data/mis.report.kpi.csv",
         "data/mis.report.instance.csv",
         "data/mis.report.instance.period.csv",
+        "data/mis.report.instance.period.sum.csv",
         "security/ir.model.access.csv",
         "wizards/l10n_mx_financial_report_wizard_views.xml",
         "views/l10n_mx_report_menu.xml",

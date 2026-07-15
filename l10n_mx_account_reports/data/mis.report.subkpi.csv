@@ -1,0 +1,5 @@
+id,name,description,sequence,report_id/id
+mis_report_subkpi_opening,Saldo_inicial,Saldo inicial,10,l10n_mx_account_reports.mis_report_trial_balance
+mis_report_subkpi_debits,Debitos_del_periodo,Débitos del periodo,20,l10n_mx_account_reports.mis_report_trial_balance
+mis_report_subkpi_credits,Creditos_del_periodo,Créditos del periodo,30,l10n_mx_account_reports.mis_report_trial_balance
+mis_report_subkpi_closing,Saldo_Final,Saldo final,40,l10n_mx_account_reports.mis_report_trial_balance

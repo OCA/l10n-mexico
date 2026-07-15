@@ -1,4 +1,8 @@
 id,sequence,name,report_id/id,currency_id/id,temporary,target_move,display_columns_description,no_auto_expand_accounts,comparison_mode,widget_show_settings_button,widget_show_pivot_date,widget_show_filters,multi_company,wide_display_by_default,landscape_pdf
-mis_report_instance_profit_and_loss,20,Estado de resultados,mis_report_profit_and_loss,base.MXN,FALSE,posted,FALSE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
-mis_report_instance_balance_sheet,10,Balance General,mis_report_balance_sheet,base.MXN,FALSE,posted,FALSE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
-mis_report_instance_trial_balance,30,Balanza de comprobación,mis_report_trial_balance,base.MXN,FALSE,posted,FALSE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
+mis_report_instance_balance_sheet,10,Balance General,l10n_mx_account_reports.mis_report_balance_sheet,base.MXN,FALSE,posted,FALSE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
+mis_report_instance_profit_and_loss,20,Estado de resultados,l10n_mx_account_reports.mis_report_profit_and_loss,base.MXN,FALSE,posted,FALSE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
+mis_report_instance_trial_balance_annual,30,Balanza de comprobación anual,l10n_mx_account_reports.mis_report_trial_balance,base.MXN,FALSE,posted,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
+mis_report_instance_trial_balance_monthly,40,Balanza de comprobación mensual,l10n_mx_account_reports.mis_report_trial_balance,base.MXN,FALSE,posted,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
+mis_report_instance_aged_receivable,50,Cuenta por cobrar vencida,l10n_mx_account_reports.mis_report_aged_receivable,base.MXN,FALSE,posted,FALSE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
+mis_report_instance_aged_payable,60,Cuenta por pagar,l10n_mx_account_reports.mis_report_aged_payable,base.MXN,FALSE,posted,FALSE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
+mis_report_instance_cash_flow,70,Flujo de efectivo,l10n_mx_account_reports.mis_report_cash_flow,base.MXN,FALSE,posted,FALSE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
