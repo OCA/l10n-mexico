@@ -1,10 +1,13 @@
+# Copyright (C) 2023 Open Source Integrators
+# (https://www.opensourceintegrators.com).
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+
 from odoo import api, fields, models
 
 
 class AccountMove(models.Model):
     _inherit = "account.move"
 
-    # New Fields
     ford_ref = fields.Char(string="Ford Reference", default="NA")
     ford_flag = fields.Boolean(compute="_compute_ford_flag", store=True)
 
