@@ -276,6 +276,13 @@ msgid "Automatically post bills for this trusted partner"
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__receipt_reminder_email
+msgid ""
+"Automatically send a confirmation email to the vendor X days before the "
+"expected receipt date, asking him to confirm the exact date."
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__available_invoice_template_pdf_report_ids
 msgid "Available Invoice Template Pdf Report"
 msgstr ""
@@ -333,6 +340,11 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_bounce
 msgid "Bounce"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__buyer_id
+msgid "Buyer"
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -669,8 +681,23 @@ msgid "Código de impuesto"
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__reminder_date_before_receipt
+msgid "Days Before Receipt"
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__days_sales_outstanding
 msgid "Days Sales Outstanding (DSO)"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__group_rfq
+msgid ""
+"Define if RFQ should be grouped         together based on expected arrival, except for dropship operations.\n"
+"         On Order: Replenishment needs will be grouped together except for MTO.\n"
+"         Daily: Replenishment needs will be grouped if the expected arrival is the same day\n"
+"         Weekly: Replenishment needs will be grouped if the expected arrival is the same week or week day\n"
+"         Always: Replenishment needs will always be grouped."
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -951,6 +978,11 @@ msgid "Geolocation Date"
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__group_rfq
+msgid "Group RFQ"
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__has_message
 msgid "Has Message"
 msgstr ""
@@ -1168,6 +1200,16 @@ msgid "Message Delivery error"
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__purchase_warn_msg
+msgid "Message for Purchase Order"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__sale_warn_msg
+msgid "Message for Sales Order"
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__picking_warn_msg
 msgid "Message for Stock Picking"
 msgstr ""
@@ -1274,6 +1316,11 @@ msgid "Number of Actions"
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__reminder_date_before_receipt
+msgid "Number of days to send reminder email before the promised receipt date"
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__message_has_error_counter
 msgid "Number of errors"
 msgstr ""
@@ -1314,6 +1361,19 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__offline_since
 msgid "Offline since"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__on_time_rate
+msgid "On-Time Delivery Rate"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__on_time_rate
+msgid ""
+"Over the past x days; the number of products received on time divided by the"
+" number of ordered products.x is either the System Parameter "
+"purchase_stock.on_time_delivery_days or the default 365"
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -1386,6 +1446,16 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_res_partner__payment_method_id
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_res_users__payment_method_id
 msgid "Payment Method"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__payment_token_count
+msgid "Payment Token Count"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__payment_token_ids
+msgid "Payment Tokens"
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -1464,6 +1534,16 @@ msgid "Publicados"
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__purchase_line_ids
+msgid "Purchase Lines"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__purchase_order_count
+msgid "Purchase Order Count"
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__rfc_prov_certif
 msgid "RFC del proveedor de certificación"
 msgstr ""
@@ -1471,6 +1551,11 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__fiscal_name
 msgid "Razón Social del Emisor"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__receipt_reminder_email
+msgid "Receipt Reminder"
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -1519,6 +1604,16 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__rtc_session_ids
 msgid "Rtc Session"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__sale_order_count
+msgid "Sale Order Count"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__sale_order_ids
+msgid "Sales Order"
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -1670,6 +1765,26 @@ msgid "Suffix value of the record for the sequence"
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__suggest_based_on
+msgid "Suggest Based On"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__suggest_days
+msgid "Suggest Days"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__suggest_percent
+msgid "Suggest Percent"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_purchase_currency_id
+msgid "Supplier Currency"
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__supplier_rank
 msgid "Supplier Rank"
 msgstr ""
@@ -1755,6 +1870,11 @@ msgstr ""
 msgid ""
 "There can be several users related to the same partner. When a single user "
 "is needed, this field attempts to find the most appropriate one."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_purchase_currency_id
+msgid "This currency will be used for purchases from the current partner"
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -1898,6 +2018,11 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__website_message_ids
 msgid "Website communication history"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__group_on
+msgid "Week Day"
 msgstr ""
 
 #. module: l10n_mx_cfdi
