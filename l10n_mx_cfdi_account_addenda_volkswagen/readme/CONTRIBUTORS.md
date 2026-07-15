@@ -1,0 +1,4 @@
+- Edgar Martinez \<<emartinez@opensourceintegrators.com>\>
+- Samuel Macias \<<smacias@opensourceintegrators.com>\>
+- [Gray Matter Logic](https://www.graymatterlogic.com):
+  - Maxime Chambreuil \<<maxime.chambreuil@graymatterlogic.com>\>
