@@ -1,5 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <template id="view_account_move_addenda_whirlpool" name="Addenda Whirlpool">
         <detallista:detallista xmlns:detallista="http://www.sat.gob.mx/detallista">
             <detallista:orderIdentification>
@@ -11,5 +11,4 @@
     <record id="view_account_move_addenda_whirlpool" model="ir.ui.view">
         <field name="l10n_mx_edi_addenda_flag" eval="True" />
     </record>
-
 </odoo>
