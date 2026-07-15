@@ -1,0 +1,173 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_mx_cfdi_comex
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_l10n_mx_cfdi_pedimento__customs_id
+msgid "Aduana"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_l10n_mx_cfdi_pedimento__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_l10n_mx_cfdi_pedimento__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_move_line__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_l10n_mx_cfdi_pedimento__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_product_template__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_stock_landed_cost__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_stock_lot__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.constraint,message:l10n_mx_cfdi_comex.constraint_l10n_mx_cfdi_pedimento_number_unique
+msgid "El número de pedimento ya existe."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_l10n_mx_cfdi_pedimento__date
+msgid "Fecha"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_move_line__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_l10n_mx_cfdi_pedimento__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_product_template__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_stock_landed_cost__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_stock_lot__id
+msgid "ID"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_move_line__l10n_mx_cfid_import_details
+msgid "Import details"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,help:l10n_mx_cfdi_comex.field_account_move_line__l10n_mx_cfid_import_details
+msgid "Import details for Mexican regulations compliance"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_move_line__l10n_mx_cfid_import_details_required
+msgid "Import details required"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model,name:l10n_mx_cfdi_comex.model_account_move_line
+msgid "Journal Item"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_l10n_mx_cfdi_pedimento__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_l10n_mx_cfdi_pedimento__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model,name:l10n_mx_cfdi_comex.model_stock_lot
+msgid "Lot/Serial"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_l10n_mx_cfdi_pedimento__lot_ids
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_comex.view_l10n_mx_cfdi_pedimentoento_form
+msgid "Lotes"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_l10n_mx_cfdi_pedimento__name
+msgid "Nombre"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_l10n_mx_cfdi_pedimento__number
+msgid "Número de Pedimento"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model,name:l10n_mx_cfdi_comex.model_l10n_mx_cfdi_pedimento
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_stock_landed_cost__l10n_mx_cfdi_pedimento_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_stock_lot__l10n_mx_cfdi_pedimento_id
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_comex.view_l10n_mx_cfdi_pedimentoento_form
+msgid "Pedimento"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,help:l10n_mx_cfdi_comex.field_stock_landed_cost__l10n_mx_cfdi_pedimento_id
+msgid "Pedimento que se copiará a los lotes de las recepciones relacionadas."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,help:l10n_mx_cfdi_comex.field_stock_lot__l10n_mx_cfdi_pedimento_id
+msgid "Pedimento relacionado con este lote."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.actions.act_window,name:l10n_mx_cfdi_comex.action_l10n_mx_cfdi_pedimento
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_move_line__l10n_mx_cfdi_pedimento_ids
+#: model:ir.ui.menu,name:l10n_mx_cfdi_comex.menu_l10n_mx_cfdi_pedimento
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_comex.view_l10n_mx_cfdi_pedimento_list
+msgid "Pedimentos"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,help:l10n_mx_cfdi_comex.field_account_move_line__l10n_mx_cfdi_pedimento_ids
+msgid ""
+"Pedimentos relacionados con esta línea de factura para cumplimiento de "
+"regulaciones mexicanas."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model,name:l10n_mx_cfdi_comex.model_product_template
+msgid "Product"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model,name:l10n_mx_cfdi_comex.model_stock_landed_cost
+msgid "Stock Landed Cost"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_product_product__l10n_mx_cfdi_tariff_code
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_product_template__l10n_mx_cfdi_tariff_code
+msgid "Tariff Code"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,help:l10n_mx_cfdi_comex.field_product_product__l10n_mx_cfdi_tariff_code
+#: model:ir.model.fields,help:l10n_mx_cfdi_comex.field_product_template__l10n_mx_cfdi_tariff_code
+msgid ""
+"Tariff code for product template according to the SAT catalog for Mexican "
+"regulations compliance."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_comex/models/pedimento.py:0
+msgid ""
+"¡Error! El formato del número de pedimento es incorrecto. El formato debe "
+"ser:15 48 3009 0001234."
+msgstr ""
