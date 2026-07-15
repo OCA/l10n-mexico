@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <record id="view_res_partner_form_inherit_addenda_mabe" model="ir.ui.view">
         <field name="name">res.partner.form.inherit.addenda.mabe</field>
