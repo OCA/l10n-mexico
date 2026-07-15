@@ -174,7 +174,6 @@ class TestAddendaAudi(CFDIAccountTestCommon):
             invoice._l10n_mx_edi_addenda_audi_attach()
             mocked_attach.assert_called_once_with("track-bytes", "<Addenda/>")
 
-
     def test_product_audi_ref_onchange_without_ref(self):
         product = self.env["product.product"].create(
             {
