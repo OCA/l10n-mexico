@@ -1,0 +1,18 @@
+<odoo>
+    <record id="product_template_form_view_cfdi_comex_inherit" model="ir.ui.view">
+        <field name="name">product.template.form.view.cfdi.comex.inherit</field>
+        <field name="model">product.template</field>
+        <field
+            name="inherit_id"
+            ref="l10n_mx_cfdi.product_template_form_view_inherit"
+        />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//field[@name='l10n_mx_cfdi_product_code_id']"
+                position="before"
+            >
+                <field name="l10n_mx_cfdi_tariff_code" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
