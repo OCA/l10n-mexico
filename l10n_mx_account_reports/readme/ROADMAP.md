@@ -1,5 +1,1 @@
-Additional reports will be added soon:
--
-- **Aged Accounts Receivable**
-- **Aged Accounts Payable**
-- **DIOT**
+DIOT remains available via the Mexico PDF wizard; further refinements of aging buckets and cash-flow expressions may follow.
