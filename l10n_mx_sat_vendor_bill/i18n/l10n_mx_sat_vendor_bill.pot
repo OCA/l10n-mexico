@@ -1,0 +1,88 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_mx_sat_vendor_bill
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_mx_sat_vendor_bill
+#: model:ir.model.constraint,message:l10n_mx_sat_vendor_bill.constraint_account_move_l10n_mx_cfdi_uuid_company_uniq
+msgid "A CFDI with this UUID already exists for this company."
+msgstr ""
+
+#. module: l10n_mx_sat_vendor_bill
+#: model:ir.model.fields,help:l10n_mx_sat_vendor_bill.field_account_bank_statement_line__l10n_mx_cfdi_uuid
+#: model:ir.model.fields,help:l10n_mx_sat_vendor_bill.field_account_move__l10n_mx_cfdi_uuid
+msgid "CFDI UUID (Folio Fiscal) from SAT."
+msgstr ""
+
+#. module: l10n_mx_sat_vendor_bill
+#. odoo-python
+#: code:addons/l10n_mx_sat_vendor_bill/models/account_move.py:0
+msgid "Could not find %(tax_type)s tax at rate %(rate)s%%."
+msgstr ""
+
+#. module: l10n_mx_sat_vendor_bill
+#. odoo-python
+#: code:addons/l10n_mx_sat_vendor_bill/models/account_move.py:0
+msgid "Could not find %(tax_type)s withholding tax at rate %(rate)s%%."
+msgstr ""
+
+#. module: l10n_mx_sat_vendor_bill
+#: model:ir.model.fields,field_description:l10n_mx_sat_vendor_bill.field_account_move__display_name
+#: model:ir.model.fields,field_description:l10n_mx_sat_vendor_bill.field_l10n_mx_sat_document__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: l10n_mx_sat_vendor_bill
+#: model:ir.model.fields,field_description:l10n_mx_sat_vendor_bill.field_account_bank_statement_line__l10n_mx_cfdi_uuid
+#: model:ir.model.fields,field_description:l10n_mx_sat_vendor_bill.field_account_move__l10n_mx_cfdi_uuid
+msgid "Fiscal Folio"
+msgstr ""
+
+#. module: l10n_mx_sat_vendor_bill
+#: model:ir.model.fields,field_description:l10n_mx_sat_vendor_bill.field_account_move__id
+#: model:ir.model.fields,field_description:l10n_mx_sat_vendor_bill.field_l10n_mx_sat_document__id
+msgid "ID"
+msgstr ""
+
+#. module: l10n_mx_sat_vendor_bill
+#: model:ir.model,name:l10n_mx_sat_vendor_bill.model_account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: l10n_mx_sat_vendor_bill
+#: model:ir.model,name:l10n_mx_sat_vendor_bill.model_l10n_mx_sat_document
+msgid "SAT Document"
+msgstr ""
+
+#. module: l10n_mx_sat_vendor_bill
+#: model:ir.model.fields,field_description:l10n_mx_sat_vendor_bill.field_account_bank_statement_line__l10n_mx_sat_download_request_id
+#: model:ir.model.fields,field_description:l10n_mx_sat_vendor_bill.field_account_move__l10n_mx_sat_download_request_id
+msgid "SAT Download Request"
+msgstr ""
+
+#. module: l10n_mx_sat_vendor_bill
+#. odoo-python
+#: code:addons/l10n_mx_sat_vendor_bill/models/account_move.py:0
+msgid "Tax %s cannot be imported (no rate)."
+msgstr ""
+
+#. module: l10n_mx_sat_vendor_bill
+#: model:ir.model.fields,field_description:l10n_mx_sat_vendor_bill.field_l10n_mx_sat_document__vendor_bill_id
+msgid "Vendor bill"
+msgstr ""
+
+#. module: l10n_mx_sat_vendor_bill
+#. odoo-python
+#: code:addons/l10n_mx_sat_vendor_bill/models/account_move.py:0
+msgid "Vendor bill imported from SAT Descarga Masiva. UUID: %s"
+msgstr ""
