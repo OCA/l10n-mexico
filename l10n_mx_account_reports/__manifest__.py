@@ -21,6 +21,7 @@
         "data/mis.report.subkpi.csv",
         "data/mis.report.query.csv",
         "data/mis.report.kpi.csv",
+        "data/mis.report.kpi.expression.csv",
         "data/mis.report.instance.csv",
         "data/mis.report.instance.period.csv",
         "data/mis.report.instance.period.sum.csv",
