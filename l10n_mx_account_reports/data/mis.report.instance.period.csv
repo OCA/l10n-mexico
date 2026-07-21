@@ -1,11 +1,18 @@
-id,name,report_instance_id/id,duration,offset,mode,type,source,source_cmpcol_from_id/id,source_cmpcol_to_id/id
-mis_report_instance_period_1,MES ANTERIOR,l10n_mx_account_reports.mis_report_instance_balance_sheet,1,-1,relative,m,actuals,,
-mis_report_instance_period_2,MES ACTUAL,l10n_mx_account_reports.mis_report_instance_balance_sheet,1,0,relative,m,actuals,,
-mis_report_instance_period_3,COMPARATIVO,l10n_mx_account_reports.mis_report_instance_balance_sheet,1,,none,m,cmpcol,mis_report_instance_period_1,mis_report_instance_period_2
-mis_report_instance_period_4,MES ANTERIOR,l10n_mx_account_reports.mis_report_instance_profit_and_loss,1,-1,relative,m,actuals,,
-mis_report_instance_period_5,MES ACTUAL,l10n_mx_account_reports.mis_report_instance_profit_and_loss,1,0,relative,m,actuals,,
-mis_report_instance_period_6,COMPARATIVO,l10n_mx_account_reports.mis_report_instance_profit_and_loss,1,,none,m,cmpcol,mis_report_instance_period_4,mis_report_instance_period_5
-mis_report_instance_period_7,Saldo inicial,l10n_mx_account_reports.mis_report_instance_trial_balance,1,-1,relative,m,actuals,,
-mis_report_instance_period_8,Débitos del Periodo,l10n_mx_account_reports.mis_report_instance_trial_balance,1,0,relative,m,actuals,,
-mis_report_instance_period_9,Créditos del Periodo,l10n_mx_account_reports.mis_report_instance_trial_balance,1,0,relative,m,actuals,,
-mis_report_instance_period_10,Saldo Final,l10n_mx_account_reports.mis_report_instance_trial_balance,1,1,relative,m,actuals,,
+id,name,report_instance_id/id,duration,offset,mode,type,source,source_cmpcol_from_id/id,source_cmpcol_to_id/id,source_sumcol_accdet
+mis_report_instance_period_1,MES ANTERIOR,l10n_mx_account_reports.mis_report_instance_profit_and_loss,1,-1,relative,m,actuals,,,
+mis_report_instance_period_2,MES ACTUAL,l10n_mx_account_reports.mis_report_instance_profit_and_loss,1,0,relative,m,actuals,,,
+mis_report_instance_period_3,COMPARATIVO,l10n_mx_account_reports.mis_report_instance_profit_and_loss,1,-1,none,,cmpcol,l10n_mx_account_reports.mis_report_instance_period_1,l10n_mx_account_reports.mis_report_instance_period_2,
+mis_report_instance_period_4,MES ANTERIOR,l10n_mx_account_reports.mis_report_instance_balance_sheet,1,-1,relative,m,actuals,,,
+mis_report_instance_period_5,MES ACTUAL,l10n_mx_account_reports.mis_report_instance_balance_sheet,1,0,relative,m,actuals,,,
+mis_report_instance_period_6,COMPARATIVO,l10n_mx_account_reports.mis_report_instance_balance_sheet,1,-1,none,,cmpcol,l10n_mx_account_reports.mis_report_instance_period_4,l10n_mx_account_reports.mis_report_instance_period_5,
+mis_report_instance_period_9,Saldo vencido,l10n_mx_account_reports.mis_report_instance_aged_receivable,365,-365,relative,d,actuals,,,
+mis_report_instance_period_10,0 - 15,l10n_mx_account_reports.mis_report_instance_aged_receivable,15,0,relative,d,actuals,,,
+mis_report_instance_period_11,16 - 30,l10n_mx_account_reports.mis_report_instance_aged_receivable,15,15,relative,d,actuals,,,
+mis_report_instance_period_12,31 -45,l10n_mx_account_reports.mis_report_instance_aged_receivable,15,30,relative,d,actuals,,,
+mis_report_instance_period_13,Total,l10n_mx_account_reports.mis_report_instance_aged_receivable,1,-1,none,,sumcol,,,TRUE
+mis_report_instance_period_14,Saldo vencido,l10n_mx_account_reports.mis_report_instance_aged_payable,365,-365,relative,d,actuals,,,
+mis_report_instance_period_15,0 - 15,l10n_mx_account_reports.mis_report_instance_aged_payable,15,0,relative,d,actuals,,,
+mis_report_instance_period_16,16 - 30,l10n_mx_account_reports.mis_report_instance_aged_payable,15,15,relative,d,actuals,,,
+mis_report_instance_period_17,31 -45,l10n_mx_account_reports.mis_report_instance_aged_payable,15,30,relative,d,actuals,,,
+mis_report_instance_period_18,Total,l10n_mx_account_reports.mis_report_instance_aged_payable,1,-1,none,,sumcol,,,TRUE
+mis_report_instance_period_19,Month,l10n_mx_account_reports.mis_report_instance_cash_flow,1,0,relative,m,actuals,,,

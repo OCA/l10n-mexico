@@ -1,4 +1,7 @@
 id,name,description,style_id/id,move_lines_source/id
-mis_report_profit_and_loss,Estado de Resultados,Estado de resultados,mis_report_style_1,account.model_account_move_line
-mis_report_balance_sheet,Estado de Posición Financiera,Balance General,mis_report_style_1,account.model_account_move_line
-mis_report_trial_balance,Balanza de comprobación,Balanza de comprobación,mis_report_style_1,account.model_account_move_line
+mis_report_profit_and_loss,Estado de Resultados,Estado de resultados,l10n_mx_account_reports.mis_report_style_1,account.model_account_move_line
+mis_report_balance_sheet,Estado de Posición Financiera,Balance General,l10n_mx_account_reports.mis_report_style_1,account.model_account_move_line
+mis_report_trial_balance,Balanza de comprobación,Balanza de comprobación,,account.model_account_move_line
+mis_report_aged_receivable,Cuentas por cobrar,Cuentas por cobrar,,account.model_account_move_line
+mis_report_aged_payable,Cuentas por pagar,Cuentas por pagar,,account.model_account_move_line
+mis_report_cash_flow,Flujo de efectivo,Flujo de efectivo,,account.model_account_move_line

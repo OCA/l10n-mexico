@@ -37,9 +37,10 @@ localization:
 
 - Balance Sheet (*Balance General*).
 - Profit and Loss (*Estado de Resultados*).
-- Trial Balance (*Balanza de Comprobación*).
+- Trial Balance — annual and monthly (*Balanza de Comprobación*).
 - Aged Accounts Receivable (*Cuentas por Cobrar Vencidas*).
-- Aged Accounts Payable (*Cuentas por Pagar Vencidas*).
+- Aged Accounts Payable (*Cuentas por Pagar*).
+- Cash Flow (*Flujo de Efectivo*).
 - DIOT (*Declaración Informativa de Operaciones con Terceros*).
 
 .. IMPORTANT::
@@ -58,21 +59,26 @@ Usage
 Open **Accounting > Reporting > MIS Reporting > MIS Reports** and choose
 the report you need:
 
-- **Balance Sheet**
-- **Profit and Loss**
-- **Trial Balance**
+- **Balance General**
+- **Estado de resultados**
+- **Balanza de comprobación anual**
+- **Balanza de comprobación mensual**
+- **Cuenta por cobrar vencida**
+- **Cuenta por pagar**
+- **Flujo de efectivo**
 
-Select the period in the wizard, then click **Print PDF**.
+Preview, print, or export from the MIS report instance. Aged
+receivable/payable use aging period columns; set the pivot date as
+needed.
+
+Additional Mexico PDF reports (including DIOT) are also available under
+**Accounting > Reporting > Mexico**.
 
 Known issues / Roadmap
 ======================
 
-Additional reports will be added soon:
---------------------------------------
-
-- **Aged Accounts Receivable**
-- **Aged Accounts Payable**
-- **DIOT**
+DIOT remains available via the Mexico PDF wizard; further refinements of
+aging buckets and cash-flow expressions may follow.
 
 Bug Tracker
 ===========

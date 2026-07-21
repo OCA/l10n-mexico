@@ -1,0 +1,3 @@
+id,name,model_id/id,field_ids/id,aggregate,date_field/id,domain,report_id/id,company_field_id/id
+mis_report_query_cliente_saldo,cliente_saldo,account.model_account_move_line,account.field_account_move_line__balance,sum,account.field_account_move_line__date_maturity,"[('account_id.code', 'like', '105%')]",l10n_mx_account_reports.mis_report_aged_receivable,account.field_account_move_line__company_id
+mis_report_query_proveedor_saldo,proveedor_saldo,account.model_account_move_line,account.field_account_move_line__balance,sum,account.field_account_move_line__date_maturity,"[('account_id.code', 'like', '201%')]",l10n_mx_account_reports.mis_report_aged_payable,account.field_account_move_line__company_id
