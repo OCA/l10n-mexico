@@ -19,23 +19,38 @@ msgid "'%s - %s' % (object.company_id.name, object.report_type)"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_1
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_17
 msgid "ACTIVOS"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_10
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_47
+msgid "Activo"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_48
+msgid "Activo a corto plazo"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_49
+msgid "Activo a largo plazo"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_26
 msgid "Activos adicionales fijos"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_12
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_28
 msgid "Activos adicionales no circulantes"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_2
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_6
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_18
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_22
 msgid "Activos circulantes"
 msgstr ""
 
@@ -51,6 +66,16 @@ msgstr ""
 #: model:ir.model.fields.selection,name:l10n_mx_account_reports.selection__l10n_mx_financial_report_wizard__report_type__aged_receivable
 #: model:ir.ui.menu,name:l10n_mx_account_reports.menu_l10n_mx_report_aged_receivable
 msgid "Aged Accounts Receivable"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_69
+msgid "Anticipos pagados a proveedores-"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_68
+msgid "Anticipos recibidos de los clientes"
 msgstr ""
 
 #. module: l10n_mx_account_reports
@@ -74,12 +99,21 @@ msgstr ""
 #. module: l10n_mx_account_reports
 #: model:mis.report,description:l10n_mx_account_reports.mis_report_trial_balance
 #: model:mis.report,name:l10n_mx_account_reports.mis_report_trial_balance
-#: model:mis.report.instance,name:l10n_mx_account_reports.mis_report_instance_trial_balance
 msgid "Balanza de comprobación"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_24
+#: model:mis.report.instance,name:l10n_mx_account_reports.mis_report_instance_trial_balance_annual
+msgid "Balanza de comprobación anual"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.instance,name:l10n_mx_account_reports.mis_report_instance_trial_balance_monthly
+msgid "Balanza de comprobación mensual"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_40
 msgid "CAPITAL"
 msgstr ""
 
@@ -95,9 +129,20 @@ msgid "Cancel"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_25
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_26
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_41
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_42
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_53
 msgid "Capital contable"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_59
+msgid "Cargos / Abonos"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_60
+msgid "Clientes"
 msgstr ""
 
 #. module: l10n_mx_account_reports
@@ -106,8 +151,13 @@ msgid "Company"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_41
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_7
 msgid "Costo de ingresos"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_56
+msgid "Costos"
 msgstr ""
 
 #. module: l10n_mx_account_reports
@@ -126,18 +176,35 @@ msgid "Credit"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_9
-msgid "Créditos del Periodo"
-msgstr ""
-
-#. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_36
+#: model:mis.report.subkpi,description:l10n_mx_account_reports.mis_report_subkpi_credits
 msgid "Créditos del periodo"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_3
+#: model:mis.report.instance,name:l10n_mx_account_reports.mis_report_instance_aged_receivable
+msgid "Cuenta por cobrar vencida"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.instance,name:l10n_mx_account_reports.mis_report_instance_aged_payable
+msgid "Cuenta por pagar"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_19
 msgid "Cuentas bancarias y efectivo"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report,description:l10n_mx_account_reports.mis_report_aged_receivable
+#: model:mis.report,name:l10n_mx_account_reports.mis_report_aged_receivable
+msgid "Cuentas por cobrar"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report,description:l10n_mx_account_reports.mis_report_aged_payable
+#: model:mis.report,name:l10n_mx_account_reports.mis_report_aged_payable
+msgid "Cuentas por pagar"
 msgstr ""
 
 #. module: l10n_mx_account_reports
@@ -163,13 +230,23 @@ msgid "Debit"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_39
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_5
 msgid "Deducciones de ingresos"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_49
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_15
 msgid "Depreciación y amortización"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_66
+msgid "Devoluciones, descuentos o bonificaciones sobre ingresos"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_84
+msgid "Discrepancias en efectivo"
 msgstr ""
 
 #. module: l10n_mx_account_reports
@@ -180,13 +257,30 @@ msgid "Display Name"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_8
-msgid "Débitos del Periodo"
+#: model:mis.report.subkpi,description:l10n_mx_account_reports.mis_report_subkpi_debits
+msgid "Débitos del periodo"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_34
-msgid "Débitos del periodo"
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_71
+msgid "Efectivo pagado por actividades de operación"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_82
+msgid "Efectivo y equivalentes de efectivo, balance de cierre"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_62
+msgid "Efectivo y equivalentes de efectivo, inicio de periodo"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_74
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_77
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_80
+msgid "Entrada de efectivo"
 msgstr ""
 
 #. module: l10n_mx_account_reports
@@ -211,18 +305,46 @@ msgid "Export DIOT (TXT)"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_35
+#: model:mis.report,description:l10n_mx_account_reports.mis_report_cash_flow
+#: model:mis.report,name:l10n_mx_account_reports.mis_report_cash_flow
+#: model:mis.report.instance,name:l10n_mx_account_reports.mis_report_instance_cash_flow
+msgid "Flujo de efectivo"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_73
+msgid "Flujos de efectivo de actividades de inversión y extraordinarias"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_67
+msgid "Flujos de efectivo de actividades de operación"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_76
+msgid "Flujos de efectivo de actividades financieras"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_79
+msgid "Flujos de efectivo de actividades sin clasificar"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_3
 msgid "Ganancia bruta"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_31
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_1
 msgid "Ganancias netas"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_46
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_47
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_12
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_13
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_57
 msgid "Gastos"
 msgstr ""
 
@@ -234,12 +356,27 @@ msgid "ID"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_33
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_64
+msgid "Incremento neto de efectivo y de equivalentes de efectivo"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_2
 msgid "Ingreso"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_37
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_65
+msgid "Ingreso ventas"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_55
+msgid "Ingresos"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_4
 msgid "Ingresos de operación"
 msgstr ""
 
@@ -288,53 +425,73 @@ msgid "Mexico Financial Report Wizard"
 msgstr ""
 
 #. module: l10n_mx_account_reports
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_19
+msgid "Month"
+msgstr ""
+
+#. module: l10n_mx_account_reports
 #: model_terms:ir.ui.view,arch_db:l10n_mx_account_reports.report_financial
 msgid "Name"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_44
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_10
 msgid "Otros costos"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_43
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_9
 msgid "Otros ingresos"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_15
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_31
 msgid "PASIVOS"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_30
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_46
 msgid "PASIVOS + CAPITAL"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_22
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_50
+msgid "Pasivo"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_51
+msgid "Pasivo corto plazo"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_52
+msgid "Pasivo largo plazo"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_38
 msgid "Pasivos adicionales no circulantes"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_16
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_17
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_32
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_33
 msgid "Pasivos circulantes"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_5
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_21
 msgid "Por cobrar"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_19
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_35
 msgid "Por pagar"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_8
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_24
 msgid "Prepagos"
 msgstr ""
 
@@ -351,30 +508,51 @@ msgid "Profit and Loss"
 msgstr ""
 
 #. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_61
+msgid "Proveedores"
+msgstr ""
+
+#. module: l10n_mx_account_reports
 #: model:ir.model.fields,field_description:l10n_mx_account_reports.field_l10n_mx_financial_report_wizard__report_type
 msgid "Report Type"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_28
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_44
 msgid "Resultado de ejercicio"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_27
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_43
 msgid "Resultado de ejercicios anteriores"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_10
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_38
-msgid "Saldo Final"
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_58
+msgid "Resultado integral de financiamiento"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_7
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_32
+#: model:mis.report.subkpi,description:l10n_mx_account_reports.mis_report_subkpi_closing
+msgid "Saldo final"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.subkpi,description:l10n_mx_account_reports.mis_report_subkpi_opening
 msgid "Saldo inicial"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_14
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_9
+msgid "Saldo vencido"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_75
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_78
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_81
+msgid "Salida de efectivo"
 msgstr ""
 
 #. module: l10n_mx_account_reports
@@ -390,78 +568,104 @@ msgid "The start date must be before the end date."
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_14
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_13
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_18
+msgid "Total"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_30
 msgid "Total ACTIVOS"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_11
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_27
 msgid "Total Activos adicionales fijos"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_13
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_29
 msgid "Total Activos adicionales no circulantes"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_7
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_23
 msgid "Total Activos circulantes"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_29
-msgid "Total CAPITAL"
-msgstr ""
-
-#. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_42
-msgid "Total Costo de ingresos"
-msgstr ""
-
-#. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_4
-msgid "Total Cuentas bancarias y de efectivo"
-msgstr ""
-
-#. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_48
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_50
-msgid "Total Gastos"
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_70
+msgid "Total Anticipos pagados a proveedores"
 msgstr ""
 
 #. module: l10n_mx_account_reports
 #: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_45
-msgid "Total Ingreso"
+msgid "Total CAPITAL"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_40
-msgid "Total Ingresos de Operación"
-msgstr ""
-
-#. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_23
-msgid "Total PASIVOS"
-msgstr ""
-
-#. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_18
-msgid "Total Pasivo circulante"
-msgstr ""
-
-#. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_21
-msgid "Total Pasivos circulantes"
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_8
+msgid "Total Costo de ingresos"
 msgstr ""
 
 #. module: l10n_mx_account_reports
 #: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_20
+msgid "Total Cuentas bancarias y de efectivo"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_72
+msgid "Total Efectivo pagado por actividades de operación"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_83
+msgid "Total Efectivo y equivalentes de efectivo, balance de cierre"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_63
+msgid "Total Efectivo y equivalentes de efectivo, inicio de periodo"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_14
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_16
+msgid "Total Gastos"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_11
+msgid "Total Ingreso"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_6
+msgid "Total Ingresos de Operación"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_39
+msgid "Total PASIVOS"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_34
+msgid "Total Pasivo circulante"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_37
+msgid "Total Pasivos circulantes"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_36
 msgid "Total Por Pagar"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_9
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_25
 msgid "Total activos circulantes"
 msgstr ""
 
@@ -470,4 +674,9 @@ msgstr ""
 #: model:ir.model.fields.selection,name:l10n_mx_account_reports.selection__l10n_mx_financial_report_wizard__report_type__trial_balance
 #: model:ir.ui.menu,name:l10n_mx_account_reports.menu_l10n_mx_report_trial_balance
 msgid "Trial Balance"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_54
+msgid "Utilidad del ejercicio"
 msgstr ""
