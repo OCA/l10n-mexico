@@ -22,7 +22,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [currency_rate_update_banxico](currency_rate_update_banxico/) | 19.0.1.0.0 |  | Update exchange rates using Banxico
-[l10n_mx_account_reports](l10n_mx_account_reports/) | 19.0.1.0.0 | <a href='https://github.com/max3903'><img src='https://github.com/max3903.png' width='32' height='32' style='border-radius:50%;' alt='max3903'/></a> | Financial and tax reports for the Mexican localization
+[l10n_mx_account_reports](l10n_mx_account_reports/) | 19.0.1.1.0 | <a href='https://github.com/max3903'><img src='https://github.com/max3903.png' width='32' height='32' style='border-radius:50%;' alt='max3903'/></a> | Financial and tax reports for the Mexican localization
 [l10n_mx_catalogs](l10n_mx_catalogs/) | 19.0.1.0.0 |  | Catalogs of Servicio de Administración Tributaria (SAT) from México
 [l10n_mx_catalogs_comex](l10n_mx_catalogs_comex/) | 19.0.1.0.0 |  | Foreign trade catalogs for Mexico
 [l10n_mx_cfdi](l10n_mx_cfdi/) | 19.0.1.0.0 |  | Allow generating CFDI (Comprobante Fiscal Digital por Internet)
