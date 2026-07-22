@@ -13,7 +13,7 @@
     "depends": ["l10n_mx_cfdi_account"],
     "data": [
         "views/account_move.xml",
-        "views/l10n_mx_edi_addenda_volkswagen.xml",
+        "views/l10n_mx_cfdi_account_addenda_volkswagen.xml",
     ],
     "application": False,
 }

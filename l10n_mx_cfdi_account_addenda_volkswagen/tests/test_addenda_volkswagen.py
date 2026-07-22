@@ -13,7 +13,7 @@ class TestAddendaVolkswagen(CFDIAccountTestCommon):
         super().setUpClass()
         cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
         cls.addenda_view = cls.env.ref(
-            "l10n_mx_edi_addenda_volkswagen.l10n_mx_edi_addenda_volkswagen"
+            "l10n_mx_cfdi_account_addenda_volkswagen.l10n_mx_cfdi_account_addenda_volkswagen"
         )
         cls.customer.write(
             {
