@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-05 16:30+0000\n"
-"PO-Revision-Date: 2024-06-05 16:30+0000\n"
+"POT-Creation-Date: 2024-06-05 16:29+0000\n"
+"PO-Revision-Date: 2024-06-05 16:29+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr ""
 #. module: l10n_mx_cfdi_account_addenda_ford
 #: model:ir.model,name:l10n_mx_cfdi_account_addenda_ford.model_account_move
 msgid "Journal Entry"
-msgstr "Asiento contable"
+msgstr "Asientos Contables"
 
 #. module: l10n_mx_cfdi_account_addenda_ford
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_ford.field_account_bank_statement_line__ford_ref
