@@ -13,7 +13,7 @@ class TestAddendaWhirlpool(CFDIAccountTestCommon):
         super().setUpClass()
         cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
         cls.addenda_view = cls.env.ref(
-            "l10n_mx_edi_addenda_whirlpool.view_account_move_addenda_whirlpool"
+            "l10n_mx_cfdi_account_addenda_whirlpool.view_account_move_addenda_whirlpool"
         )
         cls.customer.write({"l10n_mx_edi_addenda": cls.addenda_view.id})
 
