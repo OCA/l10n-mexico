@@ -84,7 +84,7 @@
                                 colspan="2"
                             >
                                 <list editable="bottom">
-                                    <field name="relation_type_name"/>
+                                    <field name="relation_type_id"/>
                                     <field name="target_uuid"/>
                                 </list>
                             </field>
