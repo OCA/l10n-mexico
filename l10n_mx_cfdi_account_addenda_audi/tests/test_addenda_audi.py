@@ -16,7 +16,7 @@ class TestAddendaAudi(CFDIAccountTestCommon):
         super().setUpClass()
         cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
         cls.addenda_view = cls.env.ref(
-            "l10n_mx_edi_addenda_audi.l10n_mx_edi_addenda_audi"
+            "l10n_mx_cfdi_account_addenda_audi.l10n_mx_cfdi_account_addenda_audi"
         )
         cls.customer.write(
             {

@@ -10,7 +10,7 @@ msgstr ""
 "PO-Revision-Date: 2026-07-15 16:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: es_MX\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -19,12 +19,12 @@ msgstr ""
 #. module: l10n_mx_cfdi_account_addenda_audi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_move__audi_applicant_email
 msgid "Applicant email"
-msgstr "Email del solicitante"
+msgstr ""
 
 #. module: l10n_mx_cfdi_account_addenda_audi
 #: model:ir.ui.view,arch_db:l10n_mx_cfdi_account_addenda_audi.view_account_move_form_inherit_addenda_audi
 msgid "Audi Addenda"
-msgstr "Addenda Audi"
+msgstr ""
 
 #. module: l10n_mx_cfdi_account_addenda_audi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_move__audi_flag
@@ -37,18 +37,18 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_product_template__audi_ref
 #: model:ir.ui.view,arch_db:l10n_mx_cfdi_account_addenda_audi.view_product_template_form_inherit_addenda_audi
 msgid "Audi Product Reference"
-msgstr "Referencia del producto Audi"
+msgstr ""
 
 #. module: l10n_mx_cfdi_account_addenda_audi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_move__audi_business_unit
 msgid "Business Unit"
-msgstr "Unidad de negocio"
+msgstr ""
 
 #. module: l10n_mx_cfdi_account_addenda_audi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_res_partner__l10n_mx_edi_addenda
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_res_users__l10n_mx_edi_addenda
 msgid "CFDI Addenda"
-msgstr "Addenda CFDI"
+msgstr ""
 
 #. module: l10n_mx_cfdi_account_addenda_audi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_res_partner__l10n_mx_edi_addenda_name
@@ -59,12 +59,12 @@ msgstr ""
 #. module: l10n_mx_cfdi_account_addenda_audi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_move__audi_document_type
 msgid "Document Type"
-msgstr "Tipo de documento"
+msgstr ""
 
 #. module: l10n_mx_cfdi_account_addenda_audi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_move__audi_fiscal_document_type
 msgid "Fiscal Document Type"
-msgstr "Tipo de documento fiscal"
+msgstr ""
 
 #. module: l10n_mx_cfdi_account_addenda_audi
 #: model:ir.model.fields,help:l10n_mx_cfdi_account_addenda_audi.field_ir_ui_view__l10n_mx_edi_addenda_flag
@@ -86,18 +86,18 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_res_partner__audi_supplier_email
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_res_users__audi_supplier_email
 msgid "Supplier Email"
-msgstr "Email del proveedor"
+msgstr ""
 
 #. module: l10n_mx_cfdi_account_addenda_audi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_res_partner__audi_supplier_number
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_res_users__audi_supplier_number
 msgid "Supplier Number"
-msgstr "Número de proveedor"
+msgstr ""
 
 #. module: l10n_mx_cfdi_account_addenda_audi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_move__audi_tax_code
 msgid "Tax Code"
-msgstr "Código de impuesto"
+msgstr ""
 
 #. module: l10n_mx_cfdi_account_addenda_audi
 #: model:ir.model,name:l10n_mx_cfdi_account_addenda_audi.model_account_move

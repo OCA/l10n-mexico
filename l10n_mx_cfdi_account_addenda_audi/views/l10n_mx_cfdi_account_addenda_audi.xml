@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <template id="l10n_mx_edi_addenda_audi" name="Addenda Audi">
+    <template id="l10n_mx_cfdi_account_addenda_audi" name="Addenda Audi">
         <S:Factura
             xmlns:S="http://www.Audi.net.mx/Addenda/S"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -38,7 +38,7 @@
         </S:Factura>
     </template>
 
-    <record id="l10n_mx_edi_addenda_audi" model="ir.ui.view">
+    <record id="l10n_mx_cfdi_account_addenda_audi" model="ir.ui.view">
         <field name="l10n_mx_edi_addenda_flag" eval="True" />
     </record>
 </odoo>

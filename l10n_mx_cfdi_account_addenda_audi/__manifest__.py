@@ -13,7 +13,7 @@
     "depends": ["l10n_mx_cfdi_account", "product"],
     "data": [
         "views/account_move.xml",
-        "views/l10n_mx_edi_addenda_audi.xml",
+        "views/l10n_mx_cfdi_account_addenda_audi.xml",
         "views/product_template_views.xml",
         "views/res_partner_views.xml",
     ],
