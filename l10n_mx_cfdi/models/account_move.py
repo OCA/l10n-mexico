@@ -31,11 +31,15 @@ class AccountMove(models.Model):
         string="CFDI Status", readonly=True, related="cfdi_document_id.state"
     )
     cfdi_document_relations = fields.Many2many(
-        'l10n_mx_cfdi.document', relation='account_move_cfdi_document_relations', 
-        column1='move_id', column2='cfdi_document_id', string='Related CFDIs'
+        "l10n_mx_cfdi.document",
+        relation="account_move_cfdi_document_relations",
+        column1="move_id",
+        column2="cfdi_document_id",
+        string="Related CFDIs",
+        copy=False,
     )
     cfdi_document_relation_type = fields.Many2one(
-        'l10n_mx_catalogs.c_tipo_relacion', string='Relation Type'
+        "l10n_mx_catalogs.c_tipo_relacion", string="Relation Type", copy=False
     )
 
     related_cert_ids = fields.Many2many(
@@ -203,14 +207,22 @@ class AccountMove(models.Model):
             cert.publish(cfdi_data)
 
             if self.cfdi_document_relations:
-                cert.update({
-                    'related_document_ids': [
-                        (0, 0, {
-                            'source_id': cert.id,
-                            'target_id': related_cfdi.id,
-                            'relation_type_id': self.cfdi_document_relation_type.id,
-                        }) for related_cfdi in self.cfdi_document_relations]
-                })
+                cert.update(
+                    {
+                        "related_document_ids": [
+                            (
+                                0,
+                                0,
+                                {
+                                    "source_id": cert.id,
+                                    "target_id": related_cfdi.id,
+                                    "relation_type_id": self.cfdi_document_relation_type.id,
+                                },
+                            )
+                            for related_cfdi in self.cfdi_document_relations
+                        ]
+                    }
+                )
 
             self.update(
                 {
@@ -284,11 +296,18 @@ class AccountMove(models.Model):
     def _add_related_cfdis_data_if_needed(self, cfdi_data):
         if self.cfdi_document_relation_type:
             if not self.cfdi_document_relations:
-                raise ValidationError(_('You must add at least one related CFDI when a relation type is set.'))
+                raise ValidationError(
+                    _(
+                        "You must add at least one related CFDI when a relation type is set."
+                    )
+                )
 
-            cfdi_data['Relations'] = {
+            cfdi_data["Relations"] = {
                 "Type": self.cfdi_document_relation_type.code,
-                "Cfdis": [{"Uuid": related_cfdi.uuid} for related_cfdi in self.cfdi_document_relations]
+                "Cfdis": [
+                    {"Uuid": related_cfdi.uuid}
+                    for related_cfdi in self.cfdi_document_relations
+                ],
             }
 
     def _format_cfdi_date_str(self, document_date):
