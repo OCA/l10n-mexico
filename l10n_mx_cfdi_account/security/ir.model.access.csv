@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 cancel_l10n_mx_cfdi_document,Cancelar a certificados,model_l10n_mx_cfdi_account_document_cancel,base.group_user,1,1,1,1
 access_l10n_mx_cfdi_generic_invoice_create,access_l10n_mx_cfdi_generic_invoice_create,model_l10n_mx_cfdi_account_generic_invoice_create,base.group_user,1,1,1,1
+access_account_move_document_relation_invoice,account.move.document.relation.invoice,model_account_move_document_relation,account.group_account_invoice,1,1,1,1

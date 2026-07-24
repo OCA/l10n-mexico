@@ -1,5 +1,6 @@
 import base64
 from datetime import datetime, timedelta
+from typing import Any
 
 from lxml import etree
 
@@ -29,6 +30,12 @@ class AccountMove(models.Model):
     )
     cfdi_document_state = fields.Selection(
         string="CFDI Status", readonly=True, related="cfdi_document_id.state"
+    )
+
+    cfdi_document_relation_ids = fields.One2many(
+        comodel_name="account.move.document.relation",
+        inverse_name="move_id",
+        string="CFDI Document Relations",
     )
 
     related_cert_ids = fields.Many2many(
@@ -453,12 +460,30 @@ class AccountMove(models.Model):
                 partial_reconcile.credit_move_id + partial_reconcile.debit_move_id
             )
 
-            related_cfdis = move_lines.move_id.related_cert_ids.filtered_domain(
-                [
-                    ("state", "=", "published"),
-                    ("type", "=", "I"),
-                ]
-            )
+            target_cfdi_ids = self._create_refund_cfdi_resolve_target_cfdi_ids(move_lines)
+
+            cfdi_relations = {
+                "01": [related_cfdi.uuid for related_cfdi in target_cfdi_ids],
+            }
+
+            for rel in self.cfdi_document_relation_ids:
+                related_uuids = cfdi_relations.get(rel.relation_type_id.code, [])
+                related_uuids.append(rel.target_uuid)
+                cfdi_relations[rel.relation_type_id.code] = related_uuids
+
+            existing_relation = False
+            for rel in self.cfdi_document_relation_ids:
+                if len(cfdi_relations.get(rel.relation_type_id.code, [])) > 0:
+                    existing_relation = True
+                    break
+
+            if not existing_relation:
+                raise UserError(_("You must define at least one related CFDI."))
+
+            relations_data = [{
+                "Type": k,
+                "Cfdis": [{"Uuid": v} for v in values],
+            } for k, values in cfdi_relations.items()]
 
             cfdi_data = {
                 "NameId": "2",
@@ -474,12 +499,8 @@ class AccountMove(models.Model):
                     "TaxZipCode": refund.partner_id.zip,
                 },
                 "Items": items_data,
-                "Relations": {
-                    "Type": "01",
-                    "Cfdis": [
-                        {"Uuid": related_cfdi.uuid} for related_cfdi in related_cfdis
-                    ],
-                },
+                "Relations": relations_data[0],
+                # facturama only allows one relation node per document therefore we simplify it
             }
 
             refund_cfdi = self.env["l10n_mx_cfdi.document"].create(
@@ -508,7 +529,7 @@ class AccountMove(models.Model):
                                 ).id,
                             },
                         )
-                        for related_cfdi in related_cfdis
+                        for related_cfdi in target_cfdi_ids
                     ]
                 }
             )
@@ -522,13 +543,28 @@ class AccountMove(models.Model):
                     }
                 )
 
-                for cfdi in related_cfdis:
+                for cfdi in target_cfdi_ids:
                     if cfdi.related_invoice_id:
                         cfdi.related_invoice_id.related_cert_ids |= refund_cfdi
 
             except Exception as e:
                 refund_cfdi.unlink()
                 raise e
+
+    def _create_refund_cfdi_resolve_target_cfdi_ids(self, move_lines) -> Any:
+        related_cfdis = move_lines.move_id.related_cert_ids.filtered_domain(
+            [
+                ("state", "=", "published"),
+                ("type", "=", "I"),
+            ]
+        )
+        related_cfdis |= self.reversed_entry_id.related_cert_ids.filtered_domain(
+            [
+                ("state", "=", "published"),
+                ("type", "=", "I"),
+            ]
+        )
+        return related_cfdis
 
     def _add_global_information_to_cfdi_if_required(self, cfdi_data):
         if self.receiver_id.vat == "XAXX010101000":
