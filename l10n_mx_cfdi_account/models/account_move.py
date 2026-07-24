@@ -444,7 +444,7 @@ class AccountMove(models.Model):
         Create CFDI of type 'E' (Egreso).
         """
         for refund in self:
-            items_data = self.gather_invoice_cfdi_items_data()
+            items_data = refund.gather_invoice_cfdi_items_data()
 
             receivables = refund.line_ids.filtered(
                 lambda L: L.account_id.account_type == 'asset_receivable'
@@ -466,18 +466,12 @@ class AccountMove(models.Model):
                 "01": [related_cfdi.uuid for related_cfdi in target_cfdi_ids],
             }
 
-            for rel in self.cfdi_document_relation_ids:
+            for rel in refund.cfdi_document_relation_ids:
                 related_uuids = cfdi_relations.get(rel.relation_type_id.code, [])
                 related_uuids.append(rel.target_uuid)
                 cfdi_relations[rel.relation_type_id.code] = related_uuids
 
-            existing_relation = False
-            for rel in self.cfdi_document_relation_ids:
-                if len(cfdi_relations.get(rel.relation_type_id.code, [])) > 0:
-                    existing_relation = True
-                    break
-
-            if not existing_relation:
+            if not any(cfdi_relations.values()):
                 raise UserError(_("You must define at least one related CFDI."))
 
             relations_data = [{
@@ -488,7 +482,7 @@ class AccountMove(models.Model):
             cfdi_data = {
                 "NameId": "2",
                 "ExpeditionPlace": refund.issuer_id.zip,
-                "Date": self._format_cfdi_date_str(self.invoice_date),
+                "Date": refund._format_cfdi_date_str(self.invoice_date),
                 "PaymentForm": refund.payment_form_id.code,
                 "PaymentMethod": refund.payment_method_id.code,
                 "Receiver": {
@@ -512,7 +506,7 @@ class AccountMove(models.Model):
                 }
             )
 
-            self._add_global_information_to_cfdi_if_required(cfdi_data)
+            refund._add_global_information_to_cfdi_if_required(cfdi_data)
 
             # register relations
             refund_cfdi.update(
@@ -558,12 +552,13 @@ class AccountMove(models.Model):
                 ("type", "=", "I"),
             ]
         )
-        related_cfdis |= self.reversed_entry_id.related_cert_ids.filtered_domain(
-            [
-                ("state", "=", "published"),
-                ("type", "=", "I"),
-            ]
-        )
+        if self.reversed_entry_id:
+            related_cfdis |= self.reversed_entry_id.related_cert_ids.filtered_domain(
+                [
+                    ("state", "=", "published"),
+                    ("type", "=", "I"),
+                ]
+            )
         return related_cfdis
 
     def _add_global_information_to_cfdi_if_required(self, cfdi_data):
