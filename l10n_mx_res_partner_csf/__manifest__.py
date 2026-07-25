@@ -3,10 +3,10 @@
 {
     "name": "Contact CSF for Mexico",
     "summary": "Scan and extract information from CSF",
-    "version": "17.0.1.1.0",
+    "version": "19.0.1.0.0",
     "license": "AGPL-3",
     "website": "https://github.com/OCA/l10n-mexico",
-    "author": "Open Source Integrators, " "Odoo Community Association (OCA)",
+    "author": "Open Source Integrators, Odoo Community Association (OCA)",
     "category": "Localization",
     "depends": ["contacts"],
     "data": [

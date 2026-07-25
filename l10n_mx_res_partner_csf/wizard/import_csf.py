@@ -2,7 +2,7 @@ import base64
 import logging
 import tempfile
 
-from odoo import _, fields, models
+from odoo import fields, models
 from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
@@ -26,7 +26,7 @@ class ImportCSF(models.TransientModel):
                 "name": self.file_name,
                 "datas": self.file,
                 "res_model": "res.partner",
-                "res_id": self._context.get("active_id"),
+                "res_id": self.env.context.get("active_id"),
             }
         )
 
@@ -40,9 +40,11 @@ class ImportCSF(models.TransientModel):
         try:
             text = extract_text(temp_path + "/csf.pdf")
         except Exception as e:
-            raise UserError(_("Uploaded file is not in PDF format (%s).") % e) from e
+            raise UserError(
+                self.env._("Uploaded file is not in PDF format (%s).", e)
+            ) from e
         vals = self.prepare_res_partner_values(text)
-        partner_obj.browse(self._context.get("active_id")).write(vals)
+        partner_obj.browse(self.env.context.get("active_id")).write(vals)
         self.attach_csf()
 
     def prepare_res_partner_values(self, text):

@@ -8,7 +8,7 @@
                 <header>
                     <button
                         name="action_upload_csf"
-                        string="Subir CSF"
+                        string="Upload CSF"
                         type="object"
                         class="btn-primary"
                     />
