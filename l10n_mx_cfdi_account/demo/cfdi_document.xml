@@ -1,0 +1,7 @@
+<odoo noupdate="1">
+    <!-- Link the demo income CFDI to the demo invoice -->
+    <record id="l10n_mx_cfdi.demo_cfdi_document_income" model="l10n_mx_cfdi.document">
+        <field name="related_invoice_id" ref="demo_cfdi_invoice" />
+        <field name="receiver_id" ref="demo_cfdi_customer" />
+    </record>
+</odoo>

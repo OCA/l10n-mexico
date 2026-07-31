@@ -1,15 +1,7 @@
 <odoo noupdate="1">
-    <record id="cfdi_account_demo_issuer_partner" model="res.partner">
-        <field name="name">Demo CFDI Issuer</field>
-        <field name="vat">EKU9003173C9</field>
-        <field name="country_id" ref="base.mx" />
-        <field name="zip">06000</field>
-        <field name="tax_regime" ref="l10n_mx_catalogs.c_regimen_fiscal_601" />
-    </record>
-
-    <record id="cfdi_account_demo_customer" model="res.partner">
+    <record id="demo_cfdi_customer" model="res.partner">
         <field name="name">Demo CFDI Customer</field>
-        <field name="vat">XAXX010101010</field>
+        <field name="vat">XAXX010101000</field>
         <field name="country_id" ref="base.mx" />
         <field name="zip">06000</field>
         <field name="tax_regime" ref="l10n_mx_catalogs.c_regimen_fiscal_616" />

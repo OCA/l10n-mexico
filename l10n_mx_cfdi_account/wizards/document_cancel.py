@@ -58,14 +58,16 @@ class CertificateCancel(models.TransientModel):
         return defaults_dict
 
     def cancel_certificate(self):
+        feedback_lines = []
         for record in self:
             for certificate in record.certificate_ids:
                 if certificate.state == "published":
-                    certificate.cancel(
+                    feedback = certificate.cancel(
                         record.cancel_reason_id.code,
                         record.replacement_certificate_id,
                         record.simulate_operation,
                     )
+                    feedback_lines.append(certificate._format_cancel_feedback(feedback))
 
             for invoice in record.certificate_ids.related_invoice_id:
                 invoice._compute_cfdi_document_id()
@@ -75,3 +77,18 @@ class CertificateCancel(models.TransientModel):
 
             for payment in record.certificate_ids.related_payment_id:
                 payment.move_id._compute_cfdi_document_id()
+
+        if feedback_lines:
+            body = "\n".join(feedback_lines)
+        else:
+            body = self.env._("No published CFDI was cancelled.")
+        return {
+            "type": "ir.actions.client",
+            "tag": "display_notification",
+            "params": {
+                "title": self.env._("CFDI cancellation"),
+                "message": body,
+                "type": "success" if feedback_lines else "warning",
+                "sticky": True,
+            },
+        }

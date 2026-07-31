@@ -93,8 +93,9 @@ class CFDIAccountTestCommon(CFDITestMixin, AccountTestInvoicingCommon):
         document = self._create_document(
             type="I",
             state="published",
+            uuid=ACTIVE_CFDI_RESPONSE["uuid"],
             related_invoice_id=invoice.id,
-            receiver_id=invoice.receiver_id.id,
+            receiver_id=invoice.receiver_id.id or self.customer.id,
         )
         invoice.related_cert_ids = [(4, document.id)]
         return document

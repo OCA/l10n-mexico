@@ -1,11 +1,17 @@
 import base64
-from datetime import datetime, timedelta
+import logging
+from datetime import datetime
 
 from lxml import etree
+from satcfdi.create.cfd import cfdi40
 
 from odoo import api, fields, models
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools.float_utils import json_float_round
+
+from odoo.addons.l10n_mx_cfdi.services import cfdi_builder
+
+_logger = logging.getLogger(__name__)
 
 
 class AccountMove(models.Model):
@@ -29,6 +35,22 @@ class AccountMove(models.Model):
     )
     cfdi_document_state = fields.Selection(
         string="CFDI Status", readonly=True, related="cfdi_document_id.state"
+    )
+    cfdi_document_relations = fields.Many2many(
+        "l10n_mx_cfdi.document",
+        relation="account_move_cfdi_document_relations",
+        column1="move_id",
+        column2="cfdi_document_id",
+        string="Related CFDIs",
+        copy=False,
+        help="Existing CFDIs to relate when issuing this invoice CFDI "
+        "(e.g. substitution after cancellation).",
+    )
+    cfdi_document_relation_type = fields.Many2one(
+        "l10n_mx_catalogs.c_tipo_relacion",
+        string="Relation Type",
+        copy=False,
+        help="SAT catalog c_TipoRelacion for CfdiRelacionados.",
     )
 
     related_cert_ids = fields.Many2many(
@@ -174,6 +196,133 @@ class AccountMove(models.Model):
 
         return res
 
+    def _l10n_mx_edi_cfdi_invoice_append_addenda(self, cfdi, addenda):
+        """Append an addenda block to a signed CFDI (Enterprise-compatible).
+
+        :param cfdi: The stamped CFDI as bytes or str.
+        :param addenda: ``ir.ui.view`` QWeb template marked as addenda.
+        :return: CFDI bytes including the addenda.
+        """
+        self.ensure_one()
+        if isinstance(cfdi, str):
+            cfdi = cfdi.encode("utf-8")
+
+        addenda_values = {"record": self, "cfdi": cfdi}
+        rendered = (
+            self.env["ir.qweb"]._render(addenda.id, values=addenda_values).strip()
+        )
+        if not rendered:
+            return cfdi
+
+        cfdi_node = etree.fromstring(cfdi)
+        addenda_node = etree.fromstring(rendered)
+        version = cfdi_node.get("Version") or "4.0"
+        ns = f"http://www.sat.gob.mx/cfd/{version[0]}"
+
+        # Add a root node Addenda if not specified explicitly by the user.
+        if addenda_node.tag != f"{{{ns}}}Addenda":
+            node = etree.Element(etree.QName(ns, "Addenda"))
+            node.append(addenda_node)
+            addenda_node = node
+
+        cfdi_node.append(addenda_node)
+        return etree.tostring(
+            cfdi_node, pretty_print=True, xml_declaration=True, encoding="UTF-8"
+        )
+
+    def _l10n_mx_edi_cfdi_apply_partner_addenda(self, document):
+        """Rewrite document XML with partner addenda after a successful stamp."""
+        self.ensure_one()
+        addenda = (
+            self.partner_id.l10n_mx_edi_addenda
+            or self.commercial_partner_id.l10n_mx_edi_addenda
+        )
+        if not addenda or not document.xml_file:
+            return
+        cfdi_bytes = base64.b64decode(document.xml_file)
+        new_cfdi = self._l10n_mx_edi_cfdi_invoice_append_addenda(cfdi_bytes, addenda)
+        if new_cfdi:
+            document.xml_file = base64.b64encode(new_cfdi)
+
+    def _l10n_mx_cfdi_post_document_attachments(self, document):
+        """Post stamped XML/PDF on this record's chatter.
+
+        Prefer files already stored on the document. If the PAC returned XML but
+        no PDF, try PAC recover only (skip QWeb report rendering here — that is
+        handled by ``_compute_download_files_if_needed`` on demand).
+        """
+        self.ensure_one()
+        if not document.pdf_file and document.tracking_id:
+            try:
+                res = document.issuer_id.service_id.sudo().get_cfdi_pdf(
+                    document.tracking_id
+                )
+                if res.get("Content"):
+                    document.pdf_file = res["Content"]
+                    document.pdf_filename = (
+                        document.pdf_filename
+                        or f"{document.name or document.uuid or document.id}.pdf"
+                    )
+            except Exception:
+                _logger.debug(
+                    "Could not recover PDF for chatter on %s",
+                    document.display_name,
+                    exc_info=True,
+                )
+        if not document.xml_file and document.tracking_id:
+            try:
+                res = document.issuer_id.service_id.sudo().get_cfdi_xml(
+                    document.tracking_id
+                )
+                content = res.get("Content") or b""
+                if content:
+                    if isinstance(content, str):
+                        content = content.encode("utf-8")
+                    document.xml_file = base64.b64encode(content)
+                    document.xml_filename = (
+                        document.xml_filename
+                        or f"{document.name or document.uuid or document.id}.xml"
+                    )
+            except Exception:
+                _logger.debug(
+                    "Could not recover XML for chatter on %s",
+                    document.display_name,
+                    exc_info=True,
+                )
+
+        attachment_vals = []
+        if document.xml_file:
+            attachment_vals.append(
+                {
+                    "name": document.xml_filename
+                    or f"{document.uuid or document.id}.xml",
+                    "datas": document.xml_file,
+                    "res_model": self._name,
+                    "res_id": self.id,
+                    "type": "binary",
+                    "mimetype": "application/xml",
+                }
+            )
+        if document.pdf_file:
+            attachment_vals.append(
+                {
+                    "name": document.pdf_filename
+                    or f"{document.uuid or document.id}.pdf",
+                    "datas": document.pdf_file,
+                    "res_model": self._name,
+                    "res_id": self.id,
+                    "type": "binary",
+                    "mimetype": "application/pdf",
+                }
+            )
+        if not attachment_vals:
+            return
+        attachments = self.env["ir.attachment"].create(attachment_vals)
+        self.message_post(
+            body=self.env._("CFDI published"),
+            attachment_ids=attachments.ids,
+        )
+
     def create_invoice_cfdi(self):
         """
         Create the CFDI
@@ -181,6 +330,7 @@ class AccountMove(models.Model):
         self.ensure_one()
 
         self._validate_invoice_cfdi_required_fields()
+        self._validate_cfdi_relation_fields()
 
         cert = self.env["l10n_mx_cfdi.document"].create(
             {
@@ -192,14 +342,21 @@ class AccountMove(models.Model):
         )
 
         try:
-            cfdi_data = self._gather_invoice_cfdi_data()
-            cert.publish(cfdi_data)
+            cfdi = self._gather_invoice_cfdi_data()
+            cert.publish(cfdi)
+            self._l10n_mx_edi_cfdi_apply_partner_addenda(cert)
+            self._register_cfdi_document_relations(
+                cert,
+                self.cfdi_document_relations,
+                self.cfdi_document_relation_type,
+            )
 
             self.update(
                 {
                     "related_cert_ids": [(4, cert.id)],
                 }
             )
+            self._l10n_mx_cfdi_post_document_attachments(cert)
 
         except Exception as e:
             cert.unlink()
@@ -240,27 +397,124 @@ class AccountMove(models.Model):
         if err_msg:
             raise ValidationError(self.env._("Cannot generate the CFDI:\n") + err_msg)
 
+    def _l10n_mx_cfdi_invoice_exportacion_complemento(self):
+        """Return ``(exportacion, complemento)`` for the invoice CFDI.
+
+        Extensions (e.g. Comercio Exterior) may override this hook.
+        """
+        return "01", None
+
     def _gather_invoice_cfdi_data(self):
-        cfdi_data = {
-            "Currency": self.company_currency_id.name,
-            "ExpeditionPlace": self.issuer_id.zip,
-            "Date": self._format_cfdi_date_str(self.invoice_date),
-            "CfdiType": "I",
-            "PaymentForm": self.payment_form_id.code,
-            "PaymentMethod": self.payment_method_id.code,
-            "Receiver": {
-                "Name": self.receiver_id.name,
-                "Rfc": self.receiver_id.vat,
-                "CfdiUse": self.cfdi_use_id.code,
-                "FiscalRegime": self.receiver_id.tax_regime.code,
-                "TaxZipCode": self.receiver_id.zip,
-            },
-            "Items": self.gather_invoice_cfdi_items_data(),
+        receiver = {
+            "Name": self.receiver_id.name,
+            "Rfc": self.receiver_id.vat,
+            "CfdiUse": self.cfdi_use_id.code,
+            "FiscalRegime": self.receiver_id.tax_regime.code,
+            "TaxZipCode": self.receiver_id.zip,
         }
+        global_information = None
+        if self.receiver_id.vat == "XAXX010101000":
+            currentDateTime = datetime.now()
+            global_information = {
+                "Periodicity": "01",
+                "Months": str(currentDateTime.month).rjust(2, "0"),
+                "Year": currentDateTime.year,
+            }
+            receiver["TaxZipCode"] = self.issuer_id.zip
+            receiver["FiscalRegime"] = "616"
 
-        self._add_global_information_to_cfdi_if_required(cfdi_data)
+        exportacion, complemento = self._l10n_mx_cfdi_invoice_exportacion_complemento()
+        return cfdi_builder.build_comprobante(
+            issuer=self.issuer_id,
+            receiver=receiver,
+            conceptos=self.gather_invoice_cfdi_items_data(),
+            tipo_de_comprobante="I",
+            lugar_expedicion=self.issuer_id.zip,
+            moneda=self.company_currency_id.name,
+            forma_pago=self.payment_form_id.code,
+            metodo_pago=self.payment_method_id.code,
+            fecha=self._format_cfdi_date_str(self.invoice_date),
+            informacion_global=global_information,
+            cfdi_relacionados=self._get_cfdi_relacionados(),
+            exportacion=exportacion,
+            complemento=complemento,
+        )
 
-        return cfdi_data
+    def _validate_cfdi_relation_fields(self):
+        """Ensure relation type and related CFDIs are set together."""
+        self.ensure_one()
+        if self.cfdi_document_relations and not self.cfdi_document_relation_type:
+            raise ValidationError(
+                self.env._(
+                    "You must set a relation type when related CFDIs are selected."
+                )
+            )
+        if self.cfdi_document_relation_type and not self.cfdi_document_relations:
+            raise ValidationError(
+                self.env._(
+                    "You must add at least one related CFDI when a relation "
+                    "type is set."
+                )
+            )
+
+    def _get_cfdi_relacionados(self):
+        """Build satcfdi CfdiRelacionados from manual invoice relation fields."""
+        self.ensure_one()
+        if not self.cfdi_document_relation_type:
+            return None
+        if not self.cfdi_document_relations:
+            raise ValidationError(
+                self.env._(
+                    "You must add at least one related CFDI when a relation "
+                    "type is set."
+                )
+            )
+        missing_uuid = self.cfdi_document_relations.filtered(lambda d: not d.uuid)
+        if missing_uuid:
+            raise ValidationError(
+                self.env._(
+                    "Related CFDIs must be published and have a UUID: %s",
+                    ", ".join(missing_uuid.mapped("display_name")),
+                )
+            )
+        return cfdi40.CfdiRelacionados(
+            tipo_relacion=self.cfdi_document_relation_type.code,
+            cfdi_relacionado=list(self.cfdi_document_relations.mapped("uuid")),
+        )
+
+    def _register_cfdi_document_relations(self, cert, related_docs, relation_type):
+        """Persist Odoo CFDI document relations after a successful stamp."""
+        if not related_docs or not relation_type:
+            return
+        cert.write(
+            {
+                "related_document_ids": [
+                    (
+                        0,
+                        0,
+                        {
+                            "source_id": cert.id,
+                            "target_id": related_cfdi.id,
+                            "relation_type_id": relation_type.id,
+                        },
+                    )
+                    for related_cfdi in related_docs
+                ]
+            }
+        )
+
+    def _add_related_cfdis_data_if_needed(self, cfdi_data):
+        """Compatibility helper used by tests; mutates a dict payload."""
+        related = self._get_cfdi_relacionados()
+        if related is None:
+            return
+        cfdi_data["Relations"] = {
+            "Type": self.cfdi_document_relation_type.code,
+            "Cfdis": [
+                {"Uuid": related_cfdi.uuid}
+                for related_cfdi in self.cfdi_document_relations
+            ],
+        }
 
     def _format_cfdi_date_str(self, document_date):
         """
@@ -270,24 +524,21 @@ class AccountMove(models.Model):
         compatible with the CFDI format. Then will format the date to
         ISO 8601 format.
 
+        SAT/PAC reject Fecha older than 72 hours at stamp time, so when the
+        document date is more than two days in the past we use "now" in the
+        user timezone instead of keeping the stale calendar day.
         """
         fixed_tz_recordset = self.with_context(**{"tz": self.env.user.tz})
         now_utc = fields.Datetime.now()
         now_utc_tz = fields.Datetime.context_timestamp(fixed_tz_recordset, now_utc)
 
-        # add 2h if there is a difference larger than 24h between
-        # this is a workaround to avoid issues with the PAC when
-        # signing a CFDI with a date in the past
-        if (now_utc_tz.date() - document_date).days > 1:
-            # add 2h to now_utc_tz
-            now_utc_tz = now_utc_tz + timedelta(hours=2)
+        if document_date and (now_utc_tz.date() - document_date).days > 2:
+            # Outside the 72h stamp window — use current stamp time.
+            document_dt = now_utc_tz.replace(tzinfo=None)
+        else:
+            document_dt = datetime.combine(document_date, now_utc_tz.time())
 
-        # add time info to invoice_date
-        document_date = datetime.combine(document_date, now_utc_tz.time())
-
-        # invoice_date to ISO 8601 format
-        document_date_str = document_date.strftime("%Y-%m-%dT%H:%M:%S")
-        return document_date_str
+        return document_dt.strftime("%Y-%m-%dT%H:%M:%S")
 
     def gather_invoice_cfdi_items_data(self):
         """
@@ -380,7 +631,7 @@ class AccountMove(models.Model):
                     raise UserError(
                         self.env._(
                             "The tax code for tax %s is not defined.",
-                            line.tax_ids[0].name,
+                            tax_id.name,
                         )
                     )
 
@@ -428,52 +679,103 @@ class AccountMove(models.Model):
     def create_refund_cfdi(self):
         """
         Create CFDI of type 'E' (Egreso).
+
+        Manual CFDI relations on the refund (PR #77 style) take precedence.
+        Otherwise, related income CFDIs are inferred from reconciliations
+        with TipoRelacion 01 (credit note).
         """
         for refund in self:
-            items_data = self.gather_invoice_cfdi_items_data()
+            refund._validate_cfdi_relation_fields()
+            items_data = refund.gather_invoice_cfdi_items_data()
 
-            receivables = refund.line_ids.filtered(
-                lambda L: L.account_id.account_type == "asset_receivable"
-            )
-            partial_reconcile = self.env["account.partial.reconcile"].search(
-                [("debit_move_id", "in", receivables.ids)]
-            )
-            partial_reconcile |= (
-                receivables.matched_debit_ids + receivables.matched_credit_ids
-            )
+            relation_type = refund.cfdi_document_relation_type
+            related_cfdis = refund.cfdi_document_relations
+            cfdi_relacionados = refund._get_cfdi_relacionados()
 
-            move_lines = (
-                partial_reconcile.credit_move_id + partial_reconcile.debit_move_id
-            )
-
-            related_cfdis = move_lines.move_id.related_cert_ids.filtered_domain(
-                [
+            if cfdi_relacionados is None:
+                related_domain = [
                     ("state", "=", "published"),
                     ("type", "=", "I"),
+                    ("uuid", "!=", False),
                 ]
-            )
+                receivables = refund.line_ids.filtered(
+                    lambda L: L.account_id.account_type == "asset_receivable"
+                )
+                partial_reconcile = self.env["account.partial.reconcile"].search(
+                    [("debit_move_id", "in", receivables.ids)]
+                )
+                partial_reconcile |= (
+                    receivables.matched_debit_ids + receivables.matched_credit_ids
+                )
 
-            cfdi_data = {
-                "NameId": "2",
-                "ExpeditionPlace": refund.issuer_id.zip,
-                "Date": self._format_cfdi_date_str(self.invoice_date),
-                "PaymentForm": refund.payment_form_id.code,
-                "PaymentMethod": refund.payment_method_id.code,
-                "Receiver": {
-                    "Name": refund.partner_id.name,
-                    "Rfc": refund.partner_id.vat,
-                    "CfdiUse": refund.cfdi_use_id.code,
-                    "FiscalRegime": refund.partner_id.tax_regime.code,
-                    "TaxZipCode": refund.partner_id.zip,
-                },
-                "Items": items_data,
-                "Relations": {
-                    "Type": "01",
-                    "Cfdis": [
-                        {"Uuid": related_cfdi.uuid} for related_cfdi in related_cfdis
-                    ],
-                },
+                move_lines = (
+                    partial_reconcile.credit_move_id + partial_reconcile.debit_move_id
+                )
+
+                related_cfdis = move_lines.move_id.related_cert_ids.filtered_domain(
+                    related_domain
+                )
+                # Credit notes created via reverse often keep reversed_entry_id
+                # even before receivable reconciliation finds the income CFDI.
+                if not related_cfdis:
+                    origin = refund.reversed_entry_id
+                    if origin:
+                        related_cfdis = origin.related_cert_ids.filtered_domain(
+                            related_domain
+                        )
+                relation_type = self.env.ref("l10n_mx_catalogs.c_tipo_relacion_1")
+                if related_cfdis:
+                    cfdi_relacionados = cfdi40.CfdiRelacionados(
+                        tipo_relacion=relation_type.code,
+                        cfdi_relacionado=list(related_cfdis.mapped("uuid")),
+                    )
+
+            if not cfdi_relacionados:
+                raise UserError(
+                    self.env._(
+                        "Cannot generate a credit note CFDI without related "
+                        "income CFDIs. Reconcile the credit note with the "
+                        "original invoice, or set Relation Type and Related "
+                        "CFDIs on the CFDI tab."
+                    )
+                )
+
+            receiver_partner = refund.receiver_id or refund.partner_id
+            receiver = {
+                "Name": receiver_partner.name,
+                "Rfc": receiver_partner.vat,
+                "CfdiUse": refund.cfdi_use_id.code,
+                "FiscalRegime": receiver_partner.tax_regime.code,
+                "TaxZipCode": receiver_partner.zip,
             }
+            global_information = None
+            if receiver_partner.vat == "XAXX010101000":
+                currentDateTime = datetime.now()
+                global_information = {
+                    "Periodicity": "01",
+                    "Months": str(currentDateTime.month).rjust(2, "0"),
+                    "Year": currentDateTime.year,
+                }
+                receiver["TaxZipCode"] = refund.issuer_id.zip
+                receiver["FiscalRegime"] = "616"
+
+            cfdi = cfdi_builder.build_comprobante(
+                issuer=refund.issuer_id,
+                receiver=receiver,
+                conceptos=items_data,
+                tipo_de_comprobante="E",
+                lugar_expedicion=refund.issuer_id.zip,
+                moneda=(
+                    refund.currency_id.name
+                    if refund.currency_id
+                    else refund.company_currency_id.name
+                ),
+                forma_pago=refund.payment_form_id.code,
+                metodo_pago=refund.payment_method_id.code,
+                fecha=refund._format_cfdi_date_str(refund.invoice_date),
+                informacion_global=global_information,
+                cfdi_relacionados=cfdi_relacionados,
+            )
 
             refund_cfdi = self.env["l10n_mx_cfdi.document"].create(
                 {
@@ -484,46 +786,30 @@ class AccountMove(models.Model):
                 }
             )
 
-            self._add_global_information_to_cfdi_if_required(cfdi_data)
-
-            # register relations
-            refund_cfdi.update(
-                {
-                    "related_document_ids": [
-                        (
-                            0,
-                            0,
-                            {
-                                "source_id": refund_cfdi.id,
-                                "target_id": related_cfdi.id,
-                                "relation_type_id": self.env.ref(
-                                    "l10n_mx_catalogs.c_tipo_relacion_1"
-                                ).id,
-                            },
-                        )
-                        for related_cfdi in related_cfdis
-                    ]
-                }
-            )
-
             try:
-                refund_cfdi.publish(cfdi_data)
+                refund_cfdi.publish(cfdi)
+                refund._l10n_mx_edi_cfdi_apply_partner_addenda(refund_cfdi)
+                refund._register_cfdi_document_relations(
+                    refund_cfdi, related_cfdis, relation_type
+                )
 
                 refund.update(
                     {
                         "related_cert_ids": [(4, refund_cfdi.id)],
                     }
                 )
+                refund._l10n_mx_cfdi_post_document_attachments(refund_cfdi)
 
-                for cfdi in related_cfdis:
-                    if cfdi.related_invoice_id:
-                        cfdi.related_invoice_id.related_cert_ids |= refund_cfdi
+                for cfdi_doc in related_cfdis:
+                    if cfdi_doc.related_invoice_id:
+                        cfdi_doc.related_invoice_id.related_cert_ids |= refund_cfdi
 
             except Exception as e:
                 refund_cfdi.unlink()
                 raise e
 
     def _add_global_information_to_cfdi_if_required(self, cfdi_data):
+        """Legacy helper kept for callers that still edit dict payloads."""
         if self.receiver_id.vat == "XAXX010101000":
             currentDateTime = datetime.now()
 
@@ -686,6 +972,10 @@ class AccountMove(models.Model):
             self.create_invoice_cfdi()
 
         if self.move_type == "out_refund":
+            if self.state != "posted":
+                raise UserError(
+                    self.env._("Confirm the credit note before generating its CFDI.")
+                )
             # create credit note CFDI if required
             if self.amount_residual != 0:
                 raise UserError(
