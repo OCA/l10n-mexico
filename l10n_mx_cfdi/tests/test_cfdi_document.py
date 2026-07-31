@@ -59,7 +59,7 @@ class TestCFDIDocument(CFDITestMixin, TransactionCase):
     def test_compute_load_json_data(self):
         document = self._create_document(
             uuid="11111111-1111-1111-1111-111111111111",
-            cert_data_json=json.dumps(ACTIVE_CFDI_RESPONSE),
+            cert_data_json=json.dumps(ACTIVE_CFDI_RESPONSE["stamp_meta"]),
         )
         self.assertEqual(document.cert_number, "CERT123")
         self.assertTrue(document.verification_url)
@@ -151,14 +151,66 @@ class TestCFDIDocument(CFDITestMixin, TransactionCase):
         with patch.object(
             type(self.service),
             "cancel_cfdi",
-            return_value={"Status": "canceled"},
+            return_value={
+                "Status": "canceled",
+                "Message": "Cancelado sin Aceptacion",
+                "Acuse": b"<acuse/>",
+            },
         ):
-            document.cancel(reason="01")
+            feedback = document.cancel(reason="01")
         self.assertEqual(document.state, "canceled")
         self.assertFalse(document.pdf_file)
+        self.assertTrue(document.cancellation_request_proof_file)
+        self.assertEqual(feedback["Status"], "canceled")
+        self.assertTrue(feedback["HasAcuse"])
+        summary = document._format_cancel_feedback(feedback)
+        self.assertIn("canceled", summary)
+        self.assertIn("Cancelado sin Aceptacion", summary)
+        self.assertIn("acuse", summary.lower())
+
+    def test_cancel_document_without_acuse_feedback(self):
+        document = self._create_document(
+            state="published",
+            tracking_id="tracking-123",
+            xml_file=base64.b64encode(b"xml"),
+        )
+        with patch.object(
+            type(self.service),
+            "cancel_cfdi",
+            return_value={"Status": "canceled", "Message": "", "Acuse": None},
+        ):
+            feedback = document.cancel(reason="02")
+        self.assertEqual(document.state, "canceled")
+        self.assertFalse(feedback["HasAcuse"])
+        summary = document._format_cancel_feedback(feedback)
+        self.assertIn("did not return", summary)
+
+    def test_cancel_document_active_raises(self):
+        document = self._create_document(
+            state="published",
+            tracking_id="tracking-123",
+            xml_file=base64.b64encode(b"xml"),
+        )
+        with (
+            patch.object(
+                type(self.service),
+                "cancel_cfdi",
+                return_value={
+                    "Status": "active",
+                    "Message": "Tiene documentos relacionados",
+                },
+            ),
+            self.assertRaises(UserError),
+        ):
+            document.cancel(reason="02")
+        self.assertEqual(document.state, "published")
 
     def test_cancel_document_pending(self):
-        document = self._create_document(state="published", tracking_id="tracking-123")
+        document = self._create_document(
+            state="published",
+            tracking_id="tracking-123",
+            xml_file=base64.b64encode(b"xml"),
+        )
         with patch.object(
             type(self.service),
             "cancel_cfdi",
@@ -168,7 +220,11 @@ class TestCFDIDocument(CFDITestMixin, TransactionCase):
         self.assertEqual(document.state, "pending_cancel")
 
     def test_cancel_document_rejected(self):
-        document = self._create_document(state="published", tracking_id="tracking-123")
+        document = self._create_document(
+            state="published",
+            tracking_id="tracking-123",
+            xml_file=base64.b64encode(b"xml"),
+        )
         with patch.object(
             type(self.service),
             "cancel_cfdi",
@@ -178,7 +234,11 @@ class TestCFDIDocument(CFDITestMixin, TransactionCase):
         self.assertEqual(document.state, "published")
 
     def test_cancel_document_accepted(self):
-        document = self._create_document(state="published", tracking_id="tracking-123")
+        document = self._create_document(
+            state="published",
+            tracking_id="tracking-123",
+            xml_file=base64.b64encode(b"xml"),
+        )
         with patch.object(
             type(self.service),
             "cancel_cfdi",
@@ -188,7 +248,11 @@ class TestCFDIDocument(CFDITestMixin, TransactionCase):
         self.assertEqual(document.state, "canceled")
 
     def test_cancel_document_expired(self):
-        document = self._create_document(state="published", tracking_id="tracking-123")
+        document = self._create_document(
+            state="published",
+            tracking_id="tracking-123",
+            xml_file=base64.b64encode(b"xml"),
+        )
         with patch.object(
             type(self.service),
             "cancel_cfdi",
@@ -219,20 +283,41 @@ class TestCFDIDocument(CFDITestMixin, TransactionCase):
             self.assertTrue(document.files_in_cache)
         self.assertEqual(document.pdf_file, base64.b64encode(b"%PDF-1.4 report"))
 
-    def test_publish_passes_logo_url(self):
-        captured = {}
-
-        def _create_cfdi(cfdi_data):
-            captured.update(cfdi_data)
-            return ACTIVE_CFDI_RESPONSE
-
-        with patch.object(type(self.service), "create_cfdi", side_effect=_create_cfdi):
+    def test_publish_stores_stamp_meta(self):
+        with patch.object(
+            type(self.service),
+            "create_cfdi",
+            return_value=ACTIVE_CFDI_RESPONSE,
+        ):
             document = self._create_document()
             document.publish({})
-        self.assertEqual(captured["LogoUrl"], self.issuer.logo_url)
+        self.assertEqual(document.state, "published")
+        self.assertEqual(document.uuid, ACTIVE_CFDI_RESPONSE["uuid"])
+        meta = json.loads(document.cert_data_json)
+        self.assertEqual(meta["CertNumber"], "CERT123")
+
+    def test_publish_tolerates_non_json_stamp_meta_values(self):
+        """Regression: satcfdi methods in stamp_meta used to abort after PAC stamp."""
+        response = dict(ACTIVE_CFDI_RESPONSE)
+        response["stamp_meta"] = dict(ACTIVE_CFDI_RESPONSE["stamp_meta"])
+        response["stamp_meta"]["OriginalString"] = str.upper
+        with patch.object(
+            type(self.service),
+            "create_cfdi",
+            return_value=response,
+        ):
+            document = self._create_document()
+            document.publish({})
+        self.assertEqual(document.state, "published")
+        self.assertTrue(document.cert_data_json)
+        json.loads(document.cert_data_json)
 
     def test_cancel_document_error(self):
-        document = self._create_document(state="published", tracking_id="tracking-123")
+        document = self._create_document(
+            state="published",
+            tracking_id="tracking-123",
+            xml_file=base64.b64encode(b"xml"),
+        )
         with patch.object(
             type(self.service),
             "cancel_cfdi",
@@ -262,23 +347,235 @@ class TestCFDIDocument(CFDITestMixin, TransactionCase):
     def test_action_get_cancellation_request_proof(self):
         document = self._create_document(
             state="canceled",
-            tracking_id="tracking-123",
-            serie="A",
-            folio="9",
+            cancellation_request_proof_file=base64.b64encode(b"proof-pdf"),
+            cancellation_request_proof_filename="Acuse.xml",
         )
-        with patch.object(
-            type(self.service),
-            "get_cancellation_request_proof",
-            return_value=b"proof-pdf",
-        ):
-            document.action_get_cancellation_request_proof()
+        document.action_get_cancellation_request_proof()
         self.assertTrue(document.cancellation_request_proof_file)
-        self.assertTrue(document.cancellation_request_proof_filename)
+
+    def test_action_get_cancellation_request_proof_missing(self):
+        document = self._create_document(state="canceled")
+        with self.assertRaises(UserError):
+            document.action_get_cancellation_request_proof()
 
     def test_action_get_cancellation_request_proof_not_canceled(self):
         document = self._create_document(state="published")
         with self.assertRaises(UserError):
             document.action_get_cancellation_request_proof()
+
+    def test_legacy_without_xml_blocks_cancel(self):
+        document = self._create_document(
+            state="published",
+            tracking_id="facturama-old-id",
+            xml_file=False,
+        )
+        self.assertTrue(document.legacy_without_xml)
+        with self.assertRaises(UserError) as err:
+            document.cancel(reason="02")
+        self.assertIn("no stored stamped XML", str(err.exception))
+
+    def test_cancel_blocked_when_pac_unsupported(self):
+        self.service.provider = "prodigia"
+        self.service.pac_contrato = "1234"
+        document = self._create_document(
+            state="published",
+            tracking_id="tracking-123",
+            xml_file=base64.b64encode(b"<xml/>"),
+        )
+        self.assertFalse(document.pac_supports_cancel)
+        with self.assertRaises(UserError) as err:
+            document.cancel(reason="02")
+        self.assertIn("does not support CFDI cancellation", str(err.exception))
+
+    def test_publish_stores_pac_provider(self):
+        with patch.object(
+            type(self.service),
+            "create_cfdi",
+            return_value=ACTIVE_CFDI_RESPONSE,
+        ):
+            document = self._create_document()
+            document.publish({})
+        self.assertEqual(document.pac_provider, self.service.provider)
+
+    def test_publish_stores_pdf_and_injects_serie_folio(self):
+        response = dict(ACTIVE_CFDI_RESPONSE)
+        response["pdf"] = b"%PDF-fake"
+        cfdi = {}
+        with patch.object(
+            type(self.service),
+            "create_cfdi",
+            return_value=response,
+        ):
+            document = self._create_document(serie="XYZ", folio="9")
+            document.publish(cfdi)
+        self.assertTrue(document.pdf_file)
+        self.assertEqual(cfdi.get("Serie"), "XYZ")
+        self.assertEqual(cfdi.get("Folio"), "9")
+
+    def test_cancel_stores_acuse_on_document(self):
+        document = self._create_document(
+            state="published",
+            uuid="11111111-1111-1111-1111-111111111111",
+            xml_file=base64.b64encode(
+                b'<?xml version="1.0"?><cfdi:Comprobante '
+                b'xmlns:cfdi="http://www.sat.gob.mx/cfd/4">'
+                b"<cfdi:Complemento><tfd:TimbreFiscalDigital "
+                b'xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" '
+                b'UUID="11111111-1111-1111-1111-111111111111"/>'
+                b"</cfdi:Complemento></cfdi:Comprobante>"
+            ),
+        )
+        with patch.object(
+            type(self.service),
+            "cancel_cfdi",
+            return_value={
+                "Status": "canceled",
+                "Message": "",
+                "Acuse": b"<acuse/>",
+            },
+        ):
+            document.cancel("02")
+        self.assertTrue(document.cancellation_request_proof_file)
+
+    def test_cancel_without_xml_non_legacy(self):
+        document = self._create_document(
+            state="published",
+            uuid="11111111-1111-1111-1111-111111111111",
+            tracking_id=False,
+            xml_file=False,
+        )
+        self.assertFalse(document.legacy_without_xml)
+        with self.assertRaises(UserError):
+            document.cancel("02")
+
+    def test_publish_accepts_xml_as_str(self):
+        response = dict(ACTIVE_CFDI_RESPONSE)
+        response["xml"] = (
+            '<?xml version="1.0"?><cfdi:Comprobante '
+            'xmlns:cfdi="http://www.sat.gob.mx/cfd/4"/>'
+        )
+        response["pdf"] = False
+        cfdi = {"Serie": "A", "Folio": "1"}
+        with patch.object(
+            type(self.service),
+            "create_cfdi",
+            return_value=response,
+        ):
+            document = self._create_document(serie="A", folio="1")
+            document.publish(cfdi)
+        self.assertTrue(document.xml_file)
+
+    def test_action_check_status_unchanged(self):
+        document = self._create_document(
+            state="published",
+            uuid="11111111-1111-1111-1111-111111111111",
+        )
+        with patch.object(
+            type(self.service),
+            "check_cfdi_status",
+            return_value="published",
+        ):
+            document.action_check_status()
+        self.assertEqual(document.state, "published")
+
+    def test_download_files_falls_back_to_pac_when_report_empty(self):
+        document = self._create_document(tracking_id="tracking-empty-report")
+        report = MagicMock()
+        report.with_context.return_value = report
+        report._render_qweb_pdf.return_value = (b"", "pdf")
+        pac_pdf = base64.b64encode(b"%PDF-pac")
+        with (
+            patch.object(
+                type(document),
+                "_resolve_report",
+                return_value=(report, [1]),
+            ),
+            patch.object(
+                type(self.service),
+                "get_cfdi_pdf",
+                return_value={"Content": pac_pdf},
+            ),
+            patch.object(
+                type(self.service),
+                "get_cfdi_xml",
+                return_value={"Content": b"<xml/>"},
+            ),
+        ):
+            self.assertTrue(document.files_in_cache)
+        self.assertEqual(document.pdf_file, pac_pdf)
+
+    def test_download_files_soft_fail_on_user_error(self):
+        document = self._create_document(tracking_id="tracking-soft-fail")
+        with (
+            patch.object(
+                type(self.service),
+                "get_cfdi_pdf",
+                side_effect=UserError("no pdf"),
+            ),
+            patch.object(
+                type(self.service),
+                "get_cfdi_xml",
+                side_effect=UserError("no xml"),
+            ),
+        ):
+            # tracking_id present still marks cache as attempted
+            self.assertTrue(document.files_in_cache)
+        self.assertFalse(document.pdf_file)
+        self.assertFalse(document.xml_file)
+
+    def test_publish_allows_second_document_when_folio_blank(self):
+        """Empty serie/folio must not block E/P after the first ingreso."""
+        first = self._create_document(serie="TMP", folio="1", type="I")
+        second = self._create_document(serie="TMP", folio="2", type="E")
+        # Simulate legacy/blank Multiemisor docs (no local serie/folio).
+        first.write({"serie": False, "folio": False, "state": "published"})
+        second.write({"serie": False, "folio": False})
+        with patch.object(
+            type(self.service), "create_cfdi", return_value=ACTIVE_CFDI_RESPONSE
+        ):
+            second.publish({})
+        self.assertEqual(second.state, "published")
+
+    def test_create_assigns_serie_folio_from_series(self):
+        self.env["l10n_mx_cfdi.series"].create(
+            {
+                "name": "Payment series",
+                "code": "PAG",
+                "prefix": "P",
+                "padding": 3,
+                "implementation": "no_gap",
+            }
+        )
+        document = self.env["l10n_mx_cfdi.document"].create(
+            {
+                "issuer_id": self.issuer.id,
+                "receiver_id": self.partner.id,
+                "type": "P",
+            }
+        )
+        self.assertTrue(document.folio)
+        self.assertEqual(document.serie, "P")
+
+    def test_prepare_serie_folio_fallback_and_missing(self):
+        Series = self.env["l10n_mx_cfdi.series"]
+        Series.search([]).unlink()
+        Document = self.env["l10n_mx_cfdi.document"]
+        # No series at all: leave vals unchanged.
+        vals = {"type": "I"}
+        self.assertEqual(Document._prepare_serie_folio_vals(dict(vals)), vals)
+        # Unmatched code falls back to any available series.
+        Series.create(
+            {
+                "name": "Fallback series",
+                "code": "ZZZ",
+                "prefix": "Z",
+                "padding": 3,
+                "implementation": "no_gap",
+            }
+        )
+        out = Document._prepare_serie_folio_vals({"type": "I"})
+        self.assertEqual(out["serie"], "Z")
+        self.assertTrue(out["folio"])
 
 
 class TestCFDIDocumentRelation(CFDITestMixin, TransactionCase):

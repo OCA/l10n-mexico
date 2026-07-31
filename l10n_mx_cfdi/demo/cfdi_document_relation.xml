@@ -1,0 +1,7 @@
+<odoo noupdate="1">
+    <record id="demo_cfdi_document_relation" model="l10n_mx_cfdi.document_relation">
+        <field name="relation_type_id" ref="l10n_mx_catalogs.c_tipo_relacion_4" />
+        <field name="source_id" ref="demo_cfdi_document_substitute" />
+        <field name="target_id" ref="demo_cfdi_document_income" />
+    </record>
+</odoo>

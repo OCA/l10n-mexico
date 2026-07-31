@@ -3,5 +3,9 @@ from . import test_cfdi_issuer
 from . import test_cfdi_series
 from . import test_cfdi_service
 from . import test_cfdi_service_topup
+from . import test_cfdi_builder
+from . import test_cfdi_normalize
+from . import test_pac_registry
+from . import test_facturama_adapter
 from . import test_models
 from . import test_res_company
