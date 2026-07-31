@@ -6,6 +6,35 @@ from odoo import api, fields, models
 class AccountMoveLine(models.Model):
     _inherit = "account.move.line"
 
+    l10n_mx_cfdi_cce_no_identificacion = fields.Char(
+        string="No identificación CCE",
+        help=(
+            "CCE NoIdentificacion. Defaults to the product Internal Reference "
+            "when empty."
+        ),
+    )
+    l10n_mx_cfdi_cce_valor_dolares = fields.Float(
+        string="Valor dólares",
+        digits=(16, 2),
+        help="Total value in USD for this line (CCE ValorDolares).",
+    )
+    l10n_mx_cfdi_cce_cantidad_aduana = fields.Float(
+        string="Cantidad aduana",
+        digits=(16, 3),
+        help="Customs quantity (CCE CantidadAduana). Defaults to invoice quantity.",
+    )
+    l10n_mx_cfdi_cce_unidad_aduana = fields.Char(
+        string="Unidad aduana",
+        size=2,
+        default="01",
+        help="SAT c_UnidadAduana code (e.g. 01 = Kg, 06 = Piece).",
+    )
+    l10n_mx_cfdi_cce_valor_unitario_aduana = fields.Float(
+        string="Valor unitario aduana",
+        digits=(16, 6),
+        help="Unit customs value in USD (CCE ValorUnitarioAduana).",
+    )
+
     l10n_mx_cfdi_pedimento_ids = fields.Many2many(
         comodel_name="l10n_mx_cfdi.pedimento",
         string="Pedimentos",

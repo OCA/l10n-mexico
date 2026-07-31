@@ -1,0 +1,7 @@
+<odoo noupdate="1">
+    <record id="demo_pedimento" model="l10n_mx_cfdi.pedimento">
+        <field name="number">15 48 3807 0001234</field>
+        <field name="customs_id" ref="l10n_mx_catalogs_comex.c_aduana_010" />
+        <field name="date">2024-01-15</field>
+    </record>
+</odoo>
