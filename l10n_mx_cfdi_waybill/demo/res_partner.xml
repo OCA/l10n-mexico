@@ -1,0 +1,13 @@
+<odoo noupdate="1">
+    <record id="demo_driver_partner" model="res.partner">
+        <field name="name">Demo Waybill Driver</field>
+        <field name="country_id" ref="base.mx" />
+        <field name="l10n_mx_cfdi_waybill_driving_license">DEMO-LIC-12345</field>
+    </record>
+
+    <record id="demo_insurer_partner" model="res.partner">
+        <field name="name">Demo Waybill Insurer</field>
+        <field name="country_id" ref="base.mx" />
+        <field name="is_company" eval="True" />
+    </record>
+</odoo>
