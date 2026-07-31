@@ -14,7 +14,7 @@ To update the catalogs, you need to:
   [this page of the SAT website](http://omawww.sat.gob.mx/tramitesyservicios/Paginas/anexo_20.htm)
 - Download the XLS file for "Catálogos CFDI Versión 4.0 (xls)"
 - Run the
-  [script](https://github.com/OCA/l10n-mexico/blob/17.0/l10n_mx_catalogs/import_catalogs_xls.py)
+  [script](https://github.com/OCA/l10n-mexico/blob/19.0/l10n_mx_catalogs/import_catalogs_xls.py)
 
 ```shell
 pip install xlrd

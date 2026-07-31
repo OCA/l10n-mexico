@@ -50,7 +50,7 @@ To update the catalogs, you need to:
   website <http://omawww.sat.gob.mx/tramitesyservicios/Paginas/anexo_20.htm>`__
 - Download the XLS file for "Catálogos CFDI Versión 4.0 (xls)"
 - Run the
-  `script <https://github.com/OCA/l10n-mexico/blob/17.0/l10n_mx_catalogs/import_catalogs_xls.py>`__
+  `script <https://github.com/OCA/l10n-mexico/blob/19.0/l10n_mx_catalogs/import_catalogs_xls.py>`__
 
 .. code:: shell
 
@@ -92,6 +92,8 @@ Contributors
 ------------
 
 - Alexis López Zubieta <alexis.lopez@augetec.com>
+- Cristhiane Guadalupe Rangel Ferrusca
+  <cristhiane.rangel@graymatterlogic.com>
 - Maxime Chambreuil <maxime.chambreuil@graymatterlogic.com>
 
 Maintainers
