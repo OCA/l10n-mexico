@@ -73,7 +73,7 @@ class CertificateCancel(models.TransientModel):
                 invoice._compute_cfdi_document_id()
 
                 if self.env.company.l10n_mx_cfdi_auto:
-                    invoice.button_draft()
+                    invoice.button_cancel()
 
             for payment in record.certificate_ids.related_payment_id:
                 payment.move_id._compute_cfdi_document_id()

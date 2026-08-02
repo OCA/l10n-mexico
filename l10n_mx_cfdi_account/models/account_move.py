@@ -44,7 +44,7 @@ class AccountMove(models.Model):
         string="Related CFDIs",
         copy=False,
         help="Existing CFDIs to relate when issuing this invoice CFDI "
-        "(e.g. substitution after cancellation).",
+             "(e.g. substitution after cancellation).",
     )
     cfdi_document_relation_type = fields.Many2one(
         "l10n_mx_catalogs.c_tipo_relacion",
@@ -109,6 +109,15 @@ class AccountMove(models.Model):
                 xml = base64.b64decode(attachment.datas)
                 if b"cfdi:Comprobante" in xml:
                     move.cfdi_data_in_attachments = True
+
+    @api.depends('cfdi_document_state')
+    def _compute_show_reset_to_draft_button(self):
+        # OVERRIDE
+        super()._compute_show_reset_to_draft_button()
+        for move in self:
+            if move.cfdi_document_id and move.cfdi_document_id.state == 'published' and move.state == 'posted':
+                move.need_cancel_request = True
+                move.show_reset_to_draft_button = False
 
     @api.model
     def default_get(self, field_names):
@@ -295,7 +304,7 @@ class AccountMove(models.Model):
             attachment_vals.append(
                 {
                     "name": document.xml_filename
-                    or f"{document.uuid or document.id}.xml",
+                            or f"{document.uuid or document.id}.xml",
                     "datas": document.xml_file,
                     "res_model": self._name,
                     "res_id": self.id,
@@ -307,7 +316,7 @@ class AccountMove(models.Model):
             attachment_vals.append(
                 {
                     "name": document.pdf_filename
-                    or f"{document.uuid or document.id}.pdf",
+                            or f"{document.uuid or document.id}.pdf",
                     "datas": document.pdf_file,
                     "res_model": self._name,
                     "res_id": self.id,
@@ -660,7 +669,7 @@ class AccountMove(models.Model):
 
         return list(total_taxes.values())
 
-    def button_draft(self):
+    def button_request_cancel(self):
         for rec in self:
             if rec.l10n_mx_cfdi_auto:
                 published_related_cfdi = rec.related_cert_ids.filtered_domain(
@@ -674,7 +683,7 @@ class AccountMove(models.Model):
                         .read()[0]
                     )
 
-        return super().button_draft()
+        return super().button_request_cancel()
 
     def create_refund_cfdi(self):
         """
