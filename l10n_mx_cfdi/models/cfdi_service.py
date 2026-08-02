@@ -265,13 +265,19 @@ class CFDIService(models.Model):
                 password=issuer.key_password,
             )
         except Exception as exc:
-            _logger.exception("Facturama CSD upload failed")
-            raise UserError(
-                self.env._(
-                    "Cannot upload the CSD to Facturama: %s",
-                    self._format_pac_error(exc),
-                )
-            ) from exc
+            pac_error_msg = self._format_pac_error(exc)
+            if "Ya existe un CSD asociado a este RFC" in pac_error_msg:
+                _logger.info("Facturama CSD upload failed: CSD already exists for RFC %s", issuer.vat)
+                # no raise needed we can work with that CSD
+                return None
+            else:
+                _logger.exception("Facturama CSD upload failed")
+                raise UserError(
+                    self.env._(
+                        "Cannot upload the CSD to Facturama: %s",
+                        pac_error_msg,
+                    )
+                ) from exc
 
     def delete_issuer_csd(self, issuer):
         """Remove issuer CSD from PACs that store it remotely (Facturama)."""
