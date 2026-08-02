@@ -61,8 +61,9 @@ class TestDocumentCancelWizard(CFDIAccountTestCommon):
                 "simulate_operation": True,
             }
         )
-        with patch.object(type(invoice), "button_draft", return_value=True):
-            wizard.cancel_certificate()
+        wizard.cancel_certificate()
+        self.assertEqual(document.state, "canceled")
+        self.assertEqual(invoice.state, "cancel")
 
     def test_cancel_certificate_payment_document(self):
         invoice = self._post_cfdi_invoice(
