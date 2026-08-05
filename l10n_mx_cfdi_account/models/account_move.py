@@ -274,6 +274,15 @@ class AccountMove(models.Model):
             "Items": self.gather_invoice_cfdi_items_data(),
         }
 
+        if self.cfdi_document_relation_ids:
+            relation_type = self.cfdi_document_relation_ids.relation_type_id[0]
+            relations_data = {
+                "Type": relation_type.code,
+                "Cfdis": [{"Uuid": r.target_uuid} for r in self.cfdi_document_relation_ids],
+            }
+
+            cfdi_data["Relations"] = relations_data
+
         self._add_global_information_to_cfdi_if_required(cfdi_data)
 
         return cfdi_data
