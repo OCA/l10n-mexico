@@ -2,9 +2,9 @@
    :target: https://odoo-community.org/get-involved?utm_source=readme
    :alt: Odoo Community Association
 
-==========================================
-Mexican income tax withholding on salaries
-==========================================
+===============================
+Mexican ISR withholding tariffs
+===============================
 
 .. 
    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -21,10 +21,10 @@ Mexican income tax withholding on salaries
     :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
     :alt: License: LGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fl10n--mexico-lightgray.png?logo=github
-    :target: https://github.com/OCA/l10n-mexico/tree/19.0/l10n_mx_isr
+    :target: https://github.com/OCA/l10n-mexico/tree/19.0/l10n_mx_isr_tariffs
     :alt: OCA/l10n-mexico
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/l10n-mexico-19-0/l10n-mexico-19-0-l10n_mx_isr
+    :target: https://translation.odoo-community.org/projects/l10n-mexico-19-0/l10n-mexico-19-0-l10n_mx_isr_tariffs
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
     :target: https://runboat.odoo-community.org/builds?repo=OCA/l10n-mexico&target_branch=19.0
@@ -32,9 +32,37 @@ Mexican income tax withholding on salaries
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-Income tax withholding on salaries for the Mexican localization: the
-tariffs of article 96 LISR and the employment subsidy, as dated data
-plus the calculation.
+The withholding tariffs of article 96 LISR, the UMA and the employment
+subsidy, as dated data plus the arithmetic that applies them.
+
+⚠️ Read this before installing
+------------------------------
+
+**This module is an arithmetic evaluator of the withholding tariffs
+published in Annex 8 of the RMF. It is not a payroll system and it does
+not compute Mexican payroll.** In particular it does **not**:
+
+- determine the taxable base -- the exempt income of article 93 LISR
+  (year-end bonus, vacation premium, profit sharing, welfare benefits,
+  each with its own cap measured in UMA) has to be separated out before
+  anything here is called;
+- perform the **monthly adjustment** of tax and subsidy that the law
+  requires when salaries are paid for periods shorter than a month.
+  Evaluated period by period in isolation, a worker whose income varies
+  will receive subsidy that was not due, and the tax authority collects
+  that back from the employer with surcharges;
+- apply the fractioned calculation of article 174 RISR to extraordinary
+  payments such as the year-end bonus or profit sharing. Running them
+  through the ordinary tariff over-withholds;
+- perform the annual settlement of article 97 LISR;
+- handle a worker with more than one employer, who must elect which one
+  applies the subsidy.
+
+Using it directly in production to stamp payroll receipts, without an
+integrated payroll system around it, will produce wrong withholdings.
+
+What it does do, it does against the published source and refuses to
+guess.
 
 Features
 --------
@@ -49,11 +77,13 @@ Features
   with the income limit and the proration divisor, so the amount always
   follows the published UMA instead of a figure copied at some point in
   time.
-- The calculation: given a taxable amount, a periodicity and a date, the
+- The arithmetic: given a taxable amount, a periodicity and a date, the
   tax caused, the subsidy, how much of it could be applied, and what is
   withheld. The subsidy is a credit against the tax and nothing else --
   what exceeds it is neither paid to the worker nor carried to a later
   month.
+- Read-only views, so the table that was applied on a given date can be
+  checked against the DOF without opening the database.
 
 What it deliberately does not do
 --------------------------------
@@ -66,8 +96,18 @@ different bracket. Asking for a periodicity with no published tariff
 raises an error.
 
 It also stays out of payroll. Article 96 governs payments assimilated to
-salaries too, and the calculation is the same there, so it lives on its
+salaries too, and the arithmetic is the same there, so it lives on its
 own and depends only on ``base``.
+
+Known scope note
+----------------
+
+The UMA is published by the statistics institute, not by the tax
+authority, and it is used well beyond income tax -- social security
+contributions, housing credits, fines and administrative thresholds all
+measure themselves in it. It lives here because this is what needed it
+first; a more natural home would be a general catalog module, and moving
+it later would be a sound refactor.
 
 **Table of contents**
 
@@ -145,7 +185,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/l10n-mexico/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/l10n-mexico/issues/new?body=module:%20l10n_mx_isr%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/l10n-mexico/issues/new?body=module:%20l10n_mx_isr_tariffs%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -170,6 +210,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/l10n-mexico <https://github.com/OCA/l10n-mexico/tree/19.0/l10n_mx_isr>`_ project on GitHub.
+This module is part of the `OCA/l10n-mexico <https://github.com/OCA/l10n-mexico/tree/19.0/l10n_mx_isr_tariffs>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

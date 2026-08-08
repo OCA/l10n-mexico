@@ -1,6 +1,6 @@
 {
-    "name": "Mexican income tax withholding on salaries",
-    "summary": "ISR tariffs and employment subsidy, dated, with the calculation",
+    "name": "Mexican ISR withholding tariffs",
+    "summary": "Dated ISR tariffs, UMA and employment subsidy",
     "author": "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/l10n-mexico",
     "category": "Localization",
@@ -14,5 +14,6 @@
         "data/l10n_mx.employment.subsidy.csv",
         "data/l10n_mx.isr.tariff.csv",
         "data/l10n_mx.isr.tariff.line.csv",
+        "views/l10n_mx_isr_tariffs_views.xml",
     ],
 }

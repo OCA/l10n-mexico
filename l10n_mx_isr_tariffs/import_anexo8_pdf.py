@@ -199,7 +199,7 @@ def update_tariffs(text_path, year, dof_publication, date_start, date_end):
             line_rows.append(
                 {
                     "id": f"{xmlid}_line_{index:02d}",
-                    "tariff_id:id": f"l10n_mx_isr.{xmlid}",
+                    "tariff_id:id": f"l10n_mx_isr_tariffs.{xmlid}",
                     "lower_limit": bracket["lower_limit"],
                     "upper_limit": bracket["upper_limit"],
                     "fixed_fee": bracket["fixed_fee"],

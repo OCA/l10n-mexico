@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- The tables are read-only on purpose: they are what the authority
+         published. The views exist so a person can see which tariff, which UMA
+         and which subsidy were applied on a given date, and check them against
+         the DOF without opening the database. -->
+
+    <record id="l10n_mx_isr_tariffs_view_isr_tariff_list" model="ir.ui.view">
+        <field name="name">l10n_mx.isr.tariff.list</field>
+        <field name="model">l10n_mx.isr.tariff</field>
+        <field name="arch" type="xml">
+            <list create="0" edit="0" delete="0">
+                <field name="name" />
+                <field name="periodicity" />
+                <field name="date_start" />
+                <field name="date_end" />
+                <field name="dof_publication" />
+            </list>
+        </field>
+    </record>
+
+    <record id="l10n_mx_isr_tariffs_view_isr_tariff_form" model="ir.ui.view">
+        <field name="name">l10n_mx.isr.tariff.form</field>
+        <field name="model">l10n_mx.isr.tariff</field>
+        <field name="arch" type="xml">
+            <form create="0" edit="0" delete="0">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="periodicity" />
+                        </group>
+                        <group>
+                            <field name="date_start" />
+                            <field name="date_end" />
+                            <field name="dof_publication" />
+                        </group>
+                    </group>
+                    <field name="line_ids">
+                        <list create="0" edit="0" delete="0">
+                            <field name="lower_limit" />
+                            <field name="upper_limit" />
+                            <field name="fixed_fee" />
+                            <field name="rate" />
+                        </list>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="l10n_mx_isr_tariffs_view_uma_list" model="ir.ui.view">
+        <field name="name">l10n_mx.uma.list</field>
+        <field name="model">l10n_mx.uma</field>
+        <field name="arch" type="xml">
+            <list create="0" edit="0" delete="0">
+                <field name="date_start" />
+                <field name="date_end" />
+                <field name="amount_daily" />
+                <field name="amount_monthly" />
+                <field name="amount_annual" />
+                <field name="dof_publication" />
+            </list>
+        </field>
+    </record>
+
+    <record id="l10n_mx_isr_tariffs_view_subsidy_list" model="ir.ui.view">
+        <field name="name">l10n_mx.employment.subsidy.list</field>
+        <field name="model">l10n_mx.employment.subsidy</field>
+        <field name="arch" type="xml">
+            <list create="0" edit="0" delete="0">
+                <field name="date_start" />
+                <field name="date_end" />
+                <field name="uma_percent" />
+                <field name="income_limit" />
+                <field name="monthly_divisor" />
+                <field name="dof_publication" />
+            </list>
+        </field>
+    </record>
+
+    <record id="l10n_mx_isr_tariffs_action_isr_tariff" model="ir.actions.act_window">
+        <field name="name">Tarifas del ISR</field>
+        <field name="res_model">l10n_mx.isr.tariff</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="l10n_mx_isr_tariffs_action_uma" model="ir.actions.act_window">
+        <field name="name">UMA</field>
+        <field name="res_model">l10n_mx.uma</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="l10n_mx_isr_tariffs_action_subsidy" model="ir.actions.act_window">
+        <field name="name">Subsidio para el empleo</field>
+        <field name="res_model">l10n_mx.employment.subsidy</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem
+        id="l10n_mx_isr_tariffs_menu_root"
+        name="ISR México"
+        parent="base.menu_administration"
+        sequence="90"
+    />
+    <menuitem
+        id="l10n_mx_isr_tariffs_menu_isr_tariff"
+        parent="l10n_mx_isr_tariffs_menu_root"
+        action="l10n_mx_isr_tariffs_action_isr_tariff"
+        sequence="10"
+    />
+    <menuitem
+        id="l10n_mx_isr_tariffs_menu_uma"
+        parent="l10n_mx_isr_tariffs_menu_root"
+        action="l10n_mx_isr_tariffs_action_uma"
+        sequence="20"
+    />
+    <menuitem
+        id="l10n_mx_isr_tariffs_menu_subsidy"
+        parent="l10n_mx_isr_tariffs_menu_root"
+        action="l10n_mx_isr_tariffs_action_subsidy"
+        sequence="30"
+    />
+</odoo>
