@@ -1,0 +1,10 @@
+id,code,name,date_start,date_end
+c_tipojornada_01,01,Diurna,,
+c_tipojornada_02,02,Nocturna,,
+c_tipojornada_03,03,Mixta,,
+c_tipojornada_04,04,Por hora,,
+c_tipojornada_05,05,Reducida,,
+c_tipojornada_06,06,Continuada,,
+c_tipojornada_07,07,Partida,,
+c_tipojornada_08,08,Por turnos,,
+c_tipojornada_99,99,Otra Jornada,,

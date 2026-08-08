@@ -1,0 +1,12 @@
+id,code,name,date_start,date_end
+c_tipocontrato_01,01,Contrato de trabajo por tiempo indeterminado,,
+c_tipocontrato_02,02,Contrato de trabajo para obra determinada,,
+c_tipocontrato_03,03,Contrato de trabajo por tiempo determinado,,
+c_tipocontrato_04,04,Contrato de trabajo por temporada,,
+c_tipocontrato_05,05,Contrato de trabajo sujeto a prueba,,
+c_tipocontrato_06,06,Contrato de trabajo con capacitación inicial,,
+c_tipocontrato_07,07,Modalidad de contratación por pago de hora laborada,,
+c_tipocontrato_08,08,Modalidad de trabajo por comisión laboral,,
+c_tipocontrato_09,09,Modalidades de contratación donde no existe relación de trabajo,,
+c_tipocontrato_10,10,"Jubilación, pensión, retiro.",,
+c_tipocontrato_99,99,Otro contrato,,

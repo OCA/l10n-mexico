@@ -1,0 +1,12 @@
+id,code,name,date_start,date_end
+c_periodicidadpago_01,01,Diario,2016-11-01,
+c_periodicidadpago_02,02,Semanal,2016-11-01,
+c_periodicidadpago_03,03,Catorcenal,2016-11-01,
+c_periodicidadpago_04,04,Quincenal,2016-11-01,
+c_periodicidadpago_05,05,Mensual,2016-11-01,
+c_periodicidadpago_06,06,Bimestral,2016-11-01,
+c_periodicidadpago_07,07,Unidad obra,2016-11-01,
+c_periodicidadpago_08,08,Comisión,2016-11-01,
+c_periodicidadpago_09,09,Precio alzado,2016-11-01,
+c_periodicidadpago_10,10,Decenal,2017-01-19,
+c_periodicidadpago_99,99,Otra Periodicidad,2016-11-01,

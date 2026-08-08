@@ -1,0 +1,4 @@
+id,code,name,date_start,date_end
+c_origenrecurso_ip,IP,Ingresos propios.,,
+c_origenrecurso_if,IF,Ingreso federales.,,
+c_origenrecurso_im,IM,Ingresos mixtos.,,

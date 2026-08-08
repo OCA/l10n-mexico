@@ -1,0 +1,14 @@
+id,catalog,model,version,revision,publication_date
+source_c_banco,c_Banco,l10n_mx_catalogs.c_banco,2.0,0.0,2017-01-01
+source_c_origenrecurso,c_OrigenRecurso,l10n_mx_catalogs.c_origen_recurso,1.0,0.0,2017-01-01
+source_c_periodicidadpago,c_PeriodicidadPago,l10n_mx_catalogs.c_periodicidad_pago,1.1,0.0,2017-01-01
+source_c_riesgopuesto,c_RiesgoPuesto,l10n_mx_catalogs.c_riesgo_puesto,2.0,0.0,
+source_c_tipocontrato,c_TipoContrato,l10n_mx_catalogs.c_tipo_contrato,1.0,0.0,2017-01-01
+source_c_tipodeduccion,c_TipoDeduccion,l10n_mx_catalogs.c_tipo_deduccion,4.0,4.0,2026-06-12
+source_c_tipohoras,c_TipoHoras,l10n_mx_catalogs.c_tipo_horas,1.0,0.0,2017-01-01
+source_c_tipoincapacidad,c_TipoIncapacidad,l10n_mx_catalogs.c_tipo_incapacidad,2.0,0.0,2020-01-01
+source_c_tipojornada,c_TipoJornada,l10n_mx_catalogs.c_tipo_jornada,1.0,A,2017-01-01
+source_c_tiponomina,c_TipoNomina,l10n_mx_catalogs.c_tipo_nomina,1.0,0.0,2017-01-01
+source_c_tipootropago,c_TipoOtroPago,l10n_mx_catalogs.c_tipo_otro_pago,4.0,2.0,2025-12-02
+source_c_tipopercepcion,c_TipoPercepcion,l10n_mx_catalogs.c_tipo_percepcion,2.0,4.0,2026-06-12
+source_c_tiporegimen,c_TipoRegimen,l10n_mx_catalogs.c_tipo_regimen,2.0,1.0,2019-12-05

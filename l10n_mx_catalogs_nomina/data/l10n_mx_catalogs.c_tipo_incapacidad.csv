@@ -1,0 +1,5 @@
+id,code,name,date_start,date_end
+c_tipoincapacidad_01,01,Riesgo de trabajo.,,
+c_tipoincapacidad_02,02,Enfermedad en general.,,
+c_tipoincapacidad_03,03,Maternidad.,,
+c_tipoincapacidad_04,04,Licencia por cuidados médicos de hijos diagnosticados con cáncer.,,
