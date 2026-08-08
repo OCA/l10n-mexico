@@ -1,0 +1,506 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils: https://docutils.sourceforge.io/" />
+<title>README.rst</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 9511 2024-01-13 09:50:07Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+Despite the name, some widely supported CSS2 features are used.
+
+See https://docutils.sourceforge.io/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+.subscript {
+  vertical-align: sub;
+  font-size: smaller }
+
+.superscript {
+  vertical-align: super;
+  font-size: smaller }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left, table.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right, table.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+.align-top    {
+  vertical-align: top }
+
+.align-middle {
+  vertical-align: middle }
+
+.align-bottom {
+  vertical-align: bottom }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: gray; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic, pre.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document">
+
+
+<a class="reference external image-reference" href="https://odoo-community.org/get-involved?utm_source=readme">
+<img alt="Odoo Community Association" src="https://odoo-community.org/readme-banner-image" />
+</a>
+<div class="section" id="mexican-income-tax-withholding-on-salaries">
+<h1>Mexican income tax withholding on salaries</h1>
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!! This file is generated by oca-gen-addon-readme !!
+!! changes will be overwritten.                   !!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!! source digest: sha256:a5ba9ceeccadb471cc966b29fd4504d53ed9ab27bcfd735316de0a14edf6c8a2
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/lgpl-3.0-standalone.html"><img alt="License: LGPL-3" src="https://img.shields.io/badge/license-LGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/l10n-mexico/tree/19.0/l10n_mx_isr"><img alt="OCA/l10n-mexico" src="https://img.shields.io/badge/github-OCA%2Fl10n--mexico-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/l10n-mexico-19-0/l10n-mexico-19-0-l10n_mx_isr"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/l10n-mexico&amp;target_branch=19.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
+<p>Income tax withholding on salaries for the Mexican localization: the
+tariffs of article 96 LISR and the employment subsidy, as dated data
+plus the calculation.</p>
+<div class="section" id="features">
+<h2>Features</h2>
+<ul class="simple">
+<li>The tariffs published in Annex 8 of the RMF – daily, 7, 10 and 15
+days, monthly and yearly – with the date they came into force and the
+date they were published in the DOF.</li>
+<li>The UMA, with its own validity. It changes on <strong>1 February</strong>, not on 1
+January, which is what makes January’s subsidy different from the rest
+of the year’s.</li>
+<li>The employment subsidy stored as <strong>a percentage of the monthly UMA</strong>,
+with the income limit and the proration divisor, so the amount always
+follows the published UMA instead of a figure copied at some point in
+time.</li>
+<li>The calculation: given a taxable amount, a periodicity and a date, the
+tax caused, the subsidy, how much of it could be applied, and what is
+withheld. The subsidy is a credit against the tax and nothing else –
+what exceeds it is neither paid to the worker nor carried to a later
+month.</li>
+</ul>
+</div>
+<div class="section" id="what-it-deliberately-does-not-do">
+<h2>What it deliberately does not do</h2>
+<p>It does not derive a tariff for a periodicity the tax authority did not
+publish. The published 7, 10 and 15 day tables are <em>not</em> the daily one
+multiplied by the number of days: the rounding is done at each level and
+the limits drift by up to 0.14, which is enough to move a payment into a
+different bracket. Asking for a periodicity with no published tariff
+raises an error.</p>
+<p>It also stays out of payroll. Article 96 governs payments assimilated to
+salaries too, and the calculation is the same there, so it lives on its
+own and depends only on <tt class="docutils literal">base</tt>.</p>
+<p><strong>Table of contents</strong></p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#usage" id="toc-entry-1">Usage</a></li>
+</ul>
+</div>
+<div class="section" id="usage">
+<h3><a class="toc-backref" href="#toc-entry-1">Usage</a></h3>
+<pre class="code python literal-block">
+<span class="n">result</span> <span class="o">=</span> <span class="n">env</span><span class="p">[</span><span class="s2">&quot;l10n_mx.isr&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">compute_withholding</span><span class="p">(</span><span class="w">
+</span>    <span class="n">taxable_base</span><span class="o">=</span><span class="mf">8000.00</span><span class="p">,</span><span class="w">
+</span>    <span class="n">periodicity</span><span class="o">=</span><span class="s2">&quot;monthly&quot;</span><span class="p">,</span><span class="w">
+</span>    <span class="n">date</span><span class="o">=</span><span class="s2">&quot;2026-06-15&quot;</span><span class="p">,</span><span class="w">
+</span><span class="p">)</span><span class="w">
+</span><span class="c1"># {'tax': 511.42, 'subsidy': 535.65, 'subsidy_applied': 511.42,</span><span class="w">
+</span><span class="c1">#  'withheld': 0.0, 'subsidy_forgone': 24.23}</span>
+</pre>
+<p><tt class="docutils literal">subsidy_forgone</tt> is <strong>not</strong> money to hand over. The subsidy is a
+credit against the tax and nothing more: when the tax is smaller, the
+decree says the difference “no podrá aplicarse contra el impuesto que
+resulte a su cargo posteriormente, ni se entregará cantidad alguna”. It
+is reported so a payroll can show it, never so it can pay it.</p>
+<p>For a period shorter than a month, pass the monthly income and the days
+the period covers. The subsidy limit is set per month, so a fortnight’s
+taxable base is not the figure to test it against; and the days are a
+property of the period, not of its name, since a fortnightly payroll
+runs 15 days in the first half of the month and 15 or 16 in the second.
+The module will not assume either:</p>
+<pre class="code python literal-block">
+<span class="n">env</span><span class="p">[</span><span class="s2">&quot;l10n_mx.isr&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">compute_withholding</span><span class="p">(</span><span class="w">
+</span>    <span class="n">taxable_base</span><span class="o">=</span><span class="mf">3000.00</span><span class="p">,</span><span class="w">
+</span>    <span class="n">periodicity</span><span class="o">=</span><span class="s2">&quot;fortnight&quot;</span><span class="p">,</span><span class="w">
+</span>    <span class="n">date</span><span class="o">=</span><span class="s2">&quot;2026-06-15&quot;</span><span class="p">,</span><span class="w">
+</span>    <span class="n">monthly_income</span><span class="o">=</span><span class="mf">6000.00</span><span class="p">,</span><span class="w">
+</span>    <span class="n">days</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span><span class="w">
+</span><span class="p">)</span>
+</pre>
+<p>The pieces are usable separately:</p>
+<pre class="code python literal-block">
+<span class="n">env</span><span class="p">[</span><span class="s2">&quot;l10n_mx.uma&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get_for_date</span><span class="p">(</span><span class="s2">&quot;2026-01-15&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">amount_monthly</span><span class="w">
+</span><span class="n">env</span><span class="p">[</span><span class="s2">&quot;l10n_mx.isr.tariff&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get_for_date</span><span class="p">(</span><span class="s2">&quot;monthly&quot;</span><span class="p">,</span> <span class="s2">&quot;2026-06-15&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">compute_tax</span><span class="p">(</span><span class="mf">20000.0</span><span class="p">)</span><span class="w">
+</span><span class="n">env</span><span class="p">[</span><span class="s2">&quot;l10n_mx.employment.subsidy&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get_for_date</span><span class="p">(</span><span class="s2">&quot;2026-06-15&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">monthly_amount</span><span class="p">(</span><span class="s2">&quot;2026-06-15&quot;</span><span class="p">)</span>
+</pre>
+</div>
+</div>
+<div class="section" id="updating-for-a-new-year">
+<h2>Updating for a new year</h2>
+<p>The tariffs arrive every year in Annex 8 of the RMF, published in the
+DOF:</p>
+<pre class="code shell literal-block">
+pdftotext<span class="w"> </span>-layout<span class="w"> </span>Anexo-8-RMF-YYYY.pdf<span class="w"> </span>anexo8.txt<span class="w">
+</span>python3<span class="w"> </span>import_anexo8_pdf.py<span class="w"> </span>anexo8.txt<span class="w"> </span>--year<span class="w"> </span>YYYY<span class="w"> </span><span class="se">\
+</span><span class="w">    </span>--dof-publication<span class="w"> </span>YYYY-12-28<span class="w"> </span>--date-start<span class="w"> </span>YYYY-01-01
+</pre>
+<p>The importer checks that every tariff has its full set of brackets, that
+they chain without gaps, and that no two tariffs came out identical,
+which is what happens when a heading is matched in the table of contents
+instead of the body.</p>
+<p>The UMA and the subsidy parameters are two short CSVs under <tt class="docutils literal">data/</tt>;
+add a row with the new value and its start date, and close the previous
+one.</p>
+<div class="section" id="bug-tracker">
+<h3>Bug Tracker</h3>
+<p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/l10n-mexico/issues">GitHub Issues</a>.
+In case of trouble, please check there if your issue has already been reported.
+If you spotted it first, help us to smash it by providing a detailed and welcomed
+<a class="reference external" href="https://github.com/OCA/l10n-mexico/issues/new?body=module:%20l10n_mx_isr%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
+<p>Do not contact contributors directly about support or help with technical issues.</p>
+</div>
+<div class="section" id="credits">
+<h3>Credits</h3>
+</div>
+</div>
+<div class="section" id="contributors">
+<h2>Contributors</h2>
+<ul class="simple">
+<li>Anderson Oliveira &lt;<a class="reference external" href="mailto:andanacarol&#64;gmail.com">andanacarol&#64;gmail.com</a>&gt;</li>
+</ul>
+</div>
+<div class="section" id="maintainers">
+<h2>Maintainers</h2>
+<p>This module is maintained by the OCA.</p>
+<a class="reference external image-reference" href="https://odoo-community.org">
+<img alt="Odoo Community Association" src="https://odoo-community.org/logo.png" />
+</a>
+<p>OCA, or the Odoo Community Association, is a nonprofit organization whose
+mission is to support the collaborative development of Odoo features and
+promote its widespread use.</p>
+<p>This module is part of the <a class="reference external" href="https://github.com/OCA/l10n-mexico/tree/19.0/l10n_mx_isr">OCA/l10n-mexico</a> project on GitHub.</p>
+<p>You are welcome to contribute. To learn how please visit <a class="reference external" href="https://odoo-community.org/page/Contribute">https://odoo-community.org/page/Contribute</a>.</p>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+id,name,periodicity,date_start,date_end,dof_publication
+isr_tariff_daily_2026,Tarifa diaria,daily,2026-01-01,2027-01-01,2025-12-28
+isr_tariff_weekly_2026,Tarifa de 7 días,weekly,2026-01-01,2027-01-01,2025-12-28
+isr_tariff_ten_day_2026,Tarifa de 10 días,ten_day,2026-01-01,2027-01-01,2025-12-28
+isr_tariff_fortnight_2026,Tarifa de 15 días,fortnight,2026-01-01,2027-01-01,2025-12-28
+isr_tariff_monthly_2026,Tarifa mensual,monthly,2026-01-01,2027-01-01,2025-12-28
+isr_tariff_annual_2026,Tarifa anual 2026,annual,2026-01-01,2027-01-01,2025-12-28
