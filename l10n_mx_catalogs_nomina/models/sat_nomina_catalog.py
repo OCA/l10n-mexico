@@ -64,7 +64,15 @@ class SatNominaCatalog(models.AbstractModel):
         return self.search(self._in_force_domain(date) + (domain or []))
 
     def is_in_force(self, date=None):
-        """Whether every key in ``self`` is usable on ``date``."""
+        """Whether every key in ``self`` is usable on ``date``.
+
+        An empty recordset is *not* in force. The natural reading of ``all()``
+        over nothing is ``True``, which would answer "usable" for a key that
+        was searched for and never found -- exactly the case this method exists
+        to catch.
+        """
+        if not self:
+            return False
         date = fields.Date.to_date(date) or fields.Date.context_today(self)
         return all(
             (not rec.date_start or rec.date_start <= date)

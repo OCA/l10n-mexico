@@ -74,9 +74,12 @@ def _norm_key(value):
     """
     text = str(value).strip()
     try:
-        return str(int(float(text)))
-    except ValueError:
+        number = float(text)
+    except (ValueError, OverflowError):
         return text.upper()
+    if not number.is_integer():
+        raise ValueError(f"key {text!r} is not a whole number")
+    return str(int(number))
 
 
 def read_schema_codes(xsd_path):
@@ -112,6 +115,13 @@ class SheetReader:
     def _date(self, value):
         if isinstance(value, (int, float)) and value:
             return xlrd.xldate_as_datetime(value, self.book.datemode).date().isoformat()
+        if isinstance(value, str) and value.strip():
+            # SAT writes dates as real Excel dates. Text in a date column means
+            # the sheet changed shape, and guessing a format here would ship a
+            # wrong validity window; better to stop.
+            raise ValueError(
+                f"{self.sheet.name}: expected a date, got the text {value.strip()!r}"
+            )
         return ""
 
     def column(self, *candidates):
@@ -154,6 +164,10 @@ class SheetReader:
     def rows(self):
         code_idx = 0
         name_idx = self.column("descripcion")
+        if name_idx is None:
+            raise ValueError(
+                f"{self.sheet.name}: no description column; columns are {self.columns}"
+            )
         start_idx = self.column("fecha inicio de vigencia")
         end_idx = self.column("fecha fin de vigencia")
         for row in range(self.header_row + 1, self.sheet.nrows):
@@ -181,8 +195,15 @@ class SheetReader:
 
 def build_catalog(book, sheet_name, schema_codes, extra_columns):
     reader = SheetReader(book, book.sheet_by_name(sheet_name))
-    by_key = {code: _norm_key(code) for code in schema_codes}
-    remaining = {norm: code for code, norm in by_key.items()}
+    remaining = {}
+    for code in schema_codes:
+        norm = _norm_key(code)
+        if norm in remaining:
+            raise ValueError(
+                f"{sheet_name}: schema keys {remaining[norm]!r} and {code!r} are "
+                f"indistinguishable once normalised; the match would be ambiguous"
+            )
+        remaining[norm] = code
 
     records = []
     for row, extra in reader.rows():
@@ -201,7 +222,11 @@ def build_catalog(book, sheet_name, schema_codes, extra_columns):
             "date_end": row["date_end"],
         }
         for field, header in extra_columns.items():
-            record[field] = extra.get(header, "")
+            if header not in extra:
+                raise ValueError(
+                    f"{sheet_name}: no {header!r} column; columns are {reader.columns}"
+                )
+            record[field] = extra[header]
         records.append(record)
 
     if remaining:
