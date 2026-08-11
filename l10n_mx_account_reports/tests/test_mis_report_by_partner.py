@@ -58,9 +58,6 @@ class TestMisReportByPartner(common.L10nMxReportsTestCase):
                             "account_id": self.company_data[
                                 "default_account_income"
                             ].id,
-                            "tax_ids": [
-                                (6, 0, self.company_data["default_tax_sale"].ids)
-                            ],
                         },
                     )
                 ],
