@@ -16,3 +16,8 @@ mis_report_instance_period_16,16 - 30,l10n_mx_account_reports.mis_report_instanc
 mis_report_instance_period_17,31 -45,l10n_mx_account_reports.mis_report_instance_aged_payable,15,30,relative,d,actuals,,,
 mis_report_instance_period_18,Total,l10n_mx_account_reports.mis_report_instance_aged_payable,1,-1,none,,sumcol,,,TRUE
 mis_report_instance_period_19,Month,l10n_mx_account_reports.mis_report_instance_cash_flow,1,0,relative,m,actuals,,,
+mis_instance_period_ar_mv,Today,l10n_mx_account_reports.mis_instance_aged_receivable_by_move,1,0,relative,d,actuals,,,
+mis_instance_period_ar_dd,Today,l10n_mx_account_reports.mis_instance_aged_receivable_by_due,1,0,relative,d,actuals,,,
+mis_instance_period_ap_mv,Today,l10n_mx_account_reports.mis_instance_aged_payable_by_move,1,0,relative,d,actuals,,,
+mis_instance_period_ap_dd,Today,l10n_mx_account_reports.mis_instance_aged_payable_by_due,1,0,relative,d,actuals,,,
+mis_instance_period_diot,Previous month,l10n_mx_account_reports.mis_instance_diot_by_partner,1,-1,relative,m,actuals,,,

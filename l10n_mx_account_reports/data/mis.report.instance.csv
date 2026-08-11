@@ -6,3 +6,8 @@ mis_report_instance_trial_balance_monthly,40,Balanza de comprobación mensual,l1
 mis_report_instance_aged_receivable,50,Cuenta por cobrar vencida,l10n_mx_account_reports.mis_report_aged_receivable,base.MXN,FALSE,posted,FALSE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
 mis_report_instance_aged_payable,60,Cuenta por pagar,l10n_mx_account_reports.mis_report_aged_payable,base.MXN,FALSE,posted,FALSE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
 mis_report_instance_cash_flow,70,Flujo de efectivo,l10n_mx_account_reports.mis_report_cash_flow,base.MXN,FALSE,posted,FALSE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
+mis_instance_aged_receivable_by_move,80,Aged Receivable by partner (by move date),l10n_mx_account_reports.mis_report_aged_receivable_by_move,base.MXN,FALSE,posted,FALSE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
+mis_instance_aged_receivable_by_due,90,Aged Receivable by partner (by due date),l10n_mx_account_reports.mis_report_aged_receivable_by_due,base.MXN,FALSE,posted,FALSE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
+mis_instance_aged_payable_by_move,100,Aged Payable by partner (by move date),l10n_mx_account_reports.mis_report_aged_payable_by_move,base.MXN,FALSE,posted,FALSE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
+mis_instance_aged_payable_by_due,110,Aged Payable by partner (by due date),l10n_mx_account_reports.mis_report_aged_payable_by_due,base.MXN,FALSE,posted,FALSE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
+mis_instance_diot_by_partner,120,DIOT by partner (previous month),l10n_mx_account_reports.mis_report_diot,base.MXN,FALSE,posted,FALSE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
