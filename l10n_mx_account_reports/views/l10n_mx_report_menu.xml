@@ -104,7 +104,10 @@ action = env["l10n_mx.financial.report.wizard"].action_open_wizard("diot")
         parent="menu_l10n_mx_account_reports_root"
         sequence="70"
     />
-    <record id="action_mis_instance_aged_receivable_by_move" model="ir.actions.act_window">
+    <record
+        id="action_mis_instance_aged_receivable_by_move"
+        model="ir.actions.act_window"
+    >
         <field name="name">Aged Receivable by partner (by move date)</field>
         <field name="res_model">mis.report.instance</field>
         <field name="res_id" ref="mis_instance_aged_receivable_by_move" />
@@ -118,7 +121,10 @@ action = env["l10n_mx.financial.report.wizard"].action_open_wizard("diot")
         action="action_mis_instance_aged_receivable_by_move"
         sequence="71"
     />
-    <record id="action_mis_instance_aged_receivable_by_due" model="ir.actions.act_window">
+    <record
+        id="action_mis_instance_aged_receivable_by_due"
+        model="ir.actions.act_window"
+    >
         <field name="name">Aged Receivable by partner (by due date)</field>
         <field name="res_model">mis.report.instance</field>
         <field name="res_id" ref="mis_instance_aged_receivable_by_due" />

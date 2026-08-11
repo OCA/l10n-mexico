@@ -89,8 +89,6 @@ class TestMisReportByPartner(common.L10nMxReportsTestCase):
         detail_by_id = {r.detail_id: r for r in detail_rows}
         self.assertIn(self.partner.id, detail_by_id)
         total = sum(
-            (c.val or 0)
-            for c in detail_by_id[self.partner.id].iter_cells()
-            if c
+            (c.val or 0) for c in detail_by_id[self.partner.id].iter_cells() if c
         )
         self.assertAlmostEqual(total, 1000.0, places=2)
