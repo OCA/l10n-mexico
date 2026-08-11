@@ -38,9 +38,7 @@ class TestMisReportByPartner(common.L10nMxReportsTestCase):
                 )
         for xmlid in self.INSTANCE_XMLIDS:
             instance = self.env.ref(xmlid)
-            self.assertTrue(
-                instance.period_ids, f"{xmlid} has no period"
-            )
+            self.assertTrue(instance.period_ids, f"{xmlid} has no period")
 
     def test_02_aged_receivable_partner_rows(self):
         """The AR (by due date) report expands one detail row per partner."""
