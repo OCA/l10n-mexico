@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="demo_cfdi_series_ingreso" model="l10n_mx_cfdi.series">
+        <field name="name">Demo Income Series</field>
+        <field name="code">INV</field>
+        <field name="prefix">INV</field>
+        <field name="padding">4</field>
+        <field name="implementation">no_gap</field>
+    </record>
+    <record id="demo_cfdi_series_egreso" model="l10n_mx_cfdi.series">
+        <field name="name">Demo Credit Note Series</field>
+        <field name="code">EGR</field>
+        <field name="prefix">EGR</field>
+        <field name="padding">4</field>
+        <field name="implementation">no_gap</field>
+    </record>
+    <record id="demo_cfdi_series_pago" model="l10n_mx_cfdi.series">
+        <field name="name">Demo Payment Series</field>
+        <field name="code">PAG</field>
+        <field name="prefix">PAG</field>
+        <field name="padding">4</field>
+        <field name="implementation">no_gap</field>
+    </record>
+    <record id="demo_cfdi_series_traslado" model="l10n_mx_cfdi.series">
+        <field name="name">Demo Waybill Series</field>
+        <field name="code">TRA</field>
+        <field name="prefix">TRA</field>
+        <field name="padding">4</field>
+        <field name="implementation">no_gap</field>
+    </record>
+</odoo>

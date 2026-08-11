@@ -92,6 +92,17 @@
                         <group>
                             <field name="create_date" />
                             <field name="uuid" />
+                            <field name="pac_provider" />
+                            <field name="legacy_without_xml" invisible="1" />
+                            <div
+                                class="alert alert-warning"
+                                role="alert"
+                                invisible="not legacy_without_xml"
+                            >
+                                This CFDI has no stored stamped XML. Cancel and
+                                PAC recovery are unavailable until the XML is
+                                attached.
+                            </div>
                             <field name="files_in_cache" invisible="1" />
                             <field
                                 name="pdf_file"
@@ -144,13 +155,15 @@
                     <div class="text-right">
                         <field name="standalone" invisible="1" />
                         <field name="l10n_mx_cfdi_auto" invisible="1" />
+                        <field name="pac_supports_cancel" invisible="1" />
+                        <field name="legacy_without_xml" invisible="1" />
                         <button
                             name="action_cancel"
                             string="Cancelar"
                             type="object"
                             class="btn btn-primary"
                             groups="base.group_user"
-                            invisible="state != 'canceled' or l10n_mx_cfdi_auto == True"
+                            invisible="state != 'published' or l10n_mx_cfdi_auto or not pac_supports_cancel or legacy_without_xml"
                         />
                     </div>
                 </sheet>

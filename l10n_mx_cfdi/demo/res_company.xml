@@ -1,0 +1,5 @@
+<odoo noupdate="1">
+    <record id="base.main_company" model="res.company">
+        <field name="l10n_mx_cfdi_auto" eval="False" />
+    </record>
+</odoo>
