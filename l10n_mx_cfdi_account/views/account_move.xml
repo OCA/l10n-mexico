@@ -75,6 +75,21 @@
                         <field name="payment_method_id" readonly="state != 'draft'" />
                         <field name="payment_form_id" readonly="state != 'draft'" />
                     </group>
+                    <group
+                        string="Related CFDIs"
+                        invisible="move_type not in ('out_invoice', 'out_refund')"
+                    >
+                        <field
+                            name="cfdi_document_relation_type"
+                            readonly="state != 'draft'"
+                        />
+                        <field
+                            name="cfdi_document_relations"
+                            widget="many2many_tags"
+                            readonly="state != 'draft'"
+                            domain="[('state', '=', 'published'), ('uuid', '!=', False)]"
+                        />
+                    </group>
                     <group>
                         <field name="related_cert_ids" readonly="state != 'draft'">
                             <list create="false">

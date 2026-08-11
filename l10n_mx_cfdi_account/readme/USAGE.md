@@ -1,20 +1,41 @@
+Use this module after the PAC connection, issuers, and series are configured in
+``l10n_mx_cfdi`` (see that module's Configuration).
+
+## Customers
+
+1. In the Invoicing app, go to Customers > Customers.
+2. Create or open a customer with the correct VAT (RFC) and fiscal name.
+3. On the **CFDI** tab, set:
+
+   - Fiscal regime
+   - Default CFDI usage
+   - Default payment method
+   - Default payment form
+
+## Products
+
+1. Go to Customers > Products (or open a product from Inventory).
+2. Open an existing product or create a new one and enter the general
+   information.
+3. On the **CFDI** tab, set the SAT product code and unit of measure.
+
 ## Invoices
 
-- Go to Customers > Invoices and create a new record
-- Fill in the previously created customer, the client’s previously added
-   fiscal information is essential for the stamping process.
-- Add any product that has its product fiscal code
-- Open the CFDI tab and add the payment method, and payment form
-- Select the Confirm button, the invoice will be stamped with the mexican
-  authority
-- Select the Send button to send the invoice to the customer
+1. Go to Customers > Invoices and create a new record.
+2. Select the customer. The fiscal data on the partner CFDI tab is required for
+   stamping.
+3. Add products that have a SAT product code.
+4. Open the **CFDI** tab and set the payment method and payment form.
+5. Confirm the invoice; it is stamped with the Mexican authority through the
+   configured PAC.
+6. Use Send to deliver the invoice to the customer.
 
 ### Import CFDI
 
-- Add the vendor bill xml file as an attachment in the chatter
-- Click "Load from file" button
+- Attach the vendor bill XML file in the chatter.
+- Click the **Load from file** button.
 
 ## Payments
 
-If the invoice payment method is PPD, the payment will be included in the
-CFDI lines when registering a payment.
+If the invoice payment method is PPD, the payment is included in the CFDI lines
+when you register a payment.

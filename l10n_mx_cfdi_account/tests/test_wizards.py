@@ -42,8 +42,11 @@ class TestDocumentCancelWizard(CFDIAccountTestCommon):
                 "simulate_operation": True,
             }
         )
-        wizard.cancel_certificate()
+        action = wizard.cancel_certificate()
         self.assertEqual(document.state, "canceled")
+        self.assertEqual(action["type"], "ir.actions.client")
+        self.assertEqual(action["tag"], "display_notification")
+        self.assertIn("cancellation", action["params"]["message"].lower())
 
     def test_cancel_certificate_with_auto_draft(self):
         self.company.l10n_mx_cfdi_auto = True
@@ -86,6 +89,21 @@ class TestDocumentCancelWizard(CFDIAccountTestCommon):
         wizard.cancel_certificate()
         self.assertEqual(document.state, "canceled")
 
+    def test_cancel_certificate_no_published_document(self):
+        document = self._create_document(state="draft", receiver_id=self.customer.id)
+        wizard = self.env["l10n_mx_cfdi_account.document_cancel"].create(
+            {
+                "certificate_ids": [(6, 0, document.ids)],
+                "cancel_reason_id": self.env.ref(
+                    "l10n_mx_catalogs.c_motivo_cancelacion_02"
+                ).id,
+                "simulate_operation": True,
+            }
+        )
+        action = wizard.cancel_certificate()
+        self.assertEqual(action["params"]["type"], "warning")
+        self.assertIn("No published CFDI", action["params"]["message"])
+
 
 class TestGenericInvoiceCreateWizard(CFDIAccountTestCommon):
     def _create_wizard(self, invoices):
@@ -127,6 +145,31 @@ class TestGenericInvoiceCreateWizard(CFDIAccountTestCommon):
                 invoice
             )
 
+    def test_validate_invoice_items_error(self):
+        product = self.env["product.product"].create(
+            {"name": "No CFDI Codes", "list_price": 10.0}
+        )
+        invoice = self._post_cfdi_invoice(
+            self._create_cfdi_invoice(
+                invoice_line_ids=[
+                    (
+                        0,
+                        0,
+                        {
+                            "product_id": product.id,
+                            "quantity": 1,
+                            "price_unit": 10.0,
+                        },
+                    )
+                ]
+            )
+        )
+        with self.assertRaises(ValidationError) as err:
+            self.env["l10n_mx_cfdi_account.generic_invoice_create"]._validate_invoice(
+                invoice
+            )
+        self.assertIn("No CFDI Codes", str(err.exception))
+
     def test_validate_invoice_with_published_cfdi(self):
         invoice = self._post_cfdi_invoice(self._create_cfdi_invoice())
         self._create_published_invoice_cfdi(invoice)
@@ -157,6 +200,14 @@ class TestGenericInvoiceCreateWizard(CFDIAccountTestCommon):
             ("c_periodicidad_04", test_date.strftime("%Y%m")),
             ("c_periodicidad_05", test_date.strftime("%Y") + "3"),
         ]
+        # Quincenal first half of month (day <= 15)
+        wizard_q1 = wizard_model.new(
+            {
+                "periodicity_id": self.env.ref("l10n_mx_catalogs.c_periodicidad_03").id,
+                "date": date(2026, 6, 10),
+            }
+        )
+        self.assertEqual(wizard_q1._compute_folio(), "2026061")
         for periodicity_xmlid, expected in cases:
             wizard = wizard_model.new(
                 {
