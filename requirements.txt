@@ -1,10 +1,4 @@
 # generated from manifests external_dependencies
 facturama
-# mis_builder fork with `detail_groupby` (KPI detail expansion by partner/account/journal).
-# Source: https://github.com/OCA/mis-builder/pull/817 (closed; not yet upstream).
-# Pin to commit 84c75a9 for reproducibility. Replace with
-#   odoo-addon-mis-builder==19.0.*
-# once the feature lands upstream.
-git+https://github.com/ursais/mis-builder.git@84c75a910bd7dd9f23a0529a38f4576616db4064#egg=odoo-addon-mis-builder
 requests-mock
 satcfdi

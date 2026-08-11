@@ -8,7 +8,20 @@ from . import common
 
 @tagged("post_install", "-at_install")
 class TestMisReportByPartner(common.L10nMxReportsTestCase):
-    """Partner-level (detail_groupby = partner_id) MIS reports."""
+    """Partner-level (detail_groupby = partner_id) MIS reports.
+
+    These reports rely on the ``detail_groupby`` feature of ``mis_builder``
+    (OCA/mis-builder#817), not yet merged upstream. When the installed
+    ``mis_builder`` does not provide the ``detail_groupby`` field (as is the
+    case in OCA CI, which uses the released ``mis_builder``), the module data
+    still loads (the unknown CSV column is ignored) but the partner-expansion
+    behaviour is unavailable, so these tests skip rather than fail.
+    """
+
+    def setUp(self):
+        super().setUp()
+        if "detail_groupby" not in self.env["mis.report.kpi"]._fields:
+            self.skipTest("mis_builder detail_groupby unavailable (needs fork PR #817)")
 
     REPORT_XMLIDS = [
         "l10n_mx_account_reports.mis_report_aged_receivable_by_move",
