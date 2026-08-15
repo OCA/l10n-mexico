@@ -1,0 +1,71 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_mx_cfdi_account_addenda_kuehne_nagel
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-14 00:00+0000\n"
+"PO-Revision-Date: 2026-08-14 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_mx_cfdi_account_addenda_kuehne_nagel
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account_addenda_kuehne_nagel.view_account_move_form_inherit_addenda_kuehne_nagel
+msgid "Kuehne+Nagel Addenda"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_kuehne_nagel
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_kuehne_nagel.field_account_move__kn_file_type
+msgid "KN File/Tracking Type"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_kuehne_nagel
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_kuehne_nagel.field_account_move__kn_file_number_gl
+msgid "KN File Number GL"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_kuehne_nagel
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_kuehne_nagel.field_account_move__kn_branch_centre
+msgid "KN Branch Centre"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_kuehne_nagel
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_kuehne_nagel.field_account_move__kn_transport_ref
+msgid "KN Transport Ref"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_kuehne_nagel
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account_addenda_kuehne_nagel.view_account_move_form_inherit_addenda_kuehne_nagel
+msgid "File / Tracking Type"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_kuehne_nagel
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account_addenda_kuehne_nagel.view_account_move_form_inherit_addenda_kuehne_nagel
+msgid "File / Tracking Number"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_kuehne_nagel
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account_addenda_kuehne_nagel.view_account_move_form_inherit_addenda_kuehne_nagel
+msgid "Branch Centre"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_kuehne_nagel
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account_addenda_kuehne_nagel.view_account_move_form_inherit_addenda_kuehne_nagel
+msgid "Transport Ref"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_kuehne_nagel
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account_addenda_kuehne_nagel.view_account_move_form_inherit_addenda_kuehne_nagel
+msgid "Purchase Order uses the Customer Reference field as entered."
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_kuehne_nagel
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account_addenda_kuehne_nagel.view_account_move_form_inherit_addenda_kuehne_nagel
+msgid "Addenda fields are optional and do not enforce a format."
+msgstr ""

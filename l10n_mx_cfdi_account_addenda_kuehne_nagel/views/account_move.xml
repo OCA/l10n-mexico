@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_account_move_form_inherit_addenda_kuehne_nagel" model="ir.ui.view">
+        <field name="name">account.move.form.inherit.addenda.kuehne.nagel</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <field invisible="1" name="kn_flag" />
+                <page
+                    string="Kuehne+Nagel Addenda"
+                    name="addenda_kuehne_nagel"
+                    invisible="not kn_flag"
+                >
+                    <group>
+                        <field name="kn_file_type" string="File / Tracking Type" />
+                        <field
+                            name="kn_file_number_gl"
+                            string="File / Tracking Number"
+                        />
+                        <field name="kn_branch_centre" string="Branch Centre" />
+                        <field name="kn_transport_ref" string="Transport Ref" />
+                    </group>
+                    <group string="Hints">
+                        <div colspan="2">
+                            <p>
+                                Purchase Order uses the Customer Reference field as entered.
+                            </p>
+                            <p>
+                                Addenda fields are optional and do not enforce a format.
+                            </p>
+                        </div>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
