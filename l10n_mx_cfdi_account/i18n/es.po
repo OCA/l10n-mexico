@@ -15,6 +15,18 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #. module: l10n_mx_cfdi_account
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_account/models/account_move.py:0
+msgid "- The product code has not been defined for the product %s\n"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_account/models/account_move.py:0
+msgid "- The unit of measure has not been defined for the product %s\n"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
 #: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account.external_layout_bold
 #: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account.external_layout_boxed
 #: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account.external_layout_standard
@@ -53,6 +65,13 @@ msgid "<strong>Plazo de Pago:</strong>"
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
+#: model:ir.model.fields,help:l10n_mx_cfdi_account.field_l10n_mx_cfdi_issuer__l10n_mx_edi_addenda
+#: model:ir.model.fields,help:l10n_mx_cfdi_account.field_res_partner__l10n_mx_edi_addenda
+#: model:ir.model.fields,help:l10n_mx_cfdi_account.field_res_users__l10n_mx_edi_addenda
+msgid "A view representing the addenda"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
 #: model:ir.model,name:l10n_mx_cfdi_account.model_account_move_reversal
 msgid "Account Move Reversal"
 msgstr ""
@@ -64,19 +83,30 @@ msgid "Aceptar"
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
-#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_l10n_mx_cfdi_account_generic_invoice_create__year
-msgid "Año"
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_l10n_mx_cfdi_issuer__l10n_mx_edi_addenda
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_res_partner__l10n_mx_edi_addenda
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_res_users__l10n_mx_edi_addenda
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account.view_partner_form_addenda
+msgid "Addenda"
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
-#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account.report_invoice_document
-msgid "Borrador de Factura"
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_l10n_mx_cfdi_issuer__l10n_mx_edi_addenda_doc
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_res_partner__l10n_mx_edi_addenda_doc
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_res_users__l10n_mx_edi_addenda_doc
+msgid "Addenda Documentation"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_l10n_mx_cfdi_account_generic_invoice_create__year
+msgid "Año"
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_bank_statement_line__cfdi_document_id
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_move__cfdi_document_id
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_payment__cfdi_document_id
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account.res_config_settings_view_form
 #: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account.view_account_payment_form_inherit
 #: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account.view_move_form
 msgid "CFDI"
@@ -102,6 +132,12 @@ msgid "CFDI Habilitado"
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_bank_statement_line__cfdi_posted
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_move__cfdi_posted
+msgid "CFDI Posted"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_bank_statement_line__cfdi_document_state
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_move__cfdi_document_state
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_payment__cfdi_document_state
@@ -109,15 +145,26 @@ msgid "CFDI Status"
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_account/wizards/document_cancel.py:0
+msgid "CFDI cancellation"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_bank_statement_line__cfdi_data_in_attachments
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_move__cfdi_data_in_attachments
-#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_payment__cfdi_data_in_attachments
 msgid "CFDI data in attachments"
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
 #: model:ir.model,name:l10n_mx_cfdi_account.model_l10n_mx_cfdi_document
 msgid "CFDI document"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_account/models/account_move.py:0
+msgid "CFDI published"
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
@@ -140,21 +187,27 @@ msgstr ""
 #. module: l10n_mx_cfdi_account
 #. odoo-python
 #: code:addons/l10n_mx_cfdi_account/models/account_move.py:0
-#, python-format
 msgid "Cannot find the partner who emitted the certificate. RFC: %s"
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
 #. odoo-python
 #: code:addons/l10n_mx_cfdi_account/models/account_move.py:0
-#, python-format
 msgid "Cannot find the receptor of the certificate. RFC: %s"
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
 #. odoo-python
 #: code:addons/l10n_mx_cfdi_account/models/account_move.py:0
-#, python-format
+msgid ""
+"Cannot generate a credit note CFDI without related income CFDIs. Reconcile "
+"the credit note with the original invoice, or set Relation Type and Related "
+"CFDIs on the CFDI tab."
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_account/models/account_move.py:0
 msgid "Cannot generate the CFDI:\n"
 msgstr ""
 
@@ -209,6 +262,17 @@ msgid "Config Settings"
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_account/models/account_move.py:0
+msgid "Confirm the credit note before generating its CFDI."
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
+#: model:ir.model,name:l10n_mx_cfdi_account.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
 #: model:ir.actions.act_window,name:l10n_mx_cfdi_account.cfdi_invoice_generic_create_form_action
 msgid "Crear CFDI al Público en General"
 msgstr ""
@@ -253,9 +317,20 @@ msgid "Descargar CFDIs"
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_move__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_move_line__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_move_reversal__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_partial_reconcile__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_payment__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_payment_register__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_tax__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_ir_ui_view__display_name
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_l10n_mx_cfdi_account_dl_cfdi_files_wizard__display_name
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_l10n_mx_cfdi_account_document_cancel__display_name
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_l10n_mx_cfdi_account_generic_invoice_create__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_l10n_mx_cfdi_document__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_res_partner__display_name
 msgid "Display Name"
 msgstr ""
 
@@ -269,7 +344,6 @@ msgstr ""
 #. module: l10n_mx_cfdi_account
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_bank_statement_line__issuer_id
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_move__issuer_id
-#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_payment__issuer_id
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_l10n_mx_cfdi_account_generic_invoice_create__issuer_id
 msgid "Emisor"
 msgstr ""
@@ -303,7 +377,6 @@ msgstr ""
 #. module: l10n_mx_cfdi_account
 #. odoo-python
 #: code:addons/l10n_mx_cfdi_account/models/account_payment.py:0
-#, python-format
 msgid ""
 "Error al emitir CFDI tipo Comprobante de Pago. La factura %s no tiene CFDI"
 msgstr ""
@@ -317,19 +390,16 @@ msgid "Este documento es una representación impresa de un CFDI"
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
+#: model:ir.model.fields,help:l10n_mx_cfdi_account.field_account_bank_statement_line__cfdi_document_relations
+#: model:ir.model.fields,help:l10n_mx_cfdi_account.field_account_move__cfdi_document_relations
+msgid ""
+"Existing CFDIs to relate when issuing this invoice CFDI (e.g. substitution "
+"after cancellation)."
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
 #: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account.download_cfdi_files_wizard_form
-#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account.report_invoice_document
 msgid "Factura"
-msgstr ""
-
-#. module: l10n_mx_cfdi_account
-#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account.report_invoice_document
-msgid "Factura Cancelada"
-msgstr ""
-
-#. module: l10n_mx_cfdi_account
-#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account.report_invoice_document
-msgid "Factura de Proveedor"
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
@@ -363,7 +433,6 @@ msgstr ""
 #. module: l10n_mx_cfdi_account
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_bank_statement_line__cfdi_document_name
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_move__cfdi_document_name
-#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_payment__cfdi_document_name
 msgid "Folio CFDI"
 msgstr ""
 
@@ -387,10 +456,36 @@ msgid "Generar CFDI"
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
+#: model:ir.model.fields,help:l10n_mx_cfdi_account.field_l10n_mx_cfdi_issuer__l10n_mx_edi_addenda_doc
+#: model:ir.model.fields,help:l10n_mx_cfdi_account.field_res_partner__l10n_mx_edi_addenda_doc
+#: model:ir.model.fields,help:l10n_mx_cfdi_account.field_res_users__l10n_mx_edi_addenda_doc
+msgid ""
+"How should be done the addenda for this customer (try to put human readable "
+"information here to help the invoice people to fill properly the fields in "
+"the invoice)"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_move__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_move_line__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_move_reversal__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_partial_reconcile__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_payment__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_payment_register__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_tax__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_ir_ui_view__id
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_l10n_mx_cfdi_account_dl_cfdi_files_wizard__id
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_l10n_mx_cfdi_account_document_cancel__id
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_l10n_mx_cfdi_account_generic_invoice_create__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_l10n_mx_cfdi_document__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_res_config_settings__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_res_partner__id
 msgid "ID"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
+#: model:ir.model.fields,help:l10n_mx_cfdi_account.field_ir_ui_view__l10n_mx_edi_addenda_flag
+msgid "If True, the view is an addenda for the Mexican EDI invoicing."
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
@@ -411,22 +506,24 @@ msgstr ""
 #. module: l10n_mx_cfdi_account
 #. odoo-python
 #: code:addons/l10n_mx_cfdi_account/wizards/create_cfdi_publico_en_general.py:0
-#, python-format
 msgid "Invoice %s already has a published CFDI."
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
 #. odoo-python
 #: code:addons/l10n_mx_cfdi_account/wizards/create_cfdi_publico_en_general.py:0
-#, python-format
 msgid "Invoice %s is not posted."
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
 #. odoo-python
 #: code:addons/l10n_mx_cfdi_account/models/cfdi_document.py:0
-#, python-format
 msgid "Invoice name does not contain a numeric postfix."
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_ir_ui_view__l10n_mx_edi_addenda_flag
+msgid "Is an addenda?"
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
@@ -437,6 +534,13 @@ msgstr ""
 #. module: l10n_mx_cfdi_account
 #: model:ir.model,name:l10n_mx_cfdi_account.model_account_move_line
 msgid "Journal Item"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_l10n_mx_cfdi_issuer__l10n_mx_edi_addenda_is_readonly
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_res_partner__l10n_mx_edi_addenda_is_readonly
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_res_users__l10n_mx_edi_addenda_is_readonly
+msgid "L10N Mx Edi Addenda Is Readonly"
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
@@ -451,6 +555,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_l10n_mx_cfdi_account_document_cancel__write_date
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_l10n_mx_cfdi_account_generic_invoice_create__write_date
 msgid "Last Updated on"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account.view_l10n_mx_edi_ir_ui_view_form_inherit
+msgid "MX parameters"
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
@@ -472,18 +581,13 @@ msgstr ""
 #. module: l10n_mx_cfdi_account
 #. odoo-python
 #: code:addons/l10n_mx_cfdi_account/models/account_move.py:0
-#, python-format
 msgid "No XML attachment found for this invoice."
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
-#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account.report_invoice_document
-msgid "Nota de Crédito"
-msgstr ""
-
-#. module: l10n_mx_cfdi_account
-#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account.report_invoice_document
-msgid "Nota de Crédito de Proveedor"
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_account/wizards/document_cancel.py:0
+msgid "No published CFDI was cancelled."
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
@@ -499,6 +603,19 @@ msgstr ""
 #. module: l10n_mx_cfdi_account
 #: model:ir.model,name:l10n_mx_cfdi_account.model_account_partial_reconcile
 msgid "Partial Reconcile"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
+#: model:ir.model,name:l10n_mx_cfdi_account.model_account_payment_register
+msgid "Pay"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_account/models/account_payment.py:0
+msgid ""
+"Payment form (Forma de pago) is required to generate a payment CFDI "
+"(complemento de pago)."
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
@@ -529,7 +646,6 @@ msgstr ""
 #. module: l10n_mx_cfdi_account
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_bank_statement_line__receiver_id
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_move__receiver_id
-#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_payment__receiver_id
 msgid "Receptor"
 msgstr ""
 
@@ -539,8 +655,22 @@ msgid "Reemplazo"
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
-#: model:ir.model,name:l10n_mx_cfdi_account.model_account_payment_register
-msgid "Register Payment"
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_bank_statement_line__cfdi_document_relations
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_move__cfdi_document_relations
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account.view_move_form
+msgid "Related CFDIs"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_account/models/account_move.py:0
+msgid "Related CFDIs must be published and have a UUID: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_bank_statement_line__cfdi_document_relation_type
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_move__cfdi_document_relation_type
+msgid "Relation Type"
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
@@ -549,12 +679,8 @@ msgid "Requerido"
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
-#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_bank_statement_line__cfdi_posted
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_bank_statement_line__cfdi_required
-#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_move__cfdi_posted
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_move__cfdi_required
-#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_payment__cfdi_posted
-#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_payment__cfdi_required
 msgid "Requiere CFDI"
 msgstr ""
 
@@ -566,6 +692,12 @@ msgstr ""
 #. module: l10n_mx_cfdi_account
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_l10n_mx_cfdi_account_generic_invoice_create__fiscal_regime_id
 msgid "Régimen Fiscal"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
+#: model:ir.model.fields,help:l10n_mx_cfdi_account.field_account_bank_statement_line__cfdi_document_relation_type
+#: model:ir.model.fields,help:l10n_mx_cfdi_account.field_account_move__cfdi_document_relation_type
+msgid "SAT catalog c_TipoRelacion for CfdiRelacionados."
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
@@ -624,29 +756,24 @@ msgstr ""
 #. module: l10n_mx_cfdi_account
 #. odoo-python
 #: code:addons/l10n_mx_cfdi_account/models/account_move.py:0
-#, python-format
 msgid "The CFDI has been published."
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
 #. odoo-python
 #: code:addons/l10n_mx_cfdi_account/models/account_payment.py:0
-#, python-format
 msgid "The payment already has a related CFDI."
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
 #. odoo-python
 #: code:addons/l10n_mx_cfdi_account/models/account_payment.py:0
-#: code:addons/l10n_mx_cfdi_account/models/account_payment.py:0
-#, python-format
 msgid "The payment is not fully reconciled."
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
 #. odoo-python
 #: code:addons/l10n_mx_cfdi_account/models/account_move.py:0
-#, python-format
 msgid "The tax code for tax %s is not defined."
 msgstr ""
 
@@ -663,7 +790,6 @@ msgstr ""
 #. module: l10n_mx_cfdi_account
 #. odoo-python
 #: code:addons/l10n_mx_cfdi_account/models/cfdi_document.py:0
-#, python-format
 msgid "Unable to determine the origin document name."
 msgstr ""
 
@@ -676,26 +802,47 @@ msgid "Uso de CFDI"
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
+#: model:ir.model,name:l10n_mx_cfdi_account.model_ir_ui_view
+msgid "View"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_l10n_mx_cfdi_issuer__l10n_mx_edi_addenda_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_res_partner__l10n_mx_edi_addenda_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_res_users__l10n_mx_edi_addenda_name
+msgid "View Name"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
 #. odoo-python
 #: code:addons/l10n_mx_cfdi_account/models/account_payment.py:0
-#, python-format
 msgid "You can only create customer payments."
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
 #. odoo-python
 #: code:addons/l10n_mx_cfdi_account/models/account_move.py:0
-#, python-format
 msgid "You cannot generate a CFDI for a credit note with a pending amount."
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
 #. odoo-python
-#: code:addons/l10n_mx_cfdi_account/models/account_payment_register.py:0
-#, python-format
+#: code:addons/l10n_mx_cfdi_account/wizards/account_payment_register.py:0
 msgid ""
-"You cannot register a partial payment against an invoice with a CFDI and PUE"
-" as the payment method."
+"You cannot register a partial payment against an invoice with a CFDI and PUE "
+"as the payment method."
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_account/models/account_move.py:0
+msgid "You must add at least one related CFDI when a relation type is set."
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_account/models/account_move.py:0
+msgid "You must set a relation type when related CFDIs are selected."
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
