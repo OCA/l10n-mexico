@@ -113,6 +113,9 @@ class Waybill(models.Model):
         self._validate_required_fields()
         self._assign_serial_number()
         data = self._format_data()
+        from ..services import waybill_builder
+
+        cfdi = waybill_builder.build_waybill_comprobante(self.issuer_id, data)
 
         # set issuer and receiver
         self.cfdi_id.update(
@@ -123,7 +126,7 @@ class Waybill(models.Model):
         )
 
         try:
-            self.cfdi_id.publish(data)
+            self.cfdi_id.publish(cfdi)
             for picking in self.picking_ids:
                 picking.waybill_ids = [(4, self.id)]
 
@@ -161,16 +164,22 @@ class Waybill(models.Model):
         items_data = self._format_items_data()
         goods_data, locations_data = self._format_goods_and_locations_data()
 
+        # NameId 36 is applied by satcfdi Facturama mapper when CartaPorte is present.
         data = {
             "CfdiType": "T",
-            "NameId": "35",
             "ExpeditionPlace": self.issuer_id.zip,
             "Receiver": {
-                "Name": self.issuer_id.fiscal_name,
-                "Rfc": self.issuer_id.vat,
+                "Name": self.receiver_id.name
+                or self.issuer_id.fiscal_name
+                or self.issuer_id.name,
+                "Rfc": self.receiver_id.vat or self.issuer_id.vat,
                 "CfdiUse": "S01",  # Sin efectos fiscales
-                "FiscalRegime": self.issuer_id.tax_regime.code,
-                "TaxZipCode": self.issuer_id.zip,
+                "FiscalRegime": (
+                    self.receiver_id.tax_regime.code
+                    if self.receiver_id.tax_regime
+                    else self.issuer_id.tax_regime.code
+                ),
+                "TaxZipCode": self.receiver_id.zip or self.issuer_id.zip,
             },
             "Items": items_data,
             "Complemento": {
@@ -206,12 +215,13 @@ class Waybill(models.Model):
             "UnitCode": product.l10n_mx_cfdi_product_measurement_unit_id.code,
             "Description": product.name,
             "Quantity": entry.product_qty,
-            "IdentificationNumber": product.default_code,
             "UnitPrice": 0,
             "Subtotal": 0,
             "Total": 0,
             "TaxObject": "01",  # No sujeto a impuestos
         }
+        if product.default_code:
+            item_data["IdentificationNumber"] = product.default_code
         return item_data
 
     def self_add_figuratransporte_data(self, data):
@@ -734,13 +744,6 @@ class WaybillEntry(models.Model):
                     self.env._(
                         "Falta el campo Código Postal en: %s",
                         entry.destination_address_id.name,
-                    )
-                )
-
-            if not entry.destination_address_id.street:
-                raise ValidationError(
-                    self.env._(
-                        "Falta el campo Calle en: %s", entry.destination_address_id.name
                     )
                 )
 

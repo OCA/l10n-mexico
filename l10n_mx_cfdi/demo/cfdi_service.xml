@@ -1,0 +1,9 @@
+<odoo noupdate="1">
+    <record id="demo_cfdi_service" model="l10n_mx_cfdi.cfdi_service">
+        <field name="name">Demo CFDI PAC (Finkok Sandbox)</field>
+        <field name="provider">finkok</field>
+        <field name="user">demo</field>
+        <field name="password">demo</field>
+        <field name="sandbox_mode" eval="True" />
+    </record>
+</odoo>

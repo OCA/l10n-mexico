@@ -1,0 +1,22 @@
+<odoo noupdate="1">
+    <record id="demo_cfdi_document_income" model="l10n_mx_cfdi.document">
+        <field name="type">I</field>
+        <field name="state">published</field>
+        <field name="serie">INV</field>
+        <field name="folio">1</field>
+        <field name="uuid">11111111-1111-1111-1111-111111111111</field>
+        <field name="issuer_id" ref="demo_cfdi_issuer" />
+        <field name="receiver_id" ref="demo_cfdi_issuer_partner" />
+        <field name="pac_provider">finkok</field>
+        <field name="tracking_id">demo-tracking-1</field>
+    </record>
+
+    <record id="demo_cfdi_document_substitute" model="l10n_mx_cfdi.document">
+        <field name="type">I</field>
+        <field name="state">draft</field>
+        <field name="serie">INV</field>
+        <field name="folio">2</field>
+        <field name="issuer_id" ref="demo_cfdi_issuer" />
+        <field name="receiver_id" ref="demo_cfdi_issuer_partner" />
+    </record>
+</odoo>

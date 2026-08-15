@@ -22,23 +22,20 @@ class TestAccountPartialReconcile(CFDIAccountTestCommon):
     def test_create_triggers_refund_cfdi(self):
         invoice = self._post_cfdi_invoice(self._create_cfdi_invoice())
         self._create_published_invoice_cfdi(invoice)
+        # Do not set reversed_entry_id: posting would auto-reconcile and skip
+        # the partial.reconcile create() hook under test.
         refund = self._create_cfdi_invoice(move_type="out_refund")
         refund.action_post()
         self.company.l10n_mx_cfdi_auto = True
         with self._mock_cfdi_publish():
-            register = (
-                self.env["account.payment.register"]
-                .with_context(active_model="account.move", active_ids=refund.ids)
-                .create(
-                    {
-                        "amount": refund.amount_residual,
-                        "payment_form_id": self.env.ref(
-                            "l10n_mx_catalogs.c_forma_pago_03"
-                        ).id,
-                    }
+            (
+                invoice.line_ids.filtered(
+                    lambda line: line.account_id.account_type == "asset_receivable"
                 )
-            )
-            register._create_payments()
+                + refund.line_ids.filtered(
+                    lambda line: line.account_id.account_type == "asset_receivable"
+                )
+            ).reconcile()
         self.assertTrue(
             refund.related_cert_ids.filtered_domain(
                 [("type", "=", "E"), ("state", "=", "published")]

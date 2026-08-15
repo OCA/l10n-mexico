@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_move_form_comex_cce" model="ir.ui.view">
+        <field name="name">account.move.form.cfdi.comex.cce</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+            <page id="invoice_tab" position="after">
+                <page
+                    id="comex_cce_tab"
+                    string="COMEX / CCE"
+                    invisible="move_type not in ('out_invoice', 'out_refund')"
+                >
+                    <group>
+                        <group string="Comercio Exterior">
+                            <field name="l10n_mx_cfdi_cce_enabled" />
+                            <field
+                                name="l10n_mx_cfdi_cce_clave_pedimento"
+                                invisible="not l10n_mx_cfdi_cce_enabled"
+                                required="l10n_mx_cfdi_cce_enabled"
+                            />
+                            <field
+                                name="invoice_incoterm_id"
+                                invisible="not l10n_mx_cfdi_cce_enabled"
+                                required="l10n_mx_cfdi_cce_enabled"
+                            />
+                            <field
+                                name="l10n_mx_cfdi_cce_tipo_cambio_usd"
+                                invisible="not l10n_mx_cfdi_cce_enabled"
+                                required="l10n_mx_cfdi_cce_enabled"
+                            />
+                            <field
+                                name="l10n_mx_cfdi_cce_total_usd"
+                                invisible="not l10n_mx_cfdi_cce_enabled"
+                            />
+                        </group>
+                        <group string="Certificate / Notes">
+                            <field
+                                name="l10n_mx_cfdi_cce_certificado_origen"
+                                invisible="not l10n_mx_cfdi_cce_enabled"
+                            />
+                            <field
+                                name="l10n_mx_cfdi_cce_num_certificado_origen"
+                                invisible="not l10n_mx_cfdi_cce_enabled"
+                            />
+                            <field
+                                name="l10n_mx_cfdi_cce_numero_exportador_confiable"
+                                invisible="not l10n_mx_cfdi_cce_enabled"
+                            />
+                            <field
+                                name="l10n_mx_cfdi_cce_motivo_traslado"
+                                invisible="not l10n_mx_cfdi_cce_enabled"
+                            />
+                            <field
+                                name="l10n_mx_cfdi_cce_observaciones"
+                                invisible="not l10n_mx_cfdi_cce_enabled"
+                            />
+                            <field
+                                name="l10n_mx_cfdi_cce_destinatario_id"
+                                invisible="not l10n_mx_cfdi_cce_enabled"
+                            />
+                        </group>
+                    </group>
+                </page>
+            </page>
+            <xpath
+                expr="//field[@name='invoice_line_ids']/list/field[@name='quantity']"
+                position="after"
+            >
+                <field
+                    name="l10n_mx_cfdi_cce_no_identificacion"
+                    optional="hide"
+                    column_invisible="parent.move_type not in ('out_invoice', 'out_refund')"
+                />
+                <field
+                    name="l10n_mx_cfdi_cce_valor_dolares"
+                    optional="hide"
+                    column_invisible="parent.move_type not in ('out_invoice', 'out_refund')"
+                />
+                <field
+                    name="l10n_mx_cfdi_cce_cantidad_aduana"
+                    optional="hide"
+                    column_invisible="parent.move_type not in ('out_invoice', 'out_refund')"
+                />
+                <field
+                    name="l10n_mx_cfdi_cce_unidad_aduana"
+                    optional="hide"
+                    column_invisible="parent.move_type not in ('out_invoice', 'out_refund')"
+                />
+                <field
+                    name="l10n_mx_cfdi_cce_valor_unitario_aduana"
+                    optional="hide"
+                    column_invisible="parent.move_type not in ('out_invoice', 'out_refund')"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

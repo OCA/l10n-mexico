@@ -1,0 +1,11 @@
+<odoo noupdate="1">
+    <record id="demo_cfdi_payment" model="account.payment">
+        <field name="payment_type">inbound</field>
+        <field name="partner_type">customer</field>
+        <field name="partner_id" ref="demo_cfdi_customer" />
+        <field name="amount">100.0</field>
+        <field name="journal_id" search="[('type', 'in', ('bank', 'cash'))]" />
+        <field name="cfdi_use_id" ref="l10n_mx_catalogs.c_uso_cfdi_CP01" />
+        <field name="payment_form_id" ref="l10n_mx_catalogs.c_forma_pago_03" />
+    </record>
+</odoo>

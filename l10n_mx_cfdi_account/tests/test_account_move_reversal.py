@@ -14,6 +14,13 @@ class TestAccountMoveReversal(CFDIAccountTestCommon):
             .new({"date": fields.Date.today()})
         )
 
+    def test_prepare_default_reversal_skips_non_cfdi(self):
+        invoice = self._create_cfdi_invoice(cfdi_required=False)
+        invoice.action_post()
+        reversal = self._create_reversal_wizard(invoice)
+        res = reversal._prepare_default_reversal(invoice)
+        self.assertNotIn("cfdi_required", res)
+
     def test_prepare_default_reversal_sets_cfdi_fields(self):
         invoice = self._create_cfdi_invoice()
         invoice.action_post()

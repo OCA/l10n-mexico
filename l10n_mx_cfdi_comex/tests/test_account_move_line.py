@@ -20,8 +20,21 @@ class TestAccountMoveLineComex(CFDIComexTestCommon):
         self.assertIn("NumerosPedimento", item)
         self.assertEqual(
             item["NumerosPedimento"],
-            [pedimento.number.replace(" ", "  ")],
+            ["15  48  3009  0001234"],
         )
+        # Import narrative stays on the invoice line, not in CFDI Description.
+        self.assertIn("Pedimento:", line.name)
+        self.assertNotIn("Fracción:", item.get("Description") or "")
+        self.assertNotIn("Pedimento:", item.get("Description") or "")
+        self.assertNotIn("\n", item.get("Description") or "")
+
+    def test_gater_skips_pedimentos_when_cce_enabled(self):
+        pedimento = self._create_pedimento()
+        invoice, _lot = self._create_sale_invoice_with_lot(pedimento)
+        invoice.l10n_mx_cfdi_cce_enabled = True
+        line = invoice.invoice_line_ids.filtered(lambda ln: ln.product_id)
+        item = line._gater_cfdi_item_data()
+        self.assertNotIn("NumerosPedimento", item)
 
     def test_import_details_not_required_without_pedimento(self):
         invoice = self._create_cfdi_invoice(

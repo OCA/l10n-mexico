@@ -1,0 +1,14 @@
+<odoo noupdate="1">
+    <record id="demo_waybill_entry" model="l10n_mx_cfdi_waybill.waybill_entry">
+        <field name="waybill_id" ref="demo_waybill" />
+        <field
+            name="product_id"
+            eval="obj().env.ref('l10n_mx_cfdi_waybill.demo_waybill_product').product_variant_id.id"
+        />
+        <field name="product_qty">1.0</field>
+        <field name="origin_address_id" ref="l10n_mx_cfdi.demo_cfdi_issuer_partner" />
+        <field name="destination_address_id" ref="demo_driver_partner" />
+        <field name="distance">100.0</field>
+        <field name="duration">2.0</field>
+    </record>
+</odoo>

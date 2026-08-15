@@ -1,0 +1,16 @@
+<odoo noupdate="1">
+    <record id="demo_waybill_product" model="product.template">
+        <field name="name">Demo Waybill Goods</field>
+        <field name="list_price">50.0</field>
+        <field name="type">consu</field>
+        <field
+            name="l10n_mx_cfdi_product_code_id"
+            ref="l10n_mx_catalogs.c_clave_prod_serv_01010101"
+        />
+        <field
+            name="l10n_mx_cfdi_product_measurement_unit_id"
+            ref="l10n_mx_catalogs.c_clave_unidad_H87"
+        />
+        <field name="l10n_mx_cfdi_dangerous_material_indicator" eval="False" />
+    </record>
+</odoo>

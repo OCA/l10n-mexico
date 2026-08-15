@@ -22,5 +22,12 @@
         "views/product_template_views.xml",
         "views/stock_landed_cost_views.xml",
         "views/stock_lot_views.xml",
+        "views/account_move_views.xml",
+    ],
+    "demo": [
+        "demo/pedimento.xml",
+        "demo/product_template.xml",
+        "demo/stock_lot.xml",
+        "demo/stock_landed_cost.xml",
     ],
 }

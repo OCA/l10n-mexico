@@ -29,4 +29,13 @@
         "views/product_template.xml",
         "reports/waybill_report.xml",
     ],
+    "demo": [
+        "demo/res_partner.xml",
+        "demo/product_template.xml",
+        "demo/cfdi_transporter.xml",
+        "demo/cfdi_vehicle_trailer.xml",
+        "demo/cfdi_vehicle.xml",
+        "demo/waybill.xml",
+        "demo/waybill_entry.xml",
+    ],
 }

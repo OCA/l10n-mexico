@@ -1,3 +1,5 @@
+from unittest.mock import patch
+
 from .common import CFDIAccountTestCommon
 
 
@@ -99,3 +101,24 @@ class TestAccountMoveLine(CFDIAccountTestCommon):
         item = line._gater_cfdi_item_data()
         self.assertEqual(item["TaxObject"], "02")
         self.assertGreater(line.cfdi_subtotal, 0)
+
+    def test_gater_cfdi_item_discount_fixed_and_skip_round(self):
+        invoice = self._create_cfdi_invoice()
+        line = invoice.invoice_line_ids[0]
+        # UnitPrice is recomputed from Subtotal; fixed discount lands in Discount
+        with patch.object(type(line), "discount_fixed", 5.0, create=True):
+            item = line._gater_cfdi_item_data()
+            self.assertGreater(item["Discount"], 0.0)
+
+        payload = {"UnitPrice": 1.234, "Description": "x"}
+        line._round_values_to_currency_precision(payload, skip={"Description"})
+        self.assertEqual(payload["Description"], "x")
+        self.assertNotEqual(payload["UnitPrice"], 1.234)
+
+    def test_gater_cfdi_item_price_include_tax_branch(self):
+        invoice = self._create_cfdi_invoice()
+        line = invoice.invoice_line_ids[0]
+        tax = line.tax_ids[:1]
+        with patch.object(type(tax), "price_include", True, create=True):
+            item = line._gater_cfdi_item_data()
+        self.assertEqual(item["TaxObject"], "02")

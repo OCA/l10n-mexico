@@ -1,0 +1,7 @@
+<odoo noupdate="1">
+    <record id="demo_stock_landed_cost" model="stock.landed.cost">
+        <field name="account_journal_id" search="[('type', '=', 'general')]" />
+        <field name="date">2024-01-20</field>
+        <field name="l10n_mx_cfdi_pedimento_id" ref="demo_pedimento" />
+    </record>
+</odoo>
