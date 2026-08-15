@@ -766,6 +766,11 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__legacy_without_xml
+msgid "Legacy without XML"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
 #: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.report_waybill_document
 msgid "Licencia"
 msgstr ""
@@ -909,6 +914,11 @@ msgid "Origen"
 msgstr ""
 
 #. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__pac_provider
+msgid "PAC Provider"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__related_payment_id
 msgid "Pago relacionado"
 msgstr ""
@@ -946,6 +956,13 @@ msgstr ""
 #. module: l10n_mx_cfdi_waybill
 #: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_waybill.view_waybill_form
 msgid "Publicar"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,help:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__legacy_without_xml
+msgid ""
+"Published CFDI without stored stamped XML (typically Facturama-era). "
+"Cancel/download via satcfdi is not available for these documents."
 msgstr ""
 
 #. module: l10n_mx_cfdi_waybill
@@ -1015,6 +1032,11 @@ msgid ""
 "Overdue: Due date is already passed\n"
 "Today: Activity date is today\n"
 "Planned: Future activities."
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__pac_supports_cancel
+msgid "Supports Cancel"
 msgstr ""
 
 #. module: l10n_mx_cfdi_waybill
@@ -1142,6 +1164,11 @@ msgstr ""
 #. module: l10n_mx_cfdi_waybill
 #: model:ir.model.fields,help:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__website_message_ids
 msgid "Website communication history"
+msgstr ""
+
+#. module: l10n_mx_cfdi_waybill
+#: model:ir.model.fields,help:l10n_mx_cfdi_waybill.field_l10n_mx_cfdi_waybill_waybill__pac_provider
+msgid "satcfdi PAC code used when the CFDI was stamped."
 msgstr ""
 
 #. module: l10n_mx_cfdi_waybill
