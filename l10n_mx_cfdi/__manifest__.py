@@ -5,7 +5,7 @@
     "website": "https://github.com/OCA/l10n-mexico",
     "license": "LGPL-3",
     "category": "Accounting",
-    "version": "19.0.2.1.0",
+    "version": "19.0.2.2.0",
     "depends": ["l10n_mx_catalogs", "product"],
     "external_dependencies": {
         "python": ["satcfdi"],

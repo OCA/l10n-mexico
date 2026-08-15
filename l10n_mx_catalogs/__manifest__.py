@@ -4,7 +4,7 @@
     "author": "Auge TEC, Gray Matter Logic, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/l10n-mexico",
     "category": "Localization",
-    "version": "19.0.1.0.0",
+    "version": "19.0.1.1.0",
     "license": "LGPL-3",
     "depends": ["base"],
     "data": [
