@@ -157,7 +157,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_cfdi_issuer
 msgid ""
 "<i class=\"fa fa-exclamation-triangle mr-2\" role=\"img\" aria-label=\"Alert\" title=\"Alert\"/>\n"
-"                        <span>El emisor no está registrado con el proveedor de facturación.\n"
+"                        <span>El emisor no tiene un CSD local validado. Use Registrar\n"
+"                            para validar el certificado.\n"
 "                        </span>"
 msgstr ""
 
@@ -354,6 +355,13 @@ msgid "CFDI"
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
+msgid ""
+"CFDI %(name)s: cancellation status %(status)s (document state: %(state)s)."
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__l10n_mx_cfdi_auto
 msgid "CFDI Automatico"
 msgstr ""
@@ -407,6 +415,12 @@ msgid "CFDI document"
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
+msgid "CSD RFC %(csd_rfc)s does not match issuer RFC %(issuer_rfc)s."
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__original_string
 msgid "Cadena original"
 msgstr ""
@@ -438,14 +452,58 @@ msgstr ""
 
 #. module: l10n_mx_cfdi
 #. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
+msgid "Cancellation acknowledgment (acuse) was stored."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
+msgid ""
+"Cancellation request proof must be retrieved from the stored acknowledgment "
+"on the document."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
+msgid "Cannot cancel CFDI without the stamped XML stored on the document."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
+msgid "Cannot cancel CFDI: stamped XML is invalid or missing UUID."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
+msgid "Cannot initialize the PAC client: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
+msgid "Cannot recover CFDI PDF: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
+msgid "Cannot recover CFDI XML: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#. odoo-python
 #: code:addons/l10n_mx_cfdi/models/cfdi_issuer.py:0
 msgid "Cannot register the certificate."
 msgstr ""
 
 #. module: l10n_mx_cfdi
 #. odoo-python
-#: code:addons/l10n_mx_cfdi/models/cfdi_issuer.py:0
-msgid "Cannot unregister the certificate."
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
+msgid "Cannot upload the CSD to Facturama: %s"
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -625,6 +683,11 @@ msgid "Created on"
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.action_l10n_mx_cfdi_service_form
+msgid "Credentials"
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__credit_limit
 msgid "Credit Limit"
 msgstr ""
@@ -723,6 +786,7 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #. odoo-python
 #: code:addons/l10n_mx_cfdi/models/cfdi_issuer.py:0
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
 msgid "Digital certificate not configured."
 msgstr ""
 
@@ -747,6 +811,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_res_company__display_name
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_res_partner__display_name
 msgid "Display Name"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
+msgid "Document is not published."
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -845,6 +915,12 @@ msgstr ""
 
 #. module: l10n_mx_cfdi
 #. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
+msgid "Error when cancelling the CFDI: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#. odoo-python
 #: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
 msgid "Error when cancelling the certificate: %s"
 msgstr ""
@@ -852,7 +928,7 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #. odoo-python
 #: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
-msgid "Error when creating the CFDI: %s\n"
+msgid "Error when creating the CFDI: %s"
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -864,6 +940,15 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__state
 msgid "Estado"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
+msgid ""
+"Facturama could not map this CFDI complement (Carta Porte 3.1 and Comercio "
+"Exterior via FacturamaWeb are supported; other complements may not be). "
+"Details: %s"
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -1104,6 +1189,24 @@ msgid "Inlined Complete Address"
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
+msgid "Invalid CFDI payload for cancellation."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
+msgid "Invalid cancellation reason: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
+msgid "Invalid digital certificate: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__invoice_edi_format_store
 msgid "Invoice Edi Format Store"
 msgstr ""
@@ -1150,6 +1253,18 @@ msgid "Is a Company"
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
+msgid "Issuer is required to cancel with this PAC."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
+msgid "Issuer is required to stamp a CFDI."
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.ui.menu,name:l10n_mx_cfdi.menu_cfdi_issuer
 msgid "Issuers"
 msgstr ""
@@ -1187,6 +1302,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__write_date
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_series__write_date
 msgid "Last Updated on"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__legacy_without_xml
+msgid "Legacy without XML"
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -1269,6 +1389,14 @@ msgid ""
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
+msgid ""
+"No cancellation acknowledgment is stored for this document. Re-canceling "
+"with a PAC that returns an acuse is required."
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__name
 #: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.l10n_mx_cfdi_series_form_view
 #: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.l10n_mx_cfdi_series_list_view
@@ -1346,12 +1474,6 @@ msgid "Número de certificado del SAT"
 msgstr ""
 
 #. module: l10n_mx_cfdi
-#. odoo-python
-#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
-msgid "Ocurrió un error con el servicio de facturación.\n"
-msgstr ""
-
-#. module: l10n_mx_cfdi
 #: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_series__padding
 msgid ""
 "Odoo will automatically adds some '0' on the left of the 'Next Number' to "
@@ -1377,10 +1499,63 @@ msgid ""
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__pac_client_id
+msgid "PAC Client ID"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__pac_contrato
+msgid "PAC Contract"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__pac_country
+msgid "PAC Country"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__pac_provider
+msgid "PAC Provider"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__pac_rfc
+msgid "PAC RFC"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__pac_requestor
+msgid "PAC Requestor"
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.actions.act_window,name:l10n_mx_cfdi.action_l10n_mx_cfdi_settings
 #: model:ir.ui.menu,name:l10n_mx_cfdi.cfdi_settings_menu
 #: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.action_l10n_mx_cfdi_service_form
 msgid "PAC Settings"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__pac_token
+msgid "PAC Token"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
+msgid "PAC did not return a PDF document."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
+msgid "PAC message: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
+msgid "PAC provider is not configured."
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -1524,6 +1699,11 @@ msgid "Property Outbound Payment Method Line"
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__provider
+msgid "Provider"
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.model.fields.selection,name:l10n_mx_cfdi.selection__l10n_mx_cfdi_document__state__published
 msgid "Publicada"
 msgstr ""
@@ -1531,6 +1711,13 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_l10n_mx_cfdi_document_search
 msgid "Publicados"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_document__legacy_without_xml
+msgid ""
+"Published CFDI without stored stamped XML (typically Facturama-era). "
+"Cancel/download via satcfdi is not available for these documents."
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -1696,6 +1883,12 @@ msgid "Signup Token Type"
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
+msgid "Simulated cancellation (PAC not called)."
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document_relation__source_id
 msgid "Source"
 msgstr ""
@@ -1790,6 +1983,17 @@ msgid "Supplier Rank"
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__supports_cancel
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_document__pac_supports_cancel
+msgid "Supports Cancel"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_cfdi_service__supports_issue
+msgid "Supports Issue"
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__category_id
 msgid "Tags"
 msgstr ""
@@ -1821,6 +2025,20 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #. odoo-python
 #: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
+msgid ""
+"The PAC could not cancel CFDI %(cfdi)s: it is still active (often because "
+"related documents block cancellation). PAC message: %(message)s"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
+msgid "The PAC did not return a cancellation acknowledgment (acuse)."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
 msgid "The certificate is not cancelled."
 msgstr ""
 
@@ -1828,6 +2046,12 @@ msgstr ""
 #. odoo-python
 #: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
 msgid "The certificate is not in draft."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
+msgid "The configured PAC does not support CFDI cancellation."
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -1854,6 +2078,30 @@ msgid ""
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
+msgid "The selected PAC (%s) does not support cancellation."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
+msgid "The selected PAC does not provide PDF recovery."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
+msgid "The selected PAC does not provide XML recovery."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
+msgid "The selected PAC does not support this operation: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__property_stock_customer
 msgid ""
 "The stock location used as destination when sending goods to this contact."
@@ -1870,6 +2118,22 @@ msgstr ""
 msgid ""
 "There can be several users related to the same partner. When a single user "
 "is needed, this field attempts to find the most appropriate one."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
+msgid ""
+"This CFDI has no stored stamped XML (legacy Facturama document). Cancel it "
+"manually at the SAT / previous PAC or attach the CFDI XML before retrying."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_l10n_mx_cfdi_document_form
+msgid ""
+"This CFDI has no stored stamped XML. Cancel and\n"
+"                                PAC recovery are unavailable until the XML is\n"
+"                                attached."
 msgstr ""
 
 #. module: l10n_mx_cfdi
@@ -2063,4 +2327,9 @@ msgstr ""
 #. module: l10n_mx_cfdi
 #: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__invoice_edi_format
 msgid "eInvoice format"
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,help:l10n_mx_cfdi.field_l10n_mx_cfdi_document__pac_provider
+msgid "satcfdi PAC code used when the CFDI was stamped."
 msgstr ""
