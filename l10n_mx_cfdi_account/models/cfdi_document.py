@@ -29,7 +29,7 @@ class Document(models.Model):
         for entry in self:
             if entry.tracking_id:
                 if not entry.pdf_file:
-                    report_type, report, resource_ids = self._resolve_report()
+                    report_type, report, resource_ids = entry._resolve_report()
 
                     if report:
                         # force the report to be rendered to work around a bug
