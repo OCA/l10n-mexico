@@ -13,8 +13,8 @@ class CFDIService(models.Model):
         """Attach addenda XML to an already published CFDI (Facturama api-lite)."""
         self.ensure_one()
         try:
-            client = self._get_client()
-            return client.CfdiMultiEmisor.build_http_request(
+            pac = self._get_pac()
+            return pac.CfdiMultiEmisor.build_http_request(
                 "put",
                 f"addenda/{cfdi_id}/nu",
                 addenda_xml,

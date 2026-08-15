@@ -26,7 +26,7 @@ class AccountMove(models.Model):
         """Render the Audi addenda QWeb template for this invoice."""
         self.ensure_one()
         return self.env["ir.qweb"]._render(
-            "l10n_mx_edi_addenda_audi.l10n_mx_edi_addenda_audi",
+            "l10n_mx_cfdi_account_addenda_audi.l10n_mx_cfdi_account_addenda_audi",
             {"record": self},
         )
 

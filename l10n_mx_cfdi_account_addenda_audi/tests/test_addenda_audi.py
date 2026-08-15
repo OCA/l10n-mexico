@@ -72,7 +72,7 @@ class TestAddendaAudi(CFDIAccountTestCommon):
     def test_attach_addenda_service_success(self):
         client = MagicMock()
         client.CfdiMultiEmisor.build_http_request.return_value = {"ok": True}
-        with patch.object(type(self.service), "_get_client", return_value=client):
+        with patch.object(type(self.service), "_get_pac", return_value=client):
             result = self.service.attach_addenda("tracking-1", "<Addenda/>")
         self.assertEqual(result, {"ok": True})
         client.CfdiMultiEmisor.build_http_request.assert_called_once_with(
@@ -84,7 +84,7 @@ class TestAddendaAudi(CFDIAccountTestCommon):
     def test_attach_addenda_service_error(self):
         with patch.object(
             type(self.service),
-            "_get_client",
+            "_get_pac",
             side_effect=RuntimeError("boom"),
         ):
             with self.assertRaises(UserError):

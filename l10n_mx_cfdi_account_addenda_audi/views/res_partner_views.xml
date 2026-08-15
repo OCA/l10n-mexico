@@ -3,11 +3,15 @@
     <record id="view_res_partner_form_inherit_addenda_audi" model="ir.ui.view">
         <field name="name">res.partner.form.inherit.addenda.audi</field>
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="l10n_mx_cfdi.view_partner_form_inherit" />
+        <field
+            name="inherit_id"
+            ref="l10n_mx_cfdi_account.view_partner_form_addenda"
+        />
         <field name="arch" type="xml">
-            <xpath expr="//page[@name='CFDI']/group" position="inside">
-                <field name="l10n_mx_edi_addenda" />
-                <field name="l10n_mx_edi_addenda_name" invisible="1" />
+            <xpath
+                expr="//field[@name='l10n_mx_edi_addenda_doc']"
+                position="after"
+            >
                 <field
                     name="audi_supplier_email"
                     invisible="l10n_mx_edi_addenda_name != 'Addenda Audi'"
