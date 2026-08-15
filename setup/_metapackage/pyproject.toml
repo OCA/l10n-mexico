@@ -1,6 +1,6 @@
 [project]
 name = "odoo-addons-oca-l10n-mexico"
-version = "19.0.20260815.1"
+version = "19.0.20260815.2"
 dependencies = [
     "odoo-addon-currency_rate_update_banxico==19.0.*",
     "odoo-addon-l10n_mx_account_reports==19.0.*",
@@ -10,6 +10,7 @@ dependencies = [
     "odoo-addon-l10n_mx_cfdi_account==19.0.*",
     "odoo-addon-l10n_mx_cfdi_account_addenda_ford==19.0.*",
     "odoo-addon-l10n_mx_cfdi_account_addenda_mabe==19.0.*",
+    "odoo-addon-l10n_mx_cfdi_account_addenda_volkswagen==19.0.*",
     "odoo-addon-l10n_mx_cfdi_comex==19.0.*",
     "odoo-addon-l10n_mx_cfdi_waybill==19.0.*",
     "odoo-addon-l10n_mx_sat==19.0.*",
