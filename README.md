@@ -28,6 +28,7 @@ addon | version | maintainers | summary
 [l10n_mx_cfdi](l10n_mx_cfdi/) | 19.0.2.2.0 |  | Allow generating CFDI (Comprobante Fiscal Digital por Internet)
 [l10n_mx_cfdi_account](l10n_mx_cfdi_account/) | 19.0.1.1.0 |  | Mexico CFDI Account Integration
 [l10n_mx_cfdi_account_addenda_ford](l10n_mx_cfdi_account_addenda_ford/) | 19.0.1.0.0 |  | Mexican Localization Addendum For Ford
+[l10n_mx_cfdi_account_addenda_mabe](l10n_mx_cfdi_account_addenda_mabe/) | 19.0.1.0.0 |  | Mexican Localization Addendum For MABE
 [l10n_mx_cfdi_comex](l10n_mx_cfdi_comex/) | 19.0.1.1.0 |  | Mexico foreign trade invoicing compliance
 [l10n_mx_cfdi_waybill](l10n_mx_cfdi_waybill/) | 19.0.1.1.0 |  | Provee soporte para generación de cartas porte con gestión de flotas simplificada.
 [l10n_mx_sat](l10n_mx_sat/) | 19.0.1.0.0 | <a href='https://github.com/max3903'><img src='https://github.com/max3903.png' width='32' height='32' style='border-radius:50%;' alt='max3903'/></a> | Connect to the SAT portal using FIEL credentials & manage downloads
