@@ -27,6 +27,7 @@ addon | version | maintainers | summary
 [l10n_mx_catalogs_comex](l10n_mx_catalogs_comex/) | 19.0.1.0.0 |  | Foreign trade catalogs for Mexico
 [l10n_mx_cfdi](l10n_mx_cfdi/) | 19.0.2.2.0 |  | Allow generating CFDI (Comprobante Fiscal Digital por Internet)
 [l10n_mx_cfdi_account](l10n_mx_cfdi_account/) | 19.0.1.1.0 |  | Mexico CFDI Account Integration
+[l10n_mx_cfdi_account_addenda_audi](l10n_mx_cfdi_account_addenda_audi/) | 19.0.1.0.0 |  | Mexican Localization Addendum For Audi
 [l10n_mx_cfdi_account_addenda_ford](l10n_mx_cfdi_account_addenda_ford/) | 19.0.1.0.0 |  | Mexican Localization Addendum For Ford
 [l10n_mx_cfdi_account_addenda_kuehne_nagel](l10n_mx_cfdi_account_addenda_kuehne_nagel/) | 19.0.1.0.0 |  | Mexican Localization Addendum KNRECEPCION For Kuehne+Nagel
 [l10n_mx_cfdi_account_addenda_mabe](l10n_mx_cfdi_account_addenda_mabe/) | 19.0.1.0.0 |  | Mexican Localization Addendum For MABE
