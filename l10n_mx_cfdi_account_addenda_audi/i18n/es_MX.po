@@ -1,0 +1,130 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_mx_cfdi_account_addenda_audi
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-15 16:00+0000\n"
+"PO-Revision-Date: 2026-07-15 16:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_MX\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_move__audi_applicant_email
+msgid "Applicant email"
+msgstr "Email del solicitante"
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.ui.view,arch_db:l10n_mx_cfdi_account_addenda_audi.view_account_move_form_inherit_addenda_audi
+msgid "Audi Addenda"
+msgstr "Addenda Audi"
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_move__audi_flag
+msgid "Audi Flag"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_move_line__audi_product_ref
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_product_product__audi_ref
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_product_template__audi_ref
+#: model:ir.ui.view,arch_db:l10n_mx_cfdi_account_addenda_audi.view_product_template_form_inherit_addenda_audi
+msgid "Audi Product Reference"
+msgstr "Referencia del producto Audi"
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_move__audi_business_unit
+msgid "Business Unit"
+msgstr "Unidad de negocio"
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_res_partner__l10n_mx_edi_addenda
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_res_users__l10n_mx_edi_addenda
+msgid "CFDI Addenda"
+msgstr "Addenda CFDI"
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_res_partner__l10n_mx_edi_addenda_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_res_users__l10n_mx_edi_addenda_name
+msgid "CFDI Addenda Name"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_move__audi_document_type
+msgid "Document Type"
+msgstr "Tipo de documento"
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_move__audi_fiscal_document_type
+msgid "Fiscal Document Type"
+msgstr "Tipo de documento fiscal"
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,help:l10n_mx_cfdi_account_addenda_audi.field_ir_ui_view__l10n_mx_edi_addenda_flag
+msgid "Technical flag to mark this view as a selectable CFDI addenda."
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,help:l10n_mx_cfdi_account_addenda_audi.field_res_partner__l10n_mx_edi_addenda
+#: model:ir.model.fields,help:l10n_mx_cfdi_account_addenda_audi.field_res_users__l10n_mx_edi_addenda
+msgid "Addenda template to include when generating CFDI for this partner."
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_ir_ui_view__l10n_mx_edi_addenda_flag
+msgid "Is CFDI Addenda"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_res_partner__audi_supplier_email
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_res_users__audi_supplier_email
+msgid "Supplier Email"
+msgstr "Email del proveedor"
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_res_partner__audi_supplier_number
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_res_users__audi_supplier_number
+msgid "Supplier Number"
+msgstr "Número de proveedor"
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_move__audi_tax_code
+msgid "Tax Code"
+msgstr "Código de impuesto"
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model,name:l10n_mx_cfdi_account_addenda_audi.model_account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model,name:l10n_mx_cfdi_account_addenda_audi.model_account_move_line
+msgid "Journal Item"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model,name:l10n_mx_cfdi_account_addenda_audi.model_product_template
+msgid "Product"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model,name:l10n_mx_cfdi_account_addenda_audi.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model,name:l10n_mx_cfdi_account_addenda_audi.model_ir_ui_view
+msgid "View"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model,name:l10n_mx_cfdi_account_addenda_audi.model_l10n_mx_cfdi_cfdi_service
+msgid "CFDI Service Settings"
+msgstr ""
