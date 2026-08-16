@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="l10n_mx_cfdi_account_addenda_kuehne_nagel"
+        name="Addenda Kuehne Nagel"
+    >
+        <kn:KNRECEPCION xmlns:kn="http://www.w3.org/2001/XMLSchema">
+            <kn:Tipo>
+                <kn:FacturasKN>
+                    <kn:Purchase_Order t-out="record.ref or ''" />
+                    <kn:FileNumber_GL t-out="record.kn_file_number_gl or ''" />
+                    <kn:Branch_Centre t-out="record.kn_branch_centre or ''" />
+                    <kn:TransportRef t-out="record.kn_transport_ref or ''" />
+                </kn:FacturasKN>
+            </kn:Tipo>
+        </kn:KNRECEPCION>
+    </template>
+    <record id="l10n_mx_cfdi_account_addenda_kuehne_nagel" model="ir.ui.view">
+        <field name="l10n_mx_edi_addenda_flag" eval="True" />
+    </record>
+</odoo>
