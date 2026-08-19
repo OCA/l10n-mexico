@@ -96,4 +96,88 @@ action = env["l10n_mx.financial.report.wizard"].action_open_wizard("diot")
         action="action_l10n_mx_report_diot"
         sequence="60"
     />
+
+    <!-- Partner-level MIS reports (detail_groupby = partner_id) -->
+    <menuitem
+        id="menu_l10n_mx_report_aged_by_partner"
+        name="Aged by partner"
+        parent="menu_l10n_mx_account_reports_root"
+        sequence="70"
+    />
+    <record
+        id="action_mis_instance_aged_receivable_by_move"
+        model="ir.actions.act_window"
+    >
+        <field name="name">Aged Receivable by partner (by move date)</field>
+        <field name="res_model">mis.report.instance</field>
+        <field name="res_id" ref="mis_instance_aged_receivable_by_move" />
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+    </record>
+    <menuitem
+        id="menu_l10n_mx_report_aged_receivable_by_move"
+        name="Aged Receivable by partner (by move date)"
+        parent="menu_l10n_mx_report_aged_by_partner"
+        action="action_mis_instance_aged_receivable_by_move"
+        sequence="71"
+    />
+    <record
+        id="action_mis_instance_aged_receivable_by_due"
+        model="ir.actions.act_window"
+    >
+        <field name="name">Aged Receivable by partner (by due date)</field>
+        <field name="res_model">mis.report.instance</field>
+        <field name="res_id" ref="mis_instance_aged_receivable_by_due" />
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+    </record>
+    <menuitem
+        id="menu_l10n_mx_report_aged_receivable_by_due"
+        name="Aged Receivable by partner (by due date)"
+        parent="menu_l10n_mx_report_aged_by_partner"
+        action="action_mis_instance_aged_receivable_by_due"
+        sequence="72"
+    />
+    <record id="action_mis_instance_aged_payable_by_move" model="ir.actions.act_window">
+        <field name="name">Aged Payable by partner (by move date)</field>
+        <field name="res_model">mis.report.instance</field>
+        <field name="res_id" ref="mis_instance_aged_payable_by_move" />
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+    </record>
+    <menuitem
+        id="menu_l10n_mx_report_aged_payable_by_move"
+        name="Aged Payable by partner (by move date)"
+        parent="menu_l10n_mx_report_aged_by_partner"
+        action="action_mis_instance_aged_payable_by_move"
+        sequence="73"
+    />
+    <record id="action_mis_instance_aged_payable_by_due" model="ir.actions.act_window">
+        <field name="name">Aged Payable by partner (by due date)</field>
+        <field name="res_model">mis.report.instance</field>
+        <field name="res_id" ref="mis_instance_aged_payable_by_due" />
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+    </record>
+    <menuitem
+        id="menu_l10n_mx_report_aged_payable_by_due"
+        name="Aged Payable by partner (by due date)"
+        parent="menu_l10n_mx_report_aged_by_partner"
+        action="action_mis_instance_aged_payable_by_due"
+        sequence="74"
+    />
+    <record id="action_mis_instance_diot_by_partner" model="ir.actions.act_window">
+        <field name="name">DIOT by partner (previous month)</field>
+        <field name="res_model">mis.report.instance</field>
+        <field name="res_id" ref="mis_instance_diot_by_partner" />
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+    </record>
+    <menuitem
+        id="menu_l10n_mx_report_diot_by_partner"
+        name="DIOT by partner (previous month)"
+        parent="menu_l10n_mx_account_reports_root"
+        action="action_mis_instance_diot_by_partner"
+        sequence="80"
+    />
 </odoo>
