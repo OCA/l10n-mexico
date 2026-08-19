@@ -19,8 +19,37 @@ msgid "'%s - %s' % (object.company_id.name, object.report_type)"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_17
-msgid "ACTIVOS"
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_10
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_15
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_instance_period_ar_mv_0_15
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_instance_period_ar_dd_0_15
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_instance_period_ap_mv_0_15
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_instance_period_ap_dd_0_15
+msgid "0 - 15"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_11
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_16
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_instance_period_ar_mv_16_30
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_instance_period_ar_dd_16_30
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_instance_period_ap_mv_16_30
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_instance_period_ap_dd_16_30
+msgid "16 - 30"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_instance_period_ar_mv_31_45
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_instance_period_ar_dd_31_45
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_instance_period_ap_mv_31_45
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_instance_period_ap_dd_31_45
+msgid "31 - 45"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_12
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_17
+msgid "31 -45"
 msgstr ""
 
 #. module: l10n_mx_account_reports
@@ -36,6 +65,11 @@ msgstr ""
 #. module: l10n_mx_account_reports
 #: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_49
 msgid "Activo a largo plazo"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_17
+msgid "ACTIVOS"
 msgstr ""
 
 #. module: l10n_mx_account_reports
@@ -55,6 +89,26 @@ msgid "Activos circulantes"
 msgstr ""
 
 #. module: l10n_mx_account_reports
+#: model:mis.report,description:l10n_mx_account_reports.mis_report_aged_payable_by_due
+msgid "Aged Account Payable by partner aging on due date"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report,description:l10n_mx_account_reports.mis_report_aged_payable_by_move
+msgid "Aged Account Payable by partner aging on move date"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report,description:l10n_mx_account_reports.mis_report_aged_receivable_by_due
+msgid "Aged Account Receivable by partner aging on due date"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report,description:l10n_mx_account_reports.mis_report_aged_receivable_by_move
+msgid "Aged Account Receivable by partner aging on move date"
+msgstr ""
+
+#. module: l10n_mx_account_reports
 #: model:ir.actions.server,name:l10n_mx_account_reports.action_l10n_mx_report_aged_payable
 #: model:ir.model.fields.selection,name:l10n_mx_account_reports.selection__l10n_mx_financial_report_wizard__report_type__aged_payable
 #: model:ir.ui.menu,name:l10n_mx_account_reports.menu_l10n_mx_report_aged_payable
@@ -66,6 +120,43 @@ msgstr ""
 #: model:ir.model.fields.selection,name:l10n_mx_account_reports.selection__l10n_mx_financial_report_wizard__report_type__aged_receivable
 #: model:ir.ui.menu,name:l10n_mx_account_reports.menu_l10n_mx_report_aged_receivable
 msgid "Aged Accounts Receivable"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.ui.menu,name:l10n_mx_account_reports.menu_l10n_mx_report_aged_by_partner
+msgid "Aged by partner"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.actions.act_window,name:l10n_mx_account_reports.action_mis_instance_aged_payable_by_due
+#: model:ir.ui.menu,name:l10n_mx_account_reports.menu_l10n_mx_report_aged_payable_by_due
+#: model:mis.report,name:l10n_mx_account_reports.mis_report_aged_payable_by_due
+#: model:mis.report.instance,name:l10n_mx_account_reports.mis_instance_aged_payable_by_due
+msgid "Aged Payable by partner (by due date)"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.actions.act_window,name:l10n_mx_account_reports.action_mis_instance_aged_payable_by_move
+#: model:ir.ui.menu,name:l10n_mx_account_reports.menu_l10n_mx_report_aged_payable_by_move
+#: model:mis.report,name:l10n_mx_account_reports.mis_report_aged_payable_by_move
+#: model:mis.report.instance,name:l10n_mx_account_reports.mis_instance_aged_payable_by_move
+msgid "Aged Payable by partner (by move date)"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.actions.act_window,name:l10n_mx_account_reports.action_mis_instance_aged_receivable_by_due
+#: model:ir.ui.menu,name:l10n_mx_account_reports.menu_l10n_mx_report_aged_receivable_by_due
+#: model:mis.report,name:l10n_mx_account_reports.mis_report_aged_receivable_by_due
+#: model:mis.report.instance,name:l10n_mx_account_reports.mis_instance_aged_receivable_by_due
+msgid "Aged Receivable by partner (by due date)"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.actions.act_window,name:l10n_mx_account_reports.action_mis_instance_aged_receivable_by_move
+#: model:ir.ui.menu,name:l10n_mx_account_reports.menu_l10n_mx_report_aged_receivable_by_move
+#: model:mis.report,name:l10n_mx_account_reports.mis_report_aged_receivable_by_move
+#: model:mis.report.instance,name:l10n_mx_account_reports.mis_instance_aged_receivable_by_move
+msgid "Aged Receivable by partner (by move date)"
 msgstr ""
 
 #. module: l10n_mx_account_reports
@@ -113,19 +204,13 @@ msgid "Balanza de comprobación mensual"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_40
-msgid "CAPITAL"
-msgstr ""
-
-#. module: l10n_mx_account_reports
-#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_3
-#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_6
-msgid "COMPARATIVO"
-msgstr ""
-
-#. module: l10n_mx_account_reports
 #: model_terms:ir.ui.view,arch_db:l10n_mx_account_reports.view_l10n_mx_financial_report_wizard_form
 msgid "Cancel"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_40
+msgid "CAPITAL"
 msgstr ""
 
 #. module: l10n_mx_account_reports
@@ -148,6 +233,12 @@ msgstr ""
 #. module: l10n_mx_account_reports
 #: model:ir.model.fields,field_description:l10n_mx_account_reports.field_l10n_mx_financial_report_wizard__company_id
 msgid "Company"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_3
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_6
+msgid "COMPARATIVO"
 msgstr ""
 
 #. module: l10n_mx_account_reports
@@ -208,13 +299,6 @@ msgid "Cuentas por pagar"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:ir.actions.server,name:l10n_mx_account_reports.action_l10n_mx_report_diot
-#: model:ir.model.fields.selection,name:l10n_mx_account_reports.selection__l10n_mx_financial_report_wizard__report_type__diot
-#: model:ir.ui.menu,name:l10n_mx_account_reports.menu_l10n_mx_report_diot
-msgid "DIOT"
-msgstr ""
-
-#. module: l10n_mx_account_reports
 #: model:ir.model.fields,field_description:l10n_mx_account_reports.field_l10n_mx_financial_report_wizard__date_from
 msgid "Date From"
 msgstr ""
@@ -242,6 +326,30 @@ msgstr ""
 #. module: l10n_mx_account_reports
 #: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_66
 msgid "Devoluciones, descuentos o bonificaciones sobre ingresos"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.actions.server,name:l10n_mx_account_reports.action_l10n_mx_report_diot
+#: model:ir.model.fields.selection,name:l10n_mx_account_reports.selection__l10n_mx_financial_report_wizard__report_type__diot
+#: model:ir.ui.menu,name:l10n_mx_account_reports.menu_l10n_mx_report_diot
+msgid "DIOT"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report,name:l10n_mx_account_reports.mis_report_diot
+msgid "DIOT by partner (Operations with third parties)"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:ir.actions.act_window,name:l10n_mx_account_reports.action_mis_instance_diot_by_partner
+#: model:ir.ui.menu,name:l10n_mx_account_reports.menu_l10n_mx_report_diot_by_partner
+#: model:mis.report.instance,name:l10n_mx_account_reports.mis_instance_diot_by_partner
+msgid "DIOT by partner (previous month)"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report,description:l10n_mx_account_reports.mis_report_diot
+msgid "DIOT vendor operations per partner with IVA by rate"
 msgstr ""
 
 #. module: l10n_mx_account_reports
@@ -445,13 +553,11 @@ msgid "Otros ingresos"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_31
-msgid "PASIVOS"
-msgstr ""
-
-#. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_46
-msgid "PASIVOS + CAPITAL"
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_instance_period_ar_mv_overdue
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_instance_period_ar_dd_overdue
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_instance_period_ap_mv_overdue
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_instance_period_ap_dd_overdue
+msgid "Overdue"
 msgstr ""
 
 #. module: l10n_mx_account_reports
@@ -470,6 +576,16 @@ msgid "Pasivo largo plazo"
 msgstr ""
 
 #. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_31
+msgid "PASIVOS"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_46
+msgid "PASIVOS + CAPITAL"
+msgstr ""
+
+#. module: l10n_mx_account_reports
 #: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_38
 msgid "Pasivos adicionales no circulantes"
 msgstr ""
@@ -478,6 +594,12 @@ msgstr ""
 #: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_32
 #: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_33
 msgid "Pasivos circulantes"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_kpi_ap_mv
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_kpi_ap_dd
+msgid "Payable"
 msgstr ""
 
 #. module: l10n_mx_account_reports
@@ -496,6 +618,11 @@ msgid "Prepagos"
 msgstr ""
 
 #. module: l10n_mx_account_reports
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_instance_period_diot
+msgid "Previous month"
+msgstr ""
+
+#. module: l10n_mx_account_reports
 #: model_terms:ir.ui.view,arch_db:l10n_mx_account_reports.view_l10n_mx_financial_report_wizard_form
 msgid "Print PDF"
 msgstr ""
@@ -510,6 +637,12 @@ msgstr ""
 #. module: l10n_mx_account_reports
 #: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_61
 msgid "Proveedores"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_kpi_ar_mv
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_kpi_ar_dd
+msgid "Receivable"
 msgstr ""
 
 #. module: l10n_mx_account_reports
@@ -568,6 +701,14 @@ msgid "The start date must be before the end date."
 msgstr ""
 
 #. module: l10n_mx_account_reports
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_instance_period_ar_mv
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_instance_period_ar_dd
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_instance_period_ap_mv
+#: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_instance_period_ap_dd
+msgid "Today"
+msgstr ""
+
+#. module: l10n_mx_account_reports
 #: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_13
 #: model:mis.report.instance.period,name:l10n_mx_account_reports.mis_report_instance_period_18
 msgid "Total"
@@ -591,6 +732,11 @@ msgstr ""
 #. module: l10n_mx_account_reports
 #: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_23
 msgid "Total Activos circulantes"
+msgstr ""
+
+#. module: l10n_mx_account_reports
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_25
+msgid "Total activos circulantes"
 msgstr ""
 
 #. module: l10n_mx_account_reports
@@ -645,13 +791,13 @@ msgid "Total Ingresos de Operación"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_39
-msgid "Total PASIVOS"
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_34
+msgid "Total Pasivo circulante"
 msgstr ""
 
 #. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_34
-msgid "Total Pasivo circulante"
+#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_39
+msgid "Total PASIVOS"
 msgstr ""
 
 #. module: l10n_mx_account_reports
@@ -662,11 +808,6 @@ msgstr ""
 #. module: l10n_mx_account_reports
 #: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_36
 msgid "Total Por Pagar"
-msgstr ""
-
-#. module: l10n_mx_account_reports
-#: model:mis.report.kpi,description:l10n_mx_account_reports.mis_report_kpi_25
-msgid "Total activos circulantes"
 msgstr ""
 
 #. module: l10n_mx_account_reports

@@ -83,8 +83,8 @@ mis_report_kpi_81,salida_de_efectivo_otro,119,Salida de efectivo,num,pct,sum,,l1
 mis_report_kpi_82,efectivo_y_equivalentes_cierre,120,"Efectivo y equivalentes de efectivo, balance de cierre",num,pct,sum,,l10n_mx_account_reports.mis_report_style_5,l10n_mx_account_reports.mis_report_style_5,,"bale[101%,102%]",True,account_id,l10n_mx_account_reports.mis_report_cash_flow
 mis_report_kpi_83,total_efectivo_y_equivalentes_de_efectivo__balance_de_cierre,121,"Total Efectivo y equivalentes de efectivo, balance de cierre",num,pct,sum,,l10n_mx_account_reports.mis_report_style_2,,,efectivo_y_equivalentes_cierre,,,l10n_mx_account_reports.mis_report_cash_flow
 mis_report_kpi_84,discrepancias_en_efectivo,122,Discrepancias en efectivo,num,pct,sum,,l10n_mx_account_reports.mis_report_style_4,,,efectivo_y_equivalentes_si-efectivo_y_equivalentes_cierre+incremento_neto_de_efectivo_y_de_equivalentes_de_efectivo,,,l10n_mx_account_reports.mis_report_cash_flow
-mis_kpi_ar_mv,ar,10,Receivable,num,diff,sum,TRUE,,,,,,partner_id,l10n_mx_account_reports.mis_report_aged_receivable_by_move
-mis_kpi_ar_dd,ar,10,Receivable,num,diff,sum,TRUE,,,,,,partner_id,l10n_mx_account_reports.mis_report_aged_receivable_by_due
-mis_kpi_ap_mv,ap,10,Payable,num,diff,sum,TRUE,,,,,,partner_id,l10n_mx_account_reports.mis_report_aged_payable_by_move
-mis_kpi_ap_dd,ap,10,Payable,num,diff,sum,TRUE,,,,,,partner_id,l10n_mx_account_reports.mis_report_aged_payable_by_due
+mis_kpi_ar_mv,ar,10,Receivable,num,diff,sum,TRUE,,,,balp[105%],,partner_id,l10n_mx_account_reports.mis_report_aged_receivable_by_move
+mis_kpi_ar_dd,ar,10,Receivable,num,diff,sum,TRUE,,,,balp[105%],,partner_id,l10n_mx_account_reports.mis_report_aged_receivable_by_due
+mis_kpi_ap_mv,ap,10,Payable,num,diff,sum,TRUE,,,,balp[201%],,partner_id,l10n_mx_account_reports.mis_report_aged_payable_by_move
+mis_kpi_ap_dd,ap,10,Payable,num,diff,sum,TRUE,,,,balp[201%],,partner_id,l10n_mx_account_reports.mis_report_aged_payable_by_due
 mis_kpi_diot,diot,10,DIOT,num,diff,sum,TRUE,,,,,,partner_id,l10n_mx_account_reports.mis_report_diot

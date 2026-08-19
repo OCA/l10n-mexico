@@ -97,7 +97,7 @@ action = env["l10n_mx.financial.report.wizard"].action_open_wizard("diot")
         sequence="60"
     />
 
-    <!-- Partner-level MIS reports (detail_groupby = partner_id, PR #817) -->
+    <!-- Partner-level MIS reports (detail_groupby = partner_id) -->
     <menuitem
         id="menu_l10n_mx_report_aged_by_partner"
         name="Aged by partner"
