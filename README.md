@@ -35,6 +35,7 @@ addon | version | maintainers | summary
 [l10n_mx_cfdi_account_addenda_whirlpool](l10n_mx_cfdi_account_addenda_whirlpool/) | 19.0.1.0.0 |  | Mexican Localization Addendum For Whirlpool
 [l10n_mx_cfdi_comex](l10n_mx_cfdi_comex/) | 19.0.1.1.0 |  | Mexico foreign trade invoicing compliance
 [l10n_mx_cfdi_waybill](l10n_mx_cfdi_waybill/) | 19.0.1.1.0 |  | Provee soporte para generación de cartas porte con gestión de flotas simplificada.
+[l10n_mx_res_partner_csf](l10n_mx_res_partner_csf/) | 19.0.1.0.0 |  | Scan and extract information from CSF
 [l10n_mx_sat](l10n_mx_sat/) | 19.0.1.0.0 | <a href='https://github.com/max3903'><img src='https://github.com/max3903.png' width='32' height='32' style='border-radius:50%;' alt='max3903'/></a> | Connect to the SAT portal using FIEL credentials & manage downloads
 [l10n_mx_sat_vendor_bill](l10n_mx_sat_vendor_bill/) | 19.0.1.0.0 | <a href='https://github.com/max3903'><img src='https://github.com/max3903.png' width='32' height='32' style='border-radius:50%;' alt='max3903'/></a> | Create vendor bills from SAT received CFDIs
 
