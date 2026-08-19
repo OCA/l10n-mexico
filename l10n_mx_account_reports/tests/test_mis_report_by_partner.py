@@ -14,9 +14,9 @@ class TestMisReportByPartner(common.L10nMxReportsTestCase):
     (OCA/mis-builder#817), not yet merged upstream. When the installed
     ``mis_builder`` does not provide the ``detail_groupby`` field, module
     install fails on the CSV column, so these tests skip if the field is
-    missing. Aging buckets are MIS instance periods (Overdue / 0-15 /
-    16-30 / 31-45), matching the live Mexican chart expressions ``balp[105%]``
-    and ``balp[201%]``.
+    missing. Aging buckets are MIS instance periods (Today / Saldo vencido /
+    0-30 / 31-60 / 61-90 / 91-120 / +120), matching the live Mexican chart
+    expressions ``balp[105%]`` and ``balp[201%]``.
     """
 
     def setUp(self):
