@@ -1,0 +1,6 @@
+<odoo noupdate="1">
+    <record id="demo_vehicle_trailer" model="l10n_mx_cfdi_waybill.vehicle_trailer">
+        <field name="plate">TRL-DEMO-01</field>
+        <field name="type" ref="l10n_mx_catalogs.c_sub_tipo_rem_CTR002" />
+    </record>
+</odoo>

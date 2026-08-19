@@ -1,0 +1,10 @@
+<odoo noupdate="1">
+    <record id="demo_waybill" model="l10n_mx_cfdi_waybill.waybill">
+        <field name="type">T</field>
+        <field name="issuer_id" ref="l10n_mx_cfdi.demo_cfdi_issuer" />
+        <field name="receiver_id" ref="l10n_mx_cfdi.demo_cfdi_issuer_partner" />
+        <field name="federal_highway_use" eval="True" />
+        <field name="vehicle_id" ref="demo_vehicle" />
+        <field name="transporter_ids" eval="[(4, ref('demo_transporter'))]" />
+    </record>
+</odoo>

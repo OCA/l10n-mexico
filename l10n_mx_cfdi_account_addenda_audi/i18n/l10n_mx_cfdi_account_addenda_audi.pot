@@ -1,0 +1,125 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_mx_cfdi_account_addenda_audi
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_bank_statement_line__audi_applicant_email
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_move__audi_applicant_email
+msgid "Applicant email"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_bank_statement_line__audi_flag
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_move__audi_flag
+msgid "Audi Flag"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_move_line__audi_product_ref
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account_addenda_audi.view_product_template_form_inherit_addenda_audi
+msgid "Audi Product Reference"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_bank_statement_line__audi_business_unit
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_move__audi_business_unit
+msgid "Business Unit"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model,name:l10n_mx_cfdi_account_addenda_audi.model_l10n_mx_cfdi_cfdi_service
+msgid "CFDI Service Settings"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model,name:l10n_mx_cfdi_account_addenda_audi.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_move__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_move_line__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_l10n_mx_cfdi_cfdi_service__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_product_template__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_res_partner__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_bank_statement_line__audi_document_type
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_move__audi_document_type
+msgid "Document Type"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_account_addenda_audi/models/cfdi_service.py:0
+msgid "Failed to attach addenda to the CFDI: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_bank_statement_line__audi_fiscal_document_type
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_move__audi_fiscal_document_type
+msgid "Fiscal Document Type"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_move__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_move_line__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_l10n_mx_cfdi_cfdi_service__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_product_template__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_res_partner__id
+msgid "ID"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model,name:l10n_mx_cfdi_account_addenda_audi.model_account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model,name:l10n_mx_cfdi_account_addenda_audi.model_account_move_line
+msgid "Journal Item"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model,name:l10n_mx_cfdi_account_addenda_audi.model_product_template
+msgid "Product"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_product_product__audi_ref
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_product_template__audi_ref
+msgid "Product Reference"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_l10n_mx_cfdi_issuer__audi_supplier_email
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_res_partner__audi_supplier_email
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_res_users__audi_supplier_email
+msgid "Supplier Email"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_l10n_mx_cfdi_issuer__audi_supplier_number
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_res_partner__audi_supplier_number
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_res_users__audi_supplier_number
+msgid "Supplier Number"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_audi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_bank_statement_line__audi_tax_code
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_audi.field_account_move__audi_tax_code
+msgid "Tax Code"
+msgstr ""

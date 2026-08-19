@@ -1,0 +1,10 @@
+<odoo noupdate="1">
+    <record id="demo_transporter" model="l10n_mx_cfdi_waybill.transporter">
+        <field name="partner_id" ref="demo_driver_partner" />
+        <field name="type" ref="l10n_mx_catalogs.c_figura_transporte_1" />
+        <field
+            name="parte_transporte_ids"
+            eval="[(4, ref('l10n_mx_catalogs.c_parte_transporte_PT01'))]"
+        />
+    </record>
+</odoo>

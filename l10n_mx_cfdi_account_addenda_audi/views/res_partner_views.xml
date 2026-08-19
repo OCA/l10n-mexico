@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_res_partner_form_inherit_addenda_audi" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.addenda.audi</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="l10n_mx_cfdi_account.view_partner_form_addenda" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='l10n_mx_edi_addenda_doc']" position="after">
+                <field
+                    name="audi_supplier_email"
+                    invisible="l10n_mx_edi_addenda_name != 'Addenda Audi'"
+                />
+                <field
+                    name="audi_supplier_number"
+                    invisible="l10n_mx_edi_addenda_name != 'Addenda Audi'"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -14,8 +14,148 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: l10n_mx_cfdi_comex
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_comex/models/account_move.py:0
+msgid "- At least one product line is required for CCE."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_comex/models/account_move.py:0
+msgid "- Clave de pedimento is required for CCE."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_comex/models/account_move.py:0
+msgid "- Incoterm is required for CCE (set it on the invoice Other Info tab)."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_comex/models/account_move.py:0
+msgid "- Issuer CCE address: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_comex/models/account_move.py:0
+msgid "- Issuer is required for CCE."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_comex/models/account_move.py:0
+msgid "- Line %s: Valor dólares is required for CCE."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_comex/models/account_move.py:0
+msgid ""
+"- Line %s: set a product Internal Reference or No identificación for CCE."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_comex/models/account_move.py:0
+msgid ""
+"- Line %s: tariff code (fracción arancelaria) is required on the product."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_comex/models/account_move.py:0
+msgid ""
+"- Número certificado de origen is required when Certificado de origen is set"
+" to 1."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_comex/models/account_move.py:0
+msgid "- Receptor CCE address: %s"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_comex/models/account_move.py:0
+msgid "- Receptor is required for CCE."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_comex/models/account_move.py:0
+msgid "- Tipo cambio USD is required for CCE."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_comex/models/account_move.py:0
+msgid ""
+"- Total USD must be greater than zero (set Valor dólares on invoice lines)."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_comex.selection__account_move__l10n_mx_cfdi_cce_certificado_origen__1
+msgid "Acts as certificate of origin"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_l10n_mx_cfdi_pedimento__customs_id
 msgid "Aduana"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,help:l10n_mx_cfdi_comex.field_account_move_line__l10n_mx_cfdi_cce_no_identificacion
+msgid ""
+"CCE NoIdentificacion. Defaults to the product Internal Reference when empty."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_comex.view_move_form_comex_cce
+msgid "COMEX / CCE"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_comex/models/account_move.py:0
+msgid ""
+"Cannot build Comercio Exterior complement:\n"
+"%s"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_move_line__l10n_mx_cfdi_cce_cantidad_aduana
+msgid "Cantidad aduana"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_bank_statement_line__l10n_mx_cfdi_cce_certificado_origen
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_move__l10n_mx_cfdi_cce_certificado_origen
+msgid "Certificado de origen"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_comex.view_move_form_comex_cce
+msgid "Certificate / Notes"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_bank_statement_line__l10n_mx_cfdi_cce_clave_pedimento
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_move__l10n_mx_cfdi_cce_clave_pedimento
+msgid "Clave de pedimento"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_comex.view_move_form_comex_cce
+msgid "Comercio Exterior"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_bank_statement_line__l10n_mx_cfdi_cce_enabled
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_move__l10n_mx_cfdi_cce_enabled
+msgid "Comercio Exterior (CCE)"
 msgstr ""
 
 #. module: l10n_mx_cfdi_comex
@@ -29,6 +169,18 @@ msgid "Created on"
 msgstr ""
 
 #. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,help:l10n_mx_cfdi_comex.field_account_move_line__l10n_mx_cfdi_cce_cantidad_aduana
+msgid "Customs quantity (CCE CantidadAduana). Defaults to invoice quantity."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_bank_statement_line__l10n_mx_cfdi_cce_destinatario_id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_move__l10n_mx_cfdi_cce_destinatario_id
+msgid "Destinatario CCE"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_move__display_name
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_move_line__display_name
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_l10n_mx_cfdi_pedimento__display_name
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_product_template__display_name
@@ -38,8 +190,21 @@ msgid "Display Name"
 msgstr ""
 
 #. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_comex.selection__account_move__l10n_mx_cfdi_cce_certificado_origen__0
+msgid "Does not act as certificate of origin"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
 #: model:ir.model.constraint,message:l10n_mx_cfdi_comex.constraint_l10n_mx_cfdi_pedimento_number_unique
 msgid "El número de pedimento ya existe."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,help:l10n_mx_cfdi_comex.field_account_bank_statement_line__l10n_mx_cfdi_cce_enabled
+#: model:ir.model.fields,help:l10n_mx_cfdi_comex.field_account_move__l10n_mx_cfdi_cce_enabled
+msgid ""
+"Enable Complemento Comercio Exterior 2.0 on this invoice. Sets "
+"Exportacion=02 and attaches the CCE complement."
 msgstr ""
 
 #. module: l10n_mx_cfdi_comex
@@ -48,6 +213,7 @@ msgid "Fecha"
 msgstr ""
 
 #. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_move__id
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_move_line__id
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_l10n_mx_cfdi_pedimento__id
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_product_template__id
@@ -69,6 +235,11 @@ msgstr ""
 #. module: l10n_mx_cfdi_comex
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_move_line__l10n_mx_cfid_import_details_required
 msgid "Import details required"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model,name:l10n_mx_cfdi_comex.model_account_move
+msgid "Journal Entry"
 msgstr ""
 
 #. module: l10n_mx_cfdi_comex
@@ -98,13 +269,63 @@ msgid "Lotes"
 msgstr ""
 
 #. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,help:l10n_mx_cfdi_comex.field_account_bank_statement_line__l10n_mx_cfdi_cce_tipo_cambio_usd
+#: model:ir.model.fields,help:l10n_mx_cfdi_comex.field_account_move__l10n_mx_cfdi_cce_tipo_cambio_usd
+msgid ""
+"MXN per 1 USD (SAT TipoCambioUSD). Prefer Banxico rate for the invoice date."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_bank_statement_line__l10n_mx_cfdi_cce_motivo_traslado
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_move__l10n_mx_cfdi_cce_motivo_traslado
+msgid "Motivo de traslado"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_comex/models/account_move.py:0
+msgid "No SAT country code found for partner %s."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_move_line__l10n_mx_cfdi_cce_no_identificacion
+msgid "No identificación CCE"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_l10n_mx_cfdi_pedimento__name
 msgid "Nombre"
 msgstr ""
 
 #. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_bank_statement_line__l10n_mx_cfdi_cce_num_certificado_origen
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_move__l10n_mx_cfdi_cce_num_certificado_origen
+msgid "Número certificado de origen"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_l10n_mx_cfdi_pedimento__number
 msgid "Número de Pedimento"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_bank_statement_line__l10n_mx_cfdi_cce_numero_exportador_confiable
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_move__l10n_mx_cfdi_cce_numero_exportador_confiable
+msgid "Número exportador confiable"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_bank_statement_line__l10n_mx_cfdi_cce_observaciones
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_move__l10n_mx_cfdi_cce_observaciones
+msgid "Observaciones CCE"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,help:l10n_mx_cfdi_comex.field_account_bank_statement_line__l10n_mx_cfdi_cce_destinatario_id
+#: model:ir.model.fields,help:l10n_mx_cfdi_comex.field_account_move__l10n_mx_cfdi_cce_destinatario_id
+msgid ""
+"Optional goods recipient when different from the CFDI receptor. Address is "
+"taken from the partner."
 msgstr ""
 
 #. module: l10n_mx_cfdi_comex
@@ -146,8 +367,37 @@ msgid "Product"
 msgstr ""
 
 #. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,help:l10n_mx_cfdi_comex.field_account_bank_statement_line__l10n_mx_cfdi_cce_clave_pedimento
+#: model:ir.model.fields,help:l10n_mx_cfdi_comex.field_account_move__l10n_mx_cfdi_cce_clave_pedimento
+msgid "SAT c_ClavePedimento code (e.g. A1 for definitive export)."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,help:l10n_mx_cfdi_comex.field_account_bank_statement_line__l10n_mx_cfdi_cce_motivo_traslado
+#: model:ir.model.fields,help:l10n_mx_cfdi_comex.field_account_move__l10n_mx_cfdi_cce_motivo_traslado
+msgid "SAT c_MotivoTraslado when applicable."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,help:l10n_mx_cfdi_comex.field_account_move_line__l10n_mx_cfdi_cce_unidad_aduana
+msgid "SAT c_UnidadAduana code (e.g. 01 = Kg, 06 = Piece)."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_comex/models/account_move.py:0
+msgid "State (Estado) is required on partner %s for CCE domicilio."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
 #: model:ir.model,name:l10n_mx_cfdi_comex.model_stock_landed_cost
 msgid "Stock Landed Cost"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_comex/models/account_move.py:0
+msgid "Street is required on partner %s for CCE domicilio."
 msgstr ""
 
 #. module: l10n_mx_cfdi_comex
@@ -162,6 +412,49 @@ msgstr ""
 msgid ""
 "Tariff code for product template according to the SAT catalog for Mexican "
 "regulations compliance."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_bank_statement_line__l10n_mx_cfdi_cce_tipo_cambio_usd
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_move__l10n_mx_cfdi_cce_tipo_cambio_usd
+msgid "Tipo cambio USD"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_bank_statement_line__l10n_mx_cfdi_cce_total_usd
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_move__l10n_mx_cfdi_cce_total_usd
+msgid "Total USD"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,help:l10n_mx_cfdi_comex.field_account_move_line__l10n_mx_cfdi_cce_valor_dolares
+msgid "Total value in USD for this line (CCE ValorDolares)."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_move_line__l10n_mx_cfdi_cce_unidad_aduana
+msgid "Unidad aduana"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,help:l10n_mx_cfdi_comex.field_account_move_line__l10n_mx_cfdi_cce_valor_unitario_aduana
+msgid "Unit customs value in USD (CCE ValorUnitarioAduana)."
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_move_line__l10n_mx_cfdi_cce_valor_dolares
+msgid "Valor dólares"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_comex.field_account_move_line__l10n_mx_cfdi_cce_valor_unitario_aduana
+msgid "Valor unitario aduana"
+msgstr ""
+
+#. module: l10n_mx_cfdi_comex
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_comex/models/account_move.py:0
+msgid "ZIP / Código postal is required on partner %s for CCE."
 msgstr ""
 
 #. module: l10n_mx_cfdi_comex

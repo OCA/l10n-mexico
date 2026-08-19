@@ -1,0 +1,10 @@
+<odoo noupdate="1">
+    <record id="demo_stock_lot" model="stock.lot">
+        <field name="name">DEMO-LOT-001</field>
+        <field
+            name="product_id"
+            eval="obj().env.ref('l10n_mx_cfdi_comex.demo_cfdi_comex_product').product_variant_id.id"
+        />
+        <field name="l10n_mx_cfdi_pedimento_id" ref="demo_pedimento" />
+    </record>
+</odoo>

@@ -1,22 +1,40 @@
 from base64 import b64encode
 
+# Normalized create_cfdi() result used by tests that mock the PAC boundary.
 ACTIVE_CFDI_RESPONSE = {
-    "Status": "active",
-    "Id": "tracking-123",
-    "Date": "2024-01-01T12:00:00",
-    "CertNumber": "CERT123",
-    "OriginalString": "original-string",
-    "Total": "100.00",
-    "Taxes": [{"Name": "IVA"}, {"Name": "ISR"}],
-    "Complement": {
-        "TaxStamp": {
-            "Uuid": "11111111-1111-1111-1111-111111111111",
-            "CfdiSign": "A" * 100,
-            "SatSign": "sat-sign",
-            "SatCertNumber": "SATCERT",
-            "RfcProvCertif": "RFC123456",
-            "Date": "2024-01-01T13:00:00",
-        }
+    "status": "published",
+    "uuid": "11111111-1111-1111-1111-111111111111",
+    "tracking_id": "tracking-123",
+    "xml": (
+        b'<?xml version="1.0" encoding="UTF-8"?>'
+        b'<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" '
+        b'Total="100.00" NoCertificado="CERT123" '
+        b'Fecha="2024-01-01T12:00:00" Sello="' + b"A" * 100 + b'">'
+        b"<cfdi:Complemento>"
+        b"<tfd:TimbreFiscalDigital "
+        b'xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" '
+        b'UUID="11111111-1111-1111-1111-111111111111" '
+        b'SelloSAT="sat-sign" NoCertificadoSAT="SATCERT" '
+        b'RfcProvCertif="RFC123456" FechaTimbrado="2024-01-01T13:00:00"/>'
+        b"</cfdi:Complemento></cfdi:Comprobante>"
+    ),
+    "pdf": None,
+    "stamp_meta": {
+        "Date": "2024-01-01T12:00:00",
+        "CertNumber": "CERT123",
+        "OriginalString": "original-string",
+        "Total": "100.00",
+        "Taxes": [{"Name": "IVA"}, {"Name": "ISR"}],
+        "Complement": {
+            "TaxStamp": {
+                "Uuid": "11111111-1111-1111-1111-111111111111",
+                "CfdiSign": "A" * 100,
+                "SatSign": "sat-sign",
+                "SatCertNumber": "SATCERT",
+                "RfcProvCertif": "RFC123456",
+                "Date": "2024-01-01T13:00:00",
+            }
+        },
     },
 }
 
@@ -27,6 +45,7 @@ class CFDITestMixin:
         return cls.env["l10n_mx_cfdi.cfdi_service"].create(
             {
                 "name": "Test service",
+                "provider": "finkok",
                 "user": "test_user",
                 "password": "test_password",
                 "sandbox_mode": True,
@@ -59,13 +78,14 @@ class CFDITestMixin:
             }
         )
 
-    def _create_document(self, **extra):
+    @classmethod
+    def _create_document(cls, **extra):
         vals = {
-            "issuer_id": self.issuer.id,
-            "receiver_id": self.partner.id,
+            "issuer_id": cls.issuer.id,
+            "receiver_id": cls.partner.id,
             "type": "I",
             "serie": "A",
             "folio": "1",
         }
         vals.update(extra)
-        return self.env["l10n_mx_cfdi.document"].create(vals)
+        return cls.env["l10n_mx_cfdi.document"].create(vals)

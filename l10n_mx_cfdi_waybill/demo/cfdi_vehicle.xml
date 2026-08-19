@@ -1,0 +1,14 @@
+<odoo noupdate="1">
+    <record id="demo_vehicle" model="l10n_mx_cfdi_waybill.vehicle">
+        <field name="name">Demo Truck</field>
+        <field name="plate">ABC-123-D</field>
+        <field name="model">2022</field>
+        <field name="vehicle_setup" ref="l10n_mx_catalogs.c_config_autotransporte_C2" />
+        <field name="gross_vehicle_weight">3500.0</field>
+        <field name="permit_type" ref="l10n_mx_catalogs.c_tipo_perm_TPAF02" />
+        <field name="permit_number">PERM-DEMO-001</field>
+        <field name="insurance_company" ref="demo_insurer_partner" />
+        <field name="insurance_number">POL-DEMO-001</field>
+        <field name="trailers" eval="[(4, ref('demo_vehicle_trailer'))]" />
+    </record>
+</odoo>

@@ -4,6 +4,7 @@ from . import test_account_move_reversal
 from . import test_account_partial_reconcile
 from . import test_account_payment
 from . import test_account_tax
+from . import test_addenda
 from . import test_cfdi_document_account
 from . import test_download_cfdi_files_wizard
 from . import test_wizards

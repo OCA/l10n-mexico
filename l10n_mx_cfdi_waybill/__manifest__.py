@@ -9,7 +9,7 @@
     "website": "https://github.com/OCA/l10n-mexico",
     "license": "LGPL-3",
     "category": "Stock",
-    "version": "19.0.1.0.0",
+    "version": "19.0.1.1.0",
     "depends": [
         "base",
         "base_geolocalize",
@@ -28,5 +28,14 @@
         "views/stock_location_form_inherit.xml",
         "views/product_template.xml",
         "reports/waybill_report.xml",
+    ],
+    "demo": [
+        "demo/res_partner.xml",
+        "demo/product_template.xml",
+        "demo/cfdi_transporter.xml",
+        "demo/cfdi_vehicle_trailer.xml",
+        "demo/cfdi_vehicle.xml",
+        "demo/waybill.xml",
+        "demo/waybill_entry.xml",
     ],
 }

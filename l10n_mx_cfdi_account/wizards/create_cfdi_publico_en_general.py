@@ -2,6 +2,8 @@ from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 from odoo.tools.safe_eval import datetime
 
+from odoo.addons.l10n_mx_cfdi.services import cfdi_builder
+
 
 class CFDIGenericInvoiceCreate(models.TransientModel):
     _name = "l10n_mx_cfdi_account.generic_invoice_create"
@@ -136,30 +138,32 @@ class CFDIGenericInvoiceCreate(models.TransientModel):
                 all_items_data.extend(items_data)
             currency = self.move_ids[0].currency_id
 
-            cfdi_data = {
-                "Currency": currency[0].name,
-                "ExpeditionPlace": self.issuer_id.zip,
-                "CfdiType": "I",
-                "Date": self.move_ids._format_cfdi_date_str(self.date),
-                "PaymentForm": self.payment_form_id.code,
-                "PaymentMethod": self.payment_method_id.code,
-                "GlobalInformation": {
-                    "Periodicity": self.periodicity_id.code,
-                    "Months": self.meses_id.code,
-                    "Year": self.year,
-                },
-                "Receiver": {
+            cfdi = cfdi_builder.build_comprobante(
+                issuer=self.issuer_id,
+                receiver={
                     "Name": receiver.name,
                     "Rfc": receiver.vat,
                     "CfdiUse": self.cfdi_use_id.code,
                     "FiscalRegime": receiver.tax_regime.code,
                     "TaxZipCode": self.issuer_id.zip,
                 },
-                "Items": all_items_data,
-            }
+                conceptos=all_items_data,
+                tipo_de_comprobante="I",
+                lugar_expedicion=self.issuer_id.zip,
+                moneda=currency[0].name,
+                serie=cert.serie,
+                folio=cert.folio,
+                forma_pago=self.payment_form_id.code,
+                metodo_pago=self.payment_method_id.code,
+                fecha=self.move_ids._format_cfdi_date_str(self.date),
+                informacion_global={
+                    "Periodicity": self.periodicity_id.code,
+                    "Months": self.meses_id.code,
+                    "Year": self.year,
+                },
+            )
 
-            cert.publish(cfdi_data)
-
+            cert.publish(cfdi)
             for invoice in self.move_ids:
                 invoice.related_cert_ids = [(4, cert.id)]
 

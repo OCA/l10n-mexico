@@ -1,0 +1,19 @@
+<odoo noupdate="1">
+    <record id="demo_cfdi_comex_product" model="product.template">
+        <field name="name">Demo Comex Product</field>
+        <field name="list_price">250.0</field>
+        <field name="type">consu</field>
+        <field
+            name="l10n_mx_cfdi_product_code_id"
+            ref="l10n_mx_catalogs.c_clave_prod_serv_01010101"
+        />
+        <field
+            name="l10n_mx_cfdi_product_measurement_unit_id"
+            ref="l10n_mx_catalogs.c_clave_unidad_H87"
+        />
+        <field
+            name="l10n_mx_cfdi_tariff_code"
+            ref="l10n_mx_catalogs_comex.c_fraccion_0101210100"
+        />
+    </record>
+</odoo>

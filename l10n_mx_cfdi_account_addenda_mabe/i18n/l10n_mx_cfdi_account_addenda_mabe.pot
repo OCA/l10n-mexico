@@ -1,0 +1,864 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_mx_cfdi_account_addenda_mabe
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_mabe.field_account_bank_statement_line__mabe_amount_with_letter
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_mabe.field_account_move__mabe_amount_with_letter
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account_addenda_mabe.view_account_move_form_inherit_addenda_mabe
+msgid "Amount with letter"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model,name:l10n_mx_cfdi_account_addenda_mabe.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_mabe.field_account_move__display_name
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_mabe.field_res_partner__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_mabe.field_account_move__id
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_mabe.field_res_partner__id
+msgid "ID"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model,name:l10n_mx_cfdi_account_addenda_mabe.model_account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account_addenda_mabe.view_account_move_form_inherit_addenda_mabe
+msgid "Mabe Addenda"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_mabe.field_account_bank_statement_line__mabe_flag
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_mabe.field_account_move__mabe_flag
+msgid "Mabe Flag"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_mabe.field_l10n_mx_cfdi_issuer__mabe_plant_code
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_mabe.field_res_partner__mabe_plant_code
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_mabe.field_res_users__mabe_plant_code
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account_addenda_mabe.view_res_partner_form_inherit_addenda_mabe
+msgid "Mabe Plant Code"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_mabe.field_account_bank_statement_line__mabe_ref1
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_mabe.field_account_move__mabe_ref1
+msgid "Mabe Reference 1"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_mabe.field_account_bank_statement_line__mabe_ref2
+#: model:ir.model.fields,field_description:l10n_mx_cfdi_account_addenda_mabe.field_account_move__mabe_ref2
+msgid "Mabe Reference 2"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account_addenda_mabe.view_account_move_form_inherit_addenda_mabe
+msgid "Reference 1"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account_addenda_mabe.view_account_move_form_inherit_addenda_mabe
+msgid "Reference 2"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__a002
+msgid "[A002] - MABE SA CENTRAL"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__a003
+msgid "[A003] - TI"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__a004
+msgid "[A004] - CSC FINANZAS"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__a006
+msgid "[A006] - CORPORATIVO TYP"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__a055
+msgid "[A055] - CONTROLADORA HOLDING"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__a067
+msgid "[A067] - CORPORATIVO DE MATERIALES"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__a068
+msgid "[A068] - CSC INDUSTRIAL"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__c003
+msgid "[C003] - COMPONENTES PLASTICOS"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__c004
+msgid "[C004] - COMPONENTES TROQUELES"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__c005
+msgid "[C005] - COMPRESORES SAN LUIS POTOSI"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__c008
+msgid "[C008] - LEISER QUERETARO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__c009
+msgid "[C009] - COMPONENTES PLASTICOS CELAYA"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__c013
+msgid "[C013] - SLC MPT ELECTRONICA"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__c014
+msgid "[C014] - SLC MPT ELECTRONICA"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__d004
+msgid "[D004] - CDR Huehuetoca"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__d005
+msgid "[D005] - CDR Guadalajara"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__d006
+msgid "[D006] - CDR Monterrey"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__d007
+msgid "[D007] - Ing Militares"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__d008
+msgid "[D008] - BIN Querétaro 1"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__d009
+msgid "[D009] - BPI MABE SA"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__d010
+msgid "[D010] - Virtual Celaya"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__d011
+msgid "[D011] - Virtual SLP"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__d012
+msgid "[D012] - BIN Monterrey"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__d013
+msgid "[D013] - BIN Saltillo Lavadoras"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__d014
+msgid "[D014] - Virtual Saltillo"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__d015
+msgid "[D015] - Cross Dock Villahermosa"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__d016
+msgid "[D016] - Cross Dock Chihuhua"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__d019
+msgid "[D019] - Cross Dock Chihuhua"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__d021
+msgid "[D021] - Cross Dock Mérida"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__d022
+msgid "[D022] - Cross Dock Mexicali"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__d023
+msgid "[D023] - Gto.Corp.Comercial"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__d024
+msgid "[D024] - Cross Dock Culiacan"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__d025
+msgid "[D025] - Cross Dock Veracruz"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__d026
+msgid "[D026] - Mabe Internacional"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__d121
+msgid "[D121] - CDR SAN LUIS POTOSI"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__d128
+msgid "[D128] - EXPORTACION CEAM"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__d161
+msgid "[D161] - CDR AF SAN LUIS POTOSI"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__d165
+msgid "[D165] - CDR TLAQUEPAQUE"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q100
+msgid "[Q100] - MABE INTEGRA"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q101
+msgid "[Q101] - MI-CDR HUEHUETOCA"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q106
+msgid "[Q106] - MI- ESTUFAS SAN LUIS POTOSI"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q109
+msgid "[Q109] - MI-ADR MEXICO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q143
+msgid "[Q143] - MI- MABE SA CENTRAL"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q146
+msgid "[Q146] - MI- REFRIGERADORES CELAYA"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q149
+msgid "[Q149] - MI- COMPONENTES QUERETARO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q151
+msgid "[Q151] - MI- LAVADORAS SALTILLO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q155
+msgid "[Q155] - MI- MCM AMERICAS"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q157
+msgid "[Q157] - MI_CORPORATIVO DE MATERIALES"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q159
+msgid "[Q159] - MI- TYP"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q160
+msgid "[Q160] - MI- PYMES"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q161
+msgid "[Q161] - MI-MPT"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q200
+msgid "[Q200] - MABESUD"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q201
+msgid "[Q201] - MS-CDR HUEHUETOCA"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q206
+msgid "[Q206] - MS- ESTUFAS SAN LUIS POTOSI"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q209
+msgid "[Q209] - MS-ADR MEXICO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q243
+msgid "[Q243] - MS- MABE SA CENTRAL"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q245
+msgid "[Q245] - MS- REFRIGERADORES CELAYA"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q248
+msgid "[Q248] - MS- COMPONENTES QUERETARO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q250
+msgid "[Q250] - MS- LAVADORAS SALTILLO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q254
+msgid "[Q254] - MS- MCM AMERICAS"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q256
+msgid "[Q256] - MS_CORPORATIVO DE MATERIALES"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q258
+msgid "[Q258] - MS- TYP"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q259
+msgid "[Q259] - MS-MPT"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q300
+msgid "[Q300] - SERVEJ"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q301
+msgid "[Q301] - SV-COMERCIAL"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q303
+msgid "[Q303] - SV-MABE SA CENTRAL"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q306
+msgid "[Q306] - SV-ESTUFAS SLP"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q309
+msgid "[Q309] - SV-REFRIGERADORES CLYA"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q312
+msgid "[Q312] - SV-COMPONENTES QRO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q314
+msgid "[Q314] - SV-MCM AMERICAS"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q315
+msgid "[Q315] - SV-LAVADORAS SALTILLO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q318
+msgid "[Q318] - SV-SERVIPLUS"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q328
+msgid "[Q328] - SV-TYP"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q329
+msgid "[Q329] - SV-PYMES"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q330
+msgid "[Q330] - SV-CORPORATIVO DE MATERIALES"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q332
+msgid "[Q332] - SV - MPT"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q400
+msgid "[Q400] - MABE UNE"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q401
+msgid "[Q401] - MABE UNE-CDR HUEHUETOCA"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q406
+msgid "[Q406] - MABE UNE- ESTUFAS SAN LUIS POTOSI"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q409
+msgid "[Q409] - MABE UNE- ADR MEXICO DF"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q443
+msgid "[Q443] - MABE UNE- MABE SA CENTRAL"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q446
+msgid "[Q446] - MABE UNE- REFRIGERADORES CELAYA"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q449
+msgid "[Q449] - MABE UNE- COMPONENTES QRO PLASTICOS"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q451
+msgid "[Q451] - MABE UNE- LAVADORAS SALTILLO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q455
+msgid "[Q455] - MABE UNE- MCM AMERICAS"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q457
+msgid "[Q457] - MABE UNE- CORPORATIVO DE MATERIALES"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q459
+msgid "[Q459] - MABE UNE- TYP"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q460
+msgid "[Q460] - MABE UNE- PYMES"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q461
+msgid "[Q461] - MABE UNE-MPT"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q462
+msgid "[Q462] - MABE UNE-SERVIPLUS CEAM"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q901
+msgid "[Q901] - CMABEID-ESTUFAS SLP"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q902
+msgid "[Q902] - CMABEID- IKDS LEISER"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q903
+msgid "[Q903] - CMABEID- LEISER SLP ESTUFAS 20\" & 24\""
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q904
+msgid "[Q904] - CMABEID-REFRIG. CLYA"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q905
+msgid "[Q905] - CMABEID- LEISER REGRIGERAD CEL PT QC"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q906
+msgid "[Q906] - CMABEID- LEISER CLY ANDROMEDA"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q907
+msgid "[Q907] - CMABEID- TARJETAS ELECTRÓNICAS QRO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q908
+msgid "[Q908] - CMABEID-LAVADORAS SALTILLO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q909
+msgid "[Q909] - CMABEID-SECADORAS SALTILLO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q910
+msgid "[Q910] - CMABEID-TRANSMISIONES SALTILLO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q911
+msgid "[Q911] - CMABEID-CENTROS DE LAVADO SALTILLO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q912
+msgid "[Q912] - CMABEID-PLASTICOS QRO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q913
+msgid "[Q913] - CMABEID-COOK TOPS QRO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q914
+msgid "[Q914] - CMABEID-TROQUELADOS QRO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q915
+msgid "[Q915] - CMABEID-COMPRESORES SLP"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__q916
+msgid "[Q916] - CMABEID- COMPONENTES MOTORES"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__r001
+msgid "[R001] - PLANTA CELAYA"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__r002
+msgid "[R002] - SLC - GO - GLOBAL"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__r007
+msgid "[R007] - REFACCIONES CEL"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__r008
+msgid "[R008] - REFRIGERADORES CEL PT QC"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__s001
+msgid "[S001] - ESTUFAS 30\""
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__s002
+msgid "[S002] - GO GLOBAL SLP"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__s004
+msgid "[S004] - FARGOS SLP"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__s005
+msgid "[S005] - IKDS"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__s006
+msgid "[S006] - ESTUFAS 20\" & 24\""
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t102
+msgid "[T102] - ADR MEXICO DF"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t103
+msgid "[T103] - MODULO MEXICO METRO NORTE"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t104
+msgid "[T104] - MODULO ACAPULCO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t105
+msgid "[T105] - MODULO PUEBLA"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t106
+msgid "[T106] - MODULO MEXICO METRO ORIENTE"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t107
+msgid "[T107] - MODULO QUERETARO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t108
+msgid "[T108] - MODULO VERACRUZ"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t109
+msgid "[T109] - MODULO MERIDA"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t110
+msgid "[T110] - MODULO VILLAHERMOSA"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t111
+msgid "[T111] - MODULO CANCUN"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t112
+msgid "[T112] - ADR MONTERREY"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t113
+msgid "[T113] - MODULO MONTERREY"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t114
+msgid "[T114] - MODULO CD JUAREZ"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t115
+msgid "[T115] - MODULO CHIHUAHUA"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t116
+msgid "[T116] - MODULO TORREON"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t117
+msgid "[T117] - MODULO MEXICO METRO SUR"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t118
+msgid "[T118] - MODULO TAMPICO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t119
+msgid "[T119] - MODULO MONTERREY SUR"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t120
+msgid "[T120] - MODULO REYNOSA"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t121
+msgid "[T121] - MODULO MATAMOROS"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t122
+msgid "[T122] - MODULO CD VICTORIA"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t123
+msgid "[T123] - MODULO PIEDRAS NEGRAS"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t124
+msgid "[T124] - ADR GUADALAJARA"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t125
+msgid "[T125] - MODULO GUADALAJARA"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t126
+msgid "[T126] - MODULO AGUASCALIENTES"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t127
+msgid "[T127] - MODULO SAN LUIS POTOSI"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t128
+msgid "[T128] - MODULO MEXICALLI"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t129
+msgid "[T129] - MODULO TIJUANA"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t130
+msgid "[T130] - MODULO HERMOSILLO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t131
+msgid "[T131] - MODULO LEON"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t132
+msgid "[T132] - MODULO CULIACAN"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t133
+msgid "[T133] - MODULO LOS MOCHIS"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t134
+msgid "[T134] - MODULO LA PAZ"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t135
+msgid "[T135] - Corporativo Serviplus"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__t136
+msgid "[T136] - ADR SAN LUIS POTOSI"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__w002
+msgid "[W002] - PLANTA SALTILLO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__w004
+msgid "[W004] - SLC GO GLOBAL SALTILLO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__w007
+msgid "[W007] - SLC - SIAC SALTILLO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__w008
+msgid "[W008] - SLC - MIRAI SALTILLO"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__w009
+msgid "[W009] - VIRTUALCONTROLADORA"
+msgstr ""
+
+#. module: l10n_mx_cfdi_account_addenda_mabe
+#: model:ir.model.fields.selection,name:l10n_mx_cfdi_account_addenda_mabe.selection__res_partner__mabe_plant_code__w013
+msgid "[W013] - M2L SERVICES DE MÉX"
+msgstr ""

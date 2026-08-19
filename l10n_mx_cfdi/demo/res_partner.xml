@@ -1,0 +1,12 @@
+<odoo noupdate="1">
+    <record id="demo_cfdi_issuer_partner" model="res.partner">
+        <field name="name">Demo CFDI Issuer</field>
+        <field name="vat">EKU9003173C9</field>
+        <field name="country_id" ref="base.mx" />
+        <field name="zip">06000</field>
+        <field name="tax_regime" ref="l10n_mx_catalogs.c_regimen_fiscal_601" />
+        <field name="cfdi_use_id" ref="l10n_mx_catalogs.c_uso_cfdi_G03" />
+        <field name="payment_method_id" ref="l10n_mx_catalogs.c_metodo_pago_PUE" />
+        <field name="payment_form_id" ref="l10n_mx_catalogs.c_forma_pago_03" />
+    </record>
+</odoo>

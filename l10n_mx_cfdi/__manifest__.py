@@ -1,14 +1,14 @@
 {
     "name": "Mexico - CFDI Generation",
     "summary": "Allow generating CFDI (Comprobante Fiscal Digital por Internet)",
-    "author": "Auge TEC, Odoo Community Association (OCA), Open Source Integrators",
+    "author": "Auge TEC, Gray Matter Logic, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/l10n-mexico",
     "license": "LGPL-3",
     "category": "Accounting",
-    "version": "19.0.1.0.0",
+    "version": "19.0.2.2.0",
     "depends": ["l10n_mx_catalogs", "product"],
     "external_dependencies": {
-        "python": ["facturama"],
+        "python": ["satcfdi"],
     },
     "data": [
         "security/ir.model.access.csv",
@@ -24,5 +24,15 @@
         "data/cfdi_publico_en_general.xml",
         "data/paper_format.xml",
         "reports/report_cfdi_blocks.xml",
+    ],
+    "demo": [
+        "demo/res_company.xml",
+        "demo/res_partner.xml",
+        "demo/product_template.xml",
+        "demo/cfdi_service.xml",
+        "demo/cfdi_issuer.xml",
+        "demo/cfdi_series.xml",
+        "demo/cfdi_document.xml",
+        "demo/cfdi_document_relation.xml",
     ],
 }

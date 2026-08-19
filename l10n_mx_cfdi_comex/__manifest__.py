@@ -5,7 +5,7 @@
     "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/l10n-mexico",
     "category": "Localization",
-    "version": "19.0.1.0.0",
+    "version": "19.0.1.1.0",
     "license": "GPL-3",
     "depends": [
         "base",
@@ -22,5 +22,12 @@
         "views/product_template_views.xml",
         "views/stock_landed_cost_views.xml",
         "views/stock_lot_views.xml",
+        "views/account_move_views.xml",
+    ],
+    "demo": [
+        "demo/pedimento.xml",
+        "demo/product_template.xml",
+        "demo/stock_lot.xml",
+        "demo/stock_landed_cost.xml",
     ],
 }

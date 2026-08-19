@@ -234,11 +234,24 @@ class TestWaybill(WaybillTestCommon):
         waybill._validate_required_fields()
 
     def test_validate_missing_transporter_type(self):
-        self.transporter.type = False
-        waybill = self._create_waybill()
+        # Keep one Operador so the type-missing check is reachable per transporter
+        bare_partner = self.env["res.partner"].create(
+            {
+                "name": "Bare Driver",
+                "vat": "XAXX010101099",
+                "l10n_mx_cfdi_waybill_driving_license": "LIC999",
+            }
+        )
+        bare = self.env["l10n_mx_cfdi_waybill.transporter"].create(
+            {"partner_id": bare_partner.id, "type": False}
+        )
+        waybill = self._create_waybill(
+            transporter_ids=[(6, 0, (self.transporter | bare).ids)]
+        )
         self._create_waybill_entry(waybill)
-        with self.assertRaises(ValidationError):
+        with self.assertRaises(ValidationError) as err:
             waybill._validate_required_fields()
+        self.assertIn("tipo de contacto", str(err.exception))
 
     def test_validate_missing_driving_license(self):
         self.transporter_partner.l10n_mx_cfdi_waybill_driving_license = False
@@ -386,6 +399,188 @@ class TestWaybill(WaybillTestCommon):
             waybill.action_post()
         mock_publish.assert_called_once()
 
+    @patch(
+        "odoo.addons.l10n_mx_cfdi.models.cfdi_document.Document.publish",
+        autospec=True,
+    )
+    def test_action_post_facturama_publishes_comprobante(self, mock_publish):
+        """Facturama Multiemisor supports Carta Porte 3.1 via satcfdi Comprobante."""
+        self.service.provider = "facturama"
+        waybill = self._create_waybill()
+        self._create_waybill_entry(waybill)
+        self.transporter.driving_license = "LIC123"
+        waybill.cfdi_id.write(
+            {
+                "pdf_filename": "waybill.pdf",
+                "pdf_file": b64encode(b"PDF").decode(),
+                "xml_filename": "waybill.xml",
+                "xml_file": b64encode(b"<xml/>").decode(),
+            }
+        )
+        waybill.action_post()
+        mock_publish.assert_called_once()
+        published = mock_publish.call_args.args[1]
+        self.assertEqual(published.get("TipoDeComprobante"), "T")
+        self.assertTrue(published.get("Complemento"))
+
+    def test_build_waybill_comprobante_from_format_data(self):
+        from ..services import waybill_builder
+
+        waybill = self._create_waybill()
+        self._create_waybill_entry(waybill)
+        self.transporter.driving_license = "LIC123"
+        data = waybill._format_data()
+        cfdi = waybill_builder.build_waybill_comprobante(waybill.issuer_id, data)
+        self.assertEqual(cfdi.get("TipoDeComprobante"), "T")
+        complemento = cfdi.get("Complemento")
+        self.assertTrue(complemento)
+        carta = (
+            complemento.get("CartaPorte")
+            if hasattr(complemento, "get") and complemento.get("CartaPorte")
+            else complemento
+        )
+        self.assertEqual(str(carta.get("Version")), "3.1")
+        self.assertTrue(carta.get("IdCCP"))
+        # Fecha must be stamp-time (Mexico), not an old create date (SAT 72h).
+        # Never ahead of America/Mexico_City now (Runboat/UTC host skew).
+        fecha = cfdi.get("Fecha")
+        self.assertIsNotNone(fecha)
+        self.assertIsInstance(fecha, datetime)
+        now_mx = waybill_builder._mexico_city_now_naive()
+        self.assertLessEqual(fecha, now_mx)
+        self.assertLess(abs((fecha - now_mx).total_seconds()), 3600)
+
+    def test_build_waybill_comprobante_publico_adds_informacion_global(self):
+        from ..services import waybill_builder
+
+        waybill = self._create_waybill()
+        self._create_waybill_entry(waybill)
+        data = waybill._format_data()
+        data["Receiver"] = {
+            "Name": "PUBLICO EN GENERAL",
+            "Rfc": "XAXX010101000",
+            "CfdiUse": "S01",
+            "FiscalRegime": "601",
+            "TaxZipCode": "99999",
+        }
+        cfdi = waybill_builder.build_waybill_comprobante(waybill.issuer_id, data)
+        self.assertTrue(cfdi.get("InformacionGlobal"))
+        self.assertEqual(cfdi["Receptor"]["RegimenFiscalReceptor"], "616")
+        self.assertEqual(
+            cfdi["Receptor"]["DomicilioFiscalReceptor"], data["ExpeditionPlace"]
+        )
+
+    def test_waybill_builder_helpers(self):
+        from decimal import Decimal
+
+        from ..services import waybill_builder
+
+        self.assertEqual(waybill_builder._dec(None), Decimal("0"))
+        self.assertEqual(waybill_builder._dec("1.5"), Decimal("1.5"))
+        now = datetime(2026, 1, 2, 3, 4, 5)
+        self.assertEqual(waybill_builder._parse_dt(now), now)
+        self.assertEqual(
+            waybill_builder._parse_dt("2026-07-01 12:30:00"),
+            datetime(2026, 7, 1, 12, 30, 0),
+        )
+        parsed = waybill_builder._parse_dt("not-a-date")
+        self.assertIsInstance(parsed, datetime)
+        self.assertIsNone(waybill_builder._build_domicilio(None))
+        self.assertIsNone(waybill_builder._build_autotransporte(None))
+        self.assertIsNone(waybill_builder._build_figura_transporte(None))
+        self.assertIsNone(waybill_builder._build_figura_transporte([]))
+        figuras = waybill_builder._build_figura_transporte(
+            [
+                {
+                    "TipoFigura": "01",
+                    "RFCFigura": "XAXX010101000",
+                    "NombreFigura": "Operator",
+                    "NumLicencia": "LIC1",
+                    "PartesTransporte": [{"ParteTransporte": "PT01"}],
+                }
+            ]
+        )
+        self.assertEqual(len(figuras), 1)
+        mercancias = waybill_builder._build_mercancia(
+            [
+                {
+                    "BienesTransp": "50181900",
+                    "Descripcion": "Goods",
+                    "Cantidad": "1",
+                    "ClaveUnidad": "H87",
+                    "PesoEnKg": "10",
+                    "CantidadTransporta": [
+                        {
+                            "Cantidad": "1",
+                            "IDOrigen": "OR000001",
+                            "IDDestino": "DE000001",
+                        }
+                    ],
+                }
+            ]
+        )
+        self.assertEqual(len(mercancias), 1)
+
+    def test_build_carta_porte_accepts_single_mercancia_dict(self):
+        from ..services import waybill_builder
+
+        waybill = self._create_waybill()
+        self._create_waybill_entry(waybill)
+        data = waybill._format_data()
+        cp_data = data["Complemento"]["CartaPorte31"]
+        goods = cp_data["Mercancias"]["Mercancia"]
+        if isinstance(goods, list) and goods:
+            cp_data["Mercancias"]["Mercancia"] = goods[0]
+        carta = waybill_builder.build_carta_porte_from_dict(cp_data)
+        self.assertEqual(str(carta.get("Version")), "3.1")
+
+    def test_stamp_fecha_mexico_tz_fallbacks(self):
+        from datetime import timedelta, timezone
+
+        from ..services import waybill_builder
+
+        with patch(
+            "zoneinfo.ZoneInfo",
+            side_effect=Exception("tzdb missing"),
+        ):
+            fallback = waybill_builder._mexico_city_now_naive()
+        self.assertIsInstance(fallback, datetime)
+
+        mx_now = datetime(2026, 8, 10, 12, 0, 0)
+        with (
+            patch.object(
+                waybill_builder,
+                "_mexico_city_now_naive",
+                return_value=mx_now,
+            ),
+            patch(
+                "satcfdi.transform.get_timezone",
+                side_effect=Exception("unknown CP"),
+            ),
+        ):
+            stamp = waybill_builder._stamp_fecha("00000")
+        self.assertEqual(stamp, mx_now - timedelta(seconds=30))
+
+        future = datetime(2026, 8, 10, 18, 0, 0)
+
+        class FutureDateTime(datetime):
+            @classmethod
+            def now(cls, tz=None):
+                return future.replace(tzinfo=tz) if tz is not None else future
+
+        with (
+            patch.object(
+                waybill_builder,
+                "_mexico_city_now_naive",
+                return_value=mx_now,
+            ),
+            patch.object(waybill_builder, "datetime", FutureDateTime),
+            patch("satcfdi.transform.get_timezone", return_value=timezone.utc),
+        ):
+            stamp = waybill_builder._stamp_fecha("26015")
+        # Clamp future lugar stamp to Mexico now, then apply skew buffer.
+        self.assertEqual(stamp, mx_now - timedelta(seconds=30))
+
 
 class TestWaybillFiguraTransporte(WaybillTestCommon):
     def test_self_add_figuratransporte_operator(self):
@@ -479,19 +674,39 @@ class TestWaybillEntry(WaybillTestCommon):
 
     def test_validate_required_fields_missing_measurement_unit(self):
         waybill = self._create_waybill()
-        product = self.stock_product.copy(
-            {"l10n_mx_cfdi_product_measurement_unit_id": False}
+        product = self.env["product.product"].create(
+            {
+                "name": "No UoM Waybill Product",
+                "weight": 10.0,
+                "l10n_mx_cfdi_product_code_id": self.env.ref(
+                    "l10n_mx_catalogs.c_clave_prod_serv_01010101"
+                ).id,
+                "l10n_mx_cfdi_product_measurement_unit_id": False,
+            }
         )
         entry = self._create_waybill_entry(waybill, product_id=product.id)
-        with self.assertRaises(ValidationError):
+        with self.assertRaises(ValidationError) as err:
             entry._validate_required_fields()
+        self.assertIn("unidad de medida", str(err.exception))
 
     def test_validate_required_fields_missing_weight(self):
         waybill = self._create_waybill()
-        product = self.stock_product.copy({"weight": 0})
+        product = self.env["product.product"].create(
+            {
+                "name": "No Weight Waybill Product",
+                "weight": 0.0,
+                "l10n_mx_cfdi_product_code_id": self.env.ref(
+                    "l10n_mx_catalogs.c_clave_prod_serv_01010101"
+                ).id,
+                "l10n_mx_cfdi_product_measurement_unit_id": self.env.ref(
+                    "l10n_mx_catalogs.c_clave_unidad_H87"
+                ).id,
+            }
+        )
         entry = self._create_waybill_entry(waybill, product_id=product.id)
-        with self.assertRaises(ValidationError):
+        with self.assertRaises(ValidationError) as err:
             entry._validate_required_fields()
+        self.assertIn("Peso", str(err.exception))
 
     def test_validate_required_fields_missing_origin_zip(self):
         waybill = self._create_waybill()
@@ -661,3 +876,42 @@ class TestWaybillEntry(WaybillTestCommon):
         waybill.self_add_figuratransporte_data(data)
         figura = data["Complemento"]["CartaPorte31"]["FiguraTransporte"][0]
         self.assertIn("PartesTransporte", figura)
+
+    def test_map_partner_country_ilike_and_missing(self):
+        waybill = self._create_waybill()
+        Pais = self.env["l10n_mx_catalogs.c_pais"]
+        country = self.env["res.country"].create(
+            {"name": "Waybill Testland", "code": "WQ"}
+        )
+        pais = Pais.sudo().create(
+            {"code": "WQT", "description": "Waybill Testland Extra"}
+        )
+        with patch.object(type(Pais), "map_res_country", return_value=Pais):
+            mapped = waybill._map_partner_country_to_c_pais(country)
+        self.assertEqual(mapped, pais)
+
+        unknown = self.env["res.country"].create(
+            {"name": "Unknownia ZZ9", "code": "W9"}
+        )
+        with patch.object(type(Pais), "map_res_country", return_value=Pais):
+            partner = self.env["res.partner"].create(
+                {
+                    "name": "No SAT Country",
+                    "country_id": unknown.id,
+                    "zip": "00000",
+                    "street": "X",
+                }
+            )
+            with self.assertRaises(ValidationError):
+                waybill._format_address(partner)
+
+    def test_entry_get_defaults_destination_from_dest_warehouse(self):
+        picking = self._create_picking(
+            picking_type_id=self.warehouse.in_type_id.id,
+            location_id=self.env.ref("stock.stock_location_suppliers").id,
+            location_dest_id=self.warehouse.lot_stock_id.id,
+        )
+        defaults = self.env["l10n_mx_cfdi_waybill.waybill_entry"]._get_defaults(picking)
+        dest_wh_partner = picking.location_dest_id.warehouse_id.partner_id
+        self.assertTrue(dest_wh_partner)
+        self.assertEqual(defaults["destination_address_id"], dest_wh_partner.id)

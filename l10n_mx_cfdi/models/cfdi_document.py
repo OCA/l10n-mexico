@@ -1,5 +1,6 @@
 import base64
 import json
+import logging
 from io import BytesIO
 
 import qrcode
@@ -7,6 +8,8 @@ from dateutil import parser
 
 from odoo import api, fields, models
 from odoo.exceptions import UserError
+
+_logger = logging.getLogger(__name__)
 
 
 class Document(models.Model):
@@ -45,6 +48,17 @@ class Document(models.Model):
     receiver_id = fields.Many2one("res.partner", string="Receptor", required=True)
 
     tracking_id = fields.Char(string="ID del documento en el API", readonly=True)
+    pac_provider = fields.Char(
+        string="PAC Provider",
+        readonly=True,
+        help="satcfdi PAC code used when the CFDI was stamped.",
+    )
+    legacy_without_xml = fields.Boolean(
+        string="Legacy without XML",
+        compute="_compute_legacy_without_xml",
+        help="Published CFDI without stored stamped XML (typically Facturama-era). "
+        "Cancel/download via satcfdi is not available for these documents.",
+    )
 
     pdf_file = fields.Binary(string="Archivo PDF", attachment=True, readonly=True)
     xml_file = fields.Binary(string="Archivo XML", attachment=True, readonly=True)
@@ -151,6 +165,19 @@ class Document(models.Model):
         related="company_id.l10n_mx_cfdi_enabled",
         readonly=True,
     )
+    pac_supports_cancel = fields.Boolean(
+        related="issuer_id.service_id.supports_cancel",
+        readonly=True,
+    )
+
+    @api.depends("xml_file", "state", "tracking_id")
+    def _compute_legacy_without_xml(self):
+        for rec in self:
+            rec.legacy_without_xml = bool(
+                rec.state in ("published", "pending_cancel", "canceled")
+                and rec.tracking_id
+                and not rec.xml_file
+            )
 
     @api.depends("cert_data_json")
     def _compute_load_json_data(self):
@@ -227,32 +254,32 @@ class Document(models.Model):
     @api.depends("tracking_id")
     def _compute_download_files_if_needed(self):
         for entry in self:
-            if entry.tracking_id:
+            if not entry.tracking_id:
+                entry.files_in_cache = False
+                continue
+
+            if not entry.pdf_file:
+                report, resource_ids = self._resolve_report()
+                if report:
+                    report = report.with_context(**{"force_report_rendering": True})
+                    doc_data, _doc_format = report._render_qweb_pdf(resource_ids)
+                    if doc_data:
+                        entry.pdf_file = base64.b64encode(doc_data)
                 if not entry.pdf_file:
-                    report, resource_ids = self._resolve_report()
-
-                    if report:
-                        # force the report to be rendered to work around a bug
-                        # in _render_qweb_pdf
-                        report = report.with_context(**{"force_report_rendering": True})
-                        doc_data, doc_format = report._render_qweb_pdf(resource_ids)
-                        # in some scenarios, the report is not generated,
-                        # so we need to check if the file is empty
-                        if doc_data:
-                            result = base64.b64encode(doc_data)
-                            entry.pdf_file = result
-
-                    if not entry.pdf_file:
-                        # fallback to the provider's PDF
+                    try:
                         res = entry.issuer_id.service_id.sudo().get_cfdi_pdf(
                             entry.tracking_id
                         )
                         entry.pdf_file = res["Content"]
-
-                    # set filename
+                    except UserError:
+                        _logger.debug(
+                            "Could not recover PDF for CFDI %s", entry.display_name
+                        )
+                if entry.pdf_file:
                     entry.pdf_filename = f"{entry.name}.pdf"
 
-                if not entry.xml_file:
+            if not entry.xml_file:
+                try:
                     res = entry.issuer_id.service_id.sudo().get_cfdi_xml(
                         entry.tracking_id
                     )
@@ -261,10 +288,12 @@ class Document(models.Model):
                         content = content.encode("utf-8")
                     entry.xml_file = base64.b64encode(content)
                     entry.xml_filename = f"{entry.name}.xml"
+                except UserError:
+                    _logger.debug(
+                        "Could not recover XML for CFDI %s", entry.display_name
+                    )
 
-                entry.files_in_cache = True
-            else:
-                entry.files_in_cache = False
+            entry.files_in_cache = True
 
     @api.depends("serie", "folio")
     def _compute_name(self):
@@ -289,99 +318,223 @@ class Document(models.Model):
         return None, []
 
     def cancel(self, reason: str, replacement=None, simulate=False):
+        """Cancel the CFDI through the PAC.
+
+        Returns a feedback dict with keys ``Status``, ``Message``,
+        ``HasAcuse`` so wizards can show clear post-cancel feedback.
+        """
         self.ensure_one()
 
         if self.state != "published":
-            return
+            return {
+                "Status": self.state,
+                "Message": self.env._("Document is not published."),
+                "HasAcuse": bool(self.cancellation_request_proof_file),
+            }
 
         if not simulate:
-            res = self.issuer_id.service_id.sudo().cancel_cfdi(
-                self.tracking_id, reason, replacement
+            service = self.issuer_id.service_id.sudo()
+            if self.legacy_without_xml:
+                raise UserError(
+                    self.env._(
+                        "This CFDI has no stored stamped XML (legacy Facturama "
+                        "document). Cancel it manually at the SAT / previous PAC "
+                        "or attach the CFDI XML before retrying."
+                    )
+                )
+            if not service.supports_cancel:
+                raise UserError(
+                    self.env._("The configured PAC does not support CFDI cancellation.")
+                )
+            xml_bytes = None
+            if self.xml_file:
+                xml_bytes = base64.b64decode(self.xml_file)
+            if not xml_bytes:
+                raise UserError(
+                    self.env._(
+                        "Cannot cancel CFDI without the stamped XML stored on "
+                        "the document."
+                    )
+                )
+            res = service.cancel_cfdi(
+                xml_bytes,
+                reason,
+                uuid_replacement=replacement,
+                issuer=self.issuer_id,
+                document_id=self.tracking_id,
             )
-            if (
-                res["Status"] == "canceled"
-                or res["Status"] == "acepted"
-                or res["Status"] == "expired"
-            ):
+            if res["Status"] in ("canceled", "acepted", "expired"):
                 self.state = "canceled"
                 self.pdf_file = False
-                self.xml_file = False
+                # keep xml_file for audit; optional clear not required
             elif res["Status"] == "pending":
                 self.state = "pending_cancel"
             elif res["Status"] == "rejected":
                 self.state = "published"
+            elif res["Status"] == "active":
+                raise UserError(
+                    self.env._(
+                        "The PAC could not cancel CFDI %(cfdi)s: it is still "
+                        "active (often because related documents block "
+                        "cancellation). PAC message: %(message)s",
+                        cfdi=self.name or self.uuid or self.id,
+                        message=res.get("Message") or res["Status"],
+                    )
+                )
             else:
                 raise UserError(
                     self.env._(
                         "Error when cancelling the certificate: %s", res["Message"]
                     )
                 )
-        else:
-            self.state = "canceled"
-
-    def publish(self, cfdi_data):
-        self.ensure_one()
-
-        if "Serie" not in cfdi_data:
-            cfdi_data["Serie"] = self.serie
-
-        if "Folio" not in cfdi_data:
-            cfdi_data["Folio"] = self.folio
-
-        if "CfdiType" not in cfdi_data:
-            cfdi_data["CfdiType"] = self.type
-
-        if "Issuer" not in cfdi_data:
-            cfdi_data["Issuer"] = {
-                "Name": (
-                    self.issuer_id.fiscal_name
-                    if hasattr(self.issuer_id, "fiscal_name")
-                    else self.issuer_id.name
-                ),
-                "Rfc": self.issuer_id.vat,
-                "FiscalRegime": self.issuer_id.tax_regime.code,
+            if res.get("Acuse"):
+                self.cancellation_request_proof_file = base64.b64encode(res["Acuse"])
+                self.cancellation_request_proof_filename = (
+                    f"Acuse de cancelación {self.name}.xml"
+                )
+            return {
+                "Status": res["Status"],
+                "Message": res.get("Message") or "",
+                "HasAcuse": bool(res.get("Acuse")),
             }
 
-        if "LogoUrl" not in cfdi_data and self.issuer_id.logo_url:
-            cfdi_data["LogoUrl"] = self.issuer_id.logo_url
+        self.state = "canceled"
+        return {
+            "Status": "canceled",
+            "Message": self.env._("Simulated cancellation (PAC not called)."),
+            "HasAcuse": False,
+        }
+
+    def _format_cancel_feedback(self, feedback):
+        """Build a user-facing summary after a cancel attempt."""
+        self.ensure_one()
+        feedback = feedback or {}
+        status = feedback.get("Status") or self.state
+        message = (feedback.get("Message") or "").strip()
+        has_acuse = bool(feedback.get("HasAcuse"))
+        state_label = dict(self._fields["state"].selection).get(self.state, self.state)
+        parts = [
+            self.env._(
+                "CFDI %(name)s: cancellation status %(status)s "
+                "(document state: %(state)s).",
+                name=self.name or self.uuid or self.id,
+                status=status,
+                state=state_label,
+            )
+        ]
+        if message:
+            parts.append(self.env._("PAC message: %s", message))
+        if has_acuse:
+            parts.append(self.env._("Cancellation acknowledgment (acuse) was stored."))
+        else:
+            parts.append(
+                self.env._(
+                    "The PAC did not return a cancellation acknowledgment (acuse)."
+                )
+            )
+        return " ".join(parts)
+
+    @api.model
+    def _series_codes_for_type(self, doc_type):
+        return {
+            "I": ["INV", "I"],
+            "E": ["EGR", "NC", "E"],
+            "P": ["PAG", "P"],
+            "T": ["TRA", "CP", "T"],
+        }.get(doc_type, [])
+
+    @api.model
+    def _prepare_serie_folio_vals(self, vals):
+        """Assign serie/folio from l10n_mx_cfdi.series when missing.
+
+        Facturama Multiemisor requires Folio. Empty serie+folio also made the
+        uniqueness check in ``publish`` treat every subsequent CFDI as a
+        duplicate of the first published blank-folio document.
+        """
+        if vals.get("folio"):
+            return vals
+        Series = self.env["l10n_mx_cfdi.series"]
+        codes = self._series_codes_for_type(vals.get("type"))
+        series = Series.search([("code", "in", codes)], limit=1) if codes else Series
+        if not series:
+            series = Series.search([], limit=1)
+        if not series:
+            return vals
+        vals.setdefault("serie", series.prefix or series.code or False)
+        full = series.next_by_id()
+        prefix = series.prefix or ""
+        folio = full[len(prefix) :] if prefix and str(full).startswith(prefix) else full
+        vals["folio"] = str(folio).lstrip("0") or str(folio) or str(full)
+        return vals
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            self._prepare_serie_folio_vals(vals)
+        return super().create(vals_list)
+
+    def publish(self, cfdi):
+        self.ensure_one()
 
         for entry in self:
             if entry.state != "draft":
                 raise UserError(self.env._("The certificate is not in draft."))
 
-            # check if there are no other published certificates
-            # with the same serie and folio
-            similar_certificates_count = self.search_count(
-                [
-                    ("serie", "=", entry.serie),
-                    ("folio", "=", entry.folio),
-                    ("state", "=", "published"),
-                ],
+            # Only enforce uniqueness when serie/folio are actually set.
+            # Blank+blank matched every published CFDI and blocked E/P/T after I.
+            if entry.serie or entry.folio:
+                similar_certificates_count = self.search_count(
+                    [
+                        ("serie", "=", entry.serie),
+                        ("folio", "=", entry.folio),
+                        ("state", "=", "published"),
+                        ("id", "!=", entry.id),
+                    ],
+                )
+
+                if similar_certificates_count > 0:
+                    raise UserError(
+                        self.env._(
+                            "A certificate is already published with this "
+                            "serie and number."
+                        )
+                    )
+
+            # Fill serie/folio on satcfdi Comprobante when missing
+            if hasattr(cfdi, "get"):
+                if entry.serie and not cfdi.get("Serie"):
+                    cfdi["Serie"] = entry.serie
+                if entry.folio and not cfdi.get("Folio"):
+                    cfdi["Folio"] = entry.folio
+
+            res = entry.issuer_id.service_id.sudo().create_cfdi(
+                cfdi, issuer=entry.issuer_id
             )
 
-            if similar_certificates_count > 0:
+            if res.get("status") != "published":
                 raise UserError(
                     self.env._(
-                        "A certificate is already published with this serie and number."
+                        "Error when publishing the certificate: %s",
+                        res.get("Message") or res.get("status"),
                     )
                 )
 
-            # use sudo to allow users to publish certificates
-            res = entry.issuer_id.service_id.sudo().create_cfdi(cfdi_data)
-
-            # store result for later usage
-            self.cert_data_json = json.dumps(res)
-
-            if res["Status"] == "active":
-                self.uuid = res["Complement"]["TaxStamp"]["Uuid"]
-                self.tracking_id = res["Id"]
-                self.state = "published"
-            else:
-                raise UserError(
-                    self.env._(
-                        "Error when publishing the certificate: %s", res["Message"]
-                    )
-                )
+            stamp_meta = res.get("stamp_meta") or {}
+            # PAC helpers may leave callables in meta; never let that roll back a stamp
+            entry.cert_data_json = json.dumps(stamp_meta, default=str)
+            entry.uuid = res.get("uuid")
+            entry.tracking_id = res.get("tracking_id")
+            entry.pac_provider = entry.issuer_id.service_id.provider
+            if res.get("xml"):
+                xml = res["xml"]
+                if isinstance(xml, str):
+                    xml = xml.encode("utf-8")
+                entry.xml_file = base64.b64encode(xml)
+                entry.xml_filename = f"{entry.name or entry.uuid}.xml"
+            if res.get("pdf"):
+                entry.pdf_file = base64.b64encode(res["pdf"])
+                entry.pdf_filename = f"{entry.name or entry.uuid}.pdf"
+            entry.state = "published"
 
     def action_cancel(self):
         self.ensure_one()
@@ -415,16 +568,17 @@ class Document(models.Model):
     def action_get_cancellation_request_proof(self):
         self.ensure_one()
 
-        # check that the certificate is canceled
         if self.state != "canceled":
             raise UserError(self.env._("The certificate is not cancelled."))
 
-        service = self.issuer_id.service_id.sudo()
+        if self.cancellation_request_proof_file:
+            return
 
-        file = service.get_cancellation_request_proof(self.tracking_id)
-        self.cancellation_request_proof_file = file
-        self.cancellation_request_proof_filename = (
-            f"Solicitud de cancelación {self.name}.pdf"
+        raise UserError(
+            self.env._(
+                "No cancellation acknowledgment is stored for this document. "
+                "Re-canceling with a PAC that returns an acuse is required."
+            )
         )
 
 

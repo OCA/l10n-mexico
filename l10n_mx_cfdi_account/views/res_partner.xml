@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_partner_form_addenda" model="ir.ui.view">
+        <field name="name">res.partner.form.l10n_mx_cfdi_account.addenda</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="l10n_mx_cfdi.view_partner_form_inherit" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='CFDI']/group" position="inside">
+                <field name="l10n_mx_edi_addenda_is_readonly" invisible="1" />
+                <field
+                    name="l10n_mx_edi_addenda"
+                    invisible="l10n_mx_edi_addenda_is_readonly or country_code != 'MX'"
+                />
+                <field
+                    name="l10n_mx_edi_addenda_name"
+                    string="Addenda"
+                    invisible="not l10n_mx_edi_addenda_is_readonly or country_code != 'MX'"
+                />
+                <field
+                    name="l10n_mx_edi_addenda_doc"
+                    invisible="not l10n_mx_edi_addenda or country_code != 'MX'"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

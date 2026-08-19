@@ -8,6 +8,9 @@
                     <group>
                         <group>
                             <field name="name" />
+                            <field name="provider" />
+                            <field name="supports_issue" />
+                            <field name="supports_cancel" />
                             <field name="stamps_available" />
                             <field
                                 name="company_ids"
@@ -16,17 +19,33 @@
                             />
                         </group>
                     </group>
-                    <group>
-                        <field name="user" />
-                        <field name="password" password="1" />
+                    <group string="Credentials" groups="base.group_system">
                         <field name="sandbox_mode" />
+                        <field
+                            name="user"
+                            invisible="provider not in ('finkok', 'prodigia', 'comerciodigital', 'swsapien', 'mysuite', 'facturama')"
+                        />
+                        <field
+                            name="password"
+                            password="1"
+                            invisible="provider not in ('finkok', 'prodigia', 'comerciodigital', 'swsapien', 'diverza', 'facturama')"
+                        />
+                        <field
+                            name="pac_token"
+                            password="1"
+                            invisible="provider not in ('swsapien', 'diverza')"
+                        />
+                        <field name="pac_rfc" invisible="provider != 'diverza'" />
+                        <field name="pac_client_id" invisible="provider != 'diverza'" />
+                        <field name="pac_contrato" invisible="provider != 'prodigia'" />
+                        <field name="pac_requestor" invisible="provider != 'mysuite'" />
+                        <field name="pac_country" invisible="provider != 'mysuite'" />
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
 
-    <!-- CFDI Settings action -->
     <record id="action_l10n_mx_cfdi_settings" model="ir.actions.act_window">
         <field name="name">PAC Settings</field>
         <field name="res_model">l10n_mx_cfdi.cfdi_service</field>

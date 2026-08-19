@@ -55,8 +55,8 @@
                             aria-label="Alert"
                             title="Alert"
                         />
-                        <span
-                        >El emisor no está registrado con el proveedor de facturación.
+                        <span>El emisor no tiene un CSD local validado. Use Registrar
+                            para validar el certificado.
                         </span>
                     </div>
                     <!-- warning message with alert-success class -->
