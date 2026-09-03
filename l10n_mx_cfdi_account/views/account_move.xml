@@ -97,6 +97,7 @@
                                 <field name="type"/>
                                 <field name="uuid"/>
                                 <field name="state" widget="badge"/>
+                                <field name="files_in_cache" column_invisible="1"/>
                                 <field
                                     name="pdf_file"
                                     widget="file"

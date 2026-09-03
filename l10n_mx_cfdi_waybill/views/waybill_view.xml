@@ -71,6 +71,7 @@
                     <field name="create_date" string="Fecha"/>
                     <field name="receiver_id"/>
                     <field name="state"/>
+                    <field name="files_in_cache" column_invisible="1"/>
                     <field name="pdf_file" widget="file" filename="pdf_filename"/>
                     <field name="pdf_filename" column_invisible="1"/>
                     <field name="xml_file" widget="file" filename="xml_filename"/>

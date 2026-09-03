@@ -56,6 +56,7 @@
                 <field name="receiver_id"/>
                 <field name="uuid"/>
                 <field name="state" widget="badge"/>
+                <field name="files_in_cache" column_invisible="1"/>
                 <field name="pdf_file" widget="file" filename="pdf_filename"/>
                 <field name="pdf_filename" column_invisible='1'/>
                 <field name="xml_file" widget="file" filename="xml_filename"/>

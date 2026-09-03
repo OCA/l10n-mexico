@@ -9,6 +9,7 @@
                 <field name="cfdi_document_ids" readonly="True">
                     <tree>
                         <field name="name" string="Factura" />
+                        <field name="files_in_cache" column_invisible="1" />
                         <field name="pdf_file" widget="file" filename="pdf_filename" />
                         <field name="pdf_filename" column_invisible='1' />
                         <field name="xml_file" widget="file" filename="xml_filename" />
