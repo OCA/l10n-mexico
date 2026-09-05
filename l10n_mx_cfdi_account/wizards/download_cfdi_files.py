@@ -46,12 +46,14 @@ class DownloadCFDIFilesWizard(models.TransientModel):
 
         # add docs to zip file
         for cfdi_doc in self.cfdi_document_ids:
-            if cfdi_doc:
-                cfdi_doc.download_files_if_needed()
+            cfdi_doc._compute_download_files_if_needed()
 
+            if cfdi_doc.pdf_file and cfdi_doc.pdf_filename:
                 zip_archive.writestr(
                     cfdi_doc.pdf_filename, base64.b64decode(cfdi_doc.pdf_file)
                 )
+
+            if cfdi_doc.xml_file and cfdi_doc.xml_filename:
                 zip_archive.writestr(
                     cfdi_doc.xml_filename, base64.b64decode(cfdi_doc.xml_file)
                 )
