@@ -1,13 +1,17 @@
 import base64
 import json
+import logging
 import re
 from io import BytesIO
 
+import facturama
 import qrcode
 from dateutil import parser
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
+
+_logger = logging.getLogger(__name__)
 
 
 class Document(models.Model):
@@ -228,7 +232,11 @@ class Document(models.Model):
     @api.depends("tracking_id")
     def _compute_download_files_if_needed(self):
         for entry in self:
-            if entry.tracking_id:
+            if not entry.tracking_id:
+                entry.files_in_cache = False
+                continue
+
+            try:
                 if not entry.pdf_file:
                     report, resource_ids = entry._resolve_report()
 
@@ -261,7 +269,14 @@ class Document(models.Model):
                     entry.xml_filename = "%s.xml" % entry.name
 
                 entry.files_in_cache = True
-            else:
+            except facturama.FacturamaError as e:
+                _logger.warning(
+                    "Could not download CFDI files on demand for %s "
+                    "(tracking_id=%s): %s",
+                    entry.name,
+                    entry.tracking_id,
+                    e,
+                )
                 entry.files_in_cache = False
 
     @api.depends("serie", "folio")
