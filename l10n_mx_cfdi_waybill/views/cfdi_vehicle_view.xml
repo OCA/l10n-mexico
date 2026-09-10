@@ -19,6 +19,8 @@
                             <field name="permit_number"/>
                             <field name="insurance_company"/>
                             <field name="insurance_number"/>
+                            <field name="environmental_insurance_company"/>
+                            <field name="environmental_insurance_number"/>
                         </group>
                     </group>
                     <group>

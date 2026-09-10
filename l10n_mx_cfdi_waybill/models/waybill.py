@@ -211,19 +211,37 @@ class Waybill(models.Model):
         data['Complemento']['CartaPorte31']['FiguraTransporte'] = figura_transporte
 
     def _add_autotransporte_data(self, data):
+        vehicle = self.vehicle_id
+        seguros = {
+            'AseguraRespCivil': vehicle.insurance_company.name,
+            'PolizaRespCivil': vehicle.insurance_number,
+        }
+
+        # Environmental insurance is mandatory when the waybill carries at least
+        # one hazardous good that is not classified as optional.
+        requires_environmental_insurance = any(
+            entry.product_id.l10n_mx_cfdi_dangerous_material_indicator
+            and not entry.product_id.l10n_mx_cfdi_dangerous_material_optional
+            for entry in self.entry_ids
+        )
+        if requires_environmental_insurance:
+            if not vehicle.environmental_insurance_company:
+                raise UserError("Falta la aseguradora de medio ambiente en el vehículo")
+            if not vehicle.environmental_insurance_number:
+                raise UserError("Falta la póliza de seguro ambiental en el vehículo")
+            seguros['AseguraMedAmbiente'] = vehicle.environmental_insurance_company
+            seguros['PolizaMedAmbiente'] = vehicle.environmental_insurance_number
+
         data['Complemento']['CartaPorte31']['Mercancias']['Autotransporte'] = {
-            'PermSCT': self.vehicle_id.permit_type.code,
-            'NumPermisoSCT': self.vehicle_id.permit_number,
+            'PermSCT': vehicle.permit_type.code,
+            'NumPermisoSCT': vehicle.permit_number,
             'IdentificacionVehicular': {
-                'ConfigVehicular': self.vehicle_id.vehicle_setup.code,
-                'PlacaVM': self.vehicle_id.plate,
-                'AnioModeloVM': self.vehicle_id.model,
-                'PesoBrutoVehicular': f"{self.vehicle_id.gross_vehicle_weight:.3f}",
+                'ConfigVehicular': vehicle.vehicle_setup.code,
+                'PlacaVM': vehicle.plate,
+                'AnioModeloVM': vehicle.model,
+                'PesoBrutoVehicular': f"{vehicle.gross_vehicle_weight:.3f}",
             },
-            'Seguros': {
-                'AseguraRespCivil': self.vehicle_id.insurance_company.name,
-                'PolizaRespCivil': self.vehicle_id.insurance_number,
-            }
+            'Seguros': seguros,
         }
 
     def _format_goods_and_locations_data(self):
@@ -278,13 +296,12 @@ class Waybill(models.Model):
         origin_location_id = origin_locations_codes[entry_id.origin_address_id]
         destination_location_id = destination_locations_codes[entry_id.destination_address_id]
         total_weight = entry_id.product_id.weight * entry_id.product_qty
-        l10n_mx_cfdi_dangerous_material_indicator = "Sí" if entry_id.product_id.l10n_mx_cfdi_dangerous_material_indicator else "No"
+        product = entry_id.product_id
         data = {
             'Cantidad': entry_id.product_qty,
-            'BienesTransp': entry_id.product_id.l10n_mx_cfdi_product_code_id.code,
-            'Descripcion': entry_id.product_id.name,
-            'ClaveUnidad': entry_id.product_id.l10n_mx_cfdi_product_measurement_unit_id.code,
-            # 'MaterialPeligroso': l10n_mx_cfdi_dangerous_material_indicator,
+            'BienesTransp': product.l10n_mx_cfdi_product_code_id.code,
+            'Descripcion': product.name,
+            'ClaveUnidad': product.l10n_mx_cfdi_product_measurement_unit_id.code,
             'PesoEnKg': "%.3f" % total_weight,
             'CantidadTransporta': [
                 {
@@ -294,6 +311,30 @@ class Waybill(models.Model):
                 }
             ]
         }
+
+        # Dangerous material node driven by the product flags. It is only
+        # emitted as "Sí" when the product is flagged as hazardous AND is not
+        # classified as optional; otherwise it is reported as "No".
+        if product.l10n_mx_cfdi_dangerous_material_indicator and not product.l10n_mx_cfdi_dangerous_material_optional:
+            # The 'cfid' typo in these field names is intentional and kept for stability.
+            hazard_code = product.l10n_mx_cfid_dangerous_material_code
+            packaging = product.l10n_mx_cfid_dangerous_material_packaging
+            packaging_desc = product.l10n_mx_cfid_dangerous_material_packaging_descripcion
+            if not hazard_code:
+                raise UserError("Falta la clave SAT/ONU del material peligroso")
+            if not packaging:
+                raise UserError("Falta el código de embalaje del material peligroso")
+            if not packaging_desc:
+                raise UserError("Falta la descripción de embalaje del material peligroso")
+            data['MaterialPeligroso'] = "Sí"
+            data['CveMaterialPeligroso'] = hazard_code
+            data['Embalaje'] = packaging
+            data['DescripEmbalaje'] = packaging_desc
+        else:
+            # Not hazardous or optional without info: send "No" and omit
+            # CveMaterialPeligroso entirely.
+            data['MaterialPeligroso'] = "No"
+
         return data
 
     def _format_address(self, location):
