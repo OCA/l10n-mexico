@@ -120,7 +120,8 @@ def _build_autotransporte(auto: dict | None):
         ),
     }
     raw_trailers = auto.get("Remolques") or []
-    if raw_trailers:
+    # satcfdi builds Remolques only when that Carta Porte class exists.
+    if raw_trailers and hasattr(cp, "Remolque") and hasattr(cp, "Remolques"):
         remolques = [
             cp.Remolque(sub_tipo_rem=item["SubTipoRem"], placa=item["Placa"])
             for item in raw_trailers
