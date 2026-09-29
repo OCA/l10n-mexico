@@ -105,20 +105,37 @@ def _build_autotransporte(auto: dict | None):
         return None
     veh = auto.get("IdentificacionVehicular") or {}
     seg = auto.get("Seguros") or {}
-    return cp.Autotransporte(
-        perm_sct=auto["PermSCT"],
-        num_permiso_sct=auto["NumPermisoSCT"],
-        identificacion_vehicular=cp.IdentificacionVehicular(
+    kwargs = {
+        "perm_sct": auto["PermSCT"],
+        "num_permiso_sct": auto["NumPermisoSCT"],
+        "identificacion_vehicular": cp.IdentificacionVehicular(
             config_vehicular=veh["ConfigVehicular"],
             placa_vm=veh["PlacaVM"],
             anio_modelo_vm=int(veh["AnioModeloVM"]),
             peso_bruto_vehicular=_dec(veh["PesoBrutoVehicular"]),
         ),
-        seguros=cp.Seguros(
+        "seguros": cp.Seguros(
             asegura_resp_civil=seg["AseguraRespCivil"],
             poliza_resp_civil=seg["PolizaRespCivil"],
         ),
-    )
+    }
+    raw_trailers = auto.get("Remolques") or []
+    if raw_trailers:
+        remolques = [
+            cp.Remolque(sub_tipo_rem=item["SubTipoRem"], placa=item["Placa"])
+            for item in raw_trailers
+            if item.get("SubTipoRem") and item.get("Placa")
+        ]
+        if remolques:
+            try:
+                kwargs["remolques"] = cp.Remolques(remolque=remolques)
+            except TypeError:
+                kwargs["remolques"] = remolques
+    try:
+        return cp.Autotransporte(**kwargs)
+    except TypeError:
+        kwargs.pop("remolques", None)
+        return cp.Autotransporte(**kwargs)
 
 
 def _build_figura_transporte(figuras: list[dict] | None):
