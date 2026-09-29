@@ -1,0 +1,27 @@
+<odoo noupdate="1">
+    <record id="demo_sale_trip_waybill" model="l10n_mx_cfdi_waybill.waybill">
+        <field name="type">T</field>
+        <field name="issuer_id" ref="l10n_mx_cfdi.demo_cfdi_issuer" />
+        <field name="receiver_id" ref="tms_sale.demo_tms_sale_customer" />
+        <field name="vehicle_id" ref="l10n_mx_cfdi_waybill.demo_vehicle" />
+        <field name="tms_order_id" ref="tms_sale.demo_tms_sale_order_trip" />
+        <field
+            name="transporter_ids"
+            eval="[(4, ref('l10n_mx_cfdi_waybill.demo_transporter'))]"
+        />
+    </record>
+
+    <record id="demo_freight_invoice" model="account.move">
+        <field name="move_type">out_invoice</field>
+        <field name="partner_id" ref="tms_sale.demo_tms_sale_customer" />
+        <field name="receiver_id" ref="tms_sale.demo_tms_sale_customer" />
+        <field name="issuer_id" ref="l10n_mx_cfdi.demo_cfdi_issuer" />
+        <field name="cfdi_use_id" ref="l10n_mx_catalogs.c_uso_cfdi_G03" />
+        <field name="payment_method_id" ref="l10n_mx_catalogs.c_metodo_pago_PUE" />
+        <field name="payment_form_id" ref="l10n_mx_catalogs.c_forma_pago_03" />
+        <field
+            name="invoice_line_ids"
+            eval="[(0, 0, {'product_id': ref('l10n_mx_cfdi_account.demo_cfdi_product'), 'quantity': 1, 'price_unit': 1000.0, 'sale_line_ids': [(4, ref('tms_sale.demo_tms_sale_order_line_trip'))]})]"
+        />
+    </record>
+</odoo>
