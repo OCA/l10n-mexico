@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="tms_driver_view_form_waybill" model="ir.ui.view">
+        <field name="name">tms.driver.form.waybill</field>
+        <field name="model">tms.driver</field>
+        <field name="inherit_id" ref="tms.view_tms_driver_form_inherit" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='driver_license_number']" position="after">
+                <field name="l10n_mx_cfdi_waybill_transporter_id" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
