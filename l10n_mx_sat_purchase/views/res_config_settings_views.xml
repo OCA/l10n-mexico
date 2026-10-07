@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.form.l10n_mx_sat_purchase</field>
+        <field name="model">res.config.settings</field>
+        <field
+            name="inherit_id"
+            ref="purchase.res_config_settings_view_form_purchase"
+        />
+        <field name="arch" type="xml">
+            <block name="invoicing_settings_container" position="inside">
+                <setting
+                    id="l10n_mx_sat_purchase_match"
+                    string="Bills from SAT CFDIs"
+                    company_dependent="1"
+                    help="How the CFDIs downloaded from the SAT are matched with purchase orders"
+                >
+                    <div class="content-group">
+                        <div class="row mt8">
+                            <label
+                                for="l10n_mx_sat_purchase_match_mode"
+                                string="Match"
+                                class="col-lg-5 o_light_label"
+                            />
+                            <field name="l10n_mx_sat_purchase_match_mode" />
+                        </div>
+                        <div class="row">
+                            <label
+                                for="l10n_mx_sat_purchase_price_source"
+                                string="Price by lines"
+                                class="col-lg-5 o_light_label"
+                            />
+                            <field name="l10n_mx_sat_purchase_price_source" />
+                        </div>
+                        <div class="row">
+                            <label
+                                for="l10n_mx_sat_purchase_total_tolerance"
+                                string="Total tolerance"
+                                class="col-lg-5 o_light_label"
+                            />
+                            <field name="l10n_mx_sat_purchase_total_tolerance" />
+                        </div>
+                        <div class="row">
+                            <label
+                                for="l10n_mx_sat_purchase_price_tolerance"
+                                string="Price tolerance (%)"
+                                class="col-lg-5 o_light_label"
+                            />
+                            <field name="l10n_mx_sat_purchase_price_tolerance" />
+                        </div>
+                        <div class="row">
+                            <label
+                                for="l10n_mx_sat_purchase_learn_vendor_code"
+                                string="Learn vendor codes"
+                                class="col-lg-5 o_light_label"
+                            />
+                            <field name="l10n_mx_sat_purchase_learn_vendor_code" />
+                        </div>
+                    </div>
+                </setting>
+            </block>
+        </field>
+    </record>
+</odoo>
