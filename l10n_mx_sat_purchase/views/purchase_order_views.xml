@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="purchase_order_form" model="ir.ui.view">
+        <field name="name">purchase.order.form.l10n_mx_sat</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form" />
+        <field name="arch" type="xml">
+            <widget name="purchase_file_uploader" position="after">
+                <button
+                    name="action_l10n_mx_sat_select_document"
+                    type="object"
+                    string="Bill from SAT"
+                    invisible="state != 'purchase' or invoice_status == 'invoiced'"
+                />
+            </widget>
+        </field>
+    </record>
+</odoo>
