@@ -1,0 +1,646 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_mx_sat_purchase
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-12 15:56+0000\n"
+"PO-Revision-Date: 2026-11-12 15:56+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,help:l10n_mx_sat_purchase.field_res_company__l10n_mx_sat_purchase_total_tolerance
+#: model:ir.model.fields,help:l10n_mx_sat_purchase.field_res_config_settings__l10n_mx_sat_purchase_total_tolerance
+msgid ""
+"A CFDI is proposed for the purchase orders when its total differs from "
+"theirs by this amount at most."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,help:l10n_mx_sat_purchase.field_res_company__l10n_mx_sat_purchase_price_tolerance
+#: model:ir.model.fields,help:l10n_mx_sat_purchase.field_res_config_settings__l10n_mx_sat_purchase_price_tolerance
+msgid ""
+"A line of a CFDI is highlighted when its unit price differs from the one of "
+"the purchase order line by more than this percentage."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__mapped_amount_untaxed
+msgid "Amount to Bill"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__available_purchase_line_ids
+msgid "Available Purchase Line"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document_selector_mixin__l10n_mx_sat_available_document_ids
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__l10n_mx_sat_available_document_ids
+msgid "Available SAT CFDIs"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.purchase_order_form
+msgid "Bill from SAT"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/models/purchase_order.py:0
+#: code:addons/l10n_mx_sat_purchase/wizards/l10n_mx_sat_purchase_invoice_wizard.py:0
+msgid "Bill from SAT CFDI"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_purchase_invoice_wizard_view_form
+msgid "Bill the rest of this concept in another purchase order line"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.res_config_settings_view_form
+msgid "Bills from SAT CFDIs"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields.selection,name:l10n_mx_sat_purchase.selection__l10n_mx_sat_purchase_invoice_wizard__match_mode__line
+#: model:ir.model.fields.selection,name:l10n_mx_sat_purchase.selection__res_company__l10n_mx_sat_purchase_match_mode__line
+#: model:ir.model.fields.selection,name:l10n_mx_sat_purchase.selection__res_partner__l10n_mx_sat_purchase_match_mode__line
+msgid "By lines"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields.selection,name:l10n_mx_sat_purchase.selection__res_company__l10n_mx_sat_purchase_price_source__cfdi
+msgid "CFDI"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__amount
+msgid "CFDI Amount"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__concept_ids
+msgid "CFDI Concepts"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__discount_amount
+msgid "CFDI Discount"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__quantity
+msgid "CFDI Quantity"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__cfdi_amount_untaxed
+msgid "CFDI Subtotal"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__tax_amount
+msgid "CFDI Taxes"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__price_unit
+msgid "CFDI Unit Price"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,help:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__concept_document_id
+msgid "CFDI the concepts were built from."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_purchase_invoice_wizard_view_form
+msgid "Cancel"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__commercial_partner_id
+msgid "Commercial Partner"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model,name:l10n_mx_sat_purchase.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document_selector_mixin__company_id
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__company_id
+msgid "Company"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.res_partner_view_form
+msgid "Company default"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__concept_document_id
+msgid "Concept Document"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model,name:l10n_mx_sat_purchase.model_l10n_mx_sat_purchase_invoice_wizard_concept
+msgid "Concept of a SAT CFDI mapped to a purchase order line"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_purchase_invoice_wizard_view_form
+msgid "Concepts"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model,name:l10n_mx_sat_purchase.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model,name:l10n_mx_sat_purchase.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_purchase_invoice_wizard_view_form
+msgid "Create Bill"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model,name:l10n_mx_sat_purchase.model_l10n_mx_sat_purchase_invoice_wizard
+msgid "Create the vendor bill of purchase orders from a SAT CFDI"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__create_date
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document_selector_mixin__currency_id
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__description
+msgid "Description"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document__display_name
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document_selector_mixin__display_name
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__display_name
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__display_name
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_purchase_order__display_name
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_purchase_order_line__display_name
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_res_company__display_name
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_res_partner__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/models/l10n_mx_sat_document.py:0
+msgid "Exempt"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.res_config_settings_view_form
+msgid "How the CFDIs downloaded from the SAT are matched with purchase orders"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,help:l10n_mx_sat_purchase.field_res_partner__l10n_mx_sat_purchase_match_mode
+#: model:ir.model.fields,help:l10n_mx_sat_purchase.field_res_users__l10n_mx_sat_purchase_match_mode
+msgid ""
+"How the CFDIs of this vendor are matched with its purchase orders. Leave it "
+"empty to use the value of the company."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document__id
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document_selector_mixin__id
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__id
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__id
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_purchase_order__id
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_purchase_order_line__id
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_res_company__id
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_res_config_settings__id
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_res_partner__id
+msgid "ID"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__write_date
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_res_company__l10n_mx_sat_purchase_learn_vendor_code
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_res_config_settings__l10n_mx_sat_purchase_learn_vendor_code
+msgid "Learn Vendor Product Codes from SAT CFDIs"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.res_config_settings_view_form
+msgid "Learn vendor codes"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,help:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__available_purchase_line_ids
+msgid "Lines of the selected orders that still have a quantity to bill."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/wizards/l10n_mx_sat_purchase_invoice_wizard.py:0
+msgid ""
+"Lower the quantity to bill of '%s' to what this purchase order line takes: "
+"the rest goes to a new line of the concept."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__match_mode
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.res_config_settings_view_form
+msgid "Match"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_res_partner__l10n_mx_sat_purchase_match_mode
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_res_users__l10n_mx_sat_purchase_match_mode
+msgid "Match SAT CFDIs"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_res_company__l10n_mx_sat_purchase_match_mode
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_res_config_settings__l10n_mx_sat_purchase_match_mode
+msgid "Match SAT CFDIs with Purchase Orders"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_document_view_form
+msgid "Match with Purchase Orders"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_document_view_search
+msgid "Not billed"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/wizards/l10n_mx_sat_purchase_invoice_wizard.py:0
+msgid "Only confirmed purchase orders can be billed."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__purchase_uom_id
+msgid "Order Unit"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__purchase_price_unit
+msgid "Order Unit Price"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__amount_total
+msgid "Orders Total"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document_selector_mixin__partner_id
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__partner_id
+msgid "Partner"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__purchase_qty_pending
+msgid "Pending Quantity"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__price_mismatch
+msgid "Price Mismatch"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.res_config_settings_view_form
+msgid "Price by lines"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_res_company__l10n_mx_sat_purchase_price_source
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_res_config_settings__l10n_mx_sat_purchase_price_source
+msgid "Price of Bills Matched by Lines"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.res_config_settings_view_form
+msgid "Price tolerance (%)"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__product_id
+msgid "Product"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,help:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__product_id
+msgid ""
+"Product of the purchase order line, or the product to bill when the concept "
+"has no line."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model,name:l10n_mx_sat_purchase.model_purchase_order
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__purchase_order_id
+msgid "Purchase Order"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model,name:l10n_mx_sat_purchase.model_purchase_order_line
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__purchase_line_id
+msgid "Purchase Order Line"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__purchase_order_ids
+msgid "Purchase Orders"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields.selection,name:l10n_mx_sat_purchase.selection__res_company__l10n_mx_sat_purchase_price_source__order
+msgid "Purchase order"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,help:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__qty_to_invoice
+msgid "Quantity of the CFDI in the unit of the purchase order line."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__qty_to_invoice
+msgid "Quantity to Bill"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/models/l10n_mx_sat_document.py:0
+msgid "Ret."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/models/l10n_mx_sat_document_selector_mixin.py:0
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document_selector_mixin__l10n_mx_sat_document_id
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__l10n_mx_sat_document_id
+msgid "SAT CFDI"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_res_company__l10n_mx_sat_purchase_price_tolerance
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_res_config_settings__l10n_mx_sat_purchase_price_tolerance
+msgid "SAT CFDI Price Tolerance (%)"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_res_company__l10n_mx_sat_purchase_total_tolerance
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_res_config_settings__l10n_mx_sat_purchase_total_tolerance
+msgid "SAT CFDI Total Tolerance"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model,name:l10n_mx_sat_purchase.model_l10n_mx_sat_document_selector_mixin
+msgid "SAT CFDI selector"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model,name:l10n_mx_sat_purchase.model_l10n_mx_sat_document
+msgid "SAT Document"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__product_service_code
+msgid "SAT Product Code"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__unit_code
+msgid "SAT Unit"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/models/l10n_mx_sat_document_selector_mixin.py:0
+msgid "Select a CFDI downloaded from the SAT."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/models/purchase_order.py:0
+msgid "Set the RFC of %(company)s to bill from the CFDIs it received."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_purchase_invoice_wizard_view_form
+msgid "Split"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_purchase_invoice_wizard_view_form
+msgid "Subtotal"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,help:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__cfdi_amount_untaxed
+msgid "Subtotal of the CFDI after discounts."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__tax_summary
+msgid "Taxes"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/models/l10n_mx_sat_document_selector_mixin.py:0
+msgid ""
+"The CFDI %(uuid)s can no longer be linked: it was cancelled, linked to "
+"another vendor bill or does not belong to the vendor."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/wizards/l10n_mx_sat_purchase_invoice_wizard.py:0
+msgid "The CFDI %s has no concepts to bill."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_purchase_invoice_wizard_view_form
+msgid ""
+"The amount to bill differs from the CFDI subtotal. Review the quantities to "
+"bill before creating the bill."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/wizards/l10n_mx_sat_purchase_invoice_wizard.py:0
+msgid "The purchase order line '%s' has nothing left to bill."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/wizards/l10n_mx_sat_purchase_invoice_wizard.py:0
+msgid ""
+"The purchase orders belong to different contacts of the vendor: match them "
+"by lines to bill them together."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/wizards/l10n_mx_sat_purchase_invoice_wizard.py:0
+msgid "The purchase orders must belong to the same vendor and company"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/wizards/l10n_mx_sat_purchase_invoice_wizard.py:0
+msgid "The purchase orders must use the same currency."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/wizards/l10n_mx_sat_purchase_invoice_wizard.py:0
+msgid ""
+"The quantity to bill of '%(line)s' (%(quantity)s %(uom)s) exceeds its "
+"pending quantity (%(pending)s %(uom)s)."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/wizards/l10n_mx_sat_purchase_invoice_wizard.py:0
+msgid "The quantity to bill of the concept '%s' must be positive."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/wizards/l10n_mx_sat_purchase_invoice_wizard.py:0
+msgid ""
+"The total of the bill (%(bill)s) differs from the total of the CFDI %(uuid)s"
+" (%(cfdi)s). Review the quantities and taxes before posting it."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_purchase_invoice_wizard_view_form
+msgid ""
+"The total of the selected CFDI differs from the orders total. Review the "
+"bill before posting it."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_purchase_invoice_wizard_view_form
+msgid "There is no CFDI of this vendor pending to bill in the SAT downloads."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/models/l10n_mx_sat_document.py:0
+msgid ""
+"There is no purchase order of %(vendor)s pending to bill in %(currency)s."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__total_mismatch
+msgid "Total Mismatch"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.res_config_settings_view_form
+msgid "Total tolerance"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,help:l10n_mx_sat_purchase.field_res_company__l10n_mx_sat_purchase_price_source
+#: model:ir.model.fields,help:l10n_mx_sat_purchase.field_res_config_settings__l10n_mx_sat_purchase_price_source
+msgid ""
+"Unit price of the bill lines when a CFDI is matched by lines with purchase "
+"orders."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,help:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__mapped_amount_untaxed
+msgid "Untaxed amount of the concepts with the quantities to bill."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__no_identificacion
+msgid "Vendor Code"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document__vendor_bill_id
+msgid "Vendor bill"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,help:l10n_mx_sat_purchase.field_res_company__l10n_mx_sat_purchase_learn_vendor_code
+#: model:ir.model.fields,help:l10n_mx_sat_purchase.field_res_config_settings__l10n_mx_sat_purchase_learn_vendor_code
+msgid ""
+"When a line of a CFDI is matched by hand with a purchase order line, keep "
+"its code in the vendor pricelist of the product so the next CFDI with that "
+"code is matched alone."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields.selection,name:l10n_mx_sat_purchase.selection__l10n_mx_sat_purchase_invoice_wizard__match_mode__document
+#: model:ir.model.fields.selection,name:l10n_mx_sat_purchase.selection__res_company__l10n_mx_sat_purchase_match_mode__document
+#: model:ir.model.fields.selection,name:l10n_mx_sat_purchase.selection__res_partner__l10n_mx_sat_purchase_match_mode__document
+msgid "Whole CFDI"
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,help:l10n_mx_sat_purchase.field_res_company__l10n_mx_sat_purchase_match_mode
+#: model:ir.model.fields,help:l10n_mx_sat_purchase.field_res_config_settings__l10n_mx_sat_purchase_match_mode
+msgid ""
+"Whole CFDI: the bill takes everything pending to bill in the purchase orders.\n"
+"By lines: each line of the CFDI is matched with the purchase order lines it bills, with its quantity.\n"
+"A vendor can have its own value, and it can be changed when billing."
+msgstr ""
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__wizard_id
+msgid "Wizard"
+msgstr ""

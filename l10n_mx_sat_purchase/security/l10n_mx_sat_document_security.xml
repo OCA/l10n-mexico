@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="l10n_mx_sat_document_rule_purchase_user" model="ir.rule">
+        <field name="name">SAT Document: purchase users read received invoices</field>
+        <field name="model_id" ref="l10n_mx_sat.model_l10n_mx_sat_document" />
+        <field
+            name="groups"
+            eval="[Command.link(ref('purchase.group_purchase_user'))]"
+        />
+        <field
+            name="domain_force"
+        >[('document_kind', '=', 'cfdi'), ('direction', '=', 'received'), ('voucher_type', '=', 'I')]</field>
+    </record>
+    <!-- Group rules are joined with OR: without this one, a SAT user who is
+         also a purchase user would be limited by the rule above. -->
+    <record id="l10n_mx_sat_document_rule_sat_user" model="ir.rule">
+        <field name="name">SAT Document: SAT users read every document</field>
+        <field name="model_id" ref="l10n_mx_sat.model_l10n_mx_sat_document" />
+        <field name="groups" eval="[Command.link(ref('l10n_mx_sat.group_sat_user'))]" />
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
+</odoo>
