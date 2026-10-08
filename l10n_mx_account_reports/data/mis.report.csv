@@ -5,3 +5,8 @@ mis_report_trial_balance,Balanza de comprobación,Balanza de comprobación,,acco
 mis_report_aged_receivable,Cuentas por cobrar,Cuentas por cobrar,,account.model_account_move_line
 mis_report_aged_payable,Cuentas por pagar,Cuentas por pagar,,account.model_account_move_line
 mis_report_cash_flow,Flujo de efectivo,Flujo de efectivo,,account.model_account_move_line
+mis_report_aged_receivable_by_move,Aged Receivable by partner (by move date),Aged Account Receivable by partner aging on move date,,account.model_account_move_line
+mis_report_aged_receivable_by_due,Aged Receivable by partner (by due date),Aged Account Receivable by partner aging on due date,,account.model_account_move_line
+mis_report_aged_payable_by_move,Aged Payable by partner (by move date),Aged Account Payable by partner aging on move date,,account.model_account_move_line
+mis_report_aged_payable_by_due,Aged Payable by partner (by due date),Aged Account Payable by partner aging on due date,,account.model_account_move_line
+mis_report_diot,DIOT by partner (Operations with third parties),DIOT vendor operations per partner with IVA by rate,,account.model_account_move_line

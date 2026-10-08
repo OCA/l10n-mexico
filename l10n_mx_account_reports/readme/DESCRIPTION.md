@@ -7,3 +7,5 @@ This module provides financial and tax reports for the Mexican localization:
 - Aged Accounts Payable (*Cuentas por Pagar*).
 - Cash Flow (*Flujo de Efectivo*).
 - DIOT (*Declaración Informativa de Operaciones con Terceros*).
+- Aged receivable/payable by partner, by move date or due date.
+- DIOT by partner (previous month).
