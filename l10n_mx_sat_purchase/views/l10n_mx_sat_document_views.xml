@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="l10n_mx_sat_document_view_list" model="ir.ui.view">
+        <field name="name">l10n_mx_sat.document.list.purchase</field>
+        <field name="model">l10n_mx_sat.document</field>
+        <field name="inherit_id" ref="l10n_mx_sat.l10n_mx_sat_document_view_list" />
+        <field name="arch" type="xml">
+            <field name="has_xml" position="after">
+                <field name="vendor_bill_id" readonly="1" optional="show" />
+            </field>
+        </field>
+    </record>
+
+    <record id="l10n_mx_sat_document_view_form" model="ir.ui.view">
+        <field name="name">l10n_mx_sat.document.form.purchase</field>
+        <field name="model">l10n_mx_sat.document</field>
+        <field name="inherit_id" ref="l10n_mx_sat.l10n_mx_sat_document_view_form" />
+        <field name="arch" type="xml">
+            <field name="has_xml" position="after">
+                <field name="vendor_bill_id" readonly="1" />
+            </field>
+        </field>
+    </record>
+
+    <record id="l10n_mx_sat_document_view_search" model="ir.ui.view">
+        <field name="name">l10n_mx_sat.document.search.purchase</field>
+        <field name="model">l10n_mx_sat.document</field>
+        <field name="inherit_id" ref="l10n_mx_sat.l10n_mx_sat_document_view_search" />
+        <field name="arch" type="xml">
+            <filter name="valid" position="before">
+                <filter
+                    string="Not billed"
+                    name="not_billed"
+                    domain="[('vendor_bill_id', '=', False), ('direction', '=', 'received')]"
+                />
+            </filter>
+        </field>
+    </record>
+</odoo>

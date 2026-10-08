@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_l10n_mx_sat_document_purchase_user,l10n_mx_sat.document purchase user,l10n_mx_sat.model_l10n_mx_sat_document,purchase.group_purchase_user,1,0,0,0
+access_l10n_mx_sat_purchase_invoice_wizard_purchase_user,l10n_mx_sat.purchase.invoice.wizard purchase user,model_l10n_mx_sat_purchase_invoice_wizard,purchase.group_purchase_user,1,1,1,0
+access_l10n_mx_sat_purchase_invoice_wizard_line_purchase_user,l10n_mx_sat.purchase.invoice.wizard.line purchase user,model_l10n_mx_sat_purchase_invoice_wizard_line,purchase.group_purchase_user,1,1,1,1

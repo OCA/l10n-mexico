@@ -1,0 +1,265 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_mx_sat_purchase
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-08 00:23+0000\n"
+"PO-Revision-Date: 2026-10-08 00:23+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document_selector_mixin__l10n_mx_sat_available_document_ids
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__l10n_mx_sat_available_document_ids
+msgid "Available SAT CFDIs"
+msgstr "CFDI del SAT disponibles"
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.purchase_order_form
+msgid "Bill from SAT"
+msgstr "Facturar desde SAT"
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/models/purchase_order.py:0
+msgid "Bill from SAT CFDI"
+msgstr "Factura desde CFDI del SAT"
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_purchase_invoice_wizard_view_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document_selector_mixin__company_id
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_purchase_invoice_wizard_view_form
+msgid "Create Bill"
+msgstr "Crear factura"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model,name:l10n_mx_sat_purchase.model_l10n_mx_sat_purchase_invoice_wizard
+msgid "Create the vendor bill of purchase orders from a SAT CFDI"
+msgstr "Crear la factura de proveedor de órdenes de compra desde un CFDI del SAT"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__create_date
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document_selector_mixin__currency_id
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__currency_id
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__currency_code
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document__display_name
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document_selector_mixin__display_name
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__display_name
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__display_name
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_purchase_order__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__folio_number
+msgid "Folio"
+msgstr "Folio"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document__id
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document_selector_mixin__id
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__id
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__id
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_purchase_order__id
+msgid "ID"
+msgstr "ID"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__issue_date
+msgid "Issue date"
+msgstr "Fecha de emisión"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__issuer_name
+msgid "Issuer name"
+msgstr "Nombre del emisor"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__write_date
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_document_view_search
+msgid "Not billed"
+msgstr "Sin facturar"
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/wizards/l10n_mx_sat_purchase_invoice_wizard.py:0
+msgid "Only confirmed purchase orders can be billed."
+msgstr "Solo se pueden facturar órdenes de compra confirmadas."
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__amount_total
+msgid "Orders Total"
+msgstr "Total de las órdenes"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document_selector_mixin__partner_id
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__partner_id
+msgid "Partner"
+msgstr "Contacto"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model,name:l10n_mx_sat_purchase.model_purchase_order
+msgid "Purchase Order"
+msgstr "Orden de compra"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__purchase_order_ids
+msgid "Purchase Orders"
+msgstr "Órdenes de compra"
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/models/l10n_mx_sat_document_selector_mixin.py:0
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document_selector_mixin__l10n_mx_sat_document_id
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__l10n_mx_sat_document_id
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__document_id
+msgid "SAT CFDI"
+msgstr "CFDI del SAT"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model,name:l10n_mx_sat_purchase.model_l10n_mx_sat_purchase_invoice_wizard_line
+msgid "SAT CFDI proposed for the vendor bill of a purchase order"
+msgstr "CFDI del SAT propuesto para la factura de proveedor de una orden de compra"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model,name:l10n_mx_sat_purchase.model_l10n_mx_sat_document_selector_mixin
+msgid "SAT CFDI selector"
+msgstr "Selector de CFDI del SAT"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__line_ids
+msgid "SAT CFDIs"
+msgstr "CFDI del SAT"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model,name:l10n_mx_sat_purchase.model_l10n_mx_sat_document
+msgid "SAT Document"
+msgstr "Documento del SAT"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__sat_status
+msgid "SAT status"
+msgstr "Estado en el SAT"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__selected
+msgid "Select"
+msgstr "Seleccionar"
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/models/l10n_mx_sat_document_selector_mixin.py:0
+msgid "Select a CFDI downloaded from the SAT."
+msgstr "Seleccione un CFDI descargado del SAT."
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/wizards/l10n_mx_sat_purchase_invoice_wizard.py:0
+msgid "Select only one CFDI: each bill comes from a single CFDI."
+msgstr "Seleccione solo un CFDI: cada factura proviene de un único CFDI."
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__series
+msgid "Series"
+msgstr "Serie"
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/models/l10n_mx_sat_document_selector_mixin.py:0
+msgid ""
+"The CFDI %(uuid)s can no longer be linked: it was cancelled, linked to "
+"another vendor bill or does not belong to the vendor."
+msgstr "El CFDI %(uuid)s ya no se puede vincular: fue cancelado, está ligado a otra factura de proveedor o no pertenece al proveedor."
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/wizards/l10n_mx_sat_purchase_invoice_wizard.py:0
+msgid "The purchase orders must belong to the same vendor and company"
+msgstr "Las órdenes de compra deben pertenecer al mismo proveedor y compañía"
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/wizards/l10n_mx_sat_purchase_invoice_wizard.py:0
+msgid "The purchase orders must use the same currency."
+msgstr "Las órdenes de compra deben usar la misma moneda."
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_purchase_invoice_wizard_view_form
+msgid ""
+"The total of the selected CFDI differs from the orders total. Review the "
+"bill before posting it."
+msgstr "El total del CFDI seleccionado es diferente del total de las órdenes. Revise la factura antes de validarla."
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_purchase_invoice_wizard_view_form
+msgid "There is no CFDI of this vendor pending to bill in the SAT downloads."
+msgstr "No hay ningún CFDI de este proveedor pendiente de facturar en las descargas del SAT."
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__total
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_purchase_invoice_wizard_view_form
+msgid "Total"
+msgstr "Total"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__total_mismatch
+msgid "Total Mismatch"
+msgstr "Total distinto"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__uuid
+msgid "UUID"
+msgstr "UUID"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document__vendor_bill_id
+msgid "Vendor bill"
+msgstr "Factura de proveedor"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__wizard_id
+msgid "Wizard"
+msgstr "Asistente"
