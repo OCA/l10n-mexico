@@ -3,7 +3,7 @@
 
 {
     "name": "Mexican Addendum For Invoices For Kuehne+Nagel",
-    "version": "19.0.1.0.0",
+    "version": "19.0.1.0.1",
     "license": "LGPL-3",
     "summary": "Mexican Localization Addendum KNRECEPCION For Kuehne+Nagel",
     "author": "Gray Matter Logic, Odoo Mexican Association (AMOdoo),"
