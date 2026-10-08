@@ -31,7 +31,7 @@ addon | version | maintainers | summary
 [l10n_mx_cfdi_account_addenda_ford](l10n_mx_cfdi_account_addenda_ford/) | 19.0.1.0.0 |  | Mexican Localization Addendum For Ford
 [l10n_mx_cfdi_account_addenda_kuehne_nagel](l10n_mx_cfdi_account_addenda_kuehne_nagel/) | 19.0.1.0.1 |  | Mexican Localization Addendum KNRECEPCION For Kuehne+Nagel
 [l10n_mx_cfdi_account_addenda_mabe](l10n_mx_cfdi_account_addenda_mabe/) | 19.0.1.0.1 |  | Mexican Localization Addendum For MABE
-[l10n_mx_cfdi_account_addenda_volkswagen](l10n_mx_cfdi_account_addenda_volkswagen/) | 19.0.1.0.0 |  | Mexican Localization Addendum For Volkswagen
+[l10n_mx_cfdi_account_addenda_volkswagen](l10n_mx_cfdi_account_addenda_volkswagen/) | 19.0.1.0.1 |  | Mexican Localization Addendum For Volkswagen
 [l10n_mx_cfdi_account_addenda_whirlpool](l10n_mx_cfdi_account_addenda_whirlpool/) | 19.0.1.0.0 |  | Mexican Localization Addendum For Whirlpool
 [l10n_mx_cfdi_comex](l10n_mx_cfdi_comex/) | 19.0.1.1.0 |  | Mexico foreign trade invoicing compliance
 [l10n_mx_cfdi_waybill](l10n_mx_cfdi_waybill/) | 19.0.1.1.0 |  | Provee soporte para generación de cartas porte con gestión de flotas simplificada.

@@ -3,7 +3,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 {
     "name": "Mexican Addendum For Invoices For Volkswagen",
-    "version": "19.0.1.0.0",
+    "version": "19.0.1.0.1",
     "license": "LGPL-3",
     "summary": "Mexican Localization Addendum For Volkswagen",
     "author": "Open Source Integrators, Odoo Mexican Association (AMOdoo),"
