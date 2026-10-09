@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_waybill_tms_user,waybill tms user,l10n_mx_cfdi_waybill.model_l10n_mx_cfdi_waybill_waybill,tms.group_tms_user,1,1,1,0
+access_waybill_tms_admin,waybill tms admin,l10n_mx_cfdi_waybill.model_l10n_mx_cfdi_waybill_waybill,tms.group_tms_admin,1,1,1,1
+access_waybill_entry_tms_user,waybill entry tms user,l10n_mx_cfdi_waybill.model_l10n_mx_cfdi_waybill_waybill_entry,tms.group_tms_user,1,1,1,0
+access_waybill_entry_tms_admin,waybill entry tms admin,l10n_mx_cfdi_waybill.model_l10n_mx_cfdi_waybill_waybill_entry,tms.group_tms_admin,1,1,1,1
+access_waybill_vehicle_tms_user,waybill vehicle tms user,l10n_mx_cfdi_waybill.model_l10n_mx_cfdi_waybill_vehicle,tms.group_tms_user,1,0,0,0
+access_waybill_vehicle_tms_admin,waybill vehicle tms admin,l10n_mx_cfdi_waybill.model_l10n_mx_cfdi_waybill_vehicle,tms.group_tms_admin,1,1,1,1
+access_waybill_transporter_tms_user,waybill transporter tms user,l10n_mx_cfdi_waybill.model_l10n_mx_cfdi_waybill_transporter,tms.group_tms_user,1,1,1,0
+access_waybill_transporter_tms_admin,waybill transporter tms admin,l10n_mx_cfdi_waybill.model_l10n_mx_cfdi_waybill_transporter,tms.group_tms_admin,1,1,1,1
