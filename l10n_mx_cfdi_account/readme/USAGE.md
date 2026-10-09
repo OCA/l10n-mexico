@@ -27,7 +27,9 @@ Use this module after the PAC connection, issuers, and series are configured in
 3. Add products that have a SAT product code.
 4. Open the **CFDI** tab and set the payment method and payment form.
 5. Confirm the invoice; it is stamped with the Mexican authority through the
-   configured PAC.
+   configured PAC. Before signing, the module checks SAT list 69-B and
+   refuses the stamp if the customer RFC is listed as Presunto or Definitivo.
+   Generic RFCs (``XAXX010101000`` / ``XEXX010101000``) are skipped.
 6. Use Send to deliver the invoice to the customer.
 
 ### Import CFDI

@@ -4,6 +4,7 @@ from datetime import datetime
 
 from lxml import etree
 from satcfdi.create.cfd import cfdi40
+from satcfdi.pacs.sat import SAT
 
 from odoo import api, fields, models
 from odoo.exceptions import UserError, ValidationError
@@ -12,6 +13,9 @@ from odoo.tools.float_utils import json_float_round
 from odoo.addons.l10n_mx_cfdi.services import cfdi_builder
 
 _logger = logging.getLogger(__name__)
+
+SAT_69B_GENERIC_RFCS = frozenset({"XAXX010101000", "XEXX010101000"})
+SAT_69B_BLOCKED_STATUSES = frozenset({"Presunto", "Definitivo"})
 
 
 class AccountMove(models.Model):
@@ -331,6 +335,7 @@ class AccountMove(models.Model):
 
         self._validate_invoice_cfdi_required_fields()
         self._validate_cfdi_relation_fields()
+        self._l10n_mx_cfdi_check_receiver_not_on_sat_blacklist()
 
         cert = self.env["l10n_mx_cfdi.document"].create(
             {
@@ -396,6 +401,43 @@ class AccountMove(models.Model):
 
         if err_msg:
             raise ValidationError(self.env._("Cannot generate the CFDI:\n") + err_msg)
+
+    def _l10n_mx_cfdi_receiver_rfc(self):
+        self.ensure_one()
+        partner = self.receiver_id or self.partner_id
+        return (partner.vat or "").replace(" ", "").replace("-", "").upper()
+
+    def _l10n_mx_cfdi_sat_69b_status(self, rfc):
+        """Return the SAT 69-B status for ``rfc``, or None if not listed."""
+        return SAT().list_69b(rfc)
+
+    def _l10n_mx_cfdi_check_receiver_not_on_sat_blacklist(self):
+        """Block signing when the customer RFC is on SAT list 69-B."""
+        self.ensure_one()
+        rfc = self._l10n_mx_cfdi_receiver_rfc()
+        if not rfc or rfc in SAT_69B_GENERIC_RFCS:
+            return
+        try:
+            status = self._l10n_mx_cfdi_sat_69b_status(rfc)
+        except Exception as err:
+            raise UserError(
+                self.env._(
+                    "Could not verify SAT list 69-B for customer RFC %(rfc)s.",
+                    rfc=rfc,
+                )
+            ) from err
+        if status is None:
+            return
+        status_name = status.value if hasattr(status, "value") else str(status)
+        if status_name in SAT_69B_BLOCKED_STATUSES:
+            raise UserError(
+                self.env._(
+                    "Cannot sign the CFDI: customer RFC %(rfc)s is on SAT "
+                    "list 69-B (%(status)s).",
+                    rfc=rfc,
+                    status=status_name,
+                )
+            )
 
     def _l10n_mx_cfdi_invoice_exportacion_complemento(self):
         """Return ``(exportacion, complemento)`` for the invoice CFDI.
@@ -686,6 +728,7 @@ class AccountMove(models.Model):
         """
         for refund in self:
             refund._validate_cfdi_relation_fields()
+            refund._l10n_mx_cfdi_check_receiver_not_on_sat_blacklist()
             items_data = refund.gather_invoice_cfdi_items_data()
 
             relation_type = refund.cfdi_document_relation_type

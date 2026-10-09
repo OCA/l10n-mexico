@@ -39,6 +39,8 @@ This module provides electronic invoicing for Mexico:
 - Customization of fiscal documents according to user needs.
 - Centralized management of electronic invoices within Odoo.
 - Tracking and recording of issued and received fiscal documents.
+- Blocks signing a customer invoice or credit note when the receiver RFC
+  is on SAT list 69-B (Presunto or Definitivo).
 
 **Table of contents**
 
@@ -91,7 +93,10 @@ Invoices
 3. Add products that have a SAT product code.
 4. Open the **CFDI** tab and set the payment method and payment form.
 5. Confirm the invoice; it is stamped with the Mexican authority through
-   the configured PAC.
+   the configured PAC. Before signing, the module checks SAT list 69-B
+   and refuses the stamp if the customer RFC is listed as Presunto or
+   Definitivo. Generic RFCs (``XAXX010101000`` / ``XEXX010101000``) are
+   skipped.
 6. Use Send to deliver the invoice to the customer.
 
 Import CFDI
