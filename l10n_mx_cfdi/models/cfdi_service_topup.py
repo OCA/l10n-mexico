@@ -6,7 +6,7 @@ class CFDIServiceTopUp(models.Model):
     _description = "CFDI Service Top Up"
 
     topup_date = fields.Datetime(
-        string="Fecha de Adquisición", default=fields.Datetime.now()
+        string="Fecha de Adquisición", default=fields.Datetime.now
     )
     stamp_number = fields.Integer(string="Cantidad de Folios", required=True)
     stamp_price = fields.Monetary(
