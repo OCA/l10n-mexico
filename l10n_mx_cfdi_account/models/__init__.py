@@ -1,6 +1,7 @@
 from . import (
     cfdi_document,
     account_move,
+    account_move_send,
     account_move_line,
     account_tax,
     ir_ui_view,
