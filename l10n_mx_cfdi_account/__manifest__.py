@@ -5,6 +5,8 @@
     "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/l10n-mexico",
     "license": "LGPL-3",
+    "development_status": "Beta",
+    "maintainers": ["azubieta"],
     "category": "Accounting",
     "version": "19.0.1.1.0",
     "depends": ["l10n_mx_cfdi", "l10n_mx"],
