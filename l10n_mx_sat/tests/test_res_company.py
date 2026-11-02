@@ -313,6 +313,11 @@ class TestResCompanySATConnection(TransactionCase):
         self.assertEqual(self.company.l10n_mx_sat_document_count, 1)
         self.assertEqual(self.company.l10n_mx_sat_download_request_count, 1)
 
+    def test_admin_user_is_sat_manager(self):
+        admin = self.env.ref("base.user_admin")
+        self.assertTrue(admin.has_group("l10n_mx_sat.group_sat_manager"))
+        self.assertTrue(admin.has_group("l10n_mx_sat.group_sat_user"))
+
     def test_sat_counts_zero_without_sat_group(self):
         self.env["l10n_mx_sat.document"]._sat_create(
             [
@@ -324,13 +329,28 @@ class TestResCompanySATConnection(TransactionCase):
                 }
             ]
         )
-        group_user = self.env.ref("l10n_mx_sat.group_sat_user")
-        group_manager = self.env.ref("l10n_mx_sat.group_sat_manager")
-        self.env.user.group_ids = [(3, group_user.id), (3, group_manager.id)]
-        self.company._compute_l10n_mx_sat_document_count()
-        self.company._compute_l10n_mx_sat_download_request_count()
-        self.assertEqual(self.company.l10n_mx_sat_document_count, 0)
-        self.assertEqual(self.company.l10n_mx_sat_download_request_count, 0)
+        user = self.env["res.users"].create(
+            {
+                "name": "No SAT access",
+                "login": "no-sat-access",
+                "group_ids": [
+                    (
+                        6,
+                        0,
+                        [
+                            self.env.ref("base.group_user").id,
+                            self.env.ref("base.group_erp_manager").id,
+                        ],
+                    )
+                ],
+            }
+        )
+        self.assertFalse(user.has_group("l10n_mx_sat.group_sat_user"))
+        company = self.company.with_user(user)
+        company._compute_l10n_mx_sat_document_count()
+        company._compute_l10n_mx_sat_download_request_count()
+        self.assertEqual(company.l10n_mx_sat_document_count, 0)
+        self.assertEqual(company.l10n_mx_sat_download_request_count, 0)
 
     @patch(f"{_SVC}.Signer.load")
     @patch(f"{_SVC}.SAT")
