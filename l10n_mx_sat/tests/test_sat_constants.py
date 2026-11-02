@@ -9,7 +9,6 @@ from odoo.addons.l10n_mx_sat.services import (
     SAT_CODE_MAX_ELEMENTS,
     SAT_CODE_NO_INFO,
     SAT_CODE_SUCCESS,
-    SAT_DEFAULT_SYNC_DAYS,
     SAT_METADATA_DEFAULT_WINDOW_DAYS,
 )
 
@@ -23,5 +22,4 @@ class TestSatConstants(TransactionCase):
         self.assertEqual(SAT_CODE_DUPLICATE_LIFETIME, "5002")
 
     def test_defaults(self):
-        self.assertEqual(SAT_DEFAULT_SYNC_DAYS, 30)
         self.assertEqual(SAT_METADATA_DEFAULT_WINDOW_DAYS, 7)

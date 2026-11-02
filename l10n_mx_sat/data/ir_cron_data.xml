@@ -7,6 +7,11 @@
         <field name="code">model._cron_process_requests()</field>
         <field name="interval_number">1</field>
         <field name="interval_type">days</field>
+        <!-- Do not run during module installation; FIEL is not loaded yet. -->
+        <field
+            name="nextcall"
+            eval="(DateTime.now() + timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')"
+        />
         <field name="active" eval="True" />
     </record>
 </odoo>

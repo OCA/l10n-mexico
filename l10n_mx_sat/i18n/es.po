@@ -397,21 +397,23 @@ msgstr "En proceso"
 #. module: l10n_mx_sat
 #: model:ir.model.fields,help:l10n_mx_sat.field_res_company__l10n_mx_sat_metadata_sync_from
 msgid ""
-"Initial date for bulk metadata download (SAT status). If empty, the same "
-"date as XML sync is used."
+"First metadata download starts on this date. If empty, the XML sync date "
+"is used, or the current month when that date is also empty."
 msgstr ""
-"Fecha inicial para la descarga masiva de metadatos (estatus SAT). Si está "
-"vacía, se usa la misma fecha que la sincronización XML."
+"La primera descarga de metadatos inicia en esta fecha. Si está vacía, se "
+"usa la fecha de sincronización XML, o el mes en curso si esa fecha también "
+"está vacía."
 
 #. module: l10n_mx_sat
 #: model:ir.model.fields,help:l10n_mx_sat.field_res_company__l10n_mx_sat_sync_from
 msgid ""
-"Initial date for the first bulk XML download. After the first successful "
-"sync, the system continues incrementally from the last completed range."
+"First XML download starts on this date. Leave empty to sync only the "
+"current month. Later downloads continue from the last completed range, one "
+"calendar month at a time."
 msgstr ""
-"Fecha inicial para la primera descarga masiva de XML. Después de la primera "
-"sincronización exitosa, el sistema continúa incrementalmente desde el último "
-"rango completado."
+"La primera descarga XML inicia en esta fecha. Déjela vacía para sincronizar "
+"solo el mes en curso. Las descargas posteriores continúan desde el último "
+"rango completado, un mes calendario a la vez."
 
 #. module: l10n_mx_sat
 #: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_document__issue_date

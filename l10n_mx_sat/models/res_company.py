@@ -31,14 +31,16 @@ class ResCompany(models.Model):
     )
     l10n_mx_sat_sync_from = fields.Date(
         string="Sync documents from",
-        help="Initial date for the first bulk XML download. "
-        "After the first successful sync, the system continues "
-        "incrementally from the last completed range.",
+        help="First XML download starts on this date. "
+        "Leave empty to sync only the current month. "
+        "Later downloads continue from the last completed range, "
+        "one calendar month at a time.",
     )
     l10n_mx_sat_metadata_sync_from = fields.Date(
         string="Sync metadata from",
-        help="Initial date for bulk metadata download (SAT status). "
-        "If empty, the same date as XML sync is used.",
+        help="First metadata download starts on this date. "
+        "If empty, the XML sync date is used, or the current month "
+        "when that date is also empty.",
     )
     l10n_mx_sat_last_sync = fields.Datetime(
         string="Last XML sync",
