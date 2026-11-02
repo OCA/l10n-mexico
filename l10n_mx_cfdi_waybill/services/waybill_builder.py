@@ -94,6 +94,10 @@ def _build_mercancia(goods: list[dict]):
                 cantidad=_dec(item["Cantidad"]),
                 clave_unidad=item["ClaveUnidad"],
                 peso_en_kg=_dec(item["PesoEnKg"]),
+                material_peligroso=item.get("MaterialPeligroso"),
+                cve_material_peligroso=item.get("CveMaterialPeligroso"),
+                embalaje=item.get("Embalaje"),
+                descrip_embalaje=item.get("DescripEmbalaje"),
                 cantidad_transporta=cantidad_transporta,
             )
         )
@@ -117,6 +121,8 @@ def _build_autotransporte(auto: dict | None):
         seguros=cp.Seguros(
             asegura_resp_civil=seg["AseguraRespCivil"],
             poliza_resp_civil=seg["PolizaRespCivil"],
+            asegura_med_ambiente=seg.get("AseguraMedAmbiente"),
+            poliza_med_ambiente=seg.get("PolizaMedAmbiente"),
         ),
     )
 
