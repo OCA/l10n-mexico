@@ -63,6 +63,16 @@ class CFDIAccountTestCommon(CFDITestMixin, AccountTestInvoicingCommon):
             }
         )
 
+    def setUp(self):
+        super().setUp()
+        self._sat_69b_status_patcher = patch(
+            "odoo.addons.l10n_mx_cfdi_account.models.account_move."
+            "AccountMove._l10n_mx_cfdi_sat_69b_status",
+            return_value=None,
+        )
+        self.addCleanup(self._sat_69b_status_patcher.stop)
+        self._sat_69b_status_patcher.start()
+
     def _create_cfdi_invoice(self, **extra):
         vals = {
             "move_type": "out_invoice",

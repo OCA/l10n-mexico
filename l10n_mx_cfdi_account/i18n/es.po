@@ -212,6 +212,15 @@ msgid "Cannot generate the CFDI:\n"
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_account/models/account_move.py:0
+msgid ""
+"Cannot sign the CFDI: customer RFC %(rfc)s is on SAT list 69-B (%(status)s)."
+msgstr ""
+"No se puede firmar el CFDI: el RFC del cliente %(rfc)s está en la lista "
+"69-B del SAT (%(status)s)."
+
+#. module: l10n_mx_cfdi_account
 #: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account.view_move_form
 msgid "Cargar desde adjuntos"
 msgstr ""
@@ -271,6 +280,13 @@ msgstr ""
 #: model:ir.model,name:l10n_mx_cfdi_account.model_res_partner
 msgid "Contact"
 msgstr ""
+
+#. module: l10n_mx_cfdi_account
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_account/models/account_move.py:0
+msgid "Could not verify SAT list 69-B for customer RFC %(rfc)s."
+msgstr ""
+"No se pudo verificar la lista 69-B del SAT para el RFC del cliente %(rfc)s."
 
 #. module: l10n_mx_cfdi_account
 #: model:ir.actions.act_window,name:l10n_mx_cfdi_account.cfdi_invoice_generic_create_form_action

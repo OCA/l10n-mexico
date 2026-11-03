@@ -382,6 +382,8 @@ standard.</li>
 <li>Customization of fiscal documents according to user needs.</li>
 <li>Centralized management of electronic invoices within Odoo.</li>
 <li>Tracking and recording of issued and received fiscal documents.</li>
+<li>Blocks signing a customer invoice or credit note when the receiver RFC
+is on SAT list 69-B (Presunto or Definitivo).</li>
 </ul>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
@@ -451,7 +453,10 @@ required for stamping.</li>
 <li>Add products that have a SAT product code.</li>
 <li>Open the <strong>CFDI</strong> tab and set the payment method and payment form.</li>
 <li>Confirm the invoice; it is stamped with the Mexican authority through
-the configured PAC.</li>
+the configured PAC. Before signing, the module checks SAT list 69-B
+and refuses the stamp if the customer RFC is listed as Presunto or
+Definitivo. Generic RFCs (<tt class="docutils literal">XAXX010101000</tt> / <tt class="docutils literal">XEXX010101000</tt>) are
+skipped.</li>
 <li>Use Send to deliver the invoice to the customer.</li>
 </ol>
 <div class="section" id="import-cfdi">

@@ -7,4 +7,5 @@ from . import test_account_tax
 from . import test_addenda
 from . import test_cfdi_document_account
 from . import test_download_cfdi_files_wizard
+from . import test_sat_69b
 from . import test_wizards
