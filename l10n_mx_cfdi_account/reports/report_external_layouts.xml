@@ -10,6 +10,7 @@
                 t-att-style="report_header_style"
                 position="replace"
             >
+                <div class="d-flex justify-content-between" />
                 <div class="o_clean_header">
                     <div class="row px-3" t-if="cfdi">
                         <div class="col-8 m-0 p-1">
