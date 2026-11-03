@@ -1,8 +1,11 @@
 import base64
+import logging
 import re
 
 from odoo import api, fields, models
 from odoo.exceptions import UserError
+
+_logger = logging.getLogger(__name__)
 
 
 class Document(models.Model):
@@ -27,45 +30,57 @@ class Document(models.Model):
     @api.depends("tracking_id")
     def _compute_download_files_if_needed(self):
         for entry in self:
-            if entry.tracking_id:
+            if not entry.tracking_id:
+                entry.files_in_cache = False
+                continue
+
+            if not entry.pdf_file:
+                report_type, report, resource_ids = entry._resolve_report()
+                if report:
+                    # force the report to be rendered to work around a bug
+                    # in _render_qweb_pdf
+                    report = report.with_context(force_report_rendering=True)
+                    doc_data, _doc_format = report._render_qweb_pdf(
+                        report_type, resource_ids
+                    )
+                    # in some scenarios, the report is not generated,
+                    # so we need to check if the file is empty
+                    if doc_data:
+                        entry.pdf_file = base64.b64encode(doc_data)
+
                 if not entry.pdf_file:
-                    report_type, report, resource_ids = self._resolve_report()
-
-                    if report:
-                        # force the report to be rendered to work around a bug
-                        # in _render_qweb_pdf
-                        report = self.env["ir.actions.report"].with_context(
-                            force_report_rendering=True
-                        )
-                        doc_data, doc_format = report._render_qweb_pdf(
-                            report_type, resource_ids
-                        )
-                        # in some scenarios, the report is not generated,
-                        # so we need to check if the file is empty
-                        if doc_data:
-                            result = base64.b64encode(doc_data)
-                            entry.pdf_file = result
-
-                    if not entry.pdf_file:
-                        # fallback to the provider's PDF
+                    # fallback to the provider's PDF
+                    try:
                         res = entry.issuer_id.service_id.sudo().get_cfdi_pdf(
                             entry.tracking_id
                         )
                         entry.pdf_file = res["Content"]
-
-                    # set filename
+                    except UserError:
+                        _logger.debug(
+                            "Could not recover PDF for CFDI %s",
+                            entry.display_name,
+                        )
+                if entry.pdf_file:
                     entry.pdf_filename = f"{entry.name}.pdf"
 
-                if not entry.xml_file:
+            if not entry.xml_file:
+                try:
                     res = entry.issuer_id.service_id.sudo().get_cfdi_xml(
                         entry.tracking_id
                     )
-                    entry.xml_file = res["Content"].encode("utf-8")
-                    entry.xml_filename = f"{entry.name}.xml"
+                    content = res.get("Content") or b""
+                    if isinstance(content, str):
+                        content = content.encode("utf-8")
+                    if content:
+                        entry.xml_file = base64.b64encode(content)
+                        entry.xml_filename = f"{entry.name}.xml"
+                except UserError:
+                    _logger.debug(
+                        "Could not recover XML for CFDI %s",
+                        entry.display_name,
+                    )
 
-                entry.files_in_cache = True
-            else:
-                entry.files_in_cache = False
+            entry.files_in_cache = True
 
     def _resolve_report(self):
         """Returns the report and resource IDs for generating the PDF file."""
