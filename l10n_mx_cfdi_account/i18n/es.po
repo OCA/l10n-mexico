@@ -589,6 +589,12 @@ msgid "Metodo de Pago"
 msgstr ""
 
 #. module: l10n_mx_cfdi_account
+#. odoo-python
+#: code:addons/l10n_mx_cfdi_account/models/account_move.py:0
+msgid "Missing exchange rate from %(currency)s to MXN."
+msgstr ""
+
+#. module: l10n_mx_cfdi_account
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_bank_statement_line__payment_method_id
 #: model:ir.model.fields,field_description:l10n_mx_cfdi_account.field_account_move__payment_method_id
 msgid "Método de pago"
