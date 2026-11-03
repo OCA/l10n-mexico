@@ -30,4 +30,6 @@
         "demo/account_payment.xml",
         "demo/cfdi_document.xml",
     ],
+    "development_status": "Beta",
+    "maintainers": ["max3903"],
 }

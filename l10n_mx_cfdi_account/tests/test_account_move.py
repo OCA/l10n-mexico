@@ -1,5 +1,6 @@
 import base64
 from datetime import timedelta
+from decimal import Decimal
 from unittest.mock import PropertyMock, patch
 
 from lxml import etree
@@ -108,6 +109,77 @@ class TestAccountMove(CFDIAccountTestCommon):
         self.assertIsNone(complemento)
         cfdi = invoice._gather_invoice_cfdi_data()
         self.assertEqual(cfdi.get("Exportacion"), "01")
+
+    def _patch_company_currency(self, invoice, currency):
+        return patch.object(
+            type(invoice),
+            "company_currency_id",
+            new_callable=PropertyMock,
+            return_value=currency,
+        )
+
+    def test_invoice_cfdi_mxn_has_no_tipo_cambio(self):
+        mxn = self.env.ref("base.MXN")
+        mxn.active = True
+        invoice = self._create_cfdi_invoice(currency_id=mxn.id)
+        cfdi = invoice._gather_invoice_cfdi_data()
+        self.assertEqual(cfdi.get("Moneda"), "MXN")
+        self.assertIsNone(cfdi.get("TipoCambio"))
+
+    def test_invoice_cfdi_foreign_currency_moneda_and_tipo_cambio(self):
+        """A foreign currency invoice is stamped in its own currency."""
+        mxn = self.env.ref("base.MXN")
+        eur = self.setup_other_currency("EUR", rates=[("1900-01-01", 0.05)])
+        invoice = self._create_cfdi_invoice(currency_id=eur.id)
+        refund = self._create_cfdi_invoice(move_type="out_refund", currency_id=eur.id)
+        with self._patch_company_currency(invoice, mxn):
+            cfdi = invoice._gather_invoice_cfdi_data()
+            self.assertEqual(cfdi.get("Moneda"), "EUR")
+            self.assertEqual(cfdi.get("TipoCambio"), Decimal("20.000000"))
+            self.assertEqual(
+                refund._l10n_mx_cfdi_currency_data(), ("EUR", Decimal("20.000000"))
+            )
+
+    def test_invoice_cfdi_currency_rate_fallback_and_missing_rate(self):
+        """Without the document rate, use the rate table; no rate is an error."""
+        mxn = self.env.ref("base.MXN")
+        eur = self.setup_other_currency("EUR", rates=[("1900-01-01", 0.05)])
+        invoice = self._create_cfdi_invoice(currency_id=eur.id)
+        with (
+            self._patch_company_currency(invoice, mxn),
+            patch.object(
+                type(invoice),
+                "invoice_currency_rate",
+                new_callable=PropertyMock,
+                return_value=0.0,
+            ),
+        ):
+            with patch.object(type(eur), "_get_conversion_rate", return_value=18.5):
+                self.assertEqual(
+                    invoice._l10n_mx_cfdi_currency_data(),
+                    ("EUR", Decimal("18.500000")),
+                )
+            with patch.object(type(eur), "_get_conversion_rate", return_value=0.0):
+                with self.assertRaises(UserError):
+                    invoice._l10n_mx_cfdi_currency_data()
+
+    def test_invoice_cfdi_tipo_cambio_is_mxn_for_non_mxn_company(self):
+        """TipoCambio is always MXN per unit, whatever the company currency."""
+        mxn = self.env.ref("base.MXN")
+        usd = self.env.ref("base.USD")
+        eur = self.setup_other_currency("EUR", rates=[("1900-01-01", 0.05)])
+        invoice = self._create_cfdi_invoice(currency_id=eur.id)
+        with (
+            self._patch_company_currency(invoice, usd),
+            patch.object(
+                type(eur), "_get_conversion_rate", return_value=21.25
+            ) as conversion,
+        ):
+            self.assertEqual(
+                invoice._l10n_mx_cfdi_currency_data(),
+                ("EUR", Decimal("21.250000")),
+            )
+        self.assertEqual(conversion.call_args.args[1], mxn)
 
     def test_prepare_invoice_cfdi_total_taxes_aggregates_same_code(self):
         self.cfdi_product.taxes_id = [(6, 0, [self._iva_tax().id])]

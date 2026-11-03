@@ -1,6 +1,7 @@
 import base64
 import logging
 from datetime import datetime
+from decimal import ROUND_HALF_UP, Decimal
 
 from lxml import etree
 from satcfdi.create.cfd import cfdi40
@@ -466,13 +467,15 @@ class AccountMove(models.Model):
             receiver["FiscalRegime"] = "616"
 
         exportacion, complemento = self._l10n_mx_cfdi_invoice_exportacion_complemento()
+        moneda, tipo_cambio = self._l10n_mx_cfdi_currency_data()
         return cfdi_builder.build_comprobante(
             issuer=self.issuer_id,
             receiver=receiver,
             conceptos=self.gather_invoice_cfdi_items_data(),
             tipo_de_comprobante="I",
             lugar_expedicion=self.issuer_id.zip,
-            moneda=self.company_currency_id.name,
+            moneda=moneda,
+            tipo_cambio=tipo_cambio,
             forma_pago=self.payment_form_id.code,
             metodo_pago=self.payment_method_id.code,
             fecha=self._format_cfdi_date_str(self.invoice_date),
@@ -557,6 +560,41 @@ class AccountMove(models.Model):
                 for related_cfdi in self.cfdi_document_relations
             ],
         }
+
+    def _l10n_mx_cfdi_currency_data(self):
+        """Return ``(Moneda, TipoCambio)`` for the invoice or refund CFDI.
+
+        The CFDI is issued in the document currency. For foreign currencies,
+        TipoCambio is the MXN amount per unit of that currency (Anexo 20, up
+        to 6 decimals). For MXN companies it is taken from the document's own
+        rate, so that the CFDI and the journal entry use the same exchange
+        rate; otherwise from the rate table to MXN at the invoice date.
+        """
+        self.ensure_one()
+        currency = self.currency_id or self.company_currency_id
+        mxn = self.env.ref("base.MXN")
+        if currency == mxn:
+            return currency.name, None
+        if self.company_currency_id == mxn and self.invoice_currency_rate:
+            rate = 1 / self.invoice_currency_rate
+        else:
+            rate = currency._get_conversion_rate(
+                currency,
+                mxn,
+                self.company_id,
+                self.invoice_date or fields.Date.context_today(self),
+            )
+        if not rate or rate <= 0:
+            raise UserError(
+                self.env._(
+                    "Missing exchange rate from %(currency)s to MXN.",
+                    currency=currency.name,
+                )
+            )
+        tipo_cambio = Decimal(str(rate)).quantize(
+            Decimal("0.000001"), rounding=ROUND_HALF_UP
+        )
+        return currency.name, tipo_cambio
 
     def _format_cfdi_date_str(self, document_date):
         """
@@ -802,17 +840,15 @@ class AccountMove(models.Model):
                 receiver["TaxZipCode"] = refund.issuer_id.zip
                 receiver["FiscalRegime"] = "616"
 
+            moneda, tipo_cambio = refund._l10n_mx_cfdi_currency_data()
             cfdi = cfdi_builder.build_comprobante(
                 issuer=refund.issuer_id,
                 receiver=receiver,
                 conceptos=items_data,
                 tipo_de_comprobante="E",
                 lugar_expedicion=refund.issuer_id.zip,
-                moneda=(
-                    refund.currency_id.name
-                    if refund.currency_id
-                    else refund.company_currency_id.name
-                ),
+                moneda=moneda,
+                tipo_cambio=tipo_cambio,
                 forma_pago=refund.payment_form_id.code,
                 metodo_pago=refund.payment_method_id.code,
                 fecha=refund._format_cfdi_date_str(refund.invoice_date),
