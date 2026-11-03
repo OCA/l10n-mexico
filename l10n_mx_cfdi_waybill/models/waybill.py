@@ -246,7 +246,7 @@ class Waybill(models.Model):
         data["Complemento"]["CartaPorte31"]["FiguraTransporte"] = figura_transporte
 
     def _add_autotransporte_data(self, data):
-        data["Complemento"]["CartaPorte31"]["Mercancias"]["Autotransporte"] = {
+        auto = {
             "PermSCT": self.vehicle_id.permit_type.code,
             "NumPermisoSCT": self.vehicle_id.permit_number,
             "IdentificacionVehicular": {
@@ -260,6 +260,14 @@ class Waybill(models.Model):
                 "PolizaRespCivil": self.vehicle_id.insurance_number,
             },
         }
+        trailers = []
+        for trailer in self.vehicle_id.trailers:
+            if not trailer.plate or not trailer.type:
+                continue
+            trailers.append({"SubTipoRem": trailer.type.code, "Placa": trailer.plate})
+        if trailers:
+            auto["Remolques"] = trailers
+        data["Complemento"]["CartaPorte31"]["Mercancias"]["Autotransporte"] = auto
 
     def _format_goods_and_locations_data(self):
         locations_data = []

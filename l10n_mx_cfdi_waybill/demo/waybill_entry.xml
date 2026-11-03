@@ -3,6 +3,7 @@
         <field name="waybill_id" ref="demo_waybill" />
         <field
             name="product_id"
+            model="product.template"
             eval="obj().env.ref('l10n_mx_cfdi_waybill.demo_waybill_product').product_variant_id.id"
         />
         <field name="product_qty">1.0</field>
