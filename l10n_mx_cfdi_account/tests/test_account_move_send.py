@@ -84,8 +84,16 @@ class TestAccountMoveSend(CFDIDocumentTestCommon):
 
     def test_pac_failure_does_not_block_widget(self):
         self._publish_cfdi(self.invoice, tracking_id="trk-1")
-        with patch.object(
-            type(self.issuer.service_id), "get_cfdi_xml", side_effect=Exception("x")
+        with (
+            patch.object(
+                type(self.issuer.service_id),
+                "get_cfdi_xml",
+                side_effect=Exception("x"),
+            ),
+            self.assertLogs(
+                "odoo.addons.l10n_mx_cfdi_account.models.account_move_send",
+                level="WARNING",
+            ),
         ):
             items = self._widget_items()
         self.assertFalse([n for n in items if n.endswith(".xml")])
