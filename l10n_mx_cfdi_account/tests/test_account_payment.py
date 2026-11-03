@@ -1,4 +1,4 @@
-from decimal import Decimal
+from decimal import ROUND_HALF_UP, Decimal
 from types import SimpleNamespace
 from unittest.mock import PropertyMock, patch
 
@@ -285,6 +285,96 @@ class TestAccountPayment(CFDIAccountTestCommon):
         pagos = payment.prepare_payment_cfdi()
         docto = self._first_docto_relacionado(pagos)
         self.assertEqual(docto.get("MetodoDePagoDR"), "PPD")
+
+    def test_prepare_payment_cfdi_amounts_have_currency_decimals(self):
+        """Amounts keep the currency decimals: "115.00", never "115.0"."""
+        invoice = self._post_cfdi_invoice(
+            self._create_cfdi_invoice(
+                payment_method_id=self.env.ref("l10n_mx_catalogs.c_metodo_pago_PPD").id
+            )
+        )
+        self._create_published_invoice_cfdi(invoice)
+        payment = self._register_invoice_payment(invoice)
+        # float amounts, as returned by _compute_taxes
+        taxes = [
+            {
+                "Name": "IVA",
+                "Rate": 0.16,
+                "IsRetention": False,
+                "Base": 100.0,
+                "Total": 16.0,
+            }
+        ]
+        with patch.object(type(payment), "_compute_taxes", return_value=taxes):
+            pagos = payment.prepare_payment_cfdi()
+        keys = {
+            "Monto",
+            "ImpSaldoAnt",
+            "ImpPagado",
+            "ImpSaldoInsoluto",
+            "BaseDR",
+            "ImporteDR",
+            "BaseP",
+            "ImporteP",
+        }
+        found = {}
+
+        def walk(node):
+            if isinstance(node, dict):
+                for key, value in node.items():
+                    if key in keys and isinstance(value, Decimal):
+                        found.setdefault(key, []).append(value)
+                    walk(value)
+            elif isinstance(node, list | tuple):
+                for item in node:
+                    walk(item)
+
+        walk(pagos)
+        self.assertTrue(
+            {"Monto", "ImpSaldoAnt", "ImpPagado", "BaseDR", "ImporteDR"} <= set(found),
+            sorted(found),
+        )
+        for key, values in found.items():
+            for value in values:
+                self.assertEqual(value.as_tuple().exponent, -2, f"{key}={value}")
+
+    def test_prepare_payment_cfdi_totales_rounded_to_mxn_decimals(self):
+        """Totales are in MXN with 2 decimals, also with a TipoCambioP."""
+        invoice = self._post_cfdi_invoice(
+            self._create_cfdi_invoice(
+                payment_method_id=self.env.ref("l10n_mx_catalogs.c_metodo_pago_PPD").id
+            )
+        )
+        self._create_published_invoice_cfdi(invoice)
+        payment = self._register_invoice_payment(invoice)
+        taxes = [
+            {
+                "Name": "IVA",
+                "Rate": 0.16,
+                "IsRetention": False,
+                "Base": 100.0,
+                "Total": 16.0,
+            }
+        ]
+        with (
+            patch.object(type(payment), "_compute_taxes", return_value=taxes),
+            patch.object(
+                type(payment),
+                "_cfdi_tipo_cambio_p",
+                return_value=Decimal("18.123456"),
+            ),
+        ):
+            pagos = payment.prepare_payment_cfdi()
+        totales = pagos["Totales"]
+        self.assertIn("MontoTotalPagos", totales)
+        self.assertIn("TotalTrasladosBaseIVA16", totales)
+        for key, value in totales.items():
+            self.assertEqual(value.as_tuple().exponent, -2, f"{key}={value}")
+        monto = pagos["Pago"][0]["Monto"] * Decimal("18.123456")
+        self.assertEqual(
+            totales["MontoTotalPagos"],
+            monto.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP),
+        )
 
     def test_prepare_payment_cfdi_foreign_currency(self):
         invoice = self._post_cfdi_invoice(
