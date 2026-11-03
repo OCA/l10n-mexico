@@ -97,3 +97,28 @@ class TestAccountMoveSend(CFDIDocumentTestCommon):
         ):
             items = self._widget_items()
         self.assertFalse([n for n in items if n.endswith(".xml")])
+
+    def test_pac_returns_empty_content(self):
+        document, items = self._recover_xml(b"")
+        self.assertFalse(document.xml_file)
+        self.assertFalse([n for n in items if n.endswith(".xml")])
+
+    def test_published_without_xml_nor_tracking_id(self):
+        self._publish_cfdi(self.invoice)
+        with patch.object(type(self.issuer.service_id), "get_cfdi_xml") as get_xml:
+            items = self._widget_items()
+        get_xml.assert_not_called()
+        self.assertFalse([n for n in items if n.endswith(".xml")])
+
+    def test_xml_already_in_widget_is_not_duplicated(self):
+        self._publish_cfdi(
+            self.invoice,
+            xml_file=base64.b64encode(b"<x/>"),
+            xml_filename="cfdi.xml",
+        )
+        self._widget_items()
+        # Odoo itself now lists the attachment stored on the invoice
+        widget = self.env["account.move.send"]._get_default_mail_attachments_widget(
+            self.invoice, self.template
+        )
+        self.assertEqual([i["name"] for i in widget].count("cfdi.xml"), 1)
