@@ -31,9 +31,7 @@ class CFDIVehicle(models.Model):
     environmental_insurance_company = fields.Char(
         string="Aseguradora de Medio Ambiente"
     )
-    environmental_insurance_number = fields.Char(
-        string="Póliza de Seguro Ambiental"
-    )
+    environmental_insurance_number = fields.Char(string="Póliza de Seguro Ambiental")
 
     trailers = fields.Many2many(
         "l10n_mx_cfdi_waybill.vehicle_trailer",
