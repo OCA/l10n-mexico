@@ -35,4 +35,6 @@
         "demo/cfdi_document.xml",
         "demo/cfdi_document_relation.xml",
     ],
+    "development_status": "Beta",
+    "maintainers": ["max3903"],
 }

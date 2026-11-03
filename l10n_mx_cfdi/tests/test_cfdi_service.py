@@ -67,6 +67,7 @@ class TestCFDIService(TransactionCase):
             mock_build.assert_called_once()
 
     def test_create_cfdi_uses_issue_when_supported(self):
+        self.cfdi_service.provider = "swsapien"
         mock_pac = MagicMock()
         mock_pac.issue.return_value = Document(
             document_id="doc-1",
@@ -90,6 +91,46 @@ class TestCFDIService(TransactionCase):
         self.assertEqual(result["status"], "published")
         self.assertEqual(result["uuid"], "11111111-1111-1111-1111-111111111111")
         self.assertEqual(mock_pac.issue.call_args.kwargs.get("accept"), Accept.XML_PDF)
+
+    def test_create_cfdi_requests_xml_only_from_xml_only_pacs(self):
+        """Finkok, Comercio Digital and MySuite only return the XML."""
+        document = Document(
+            document_id="doc-1",
+            xml=(
+                b'<?xml version="1.0"?><cfdi:Comprobante '
+                b'xmlns:cfdi="http://www.sat.gob.mx/cfd/4" Total="10" '
+                b'Fecha="2024-01-01T12:00:00" NoCertificado="1" Sello="ABC">'
+                b"<cfdi:Complemento><tfd:TimbreFiscalDigital "
+                b'xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" '
+                b'UUID="33333333-3333-3333-3333-333333333333" '
+                b'SelloSAT="s" NoCertificadoSAT="2" RfcProvCertif="RFC" '
+                b'FechaTimbrado="2024-01-01T13:00:00"/>'
+                b"</cfdi:Complemento></cfdi:Comprobante>"
+            ),
+        )
+        for code in ("finkok", "comerciodigital", "mysuite"):
+            with self.subTest(provider=code):
+                self.assertFalse(pac_registry.get_provider(code).returns_pdf)
+                self.cfdi_service.provider = code
+                mock_pac = MagicMock()
+                mock_pac.issue.return_value = document
+                mock_pac.stamp.return_value = document
+                cfdi = MagicMock()
+                cfdi.get.return_value = None
+                with (
+                    patch.object(
+                        type(self.cfdi_service), "_get_pac", return_value=mock_pac
+                    ),
+                    patch.object(
+                        type(self.cfdi_service),
+                        "_get_csd_signer",
+                        return_value=MagicMock(),
+                    ),
+                ):
+                    result = self.cfdi_service.create_cfdi(cfdi, issuer=self.issuer)
+                call = mock_pac.issue.call_args or mock_pac.stamp.call_args
+                self.assertEqual(call.kwargs.get("accept"), Accept.XML)
+                self.assertEqual(result["uuid"], "33333333-3333-3333-3333-333333333333")
 
     def test_create_cfdi_uses_stamp_when_issue_unsupported(self):
         self.cfdi_service.provider = "prodigia"

@@ -19,6 +19,9 @@ class PacProvider:
     supports_cancel: bool
     requires_signer_for_cancel: bool
     kwargs_builder: Callable[[Any, Environment], dict]
+    # satcfdi raises NotImplementedError("accept PDF not supported") before
+    # sending anything when these PACs are asked for a PDF.
+    returns_pdf: bool = True
 
 
 def _env(sandbox: bool) -> Environment:
@@ -96,6 +99,7 @@ PAC_PROVIDERS: dict[str, PacProvider] = {
         supports_cancel=True,
         requires_signer_for_cancel=True,
         kwargs_builder=_finkok_kwargs,
+        returns_pdf=False,
     ),
     "diverza": PacProvider(
         code="diverza",
@@ -126,6 +130,7 @@ PAC_PROVIDERS: dict[str, PacProvider] = {
         supports_cancel=False,
         requires_signer_for_cancel=False,
         kwargs_builder=_comerciodigital_kwargs,
+        returns_pdf=False,
     ),
     "swsapien": PacProvider(
         code="swsapien",
@@ -146,6 +151,7 @@ PAC_PROVIDERS: dict[str, PacProvider] = {
         supports_cancel=False,
         requires_signer_for_cancel=False,
         kwargs_builder=_mysuite_kwargs,
+        returns_pdf=False,
     ),
     "facturama": PacProvider(
         code="facturama",
