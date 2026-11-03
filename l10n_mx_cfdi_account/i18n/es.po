@@ -217,8 +217,8 @@ msgstr ""
 msgid ""
 "Cannot sign the CFDI: customer RFC %(rfc)s is on SAT list 69-B (%(status)s)."
 msgstr ""
-"No se puede firmar el CFDI: el RFC del cliente %(rfc)s está en la lista "
-"69-B del SAT (%(status)s)."
+"No se puede firmar el CFDI: el RFC del cliente %(rfc)s está en la lista 69-B "
+"del SAT (%(status)s)."
 
 #. module: l10n_mx_cfdi_account
 #: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi_account.view_move_form
