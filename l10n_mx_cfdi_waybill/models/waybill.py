@@ -260,9 +260,13 @@ class Waybill(models.Model):
         )
         if requires_environmental_insurance:
             if not vehicle.environmental_insurance_company:
-                raise UserError("Falta la aseguradora de medio ambiente en el vehículo")
+                raise UserError(
+                    self.env._("Falta la aseguradora de medio ambiente en el vehículo")
+                )
             if not vehicle.environmental_insurance_number:
-                raise UserError("Falta la póliza de seguro ambiental en el vehículo")
+                raise UserError(
+                    self.env._("Falta la póliza de seguro ambiental en el vehículo")
+                )
             seguros["AseguraMedAmbiente"] = vehicle.environmental_insurance_company
             seguros["PolizaMedAmbiente"] = vehicle.environmental_insurance_number
 
@@ -374,14 +378,22 @@ class Waybill(models.Model):
         if product._l10n_mx_cfdi_is_dangerous_material():
             hazard_code = product.l10n_mx_cfid_dangerous_material_code
             packaging = product.l10n_mx_cfid_dangerous_material_packaging
-            packaging_desc = product.l10n_mx_cfid_dangerous_material_packaging_descripcion
+            packaging_desc = (
+                product.l10n_mx_cfid_dangerous_material_packaging_descripcion
+            )
             if not hazard_code:
-                raise UserError("Falta la clave SAT/ONU del material peligroso")
+                raise UserError(
+                    self.env._("Falta la clave SAT/ONU del material peligroso")
+                )
             if not packaging:
-                raise UserError("Falta el código de embalaje del material peligroso")
+                raise UserError(
+                    self.env._("Falta el código de embalaje del material peligroso")
+                )
             if not packaging_desc:
                 raise UserError(
-                    "Falta la descripción de embalaje del material peligroso"
+                    self.env._(
+                        "Falta la descripción de embalaje del material peligroso"
+                    )
                 )
             data["MaterialPeligroso"] = "Sí"
             data["CveMaterialPeligroso"] = hazard_code
