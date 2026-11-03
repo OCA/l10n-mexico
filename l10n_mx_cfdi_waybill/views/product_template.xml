@@ -5,9 +5,24 @@
         <field name="inherit_id" ref="product.product_template_form_view" />
         <field name="arch" type="xml">
             <xpath expr="//page[@name='CFDI']" position="inside">
-                <group string="Waybill">
-                    <field name="l10n_mx_cfdi_dangerous_material_indicator" />
-                    <field name="l10n_mx_cfid_dangerous_material_code" />
+                <group>
+                    <group string="Waybill">
+                        <field name="l10n_mx_cfdi_dangerous_material" />
+                        <field
+                            name="l10n_mx_cfid_dangerous_material_code"
+                            invisible="l10n_mx_cfdi_dangerous_material == 'no'"
+                            required="l10n_mx_cfdi_dangerous_material == 'yes'"
+                        />
+                    </group>
+                    <group
+                        string="Embalaje material peligroso"
+                        invisible="l10n_mx_cfdi_dangerous_material == 'no' or (l10n_mx_cfdi_dangerous_material == 'optional' and not l10n_mx_cfid_dangerous_material_code)"
+                    >
+                        <field name="l10n_mx_cfid_dangerous_material_packaging" />
+                        <field
+                            name="l10n_mx_cfid_dangerous_material_packaging_descripcion"
+                        />
+                    </group>
                 </group>
             </xpath>
         </field>

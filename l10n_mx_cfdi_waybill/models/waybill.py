@@ -246,19 +246,40 @@ class Waybill(models.Model):
         data["Complemento"]["CartaPorte31"]["FiguraTransporte"] = figura_transporte
 
     def _add_autotransporte_data(self, data):
+        vehicle = self.vehicle_id
+        seguros = {
+            "AseguraRespCivil": vehicle.insurance_company.name,
+            "PolizaRespCivil": vehicle.insurance_number,
+        }
+
+        # Environmental insurance is mandatory when the waybill carries at least
+        # one good reported as MaterialPeligroso="Sí".
+        requires_environmental_insurance = any(
+            entry.product_id.product_tmpl_id._l10n_mx_cfdi_is_dangerous_material()
+            for entry in self.entry_ids
+        )
+        if requires_environmental_insurance:
+            if not vehicle.environmental_insurance_company:
+                raise UserError(
+                    self.env._("Falta la aseguradora de medio ambiente en el vehículo")
+                )
+            if not vehicle.environmental_insurance_number:
+                raise UserError(
+                    self.env._("Falta la póliza de seguro ambiental en el vehículo")
+                )
+            seguros["AseguraMedAmbiente"] = vehicle.environmental_insurance_company
+            seguros["PolizaMedAmbiente"] = vehicle.environmental_insurance_number
+
         data["Complemento"]["CartaPorte31"]["Mercancias"]["Autotransporte"] = {
-            "PermSCT": self.vehicle_id.permit_type.code,
-            "NumPermisoSCT": self.vehicle_id.permit_number,
+            "PermSCT": vehicle.permit_type.code,
+            "NumPermisoSCT": vehicle.permit_number,
             "IdentificacionVehicular": {
-                "ConfigVehicular": self.vehicle_id.vehicle_setup.code,
-                "PlacaVM": self.vehicle_id.plate,
-                "AnioModeloVM": self.vehicle_id.model,
-                "PesoBrutoVehicular": f"{self.vehicle_id.gross_vehicle_weight:.3f}",
+                "ConfigVehicular": vehicle.vehicle_setup.code,
+                "PlacaVM": vehicle.plate,
+                "AnioModeloVM": vehicle.model,
+                "PesoBrutoVehicular": f"{vehicle.gross_vehicle_weight:.3f}",
             },
-            "Seguros": {
-                "AseguraRespCivil": self.vehicle_id.insurance_company.name,
-                "PolizaRespCivil": self.vehicle_id.insurance_number,
-            },
+            "Seguros": seguros,
         }
 
     def _format_goods_and_locations_data(self):
@@ -349,6 +370,37 @@ class Waybill(models.Model):
                 }
             ],
         }
+
+        # MaterialPeligroso: "Sí" (or "Opcional" with a key) sends "Sí" with key
+        # and packaging; otherwise "No" is sent alone, since the PAC rejects the
+        # good when the attribute is omitted.
+        product = entry_id.product_id.product_tmpl_id
+        if product._l10n_mx_cfdi_is_dangerous_material():
+            hazard_code = product.l10n_mx_cfid_dangerous_material_code
+            packaging = product.l10n_mx_cfid_dangerous_material_packaging
+            packaging_desc = (
+                product.l10n_mx_cfid_dangerous_material_packaging_descripcion
+            )
+            if not hazard_code:
+                raise UserError(
+                    self.env._("Falta la clave SAT/ONU del material peligroso")
+                )
+            if not packaging:
+                raise UserError(
+                    self.env._("Falta el código de embalaje del material peligroso")
+                )
+            if not packaging_desc:
+                raise UserError(
+                    self.env._(
+                        "Falta la descripción de embalaje del material peligroso"
+                    )
+                )
+            data["MaterialPeligroso"] = "Sí"
+            data["CveMaterialPeligroso"] = hazard_code
+            data["Embalaje"] = packaging
+            data["DescripEmbalaje"] = packaging_desc
+        else:
+            data["MaterialPeligroso"] = "No"
         return data
 
     def _map_partner_country_to_c_pais(self, country):
