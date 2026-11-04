@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="res_config_settings_view_form_waybill" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.waybill.tms</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="tms.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='tms']" position="inside">
+                <block title="Carta Porte" name="l10n_mx_cfdi_waybill_tms">
+                    <setting
+                        id="l10n_mx_cfdi_waybill_tms_require_published"
+                        help="Cargo trips stay in place until a Carta Porte is published."
+                    >
+                        <field name="l10n_mx_cfdi_waybill_tms_require_published" />
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>
