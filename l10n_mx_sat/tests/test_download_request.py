@@ -3,7 +3,7 @@
 
 import base64
 import zipfile
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from io import BytesIO
 from unittest.mock import MagicMock, patch
 
@@ -14,6 +14,7 @@ from odoo.tests.common import TransactionCase
 from odoo.tools import mute_logger
 
 from odoo.addons.l10n_mx_sat.services import (
+    MX_TZ,
     SAT_CODE_DAILY_LIMIT,
     SAT_CODE_DUPLICATE_LIFETIME,
     SAT_CODE_MAX_ELEMENTS,
@@ -343,7 +344,7 @@ class TestDownloadRequest(TransactionCase):
         self.assertEqual(req.date_from.date().isoformat(), "2025-01-01")
 
     def test_manual_sync_creates_requests(self):
-        """Manual sync must create and chain XML requests for enabled flows."""
+        """Manual sync creates one XML request for each enabled flow."""
         Request = self.env["l10n_mx_sat.download.request"]
         Request.search([("company_id", "=", self.company.id)]).unlink()
 
@@ -360,13 +361,13 @@ class TestDownloadRequest(TransactionCase):
             )._cron_process_requests(companies=self.company)
 
         requests = Request.search([("company_id", "=", self.company.id)])
-        self.assertEqual(len(requests), 8)
+        self.assertEqual(len(requests), 4)
         self.assertTrue(all(req.request_type == "xml" for req in requests))
         self.assertEqual(
             Request.search_count(
                 [("company_id", "=", self.company.id), ("request_type", "=", "xml")]
             ),
-            8,
+            4,
         )
 
     def test_manual_sync_respects_download_flags(self):
@@ -394,7 +395,7 @@ class TestDownloadRequest(TransactionCase):
             )._cron_process_requests(companies=self.company)
 
         requests = Request.search([("company_id", "=", self.company.id)])
-        self.assertEqual(len(requests), 2)
+        self.assertEqual(len(requests), 1)
         self.assertEqual(set(requests.mapped("document_kind")), {"cfdi"})
         self.assertEqual(set(requests.mapped("direction")), {"issued"})
         self.assertEqual(set(requests.mapped("request_type")), {"xml"})
@@ -1210,6 +1211,67 @@ class TestDownloadRequest(TransactionCase):
         sync_from = Request._get_sync_from_date(self.company, "metadata")
         self.assertEqual(str(sync_from), "2025-01-01")
 
+    def test_get_sync_from_date_defaults_to_current_month(self):
+        Request = self.env["l10n_mx_sat.download.request"]
+        self.company.write(
+            {
+                "l10n_mx_sat_sync_from": False,
+                "l10n_mx_sat_metadata_sync_from": False,
+            }
+        )
+        month_start = datetime.now(MX_TZ).date().replace(day=1)
+        self.assertEqual(Request._get_sync_from_date(self.company, "xml"), month_start)
+        self.assertEqual(
+            Request._get_sync_from_date(self.company, "metadata"),
+            month_start,
+        )
+
+    def test_first_sync_without_date_stays_in_current_month(self):
+        Request = self.env["l10n_mx_sat.download.request"]
+        Request.search([("company_id", "=", self.company.id)]).unlink()
+        self.company.write(
+            {
+                "l10n_mx_sat_sync_from": False,
+                "l10n_mx_sat_metadata_sync_from": False,
+            }
+        )
+
+        class _FixedNow(datetime):
+            @classmethod
+            def now(cls, tz=None):
+                current = datetime(2026, 11, 15, 12, 0, 0)
+                if tz is not None:
+                    return current.replace(tzinfo=tz)
+                return current
+
+        with patch(
+            "odoo.addons.l10n_mx_sat.models.l10n_mx_sat_download_request.datetime",
+            _FixedNow,
+        ):
+            req = Request._create_next_request(self.company, "cfdi", "received", "xml")
+        self.assertEqual(req.date_from, datetime(2026, 11, 1, 0, 0, 0))
+        self.assertEqual(req.date_to, datetime(2026, 11, 14, 23, 59, 59))
+
+    def test_first_sync_configured_date_is_one_month(self):
+        Request = self.env["l10n_mx_sat.download.request"]
+        Request.search([("company_id", "=", self.company.id)]).unlink()
+        self.company.l10n_mx_sat_sync_from = "2024-03-10"
+        req = Request._create_next_request(self.company, "cfdi", "issued", "xml")
+        self.assertEqual(req.date_from, datetime(2024, 3, 10, 0, 0, 0))
+        self.assertEqual(req.date_to, datetime(2024, 3, 31, 23, 59, 59))
+        req.write({"state": "done"})
+        self.assertFalse(
+            Request._create_next_request(self.company, "cfdi", "issued", "xml")
+        )
+        self.env.cr.execute(
+            "UPDATE l10n_mx_sat_download_request SET write_date = %s WHERE id = %s",
+            (fields.Datetime.now() - timedelta(days=2), req.id),
+        )
+        req.invalidate_recordset(["write_date"])
+        nxt = Request._create_next_request(self.company, "cfdi", "issued", "xml")
+        self.assertEqual(nxt.date_from, datetime(2024, 4, 1, 0, 0, 0))
+        self.assertEqual(nxt.date_to, datetime(2024, 4, 30, 23, 59, 59))
+
     def test_mark_company_sync_pending_empty(self):
         Request = self.env["l10n_mx_sat.download.request"]
         Request._mark_company_sync_pending(self.env["res.company"].browse())
@@ -1628,6 +1690,78 @@ class TestDownloadRequest(TransactionCase):
             )
         )
 
+    def test_cron_skips_when_no_company_has_fiel(self):
+        Request = self.env["l10n_mx_sat.download.request"]
+        Request.search([]).unlink()
+        self.env["res.company"].search([]).write(
+            {
+                "l10n_mx_sat_fiel_cer": False,
+                "l10n_mx_sat_fiel_key": False,
+                "l10n_mx_sat_fiel_password": False,
+            }
+        )
+        with patch.object(type(Request), "_cron_trigger") as mock_trigger:
+            Request._cron_process_requests()
+        mock_trigger.assert_not_called()
+        self.assertFalse(Request.search([]))
+
+    def test_companies_with_fiel_limits_to_given_companies(self):
+        Request = self.env["l10n_mx_sat.download.request"]
+        self.assertIn(self.company, Request._companies_with_fiel(self.company))
+        other = self.env["res.company"].create({"name": "Company without FIEL"})
+        self.assertFalse(Request._companies_with_fiel(other))
+
+    def test_cron_has_fiel_work_when_requests_are_queued(self):
+        Request = self.env["l10n_mx_sat.download.request"]
+        Request._write_param_ids("l10n_mx_sat.queued_request_ids", [1])
+        self.assertTrue(Request._cron_has_fiel_work())
+
+    def test_backfill_wait_accepts_string_and_aware_write_date(self):
+        Request = self.env["l10n_mx_sat.download.request"]
+        recent = MagicMock()
+        recent.write_date = fields.Datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        self.assertTrue(Request._backfill_should_wait(recent))
+        old = MagicMock()
+        old.write_date = datetime(2020, 1, 1, tzinfo=timezone.utc)
+        self.assertFalse(Request._backfill_should_wait(old))
+
+    def test_metadata_follow_up_is_not_limited_to_one_month(self):
+        Request = self.env["l10n_mx_sat.download.request"]
+        Request.search([("company_id", "=", self.company.id)]).unlink()
+        self.company.l10n_mx_sat_metadata_sync_from = "2024-01-01"
+        first = Request._create_next_request(
+            self.company, "cfdi", "received", "metadata"
+        )
+        self.assertTrue(first)
+        self.assertLessEqual((first.date_to - first.date_from).days, 7)
+        first.write({"state": "done"})
+        nxt = Request._create_next_request(self.company, "cfdi", "received", "metadata")
+        self.assertTrue(nxt)
+        self.assertGreater(nxt.date_to, datetime(2024, 2, 1))
+
+    def test_ensure_scheduled_requests_logs_chain_after_success(self):
+        Request = self.env["l10n_mx_sat.download.request"]
+        Request.search([("company_id", "=", self.company.id)]).unlink()
+        self.company.write(
+            {
+                "l10n_mx_sat_sync_from": "2024-03-10",
+                "l10n_mx_sat_download_cfdi_issued": True,
+                "l10n_mx_sat_download_cfdi_received": False,
+                "l10n_mx_sat_download_retention_issued": False,
+                "l10n_mx_sat_download_retention_received": False,
+            }
+        )
+        with patch(
+            "odoo.addons.l10n_mx_sat.models.l10n_mx_sat_download_request._logger.info"
+        ) as info:
+            Request._ensure_scheduled_requests(self.company, after_success=True)
+        self.assertTrue(
+            any(
+                call.args and "Chained SAT request" in str(call.args[0])
+                for call in info.call_args_list
+            )
+        )
+
     def test_cron_process_requests_without_companies_arg(self):
         Request = self.env["l10n_mx_sat.download.request"]
         Request.search([("company_id", "=", self.company.id)]).unlink()
@@ -1675,8 +1809,6 @@ class TestDownloadRequest(TransactionCase):
         self.assertEqual(req.date_from.date().isoformat(), "2026-02-01")
 
     def test_create_next_request_strips_timezone_from_date_from(self):
-        from datetime import timezone
-
         Request = self.env["l10n_mx_sat.download.request"]
         Request.search([("company_id", "=", self.company.id)]).unlink()
         aware = datetime(2026, 3, 1, 0, 0, 0, tzinfo=timezone.utc)

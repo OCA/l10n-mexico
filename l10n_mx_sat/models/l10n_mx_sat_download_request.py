@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 import base64
+import calendar
 import logging
 import zipfile
 from datetime import datetime, timedelta
@@ -20,7 +21,6 @@ from ..services import (
     SAT_CODE_MAX_ELEMENTS,
     SAT_CODE_NO_INFO,
     SAT_CODE_SUCCESS,
-    SAT_DEFAULT_SYNC_DAYS,
     SAT_DOWNLOAD_EXPIRED,
     SAT_DOWNLOAD_MAX_REACHED,
     SAT_METADATA_DEFAULT_WINDOW_DAYS,
@@ -46,6 +46,8 @@ _logger = logging.getLogger(__name__)
 
 # Active states: do not recreate identical fingerprint while one is open.
 _ACTIVE_REQUEST_STATES = ("draft", "requested", "processing", "ready", "downloading")
+# Historical months wait for a later cron run instead of downloading in one sync.
+_BACKFILL_MIN_INTERVAL = timedelta(hours=20)
 _IMMEDIATE_PROCESS_STATES = ("draft", "ready", "downloading")
 _WAITING_SAT_STATES = ("requested", "processing")
 _VERIFY_RETRY_MINUTES = 15
@@ -975,8 +977,46 @@ class L10nMxSatDownloadRequest(models.Model):
         return still_pending
 
     @api.model
+    def _companies_with_fiel(self, companies=None):
+        """Return companies that can authenticate to the SAT."""
+        domain = [
+            ("l10n_mx_sat_fiel_cer", "!=", False),
+            ("l10n_mx_sat_fiel_key", "!=", False),
+            ("l10n_mx_sat_fiel_password", "!=", False),
+        ]
+        if companies is not None:
+            domain.append(("id", "in", companies.ids))
+        return (
+            self.env["res.company"]
+            .search(domain)
+            .filtered(lambda company: company.l10n_mx_sat_has_credentials())
+        )
+
+    @api.model
+    def _cron_has_fiel_work(self, companies=None):
+        """False when a run would start before any FIEL is configured."""
+        if self._parse_param_ids(_QUEUED_REQUESTS_PARAM):
+            return True
+        pending = (
+            self.env["res.company"]
+            .browse(self._parse_param_ids(_SYNC_PENDING_PARAM))
+            .exists()
+        )
+        if pending.filtered(lambda company: company.l10n_mx_sat_has_credentials()):
+            return True
+        if companies is not None:
+            return bool(
+                companies.filtered(
+                    lambda company: company.l10n_mx_sat_has_credentials()
+                )
+            )
+        return bool(self._companies_with_fiel().filtered("l10n_mx_sat_auto_download"))
+
+    @api.model
     def _cron_process_requests(self, companies=None):
         """Main cron entry point: queue-backed, one request per invocation."""
+        if not self._cron_has_fiel_work(companies):
+            return
         if companies is not None:
             self._mark_company_sync_pending(companies)
         else:
@@ -1087,23 +1127,15 @@ class L10nMxSatDownloadRequest(models.Model):
         sync_from = self._get_sync_from_date(company, request_type)
         if last_done:
             date_from = last_done.date_to + timedelta(seconds=1)
-        elif sync_from:
-            date_from = datetime.combine(sync_from, datetime.min.time())
         else:
-            mx_now = datetime.now(MX_TZ)
-            days = (
-                SAT_METADATA_DEFAULT_WINDOW_DAYS
-                if request_type == "metadata"
-                else SAT_DEFAULT_SYNC_DAYS
-            )
-            date_from = (mx_now - timedelta(days=days)).replace(
-                hour=0, minute=0, second=0, tzinfo=None
-            )
+            # First sync: configured date, or the first day of the current month.
+            date_from = datetime.combine(sync_from, datetime.min.time())
 
         mx_now = datetime.now(MX_TZ)
-        date_to = (mx_now - timedelta(days=1)).replace(
-            hour=23, minute=59, second=59, tzinfo=None
+        yesterday_end = (mx_now - timedelta(days=1)).replace(
+            hour=23, minute=59, second=59, microsecond=0, tzinfo=None
         )
+        date_to = yesterday_end
 
         if hasattr(date_from, "tzinfo") and date_from.tzinfo:
             date_from = date_from.replace(tzinfo=None)
@@ -1112,8 +1144,19 @@ class L10nMxSatDownloadRequest(models.Model):
             window_end = date_from + timedelta(days=SAT_METADATA_DEFAULT_WINDOW_DAYS)
             if window_end < date_to:
                 date_to = window_end.replace(hour=23, minute=59, second=59)
+        elif request_type != "metadata":
+            # One SAT call must not span every month since the start date.
+            month_end = self._end_of_calendar_month(date_from)
+            if month_end < date_to:
+                date_to = month_end
 
         if date_from >= date_to:
+            return self.browse()
+        if (
+            last_done
+            and date_to < yesterday_end
+            and self._backfill_should_wait(last_done)
+        ):
             return self.browse()
 
         fingerprint = build_request_fingerprint(
@@ -1141,12 +1184,41 @@ class L10nMxSatDownloadRequest(models.Model):
         )
 
     @api.model
+    def _backfill_should_wait(self, last_done):
+        """Return whether another historical month must wait for a later run."""
+        write_date = last_done.write_date
+        if isinstance(write_date, str):
+            write_date = fields.Datetime.to_datetime(write_date)
+        if not isinstance(write_date, datetime):
+            return False
+        if write_date.tzinfo:
+            write_date = write_date.replace(tzinfo=None)
+        now = fields.Datetime.to_datetime(fields.Datetime.now())
+        return now - write_date < _BACKFILL_MIN_INTERVAL
+
+    @api.model
+    def _current_month_start(self):
+        """Return the first day of the current month in Mexico City."""
+        return datetime.now(MX_TZ).date().replace(day=1)
+
+    @api.model
+    def _end_of_calendar_month(self, date_from):
+        """Return 23:59:59 on the last day of the month containing ``date_from``."""
+        last_day = calendar.monthrange(date_from.year, date_from.month)[1]
+        return date_from.replace(
+            day=last_day, hour=23, minute=59, second=59, microsecond=0
+        )
+
+    @api.model
     def _get_sync_from_date(self, company, request_type):
+        """Earliest date for a flow. Empty configuration means this month."""
         if request_type == "metadata":
-            return (
+            configured = (
                 company.l10n_mx_sat_metadata_sync_from or company.l10n_mx_sat_sync_from
             )
-        return company.l10n_mx_sat_sync_from
+        else:
+            configured = company.l10n_mx_sat_sync_from
+        return configured or self._current_month_start()
 
 
 class L10nMxSatDownloadPackage(models.Model):

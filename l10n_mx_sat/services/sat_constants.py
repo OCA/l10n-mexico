@@ -43,9 +43,6 @@ SAT_STATUS_CODE_LABELS = {
     SAT_CODE_DAILY_LIMIT: "Daily limit reached",
 }
 
-# Default sync window when no company configuration exists.
-SAT_DEFAULT_SYNC_DAYS = 30
-
 # Metadata sync uses smaller windows to avoid SAT 5003 (1M records).
 SAT_METADATA_DEFAULT_WINDOW_DAYS = 7
 SAT_METADATA_MIN_WINDOW_HOURS = 1
