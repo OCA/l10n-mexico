@@ -359,6 +359,27 @@ msgid "Failed to validate FIEL credentials: %s"
 msgstr "No se pudieron validar las credenciales FIEL: %s"
 
 #. module: l10n_mx_sat
+#: model:ir.model.fields,help:l10n_mx_sat.field_res_company__l10n_mx_sat_sync_from
+msgid ""
+"First XML download starts on this date. Leave empty to sync only the current "
+"month. Later downloads continue from the last completed range, one calendar "
+"month at a time."
+msgstr ""
+"La primera descarga XML inicia en esta fecha. Déjela vacía para sincronizar "
+"solo el mes en curso. Las descargas posteriores continúan desde el último "
+"rango completado, un mes calendario a la vez."
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,help:l10n_mx_sat.field_res_company__l10n_mx_sat_metadata_sync_from
+msgid ""
+"First metadata download starts on this date. If empty, the XML sync date is "
+"used, or the current month when that date is also empty."
+msgstr ""
+"La primera descarga de metadatos inicia en esta fecha. Si está vacía, se usa "
+"la fecha de sincronización XML, o el mes en curso si esa fecha también está "
+"vacía."
+
+#. module: l10n_mx_sat
 #: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_document__folio_number
 msgid "Folio"
 msgstr "Folio"
@@ -393,27 +414,6 @@ msgstr "UUID"
 #: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_document_view_search
 msgid "In progress"
 msgstr "En proceso"
-
-#. module: l10n_mx_sat
-#: model:ir.model.fields,help:l10n_mx_sat.field_res_company__l10n_mx_sat_metadata_sync_from
-msgid ""
-"First metadata download starts on this date. If empty, the XML sync date "
-"is used, or the current month when that date is also empty."
-msgstr ""
-"La primera descarga de metadatos inicia en esta fecha. Si está vacía, se "
-"usa la fecha de sincronización XML, o el mes en curso si esa fecha también "
-"está vacía."
-
-#. module: l10n_mx_sat
-#: model:ir.model.fields,help:l10n_mx_sat.field_res_company__l10n_mx_sat_sync_from
-msgid ""
-"First XML download starts on this date. Leave empty to sync only the "
-"current month. Later downloads continue from the last completed range, one "
-"calendar month at a time."
-msgstr ""
-"La primera descarga XML inicia en esta fecha. Déjela vacía para sincronizar "
-"solo el mes en curso. Las descargas posteriores continúan desde el último "
-"rango completado, un mes calendario a la vez."
 
 #. module: l10n_mx_sat
 #: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_document__issue_date
@@ -761,24 +761,23 @@ msgstr "Reintento SAT"
 #. odoo-python
 #: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
 msgid ""
-"SAT returned an invalid EstadoSolicitud (0). CodEstatus=%(ce)s "
-"(%(ce_label)s). CodigoEstadoSolicitud=%(ces)s. SAT message: %(msg)s"
+"SAT returned an invalid EstadoSolicitud (0). CodEstatus=%(ce)s (%"
+"(ce_label)s). CodigoEstadoSolicitud=%(ces)s. SAT message: %(msg)s"
 msgstr ""
-"SAT devolvió un EstadoSolicitud inválido (0). CodEstatus=%(ce)s "
-"(%(ce_label)s). CodigoEstadoSolicitud=%(ces)s. Mensaje SAT: %(msg)s"
+"SAT devolvió un EstadoSolicitud inválido (0). CodEstatus=%(ce)s (%"
+"(ce_label)s). CodigoEstadoSolicitud=%(ces)s. Mensaje SAT: %(msg)s"
 
 #. module: l10n_mx_sat
 #. odoo-python
 #: code:addons/l10n_mx_sat/models/l10n_mx_sat_download_request.py:0
 msgid ""
-"SAT returned an unrecognized request status (EstadoSolicitud=%(status)s, "
-"%(status_label)s). CodigoEstadoSolicitud=%(ces)s (%(ces_label)s). "
-"CodEstatus=%(ce)s (%(ce_label)s). SAT message: %(msg)s"
+"SAT returned an unrecognized request status (EstadoSolicitud=%(status)s, %"
+"(status_label)s). CodigoEstadoSolicitud=%(ces)s (%(ces_label)s). CodEstatus=%"
+"(ce)s (%(ce_label)s). SAT message: %(msg)s"
 msgstr ""
-"SAT devolvió un estado de solicitud no reconocido "
-"(EstadoSolicitud=%(status)s, %(status_label)s). "
-"CodigoEstadoSolicitud=%(ces)s (%(ces_label)s). CodEstatus=%(ce)s "
-"(%(ce_label)s). Mensaje SAT: %(msg)s"
+"SAT devolvió un estado de solicitud no reconocido (EstadoSolicitud=%"
+"(status)s, %(status_label)s). CodigoEstadoSolicitud=%(ces)s (%(ces_label)s). "
+"CodEstatus=%(ce)s (%(ce_label)s). Mensaje SAT: %(msg)s"
 
 #. module: l10n_mx_sat
 #: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_document__sat_status
@@ -886,8 +885,8 @@ msgstr ""
 #. odoo-python
 #: code:addons/l10n_mx_sat/models/res_company.py:0
 msgid ""
-"The FIEL certificate RFC (%(fiel)s) does not match the company RFC "
-"(%(company)s)."
+"The FIEL certificate RFC (%(fiel)s) does not match the company RFC (%"
+"(company)s)."
 msgstr ""
 "El RFC del certificado FIEL (%(fiel)s) no coincide con el RFC de la compañía "
 "(%(company)s)."
