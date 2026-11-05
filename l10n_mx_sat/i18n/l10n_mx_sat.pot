@@ -343,6 +343,21 @@ msgid "Failed to validate FIEL credentials: %s"
 msgstr ""
 
 #. module: l10n_mx_sat
+#: model:ir.model.fields,help:l10n_mx_sat.field_res_company__l10n_mx_sat_sync_from
+msgid ""
+"First XML download starts on this date. Leave empty to sync only the current"
+" month. Later downloads continue from the last completed range, one calendar"
+" month at a time."
+msgstr ""
+
+#. module: l10n_mx_sat
+#: model:ir.model.fields,help:l10n_mx_sat.field_res_company__l10n_mx_sat_metadata_sync_from
+msgid ""
+"First metadata download starts on this date. If empty, the XML sync date is "
+"used, or the current month when that date is also empty."
+msgstr ""
+
+#. module: l10n_mx_sat
 #: model:ir.model.fields,field_description:l10n_mx_sat.field_l10n_mx_sat_document__folio_number
 msgid "Folio"
 msgstr ""
@@ -375,21 +390,6 @@ msgstr ""
 #: model:ir.model.fields.selection,name:l10n_mx_sat.selection__l10n_mx_sat_document__sat_status__in_progress
 #: model_terms:ir.ui.view,arch_db:l10n_mx_sat.l10n_mx_sat_document_view_search
 msgid "In progress"
-msgstr ""
-
-#. module: l10n_mx_sat
-#: model:ir.model.fields,help:l10n_mx_sat.field_res_company__l10n_mx_sat_metadata_sync_from
-msgid ""
-"First metadata download starts on this date. If empty, the XML sync date "
-"is used, or the current month when that date is also empty."
-msgstr ""
-
-#. module: l10n_mx_sat
-#: model:ir.model.fields,help:l10n_mx_sat.field_res_company__l10n_mx_sat_sync_from
-msgid ""
-"First XML download starts on this date. Leave empty to sync only the "
-"current month. Later downloads continue from the last completed range, one "
-"calendar month at a time."
 msgstr ""
 
 #. module: l10n_mx_sat
