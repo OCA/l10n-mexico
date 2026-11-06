@@ -30,7 +30,10 @@ Use this module after the PAC connection, issuers, and series are configured in
    configured PAC. Before signing, the module checks SAT list 69-B and
    refuses the stamp if the customer RFC is listed as Presunto or Definitivo.
    Generic RFCs (``XAXX010101000`` / ``XEXX010101000``) are skipped.
-6. Use Send to deliver the invoice to the customer.
+6. Open the linked CFDI document from the invoice (or from the CFDI documents
+   menu). The form opens with the PDF and XML. A PAC download error does not
+   block the form; the files appear once the PAC returns them.
+7. Use Send to deliver the invoice to the customer.
 
 ### Import CFDI
 
