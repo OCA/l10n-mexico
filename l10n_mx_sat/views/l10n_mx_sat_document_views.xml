@@ -16,9 +16,14 @@
                 <field name="sat_status" widget="badge" readonly="1" />
                 <field name="voucher_type" readonly="1" />
                 <field name="issuer_rfc" readonly="1" />
+                <field name="issuer_name" readonly="1" optional="show" />
                 <field name="receiver_rfc" readonly="1" />
+                <field name="receiver_name" readonly="1" optional="show" />
+                <field name="series" readonly="1" optional="hide" />
+                <field name="folio_number" readonly="1" optional="hide" />
                 <field name="issue_date" readonly="1" />
                 <field name="total" readonly="1" />
+                <field name="currency_code" readonly="1" optional="hide" />
                 <field name="has_xml" readonly="1" />
             </list>
         </field>
@@ -80,8 +85,19 @@
             <search>
                 <field name="uuid" />
                 <field name="issuer_rfc" />
+                <field name="issuer_name" />
                 <field name="receiver_rfc" />
+                <field name="receiver_name" />
+                <field
+                    name="folio_number"
+                    string="Folio"
+                    filter_domain="['|', ('series', 'ilike', self), ('folio_number', 'ilike', self)]"
+                />
+                <field name="currency_code" />
+                <field name="total" />
                 <field name="company_id" groups="base.group_multi_company" />
+                <filter string="Issue date" name="issue_date" date="issue_date" />
+                <separator />
                 <filter
                     string="Valid"
                     name="valid"
@@ -120,6 +136,32 @@
                 />
                 <separator />
                 <filter
+                    string="Invoices"
+                    name="voucher_invoice"
+                    domain="[('voucher_type', '=', 'I')]"
+                />
+                <filter
+                    string="Credit notes"
+                    name="voucher_credit_note"
+                    domain="[('voucher_type', '=', 'E')]"
+                />
+                <filter
+                    string="Payment complements"
+                    name="voucher_payment"
+                    domain="[('voucher_type', '=', 'P')]"
+                />
+                <filter
+                    string="Payroll"
+                    name="voucher_payroll"
+                    domain="[('voucher_type', '=', 'N')]"
+                />
+                <filter
+                    string="Transfers"
+                    name="voucher_transfer"
+                    domain="[('voucher_type', '=', 'T')]"
+                />
+                <separator />
+                <filter
                     string="Issued"
                     name="issued"
                     domain="[('direction', '=', 'issued')]"
@@ -144,6 +186,26 @@
                         string="Type"
                         name="group_kind"
                         context="{'group_by': 'document_kind'}"
+                    />
+                    <filter
+                        string="Voucher type"
+                        name="group_voucher_type"
+                        context="{'group_by': 'voucher_type'}"
+                    />
+                    <filter
+                        string="Issuer"
+                        name="group_issuer"
+                        context="{'group_by': 'issuer_rfc'}"
+                    />
+                    <filter
+                        string="Receiver"
+                        name="group_receiver"
+                        context="{'group_by': 'receiver_rfc'}"
+                    />
+                    <filter
+                        string="Issue date"
+                        name="group_issue_date"
+                        context="{'group_by': 'issue_date:month'}"
                     />
                     <filter
                         string="Direction"
