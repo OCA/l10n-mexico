@@ -195,7 +195,7 @@ class TestCfdiParserEdgeCases(VendorBillTestCommon):
             limit=1,
         )
         self.assertTrue(attachment)
-        self.assertEqual(attachment.raw, xml_bytes)
+        self.assertEqual(bytes(attachment.raw), xml_bytes)
 
     def test_tax_without_rate_not_exento_skipped(self):
         move, line = self._draft_bill_line()

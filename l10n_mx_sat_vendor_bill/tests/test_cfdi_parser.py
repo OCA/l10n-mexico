@@ -1,5 +1,5 @@
-# Copyright 2026 Open Source Integrators
-# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+# Copyright (C) 2026 Gray Matter Logic (<https://www.graymatterlogic.com>).
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo.tests import tagged
 from odoo.tests.common import TransactionCase
@@ -17,6 +17,7 @@ class TestCfdiParser(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+        cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
         cls.company = cls.env.ref("base.main_company")
         cls.company.write(
             {

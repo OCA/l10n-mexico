@@ -2,14 +2,13 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import logging
-from datetime import datetime as dt
+from datetime import date
 
 from odoo import Command, fields, models
 
 _logger = logging.getLogger(__name__)
 
 CFDI_CODE_TO_TAX_TYPE = {"001": "isr", "002": "iva", "003": "ieps"}
-CFDI_DATE_FORMAT = "%Y-%m-%dT%H:%M:%S"
 
 
 class AccountMove(models.Model):
@@ -225,7 +224,7 @@ class AccountMove(models.Model):
         date_str = fecha_timbrado or fecha_emision
         invoice_date = False
         if date_str:
-            invoice_date = dt.strptime(date_str[:19], CFDI_DATE_FORMAT).date()
+            invoice_date = date.fromisoformat(date_str[:10])
 
         # 7. Build ref from Serie + Folio
         serie = tree.get("Serie", "")
