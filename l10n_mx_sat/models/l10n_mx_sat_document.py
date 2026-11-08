@@ -5,7 +5,7 @@ import logging
 from datetime import datetime as dt
 
 from odoo import api, fields, models
-from odoo.exceptions import AccessError
+from odoo.exceptions import AccessError, UserError
 
 from ..services.sat_metadata import (
     SAT_STATUS_VALID,
@@ -25,7 +25,6 @@ class L10nMxSatDocument(models.Model):
 
     company_id = fields.Many2one(
         comodel_name="res.company",
-        string="Company",
         required=True,
         default=lambda self: self.env.company,
         readonly=True,
@@ -143,10 +142,9 @@ class L10nMxSatDocument(models.Model):
         self._check_not_manual_update()
         return super().unlink()
 
-    def get_formview_action(self, access_uid=None):
-        """Always open SAT documents in readonly mode (list, menu, x2many)."""
-        action = super().get_formview_action(access_uid=access_uid)
-        action["flags"] = dict(action.get("flags") or {}, mode="readonly")
+    def get_record_default_action(self, access_uid=None):
+        """Always open SAT documents in readonly mode."""
+        action = super().get_record_default_action(access_uid=access_uid)
         ctx = dict(action.get("context") or {})
         ctx.update(create=False, edit=False, delete=False)
         action["context"] = ctx
@@ -316,7 +314,7 @@ class L10nMxSatDocument(models.Model):
         if company.l10n_mx_sat_has_credentials():
             try:
                 return company.l10n_mx_sat_get_rfc()
-            except Exception:
+            except UserError:
                 return False
         return False
 
@@ -509,7 +507,8 @@ class L10nMxSatDocument(models.Model):
             ("%Y-%m-%d", 10),
         ):
             try:
-                return dt.strptime(value[:size], fmt)
+                # SAT timestamps have no offset. Odoo Datetime fields store naive UTC.
+                return dt.strptime(value[:size], fmt)  # noqa: DTZ007
             except ValueError:
                 continue
         return False

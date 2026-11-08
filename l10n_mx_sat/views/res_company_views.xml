@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <record id="l10n_mx_sat_company_connection_view_list" model="ir.ui.view">
         <field name="name">res.company.l10n_mx_sat.connection.list</field>
@@ -32,7 +32,7 @@
                     class="oe_stat_button"
                     type="object"
                     name="action_l10n_mx_sat_view_documents"
-                    icon="fa-file-text-o"
+                    icon="article"
                     groups="l10n_mx_sat.group_sat_user"
                 >
                     <field
@@ -45,7 +45,7 @@
                     class="oe_stat_button"
                     type="object"
                     name="action_l10n_mx_sat_view_download_requests"
-                    icon="fa-cloud-download"
+                    icon="cloud_download"
                     groups="l10n_mx_sat.group_sat_user"
                 >
                     <field
@@ -87,21 +87,21 @@
                                 type="object"
                                 string="Update FIEL credentials"
                                 class="btn-secondary"
-                                icon="fa-key"
+                                icon="key"
                             />
                             <button
                                 name="l10n_mx_sat_test_connection"
                                 type="object"
                                 string="Probar conexion"
                                 class="btn-secondary"
-                                icon="fa-plug"
+                                icon="power"
                             />
                             <button
                                 name="l10n_mx_sat_sync_now"
                                 type="object"
                                 string="Sync now"
                                 class="btn-primary"
-                                icon="fa-refresh"
+                                icon="refresh"
                                 groups="l10n_mx_sat.group_sat_manager"
                             />
                         </group>

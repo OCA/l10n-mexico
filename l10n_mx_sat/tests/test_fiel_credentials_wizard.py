@@ -1,15 +1,15 @@
 # Copyright 2026 Gray Matter Logic
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-import base64
 from unittest.mock import patch
 
 from odoo.exceptions import UserError
 from odoo.tests import tagged
 from odoo.tests.common import TransactionCase
+from odoo.tools.binary import BinaryBytes
 
-MOCK_CER = base64.b64encode(b"fake-cer-content")
-MOCK_KEY = base64.b64encode(b"fake-key-content")
+MOCK_CER = BinaryBytes(b"fake-cer-content")
+MOCK_KEY = BinaryBytes(b"fake-key-content")
 MOCK_PASSWORD = "test-password"
 
 _WIZ_SVC = (
@@ -80,7 +80,7 @@ class TestFielCredentialsWizard(TransactionCase):
     @patch(_WIZ_SVC)
     def test_wizard_sets_company_vat_from_fiel(self, MockSatClient):
         mock_client = MockSatClient.return_value
-        mock_client.rfc = "RFCFIEL123"
+        mock_client.rfc = "EKU9003173C9"
         self.company.vat = False
         wizard = self.env["l10n_mx_sat.fiel.credentials.wizard"].create(
             {
@@ -91,7 +91,7 @@ class TestFielCredentialsWizard(TransactionCase):
             }
         )
         wizard.action_apply()
-        self.assertEqual(self.company.vat, "RFCFIEL123")
+        self.assertEqual(self.company.vat, "EKU9003173C9")
         self.assertTrue(self.company.l10n_mx_sat_has_credentials())
 
     @patch(_WIZ_SVC)

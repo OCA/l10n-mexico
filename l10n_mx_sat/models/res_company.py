@@ -1,7 +1,6 @@
 # Copyright 2026 Gray Matter Logic
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-import base64
 import logging
 
 from odoo import api, fields, models
@@ -114,7 +113,7 @@ class ResCompany(models.Model):
                 try:
                     client = company.l10n_mx_sat_get_client()
                     company.l10n_mx_sat_fiel_rfc = client.rfc
-                except Exception:
+                except UserError:
                     company.l10n_mx_sat_fiel_rfc = False
 
     def l10n_mx_sat_get_xml_download_flows(self):
@@ -184,14 +183,11 @@ class ResCompany(models.Model):
             raise UserError(self.env._("Upload the FIEL private key (.key) first."))
         if not self.l10n_mx_sat_fiel_password:
             raise UserError(self.env._("Enter the FIEL password first."))
-        try:
-            cer_der = base64.b64decode(self.l10n_mx_sat_fiel_cer)
-            key_der = base64.b64decode(self.l10n_mx_sat_fiel_key)
-        except Exception as e:
-            raise UserError(
-                self.env._("Failed to decode FIEL credentials: %s", e)
-            ) from e
-        return cer_der, key_der, self.l10n_mx_sat_fiel_password
+        return (
+            bytes(self.l10n_mx_sat_fiel_cer),
+            bytes(self.l10n_mx_sat_fiel_key),
+            self.l10n_mx_sat_fiel_password,
+        )
 
     def l10n_mx_sat_get_client(self):
         """Factory: return a SatClient instance."""

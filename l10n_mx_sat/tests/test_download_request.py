@@ -1,5 +1,6 @@
 # Copyright 2026 Gray Matter Logic
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+# ruff: noqa: DTZ001
 
 import base64
 import zipfile
@@ -12,6 +13,7 @@ from odoo.exceptions import AccessError, UserError, ValidationError
 from odoo.tests import tagged
 from odoo.tests.common import TransactionCase
 from odoo.tools import mute_logger
+from odoo.tools.binary import BinaryBytes
 
 from odoo.addons.l10n_mx_sat.services import (
     MX_TZ,
@@ -113,8 +115,8 @@ class TestDownloadRequest(TransactionCase):
             {
                 "vat": "EKU9003173C9",
                 "country_id": cls.env.ref("base.mx").id,
-                "l10n_mx_sat_fiel_cer": b"ZmFrZQ==",
-                "l10n_mx_sat_fiel_key": b"ZmFrZQ==",
+                "l10n_mx_sat_fiel_cer": BinaryBytes(b"fake"),
+                "l10n_mx_sat_fiel_key": BinaryBytes(b"fake"),
                 "l10n_mx_sat_fiel_password": "test",
             }
         )
@@ -123,8 +125,8 @@ class TestDownloadRequest(TransactionCase):
     def setUp(self):
         super().setUp()
         icp = self.env["ir.config_parameter"].sudo()
-        icp.set_param("l10n_mx_sat.sync_pending_company_ids", "")
-        icp.set_param("l10n_mx_sat.queued_request_ids", "")
+        icp.set_str("l10n_mx_sat.sync_pending_company_ids", "")
+        icp.set_str("l10n_mx_sat.queued_request_ids", "")
 
     def _create_request(self, **kwargs):
         vals = {
@@ -321,9 +323,10 @@ class TestDownloadRequest(TransactionCase):
             self.company,
             request,
         )
-        action = doc.get_formview_action()
+        action = doc.get_record_default_action()
         self.assertFalse(action["context"].get("edit"))
-        self.assertEqual(action["flags"].get("mode"), "readonly")
+        self.assertFalse(action["context"].get("create"))
+        self.assertFalse(action["context"].get("delete"))
 
     def test_create_next_request_respects_metadata_window(self):
         self.env["l10n_mx_sat.download.request"].search(
@@ -917,9 +920,8 @@ class TestDownloadRequest(TransactionCase):
         client = self._mock_client()
         client.request_download.side_effect = Exception("SAT down")
         req = self._create_request(state="error", error_message="Previous error")
-        with self._patch_factory(client):
-            with self.assertRaises(UserError) as err:
-                req.action_retry()
+        with self._patch_factory(client), self.assertRaises(UserError) as err:
+            req.action_retry()
         self.assertEqual(req.state, "error")
         self.assertIn("SAT down", str(err.exception))
 
@@ -1836,8 +1838,8 @@ class TestMultiCompanySAT(TransactionCase):
             {
                 "vat": "EKU9003173C9",
                 "country_id": cls.env.ref("base.mx").id,
-                "l10n_mx_sat_fiel_cer": b"ZmFrZQ==",
-                "l10n_mx_sat_fiel_key": b"ZmFrZQ==",
+                "l10n_mx_sat_fiel_cer": BinaryBytes(b"fake"),
+                "l10n_mx_sat_fiel_key": BinaryBytes(b"fake"),
                 "l10n_mx_sat_fiel_password": "test-a",
             }
         )
@@ -1846,8 +1848,8 @@ class TestMultiCompanySAT(TransactionCase):
                 "name": "Empresa B SAT",
                 "vat": "AAA010101AAA",
                 "country_id": cls.env.ref("base.mx").id,
-                "l10n_mx_sat_fiel_cer": b"ZmFrZQ==",
-                "l10n_mx_sat_fiel_key": b"ZmFrZQ==",
+                "l10n_mx_sat_fiel_cer": BinaryBytes(b"fake"),
+                "l10n_mx_sat_fiel_key": BinaryBytes(b"fake"),
                 "l10n_mx_sat_fiel_password": "test-b",
             }
         )

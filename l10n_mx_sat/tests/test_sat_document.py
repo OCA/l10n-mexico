@@ -5,10 +5,11 @@ from unittest.mock import MagicMock, patch
 
 from lxml import etree
 
-from odoo.exceptions import AccessError
+from odoo.exceptions import AccessError, UserError
 from odoo.tests import tagged
 from odoo.tests.common import TransactionCase
 from odoo.tools import mute_logger
+from odoo.tools.binary import BinaryBytes
 
 from odoo.addons.l10n_mx_sat.services.sat_helpers import SAFE_XML_PARSER
 
@@ -27,8 +28,8 @@ class TestSatDocument(TransactionCase):
             {
                 "vat": "EKU9003173C9",
                 "country_id": cls.env.ref("base.mx").id,
-                "l10n_mx_sat_fiel_cer": b"ZmFrZQ==",
-                "l10n_mx_sat_fiel_key": b"ZmFrZQ==",
+                "l10n_mx_sat_fiel_cer": BinaryBytes(b"fake"),
+                "l10n_mx_sat_fiel_key": BinaryBytes(b"fake"),
                 "l10n_mx_sat_fiel_password": "test",
             }
         )
@@ -430,7 +431,7 @@ class TestSatDocument(TransactionCase):
             self._parse_xml(second), second, self.company, request
         )
         self.assertEqual(doc1.id, doc2.id)
-        self.assertEqual(doc2.attachment_id.raw, second)
+        self.assertEqual(bytes(doc2.attachment_id.raw), second)
 
     def test_parse_xml_values_cfdi_fields(self):
         xml_bytes = (
@@ -475,7 +476,7 @@ class TestSatDocument(TransactionCase):
 
     def test_get_company_rfc_returns_false_on_exception(self):
         self.company.vat = False
-        with patch(_PATCH_GET_CLIENT, side_effect=Exception("boom")):
+        with patch(_PATCH_GET_CLIENT, side_effect=UserError("boom")):
             self.assertFalse(self.Document._get_company_rfc(self.company))
 
     def test_upsert_from_metadata_empty_uuid(self):

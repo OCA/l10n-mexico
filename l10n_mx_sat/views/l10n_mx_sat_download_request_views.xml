@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <record id="l10n_mx_sat_download_request_view_list" model="ir.ui.view">
         <field name="name">l10n_mx_sat.download.request.list</field>
@@ -41,7 +41,7 @@
                         type="object"
                         string="Encolar"
                         class="btn-primary"
-                        icon="fa-play"
+                        icon="play_arrow"
                         invisible="state != 'draft'"
                         groups="l10n_mx_sat.group_sat_manager"
                         confirm="¿Encolar esta solicitud SAT para procesamiento en segundo plano?"
@@ -51,7 +51,7 @@
                         type="object"
                         string="Retry"
                         class="btn-primary"
-                        icon="fa-refresh"
+                        icon="refresh"
                         invisible="state != 'error' or not can_retry"
                         groups="l10n_mx_sat.group_sat_manager"
                         confirm="¿Retry esta solicitud SAT?"

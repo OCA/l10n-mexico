@@ -1,8 +1,6 @@
 # Copyright 2026 Gray Matter Logic
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-import base64
-
 from odoo import fields, models
 from odoo.exceptions import UserError
 
@@ -15,7 +13,6 @@ class L10nMxSatFielCredentialsWizard(models.TransientModel):
 
     company_id = fields.Many2one(
         comodel_name="res.company",
-        string="Company",
         required=True,
         readonly=True,
     )
@@ -59,8 +56,8 @@ class L10nMxSatFielCredentialsWizard(models.TransientModel):
     def _get_fiel_rfc(self):
         self.ensure_one()
         try:
-            cer_der = base64.b64decode(self.fiel_cer)
-            key_der = base64.b64decode(self.fiel_key)
+            cer_der = bytes(self.fiel_cer)
+            key_der = bytes(self.fiel_key)
             client = SatClient(cer_der, key_der, self.fiel_password)
         except Exception as e:
             raise UserError(

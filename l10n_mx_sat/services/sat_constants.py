@@ -1,10 +1,10 @@
 # Copyright 2026 Gray Matter Logic
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from pytz import timezone
+from zoneinfo import ZoneInfo
 
 # Timezone used for SAT date logic across all SAT-consuming modules.
-MX_TZ = timezone("America/Mexico_City")
+MX_TZ = ZoneInfo("America/Mexico_City")
 
 # SAT web service response codes (shared across Solicitud, Verificacion, Descarga).
 SAT_CODE_SUCCESS = "5000"

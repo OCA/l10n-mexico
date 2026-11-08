@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 import logging
+from typing import ClassVar
 
 from lxml.etree import QName
 
@@ -54,7 +55,7 @@ class SatClient:
     REQUEST_TYPE_XML = "xml"
     REQUEST_TYPE_METADATA = "metadata"
 
-    _REQUEST_METHODS = {
+    _REQUEST_METHODS: ClassVar[dict[tuple[str, str], str]] = {
         (DOCUMENT_KIND_CFDI, DIRECTION_ISSUED): "recover_comprobante_emitted_request",
         (
             DOCUMENT_KIND_CFDI,
@@ -69,11 +70,11 @@ class SatClient:
             DIRECTION_RECEIVED,
         ): "recover_retencion_received_request",
     }
-    _STATUS_METHODS = {
+    _STATUS_METHODS: ClassVar[dict[str, str]] = {
         DOCUMENT_KIND_CFDI: "recover_comprobante_status",
         DOCUMENT_KIND_RETENTION: "recover_retencion_status",
     }
-    _DOWNLOAD_METHODS = {
+    _DOWNLOAD_METHODS: ClassVar[dict[str, str]] = {
         DOCUMENT_KIND_CFDI: "recover_comprobante_download",
         DOCUMENT_KIND_RETENTION: "recover_retencion_download",
     }

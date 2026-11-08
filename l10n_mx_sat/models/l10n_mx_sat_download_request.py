@@ -65,7 +65,6 @@ class L10nMxSatDownloadRequest(models.Model):
     name = fields.Char(string="Description", compute="_compute_name", store=True)
     company_id = fields.Many2one(
         comodel_name="res.company",
-        string="Company",
         required=True,
         default=lambda self: self.env.company,
         index=True,
@@ -186,7 +185,7 @@ class L10nMxSatDownloadRequest(models.Model):
         if not rfc and company.l10n_mx_sat_has_credentials():
             try:
                 rfc = company.l10n_mx_sat_get_rfc()
-            except Exception:
+            except UserError:
                 rfc = False
         return rfc or company.name or "?"
 
@@ -776,7 +775,7 @@ class L10nMxSatDownloadRequest(models.Model):
     @api.model
     def _parse_param_ids(self, param_name):
         """Read a comma-separated list of integer IDs from ir.config_parameter."""
-        raw = self.env["ir.config_parameter"].sudo().get_param(param_name, "")
+        raw = self.env["ir.config_parameter"].sudo().get_str(param_name)
         if not raw:
             return []
         return [int(item) for item in raw.split(",") if item.strip().isdigit()]
@@ -786,7 +785,7 @@ class L10nMxSatDownloadRequest(models.Model):
         """Persist a list of integer IDs as a comma-separated config parameter."""
         icp = self.env["ir.config_parameter"].sudo()
         unique_ids = list(dict.fromkeys(ids))
-        icp.set_param(
+        icp.set_str(
             param_name,
             ",".join(str(item) for item in unique_ids) if unique_ids else "",
         )
@@ -1147,8 +1146,7 @@ class L10nMxSatDownloadRequest(models.Model):
         elif request_type != "metadata":
             # One SAT call must not span every month since the start date.
             month_end = self._end_of_calendar_month(date_from)
-            if month_end < date_to:
-                date_to = month_end
+            date_to = min(date_to, month_end)
 
         if date_from >= date_to:
             return self.browse()

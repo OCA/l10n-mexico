@@ -1,18 +1,19 @@
 # Copyright 2026 Gray Matter Logic
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-import base64
+import binascii
 from unittest.mock import MagicMock, patch
 
 from odoo.exceptions import UserError
 from odoo.tests import tagged
 from odoo.tests.common import TransactionCase
 from odoo.tools import mute_logger
+from odoo.tools.binary import BinaryBytes
 
 from ..services import SatClient
 
-MOCK_CER = base64.b64encode(b"fake-cer-content")
-MOCK_KEY = base64.b64encode(b"fake-key-content")
+MOCK_CER = BinaryBytes(b"fake-cer-content")
+MOCK_KEY = BinaryBytes(b"fake-key-content")
 MOCK_PASSWORD = "test-password"
 
 _SVC = "odoo.addons.l10n_mx_sat.services.sat_client"
@@ -85,16 +86,9 @@ class TestResCompanySATConnection(TransactionCase):
         self.assertEqual(key, b"fake-key-content")
         self.assertEqual(pwd, MOCK_PASSWORD)
 
-    def test_invalid_base64_credentials_raise_user_error(self):
-        self.company.write(
-            {
-                "l10n_mx_sat_fiel_cer": b"abc",
-                "l10n_mx_sat_fiel_key": MOCK_KEY,
-                "l10n_mx_sat_fiel_password": MOCK_PASSWORD,
-            }
-        )
-        with self.assertRaises(UserError):
-            self.company.l10n_mx_sat_get_credentials()
+    def test_invalid_base64_credentials_are_rejected(self):
+        with self.assertRaises(binascii.Error):
+            self.company.write({"l10n_mx_sat_fiel_cer": "!!!not-base64!!!"})
 
     @patch(f"{_SVC}.Signer.load")
     @patch(f"{_SVC}.SAT")
@@ -214,10 +208,10 @@ class TestResCompanySATConnection(TransactionCase):
     @patch(f"{_SVC}.Signer.load")
     @patch(f"{_SVC}.SAT")
     def test_fiel_wizard_updates_credentials(self, mock_sat_cls, mock_signer_load):
-        mock_signer_load.return_value.rfc = "RFCFIEL123"
+        mock_signer_load.return_value.rfc = "EKU9003173C9"
         self.company.vat = False
         with patch(_WIZ_SVC) as MockWizardClient:
-            MockWizardClient.return_value.rfc = "RFCFIEL123"
+            MockWizardClient.return_value.rfc = "EKU9003173C9"
             wizard = self.env["l10n_mx_sat.fiel.credentials.wizard"].create(
                 {
                     "company_id": self.company.id,
@@ -229,7 +223,7 @@ class TestResCompanySATConnection(TransactionCase):
             wizard.action_apply()
         self.assertTrue(self.company.l10n_mx_sat_has_credentials())
         self.assertEqual(self.company.l10n_mx_sat_fiel_password, MOCK_PASSWORD)
-        self.assertEqual(self.company.vat, "RFCFIEL123")
+        self.assertEqual(self.company.vat, "EKU9003173C9")
         self.assertNotEqual(self.company.l10n_mx_sat_fiel_cer, False)
         self.assertNotEqual(self.company.l10n_mx_sat_fiel_key, False)
 
