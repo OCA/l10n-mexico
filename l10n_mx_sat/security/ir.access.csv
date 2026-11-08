@@ -1,0 +1,10 @@
+id,name,model_id,group_id/id,operation,domain
+access_l10n_mx_sat_document_user,l10n_mx_sat.document user,l10n_mx_sat.document,l10n_mx_sat.group_sat_user,r,
+l10n_mx_sat_document_company_rule,SAT Document multi-company,l10n_mx_sat.document,,crud,"[('company_id', 'in', company_ids)]"
+access_l10n_mx_sat_download_request_user,l10n_mx_sat.download.request user,l10n_mx_sat.download.request,l10n_mx_sat.group_sat_user,r,
+access_l10n_mx_sat_download_request_manager,l10n_mx_sat.download.request manager,l10n_mx_sat.download.request,l10n_mx_sat.group_sat_manager,crud,
+l10n_mx_sat_download_request_company_rule,SAT Download Request multi-company,l10n_mx_sat.download.request,,crud,"[('company_id', 'in', company_ids)]"
+access_l10n_mx_sat_download_package_user,l10n_mx_sat.download.package user,l10n_mx_sat.download.package,l10n_mx_sat.group_sat_user,r,
+access_l10n_mx_sat_download_package_manager,l10n_mx_sat.download.package manager,l10n_mx_sat.download.package,l10n_mx_sat.group_sat_manager,crud,
+l10n_mx_sat_download_package_company_rule,SAT Download Package multi-company,l10n_mx_sat.download.package,,crud,"[('company_id', 'in', company_ids)]"
+access_l10n_mx_sat_fiel_credentials_wizard_manager,l10n_mx_sat.fiel.credentials.wizard manager,l10n_mx_sat.fiel.credentials.wizard,l10n_mx_sat.group_sat_manager,crud,
