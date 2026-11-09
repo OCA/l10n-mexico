@@ -141,16 +141,21 @@ class TestCFDIDocumentAccount(CFDIAccountTestCommon):
                 type(self.env["ir.actions.report"]),
                 "_render_qweb_pdf",
                 return_value=(b"%PDF-1.4 report", "pdf"),
-            ),
+            ) as render,
             patch.object(
                 type(self.service),
                 "get_cfdi_xml",
-                return_value={"Content": base64.b64encode(b"<cfdi/>").decode("ascii")},
-            ),
+                return_value={"Content": b"<cfdi/>"},
+            ) as get_xml,
         ):
             document._compute_download_files_if_needed()
+        render.assert_called_once()
+        self.assertEqual(render.call_args.args[0], "account.account_invoices")
+        self.assertEqual(render.call_args.args[1], [invoice.id])
+        get_xml.assert_called_once_with("tracking-report")
         self.assertTrue(document.files_in_cache)
         self.assertEqual(document.pdf_file, base64.b64encode(b"%PDF-1.4 report"))
+        self.assertEqual(document.xml_file, base64.b64encode(b"<cfdi/>"))
 
     def test_publish_document_from_account_module(self):
         with patch.object(
@@ -183,11 +188,33 @@ class TestCFDIDocumentAccount(CFDIAccountTestCommon):
             patch.object(
                 type(self.service),
                 "get_cfdi_xml",
-                return_value={"Content": base64.b64encode(b"<cfdi/>").decode("ascii")},
+                return_value={"Content": "<cfdi/>"},
             ),
         ):
             document._compute_download_files_if_needed()
         self.assertEqual(document.pdf_file, base64.b64encode(b"%PDF-provider"))
+        self.assertEqual(document.xml_file, base64.b64encode(b"<cfdi/>"))
+
+    def test_download_files_survives_pac_errors(self):
+        """Opening the document must not crash when the PAC rejects the file."""
+        document = self._create_document(tracking_id="tracking-pac-error")
+        with (
+            patch.object(
+                type(self.service),
+                "get_cfdi_pdf",
+                side_effect=UserError("Malformed request"),
+            ),
+            patch.object(
+                type(self.service),
+                "get_cfdi_xml",
+                side_effect=UserError("Malformed request"),
+            ),
+        ):
+            document._compute_download_files_if_needed()
+        self.assertTrue(document.files_in_cache)
+        self.assertFalse(document.pdf_file)
+        self.assertFalse(document.xml_file)
+        self.assertFalse(document.pdf_filename)
 
     def test_download_files_without_tracking(self):
         document = self._create_document(tracking_id=False)
