@@ -26,7 +26,7 @@ addon | version | maintainers | summary
 [l10n_mx_catalogs](l10n_mx_catalogs/) | 19.0.1.1.1 |  | Catalogs of Servicio de Administración Tributaria (SAT) from México
 [l10n_mx_catalogs_comex](l10n_mx_catalogs_comex/) | 19.0.1.0.1 |  | Foreign trade catalogs for Mexico
 [l10n_mx_cfdi](l10n_mx_cfdi/) | 19.0.2.2.3 | <a href='https://github.com/max3903'><img src='https://github.com/max3903.png' width='32' height='32' style='border-radius:50%;' alt='max3903'/></a> | Allow generating CFDI (Comprobante Fiscal Digital por Internet)
-[l10n_mx_cfdi_account](l10n_mx_cfdi_account/) | 19.0.1.3.3 | <a href='https://github.com/max3903'><img src='https://github.com/max3903.png' width='32' height='32' style='border-radius:50%;' alt='max3903'/></a> | Mexico CFDI Account Integration
+[l10n_mx_cfdi_account](l10n_mx_cfdi_account/) | 19.0.1.4.0 | <a href='https://github.com/max3903'><img src='https://github.com/max3903.png' width='32' height='32' style='border-radius:50%;' alt='max3903'/></a> | Mexico CFDI Account Integration
 [l10n_mx_cfdi_account_addenda_audi](l10n_mx_cfdi_account_addenda_audi/) | 19.0.1.0.1 |  | Mexican Localization Addendum For Audi
 [l10n_mx_cfdi_account_addenda_ford](l10n_mx_cfdi_account_addenda_ford/) | 19.0.1.0.0 |  | Mexican Localization Addendum For Ford
 [l10n_mx_cfdi_account_addenda_kuehne_nagel](l10n_mx_cfdi_account_addenda_kuehne_nagel/) | 19.0.1.0.1 |  | Mexican Localization Addendum KNRECEPCION For Kuehne+Nagel
