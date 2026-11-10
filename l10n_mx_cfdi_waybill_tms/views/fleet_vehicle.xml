@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="fleet_vehicle_view_form_waybill" model="ir.ui.view">
+        <field name="name">fleet.vehicle.form.waybill</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="tms.fleet_vehicle_inherit_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='insurance']" position="after">
+                <group string="Carta Porte">
+                    <field name="tms_equipment_type" invisible="1" />
+                    <field
+                        name="l10n_mx_cfdi_waybill_vehicle_id"
+                        invisible="tms_equipment_type != 'power'"
+                    />
+                    <field
+                        name="l10n_mx_cfdi_trailer_type_id"
+                        invisible="tms_equipment_type != 'trailer'"
+                    />
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

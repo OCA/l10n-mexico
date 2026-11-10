@@ -1,0 +1,63 @@
+<odoo noupdate="1">
+    <record id="tms.demo_vehicle_truck_volvo_fh" model="fleet.vehicle">
+        <field
+            name="l10n_mx_cfdi_waybill_vehicle_id"
+            ref="l10n_mx_cfdi_waybill.demo_vehicle"
+        />
+    </record>
+    <record id="tms.demo_vehicle_trailer_caja" model="fleet.vehicle">
+        <field name="license_plate">TRL-DEMO-01</field>
+        <field
+            name="l10n_mx_cfdi_trailer_type_id"
+            ref="l10n_mx_catalogs.c_sub_tipo_rem_CTR002"
+        />
+        <field
+            name="l10n_mx_cfdi_waybill_trailer_id"
+            ref="l10n_mx_cfdi_waybill.demo_vehicle_trailer"
+        />
+    </record>
+    <record id="tms.demo_vehicle_trailer_dropped" model="fleet.vehicle">
+        <field
+            name="l10n_mx_cfdi_trailer_type_id"
+            ref="l10n_mx_catalogs.c_sub_tipo_rem_CTR004"
+        />
+    </record>
+
+    <record id="tms.demo_order_5_cargo" model="tms.cargo">
+        <field
+            name="l10n_mx_cfdi_product_code_id"
+            ref="l10n_mx_catalogs.c_clave_prod_serv_01010101"
+        />
+        <field name="l10n_mx_cfdi_unit_id" ref="l10n_mx_catalogs.c_clave_unidad_KGM" />
+    </record>
+    <record id="tms.demo_order_4_cargo" model="tms.cargo">
+        <field
+            name="l10n_mx_cfdi_product_code_id"
+            ref="l10n_mx_catalogs.c_clave_prod_serv_01010101"
+        />
+        <field name="l10n_mx_cfdi_unit_id" ref="l10n_mx_catalogs.c_clave_unidad_KGM" />
+    </record>
+
+    <record id="demo_trip_waybill" model="l10n_mx_cfdi_waybill.waybill">
+        <field name="type">T</field>
+        <field name="issuer_id" ref="l10n_mx_cfdi.demo_cfdi_issuer" />
+        <field name="receiver_id" ref="l10n_mx_cfdi.demo_cfdi_issuer_partner" />
+        <field name="vehicle_id" ref="l10n_mx_cfdi_waybill.demo_vehicle" />
+        <field name="tms_order_id" ref="tms.demo_order_5" />
+        <field
+            name="transporter_ids"
+            eval="[(4, ref('l10n_mx_cfdi_waybill.demo_transporter'))]"
+        />
+    </record>
+    <record id="demo_trip_waybill_entry" model="l10n_mx_cfdi_waybill.waybill_entry">
+        <field name="waybill_id" ref="demo_trip_waybill" />
+        <field name="cargo_id" ref="tms.demo_order_5_cargo" />
+        <field name="product_qty">4</field>
+        <field name="origin_address_id" ref="tms.demo_location_6" />
+        <field name="destination_address_id" ref="tms.demo_location_4" />
+        <field name="departure_datetime">2026-09-29 08:00:00</field>
+        <field name="arrival_datetime">2026-09-29 14:00:00</field>
+        <field name="distance">200</field>
+        <field name="duration">6</field>
+    </record>
+</odoo>
