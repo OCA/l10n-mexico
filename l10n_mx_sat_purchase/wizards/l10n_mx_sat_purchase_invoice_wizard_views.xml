@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="l10n_mx_sat_purchase_invoice_wizard_view_form" model="ir.ui.view">
+        <field name="name">l10n_mx_sat.purchase.invoice.wizard.form</field>
+        <field name="model">l10n_mx_sat.purchase.invoice.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <div
+                    class="alert alert-warning"
+                    role="alert"
+                    invisible="not total_mismatch or match_mode != 'document'"
+                >
+                    The total of the selected CFDI differs from the orders total. Review the bill before posting it.
+                </div>
+                <div
+                    class="alert alert-warning"
+                    role="alert"
+                    invisible="not total_mismatch or match_mode != 'line'"
+                >
+                    The amount to bill differs from the CFDI subtotal. Review the quantities to bill before creating the bill.
+                </div>
+                <div
+                    class="alert alert-info"
+                    role="alert"
+                    invisible="l10n_mx_sat_available_document_ids"
+                >
+                    There is no CFDI of this vendor pending to bill in the SAT downloads.
+                </div>
+                <group>
+                    <group>
+                        <field
+                            name="purchase_order_ids"
+                            widget="many2many_tags"
+                            domain="[('state', '=', 'purchase'), ('invoice_status', '=', 'to invoice'), ('company_id', '=', company_id), ('currency_id', '=', currency_id), ('partner_id', 'child_of', commercial_partner_id)]"
+                            options="{'no_create': True}"
+                        />
+                        <field name="partner_id" />
+                        <field name="commercial_partner_id" invisible="1" />
+                        <field
+                            name="l10n_mx_sat_document_id"
+                            options="{'no_create': True, 'no_open': True}"
+                        />
+                        <field name="match_mode" widget="radio" />
+                    </group>
+                    <group>
+                        <field name="amount_total" />
+                        <field
+                            name="cfdi_amount_untaxed"
+                            invisible="not l10n_mx_sat_document_id"
+                        />
+                        <field
+                            name="mapped_amount_untaxed"
+                            invisible="not l10n_mx_sat_document_id or match_mode != 'line'"
+                        />
+                        <field name="currency_id" invisible="1" />
+                        <field name="company_id" invisible="1" />
+                        <field
+                            name="l10n_mx_sat_available_document_ids"
+                            invisible="1"
+                        />
+                        <field name="concept_document_id" invisible="1" />
+                        <field name="available_purchase_line_ids" invisible="1" />
+                        <field name="total_mismatch" invisible="1" />
+                    </group>
+                </group>
+                <notebook
+                    invisible="not l10n_mx_sat_document_id or match_mode != 'line'"
+                >
+                    <page string="Concepts" name="concepts">
+                        <field name="concept_ids">
+                            <list
+                                editable="bottom"
+                                create="0"
+                                delete="0"
+                                decoration-warning="price_mismatch"
+                                decoration-info="not purchase_line_id"
+                            >
+                                <field
+                                    name="sequence"
+                                    column_invisible="1"
+                                    force_save="1"
+                                />
+                                <field name="price_mismatch" column_invisible="1" />
+                                <field
+                                    name="no_identificacion"
+                                    readonly="1"
+                                    force_save="1"
+                                />
+                                <field name="description" readonly="1" force_save="1" />
+                                <field
+                                    name="product_service_code"
+                                    readonly="1"
+                                    force_save="1"
+                                    optional="hide"
+                                />
+                                <field name="quantity" readonly="1" force_save="1" />
+                                <field name="unit_code" readonly="1" force_save="1" />
+                                <field name="price_unit" readonly="1" force_save="1" />
+                                <field
+                                    name="discount_amount"
+                                    readonly="1"
+                                    force_save="1"
+                                    optional="hide"
+                                />
+                                <field
+                                    name="amount"
+                                    readonly="1"
+                                    force_save="1"
+                                    sum="Subtotal"
+                                />
+                                <field
+                                    name="tax_summary"
+                                    readonly="1"
+                                    force_save="1"
+                                    optional="show"
+                                />
+                                <field
+                                    name="tax_amount"
+                                    readonly="1"
+                                    force_save="1"
+                                    optional="hide"
+                                />
+                                <field
+                                    name="purchase_line_id"
+                                    domain="[('id', 'in', parent.available_purchase_line_ids)]"
+                                    options="{'no_create': True, 'no_open': True}"
+                                />
+                                <field name="purchase_price_unit" />
+                                <field name="purchase_qty_pending" />
+                                <field name="purchase_uom_id" />
+                                <field name="qty_to_invoice" />
+                                <field
+                                    name="product_id"
+                                    readonly="purchase_line_id"
+                                    options="{'no_create': True, 'no_open': True}"
+                                    optional="hide"
+                                />
+                                <button
+                                    name="action_split"
+                                    type="object"
+                                    string="Split"
+                                    class="btn-link"
+                                    title="Bill the rest of this concept in another purchase order line"
+                                />
+                            </list>
+                        </field>
+                    </page>
+                </notebook>
+                <footer>
+                    <button
+                        name="action_create_invoice"
+                        string="Create Bill"
+                        type="object"
+                        class="btn-primary"
+                        data-hotkey="q"
+                    />
+                    <button
+                        string="Cancel"
+                        class="btn-secondary"
+                        special="cancel"
+                        data-hotkey="x"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,1 @@
+from . import l10n_mx_sat_purchase_invoice_wizard
