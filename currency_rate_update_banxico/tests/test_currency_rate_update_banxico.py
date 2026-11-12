@@ -17,6 +17,7 @@ class TestResCurrencyRateProviderBanxico(common.TransactionCase):
         cls.yesterday = cls.today - timedelta(days=1)
         cls.currency_rate = cls.env["res.currency.rate"]
         cls.usd_currency = cls.env.ref("base.USD")
+        cls.eur_currency = cls.env.ref("base.EUR")
         cls.company = cls.env["res.company"].create(
             {"name": "Test company", "currency_id": cls.env.ref("base.MXN").id}
         )
@@ -50,6 +51,26 @@ class TestResCurrencyRateProviderBanxico(common.TransactionCase):
                                 {
                                     "fecha": self.today.strftime("%d/%m/%Y"),
                                     "dato": "20.4742",
+                                }
+                            ],
+                        }
+                    ]
+                }
+            },
+        )
+        url = "https://www.banxico.org.mx/SieAPIRest/service/v1/series/SF46410/datos/oportuno"
+        mocker.get(
+            url,
+            json={
+                "bmx": {
+                    "series": [
+                        {
+                            "idSerie": "SF46410",
+                            "titulo": "Test Title",
+                            "datos": [
+                                {
+                                    "fecha": self.today.strftime("%d/%m/%Y"),
+                                    "dato": "22.5185",
                                 }
                             ],
                         }
@@ -94,6 +115,29 @@ class TestResCurrencyRateProviderBanxico(common.TransactionCase):
             self.assertEqual(len(rates), 1)
             self.assertEqual(rates.currency_id, self.usd_currency)
             self.assertAlmostEqual(rates.rate, 1 / 20.4742, places=4)
+
+    def test_cron_multiple_currencies(self):
+        self.eur_currency.active = True
+        self.banxico_provider.currency_ids += self.eur_currency
+        with requests_mock.Mocker() as mocker:
+            self.mock_response(mocker)
+            self.banxico_provider._scheduled_update()
+            rates = self.currency_rate.search([("company_id", "=", self.company.id)])
+
+            self.assertEqual(len(rates), 2)
+            self.assertEqual(
+                set(rates.currency_id.ids),
+                {self.eur_currency.id, self.usd_currency.id},
+                "Both USD and EUR must be created in the rates. Just those two.",
+            )
+            eur_rate = rates.filtered(
+                lambda rate: rate.currency_id == self.eur_currency
+            )
+            usd_rate = rates.filtered(
+                lambda rate: rate.currency_id == self.usd_currency
+            )
+            self.assertAlmostEqual(eur_rate.rate, 1 / 22.5185, places=4)
+            self.assertAlmostEqual(usd_rate.rate, 1 / 20.4742, places=4)
 
     def test_wizard(self):
         with requests_mock.Mocker() as mocker:
