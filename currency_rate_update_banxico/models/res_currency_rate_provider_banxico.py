@@ -33,7 +33,8 @@ class ResCurrencyRateProvider(models.Model):
         for currency in currencies:
             url = self._get_banxico_webservice_url(currency, date_from, date_to)
             data = self._request_data(url)
-            result.update(self._process_data(data, currency))
+            for date, rates in self._process_data(data, currency).items():
+                result.setdefault(date, {}).update(rates)
         return result
 
     def _get_banxico_webservice_url(self, currency, date_from, date_to):
