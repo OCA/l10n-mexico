@@ -99,9 +99,7 @@ def load_list(get=None):
         parsed = parse_list_69b(response.content.decode("cp1252"))
     except (requests.RequestException, SatListError, UnicodeError) as error:
         if cached is not None:
-            _logger.warning(
-                "Using cached SAT list 69-B after refresh failure: %s", error
-            )
+            _logger.info("Using cached SAT list 69-B after refresh failure: %s", error)
             return cached
         if isinstance(error, SatListError):
             raise
