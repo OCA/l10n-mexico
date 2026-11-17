@@ -8,6 +8,7 @@ This module works with any PAC supported by the
 * SW Sapien
 * MYSuite
 * Facturama
+* Cefidia (own JSON API client in ``services/cefidia.py``, not satcfdi)
 
 Install the Python dependency:
 
@@ -97,6 +98,15 @@ Multiemisor and 100 folios; additional API folios about 0.50 / 0.45 / 0.40 MXN
   **Registrar** uploads the issuer CSD to the PAC before ``issue()``;
   supports ``issue()``.
 
+**Cefidia** — JSON API with bearer token; stamps CFDI 4.0 already sealed by
+the issuer (``POST /v1/signed-documents``), so every complement is sent
+unchanged. Confirm pricing with the vendor.
+
+- Docs: https://docs.cefidia.com/referencia/api/
+- Module notes: PAC Token; local seal + ``stamp()``; cancel via API using the
+  CSD uploaded on Cefidia's web (no acuse returned); no stamp balance
+  endpoint, so **Stamps available** stays empty.
+
 ### Module integration (stamp vs issue)
 
 | PAC | Path | Cancel in satcfdi | Credentials (summary) |
@@ -108,6 +118,7 @@ Multiemisor and 100 folios; additional API folios about 0.50 / 0.45 / 0.40 MXN
 | SW Sapien | ``issue()`` | Yes | token or user / password |
 | MYSuite | local seal + ``stamp()`` | No | requestor + user |
 | Facturama | ``issue()`` (Multiemisor) | Yes | user / password; CSD upload on Registrar |
+| Cefidia | local seal + ``stamp()`` | Yes (own client; CSD on Cefidia web) | PAC token |
 
 Prefer PACs that implement ``issue()`` when possible. Otherwise the module
 signs locally with the issuer CSD and calls ``stamp()``.

@@ -63,7 +63,9 @@ class CFDIService(models.Model):
     @api.model
     def _extract_pac_response_detail(self, response):
         if isinstance(response, dict):
-            return self._detail_from_pac_mapping(response)
+            return self._format_pac_problem(response) or self._detail_from_pac_mapping(
+                response
+            )
 
         data = None
         if hasattr(response, "json"):
@@ -72,7 +74,10 @@ class CFDIService(models.Model):
             except Exception:  # noqa: BLE001 - PAC responses vary widely
                 data = None
         if isinstance(data, dict):
-            detail = self._detail_from_pac_mapping(data)
+            # RFC 9457 problem+json (Cefidia) before the generic PAC mapping.
+            detail = self._format_pac_problem(data) or self._detail_from_pac_mapping(
+                data
+            )
             if detail:
                 return detail
 
@@ -159,6 +164,28 @@ class CFDIService(models.Model):
             return nested_data.strip()
 
         return None
+
+    @api.model
+    def _format_pac_problem(self, data):
+        """Format an RFC 9457 problem (``detail`` + optional ``fields``)."""
+        detail = data.get("detail")
+        if not isinstance(detail, str) or not detail.strip():
+            return None
+        if not any(key in data for key in ("code", "fields", "status", "type")):
+            return None
+        text = detail.strip()
+        code = data.get("code")
+        if isinstance(code, str) and code and code not in text:
+            text = f"{text} [{code}]"
+        lines = [text]
+        for field in data.get("fields") or []:
+            if not isinstance(field, dict):
+                continue
+            path = field.get("path") or ""
+            message = field.get("message") or ""
+            if path or message:
+                lines.append(f"- {path}: {message}".rstrip(": "))
+        return "\n".join(lines)
 
     @api.model
     def _format_pac_model_state(self, model_state):
@@ -251,6 +278,8 @@ class CFDIService(models.Model):
         """Upload issuer CSD to PACs that require remote registration (Facturama)."""
         self.ensure_one()
         provider = pac_registry.get_provider(self.provider)
+        if provider.code == "cefidia":
+            return self._check_cefidia_taxpayer(issuer)
         if provider.code != "facturama":
             return None
         signer = self._get_csd_signer(issuer)
@@ -278,6 +307,61 @@ class CFDIService(models.Model):
                         pac_error_msg,
                     )
                 ) from exc
+
+    def _check_cefidia_taxpayer(self, issuer):
+        """Cefidia cannot receive a CSD through its API.
+
+        The issuer RFC must exist as a taxpayer in the Cefidia account and its
+        CSD must be uploaded on the Cefidia web page (cancellation uses it).
+        """
+        pac = self._get_pac()
+        try:
+            status = pac.account_status()
+        except Exception as exc:
+            raise UserError(
+                self.env._(
+                    "Cannot read the Cefidia account status: %s",
+                    self._format_pac_error(exc),
+                )
+            ) from exc
+        rfc = (issuer.vat or "").upper()
+        taxpayer = next(
+            (
+                tp
+                for tp in status.get("taxpayers") or []
+                if (tp.get("rfc") or "").upper() == rfc
+            ),
+            None,
+        )
+        if not taxpayer:
+            raise UserError(
+                self.env._(
+                    "RFC %(rfc)s is not a taxpayer in the Cefidia account. "
+                    "Add it in Cefidia (%(url)s) and upload its CSD there, "
+                    "then register again.",
+                    rfc=rfc,
+                    url=status.get("add_taxpayer_url") or "https://cefidia.com",
+                )
+            )
+        blocking = [
+            item
+            for item in taxpayer.get("missing") or []
+            if item.get("code") in ("csd_missing", "csd_expired")
+        ]
+        if blocking:
+            raise UserError(
+                self.env._(
+                    "Cefidia taxpayer %(rfc)s is not ready: %(details)s",
+                    rfc=rfc,
+                    details="; ".join(
+                        f"{item.get('message')} ({item.get('url')})"
+                        for item in blocking
+                    ),
+                )
+            )
+        if not status.get("stamping_available", True):
+            _logger.warning("Cefidia reports stamping is currently unavailable")
+        return taxpayer
 
     def delete_issuer_csd(self, issuer):
         """Remove issuer CSD from PACs that store it remotely (Facturama)."""

@@ -1,7 +1,7 @@
 This module provides the configuration used by electronic invoicing for Mexico:
 
 - Multi-PAC integration via satcfdi (Finkok, Diverza, Prodigia, Comercio Digital,
-  SW Sapien, MYSuite, Facturama).
+  SW Sapien, MYSuite, Facturama) plus Cefidia through a built-in client.
 - Local CSD management for CFDI sealing when the PAC uses ``stamp()``.
 - Facturama Multiemisor CSD upload on issuer registration (required before
   ``issue()``).
@@ -9,17 +9,17 @@ This module provides the configuration used by electronic invoicing for Mexico:
 
 **CFDI × PAC capability matrix**
 
-| Flow | Finkok | Diverza | Prodigia | Com. Digital | SW Sapien | MYSuite | Facturama |
-|------|:------:|:-------:|:--------:|:------------:|:---------:|:-------:|:---------:|
-| Path | issue() | issue() | stamp() | stamp() | issue() | stamp() | issue() Multiemisor / Web |
-| Ingreso (I) | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| Egreso (E) | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional |
-| Pago (P) | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional |
-| Traslado / Carta Porte | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| Pedimentos on concepts | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| Full CCE complement | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional |
-| Cancel (API) | Conditional | Yes | No | No | Yes | No | Yes |
-| Cancel with acuse | Conditional | Unknown | No | No | Unknown | No | Conditional |
+| Flow | Finkok | Diverza | Prodigia | Com. Digital | SW Sapien | MYSuite | Facturama | Cefidia |
+|------|:------:|:-------:|:--------:|:------------:|:---------:|:-------:|:---------:|:-------:|
+| Path | issue() | issue() | stamp() | stamp() | issue() | stamp() | issue() Multiemisor / Web | stamp() |
+| Ingreso (I) | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| Egreso (E) | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional |
+| Pago (P) | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional |
+| Traslado / Carta Porte | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| Pedimentos on concepts | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| Full CCE complement | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional |
+| Cancel (API) | Conditional | Yes | No | No | Yes | No | Yes | Conditional |
+| Cancel with acuse | Conditional | Unknown | No | No | Unknown | No | Conditional | No |
 
 **Legend**
 
@@ -37,13 +37,16 @@ This module provides the configuration used by electronic invoicing for Mexico:
     CCE (live PAC acceptance not exhaustively retested here). Facturama
     Multiemisor does **not** support CCE; when CCE is present the module
     switches to FacturamaWeb (same user/password; account-profile CSD).
+  - Cefidia cancel: the issuer CSD must be uploaded on the Cefidia web page;
+    the API returns ``canceled`` or ``waiting_acceptance`` (shown as pending
+    cancellation) but never an acuse.
 - **No**:
   - Cancel API is not exposed in satcfdi for Prodigia, Comercio Digital, and
     MYSuite (``supports_cancel=False``).
 - **Unknown**: acuse availability depends on the PAC response (Diverza /
   SW Sapien).
 - **Path**: Finkok, Diverza, SW Sapien, and Facturama use ``issue()``; Prodigia,
-  Comercio Digital, and MYSuite use local CSD seal + ``stamp()``. Facturama is
+  Comercio Digital, MYSuite, and Cefidia use local CSD seal + ``stamp()``. Facturama is
   Multiemisor by default (**Registrar** uploads the CSD); FacturamaWeb is used
   automatically for Comercio Exterior.
 - Pedimentos on concepts are not the full CCE complement; the Facturama adapter

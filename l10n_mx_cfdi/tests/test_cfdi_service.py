@@ -46,6 +46,7 @@ class TestCFDIService(TransactionCase):
                 "swsapien",
                 "mysuite",
                 "facturama",
+                "cefidia",
             },
         )
 
