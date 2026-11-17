@@ -89,6 +89,13 @@ def _facturama_kwargs(service, environment: Environment) -> dict:
     }
 
 
+def _cefidia_kwargs(service, environment: Environment) -> dict:
+    return {
+        "token": service.pac_token,
+        "environment": environment,
+    }
+
+
 PAC_PROVIDERS: dict[str, PacProvider] = {
     "finkok": PacProvider(
         code="finkok",
@@ -162,6 +169,17 @@ PAC_PROVIDERS: dict[str, PacProvider] = {
         supports_cancel=True,
         requires_signer_for_cancel=False,
         kwargs_builder=_facturama_kwargs,
+    ),
+    "cefidia": PacProvider(
+        code="cefidia",
+        label="Cefidia",
+        # Not in satcfdi: our own client with the same PAC interface.
+        module="odoo.addons.l10n_mx_cfdi.services.cefidia",
+        class_name="Cefidia",
+        supports_issue=False,
+        supports_cancel=True,
+        requires_signer_for_cancel=False,
+        kwargs_builder=_cefidia_kwargs,
     ),
 }
 

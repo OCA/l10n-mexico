@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Docutils: https://docutils.sourceforge.io/" />
-<title>Mexico - CFDI Generation</title>
+<title>README.rst</title>
 <style type="text/css">
 
 /*
@@ -379,7 +379,8 @@ ul.auto-toc {
 Mexico:</p>
 <ul class="simple">
 <li>Multi-PAC integration via satcfdi (Finkok, Diverza, Prodigia, Comercio
-Digital, SW Sapien, MYSuite, Facturama).</li>
+Digital, SW Sapien, MYSuite, Facturama) plus Cefidia through a
+built-in client.</li>
 <li>Local CSD management for CFDI sealing when the PAC uses <tt class="docutils literal">stamp()</tt>.</li>
 <li>Facturama Multiemisor CSD upload on issuer registration (required
 before <tt class="docutils literal">issue()</tt>).</li>
@@ -388,14 +389,15 @@ before <tt class="docutils literal">issue()</tt>).</li>
 <p><strong>CFDI × PAC capability matrix</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="12%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
+<col width="10%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
 </colgroup>
 <thead valign="bottom">
 <tr><th class="head">Flow</th>
@@ -407,6 +409,7 @@ Digital</th>
 <th class="head">SW Sapien</th>
 <th class="head">MYSuite</th>
 <th class="head">Facturama</th>
+<th class="head">Cefidia</th>
 </tr>
 </thead>
 <tbody valign="top">
@@ -420,9 +423,11 @@ Digital</th>
 <td>issue()
 Multiemisor
 / Web</td>
+<td>stamp()</td>
 </tr>
 <tr><td>Ingreso
 (I)</td>
+<td>Yes</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>Yes</td>
@@ -439,8 +444,10 @@ Multiemisor
 <td>Conditional</td>
 <td>Conditional</td>
 <td>Conditional</td>
+<td>Conditional</td>
 </tr>
 <tr><td>Pago (P)</td>
+<td>Conditional</td>
 <td>Conditional</td>
 <td>Conditional</td>
 <td>Conditional</td>
@@ -459,10 +466,12 @@ Porte</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>Yes</td>
+<td>Yes</td>
 </tr>
 <tr><td>Pedimentos
 on
 concepts</td>
+<td>Yes</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>Yes</td>
@@ -480,6 +489,7 @@ complement</td>
 <td>Conditional</td>
 <td>Conditional</td>
 <td>Conditional</td>
+<td>Conditional</td>
 </tr>
 <tr><td>Cancel
 (API)</td>
@@ -490,6 +500,7 @@ complement</td>
 <td>Yes</td>
 <td>No</td>
 <td>Yes</td>
+<td>Conditional</td>
 </tr>
 <tr><td>Cancel
 with acuse</td>
@@ -500,6 +511,7 @@ with acuse</td>
 <td>Unknown</td>
 <td>No</td>
 <td>Conditional</td>
+<td>No</td>
 </tr>
 </tbody>
 </table>
@@ -521,6 +533,9 @@ XML with CCE (live PAC acceptance not exhaustively retested here).
 Facturama Multiemisor does <strong>not</strong> support CCE; when CCE is present
 the module switches to FacturamaWeb (same user/password;
 account-profile CSD).</li>
+<li>Cefidia cancel: the issuer CSD must be uploaded on the Cefidia web
+page; the API returns <tt class="docutils literal">canceled</tt> or <tt class="docutils literal">waiting_acceptance</tt> (shown
+as pending cancellation) but never an acuse.</li>
 </ul>
 </li>
 <li><strong>No</strong>:<ul>
@@ -531,7 +546,7 @@ and MYSuite (<tt class="docutils literal">supports_cancel=False</tt>).</li>
 <li><strong>Unknown</strong>: acuse availability depends on the PAC response (Diverza /
 SW Sapien).</li>
 <li><strong>Path</strong>: Finkok, Diverza, SW Sapien, and Facturama use <tt class="docutils literal">issue()</tt>;
-Prodigia, Comercio Digital, and MYSuite use local CSD seal +
+Prodigia, Comercio Digital, MYSuite, and Cefidia use local CSD seal +
 <tt class="docutils literal">stamp()</tt>. Facturama is Multiemisor by default (<strong>Registrar</strong>
 uploads the CSD); FacturamaWeb is used automatically for Comercio
 Exterior.</li>
@@ -555,19 +570,20 @@ adapter maps <tt class="docutils literal">NumerosPedimento</tt>.</li>
 <li><a class="reference internal" href="#select-environment" id="toc-entry-8">3. Select environment</a></li>
 <li><a class="reference internal" href="#configure-cfdi-issuer-s-and-register-the-csd" id="toc-entry-9">4. Configure CFDI issuer(s) and register the CSD</a><ul>
 <li><a class="reference internal" href="#facturama-multiemisor" id="toc-entry-10">Facturama Multiemisor</a></li>
+<li><a class="reference internal" href="#cefidia" id="toc-entry-11">Cefidia</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#configure-series-and-folios" id="toc-entry-11">5. Configure series and folios</a></li>
-<li><a class="reference internal" href="#finkok-cancel-company-fiel" id="toc-entry-12">6. Finkok cancel (company FIEL)</a></li>
-<li><a class="reference internal" href="#validate-the-connection" id="toc-entry-13">7. Validate the connection</a></li>
+<li><a class="reference internal" href="#configure-series-and-folios" id="toc-entry-12">5. Configure series and folios</a></li>
+<li><a class="reference internal" href="#finkok-cancel-company-fiel" id="toc-entry-13">6. Finkok cancel (company FIEL)</a></li>
+<li><a class="reference internal" href="#validate-the-connection" id="toc-entry-14">7. Validate the connection</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#known-issues-roadmap" id="toc-entry-14">Known issues / Roadmap</a></li>
-<li><a class="reference internal" href="#bug-tracker" id="toc-entry-15">Bug Tracker</a></li>
-<li><a class="reference internal" href="#credits" id="toc-entry-16">Credits</a><ul>
-<li><a class="reference internal" href="#authors" id="toc-entry-17">Authors</a></li>
-<li><a class="reference internal" href="#contributors" id="toc-entry-18">Contributors</a></li>
-<li><a class="reference internal" href="#maintainers" id="toc-entry-19">Maintainers</a></li>
+<li><a class="reference internal" href="#known-issues-roadmap" id="toc-entry-15">Known issues / Roadmap</a></li>
+<li><a class="reference internal" href="#bug-tracker" id="toc-entry-16">Bug Tracker</a></li>
+<li><a class="reference internal" href="#credits" id="toc-entry-17">Credits</a><ul>
+<li><a class="reference internal" href="#authors" id="toc-entry-18">Authors</a></li>
+<li><a class="reference internal" href="#contributors" id="toc-entry-19">Contributors</a></li>
+<li><a class="reference internal" href="#maintainers" id="toc-entry-20">Maintainers</a></li>
 </ul>
 </li>
 </ul>
@@ -584,6 +600,7 @@ adapter maps <tt class="docutils literal">NumerosPedimento</tt>.</li>
 <li>SW Sapien</li>
 <li>MYSuite</li>
 <li>Facturama</li>
+<li>Cefidia (own JSON API client in <tt class="docutils literal">services/cefidia.py</tt>, not satcfdi)</li>
 </ul>
 <p>Install the Python dependency:</p>
 <pre class="code bash literal-block">
@@ -666,6 +683,15 @@ API Web + Multiemisor and 100 folios; additional API folios about 0.50 /
 — <strong>Registrar</strong> uploads the issuer CSD to the PAC before <tt class="docutils literal">issue()</tt>;
 supports <tt class="docutils literal">issue()</tt>.</li>
 </ul>
+<p><strong>Cefidia</strong> — JSON API with bearer token; stamps CFDI 4.0 already sealed
+by the issuer (<tt class="docutils literal">POST <span class="pre">/v1/signed-documents</span></tt>), so every complement is
+sent unchanged. Confirm pricing with the vendor.</p>
+<ul class="simple">
+<li>Docs: <a class="reference external" href="https://docs.cefidia.com/referencia/api/">https://docs.cefidia.com/referencia/api/</a></li>
+<li>Module notes: PAC Token; local seal + <tt class="docutils literal">stamp()</tt>; cancel via API
+using the CSD uploaded on Cefidia’s web (no acuse returned); no stamp
+balance endpoint, so <strong>Stamps available</strong> stays empty.</li>
+</ul>
 </div>
 <div class="section" id="module-integration-stamp-vs-issue">
 <h4><a class="toc-backref" href="#toc-entry-4">Module integration (stamp vs issue)</a></h4>
@@ -739,6 +765,14 @@ password; CSD
 upload on
 Registrar</td>
 </tr>
+<tr><td>Cefidia</td>
+<td>local seal +
+<tt class="docutils literal">stamp()</tt></td>
+<td>Yes (own
+client; CSD on
+Cefidia web)</td>
+<td>PAC token</td>
+</tr>
 </tbody>
 </table>
 <p>Prefer PACs that implement <tt class="docutils literal">issue()</tt> when possible. Otherwise the
@@ -773,7 +807,7 @@ see Installation.</p>
 <li>Go to <strong>CFDI &gt; PAC Settings</strong> and create a record (or open an
 existing one).</li>
 <li>Set a name and choose the <strong>Provider</strong> (Finkok, Diverza, Prodigia,
-Comercio Digital, SW Sapien, MYSuite, or Facturama).</li>
+Comercio Digital, SW Sapien, MYSuite, Facturama, or Cefidia).</li>
 <li>Assign the companies that will use this PAC connection
 (multi-company).</li>
 </ol>
@@ -814,6 +848,10 @@ Comercio Digital, SW Sapien, MYSuite, or Facturama).</li>
 <tr><td>Facturama</td>
 <td>User, Password</td>
 </tr>
+<tr><td>Cefidia</td>
+<td>PAC Token (<tt class="docutils literal"><span class="pre">cfd_...</span></tt> secret token with
+<tt class="docutils literal">cefidia:write</tt>)</td>
+</tr>
 </tbody>
 </table>
 <p>Credential names and requirements can vary by PAC contract; confirm with
@@ -823,6 +861,10 @@ the provider documentation if a field is unclear.</p>
 <h3><a class="toc-backref" href="#toc-entry-8">3. Select environment</a></h3>
 <p>Enable <strong>Sandbox Mode</strong> for the PAC test environment. Leave it disabled
 for production.</p>
+<p>Cefidia has no sandbox flag: the environment is decided by the
+certificate in the XML. To test, add one of the SAT test RFCs in Cefidia
+(it installs the SAT test certificate) and use that RFC and its CSD on
+the issuer.</p>
 </div>
 <div class="section" id="configure-cfdi-issuer-s-and-register-the-csd">
 <h3><a class="toc-backref" href="#toc-entry-9">4. Configure CFDI issuer(s) and register the CSD</a></h3>
@@ -841,19 +883,32 @@ That upload is required before <tt class="docutils literal">issue()</tt>. Re-reg
 switching to the satcfdi Facturama adapter so the Multiemisor CSD is
 uploaded again.</p>
 </div>
+<div class="section" id="cefidia">
+<h4><a class="toc-backref" href="#toc-entry-11">Cefidia</a></h4>
+<p>Cefidia’s API does not accept CSD uploads. Before <strong>Registrar</strong>:</p>
+<ol class="arabic simple">
+<li>Add the issuer RFC as a taxpayer in the Cefidia account.</li>
+<li>Upload its CSD on the taxpayer’s Cefidia web page (cancellation uses
+it).</li>
+</ol>
+<p><strong>Registrar</strong> then checks <tt class="docutils literal">GET /v1/status</tt> and refuses to register
+when the RFC is missing from the account or its CSD is missing/expired,
+showing the Cefidia page where it is fixed. Stamping signs locally with
+the issuer CSD and sends the sealed XML to Cefidia unchanged.</p>
+</div>
 </div>
 <div class="section" id="configure-series-and-folios">
-<h3><a class="toc-backref" href="#toc-entry-11">5. Configure series and folios</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-12">5. Configure series and folios</a></h3>
 <p>Go to <strong>CFDI &gt; Series</strong> and define the series prefix and next folio when
 your company uses controlled series/folios.</p>
 </div>
 <div class="section" id="finkok-cancel-company-fiel">
-<h3><a class="toc-backref" href="#toc-entry-12">6. Finkok cancel (company FIEL)</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-13">6. Finkok cancel (company FIEL)</a></h3>
 <p>For cancellation with PACs that require a signer (for example Finkok),
 install <tt class="docutils literal">l10n_mx_sat</tt> and configure the company FIEL.</p>
 </div>
 <div class="section" id="validate-the-connection">
-<h3><a class="toc-backref" href="#toc-entry-13">7. Validate the connection</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-14">7. Validate the connection</a></h3>
 <p>Confirm that the issuer shows as registered, then stamp a test CFDI in
 sandbox before switching to production. Prefer PACs that implement
 <tt class="docutils literal">issue()</tt> when possible; otherwise the module signs locally with the
@@ -861,14 +916,14 @@ issuer CSD and calls <tt class="docutils literal">stamp()</tt>.</p>
 </div>
 </div>
 <div class="section" id="known-issues-roadmap">
-<h2><a class="toc-backref" href="#toc-entry-14">Known issues / Roadmap</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-15">Known issues / Roadmap</a></h2>
 <ul class="simple">
 <li>Improve PAC cancel/status/recover capability coverage</li>
 <li>Add more PAC-specific credential validation in the UI</li>
 </ul>
 </div>
 <div class="section" id="bug-tracker">
-<h2><a class="toc-backref" href="#toc-entry-15">Bug Tracker</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-16">Bug Tracker</a></h2>
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/l10n-mexico/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
@@ -876,16 +931,16 @@ If you spotted it first, help us to smash it by providing a detailed and welcome
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
-<h2><a class="toc-backref" href="#toc-entry-16">Credits</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-17">Credits</a></h2>
 <div class="section" id="authors">
-<h3><a class="toc-backref" href="#toc-entry-17">Authors</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-18">Authors</a></h3>
 <ul class="simple">
 <li>Auge TEC</li>
 <li>Gray Matter Logic</li>
 </ul>
 </div>
 <div class="section" id="contributors">
-<h3><a class="toc-backref" href="#toc-entry-18">Contributors</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-19">Contributors</a></h3>
 <ul class="simple">
 <li>Alexis López Zubieta &lt;<a class="reference external" href="mailto:alexis.lopez&#64;augetec.com">alexis.lopez&#64;augetec.com</a>&gt;</li>
 <li>Cristhiane Guadalupe Rangel Ferrusca
@@ -895,7 +950,7 @@ If you spotted it first, help us to smash it by providing a detailed and welcome
 </ul>
 </div>
 <div class="section" id="maintainers">
-<h3><a class="toc-backref" href="#toc-entry-19">Maintainers</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-20">Maintainers</a></h3>
 <p>This module is maintained by the OCA.</p>
 <a class="reference external image-reference" href="https://odoo-community.org">
 <img alt="Odoo Community Association" src="https://odoo-community.org/logo.png" />
