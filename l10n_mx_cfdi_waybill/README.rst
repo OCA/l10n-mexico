@@ -47,11 +47,35 @@ Configuration
 Configure vehicles, transporters, and CFDI issuers before creating
 waybills from inventory transfers.
 
+To transport hazardous materials (Carta Porte 3.1):
+
+- On each product, set **Material peligroso CFDI** to the value of the
+  "Material peligroso" column of its SAT product key
+  (``c_ClaveProdServCP``):
+
+  - **No** (``0``): the good is sent without the ``MaterialPeligroso``
+    attribute.
+  - **Sí** (``1``): the hazardous material key, the packaging code and
+    the packaging description are required and sent with
+    ``MaterialPeligroso="Sí"``.
+  - **Opcional** (``0,1``): if the hazardous material key is filled in,
+    the good is sent as "Sí" with the key and packaging; otherwise it is
+    sent with ``MaterialPeligroso="No"``.
+
+- On the vehicle, fill in the environmental insurer and policy number.
+  They are required when the waybill carries at least one good sent as
+  "Sí" and are sent as ``AseguraMedAmbiente`` and ``PolizaMedAmbiente``.
+
 Usage
 =====
 
 Create a waybill from a stock picking or from the Waybills menu,
 complete the required transport data, and publish the CFDI.
+
+When a waybill includes a good sent as hazardous material ("Sí"),
+publishing fails with an error if the hazardous material key, the
+packaging code or its description is missing in the product, or if the
+vehicle has no environmental insurance.
 
 Bug Tracker
 ===========
@@ -90,6 +114,14 @@ This module is maintained by the OCA.
 OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
+
+.. |maintainer-max3903| image:: https://github.com/max3903.png?size=40px
+    :target: https://github.com/max3903
+    :alt: max3903
+
+Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
+
+|maintainer-max3903| 
 
 This module is part of the `OCA/l10n-mexico <https://github.com/OCA/l10n-mexico/tree/19.0/l10n_mx_cfdi_waybill>`_ project on GitHub.
 
