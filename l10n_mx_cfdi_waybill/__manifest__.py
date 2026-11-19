@@ -38,4 +38,6 @@
         "demo/waybill.xml",
         "demo/waybill_entry.xml",
     ],
+    "development_status": "Beta",
+    "maintainers": ["max3903"],
 }
