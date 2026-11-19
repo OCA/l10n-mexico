@@ -11,7 +11,7 @@ class ProductTemplate(models.Model):
         required=True,
         help="Valor de la columna 'Material peligroso' de la clave BienesTransp "
         "en el catálogo SAT c_ClaveProdServCP:\n"
-        "- No ('0'): se envía MaterialPeligroso='No' sin clave ni embalaje.\n"
+        "- No ('0'): no se envía el atributo MaterialPeligroso.\n"
         "- Sí ('1'): se envía MaterialPeligroso='Sí' con la clave, el embalaje "
         "y su descripción.\n"
         "- Opcional ('0,1'): si se captura la clave se envía como 'Sí' con la "

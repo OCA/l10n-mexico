@@ -32,17 +32,33 @@ class TestHazardousMaterial(WaybillTestCommon):
         self.template.l10n_mx_cfid_dangerous_material_code = "1203"
         self.assertTrue(self.template._l10n_mx_cfdi_is_dangerous_material())
 
-    def test_goods_no_sends_no_alone(self):
+    def test_goods_no_omits_material_peligroso(self):
+        # A stray key on a "No" product must not leak into the CFDI.
+        self.template.write(dict(self.hazard_vals))
         _waybill, goods = self._goods()
-        self.assertEqual(goods["MaterialPeligroso"], "No")
-        for key in ("CveMaterialPeligroso", "Embalaje", "DescripEmbalaje"):
+        for key in (
+            "MaterialPeligroso",
+            "CveMaterialPeligroso",
+            "Embalaje",
+            "DescripEmbalaje",
+        ):
             self.assertNotIn(key, goods)
 
     def test_goods_optional_without_code_sends_no(self):
         self.template.l10n_mx_cfdi_dangerous_material = "optional"
         _waybill, goods = self._goods()
         self.assertEqual(goods["MaterialPeligroso"], "No")
-        self.assertNotIn("CveMaterialPeligroso", goods)
+        for key in ("CveMaterialPeligroso", "Embalaje", "DescripEmbalaje"):
+            self.assertNotIn(key, goods)
+
+    def test_builder_omits_material_peligroso_for_no(self):
+        waybill = self._create_waybill()
+        self._create_waybill_entry(waybill)
+        cp_data = waybill._format_data()["Complemento"]["CartaPorte31"]
+        carta = waybill_builder.build_carta_porte_from_dict(cp_data)
+        mercancia = carta["Mercancias"]["Mercancia"]
+        mercancia = mercancia[0] if isinstance(mercancia, list) else mercancia
+        self.assertFalse(mercancia.get("MaterialPeligroso"))
 
     def test_goods_yes_sends_details(self):
         self.template.write(

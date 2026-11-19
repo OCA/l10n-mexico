@@ -379,9 +379,10 @@ class Waybill(models.Model):
             ],
         }
 
-        # MaterialPeligroso: "Sí" (or "Opcional" with a key) sends "Sí" with key
-        # and packaging; otherwise "No" is sent alone, since the PAC rejects the
-        # good when the attribute is omitted.
+        # MaterialPeligroso (CP155), per the c_ClaveProdServCP column:
+        # - "No" ('0'): the attribute is omitted.
+        # - "Opcional" ('0,1') without a key: "No" is sent alone.
+        # - "Sí" ('1'), or "Opcional" with a key: "Sí" with key and packaging.
         product = entry_id.product_id.product_tmpl_id
         if product._l10n_mx_cfdi_is_dangerous_material():
             hazard_code = product.l10n_mx_cfid_dangerous_material_code
@@ -407,7 +408,7 @@ class Waybill(models.Model):
             data["CveMaterialPeligroso"] = hazard_code
             data["Embalaje"] = packaging
             data["DescripEmbalaje"] = packaging_desc
-        else:
+        elif product.l10n_mx_cfdi_dangerous_material == "optional":
             data["MaterialPeligroso"] = "No"
         return data
 
