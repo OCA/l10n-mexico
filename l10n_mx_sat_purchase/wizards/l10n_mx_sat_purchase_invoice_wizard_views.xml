@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="l10n_mx_sat_purchase_invoice_wizard_view_form" model="ir.ui.view">
+        <field name="name">l10n_mx_sat.purchase.invoice.wizard.form</field>
+        <field name="model">l10n_mx_sat.purchase.invoice.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <div
+                    class="alert alert-info"
+                    role="alert"
+                    invisible="vendor_bill_match != 'ref'"
+                >
+                    The reference of the bill in Bill to Link is this CFDI: the CFDI is linked to it. Change or clear Bill to Link to link another bill or to create a new one.
+                </div>
+                <div
+                    class="alert alert-info"
+                    role="alert"
+                    invisible="vendor_bill_match != 'total'"
+                >
+                    The total of the bill in Bill to Link is the total of this CFDI: the CFDI is linked to it. Change or clear Bill to Link to link another bill or to create a new one.
+                </div>
+                <div
+                    class="alert alert-warning"
+                    role="alert"
+                    invisible="not vendor_bill_id or vendor_bill_match"
+                >
+                    The reference and the total of the bill in Bill to Link do not match the CFDI: make sure it is the bill of this CFDI before linking them.
+                </div>
+                <div
+                    class="alert alert-info"
+                    role="alert"
+                    invisible="vendor_bill_id or not linkable_bill_ids"
+                >
+                    Some bills of the purchase orders have no SAT CFDI: select one in Bill to Link to link the CFDI to it, or leave it empty to create a new bill.
+                </div>
+                <div
+                    class="alert alert-warning"
+                    role="alert"
+                    invisible="not total_mismatch or match_mode != 'document' or vendor_bill_id"
+                >
+                    The total of the selected CFDI differs from the orders total. Review the bill before posting it.
+                </div>
+                <div
+                    class="alert alert-warning"
+                    role="alert"
+                    invisible="not total_mismatch or match_mode != 'line' or vendor_bill_id"
+                >
+                    The amount to bill differs from the CFDI subtotal. Review the quantities to bill before creating the bill.
+                </div>
+                <div
+                    class="alert alert-info"
+                    role="alert"
+                    invisible="l10n_mx_sat_has_document"
+                >
+                    There is no CFDI of this vendor pending to bill in the SAT downloads.
+                </div>
+                <group>
+                    <group>
+                        <field
+                            name="purchase_order_ids"
+                            widget="many2many_tags"
+                            domain="[('state', '=', 'purchase'), ('company_id', '=', company_id), ('currency_id', '=', currency_id), ('partner_id', 'child_of', commercial_partner_id)] + (['|', ('order_line.qty_invoiced', '>', 0), ('l10n_mx_sat_has_refund_to_link', '=', True)] if l10n_mx_sat_voucher_type == 'E' else ['|', ('order_line.qty_to_invoice', '>', 0), ('l10n_mx_sat_has_bill_to_link', '=', True)])"
+                            options="{'no_create': True}"
+                        />
+                        <field name="partner_id" />
+                        <field name="commercial_partner_id" invisible="1" />
+                        <field
+                            name="l10n_mx_sat_document_id"
+                            options="{'no_create': True, 'no_open': True}"
+                        />
+                        <field
+                            name="vendor_bill_id"
+                            invisible="not linkable_bill_ids"
+                            options="{'no_create': True}"
+                        />
+                        <field
+                            name="match_mode"
+                            widget="radio"
+                            readonly="l10n_mx_sat_voucher_type == 'E'"
+                            invisible="vendor_bill_id"
+                        />
+                    </group>
+                    <group>
+                        <field name="amount_total" />
+                        <field
+                            name="cfdi_amount_untaxed"
+                            invisible="not l10n_mx_sat_document_id"
+                        />
+                        <field
+                            name="mapped_amount_untaxed"
+                            invisible="not l10n_mx_sat_document_id or match_mode != 'line'"
+                        />
+                        <field name="currency_id" invisible="1" />
+                        <field name="company_id" invisible="1" />
+                        <field name="l10n_mx_sat_company_rfc" invisible="1" />
+                        <field name="l10n_mx_sat_issuer_rfc" invisible="1" />
+                        <field name="l10n_mx_sat_currency_name" invisible="1" />
+                        <field name="l10n_mx_sat_has_document" invisible="1" />
+                        <field name="concept_document_id" invisible="1" />
+                        <field name="l10n_mx_sat_voucher_type" invisible="1" />
+                        <field name="linkable_bill_ids" invisible="1" />
+                        <field name="vendor_bill_match" invisible="1" />
+                        <field name="match_mode_forced" invisible="1" />
+                        <field name="available_purchase_line_ids" invisible="1" />
+                        <field name="total_mismatch" invisible="1" />
+                    </group>
+                </group>
+                <notebook
+                    invisible="not l10n_mx_sat_document_id or match_mode != 'line' or vendor_bill_id"
+                >
+                    <page string="Concepts" name="concepts">
+                        <field name="concept_ids">
+                            <list
+                                editable="bottom"
+                                create="0"
+                                delete="0"
+                                decoration-warning="price_mismatch"
+                                decoration-info="not purchase_line_id"
+                            >
+                                <field
+                                    name="sequence"
+                                    column_invisible="1"
+                                    force_save="1"
+                                />
+                                <field name="price_mismatch" column_invisible="1" />
+                                <field
+                                    name="no_identificacion"
+                                    readonly="1"
+                                    force_save="1"
+                                />
+                                <field name="description" readonly="1" force_save="1" />
+                                <field
+                                    name="product_service_code"
+                                    readonly="1"
+                                    force_save="1"
+                                    optional="hide"
+                                />
+                                <field name="quantity" readonly="1" force_save="1" />
+                                <field name="unit_code" readonly="1" force_save="1" />
+                                <field name="price_unit" readonly="1" force_save="1" />
+                                <field
+                                    name="discount_amount"
+                                    readonly="1"
+                                    force_save="1"
+                                    optional="hide"
+                                />
+                                <field
+                                    name="amount"
+                                    readonly="1"
+                                    force_save="1"
+                                    sum="Subtotal"
+                                />
+                                <field
+                                    name="tax_summary"
+                                    readonly="1"
+                                    force_save="1"
+                                    optional="show"
+                                />
+                                <field
+                                    name="tax_amount"
+                                    readonly="1"
+                                    force_save="1"
+                                    optional="hide"
+                                />
+                                <field
+                                    name="purchase_line_id"
+                                    domain="[('id', 'in', parent.available_purchase_line_ids)]"
+                                    options="{'no_create': True, 'no_open': True}"
+                                />
+                                <field name="purchase_price_unit" />
+                                <field
+                                    name="purchase_qty_pending"
+                                    column_invisible="parent.l10n_mx_sat_voucher_type == 'E'"
+                                />
+                                <field
+                                    name="purchase_qty_invoiced"
+                                    column_invisible="parent.l10n_mx_sat_voucher_type != 'E'"
+                                />
+                                <field name="purchase_uom_id" />
+                                <field name="qty_to_invoice" />
+                                <field
+                                    name="product_id"
+                                    readonly="purchase_line_id"
+                                    options="{'no_create': True, 'no_open': True}"
+                                    optional="hide"
+                                />
+                                <button
+                                    name="action_split"
+                                    type="object"
+                                    string="Split"
+                                    class="btn-link"
+                                    title="Bill the rest of this concept in another purchase order line"
+                                />
+                            </list>
+                        </field>
+                    </page>
+                </notebook>
+                <footer>
+                    <button
+                        name="action_create_invoice"
+                        string="Create Bill"
+                        type="object"
+                        class="btn-primary"
+                        data-hotkey="q"
+                        invisible="vendor_bill_id or l10n_mx_sat_voucher_type == 'E'"
+                    />
+                    <button
+                        name="action_create_invoice"
+                        string="Create Credit Note"
+                        type="object"
+                        class="btn-primary"
+                        data-hotkey="q"
+                        invisible="vendor_bill_id or l10n_mx_sat_voucher_type != 'E'"
+                    />
+                    <button
+                        name="action_create_invoice"
+                        string="Link CFDI"
+                        type="object"
+                        class="btn-primary"
+                        data-hotkey="q"
+                        invisible="not vendor_bill_id"
+                    />
+                    <button
+                        string="Cancel"
+                        class="btn-secondary"
+                        special="cancel"
+                        data-hotkey="x"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
