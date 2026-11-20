@@ -4,7 +4,7 @@ from .common import WaybillTestCommon
 class TestCFDIDocumentWaybill(WaybillTestCommon):
     def test_resolve_report_for_transfer(self):
         waybill = self._create_waybill()
-        report_type, report, resource_ids = waybill.cfdi_id._resolve_report()
+        report_type, resource_ids = waybill.cfdi_id._resolve_report()
         self.assertEqual(report_type, "l10n_mx_cfdi_waybill.action_waybill_report")
         self.assertEqual(resource_ids, waybill.ids)
 
@@ -17,7 +17,7 @@ class TestCFDIDocumentWaybill(WaybillTestCommon):
 
     def test_resolve_report_non_transfer(self):
         document = self._create_document(type="I")
-        report_type, _report, _resource_ids = document._resolve_report()
+        report_type, _resource_ids = document._resolve_report()
         self.assertNotEqual(report_type, "l10n_mx_cfdi_waybill.action_waybill_report")
 
     def test_set_serie_and_folio_non_transfer(self):

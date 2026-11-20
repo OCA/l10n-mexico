@@ -1,6 +1,6 @@
 import base64
 import json
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 
 from odoo.exceptions import UserError
 from odoo.tests.common import TransactionCase
@@ -263,16 +263,18 @@ class TestCFDIDocument(CFDITestMixin, TransactionCase):
 
     def test_download_files_with_report(self):
         document = self._create_document(tracking_id="tracking-report")
-        report = MagicMock()
-        report.with_context.return_value = report
-        report._render_qweb_pdf.return_value = (b"%PDF-1.4 report", "pdf")
         xml_content = "<cfdi/>"
 
         with (
             patch.object(
                 type(document),
                 "_resolve_report",
-                return_value=(report, [1]),
+                return_value=("some.report", [1]),
+            ),
+            patch.object(
+                type(self.env["ir.actions.report"]),
+                "_render_qweb_pdf",
+                return_value=(b"%PDF-1.4 report", "pdf"),
             ),
             patch.object(
                 type(self.service),
@@ -318,13 +320,15 @@ class TestCFDIDocument(CFDITestMixin, TransactionCase):
             tracking_id="tracking-123",
             xml_file=base64.b64encode(b"xml"),
         )
-        with patch.object(
-            type(self.service),
-            "cancel_cfdi",
-            return_value={"Status": "unknown", "Message": "Rejected by SAT"},
+        with (
+            patch.object(
+                type(self.service),
+                "cancel_cfdi",
+                return_value={"Status": "unknown", "Message": "Rejected by SAT"},
+            ),
+            self.assertRaises(UserError),
         ):
-            with self.assertRaises(UserError):
-                document.cancel(reason="01")
+            document.cancel(reason="01")
 
     def test_action_cancel(self):
         document = self._create_document()
@@ -480,15 +484,17 @@ class TestCFDIDocument(CFDITestMixin, TransactionCase):
 
     def test_download_files_falls_back_to_pac_when_report_empty(self):
         document = self._create_document(tracking_id="tracking-empty-report")
-        report = MagicMock()
-        report.with_context.return_value = report
-        report._render_qweb_pdf.return_value = (b"", "pdf")
         pac_pdf = base64.b64encode(b"%PDF-pac")
         with (
             patch.object(
                 type(document),
                 "_resolve_report",
-                return_value=(report, [1]),
+                return_value=("some.report", [1]),
+            ),
+            patch.object(
+                type(self.env["ir.actions.report"]),
+                "_render_qweb_pdf",
+                return_value=(b"", "pdf"),
             ),
             patch.object(
                 type(self.service),
@@ -502,6 +508,64 @@ class TestCFDIDocument(CFDITestMixin, TransactionCase):
             ),
         ):
             self.assertTrue(document.files_in_cache)
+        self.assertEqual(document.pdf_file, pac_pdf)
+
+    def test_generate_pdf_prefers_odoo_report_over_pac_pdf(self):
+        document = self._create_document(
+            tracking_id="tracking-prefer-odoo",
+            pdf_file=base64.b64encode(b"%PDF-pac"),
+        )
+        with (
+            patch.object(
+                type(document),
+                "_resolve_report",
+                return_value=("some.report", [1]),
+            ),
+            patch.object(
+                type(self.env["ir.actions.report"]),
+                "_render_qweb_pdf",
+                return_value=(b"%PDF-odoo", "pdf"),
+            ) as render,
+            patch.object(type(self.service), "get_cfdi_pdf") as get_pdf,
+        ):
+            document._l10n_mx_cfdi_generate_pdf()
+        render.assert_called_once()
+        self.assertEqual(render.call_args.args, ("some.report", [1]))
+        get_pdf.assert_not_called()
+        self.assertEqual(document.pdf_file, base64.b64encode(b"%PDF-odoo"))
+        self.assertTrue(document.pdf_filename)
+
+    def test_generate_pdf_keeps_pac_pdf_when_rendering_fails(self):
+        document = self._create_document(
+            tracking_id="tracking-render-error",
+            pdf_file=base64.b64encode(b"%PDF-pac"),
+        )
+        with (
+            patch.object(
+                type(document),
+                "_resolve_report",
+                return_value=("some.report", [1]),
+            ),
+            patch.object(
+                type(self.env["ir.actions.report"]),
+                "_render_qweb_pdf",
+                side_effect=Exception("wkhtmltopdf failed"),
+            ),
+            patch.object(type(self.service), "get_cfdi_pdf") as get_pdf,
+        ):
+            document._l10n_mx_cfdi_generate_pdf()
+        get_pdf.assert_not_called()
+        self.assertEqual(document.pdf_file, base64.b64encode(b"%PDF-pac"))
+
+    def test_generate_pdf_without_report_recovers_from_pac(self):
+        document = self._create_document(tracking_id="tracking-no-report")
+        pac_pdf = base64.b64encode(b"%PDF-pac")
+        with patch.object(
+            type(self.service),
+            "get_cfdi_pdf",
+            return_value={"Content": pac_pdf},
+        ):
+            document._l10n_mx_cfdi_generate_pdf()
         self.assertEqual(document.pdf_file, pac_pdf)
 
     def test_download_files_soft_fail_on_user_error(self):
