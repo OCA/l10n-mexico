@@ -327,6 +327,50 @@ class TestAccountMove(CFDIAccountTestCommon):
         self.assertTrue(any(name.endswith(".xml") for name in names))
         self.assertTrue(any(name.endswith(".pdf") for name in names))
 
+    def test_create_invoice_cfdi_uses_odoo_pdf_over_pac_pdf(self):
+        """The stamped invoice's PDF comes from the Odoo report, not the PAC."""
+        invoice = self._post_cfdi_invoice(self._create_cfdi_invoice())
+        response = dict(ACTIVE_CFDI_RESPONSE)
+        response["pdf"] = b"%PDF-pac"
+        stamped_on_render = []
+
+        def render(_self, report_ref, res_ids=None, data=None):
+            # The report prints the stamp data through cfdi_document_id
+            stamped_on_render.append(invoice.cfdi_document_id.uuid)
+            return b"%PDF-odoo", "pdf"
+
+        with (
+            patch.object(type(self.service), "create_cfdi", return_value=response),
+            patch.object(
+                type(self.env["ir.actions.report"]),
+                "_render_qweb_pdf",
+                autospec=True,
+                side_effect=render,
+            ),
+        ):
+            invoice.create_invoice_cfdi()
+        document = invoice.cfdi_document_id
+        self.assertEqual(stamped_on_render, [document.uuid])
+        self.assertTrue(document.uuid)
+        self.assertEqual(document.pdf_file, base64.b64encode(b"%PDF-odoo"))
+        pdf_attachment = self.env["ir.attachment"].search(
+            [
+                ("res_model", "=", "account.move"),
+                ("res_id", "=", invoice.id),
+                ("mimetype", "=", "application/pdf"),
+            ]
+        )
+        self.assertEqual(pdf_attachment.raw, b"%PDF-odoo")
+
+    def test_invoice_report_renders_cfdi_invoice_once(self):
+        invoice = self._post_cfdi_invoice(self._create_cfdi_invoice())
+        with self._mock_cfdi_publish():
+            invoice.create_invoice_cfdi()
+        html, _fmt = self.env["ir.actions.report"]._render_qweb_html(
+            "account.account_invoices", invoice.ids
+        )
+        self.assertEqual(html.decode().count('class="article'), 1)
+
     def test_post_document_attachments_recovers_pdf_and_xml(self):
         invoice = self._post_cfdi_invoice(self._create_cfdi_invoice())
         document = self._create_published_invoice_cfdi(invoice)

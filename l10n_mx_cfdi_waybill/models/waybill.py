@@ -130,6 +130,7 @@ class Waybill(models.Model):
             for picking in self.picking_ids:
                 picking.waybill_ids = [(4, self.id)]
 
+            self.cfdi_id._l10n_mx_cfdi_generate_pdf()
             self.cfdi_id._compute_download_files_if_needed()
             # create attachments
             pdf_attachment = self.env["ir.attachment"].create(

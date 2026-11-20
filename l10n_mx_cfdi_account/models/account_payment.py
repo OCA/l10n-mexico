@@ -1,6 +1,8 @@
+import base64
 from datetime import datetime
 from decimal import ROUND_HALF_UP, Decimal
 
+from lxml import etree
 from satcfdi.create.cfd import pago20
 from satcfdi.create.compute import make_pago_totales
 
@@ -9,6 +11,9 @@ from odoo.exceptions import ValidationError
 from odoo.tools.float_utils import json_float_round
 
 from odoo.addons.l10n_mx_cfdi.services import cfdi_builder
+
+PAGOS20_NS = "http://www.sat.gob.mx/Pagos20"
+SAT_TAX_NAMES = {"001": "ISR", "002": "IVA", "003": "IEPS"}
 
 
 class AccountPayment(models.Model):
@@ -435,3 +440,63 @@ class AccountPayment(models.Model):
         for cfdi in self.related_cert_ids:
             if cfdi.state == "published":
                 cfdi.cancel("02")
+
+    def _l10n_mx_cfdi_report_related_documents(self):
+        """Return the related documents stamped in this payment's CFDI.
+
+        Used by the payment receipt report. The values are read from the
+        stamped XML instead of being rebuilt with ``prepare_payment_cfdi``:
+        after stamping, the rebuilt balances and installment number already
+        include this payment, and the PDF must print what the SAT received.
+
+        :return: list of dicts with the keys ``folio``, ``uuid``,
+            ``partiality``, ``previous_balance``, ``amount_paid``, ``balance``,
+            ``currency`` (``res.currency``, MonedaDR) and ``taxes`` (dicts with
+            ``name``, ``rate``, ``amount`` and ``retention``). Amounts are
+            floats in that currency.
+        """
+        self.ensure_one()
+        cfdi = self.cfdi_document_id
+        if not cfdi or not cfdi.xml_file:
+            return []
+        try:
+            root = etree.fromstring(base64.b64decode(cfdi.xml_file))
+        except (etree.XMLSyntaxError, ValueError):
+            return []
+
+        def amount(node, attr):
+            return float(node.get(attr) or 0.0)
+
+        currencies = self.env["res.currency"].with_context(active_test=False)
+        documents = []
+        for docto in root.iterfind(f".//{{{PAGOS20_NS}}}DoctoRelacionado"):
+            taxes = []
+            for tag, retention in (("TrasladoDR", False), ("RetencionDR", True)):
+                for tax in docto.iterfind(f".//{{{PAGOS20_NS}}}{tag}"):
+                    code = tax.get("ImpuestoDR", "")
+                    rate = tax.get("TasaOCuotaDR")
+                    percent = (Decimal(rate) * 100).normalize() if rate else None
+                    taxes.append(
+                        {
+                            "name": SAT_TAX_NAMES.get(code, code),
+                            "rate": f"{percent:f}%" if rate else "",
+                            "amount": amount(tax, "ImporteDR"),
+                            "retention": retention,
+                        }
+                    )
+            documents.append(
+                {
+                    "folio": f"{docto.get('Serie', '')}{docto.get('Folio', '')}",
+                    "uuid": docto.get("IdDocumento", ""),
+                    "partiality": docto.get("NumParcialidad", ""),
+                    "previous_balance": amount(docto, "ImpSaldoAnt"),
+                    "amount_paid": amount(docto, "ImpPagado"),
+                    "balance": amount(docto, "ImpSaldoInsoluto"),
+                    "currency": currencies.search(
+                        [("name", "=", docto.get("MonedaDR"))], limit=1
+                    )
+                    or self.currency_id,
+                    "taxes": taxes,
+                }
+            )
+        return documents
