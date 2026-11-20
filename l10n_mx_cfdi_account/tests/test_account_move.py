@@ -362,6 +362,15 @@ class TestAccountMove(CFDIAccountTestCommon):
         )
         self.assertEqual(pdf_attachment.raw, b"%PDF-odoo")
 
+    def test_invoice_report_renders_cfdi_invoice_once(self):
+        invoice = self._post_cfdi_invoice(self._create_cfdi_invoice())
+        with self._mock_cfdi_publish():
+            invoice.create_invoice_cfdi()
+        html, _fmt = self.env["ir.actions.report"]._render_qweb_html(
+            "account.account_invoices", invoice.ids
+        )
+        self.assertEqual(html.decode().count('class="article'), 1)
+
     def test_post_document_attachments_recovers_pdf_and_xml(self):
         invoice = self._post_cfdi_invoice(self._create_cfdi_invoice())
         document = self._create_published_invoice_cfdi(invoice)
