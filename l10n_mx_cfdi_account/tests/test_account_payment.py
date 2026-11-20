@@ -7,6 +7,8 @@ from odoo.exceptions import ValidationError
 
 from .common import ACTIVE_CFDI_RESPONSE, CFDIAccountTestCommon
 
+INVOICE_UUID = "22222222-2222-2222-2222-222222222222"
+
 
 class TestAccountPayment(CFDIAccountTestCommon):
     def _first_docto_relacionado(self, pagos):
@@ -88,6 +90,73 @@ class TestAccountPayment(CFDIAccountTestCommon):
         self.assertEqual(captured["cfdi"].get("Exportacion"), "01")
         docto = captured["cfdi"]["Complemento"]["Pago"][0]["DoctoRelacionado"][0]
         self.assertEqual(docto.get("MetodoDePagoDR"), "PPD")
+
+    def _stamp_payment_with_its_xml(self, payment):
+        """Stamp ``payment`` returning the XML of the CFDI that was built."""
+
+        def _stamp(cfdi, issuer=None):
+            return dict(ACTIVE_CFDI_RESPONSE, xml=cfdi.xml_bytes(), pdf=False)
+
+        with patch.object(type(self.service), "create_cfdi", side_effect=_stamp):
+            payment.create_payment_cfdi()
+
+    def test_report_related_documents_read_from_stamped_xml(self):
+        invoice = self._post_cfdi_invoice(self._create_cfdi_invoice())
+        invoice_cfdi = self._create_published_invoice_cfdi(invoice)
+        invoice_cfdi.uuid = INVOICE_UUID
+        payment = self._register_invoice_payment(invoice)
+        taxes = [
+            {
+                "Name": "IVA",
+                "Rate": 0.16,
+                "IsRetention": False,
+                "Base": 100.0,
+                "Total": 16.0,
+            },
+            {
+                "Name": "ISR",
+                "Rate": 0.10,
+                "IsRetention": True,
+                "Base": 100.0,
+                "Total": 10.0,
+            },
+        ]
+        with patch.object(type(payment), "_compute_taxes", return_value=taxes):
+            self._stamp_payment_with_its_xml(payment)
+
+        lines = payment._l10n_mx_cfdi_report_related_documents()
+        self.assertEqual(len(lines), 1)
+        line = lines[0]
+        self.assertEqual(line["uuid"], invoice_cfdi.uuid)
+        self.assertEqual(line["partiality"], "1")
+        self.assertEqual(line["currency"], invoice.currency_id)
+        self.assertAlmostEqual(
+            line["previous_balance"] - line["amount_paid"], line["balance"]
+        )
+        self.assertAlmostEqual(line["amount_paid"], payment.amount)
+        self.assertEqual(
+            [(tax["name"], tax["rate"], tax["retention"]) for tax in line["taxes"]],
+            [("IVA", "16%", False), ("ISR", "10%", True)],
+        )
+
+    def test_report_related_documents_without_xml(self):
+        invoice = self._post_cfdi_invoice(self._create_cfdi_invoice())
+        payment = self._register_invoice_payment(invoice)
+        self.assertEqual(payment._l10n_mx_cfdi_report_related_documents(), [])
+
+    def test_payment_receipt_report_renders_stamped_data(self):
+        invoice = self._post_cfdi_invoice(self._create_cfdi_invoice())
+        invoice_cfdi = self._create_published_invoice_cfdi(invoice)
+        invoice_cfdi.uuid = INVOICE_UUID
+        payment = self._register_invoice_payment(invoice)
+        self._stamp_payment_with_its_xml(payment)
+
+        html, _fmt = self.env["ir.actions.report"]._render_qweb_html(
+            "account.action_report_payment_receipt", payment.ids
+        )
+        html = html.decode()
+        self.assertIn(invoice_cfdi.uuid, html)
+        self.assertIn(payment.cfdi_document_id.uuid, html)
 
     def test_create_payment_cfdi_receiver_from_related_cert(self):
         invoice = self._post_cfdi_invoice(
