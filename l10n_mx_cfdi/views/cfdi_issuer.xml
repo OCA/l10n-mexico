@@ -11,14 +11,14 @@
                         string="Registrar"
                         type="object"
                         class="oe_highlight"
-                        invisible="registered == True"
+                        invisible="registered or not pac_requires_registration"
                     />
 
                     <button
                         name="unregister_issuer"
                         string="Cancelar registro"
                         type="object"
-                        invisible="registered == False"
+                        invisible="not registered or not pac_requires_registration"
                     />
                 </header>
                 <sheet>
@@ -42,12 +42,13 @@
                         <field name="key_file" />
                         <field name="key_password" password="True" />
                         <field name="registered" readonly="True" />
+                        <field name="pac_requires_registration" invisible="1" />
                     </group>
                     <!-- warning message with alert-danger class -->
                     <div
                         class="alert alert-danger"
                         role="alert"
-                        invisible="registered == True"
+                        invisible="registered or not pac_requires_registration"
                     >
                         <i
                             class="fa fa-exclamation-triangle mr-2"
@@ -57,6 +58,21 @@
                         />
                         <span>El emisor no tiene un CSD local validado. Use Registrar
                             para validar el certificado.
+                        </span>
+                    </div>
+                    <div
+                        class="alert alert-warning"
+                        role="alert"
+                        invisible="registered or pac_requires_registration"
+                    >
+                        <i
+                            class="fa fa-exclamation-triangle mr-2"
+                            role="img"
+                            aria-label="Alert"
+                            title="Alert"
+                        />
+                        <span>Este PAC no requiere registro del emisor. Cargue el
+                            certificado, la llave y la contraseña del CSD para emitir.
                         </span>
                     </div>
                     <!-- warning message with alert-success class -->

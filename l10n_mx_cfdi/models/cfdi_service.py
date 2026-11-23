@@ -36,7 +36,7 @@ class CFDIService(models.Model):
     provider = fields.Selection(
         selection=lambda self: pac_registry.provider_selection(),
         required=True,
-        default="finkok",
+        default="cefidia",
         groups="base.group_system",
     )
     sandbox_mode = fields.Boolean(default=False, groups="base.group_system")
@@ -332,8 +332,6 @@ class CFDIService(models.Model):
         """Upload issuer CSD to PACs that require remote registration (Facturama)."""
         self.ensure_one()
         provider = pac_registry.get_provider(self.provider)
-        if provider.code == "cefidia":
-            return self._check_cefidia_taxpayer(issuer)
         if provider.code != "facturama":
             return None
         signer = self._get_csd_signer(issuer)
@@ -355,61 +353,6 @@ class CFDIService(models.Model):
                     self._format_pac_error(exc),
                 )
             ) from exc
-
-    def _check_cefidia_taxpayer(self, issuer):
-        """Cefidia cannot receive a CSD through its API.
-
-        The issuer RFC must exist as a taxpayer in the Cefidia account and its
-        CSD must be uploaded on the Cefidia web page (cancellation uses it).
-        """
-        pac = self._get_pac()
-        try:
-            status = pac.account_status()
-        except Exception as exc:
-            raise UserError(
-                self.env._(
-                    "Cannot read the Cefidia account status: %s",
-                    self._format_pac_error(exc),
-                )
-            ) from exc
-        rfc = (issuer.vat or "").upper()
-        taxpayer = next(
-            (
-                tp
-                for tp in status.get("taxpayers") or []
-                if (tp.get("rfc") or "").upper() == rfc
-            ),
-            None,
-        )
-        if not taxpayer:
-            raise UserError(
-                self.env._(
-                    "RFC %(rfc)s is not a taxpayer in the Cefidia account. "
-                    "Add it in Cefidia (%(url)s) and upload its CSD there, "
-                    "then register again.",
-                    rfc=rfc,
-                    url=status.get("add_taxpayer_url") or "https://cefidia.com",
-                )
-            )
-        blocking = [
-            item
-            for item in taxpayer.get("missing") or []
-            if item.get("code") in ("csd_missing", "csd_expired")
-        ]
-        if blocking:
-            raise UserError(
-                self.env._(
-                    "Cefidia taxpayer %(rfc)s is not ready: %(details)s",
-                    rfc=rfc,
-                    details="; ".join(
-                        f"{item.get('message')} ({item.get('url')})"
-                        for item in blocking
-                    ),
-                )
-            )
-        if not status.get("stamping_available", True):
-            _logger.warning("Cefidia reports stamping is currently unavailable")
-        return taxpayer
 
     def delete_issuer_csd(self, issuer):
         """Remove issuer CSD from PACs that store it remotely (Facturama)."""
@@ -448,7 +391,7 @@ class CFDIService(models.Model):
         # return the XML (Finkok, Comercio Digital, MySuite) reject the PDF request.
         accept = Accept.XML_PDF if provider.returns_pdf else Accept.XML
         try:
-            if provider.supports_issue:
+            if provider.supports_issue and not provider.issue_with_local_seal:
                 document = pac.issue(cfdi, accept=accept)
             else:
                 signer = self._get_csd_signer(issuer)

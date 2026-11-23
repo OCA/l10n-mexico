@@ -253,7 +253,3 @@ class Cefidia:
             "state": doc.get("state"),
             "sat_state": doc.get("sat_state"),
         }
-
-    def account_status(self) -> dict:
-        """``GET /v1/status``: taxpayers, whether they can stamp, what is missing."""
-        return self._request("get", "v1/status")

@@ -885,16 +885,16 @@ uploaded again.</p>
 </div>
 <div class="section" id="cefidia">
 <h4><a class="toc-backref" href="#toc-entry-11">Cefidia</a></h4>
-<p>Cefidia’s API does not accept CSD uploads. Before <strong>Registrar</strong>:</p>
+<p>Cefidia needs no registration step: the issuer is registered as soon as
+its CSD certificate, private key and key password are set, and
+<strong>Registrar</strong> is hidden. Stamping signs locally with the issuer CSD and
+sends the sealed XML to Cefidia unchanged.</p>
+<p>Cefidia’s API does not accept CSD uploads, and cancellation uses the CSD
+stored on Cefidia, so in the Cefidia account:</p>
 <ol class="arabic simple">
-<li>Add the issuer RFC as a taxpayer in the Cefidia account.</li>
-<li>Upload its CSD on the taxpayer’s Cefidia web page (cancellation uses
-it).</li>
+<li>Add the issuer RFC as a taxpayer.</li>
+<li>Upload its CSD on the taxpayer’s Cefidia web page.</li>
 </ol>
-<p><strong>Registrar</strong> then checks <tt class="docutils literal">GET /v1/status</tt> and refuses to register
-when the RFC is missing from the account or its CSD is missing/expired,
-showing the Cefidia page where it is fixed. Stamping signs locally with
-the issuer CSD and sends the sealed XML to Cefidia unchanged.</p>
 </div>
 </div>
 <div class="section" id="configure-series-and-folios">

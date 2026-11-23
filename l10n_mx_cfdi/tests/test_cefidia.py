@@ -293,7 +293,9 @@ class TestCefidiaService(TransactionCase):
 
     def test_registry_entry(self):
         provider = pac_registry.get_provider("cefidia")
-        self.assertFalse(provider.supports_issue)
+        self.assertTrue(provider.supports_issue)
+        self.assertTrue(provider.issue_with_local_seal)
+        self.assertFalse(provider.requires_registration)
         self.assertTrue(provider.supports_cancel)
         self.assertFalse(provider.requires_signer_for_cancel)
         kwargs = provider.kwargs_builder(
@@ -306,65 +308,68 @@ class TestCefidiaService(TransactionCase):
         self.assertIsInstance(pac, cefidia.Cefidia)
         self.assertEqual(pac.token, "cfd_test")
 
+    def test_new_service_defaults_to_cefidia(self):
+        service = self.env["l10n_mx_cfdi.cfdi_service"].create({"name": "New"})
+        self.assertEqual(service.provider, "cefidia")
+        selection = pac_registry.provider_selection()
+        self.assertEqual(selection[0][0], "cefidia")
+
     def test_capabilities(self):
-        self.assertFalse(self.service.supports_issue)
+        self.assertTrue(self.service.supports_issue)
         self.assertTrue(self.service.supports_cancel)
 
-    def _account(self, missing=None, rfc="EKU9003173C9"):
-        return {
-            "stamping_available": True,
-            "add_taxpayer_url": "https://cefidia.com/add",
-            "taxpayers": [
-                {
-                    "rfc": rfc,
-                    "name": "Issuer",
-                    "is_test": True,
-                    "can_stamp": not missing,
-                    "missing": missing or [],
-                }
-            ],
-        }
+    def test_issuer_with_csd_is_registered_without_register(self):
+        self.assertFalse(self.issuer.pac_requires_registration)
+        self.assertTrue(self.issuer.registered)
 
-    def test_register_checks_taxpayer_ready(self):
-        pac = MagicMock()
-        pac.account_status.return_value = self._account()
-        with patch.object(type(self.service), "_get_pac", return_value=pac):
-            taxpayer = self.service.upload_issuer_csd(self.issuer)
-        self.assertEqual(taxpayer["rfc"], "EKU9003173C9")
+    def test_issuer_without_full_csd_is_not_registered(self):
+        self.issuer.key_password = False
+        self.assertFalse(self.issuer.registered)
+        self.issuer.key_password = "password"
+        self.assertTrue(self.issuer.registered)
 
-    def test_register_unknown_taxpayer(self):
-        pac = MagicMock()
-        pac.account_status.return_value = self._account(rfc="XAXX010101000")
-        with (
-            patch.object(type(self.service), "_get_pac", return_value=pac),
-            self.assertRaisesRegex(UserError, "https://cefidia.com/add"),
-        ):
-            self.service.upload_issuer_csd(self.issuer)
-
-    def test_register_missing_csd(self):
-        pac = MagicMock()
-        pac.account_status.return_value = self._account(
-            missing=[
-                {
-                    "code": "csd_missing",
-                    "message": "Falta el CSD",
-                    "url": "https://cefidia.com/tp/1",
-                }
-            ]
+    def test_cefidia_issuer_usable_in_issuer_domains(self):
+        found = self.env["l10n_mx_cfdi.issuer"].search(
+            [("id", "=", self.issuer.id), ("registered", "=", True)]
         )
-        with (
-            patch.object(type(self.service), "_get_pac", return_value=pac),
-            self.assertRaisesRegex(UserError, "Falta el CSD"),
-        ):
-            self.service.upload_issuer_csd(self.issuer)
+        self.assertEqual(found, self.issuer)
 
-    def test_register_ignores_expiring_warning(self):
+    def test_upload_csd_does_not_call_cefidia(self):
         pac = MagicMock()
-        pac.account_status.return_value = self._account(
-            missing=[{"code": "csd_expiring", "message": "Vence", "url": "u"}]
-        )
         with patch.object(type(self.service), "_get_pac", return_value=pac):
-            self.assertTrue(self.service.upload_issuer_csd(self.issuer))
+            self.assertIsNone(self.service.upload_issuer_csd(self.issuer))
+        pac.assert_not_called()
+        self.assertFalse(pac.method_calls)
+
+    def test_other_pac_keeps_manual_registration(self):
+        finkok = self.env["l10n_mx_cfdi.cfdi_service"].create(
+            {"name": "Finkok", "provider": "finkok"}
+        )
+        issuer = self.issuer.copy({"service_id": finkok.id, "registered": False})
+        issuer.certificate_file = b"Y2VydA=="
+        self.assertTrue(issuer.pac_requires_registration)
+        self.assertFalse(issuer.registered)
+        issuer.registered = True
+        issuer.key_file = b"bmV3"
+        self.assertTrue(issuer.registered)
+
+    def test_create_cfdi_seals_locally_and_stamps(self):
+        pac = MagicMock()
+        cfdi_obj = MagicMock()
+        service_cls = type(self.service)
+        with (
+            patch.object(service_cls, "_get_pac", return_value=pac),
+            patch.object(service_cls, "_get_csd_signer", return_value=MagicMock()),
+            patch(
+                "odoo.addons.l10n_mx_cfdi.models.cfdi_service.cfdi_normalize"
+                ".normalize_pac_document",
+                return_value={},
+            ),
+        ):
+            self.service.create_cfdi(cfdi_obj, issuer=self.issuer)
+        cfdi_obj.sign.assert_called_once()
+        pac.stamp.assert_called_once()
+        pac.issue.assert_not_called()
 
     def test_problem_json_error_message(self):
         exc = cefidia.CefidiaRejection(

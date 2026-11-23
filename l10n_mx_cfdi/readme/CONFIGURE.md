@@ -54,15 +54,16 @@ the satcfdi Facturama adapter so the Multiemisor CSD is uploaded again.
 
 ### Cefidia
 
-Cefidia's API does not accept CSD uploads. Before **Registrar**:
+Cefidia needs no registration step: the issuer is registered as soon as its
+CSD certificate, private key and key password are set, and **Registrar** is
+hidden. Stamping signs locally with the issuer CSD and sends the sealed XML to
+Cefidia unchanged.
 
-1. Add the issuer RFC as a taxpayer in the Cefidia account.
-2. Upload its CSD on the taxpayer's Cefidia web page (cancellation uses it).
+Cefidia's API does not accept CSD uploads, and cancellation uses the CSD
+stored on Cefidia, so in the Cefidia account:
 
-**Registrar** then checks ``GET /v1/status`` and refuses to register when the
-RFC is missing from the account or its CSD is missing/expired, showing the
-Cefidia page where it is fixed. Stamping signs locally with the issuer CSD and
-sends the sealed XML to Cefidia unchanged.
+1. Add the issuer RFC as a taxpayer.
+2. Upload its CSD on the taxpayer's Cefidia web page.
 
 ## 5. Configure series and folios
 

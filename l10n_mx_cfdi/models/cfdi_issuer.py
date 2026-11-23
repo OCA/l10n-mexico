@@ -3,6 +3,8 @@ import logging
 from odoo import api, fields, models
 from odoo.exceptions import UserError
 
+from ..services import pac_registry
+
 _logger = logging.getLogger(__name__)
 
 
@@ -23,7 +25,12 @@ class CFDIIssuer(models.Model):
     key_file = fields.Binary(groups="base.group_system")
     key_password = fields.Char(string="Password", groups="base.group_system")
     service_id = fields.Many2one("l10n_mx_cfdi.cfdi_service")
-    registered = fields.Boolean(store=True)
+    registered = fields.Boolean(
+        compute="_compute_registered", store=True, readonly=False
+    )
+    pac_requires_registration = fields.Boolean(
+        compute="_compute_pac_requires_registration"
+    )
     company_id = fields.Many2one("res.company", default=lambda self: self.env.company)
 
     @api.model
@@ -31,6 +38,31 @@ class CFDIIssuer(models.Model):
         res = super().default_get(fields_list)
         res["country_id"] = self.env.ref("base.mx").id
         return res
+
+    def _pac_provider(self):
+        provider_code = self.sudo().service_id.provider
+        return pac_registry.get_provider(provider_code) if provider_code else None
+
+    @api.depends("service_id.provider")
+    def _compute_pac_requires_registration(self):
+        for issuer in self:
+            provider = issuer._pac_provider()
+            issuer.pac_requires_registration = (
+                provider.requires_registration if provider else True
+            )
+
+    @api.depends("service_id.provider", "certificate_file", "key_file", "key_password")
+    def _compute_registered(self):
+        # PACs without a registration step (Cefidia) only need the local CSD;
+        # for the others ``registered`` is set by register_issuer().
+        for issuer in self:
+            provider = issuer._pac_provider()
+            if provider and not provider.requires_registration:
+                issuer.registered = bool(
+                    issuer.certificate_file and issuer.key_file and issuer.key_password
+                )
+            else:
+                issuer.registered = issuer.registered
 
     @api.model
     def _slugify(self, string):
