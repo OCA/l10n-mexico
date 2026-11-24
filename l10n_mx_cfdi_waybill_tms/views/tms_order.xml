@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="tms_order_view_form_waybill" model="ir.ui.view">
+        <field name="name">tms.order.form.waybill</field>
+        <field name="model">tms.order</field>
+        <field name="inherit_id" ref="tms.tms_order_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//header/button[@name='button_start_order']" position="before">
+                <button
+                    name="action_create_waybill"
+                    type="object"
+                    string="Carta Porte"
+                    invisible="vehicle_operation != 'cargo'"
+                />
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    name="action_open_waybills"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-file-text-o"
+                    invisible="waybill_count == 0"
+                >
+                    <field
+                        name="waybill_count"
+                        widget="statinfo"
+                        string="Carta Porte"
+                    />
+                </button>
+            </xpath>
+            <xpath
+                expr="//page[@name='cargo_page']//field[@name='packaging']"
+                position="after"
+            >
+                <field name="l10n_mx_cfdi_product_code_id" />
+                <field name="l10n_mx_cfdi_unit_id" />
+                <field name="l10n_mx_cfdi_hazardous" />
+                <field
+                    name="l10n_mx_cfdi_hazardous_code"
+                    invisible="not l10n_mx_cfdi_hazardous"
+                />
+                <field name="l10n_mx_cfdi_declared_value" />
+                <field name="l10n_mx_cfdi_sat_packaging" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

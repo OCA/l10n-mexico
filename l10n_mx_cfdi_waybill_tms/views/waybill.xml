@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_waybill_form_tms" model="ir.ui.view">
+        <field name="name">waybill.form.tms</field>
+        <field name="model">l10n_mx_cfdi_waybill.waybill</field>
+        <field name="inherit_id" ref="l10n_mx_cfdi_waybill.view_waybill_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='picking_ids']" position="before">
+                <field name="tms_order_id" readonly="state != 'draft'" />
+            </xpath>
+            <xpath expr="//field[@name='entry_ids']/list" position="inside">
+                <field name="cargo_id" optional="hide" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
