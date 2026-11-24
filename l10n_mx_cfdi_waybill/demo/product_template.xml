@@ -11,6 +11,6 @@
             name="l10n_mx_cfdi_product_measurement_unit_id"
             ref="l10n_mx_catalogs.c_clave_unidad_H87"
         />
-        <field name="l10n_mx_cfdi_dangerous_material_indicator" eval="False" />
+        <field name="l10n_mx_cfdi_dangerous_material">no</field>
     </record>
 </odoo>

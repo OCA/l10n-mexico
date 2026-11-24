@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Docutils: https://docutils.sourceforge.io/" />
-<title>CFDI Carta Porte - Inventarios</title>
+<title>README.rst</title>
 <style type="text/css">
 
 /*
@@ -396,11 +396,34 @@ vehicles, transporters, and waybill generation linked to stock pickings.</p>
 <h2><a class="toc-backref" href="#toc-entry-1">Configuration</a></h2>
 <p>Configure vehicles, transporters, and CFDI issuers before creating
 waybills from inventory transfers.</p>
+<p>To transport hazardous materials (Carta Porte 3.1):</p>
+<ul class="simple">
+<li>On each product, set <strong>Material peligroso CFDI</strong> to the value of the
+“Material peligroso” column of its SAT product key
+(<tt class="docutils literal">c_ClaveProdServCP</tt>):<ul>
+<li><strong>No</strong> (<tt class="docutils literal">0</tt>): the good is sent without the <tt class="docutils literal">MaterialPeligroso</tt>
+attribute.</li>
+<li><strong>Sí</strong> (<tt class="docutils literal">1</tt>): the hazardous material key, the packaging code and
+the packaging description are required and sent with
+<tt class="docutils literal"><span class="pre">MaterialPeligroso=&quot;Sí&quot;</span></tt>.</li>
+<li><strong>Opcional</strong> (<tt class="docutils literal">0,1</tt>): if the hazardous material key is filled in,
+the good is sent as “Sí” with the key and packaging; otherwise it is
+sent with <tt class="docutils literal"><span class="pre">MaterialPeligroso=&quot;No&quot;</span></tt>.</li>
+</ul>
+</li>
+<li>On the vehicle, fill in the environmental insurer and policy number.
+They are required when the waybill carries at least one good sent as
+“Sí” and are sent as <tt class="docutils literal">AseguraMedAmbiente</tt> and <tt class="docutils literal">PolizaMedAmbiente</tt>.</li>
+</ul>
 </div>
 <div class="section" id="usage">
 <h2><a class="toc-backref" href="#toc-entry-2">Usage</a></h2>
 <p>Create a waybill from a stock picking or from the Waybills menu,
 complete the required transport data, and publish the CFDI.</p>
+<p>When a waybill includes a good sent as hazardous material (“Sí”),
+publishing fails with an error if the hazardous material key, the
+packaging code or its description is missing in the product, or if the
+vehicle has no environmental insurance.</p>
 </div>
 <div class="section" id="bug-tracker">
 <h2><a class="toc-backref" href="#toc-entry-3">Bug Tracker</a></h2>
@@ -435,6 +458,8 @@ If you spotted it first, help us to smash it by providing a detailed and welcome
 <p>OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.</p>
+<p>Current <a class="reference external" href="https://odoo-community.org/page/maintainer-role">maintainer</a>:</p>
+<p><a class="reference external image-reference" href="https://github.com/max3903"><img alt="max3903" src="https://github.com/max3903.png?size=40px" /></a></p>
 <p>This module is part of the <a class="reference external" href="https://github.com/OCA/l10n-mexico/tree/19.0/l10n_mx_cfdi_waybill">OCA/l10n-mexico</a> project on GitHub.</p>
 <p>You are welcome to contribute. To learn how please visit <a class="reference external" href="https://odoo-community.org/page/Contribute">https://odoo-community.org/page/Contribute</a>.</p>
 </div>
