@@ -148,8 +148,11 @@ download requests for each enabled company and for each enabled flow.
 Manual review
 -------------
 
-Open **SAT > Documents** to browse downloaded CFDIs and retenciones. Use
-filters for company, SAT status, direction, and document type.
+Open **SAT > Documents** to browse downloaded CFDIs and retenciones.
+Search by UUID, issuer or receiver (RFC or name), series/folio, currency
+or total. Filter by SAT status, direction, document type, voucher type
+(invoices, credit notes, payment complements, payroll, transfers) and
+issue date, and group by any of them.
 
 Open **SAT > Download Requests** to monitor request states, packages,
 and errors.

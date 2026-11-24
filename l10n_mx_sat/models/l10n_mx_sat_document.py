@@ -61,7 +61,18 @@ class L10nMxSatDocument(models.Model):
         index=True,
         readonly=True,
     )
-    voucher_type = fields.Char(string="Voucher type", readonly=True, index=True)
+    voucher_type = fields.Selection(
+        selection=[
+            ("I", "Invoice"),
+            ("E", "Credit note"),
+            ("P", "Payment complement"),
+            ("N", "Payroll"),
+            ("T", "Transfer"),
+        ],
+        string="Voucher type",
+        readonly=True,
+        index=True,
+    )
     issuer_rfc = fields.Char(string="Issuer RFC", readonly=True, index=True)
     issuer_name = fields.Char(string="Issuer name", readonly=True)
     receiver_rfc = fields.Char(string="Receiver RFC", readonly=True, index=True)
@@ -165,6 +176,17 @@ class L10nMxSatDocument(models.Model):
         )
 
     @api.model
+    def _normalize_voucher_type(self, value):
+        """SAT code of the voucher type (``I``, ``E``, ``P``, ``N`` or ``T``).
+
+        The metadata files may spell the type out (``Ingreso``, ``Egreso``...),
+        the XML carries the code.
+        """
+        code = (value or "").strip()[:1].upper()
+        codes = dict(self._fields["voucher_type"].selection)
+        return code if code in codes else False
+
+    @api.model
     def _upsert_from_metadata_row(self, row, company, request):
         """Create or update a document from SAT metadata row."""
         uuid = (row.get("uuid") or "").upper()
@@ -185,6 +207,8 @@ class L10nMxSatDocument(models.Model):
         )
         for target, source in field_map:
             value = row.get(source)
+            if target == "voucher_type":
+                value = self._normalize_voucher_type(value)
             if value:
                 write_vals[target] = value
             elif document:
@@ -466,7 +490,9 @@ class L10nMxSatDocument(models.Model):
             if receptor is not None:
                 vals["receiver_rfc"] = receptor.get("Rfc")
                 vals["receiver_name"] = receptor.get("Nombre")
-            vals["voucher_type"] = tree.get("TipoDeComprobante")
+            vals["voucher_type"] = self._normalize_voucher_type(
+                tree.get("TipoDeComprobante")
+            )
             vals["currency_code"] = tree.get("Moneda")
             vals["series"] = tree.get("Serie")
             vals["folio_number"] = tree.get("Folio")

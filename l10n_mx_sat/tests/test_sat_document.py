@@ -487,6 +487,15 @@ class TestSatDocument(TransactionCase):
         )
         self.assertFalse(doc)
 
+    def test_normalize_voucher_type(self):
+        Document = self.env["l10n_mx_sat.document"]
+        self.assertEqual(Document._normalize_voucher_type("I"), "I")
+        self.assertEqual(Document._normalize_voucher_type(" p "), "P")
+        self.assertEqual(Document._normalize_voucher_type("Egreso"), "E")
+        self.assertEqual(Document._normalize_voucher_type("Nómina"), "N")
+        self.assertFalse(Document._normalize_voucher_type("X"))
+        self.assertFalse(Document._normalize_voucher_type(False))
+
     def test_upsert_from_metadata_invalid_total_and_preserve_blanks(self):
         request = self._create_request(request_type="metadata")
         doc = self.Document._upsert_from_metadata_row(
