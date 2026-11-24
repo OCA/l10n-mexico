@@ -322,10 +322,8 @@ class Document(models.Model):
             return False
         try:
             with self.env.cr.savepoint():
-                content, _fmt = (
-                    self.env["ir.actions.report"]
-                    .with_context(force_report_rendering=True)
-                    ._render_qweb_pdf(report_ref, res_ids)
+                content, _fmt = self.env["ir.actions.report"]._render_qweb_pdf(
+                    report_ref, res_ids
                 )
         except Exception:
             _logger.warning(
