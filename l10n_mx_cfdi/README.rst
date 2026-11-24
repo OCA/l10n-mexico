@@ -36,7 +36,8 @@ This module provides the configuration used by electronic invoicing for
 Mexico:
 
 - Multi-PAC integration via satcfdi (Finkok, Diverza, Prodigia, Comercio
-  Digital, SW Sapien, MYSuite, Facturama).
+  Digital, SW Sapien, MYSuite, Facturama) plus Cefidia through a
+  built-in client.
 - Local CSD management for CFDI sealing when the PAC uses ``stamp()``.
 - Facturama Multiemisor CSD upload on issuer registration (required
   before ``issue()``).
@@ -44,38 +45,38 @@ Mexico:
 
 **CFDI × PAC capability matrix**
 
-+------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-| Flow       | Finkok      | Diverza     | Prodigia    | Com.        | SW Sapien   | MYSuite     | Facturama   |
-|            |             |             |             | Digital     |             |             |             |
-+============+=============+=============+=============+=============+=============+=============+=============+
-| Path       | issue()     | issue()     | stamp()     | stamp()     | issue()     | stamp()     | issue()     |
-|            |             |             |             |             |             |             | Multiemisor |
-|            |             |             |             |             |             |             | / Web       |
-+------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-| Ingreso    | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         |
-| (I)        |             |             |             |             |             |             |             |
-+------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-| Egreso (E) | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional |
-+------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-| Pago (P)   | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional |
-+------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-| Traslado / | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         |
-| Carta      |             |             |             |             |             |             |             |
-| Porte      |             |             |             |             |             |             |             |
-+------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-| Pedimentos | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         |
-| on         |             |             |             |             |             |             |             |
-| concepts   |             |             |             |             |             |             |             |
-+------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-| Full CCE   | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional |
-| complement |             |             |             |             |             |             |             |
-+------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-| Cancel     | Conditional | Yes         | No          | No          | Yes         | No          | Yes         |
-| (API)      |             |             |             |             |             |             |             |
-+------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-| Cancel     | Conditional | Unknown     | No          | No          | Unknown     | No          | Conditional |
-| with acuse |             |             |             |             |             |             |             |
-+------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
++------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+| Flow       | Finkok      | Diverza     | Prodigia    | Com.        | SW Sapien   | MYSuite     | Facturama   | Cefidia     |
+|            |             |             |             | Digital     |             |             |             |             |
++============+=============+=============+=============+=============+=============+=============+=============+=============+
+| Path       | issue()     | issue()     | stamp()     | stamp()     | issue()     | stamp()     | issue()     | stamp()     |
+|            |             |             |             |             |             |             | Multiemisor |             |
+|            |             |             |             |             |             |             | / Web       |             |
++------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+| Ingreso    | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         |
+| (I)        |             |             |             |             |             |             |             |             |
++------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+| Egreso (E) | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional |
++------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+| Pago (P)   | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional |
++------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+| Traslado / | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         |
+| Carta      |             |             |             |             |             |             |             |             |
+| Porte      |             |             |             |             |             |             |             |             |
++------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+| Pedimentos | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         |
+| on         |             |             |             |             |             |             |             |             |
+| concepts   |             |             |             |             |             |             |             |             |
++------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+| Full CCE   | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional | Conditional |
+| complement |             |             |             |             |             |             |             |             |
++------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+| Cancel     | Conditional | Yes         | No          | No          | Yes         | No          | Yes         | Conditional |
+| (API)      |             |             |             |             |             |             |             |             |
++------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+| Cancel     | Conditional | Unknown     | No          | No          | Unknown     | No          | Conditional | No          |
+| with acuse |             |             |             |             |             |             |             |             |
++------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
 
 **Legend**
 
@@ -96,6 +97,9 @@ Mexico:
     Facturama Multiemisor does **not** support CCE; when CCE is present
     the module switches to FacturamaWeb (same user/password;
     account-profile CSD).
+  - Cefidia cancel: the issuer CSD must be uploaded on the Cefidia web
+    page; the API returns ``canceled`` or ``waiting_acceptance`` (shown
+    as pending cancellation) but never an acuse.
 
 - **No**:
 
@@ -105,7 +109,7 @@ Mexico:
 - **Unknown**: acuse availability depends on the PAC response (Diverza /
   SW Sapien).
 - **Path**: Finkok, Diverza, SW Sapien, and Facturama use ``issue()``;
-  Prodigia, Comercio Digital, and MYSuite use local CSD seal +
+  Prodigia, Comercio Digital, MYSuite, and Cefidia use local CSD seal +
   ``stamp()``. Facturama is Multiemisor by default (**Registrar**
   uploads the CSD); FacturamaWeb is used automatically for Comercio
   Exterior.
@@ -130,6 +134,7 @@ This module works with any PAC supported by the
 - SW Sapien
 - MYSuite
 - Facturama
+- Cefidia (own JSON API client in ``services/cefidia.py``, not satcfdi)
 
 Install the Python dependency:
 
@@ -224,6 +229,15 @@ API Web + Multiemisor and 100 folios; additional API folios about 0.50 /
   — **Registrar** uploads the issuer CSD to the PAC before ``issue()``;
   supports ``issue()``.
 
+**Cefidia** — JSON API with bearer token; stamps CFDI 4.0 already sealed
+by the issuer (``POST /v1/signed-documents``), so every complement is
+sent unchanged. Confirm pricing with the vendor.
+
+- Docs: https://docs.cefidia.com/referencia/api/
+- Module notes: PAC Token; local seal + ``stamp()``; cancel via API
+  using the CSD uploaded on Cefidia's web (no acuse returned); no stamp
+  balance endpoint, so **Stamps available** stays empty.
+
 Module integration (stamp vs issue)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -255,6 +269,10 @@ Module integration (stamp vs issue)
 |                | (Multiemisor)  |                | password; CSD  |
 |                |                |                | upload on      |
 |                |                |                | Registrar      |
++----------------+----------------+----------------+----------------+
+| Cefidia        | local seal +   | Yes (own       | PAC token      |
+|                | ``stamp()``    | client; CSD on |                |
+|                |                | Cefidia web)   |                |
 +----------------+----------------+----------------+----------------+
 
 Prefer PACs that implement ``issue()`` when possible. Otherwise the
@@ -298,7 +316,7 @@ see Installation.
 1. Go to **CFDI > PAC Settings** and create a record (or open an
    existing one).
 2. Set a name and choose the **Provider** (Finkok, Diverza, Prodigia,
-   Comercio Digital, SW Sapien, MYSuite, or Facturama).
+   Comercio Digital, SW Sapien, MYSuite, Facturama, or Cefidia).
 3. Assign the companies that will use this PAC connection
    (multi-company).
 
@@ -308,17 +326,26 @@ see Installation.
 Fill in the **Credentials** group fields that apply to your provider
 (Settings users / system group):
 
-================ =============================================
-Provider         Typical fields
-================ =============================================
-Finkok           User, Password
-Diverza          Password or PAC Token, PAC RFC, PAC Client ID
-Prodigia         User, Password, PAC Contract
-Comercio Digital User, Password
-SW Sapien        PAC Token, or User and Password
-MYSuite          User, PAC Requestor, PAC Country (default MX)
-Facturama        User, Password
-================ =============================================
++------------------+---------------------------------------------------+
+| Provider         | Typical fields                                    |
++==================+===================================================+
+| Finkok           | User, Password                                    |
++------------------+---------------------------------------------------+
+| Diverza          | Password or PAC Token, PAC RFC, PAC Client ID     |
++------------------+---------------------------------------------------+
+| Prodigia         | User, Password, PAC Contract                      |
++------------------+---------------------------------------------------+
+| Comercio Digital | User, Password                                    |
++------------------+---------------------------------------------------+
+| SW Sapien        | PAC Token, or User and Password                   |
++------------------+---------------------------------------------------+
+| MYSuite          | User, PAC Requestor, PAC Country (default MX)     |
++------------------+---------------------------------------------------+
+| Facturama        | User, Password                                    |
++------------------+---------------------------------------------------+
+| Cefidia          | PAC Token (``cfd_...`` secret token with          |
+|                  | ``cefidia:write``)                                |
++------------------+---------------------------------------------------+
 
 Credential names and requirements can vary by PAC contract; confirm with
 the provider documentation if a field is unclear.
@@ -328,6 +355,11 @@ the provider documentation if a field is unclear.
 
 Enable **Sandbox Mode** for the PAC test environment. Leave it disabled
 for production.
+
+Cefidia has no sandbox flag: the environment is decided by the
+certificate in the XML. To test, add one of the SAT test RFCs in Cefidia
+(it installs the SAT test certificate) and use that RFC and its CSD on
+the issuer.
 
 4. Configure CFDI issuer(s) and register the CSD
 ------------------------------------------------
@@ -346,6 +378,20 @@ For Facturama, **Registrar** also uploads the issuer CSD to the PAC.
 That upload is required before ``issue()``. Re-register issuers after
 switching to the satcfdi Facturama adapter so the Multiemisor CSD is
 uploaded again.
+
+Cefidia
+~~~~~~~
+
+Cefidia needs no registration step: the issuer is registered as soon as
+its CSD certificate, private key and key password are set, and
+**Registrar** is hidden. Stamping signs locally with the issuer CSD and
+sends the sealed XML to Cefidia unchanged.
+
+Cefidia's API does not accept CSD uploads, and cancellation uses the CSD
+stored on Cefidia, so in the Cefidia account:
+
+1. Add the issuer RFC as a taxpayer.
+2. Upload its CSD on the taxpayer's Cefidia web page.
 
 5. Configure series and folios
 ------------------------------

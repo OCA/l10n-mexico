@@ -20,7 +20,7 @@
                         </group>
                     </group>
                     <group string="Credentials" groups="base.group_system">
-                        <field name="sandbox_mode" />
+                        <field name="sandbox_mode" invisible="provider == 'cefidia'" />
                         <field
                             name="user"
                             invisible="provider not in ('finkok', 'prodigia', 'comerciodigital', 'swsapien', 'mysuite', 'facturama')"
@@ -33,7 +33,7 @@
                         <field
                             name="pac_token"
                             password="1"
-                            invisible="provider not in ('swsapien', 'diverza')"
+                            invisible="provider not in ('swsapien', 'diverza', 'cefidia')"
                         />
                         <field name="pac_rfc" invisible="provider != 'diverza'" />
                         <field name="pac_client_id" invisible="provider != 'diverza'" />

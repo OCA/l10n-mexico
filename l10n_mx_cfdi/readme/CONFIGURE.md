@@ -6,7 +6,7 @@ Installation.
 
 1. Go to **CFDI > PAC Settings** and create a record (or open an existing one).
 2. Set a name and choose the **Provider** (Finkok, Diverza, Prodigia, Comercio
-   Digital, SW Sapien, MYSuite, or Facturama).
+   Digital, SW Sapien, MYSuite, Facturama, or Cefidia).
 3. Assign the companies that will use this PAC connection (multi-company).
 
 ## 2. Enter credentials
@@ -23,6 +23,7 @@ Fill in the **Credentials** group fields that apply to your provider
 | SW Sapien | PAC Token, or User and Password |
 | MYSuite | User, PAC Requestor, PAC Country (default MX) |
 | Facturama | User, Password |
+| Cefidia | PAC Token (``cfd_...`` secret token with ``cefidia:write``) |
 
 Credential names and requirements can vary by PAC contract; confirm with the
 provider documentation if a field is unclear.
@@ -31,6 +32,10 @@ provider documentation if a field is unclear.
 
 Enable **Sandbox Mode** for the PAC test environment. Leave it disabled for
 production.
+
+Cefidia has no sandbox flag: the environment is decided by the certificate in
+the XML. To test, add one of the SAT test RFCs in Cefidia (it installs the SAT
+test certificate) and use that RFC and its CSD on the issuer.
 
 ## 4. Configure CFDI issuer(s) and register the CSD
 
@@ -46,6 +51,19 @@ production.
 For Facturama, **Registrar** also uploads the issuer CSD to the PAC. That
 upload is required before ``issue()``. Re-register issuers after switching to
 the satcfdi Facturama adapter so the Multiemisor CSD is uploaded again.
+
+### Cefidia
+
+Cefidia needs no registration step: the issuer is registered as soon as its
+CSD certificate, private key and key password are set, and **Registrar** is
+hidden. Stamping signs locally with the issuer CSD and sends the sealed XML to
+Cefidia unchanged.
+
+Cefidia's API does not accept CSD uploads, and cancellation uses the CSD
+stored on Cefidia, so in the Cefidia account:
+
+1. Add the issuer RFC as a taxpayer.
+2. Upload its CSD on the taxpayer's Cefidia web page.
 
 ## 5. Configure series and folios
 

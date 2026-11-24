@@ -9,3 +9,4 @@ from . import test_pac_registry
 from . import test_facturama_adapter
 from . import test_models
 from . import test_res_company
+from . import test_cefidia

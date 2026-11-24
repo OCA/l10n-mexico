@@ -36,7 +36,7 @@ class CFDIService(models.Model):
     provider = fields.Selection(
         selection=lambda self: pac_registry.provider_selection(),
         required=True,
-        default="finkok",
+        default="cefidia",
         groups="base.group_system",
     )
     sandbox_mode = fields.Boolean(default=False, groups="base.group_system")
@@ -75,7 +75,9 @@ class CFDIService(models.Model):
     @api.model
     def _extract_pac_response_detail(self, response):
         if isinstance(response, dict):
-            return self._detail_from_pac_mapping(response)
+            return self._format_pac_problem(response) or self._detail_from_pac_mapping(
+                response
+            )
 
         data = None
         if hasattr(response, "json"):
@@ -84,7 +86,10 @@ class CFDIService(models.Model):
             except Exception:  # noqa: BLE001 - PAC responses vary widely
                 data = None
         if isinstance(data, dict):
-            detail = self._detail_from_pac_mapping(data)
+            # RFC 9457 problem+json (Cefidia) before the generic PAC mapping.
+            detail = self._format_pac_problem(data) or self._detail_from_pac_mapping(
+                data
+            )
             if detail:
                 return detail
 
@@ -213,6 +218,28 @@ class CFDIService(models.Model):
             return json.dumps(data, ensure_ascii=False, indent=2, default=str)[:2000]
         except (TypeError, ValueError):
             return str(data)[:2000]
+
+    @api.model
+    def _format_pac_problem(self, data):
+        """Format an RFC 9457 problem (``detail`` + optional ``fields``)."""
+        detail = data.get("detail")
+        if not isinstance(detail, str) or not detail.strip():
+            return None
+        if not any(key in data for key in ("code", "fields", "status", "type")):
+            return None
+        text = detail.strip()
+        code = data.get("code")
+        if isinstance(code, str) and code and code not in text:
+            text = f"{text} [{code}]"
+        lines = [text]
+        for field in data.get("fields") or []:
+            if not isinstance(field, dict):
+                continue
+            path = field.get("path") or ""
+            message = field.get("message") or ""
+            if path or message:
+                lines.append(f"- {path}: {message}".rstrip(": "))
+        return "\n".join(lines)
 
     @api.model
     def _format_pac_model_state(self, model_state):
@@ -364,7 +391,7 @@ class CFDIService(models.Model):
         # return the XML (Finkok, Comercio Digital, MySuite) reject the PDF request.
         accept = Accept.XML_PDF if provider.returns_pdf else Accept.XML
         try:
-            if provider.supports_issue:
+            if provider.supports_issue and not provider.issue_with_local_seal:
                 document = pac.issue(cfdi, accept=accept)
             else:
                 signer = self._get_csd_signer(issuer)

@@ -22,6 +22,12 @@ class PacProvider:
     # satcfdi raises NotImplementedError("accept PDF not supported") before
     # sending anything when these PACs are asked for a PDF.
     returns_pdf: bool = True
+    # issue() support with the CFDI sealed locally with the issuer CSD and
+    # sent through stamp() (the PAC does not keep the CSD).
+    issue_with_local_seal: bool = False
+    # False when the PAC needs no issuer registration step: a local CSD
+    # (certificate, key and password) is enough to issue.
+    requires_registration: bool = True
 
 
 def _env(sandbox: bool) -> Environment:
@@ -89,7 +95,27 @@ def _facturama_kwargs(service, environment: Environment) -> dict:
     }
 
 
+def _cefidia_kwargs(service, environment: Environment) -> dict:
+    return {
+        "token": service.pac_token,
+        "environment": environment,
+    }
+
+
 PAC_PROVIDERS: dict[str, PacProvider] = {
+    "cefidia": PacProvider(
+        code="cefidia",
+        label="Cefidia",
+        # Not in satcfdi: our own client with the same PAC interface.
+        module="odoo.addons.l10n_mx_cfdi.services.cefidia",
+        class_name="Cefidia",
+        supports_issue=True,
+        supports_cancel=True,
+        requires_signer_for_cancel=False,
+        kwargs_builder=_cefidia_kwargs,
+        issue_with_local_seal=True,
+        requires_registration=False,
+    ),
     "finkok": PacProvider(
         code="finkok",
         label="Finkok",
