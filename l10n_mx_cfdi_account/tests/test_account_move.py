@@ -435,6 +435,14 @@ class TestAccountMove(CFDIAccountTestCommon):
             "l10n_mx_cfdi_account.document_cancel",
         )
 
+    def test_button_request_cancel_without_published_cfdi(self):
+        """Without a published CFDI there is nothing to request: Odoo refuses."""
+        self.company.l10n_mx_cfdi_auto = True
+        invoice = self._post_cfdi_invoice(self._create_cfdi_invoice())
+        self.assertFalse(invoice.need_cancel_request)
+        with self.assertRaises(UserError):
+            invoice.button_request_cancel()
+
     def test_get_name_invoice_report_mx(self):
         invoice = self._create_cfdi_invoice()
         invoice.company_id.account_fiscal_country_id = self.env.ref("base.mx")
