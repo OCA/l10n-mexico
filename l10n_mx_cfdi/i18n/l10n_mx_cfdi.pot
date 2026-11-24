@@ -163,6 +163,15 @@ msgid ""
 msgstr ""
 
 #. module: l10n_mx_cfdi
+#: model_terms:ir.ui.view,arch_db:l10n_mx_cfdi.view_cfdi_issuer
+msgid ""
+"<i class=\"fa fa-exclamation-triangle mr-2\" role=\"img\" aria-label=\"Alert\" title=\"Alert\"/>\n"
+"                        <span>Este PAC no requiere registro del emisor. Cargue el\n"
+"                            certificado, la llave y la contraseña del CSD para emitir.\n"
+"                        </span>"
+msgstr ""
+
+#. module: l10n_mx_cfdi
 #. odoo-python
 #: code:addons/l10n_mx_cfdi/models/cfdi_document.py:0
 msgid "A certificate is already published with this serie and number."
@@ -1556,6 +1565,11 @@ msgstr ""
 #. odoo-python
 #: code:addons/l10n_mx_cfdi/models/cfdi_service.py:0
 msgid "PAC provider is not configured."
+msgstr ""
+
+#. module: l10n_mx_cfdi
+#: model:ir.model.fields,field_description:l10n_mx_cfdi.field_l10n_mx_cfdi_issuer__pac_requires_registration
+msgid "Pac Requires Registration"
 msgstr ""
 
 #. module: l10n_mx_cfdi
