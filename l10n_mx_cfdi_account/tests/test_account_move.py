@@ -421,15 +421,27 @@ class TestAccountMove(CFDIAccountTestCommon):
             invoice.action_post()
         self.assertTrue(invoice.cfdi_posted)
 
-    def test_button_draft_with_published_cfdi(self):
+    def test_published_cfdi_requires_cancel_request(self):
         self.company.l10n_mx_cfdi_auto = True
         invoice = self._post_cfdi_invoice(self._create_cfdi_invoice())
         self._create_published_invoice_cfdi(invoice)
-        action = invoice.button_draft()
+        self.assertTrue(invoice.need_cancel_request)
+        self.assertFalse(invoice.show_reset_to_draft_button)
+        with self.assertRaises(UserError):
+            invoice.button_draft()
+        action = invoice.button_request_cancel()
         self.assertEqual(
             action.get("res_model"),
             "l10n_mx_cfdi_account.document_cancel",
         )
+
+    def test_button_request_cancel_without_published_cfdi(self):
+        """Without a published CFDI there is nothing to request: Odoo refuses."""
+        self.company.l10n_mx_cfdi_auto = True
+        invoice = self._post_cfdi_invoice(self._create_cfdi_invoice())
+        self.assertFalse(invoice.need_cancel_request)
+        with self.assertRaises(UserError):
+            invoice.button_request_cancel()
 
     def test_get_name_invoice_report_mx(self):
         invoice = self._create_cfdi_invoice()
@@ -581,14 +593,15 @@ class TestAccountMove(CFDIAccountTestCommon):
         self.assertEqual(document.id, existing.id)
         self.assertEqual(document.state, "published")
 
-    def test_button_draft_in_invoice_skips_dialog(self):
+    def test_button_draft_in_invoice_skips_cancel_request(self):
         invoice = self._post_cfdi_invoice(
             self._create_cfdi_invoice(move_type="in_invoice")
         )
         self._create_published_invoice_cfdi(invoice)
         self.company.l10n_mx_cfdi_auto = True
-        result = invoice.button_draft()
-        self.assertNotIsInstance(result, dict)
+        self.assertFalse(invoice.need_cancel_request)
+        invoice.button_draft()
+        self.assertEqual(invoice.state, "draft")
 
     def test_add_global_information_to_cfdi_if_required(self):
         public_partner = self.env.ref(
