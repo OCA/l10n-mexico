@@ -408,7 +408,12 @@ class TestAccountMove(CFDIAccountTestCommon):
         self.assertTrue(any(name.endswith(".xml") for name in names))
         self.assertTrue(any(name.endswith(".pdf") for name in names))
 
-    def test_post_document_attachments_soft_fails_and_empty_return(self):
+    def _post_attachments_with_failing_pac(self, render_pdf):
+        """Post attachments of a file-less CFDI whose PAC downloads raise.
+
+        :param render_pdf: value returned by the patched Odoo report render.
+        :return: ``(invoice, new attachments)``
+        """
         invoice = self._post_cfdi_invoice(self._create_cfdi_invoice())
         document = self._create_published_invoice_cfdi(invoice)
         document.write(
@@ -418,13 +423,12 @@ class TestAccountMove(CFDIAccountTestCommon):
                 "tracking_id": "track-empty",
             }
         )
-        before = self.env["ir.attachment"].search_count(
-            [
-                ("res_model", "=", "account.move"),
-                ("res_id", "=", invoice.id),
-            ]
-        )
+        domain = [("res_model", "=", "account.move"), ("res_id", "=", invoice.id)]
+        before = self.env["ir.attachment"].search(domain)
         with (
+            patch.object(
+                type(document), "_render_report_pdf", return_value=render_pdf
+            ),
             patch.object(
                 type(self.service),
                 "get_cfdi_pdf",
@@ -437,13 +441,17 @@ class TestAccountMove(CFDIAccountTestCommon):
             ),
         ):
             invoice._l10n_mx_cfdi_post_document_attachments(document)
-        after = self.env["ir.attachment"].search_count(
-            [
-                ("res_model", "=", "account.move"),
-                ("res_id", "=", invoice.id),
-            ]
-        )
-        self.assertEqual(before, after)
+        return invoice, self.env["ir.attachment"].search(domain) - before
+
+    def test_post_document_attachments_stores_odoo_pdf_when_pac_fails(self):
+        _invoice, new = self._post_attachments_with_failing_pac(b"%PDF-1.4 odoo")
+        self.assertEqual(len(new), 1)
+        self.assertEqual(new.mimetype, "application/pdf")
+        self.assertEqual(base64.b64decode(new.datas), b"%PDF-1.4 odoo")
+
+    def test_post_document_attachments_soft_fails_and_empty_return(self):
+        _invoice, new = self._post_attachments_with_failing_pac(False)
+        self.assertFalse(new)
 
     def test_create_invoice_cfdi_failure_unlinks_document(self):
         invoice = self._post_cfdi_invoice(self._create_cfdi_invoice())
