@@ -31,8 +31,10 @@ Use this module after the PAC connection, issuers, and series are configured in
    refuses the stamp if the customer RFC is listed as Presunto or Definitivo.
    Generic RFCs (``XAXX010101000`` / ``XEXX010101000``) are skipped.
 6. Open the linked CFDI document from the invoice (or from the CFDI documents
-   menu). The form opens with the PDF and XML. A PAC download error does not
-   block the form; the files appear once the PAC returns them.
+   menu). The form opens with the PDF and XML. The stored PDF is the Odoo
+   report (invoice, credit note, payment or waybill); the PAC's PDF is only the
+   fallback when that report cannot be rendered. A PAC download error does not
+   block the form; the XML appears once the PAC returns it.
 7. Use Send to deliver the invoice to the customer.
 
 ### Import CFDI

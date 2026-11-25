@@ -252,28 +252,12 @@ class AccountMove(models.Model):
     def _l10n_mx_cfdi_post_document_attachments(self, document):
         """Post stamped XML/PDF on this record's chatter.
 
-        Prefer files already stored on the document. If the PAC returned XML but
-        no PDF, try PAC recover only (skip QWeb report rendering here — that is
-        handled by ``_compute_download_files_if_needed`` on demand).
+        The PDF is rendered from the Odoo report (falling back to the PAC's
+        PDF). This runs once the CFDI is linked to this record, so the report
+        can print the stamp data.
         """
         self.ensure_one()
-        if not document.pdf_file and document.tracking_id:
-            try:
-                res = document.issuer_id.service_id.sudo().get_cfdi_pdf(
-                    document.tracking_id
-                )
-                if res.get("Content"):
-                    document.pdf_file = res["Content"]
-                    document.pdf_filename = (
-                        document.pdf_filename
-                        or f"{document.name or document.uuid or document.id}.pdf"
-                    )
-            except Exception:
-                _logger.debug(
-                    "Could not recover PDF for chatter on %s",
-                    document.display_name,
-                    exc_info=True,
-                )
+        document._l10n_mx_cfdi_generate_pdf()
         if not document.xml_file and document.tracking_id:
             try:
                 res = document.issuer_id.service_id.sudo().get_cfdi_xml(

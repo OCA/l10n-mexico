@@ -64,9 +64,8 @@ class TestCFDIDocumentAccount(CFDIAccountTestCommon):
                 "folio": "1",
             }
         )
-        report_type, report, resource_ids = document._resolve_report()
+        report_type, resource_ids = document._resolve_report()
         self.assertEqual(report_type, "account.account_invoices")
-        self.assertTrue(report)
         self.assertEqual(resource_ids, [invoice.id])
 
     def test_resolve_report_payment(self):
@@ -82,7 +81,7 @@ class TestCFDIDocumentAccount(CFDIAccountTestCommon):
                 "folio": "1",
             }
         )
-        report_type, report, resource_ids = document._resolve_report()
+        report_type, resource_ids = document._resolve_report()
         self.assertEqual(report_type, "account.action_report_payment_receipt")
         self.assertEqual(resource_ids, [payment.id])
 

@@ -259,35 +259,19 @@ class Document(models.Model):
                 continue
 
             if not entry.pdf_file:
-                report, resource_ids = self._resolve_report()
-                if report:
-                    report = report.with_context(**{"force_report_rendering": True})
-                    doc_data, _doc_format = report._render_qweb_pdf(resource_ids)
-                    if doc_data:
-                        entry.pdf_file = base64.b64encode(doc_data)
-                if not entry.pdf_file:
-                    try:
-                        res = entry.issuer_id.service_id.sudo().get_cfdi_pdf(
-                            entry.tracking_id
-                        )
-                        entry.pdf_file = res["Content"]
-                    except UserError:
-                        _logger.debug(
-                            "Could not recover PDF for CFDI %s", entry.display_name
-                        )
-                if entry.pdf_file:
-                    entry.pdf_filename = f"{entry.name}.pdf"
+                entry._l10n_mx_cfdi_generate_pdf()
 
             if not entry.xml_file:
                 try:
                     res = entry.issuer_id.service_id.sudo().get_cfdi_xml(
                         entry.tracking_id
                     )
-                    content = res["Content"]
+                    content = res.get("Content") or b""
                     if isinstance(content, str):
                         content = content.encode("utf-8")
-                    entry.xml_file = base64.b64encode(content)
-                    entry.xml_filename = f"{entry.name}.xml"
+                    if content:
+                        entry.xml_file = base64.b64encode(content)
+                        entry.xml_filename = f"{entry.name}.xml"
                 except UserError:
                     _logger.debug(
                         "Could not recover XML for CFDI %s", entry.display_name
@@ -314,8 +298,71 @@ class Document(models.Model):
     ###
 
     def _resolve_report(self):
-        """Return report and resource ids for PDF generation (extended in account)."""
+        """Return ``(report_ref, res_ids)`` used to render this CFDI's PDF.
+
+        ``report_ref`` is anything ``ir.actions.report._render_qweb_pdf``
+        accepts (usually an xmlid). Modules that link the CFDI to a business
+        document (invoice, payment, waybill) extend this; ``(None, [])``
+        means there is no Odoo report and the PAC's PDF is used instead.
+        """
         return None, []
+
+    def _render_report_pdf(self):
+        """Render the Odoo report for this CFDI.
+
+        Never raises: the CFDI is already stamped when this runs, so a
+        rendering problem must not roll back the transaction.
+
+        :return: PDF bytes, or ``False`` when there is no report or rendering
+            failed.
+        """
+        self.ensure_one()
+        report_ref, res_ids = self._resolve_report()
+        if not report_ref or not res_ids:
+            return False
+        try:
+            with self.env.cr.savepoint():
+                content, _fmt = self.env["ir.actions.report"]._render_qweb_pdf(
+                    report_ref, res_ids
+                )
+        except Exception:
+            _logger.warning(
+                "Could not render the PDF report for CFDI %s",
+                self.display_name,
+                exc_info=True,
+            )
+            return False
+        return content or False
+
+    def _l10n_mx_cfdi_generate_pdf(self):
+        """Store the CFDI PDF, preferring the Odoo report over the PAC's.
+
+        The Odoo report is rendered so the printed CFDI follows the company's
+        layout. When there is no report for the document or rendering fails,
+        the PDF returned by the PAC at stamping time is kept; if there is none,
+        it is recovered from the PAC.
+
+        Call it once the CFDI is linked to its business document, since the
+        report reads the stamp data through that link.
+        """
+        for entry in self:
+            pdf = entry._render_report_pdf()
+            if pdf:
+                entry.pdf_file = base64.b64encode(pdf)
+            elif not entry.pdf_file and entry.tracking_id:
+                try:
+                    res = entry.issuer_id.service_id.sudo().get_cfdi_pdf(
+                        entry.tracking_id
+                    )
+                    entry.pdf_file = res.get("Content") or False
+                except Exception:
+                    _logger.debug(
+                        "Could not recover PDF for CFDI %s",
+                        entry.display_name,
+                        exc_info=True,
+                    )
+            if entry.pdf_file and not entry.pdf_filename:
+                entry.pdf_filename = f"{entry.name or entry.uuid or entry.id}.pdf"
 
     def cancel(self, reason: str, replacement=None, simulate=False):
         """Cancel the CFDI through the PAC.
