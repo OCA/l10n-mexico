@@ -97,7 +97,9 @@ Invoices
    settings (disabled by default), the module checks SAT list 69-B
    before signing and refuses the stamp if the customer RFC is listed as
    Presunto or Definitivo. Generic RFCs (``XAXX010101000`` /
-   ``XEXX010101000``) are skipped.
+   ``XEXX010101000``) are skipped. The list is stored in Odoo and
+   refreshed daily by the scheduled action **CFDI: Refresh SAT list
+   69-B**.
 6. Open the linked CFDI document from the invoice (or from the CFDI
    documents menu). The form opens with the PDF and XML. A PAC download
    error does not block the form; the files appear once the PAC returns

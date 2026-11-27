@@ -10,6 +10,7 @@
     "depends": ["l10n_mx_cfdi", "l10n_mx"],
     "data": [
         "security/ir.model.access.csv",
+        "data/ir_cron_data.xml",
         "views/account_move.xml",
         "views/account_payment_register.xml",
         "views/account_payment.xml",

@@ -457,7 +457,9 @@ the configured PAC. If <strong>Check SAT list 69-B</strong> is enabled in the CF
 settings (disabled by default), the module checks SAT list 69-B
 before signing and refuses the stamp if the customer RFC is listed as
 Presunto or Definitivo. Generic RFCs (<tt class="docutils literal">XAXX010101000</tt> /
-<tt class="docutils literal">XEXX010101000</tt>) are skipped.</li>
+<tt class="docutils literal">XEXX010101000</tt>) are skipped. The list is stored in Odoo and
+refreshed daily by the scheduled action <strong>CFDI: Refresh SAT list
+69-B</strong>.</li>
 <li>Open the linked CFDI document from the invoice (or from the CFDI
 documents menu). The form opens with the PDF and XML. A PAC download
 error does not block the form; the files appear once the PAC returns

@@ -5,7 +5,6 @@ from decimal import ROUND_HALF_UP, Decimal
 
 from lxml import etree
 from satcfdi.create.cfd import cfdi40
-from satcfdi.pacs.sat import SAT
 
 from odoo import api, fields, models
 from odoo.exceptions import UserError, ValidationError
@@ -410,7 +409,7 @@ class AccountMove(models.Model):
 
     def _l10n_mx_cfdi_sat_69b_status(self, rfc):
         """Return the SAT 69-B status for ``rfc``, or None if not listed."""
-        return SAT().list_69b(rfc)
+        return self.env["l10n_mx_cfdi_account.sat_69b"]._status(rfc)
 
     def _l10n_mx_cfdi_check_receiver_not_on_sat_blacklist(self):
         """Block signing when the customer RFC is on SAT list 69-B."""

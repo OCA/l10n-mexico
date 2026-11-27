@@ -1,8 +1,9 @@
 # Copyright (C) 2026 Gray Matter Logic (<https://www.graymatterlogic.com>).
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).
 
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
+import requests
 from satcfdi.pacs import TaxpayerStatus
 
 from odoo.exceptions import UserError
@@ -11,6 +12,7 @@ from odoo.tests import tagged
 from .common import CFDIAccountTestCommon
 
 ACCOUNT_MOVE_MODULE = "odoo.addons.l10n_mx_cfdi_account.models.account_move"
+SAT_69B_MODULE = "odoo.addons.l10n_mx_cfdi_account.models.sat_69b"
 
 
 @tagged("post_install", "-at_install")
@@ -35,16 +37,61 @@ class TestSAT69BBlacklist(CFDIAccountTestCommon):
             invoice._l10n_mx_cfdi_check_receiver_not_on_sat_blacklist()
         mock_status.assert_not_called()
 
-    def test_sat_69b_status_uses_satcfdi(self):
+    def _mock_sat_csv(self, rows, status_code=200):
+        lines = ["Legal notice", "Listado completo", "No,RFC,Nombre,Situación"]
+        lines += [f'{i},{rfc},"NAME, SA",{status}' for i, (rfc, status) in rows]
+        response = Mock(status_code=status_code)
+        response.content = "\r\n".join(lines).encode("windows-1250")
+        if status_code != 200:
+            response.raise_for_status.side_effect = requests.HTTPError("boom")
+        return patch(f"{SAT_69B_MODULE}.requests.get", return_value=response)
+
+    def test_sat_69b_status_reads_stored_list(self):
         self._sat_69b_status_patcher.stop()
         invoice = self._create_cfdi_invoice()
-        with patch(
-            "odoo.addons.l10n_mx_cfdi_account.models.account_move.SAT"
-        ) as mock_sat:
-            mock_sat.return_value.list_69b.return_value = TaxpayerStatus.DESVIRTUADO
-            status = invoice._l10n_mx_cfdi_sat_69b_status("AAA010101AAA")
-        self.assertEqual(status, TaxpayerStatus.DESVIRTUADO)
-        mock_sat.return_value.list_69b.assert_called_once_with("AAA010101AAA")
+        rows = enumerate([("AAA010101AAA", "Definitivo"), ("BBB010101BBB", "Presunto")])
+        with self._mock_sat_csv(rows) as mock_get:
+            # No stored copy yet: downloaded on the spot, then kept.
+            self.assertEqual(
+                invoice._l10n_mx_cfdi_sat_69b_status("AAA010101AAA"), "Definitivo"
+            )
+            self.assertEqual(
+                invoice._l10n_mx_cfdi_sat_69b_status("BBB010101BBB"), "Presunto"
+            )
+            self.assertIsNone(invoice._l10n_mx_cfdi_sat_69b_status("CCC010101CCC"))
+            mock_get.assert_called_once()
+        self.assertEqual(len(self.env["l10n_mx_cfdi_account.sat_69b"]._attachment()), 1)
+
+    def test_sat_69b_cron_replaces_stored_list(self):
+        sat_69b = self.env["l10n_mx_cfdi_account.sat_69b"]
+        with self._mock_sat_csv(enumerate([("AAA010101AAA", "Presunto")])):
+            sat_69b._cron_refresh()
+        attachment = sat_69b._attachment()
+        with self._mock_sat_csv(enumerate([("AAA010101AAA", "Desvirtuado")])):
+            sat_69b._cron_refresh()
+        self.assertEqual(sat_69b._attachment(), attachment)
+        self.assertEqual(sat_69b._status("AAA010101AAA"), "Desvirtuado")
+
+    def test_sat_69b_cron_skips_download_when_no_company_checks(self):
+        self.env["res.company"].search([]).l10n_mx_cfdi_sat_69b_check = False
+        sat_69b = self.env["l10n_mx_cfdi_account.sat_69b"]
+        with self._mock_sat_csv(enumerate([("AAA010101AAA", "Presunto")])) as mock_get:
+            sat_69b._cron_refresh()
+        mock_get.assert_not_called()
+        self.assertFalse(sat_69b._attachment())
+
+    def test_sat_69b_failed_refresh_keeps_stored_list(self):
+        sat_69b = self.env["l10n_mx_cfdi_account.sat_69b"]
+        with self._mock_sat_csv(enumerate([("AAA010101AAA", "Presunto")])):
+            sat_69b._cron_refresh()
+        with (
+            self._mock_sat_csv([], status_code=503),
+            self.assertLogs(SAT_69B_MODULE, level="ERROR"),
+        ):
+            sat_69b._cron_refresh()
+        with self._mock_sat_csv([]), self.assertLogs(SAT_69B_MODULE, level="ERROR"):
+            sat_69b._cron_refresh()
+        self.assertEqual(sat_69b._status("AAA010101AAA"), "Presunto")
 
     def test_check_skips_generic_and_empty_rfc(self):
         invoice = self._create_cfdi_invoice()
