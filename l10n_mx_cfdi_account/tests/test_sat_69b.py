@@ -10,6 +10,8 @@ from odoo.tests import tagged
 
 from .common import CFDIAccountTestCommon
 
+ACCOUNT_MOVE_MODULE = "odoo.addons.l10n_mx_cfdi_account.models.account_move"
+
 
 @tagged("post_install", "-at_install")
 class TestSAT69BBlacklist(CFDIAccountTestCommon):
@@ -119,10 +121,12 @@ class TestSAT69BBlacklist(CFDIAccountTestCommon):
                 "_l10n_mx_cfdi_sat_69b_status",
                 side_effect=OSError("sat unavailable"),
             ),
+            self.assertLogs(ACCOUNT_MOVE_MODULE, level="ERROR") as logs,
             self.assertRaises(UserError) as err,
         ):
             invoice._l10n_mx_cfdi_check_receiver_not_on_sat_blacklist()
         self.assertIn("Could not verify SAT list 69-B", str(err.exception))
+        self.assertIn("sat unavailable", "".join(logs.output))
 
     def test_create_invoice_cfdi_blocks_blacklisted_customer(self):
         invoice = self._post_cfdi_invoice(self._create_cfdi_invoice())

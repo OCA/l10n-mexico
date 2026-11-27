@@ -421,6 +421,7 @@ class AccountMove(models.Model):
         try:
             status = self._l10n_mx_cfdi_sat_69b_status(rfc)
         except Exception as err:
+            _logger.exception("Could not verify SAT list 69-B for RFC %s", rfc)
             raise UserError(
                 self.env._(
                     "Could not verify SAT list 69-B for customer RFC %(rfc)s.",
