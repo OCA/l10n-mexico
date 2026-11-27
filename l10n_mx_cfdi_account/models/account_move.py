@@ -415,6 +415,8 @@ class AccountMove(models.Model):
     def _l10n_mx_cfdi_check_receiver_not_on_sat_blacklist(self):
         """Block signing when the customer RFC is on SAT list 69-B."""
         self.ensure_one()
+        if not self.company_id.l10n_mx_cfdi_sat_69b_check:
+            return
         rfc = self._l10n_mx_cfdi_receiver_rfc()
         if not rfc or rfc in SAT_69B_GENERIC_RFCS:
             return

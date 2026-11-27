@@ -15,6 +15,26 @@ ACCOUNT_MOVE_MODULE = "odoo.addons.l10n_mx_cfdi_account.models.account_move"
 
 @tagged("post_install", "-at_install")
 class TestSAT69BBlacklist(CFDIAccountTestCommon):
+    def setUp(self):
+        super().setUp()
+        self.company.l10n_mx_cfdi_sat_69b_check = True
+
+    def test_check_is_disabled_by_default(self):
+        company = self.env["res.company"].create({"name": "No 69-B check"})
+        self.assertFalse(company.l10n_mx_cfdi_sat_69b_check)
+
+    def test_check_does_nothing_when_disabled(self):
+        self.company.l10n_mx_cfdi_sat_69b_check = False
+        invoice = self._create_cfdi_invoice()
+        invoice.receiver_id.vat = "AAA010101AAA"
+        with patch.object(
+            type(invoice),
+            "_l10n_mx_cfdi_sat_69b_status",
+            return_value=TaxpayerStatus.DEFINITIVO,
+        ) as mock_status:
+            invoice._l10n_mx_cfdi_check_receiver_not_on_sat_blacklist()
+        mock_status.assert_not_called()
+
     def test_sat_69b_status_uses_satcfdi(self):
         self._sat_69b_status_patcher.stop()
         invoice = self._create_cfdi_invoice()

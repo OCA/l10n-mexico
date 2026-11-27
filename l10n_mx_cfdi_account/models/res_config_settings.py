@@ -10,3 +10,7 @@ class ResConfigSettings(models.TransientModel):
         help="Enable to automatically sign CFDI when validating invoices.",
         readonly=False,
     )
+    l10n_mx_cfdi_sat_69b_check = fields.Boolean(
+        related="company_id.l10n_mx_cfdi_sat_69b_check",
+        readonly=False,
+    )
