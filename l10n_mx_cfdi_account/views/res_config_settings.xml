@@ -12,6 +12,12 @@
                     >
                         <field name="l10n_mx_cfdi_auto" />
                     </setting>
+                    <setting
+                        string="Check SAT list 69-B"
+                        help="Refuse to sign customer invoices and credit notes when the customer RFC is listed as Presunto or Definitivo on SAT list 69-B."
+                    >
+                        <field name="l10n_mx_cfdi_sat_69b_check" />
+                    </setting>
                 </block>
             </xpath>
         </field>
