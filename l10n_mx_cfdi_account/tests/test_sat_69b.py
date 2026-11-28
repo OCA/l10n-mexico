@@ -1,11 +1,13 @@
 # Copyright (C) 2026 Gray Matter Logic (<https://www.graymatterlogic.com>).
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).
 
+from datetime import timedelta
 from unittest.mock import Mock, patch
 
 import requests
 from satcfdi.pacs import TaxpayerStatus
 
+from odoo import fields
 from odoo.exceptions import UserError
 from odoo.tests import tagged
 
@@ -37,9 +39,10 @@ class TestSAT69BBlacklist(CFDIAccountTestCommon):
             invoice._l10n_mx_cfdi_check_receiver_not_on_sat_blacklist()
         mock_status.assert_not_called()
 
-    def _mock_sat_csv(self, rows, status_code=200):
+    def _mock_sat_csv(self, rows, status_code=200, extra_lines=()):
         lines = ["Legal notice", "Listado completo", "No,RFC,Nombre,Situación"]
         lines += [f'{i},{rfc},"NAME, SA",{status}' for i, (rfc, status) in rows]
+        lines += list(extra_lines)
         response = Mock(status_code=status_code)
         response.content = "\r\n".join(lines).encode("windows-1250")
         if status_code != 200:
@@ -79,6 +82,33 @@ class TestSAT69BBlacklist(CFDIAccountTestCommon):
             sat_69b._cron_refresh()
         mock_get.assert_not_called()
         self.assertFalse(sat_69b._attachment())
+
+    def test_sat_69b_download_skips_incomplete_rows(self):
+        sat_69b = self.env["l10n_mx_cfdi_account.sat_69b"]
+        rows = enumerate([("AAA010101AAA", "Presunto")])
+        extra_lines = ["", "Nota: fin del listado", '9,BBB010101BBB,"NAME",']
+        with self._mock_sat_csv(rows, extra_lines=extra_lines):
+            listing = sat_69b._download()
+        self.assertEqual(listing, {"AAA010101AAA": "Presunto"})
+
+    def test_sat_69b_stale_list_is_used_with_a_warning(self):
+        sat_69b = self.env["l10n_mx_cfdi_account.sat_69b"]
+        with self._mock_sat_csv(enumerate([("AAA010101AAA", "Presunto")])):
+            sat_69b._cron_refresh()
+        attachment = sat_69b._attachment()
+        self.env.flush_all()
+        self.env.cr.execute(
+            "UPDATE ir_attachment SET write_date = %s WHERE id = %s",
+            (fields.Datetime.now() - timedelta(days=31), attachment.id),
+        )
+        attachment.invalidate_recordset(["write_date"])
+        with (
+            self._mock_sat_csv([]) as mock_get,
+            self.assertLogs(SAT_69B_MODULE, level="WARNING") as logs,
+        ):
+            self.assertEqual(sat_69b._status("AAA010101AAA"), "Presunto")
+        mock_get.assert_not_called()
+        self.assertIn("31 days ago", "".join(logs.output))
 
     def test_sat_69b_failed_refresh_keeps_stored_list(self):
         sat_69b = self.env["l10n_mx_cfdi_account.sat_69b"]
